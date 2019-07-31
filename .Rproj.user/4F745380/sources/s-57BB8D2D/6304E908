@@ -5,14 +5,14 @@
     "dirty" : false,
     "encoding" : "UTF-8",
     "folds" : "",
-    "hash" : "0",
+    "hash" : "4006574967",
     "id" : "6304E908",
-    "lastKnownWriteTime" : 1564599349,
-    "last_content_update" : 1564599349,
+    "lastKnownWriteTime" : 1564599893,
+    "last_content_update" : 1564599893114,
     "path" : "~/TudodoR/01-intro.Rmd",
     "project_path" : "01-intro.Rmd",
     "properties" : {
-        "cursorPosition" : "2,12",
+        "cursorPosition" : "2,16",
         "scrollLine" : "0"
     },
     "read_only" : false,
