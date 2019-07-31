@@ -1,0 +1,9 @@
+{
+    "path" : "~/TudodoR",
+    "sortOrder" : [
+        {
+            "ascending" : true,
+            "columnIndex" : 2
+        }
+    ]
+}
