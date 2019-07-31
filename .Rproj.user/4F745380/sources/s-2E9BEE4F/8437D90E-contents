@@ -1,8 +1,8 @@
 # Introduction {#intro}
 
-teste cinco es using `{#label}` after them, e.g., we can reference Chapter \@ref(intro). If you do not manually label them, there will be automatic labels anyway, e.g., Chapter \@ref(methods).
+teste cinc ere will bebbb automatic labels anyway, e.g., Chapter \@ref(methods).
 
-Figures and tables with captions will be placed in `figure` and `table` environments, respectively.
+Fdsadssdsd 
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mar = c(4, 4, .1, .1))
