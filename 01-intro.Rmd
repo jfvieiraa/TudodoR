@@ -1,7 +1,6 @@
 # Introdução {#intro}
 
-Teste do livro 6 mais uma
-
+Iremos abordar as expressões básicas do R. Começaremos simples, com números, strings e valores true/false. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
 
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
