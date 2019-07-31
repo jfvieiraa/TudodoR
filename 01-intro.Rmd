@@ -1,8 +1,8 @@
-# Introduction {#intro}
+# Introdução {#intro}
 
 Teste do livro 6 mais uma
 
-Fdsadssdsd 
+
 
 ```{r nice-fig, fig.cap='Here is a nice figure!', out.width='80%', fig.asp=.75, fig.align='center'}
 par(mar = c(4, 4, .1, .1))
