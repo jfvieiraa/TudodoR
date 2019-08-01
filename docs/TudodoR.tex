@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-07-31}
+    \date{2019-08-01}
 
 \usepackage{booktabs}
 
@@ -135,93 +135,262 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{prerequisites}{%
-\chapter{Prerequisites}\label{prerequisites}}
+\hypertarget{pre-requisitos}{%
+\chapter{Pré requisitos}\label{pre-requisitos}}
 
-This is a \emph{sample} book written in \textbf{Markdown}. You can use anything that Pandoc's Markdown supports, e.g., a math equation \(a^2 + b^2 = c^2\).
-
-The \textbf{bookdown} package can be installed from CRAN or Github:
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{install.packages}\NormalTok{(}\StringTok{"bookdown"}\NormalTok{)}
-\CommentTok{# or the development version}
-\CommentTok{# devtools::install_github("rstudio/bookdown")}
-\end{Highlighting}
-\end{Shaded}
-
-Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading \texttt{\#}.
-
-To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): \url{https://yihui.name/tinytex/}.
+Material em construção.
 
 \hypertarget{intro}{%
-\chapter{Introdução}\label{intro}}
+\chapter{R Básico}\label{intro}}
 
-Iremos abordar as expressões básicas do R. Começaremos simples, com números, strings e valores true/false. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
+Iremos abordar as expressões básicas do R.
+Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{true/false}. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{par}\NormalTok{(}\DataTypeTok{mar =} \KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\FloatTok{.1}\NormalTok{, }\FloatTok{.1}\NormalTok{))}
-\KeywordTok{plot}\NormalTok{(pressure, }\DataTypeTok{type =} \StringTok{'b'}\NormalTok{, }\DataTypeTok{pch =} \DecValTok{19}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
+\hypertarget{expressoes}{%
+\section{Expressões}\label{expressoes}}
 
-\begin{figure}
-
-{\centering \includegraphics[width=0.8\linewidth]{TudodoR_files/figure-latex/nice-fig-1} 
-
-}
-
-\caption{Here is a nice figure!}\label{fig:nice-fig}
-\end{figure}
-
-Reference a figure by its code chunk label with the \texttt{fig:} prefix, e.g., see Figure \ref{fig:nice-fig}. Similarly, you can reference tables generated from \texttt{knitr::kable()}, e.g., see Table \ref{tab:nice-tab}.
+Digite seu nome no prompt, e o R irá avalio-lo e imprimir a resposta.
+Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{kable}\NormalTok{(}
-  \KeywordTok{head}\NormalTok{(iris, }\DecValTok{20}\NormalTok{), }\DataTypeTok{caption =} \StringTok{'Here is a nice table!'}\NormalTok{,}
-  \DataTypeTok{booktabs =} \OtherTok{TRUE}
-\NormalTok{)}
+\DecValTok{2}\OperatorTok{+}\DecValTok{8}
 \end{Highlighting}
 \end{Shaded}
 
-\begin{table}[t]
+\begin{verbatim}
+## [1] 10
+\end{verbatim}
 
-\caption{\label{tab:nice-tab}Here is a nice table!}
-\centering
-\begin{tabular}{rrrrl}
-\toprule
-Sepal.Length & Sepal.Width & Petal.Length & Petal.Width & Species\\
-\midrule
-5.1 & 3.5 & 1.4 & 0.2 & setosa\\
-4.9 & 3.0 & 1.4 & 0.2 & setosa\\
-4.7 & 3.2 & 1.3 & 0.2 & setosa\\
-4.6 & 3.1 & 1.5 & 0.2 & setosa\\
-5.0 & 3.6 & 1.4 & 0.2 & setosa\\
-\addlinespace
-5.4 & 3.9 & 1.7 & 0.4 & setosa\\
-4.6 & 3.4 & 1.4 & 0.3 & setosa\\
-5.0 & 3.4 & 1.5 & 0.2 & setosa\\
-4.4 & 2.9 & 1.4 & 0.2 & setosa\\
-4.9 & 3.1 & 1.5 & 0.1 & setosa\\
-\addlinespace
-5.4 & 3.7 & 1.5 & 0.2 & setosa\\
-4.8 & 3.4 & 1.6 & 0.2 & setosa\\
-4.8 & 3.0 & 1.4 & 0.1 & setosa\\
-4.3 & 3.0 & 1.1 & 0.1 & setosa\\
-5.8 & 4.0 & 1.2 & 0.2 & setosa\\
-\addlinespace
-5.7 & 4.4 & 1.5 & 0.4 & setosa\\
-5.4 & 3.9 & 1.3 & 0.4 & setosa\\
-5.1 & 3.5 & 1.4 & 0.3 & setosa\\
-5.7 & 3.8 & 1.7 & 0.3 & setosa\\
-5.1 & 3.8 & 1.5 & 0.3 & setosa\\
-\bottomrule
-\end{tabular}
-\end{table}
+Note que é impresso o resultado, 10.
+Digite a frase ``Engenharia Agrícola''
 
-You can write citations, too. For example, we are using the \textbf{bookdown} package \citep{R-bookdown} in this sample book, which was built on top of R Markdown and \textbf{knitr} \citep{xie2015}.
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{"Engenharia Agrícola"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Engenharia Agrícola"
+\end{verbatim}
+
+Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\OperatorTok{*}\DecValTok{5}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 30
+\end{verbatim}
+
+\hypertarget{valores-truefalso}{%
+\section{Valores true/falso}\label{valores-truefalso}}
+
+Algumas expressões retornam um ``valor lógico'': TRUE ou FALSE e/ou ``booleanos''.
+Vamos tentar digitar uma expressões que nos dá um valor lógico:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{7}\OperatorTok{<}\DecValTok{12}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+E outro valor lógico (sinal duplo de igualdade)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{6}\OperatorTok{+}\DecValTok{5}\OperatorTok{==}\DecValTok{10}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE
+\end{verbatim}
+
+\textbf{T} e \textbf{F} são taquigrafia para TRUE e FALSE. Tente isso:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{F}\OperatorTok{==}\OtherTok{FALSE}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\hypertarget{variaveis}{%
+\section{Variáveis}\label{variaveis}}
+
+Você pode armazenar valores em uma variável para usar mais tarde.
+Digite \textbf{x \textless{}- 28} para armazenar um valor em \textbf{x}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\DecValTok{28}
+\end{Highlighting}
+\end{Shaded}
+
+Tende dividr \textbf{x} por \textbf{4}( \textbf{/} é o operador da divisão).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}\OperatorTok{/}\DecValTok{4}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+Você pode retribuir qualquer valor a uma variável a qualquer momento.
+Tente atribuir ``Engenharia Agrícola''em x.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ "Engenharia Agrícola"}
+\end{Highlighting}
+\end{Shaded}
+
+Tente imprimir o valor atual de x.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Engenharia Agrícola"
+\end{verbatim}
+
+\hypertarget{funcoes}{%
+\section{Funções}\label{funcoes}}
+
+Você pode chamar uma \textbf{função} digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses.
+
+Vamos tentar usar a função \textbf{sum}, para adicionar alguns números. Entrar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{ (}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 12
+\end{verbatim}
+
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função \textbf{rep} e forneceria seu argumento \textbf{times}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{rep}\NormalTok{(}\StringTok{"Engenharia Agrícola"}\NormalTok{, }\DataTypeTok{times=}\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Engenharia Agrícola" "Engenharia Agrícola" "Engenharia Agrícola"
+\end{verbatim}
+
+Tente chamar a função \textbf{sqrt} para obter a raiz quadrada 16.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(}\DecValTok{16}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 4
+\end{verbatim}
+
+\hypertarget{ajuda}{%
+\section{Ajuda}\label{ajuda}}
+
+A função \textbf{help ( )} traz ajuda para a função desejada. Tente exibir ajuda para a função \textbf{mean}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{ (mean)}
+\end{Highlighting}
+\end{Shaded}
+
+A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos para a função \textbf{min}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{example}\NormalTok{(min)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## min> require(stats); require(graphics)
+## 
+## min>  min(5:1, pi) #-> one number
+## [1] 1
+## 
+## min> pmin(5:1, pi) #->  5  numbers
+## [1] 3.141593 3.141593 3.000000 2.000000 1.000000
+## 
+## min> x <- sort(rnorm(100));  cH <- 1.35
+## 
+## min> pmin(cH, quantile(x)) # no names
+## [1] -2.35431565 -0.73721231 -0.03061528  0.76060334  1.35000000
+## 
+## min> pmin(quantile(x), cH) # has names
+##          0%         25%         50%         75%        100% 
+## -2.35431565 -0.73721231 -0.03061528  0.76060334  1.35000000 
+## 
+## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-14-1.pdf}
+
+\begin{verbatim}
+## 
+## min> cut01 <- function(x) pmax(pmin(x, 1), 0)
+## 
+## min> curve(      x^2 - 1/4, -1.4, 1.5, col = 2)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-14-2.pdf}
+
+\begin{verbatim}
+## 
+## min> curve(cut01(x^2 - 1/4), col = "blue", add = TRUE, n = 500)
+## 
+## min> ## pmax(), pmin() preserve attributes of *first* argument
+## min> D <- diag(x = (3:1)/4) ; n0 <- numeric()
+## 
+## min> stopifnot(identical(D,  cut01(D) ),
+## min+           identical(n0, cut01(n0)),
+## min+           identical(n0, cut01(NULL)),
+## min+           identical(n0, pmax(3:1, n0, 2)),
+## min+           identical(n0, pmax(n0, 4)))
+\end{verbatim}
+
+\hypertarget{referencia}{%
+\section{Referência}\label{referencia}}
+
+MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
+
+\textbf{Prof.~Paulo Justiniando Ribeiro} \textgreater{}\url{http://www.leg.ufpr.br/~paulojus/}\textless{}
+
+\textbf{Prof.~Adriano Azevedo Filho} \textgreater{}\url{http://rpubs.com/adriano/esalq2012inicial}\textless{}
+
+\textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
+
+\textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
 \hypertarget{literature}{%
 \chapter{Literature}\label{literature}}
