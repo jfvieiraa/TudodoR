@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Chapter 4 Data.frame | Uso do sistema R para análise de dados</title>
+  <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Chapter 4 Data.frame | Uso do sistema R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Chapter 4 Data.frame | Uso do sistema R para análise de dados" />
+  
+  <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+<meta name="author" content="Jefferson Vieira José, André Pereira Freire Ferraz" />
+
+
+<meta name="date" content="2019-08-01" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="estruturas-de-dados.html">
+<link rel="next" href="methods.html">
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uso do sistema R para análise de dados</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressoes"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-truefalso"><i class="fa fa-check"></i><b>2.2</b> Valores true/falso</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variaveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funcoes"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referencia"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
+<li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequencia"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#nomes-de-vetores"><i class="fa fa-check"></i><b>3.1.2</b> Nomes de vetores</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#plotando-um-vetor"><i class="fa fa-check"></i><b>3.1.3</b> Plotando um vetor</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operacoes-matematicas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersao"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
+<li class="chapter" data-level="3.1.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#valores-faltantes"><i class="fa fa-check"></i><b>3.1.6</b> Valores Faltantes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>3.2</b> Matrizes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#outras-formas"><i class="fa fa-check"></i><b>3.2.1</b> Outras formas</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#acesso-a-matriz"><i class="fa fa-check"></i><b>3.2.2</b> Acesso a Matriz</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizaes-em-dados-matriciais"><i class="fa fa-check"></i><b>3.3</b> Visualiza??es em dados matriciais</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informaoes-sobre-construes-de-matrizes"><i class="fa fa-check"></i><b>3.3.1</b> Mais informa?oes sobre constru??es de Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>3.4</b> Fatores</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#array"><i class="fa fa-check"></i><b>3.5</b> Array</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="data-frame.html"><a href="data-frame.html"><i class="fa fa-check"></i><b>4</b> Data.frame</a><ul>
+<li class="chapter" data-level="4.0.1" data-path="data-frame.html"><a href="data-frame.html#indice-dos-data.frames"><i class="fa fa-check"></i><b>4.0.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="4.1" data-path="data-frame.html"><a href="data-frame.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>4.1</b> Manipulando um Data.frame</a><ul>
+<li class="chapter" data-level="4.1.1" data-path="data-frame.html"><a href="data-frame.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>4.1.1</b> Separando um data.frame por grupos</a></li>
+</ul></li>
+<li class="chapter" data-level="4.2" data-path="data-frame.html"><a href="data-frame.html#lista"><i class="fa fa-check"></i><b>4.2</b> Lista</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="data-frame.html"><a href="data-frame.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>4.2.1</b> Alguns comandos que retornam listas</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>5</b> Methods</a></li>
+<li class="chapter" data-level="6" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>6</b> Applications</a><ul>
+<li class="chapter" data-level="6.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>6.1</b> Example one</a></li>
+<li class="chapter" data-level="6.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>6.2</b> Example two</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>7</b> Final Words</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uso do sistema R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="data.frame" class="section level1">
+<h1><span class="header-section-number">Chapter 4</span> Data.frame</h1>
+<p>Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Criar o vetor nomes</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">nome &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Lara Lins&quot;</span>,</a>
+<a class="sourceLine" id="cb186-2" title="2">          <span class="st">&quot;Mayara Costa&quot;</span>,</a>
+<a class="sourceLine" id="cb186-3" title="3">          <span class="st">&quot;Aline Souza&quot;</span>,</a>
+<a class="sourceLine" id="cb186-4" title="4">          <span class="st">&quot;Maria Santos&quot;</span>,</a>
+<a class="sourceLine" id="cb186-5" title="5">          <span class="st">&quot;Jos? Santos&quot;</span>,</a>
+<a class="sourceLine" id="cb186-6" title="6">          <span class="st">&quot;N?colas Barros&quot;</span>)</a></code></pre></div>
+<p>criar vetor idade</p>
+<div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">idade &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">15</span>,<span class="dv">18</span>)</a></code></pre></div>
+<p>Criar vetor sexo (categoria=fator)</p>
+<div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">sexo &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>))</a></code></pre></div>
+<p>Criar vetor altura</p>
+<div class="sourceCode" id="cb189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb189-1" title="1">alt &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">180</span>,<span class="dv">170</span>,<span class="dv">160</span>,<span class="dv">150</span>,<span class="dv">140</span>,<span class="dv">168</span>)</a></code></pre></div>
+<p>Reunir tudo em um data.frame</p>
+<div class="sourceCode" id="cb190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb190-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">data.frame</span>(nome, idade, sexo, alt)</a></code></pre></div>
+<p>Ver atributos da tabela</p>
+<div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
+##  $ nome : Factor w/ 6 levels &quot;Aline Souza&quot;,..: 3 5 1 4 2 6
+##  $ idade: num  17 18 16 15 15 18
+##  $ sexo : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 2 2
+##  $ alt  : num  180 170 160 150 140 168</code></pre>
+<p>Adicionar nome as linhas com o comando <strong>row.names()</strong></p>
+<div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">row.names</span>(dados) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb193-2" title="2">dados</a></code></pre></div>
+<pre><code>##             nome idade sexo alt
+## 1      Lara Lins    17    F 180
+## 2   Mayara Costa    18    F 170
+## 3    Aline Souza    16    F 160
+## 4   Maria Santos    15    F 150
+## 5    Jos? Santos    15    M 140
+## 6 N?colas Barros    18    M 168</code></pre>
+<div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">names</span>(dados) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Nome&quot;</span>, <span class="st">&quot;Idade&quot;</span>, <span class="st">&quot;Sexo&quot;</span>, <span class="st">&quot;altura&quot;</span>)</a>
+<a class="sourceLine" id="cb195-2" title="2">dados</a></code></pre></div>
+<pre><code>##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168</code></pre>
+<div id="indice-dos-data.frames" class="section level3">
+<h3><span class="header-section-number">4.0.1</span> Índice dos Data.frames</h3>
+<p>Buscar elementos</p>
+<div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">dados[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co">#elemento da  linha  2, coluna 1</span></a></code></pre></div>
+<pre><code>## [1] Mayara Costa
+## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros</code></pre>
+<div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">dados[<span class="dv">2</span>,] <span class="co">#toda linha dois</span></a></code></pre></div>
+<pre><code>##           Nome Idade Sexo altura
+## 2 Mayara Costa    18    F    170</code></pre>
+<p>Repare que apesar de “Nomes” ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.</p>
+<div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">dados[,<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [1] Lara Lins      Mayara Costa   Aline Souza    Maria Santos  
+## [5] Jos? Santos    N?colas Barros
+## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros</code></pre>
+<p>Transformar para caracterer</p>
+<div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1">dados[,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">as.character</span>(dados[,<span class="dv">1</span>])</a>
+<a class="sourceLine" id="cb203-2" title="2">dados[,<span class="dv">1</span>]</a></code></pre></div>
+<pre><code>## [1] &quot;Lara Lins&quot;      &quot;Mayara Costa&quot;   &quot;Aline Souza&quot;    &quot;Maria Santos&quot;  
+## [5] &quot;Jos? Santos&quot;    &quot;N?colas Barros&quot;</code></pre>
+<p>Acessando aos dados</p>
+<div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">dados<span class="op">$</span>Nome</a></code></pre></div>
+<pre><code>## [1] &quot;Lara Lins&quot;      &quot;Mayara Costa&quot;   &quot;Aline Souza&quot;    &quot;Maria Santos&quot;  
+## [5] &quot;Jos? Santos&quot;    &quot;N?colas Barros&quot;</code></pre>
+<div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">dados<span class="op">$</span>Nome[<span class="dv">3</span>]</a></code></pre></div>
+<pre><code>## [1] &quot;Aline Souza&quot;</code></pre>
+<div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">dados<span class="op">$</span>Nome [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
+<pre><code>## [1] &quot;Lara Lins&quot;    &quot;Mayara Costa&quot; &quot;Aline Souza&quot;</code></pre>
+<div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
+##  $ Nome  : chr  &quot;Lara Lins&quot; &quot;Mayara Costa&quot; &quot;Aline Souza&quot; &quot;Maria Santos&quot; ...
+##  $ Idade : num  17 18 16 15 15 18
+##  $ Sexo  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 2 2
+##  $ altura: num  180 170 160 150 140 168</code></pre>
+</div>
+<div id="manipulando-um-data.frame" class="section level2">
+<h2><span class="header-section-number">4.1</span> Manipulando um Data.frame</h2>
+<p>Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos <strong>cbind()</strong> e <strong>rbind</strong> para adcionar colunas e linhas rescpectivamente, a um data.frame</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span> (dados, <span class="co">#adcionar uma coluna</span></a>
+<a class="sourceLine" id="cb213-2" title="2">               <span class="dt">Conceito=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">rbind</span> (dados, <span class="co">#adicionar uma linha</span></a>
+<a class="sourceLine" id="cb214-2" title="2">                <span class="st">&quot;7&quot;</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Caio Pinto&quot;</span>, <span class="dv">21</span>, <span class="st">&quot;M&quot;</span>, <span class="dv">172</span>, <span class="st">&quot;C&quot;</span>))</a>
+<a class="sourceLine" id="cb214-3" title="3">dados</a></code></pre></div>
+<pre><code>##             Nome Idade Sexo altura Conceito
+## 1      Lara Lins    17    F    180        A
+## 2   Mayara Costa    18    F    170        A
+## 3    Aline Souza    16    F    160        A
+## 4   Maria Santos    15    F    150        C
+## 5    Jos? Santos    15    M    140        A
+## 6 N?colas Barros    18    M    168        B
+## 7     Caio Pinto    21    M    172        C</code></pre>
+<p>Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.</p>
+<div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">dados&lt;-<span class="st"> </span>dados [<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,] <span class="co">#selecionar linha de 1 a 6</span></a>
+<a class="sourceLine" id="cb216-2" title="2">dados&lt;-<span class="st"> </span>dados [,<span class="op">-</span><span class="dv">5</span>] <span class="co">#excluir a quinta coluna</span></a>
+<a class="sourceLine" id="cb216-3" title="3">dados</a></code></pre></div>
+<pre><code>##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">dados[dados<span class="op">$</span>Sexo<span class="op">==</span><span class="st">&quot;F&quot;</span>,] <span class="co">#exibir s? masculinos</span></a></code></pre></div>
+<pre><code>##           Nome Idade Sexo altura
+## 1    Lara Lins    17    F    180
+## 2 Mayara Costa    18    F    170
+## 3  Aline Souza    16    F    160
+## 4 Maria Santos    15    F    150</code></pre>
+<p>A ordena??o das linhas de um <strong>data.frame</strong> segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til</p>
+<div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">dados [<span class="kw">order</span>(dados<span class="op">$</span>altura),]</a></code></pre></div>
+<pre><code>##             Nome Idade Sexo altura
+## 5    Jos? Santos    15    M    140
+## 4   Maria Santos    15    F    150
+## 3    Aline Souza    16    F    160
+## 6 N?colas Barros    18    M    168
+## 2   Mayara Costa    18    F    170
+## 1      Lara Lins    17    F    180</code></pre>
+<div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1">dados [<span class="kw">rev</span>(<span class="kw">order</span>(dados<span class="op">$</span>altura)),]</a></code></pre></div>
+<pre><code>##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 6 N?colas Barros    18    M    168
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140</code></pre>
+<div id="separando-um-data.frame-por-grupos" class="section level3">
+<h3><span class="header-section-number">4.1.1</span> Separando um data.frame por grupos</h3>
+<div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">split</span> (dados, sexo)</a></code></pre></div>
+<pre><code>## $F
+##           Nome Idade Sexo altura
+## 1    Lara Lins    17    F    180
+## 2 Mayara Costa    18    F    170
+## 3  Aline Souza    16    F    160
+## 4 Maria Santos    15    F    150
+## 
+## $M
+##             Nome Idade Sexo altura
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168</code></pre>
+</div>
+</div>
+<div id="lista" class="section level2">
+<h2><span class="header-section-number">4.2</span> Lista</h2>
+<p>Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.</p>
+<div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1">pes &lt;-<span class="st"> </span><span class="kw">list</span> (<span class="dt">idade=</span><span class="dv">32</span>, <span class="dt">nome=</span><span class="st">&quot;Maria&quot;</span>, <span class="dt">notas=</span><span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">95</span>,<span class="dv">78</span>), <span class="dt">B=</span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb226-2" title="2">pes</a></code></pre></div>
+<pre><code>## $idade
+## [1] 32
+## 
+## $nome
+## [1] &quot;Maria&quot;
+## 
+## $notas
+## [1] 98 95 78
+## 
+## $B
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4</code></pre>
+<p>Lista s?o construidas com o comando <strong>list ()</strong>. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome <strong>$</strong> ou <strong>[]</strong></p>
+<div id="alguns-comandos-que-retornam-listas" class="section level3">
+<h3><span class="header-section-number">4.2.1</span> Alguns comandos que retornam listas</h3>
+<p>Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando <strong>t.tes()</strong>, que retorna um objeto que ? uma lista.</p>
+<div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb228-2" title="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb228-3" title="3">tt &lt;-<span class="st"> </span><span class="kw">t.test</span> (x,y, <span class="dt">var.equal=</span>T)</a>
+<a class="sourceLine" id="cb228-4" title="4">tt</a></code></pre></div>
+<pre><code>## 
+##  Two Sample t-test
+## 
+## data:  x and y
+## t = -3.182, df = 8, p-value = 0.01296
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.1044729 -0.4955271
+## sample estimates:
+## mean of x mean of y 
+##       2.6       4.4</code></pre>
+<p>Comprovar que ? uma lista</p>
+<div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">is.list</span>(tt)</a></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="kw">mode</span> (tt)</a></code></pre></div>
+<pre><code>## [1] &quot;list&quot;</code></pre>
+<p>Exibir o componentes da lista</p>
+<div class="sourceCode" id="cb234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb234-1" title="1"><span class="kw">names</span>(tt)</a></code></pre></div>
+<pre><code>##  [1] &quot;statistic&quot;   &quot;parameter&quot;   &quot;p.value&quot;     &quot;conf.int&quot;    &quot;estimate&quot;   
+##  [6] &quot;null.value&quot;  &quot;stderr&quot;      &quot;alternative&quot; &quot;method&quot;      &quot;data.name&quot;</code></pre>
+<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1">tt<span class="op">$</span>conf.int <span class="co">#intervalo de confianca </span></a></code></pre></div>
+<pre><code>## [1] -3.1044729 -0.4955271
+## attr(,&quot;conf.level&quot;)
+## [1] 0.95</code></pre>
+
+</div>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="estruturas-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"google": false,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"download": ["TudodoR.pdf", "TudodoR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

@@ -149,7 +149,6 @@ Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{
 \hypertarget{expressoes}{%
 \section{Expressões}\label{expressoes}}
 
-Digite seu nome no prompt, e o R irá avalio-lo e imprimir a resposta.
 Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 
 \begin{Shaded}
@@ -163,6 +162,7 @@ Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 \end{verbatim}
 
 Note que é impresso o resultado, 10.
+
 Digite a frase ``Engenharia Agrícola''
 
 \begin{Shaded}
@@ -345,11 +345,11 @@ A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.35431565 -0.73721231 -0.03061528  0.76060334  1.35000000
+## [1] -1.9780396 -0.5698508  0.1948683  0.6431804  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -2.35431565 -0.73721231 -0.03061528  0.76060334  1.35000000 
+##         0%        25%        50%        75%       100% 
+## -1.9780396 -0.5698508  0.1948683  0.6431804  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -392,10 +392,1677 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
-\hypertarget{literature}{%
-\chapter{Literature}\label{literature}}
+\hypertarget{estruturas-de-dados}{%
+\chapter{Estruturas de Dados}\label{estruturas-de-dados}}
 
-Here is a review of existing methods.
+\hypertarget{vetor}{%
+\section{Vetor}\label{vetor}}
+
+Um vetor é simplesmente uma lista de valores.
+A maneira mais simples de usar um vetor é usando o comando \textbf{c( )}, que concatena elementos num mesmo objeto.
+Exemplo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{) }
+\NormalTok{x}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  3  5  7 11
+\end{verbatim}
+
+Os argumentos de \textbf{c( )} podem ser tanto elementos únicos quanto outros objetos. Adicione os três primeiros numeros primos no \textbf{vetor x}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y<-}\StringTok{ }\KeywordTok{c}\NormalTok{(x,}\DecValTok{13}\NormalTok{,}\DecValTok{17}\NormalTok{,}\DecValTok{19}\NormalTok{)}
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  2  3  5  7 11 13 17 19
+\end{verbatim}
+
+\hypertarget{vetores-de-sequencia}{%
+\subsection{Vetores de Sequência}\label{vetores-de-sequencia}}
+
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação \textbf{start:end}. Vamos fazer um vetor com valores de 1 a 7:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DecValTok{1}\OperatorTok{:}\DecValTok{7}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5 6 7
+\end{verbatim}
+
+Uma maneira mais versátil de fazer sequências é chamar a função \textbf{seq}. Vamos fazer o mesmo com \textbf{seq}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1 2 3 4 5 6 7
+\end{verbatim}
+
+A função \textbf{seq} também permite que você use incrementos diferentes de 1. Experimente com etapas de 0,5
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{7}\NormalTok{,}\FloatTok{0.5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 1.0 1.5 2.0 2.5 3.0 3.5 4.0 4.5 5.0 5.5 6.0 6.5 7.0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{seq}\NormalTok{(}\DecValTok{7}\NormalTok{,}\DecValTok{1}\NormalTok{,}\OperatorTok{-}\FloatTok{0.5}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 7.0 6.5 6.0 5.5 5.0 4.5 4.0 3.5 3.0 2.5 2.0 1.5 1.0
+\end{verbatim}
+
+Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: \textbf{numérico}, \textbf{caractere}, \textbf{complexo} e \textbf{lógico}. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
+As funções \textbf{mode( )} e \textbf{length( )} mostram o tipo e tamanho de um objeto, respectivamente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{z<-}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{,}\DecValTok{11}\NormalTok{) }
+\KeywordTok{mode}\NormalTok{ (z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "numeric"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{length}\NormalTok{(z)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ "Angela"}
+\NormalTok{b<-}\OtherTok{TRUE}\NormalTok{; }
+\NormalTok{c<-8i }\CommentTok{#objetos com tipos diferentes}
+\KeywordTok{mode}\NormalTok{(a); }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "character"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mode}\NormalTok{(b); }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "logical"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mode}\NormalTok{(c) }\CommentTok{#exibe os atributos "tipo" dos objetos }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "complex"
+\end{verbatim}
+
+Se o vetor é muito longo e não ``cabe'' em uma linha o R vai usar as linhas seguintes para continuar imprimindo o vetor.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo<-}\DecValTok{100}\OperatorTok{:}\DecValTok{50} \CommentTok{#sequência decrescente de 100 a 50}
+\NormalTok{longo }\CommentTok{#exibe o conteúdo do objeto }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
+## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
+## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50
+\end{verbatim}
+
+Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que {[}1{]} indica que o primeiro elemento do vetor estão naquela linha, {[}17{]} indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
+assim por diante.
+
+Você pode recuperar um valor individual dentro de um vetor fornecendo seu índice numérico entre colchetes. Tente obter o valor 18:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{18}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 83
+\end{verbatim}
+
+Muitas línguagem de programação iniciam índices de matriz em 0, mas os índices vetoriais de R começam em 1. Obtenha o primeiro valor digitando:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100
+\end{verbatim}
+
+Você pode atribuir novos valores dentro de um vetor existente. Tente mudar o terceiro valor \textbf{28}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo [}\DecValTok{3}\NormalTok{] <-}\StringTok{ }\DecValTok{28}
+\end{Highlighting}
+\end{Shaded}
+
+Se você adicionar novos valores ao final, o vetor aumentará para acomodá-los. Vamos adicionar um valor no final
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{101}\NormalTok{] <-}\StringTok{ }\DecValTok{83}
+\end{Highlighting}
+\end{Shaded}
+
+Você pode usar um vetor entre os colchetes para acessar vários valores. Tente obter a primeira e a terceira palavras
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{)]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 100  28
+\end{verbatim}
+
+Isso significa que você pode recuperar intervalos de valores. Obter a segunda a quarta palavras:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 99 28 97
+\end{verbatim}
+
+Você também pode definir intervalos de valores; apenas forneça os valores em um vetor. Adicione valores 5 a 7:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{5}\OperatorTok{:}\DecValTok{7}\NormalTok{] <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{42}\NormalTok{,}\DecValTok{52}\NormalTok{,}\DecValTok{75}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Agora tente acessar o oitavo valor do vetor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{longo[}\DecValTok{8}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 93
+\end{verbatim}
+
+\hypertarget{nomes-de-vetores}{%
+\subsection{Nomes de vetores}\label{nomes-de-vetores}}
+
+Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função \textbf{names}, assim:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{solo <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{3}
+\KeywordTok{names}\NormalTok{(solo) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Argila"}\NormalTok{, }\StringTok{"Areia"}\NormalTok{,}\StringTok{"Silte"}\NormalTok{ )}
+\NormalTok{solo}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Argila  Areia  Silte 
+##      1      2      3
+\end{verbatim}
+
+Agora, defina o valor atual para o ``silte'' para um valor diferente usando o nome em vez da posição.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{solo[}\StringTok{"Silte"}\NormalTok{]<-}\DecValTok{20}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{plotando-um-vetor}{%
+\subsection{Plotando um vetor}\label{plotando-um-vetor}}
+
+A função \textbf{barplot} desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+
+Agora, tente passar o vetor para a função \textbf{barplot}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{chuva <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{20}\NormalTok{,}\DecValTok{50}\NormalTok{,}\DecValTok{85}\NormalTok{)}
+\KeywordTok{barplot}\NormalTok{(chuva)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-32-1.pdf}
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função \textbf{names} novamente:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(chuva)<-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Rondonópolis", "}\NormalTok{Maringá}\StringTok{", "}\NormalTok{Cruzeiro do Sul}\StringTok{")}
+\end{Highlighting}
+\end{Shaded}
+
+Agora, se você digitar \textbf{barplot} com o vetor novamente, você verá os rótulos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(chuva)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-34-1.pdf}
+Agora, tente chamar barplot em um vetor de números inteiros que variam de 1 a 100:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{100}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-35-1.pdf}
+
+\hypertarget{operacoes-matematicas}{%
+\subsection{Operações matemáticas}\label{operacoes-matematicas}}
+
+A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável \textbf{a}
+
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será? adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\NormalTok{a }\OperatorTok{+}\StringTok{ }\DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 3 4
+\end{verbatim}
+
+O mesmo se aplica na divisão, multiplicação ou qualquer outra aritmética básica. Tente dividir nosso vetor por 2:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{/}\StringTok{ }\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.5 1.0 1.5
+\end{verbatim}
+
+Agora, tente multiplicar nosso vetor por 2:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}\OperatorTok{*}\DecValTok{2}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 6
+\end{verbatim}
+
+Se você adicionar dois vetores, R irá tirar cada valor de cada vetor e adicioná-los. Vamos fazer um segundo vetor para você experimentar e armazená-lo na variável \textbf{b}
+
+Tente adicioná-lo ao vetor \textbf{a}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{a}\OperatorTok{+}\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 7 9
+\end{verbatim}
+
+Agora tente subtrair b de a:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a}\OperatorTok{-}\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3 -3 -3
+\end{verbatim}
+
+Você também pode tirar dois vetores e comparar cada item. Veja quais valores nos vetores são iguais aos de um segundo vetor
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{==}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{99}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1]  TRUE FALSE  TRUE
+\end{verbatim}
+
+Observe que R não testou se os vetores inteiros eram iguais; verificou cada valor no vetor a contra o valor no mesmo índice no nosso novo vetor.
+
+Verifique se cada valor nos vetores são menores que o valor correspondente em outro vetor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a }\OperatorTok{<}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{99}\NormalTok{, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] FALSE  TRUE FALSE
+\end{verbatim}
+
+Funções que normalmente funcionam com escalares também podem operar em cada elemento de um vetor. Tente obter o seno de cada valor em nosso vetor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sin}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8414710 0.9092974 0.1411200
+\end{verbatim}
+
+Agora tente obter as raízes quadradas com a função \textbf{sqrt}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sqrt}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 1.000000 1.414214 1.732051
+\end{verbatim}
+
+\hypertarget{parcelas-de-dispersao}{%
+\subsection{Parcelas de dispersão}\label{parcelas-de-dispersao}}
+
+A função \textbf{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gr?fico deles.
+
+Vamos desenhar um gr?fico que mostra a rela??o de n?meros e seus senos.
+
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor com alguns valores fracion?rios entre 0 e 20, e armazen?-lo na vari?vel x. E na vari?vel y um segundo vetor com os senos de x:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{20}\NormalTok{, }\FloatTok{0.1}\NormalTok{)}
+\NormalTok{y<-}\KeywordTok{sin}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+Em seguida, basta chamar o \textbf{plot} com seus dois vetores:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(x, y)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-46-1.pdf}
+
+Observa??o sobre o gr?fico que os valores do primeiro argumento ( x) s?o usados para o eixo horizontal, e os valores do segundo ( y) para o vertical.
+
+Vamos criar um vetor com alguns valores negativos e positivos para voc? e armazen?-lo na vari?vel \textbf{valores}.
+
+Tamb?m criaremos um segundo vetor com os valores absolutos do primeiro e armazen?-lo na vari?vel \textbf{absoluto}.
+
+Tente tra?ar os vetores, com os \textbf{valores} no eixo horizontal e no eixo vertical os absoluto.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{valores <-}\StringTok{ }\DecValTok{-10}\OperatorTok{:}\DecValTok{10}
+\NormalTok{absoluto<-}\StringTok{ }\KeywordTok{abs}\NormalTok{(valores)}
+\KeywordTok{plot}\NormalTok{(valores, absoluto)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-47-1.pdf}
+
+\hypertarget{valores-faltantes}{%
+\subsection{Valores Faltantes}\label{valores-faltantes}}
+
+?s vezes, ao trabalhar com dados de amostra, um determinado valor n?o est? dispon?vel. Mas n?o ? uma boa id?ia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra n?o estava dispon?vel: \textbf{NA}. Muitas fun??es que funcionam com vetores tratam esse valor especialmente.
+
+Vamos criar um vetor para voc? com uma amostra ausente e armazen?-lo na vari?vel \textbf{a}.
+
+Tente obter a soma de seus valores e veja qual ? o resultado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{3}\NormalTok{, }\OtherTok{NA}\NormalTok{, }\DecValTok{7}\NormalTok{, }\DecValTok{9}\NormalTok{)}
+\KeywordTok{sum}\NormalTok{(a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] NA
+\end{verbatim}
+
+A soma ? considerada ``n?o dispon?vel'' por padr?o porque um dos valores do vetor foi NA.
+
+Lembre-se desse comando para mostrar ajuda para uma fun??o? Traga documenta??o para a fun??o \textbf{sum}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{(sum)}
+\end{Highlighting}
+\end{Shaded}
+
+Como voc? v? na documenta??o, \textbf{sum} pode tomar um argumento opcional \textbf{na.rm},. ? configurado \textbf{FALSE} por padr?o, mas se voc? configur?-lo TRUE, todos os \textbf{NA} argumentos ser?o removidos do vetor antes do c?lculo ser executado.
+
+Tente rondar \textbf{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{TRUE}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(a, }\DataTypeTok{na.rm =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 20
+\end{verbatim}
+
+\hypertarget{matrizes}{%
+\section{Matrizes}\label{matrizes}}
+
+H? varias formas de criar uma matriz. O comando \textbf{matriz()} recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimens?es.
+Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    0    0    0    0
+## [2,]    0    0    0    0
+## [3,]    0    0    0    0
+\end{verbatim}
+
+Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, voc? precisar? de um vetor de 12 itens.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{)}
+
+\KeywordTok{print}\NormalTok{ (a)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+\end{verbatim}
+
+Agora chame matrix com o vetor, o n?mero de linhas e o n?mero de colunas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{ (a,}\CommentTok{# chama o vetor}
+        \DecValTok{3}\NormalTok{,}\CommentTok{# linha}
+        \DecValTok{4}\NormalTok{) }\CommentTok{#coluna}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+\end{verbatim}
+
+Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, voc? precisar? de um vetor de 12 itens. N?s vamos fazer isso para voc? agora:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\DecValTok{1}\OperatorTok{:}\DecValTok{12}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
+\end{verbatim}
+
+Agora chame \textbf{matrix} com o vetor, o n?mero de linhas e o n?mero de colunas:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{ (a,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+\end{verbatim}
+
+\hypertarget{outras-formas}{%
+\subsection{Outras formas}\label{outras-formas}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{ (a, }\DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{ (a, ,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+\end{verbatim}
+
+Note que as matrizes s?o preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento \textbf{byrow}, que, por padr?o, est? definido como \textbf{FALSE}, para \textbf{TRUE}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{(a,}\DecValTok{3}\NormalTok{, }\DataTypeTok{byrow=}\NormalTok{T)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    2    3    4
+## [2,]    5    6    7    8
+## [3,]    9   10   11   12
+\end{verbatim}
+
+Os valores do vetor s?o copiados para a nova matriz, um por um. Voc? tamb?m pode reformular o pr?prio \textbf{vetor} em uma \textbf{matriz}. Crie um vetor de 8 itens:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{8}
+\end{Highlighting}
+\end{Shaded}
+
+A fun??o \textbf{dim} define as \textbf{dim}ens?es para uma matriz. Ele aceita um vetor com o n?mero de linhas e o n?mero de colunas a serem atribu?das.
+Atribua novas dimens?es para \textbf{foliar} passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dim}\NormalTok{(foliar) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O vetor n?o ? mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a fun??o \textbf{matrix} para criar uma matriz \textbf{5x5}, com seus campos inicializados para qualquer valor que voc? desejar.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{matrix}\NormalTok{ (}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4] [,5]
+## [1,]    2    2    2    2    2
+## [2,]    2    2    2    2    2
+## [3,]    2    2    2    2    2
+## [4,]    2    2    2    2    2
+## [5,]    2    2    2    2    2
+\end{verbatim}
+
+\hypertarget{acesso-a-matriz}{%
+\subsection{Acesso a Matriz}\label{acesso-a-matriz}}
+
+Obter valores de matrizes n?o ? diferente de vetores; voc? s? precisa fornecer dois ?ndices em vez de um. Abra a matriz foliar:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{ (foliar)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    3    5    7
+## [2,]    2    4    6    8
+\end{verbatim}
+
+Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar[}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6
+\end{verbatim}
+
+o valor da primeira linha da quarta coluna
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar[}\DecValTok{1}\NormalTok{,}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7
+\end{verbatim}
+
+Voc? pode obter uma linha inteira da matriz omitindo o ?ndice da coluna (mas mantenha a v?rgula). Tente recuperar a segunda linha:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar[}\DecValTok{2}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2 4 6 8
+\end{verbatim}
+
+Para obter uma coluna inteira, omita o ?ndice da linha. Recupere a quarta coluna:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar[,}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 7 8
+\end{verbatim}
+
+Voc? pode ler v?rias linhas ou colunas, fornecendo um vetor ou sequ?ncia com seus ?ndices. Tente recuperar as colunas de 2 a 4:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{foliar[,}\DecValTok{2}\OperatorTok{:}\DecValTok{4}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]    3    5    7
+## [2,]    4    6    8
+\end{verbatim}
+
+O comando \textbf{summary} pode ser usado para obter informa??es da matriz
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(foliar)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        V1             V2             V3             V4      
+##  Min.   :1.00   Min.   :3.00   Min.   :5.00   Min.   :7.00  
+##  1st Qu.:1.25   1st Qu.:3.25   1st Qu.:5.25   1st Qu.:7.25  
+##  Median :1.50   Median :3.50   Median :5.50   Median :7.50  
+##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50  
+##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75  
+##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00
+\end{verbatim}
+
+Se desejar um resumo de todos os elementos da matriz, basta transform?-la em um vetor
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(}\KeywordTok{as.vector}\NormalTok{(foliar))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##    1.00    2.75    4.50    4.50    6.25    8.00
+\end{verbatim}
+
+\hypertarget{visualizacoes-em-dados-matriciais}{%
+\section{Visualizações em dados matriciais}\label{visualizacoes-em-dados-matriciais}}
+
+Com um mapa de eleva??o. ? bem plana - tudo fica a 1 metro acima do n?vel do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para voc?:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elevacao <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{ (}\DecValTok{1}\NormalTok{,}\DecValTok{10}\NormalTok{,}\DecValTok{10}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Na quarta linha, sexta coluna, defina a eleva??o para 0:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{elevacao [}\DecValTok{4}\NormalTok{, }\DecValTok{6}\NormalTok{] <-}\StringTok{ }\DecValTok{0}
+\end{Highlighting}
+\end{Shaded}
+
+Mapa de contorno dos valores passando a matriz para a fun??o \emph{contour}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{contour}\NormalTok{(elevacao)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-71-1.pdf}
+criar um gr?fico em perspectiva 3D com a fun??o \textbf{persp}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{persp}\NormalTok{ (elevacao)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-72-1.pdf}
+Podemos consertar isso especificando nosso pr?prio valor para o par?metro \textbf{expand}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{persp}\NormalTok{ (elevacao, }\DataTypeTok{expand =}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-73-1.pdf}
+R inclui alguns conjuntos de dados de amostra. Um deles ? volcanoum mapa 3D de um vulc?o adormecido da Nova Zel?ndia.
+? simplesmente uma matriz de 87x61 com valores de eleva??o, mas mostra o poder das visualiza??es de matriz do R.Criar um mapa de calor
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{contour}\NormalTok{(volcano)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-74-1.pdf}
+
+gr?fico em perspectiva:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{persp}\NormalTok{(volcano, }\DataTypeTok{expand=}\FloatTok{0.2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-75-1.pdf}
+
+A fun??o imageir? criar um mapa de calor:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{image}\NormalTok{(volcano)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-76-1.pdf}
+
+\hypertarget{mais-informacoes-sobre-construcoes-de-matrizes}{%
+\subsection{Mais informações sobre construções de Matrizes}\label{mais-informacoes-sobre-construcoes-de-matrizes}}
+
+H? outros comandos que podem ser usados para construir matrizes como \textbf{cbind()} e \textbf{rbind}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{a <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{ (}\DecValTok{10}\OperatorTok{:}\DecValTok{1}\NormalTok{,}\DataTypeTok{ncol=}\DecValTok{2}\NormalTok{) }\CommentTok{#construir uma matriz qualquer}
+\NormalTok{a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2]
+## [1,]   10    5
+## [2,]    9    4
+## [3,]    8    3
+## [4,]    7    2
+## [5,]    6    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{b <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (a,}\DecValTok{1}\OperatorTok{:}\DecValTok{5}\NormalTok{) }\CommentTok{#adicionar uma terceira coluna}
+\NormalTok{b}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10    5    1
+## [2,]    9    4    2
+## [3,]    8    3    3
+## [4,]    7    2    4
+## [5,]    6    1    5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{c<-}\StringTok{ }\KeywordTok{rbind}\NormalTok{(b,}\KeywordTok{c}\NormalTok{(}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{,}\DecValTok{28}\NormalTok{))}
+\NormalTok{c}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##      [,1] [,2] [,3]
+## [1,]   10    5    1
+## [2,]    9    4    2
+## [3,]    8    3    3
+## [4,]    7    2    4
+## [5,]    6    1    5
+## [6,]   28   28   28
+\end{verbatim}
+
+Opcionalmente matrizes podem ter nomes associados ?s linhas e colunas (``rownames''e ``colnames''). Cada um destes componentes da matrix ? um vetor de nomes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1 <-}\StringTok{ }\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{12}\NormalTok{, }\DataTypeTok{ncol =} \DecValTok{3}\NormalTok{) }
+
+\KeywordTok{dimnames}\NormalTok{(m1) <-}\StringTok{ }\KeywordTok{list}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"L1"}\NormalTok{, }\StringTok{"L2"}\NormalTok{, }\StringTok{"L3"}\NormalTok{, }\StringTok{"L4"}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\StringTok{"C1"}\NormalTok{, }\StringTok{"C2"}\NormalTok{, }\StringTok{"C3"}\NormalTok{)) }
+\KeywordTok{dimnames}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [[1]]
+## [1] "L1" "L2" "L3" "L4"
+## 
+## [[2]]
+## [1] "C1" "C2" "C3"
+\end{verbatim}
+
+Matrizes s?o muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table().
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{margin.table}\NormalTok{(m1, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## L1 L2 L3 L4 
+## 15 18 21 24
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{margin.table}\NormalTok{(m1, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## C1 C2 C3 
+## 10 26 42
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{apply}\NormalTok{(m1, }\DecValTok{2}\NormalTok{, median)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   C1   C2   C3 
+##  2.5  6.5 10.5
+\end{verbatim}
+
+\hypertarget{fatores}{%
+\subsection{Fatores}\label{fatores}}
+
+Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de \textbf{``tratamentos''} em uma an?lise de experimentos devemos declarar este vetor como um \textbf{``fator''}.
+Pode criar um fator usando o comando \textbf{factor()}, ou o comando \textbf{gl}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{factor}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\KeywordTok{paste}\NormalTok{(}\StringTok{"T"}\NormalTok{, }\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{, }\DataTypeTok{sep =} \StringTok{""}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{3}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] T1 T1 T1 T1 T2 T2 T2 T2 T3 T3 T3
+## Levels: T1 T2 T3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{peso  <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\FloatTok{134.8}\NormalTok{, }\FloatTok{139.7}\NormalTok{, }\FloatTok{147.6}\NormalTok{, }\FloatTok{132.3}\NormalTok{, }\FloatTok{161.7}\NormalTok{, }\FloatTok{157.7}\NormalTok{, }\FloatTok{150.3}\NormalTok{, }\FloatTok{144.7}\NormalTok{,}
+           \FloatTok{160.7}\NormalTok{, }\FloatTok{172.7}\NormalTok{, }\FloatTok{163.4}\NormalTok{, }\FloatTok{161.3}\NormalTok{, }\FloatTok{169.8}\NormalTok{, }\FloatTok{168.2}\NormalTok{, }\FloatTok{160.7}\NormalTok{, }\FloatTok{161.0}\NormalTok{,}
+           \FloatTok{165.7}\NormalTok{, }\FloatTok{160.0}\NormalTok{, }\FloatTok{158.2}\NormalTok{, }\FloatTok{151.0}\NormalTok{, }\FloatTok{171.8}\NormalTok{, }\FloatTok{157.3}\NormalTok{, }\FloatTok{150.4}\NormalTok{, }\FloatTok{160.4}\NormalTok{,}
+           \FloatTok{154.5}\NormalTok{, }\FloatTok{160.4}\NormalTok{, }\FloatTok{148.8}\NormalTok{, }\FloatTok{154.0}\NormalTok{)}
+\NormalTok{trat  <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{300}\NormalTok{,}\DecValTok{50}\NormalTok{), }\DataTypeTok{each=}\DecValTok{4}\NormalTok{)  }\CommentTok{#?each}
+\NormalTok{dados <-}\StringTok{  }\KeywordTok{data.frame}\NormalTok{(peso, }\DataTypeTok{trat=}\KeywordTok{as.factor}\NormalTok{(trat))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{array}{%
+\subsection{Array}\label{array}}
+
+O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
+No R um array ? definido utilizando a \textbf{fun??o array()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ar1 <-}\StringTok{ }\KeywordTok{array}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{24}\NormalTok{, }\DataTypeTok{dim =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{4}\NormalTok{, }\DecValTok{2}\NormalTok{)) }
+\NormalTok{ar1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , 1
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]    1    4    7   10
+## [2,]    2    5    8   11
+## [3,]    3    6    9   12
+## 
+## , , 2
+## 
+##      [,1] [,2] [,3] [,4]
+## [1,]   13   16   19   22
+## [2,]   14   17   20   23
+## [3,]   15   18   21   24
+\end{verbatim}
+
+Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para ``carregar'' e visualizar os dados digite:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{data}\NormalTok{(Titanic) }
+\NormalTok{Titanic}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## , , Age = Child, Survived = No
+## 
+##       Sex
+## Class  Male Female
+##   1st     0      0
+##   2nd     0      0
+##   3rd    35     17
+##   Crew    0      0
+## 
+## , , Age = Adult, Survived = No
+## 
+##       Sex
+## Class  Male Female
+##   1st   118      4
+##   2nd   154     13
+##   3rd   387     89
+##   Crew  670      3
+## 
+## , , Age = Child, Survived = Yes
+## 
+##       Sex
+## Class  Male Female
+##   1st     5      1
+##   2nd    11     13
+##   3rd    13     14
+##   Crew    0      0
+## 
+## , , Age = Adult, Survived = Yes
+## 
+##       Sex
+## Class  Male Female
+##   1st    57    140
+##   2nd    14     80
+##   3rd    75     76
+##   Crew  192     20
+\end{verbatim}
+
+Para obter maiores informa??es sobre estes dados digite: help(Titanic)
+
+Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  quantas pessoas havia no total?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(Titanic)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 2201
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  quantas pessoas havia na tripula??o (crew)?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{sum}\NormalTok{(Titanic[}\DecValTok{4}\NormalTok{, , , ])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 885
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  quantas pessoas sobreviveram e quantas morreram?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{apply}\NormalTok{(Titanic, }\DecValTok{4}\NormalTok{, sum)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   No  Yes 
+## 1490  711
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{3}
+\tightlist
+\item
+  quais as propor??es de sobreviventes entre homens e mulheres?
+\end{enumerate}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Class
+##  1st  2nd  3rd Crew 
+##  325  285  706  885
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Sex
+##   Male Female 
+##   1731    470
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Age
+## Child Adult 
+##   109  2092
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Survived
+##   No  Yes 
+## 1490  711
+\end{verbatim}
+
+Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e n?o sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Survived
+## Sex        No  Yes
+##   Male   1364  367
+##   Female  126  344
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{prop.table}\NormalTok{(}\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{4}\NormalTok{)), }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Survived
+## Sex             No       Yes
+##   Male   0.7879838 0.2120162
+##   Female 0.2680851 0.7319149
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{prop.table}\NormalTok{(}\KeywordTok{margin.table}\NormalTok{(Titanic, }\DataTypeTok{margin =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{1}\NormalTok{)), }\DataTypeTok{margin =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         Class
+## Sex             1st        2nd        3rd       Crew
+##   Male   0.10398614 0.10340843 0.29462738 0.49797805
+##   Female 0.30851064 0.22553191 0.41702128 0.04893617
+\end{verbatim}
+
+\hypertarget{data.frame}{%
+\section{Data.frame}\label{data.frame}}
+
+Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Criar o vetor nomes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{nome <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Lara Lins"}\NormalTok{,}
+          \StringTok{"Mayara Costa"}\NormalTok{,}
+          \StringTok{"Aline Souza"}\NormalTok{,}
+          \StringTok{"Maria Santos"}\NormalTok{,}
+          \StringTok{"Jos? Santos"}\NormalTok{,}
+          \StringTok{"N?colas Barros"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+criar vetor idade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{idade <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{17}\NormalTok{,}\DecValTok{18}\NormalTok{,}\DecValTok{16}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{15}\NormalTok{,}\DecValTok{18}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Criar vetor sexo (categoria=fator)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{sexo <-}\StringTok{ }\KeywordTok{factor}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"F"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"F"}\NormalTok{,}\StringTok{"M"}\NormalTok{,}\StringTok{"M"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Criar vetor altura
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{alt <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{180}\NormalTok{,}\DecValTok{170}\NormalTok{,}\DecValTok{160}\NormalTok{,}\DecValTok{150}\NormalTok{,}\DecValTok{140}\NormalTok{,}\DecValTok{168}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Reunir tudo em um data.frame
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{data.frame}\NormalTok{(nome, idade, sexo, alt)}
+\end{Highlighting}
+\end{Shaded}
+
+Ver atributos da tabela
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    6 obs. of  4 variables:
+##  $ nome : Factor w/ 6 levels "Aline Souza",..: 3 5 1 4 2 6
+##  $ idade: num  17 18 16 15 15 18
+##  $ sexo : Factor w/ 2 levels "F","M": 1 1 1 1 2 2
+##  $ alt  : num  180 170 160 150 140 168
+\end{verbatim}
+
+Adicionar nome as linhas com o comando \textbf{row.names()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{row.names}\NormalTok{(dados) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{6}\NormalTok{)}
+\NormalTok{dados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             nome idade sexo alt
+## 1      Lara Lins    17    F 180
+## 2   Mayara Costa    18    F 170
+## 3    Aline Souza    16    F 160
+## 4   Maria Santos    15    F 150
+## 5    Jos? Santos    15    M 140
+## 6 N?colas Barros    18    M 168
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(dados) <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Nome"}\NormalTok{, }\StringTok{"Idade"}\NormalTok{, }\StringTok{"Sexo"}\NormalTok{, }\StringTok{"altura"}\NormalTok{)}
+\NormalTok{dados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168
+\end{verbatim}
+
+\hypertarget{indice-dos-data.frames}{%
+\subsection{Índice dos Data.frames}\label{indice-dos-data.frames}}
+
+Buscar elementos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados[}\DecValTok{2}\NormalTok{,}\DecValTok{1}\NormalTok{] }\CommentTok{#elemento da  linha  2, coluna 1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Mayara Costa
+## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados[}\DecValTok{2}\NormalTok{,] }\CommentTok{#toda linha dois}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Nome Idade Sexo altura
+## 2 Mayara Costa    18    F    170
+\end{verbatim}
+
+Repare que apesar de ``Nomes'' ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados[,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] Lara Lins      Mayara Costa   Aline Souza    Maria Santos  
+## [5] Jos? Santos    N?colas Barros
+## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros
+\end{verbatim}
+
+Transformar para caracterer
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados[,}\DecValTok{1}\NormalTok{] <-}\StringTok{ }\KeywordTok{as.character}\NormalTok{(dados[,}\DecValTok{1}\NormalTok{])}
+\NormalTok{dados[,}\DecValTok{1}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Lara Lins"      "Mayara Costa"   "Aline Souza"    "Maria Santos"  
+## [5] "Jos? Santos"    "N?colas Barros"
+\end{verbatim}
+
+Acessando aos dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados}\OperatorTok{$}\NormalTok{Nome}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Lara Lins"      "Mayara Costa"   "Aline Souza"    "Maria Santos"  
+## [5] "Jos? Santos"    "N?colas Barros"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados}\OperatorTok{$}\NormalTok{Nome[}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Aline Souza"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados}\OperatorTok{$}\NormalTok{Nome [}\DecValTok{1}\OperatorTok{:}\DecValTok{3}\NormalTok{]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "Lara Lins"    "Mayara Costa" "Aline Souza"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    6 obs. of  4 variables:
+##  $ Nome  : chr  "Lara Lins" "Mayara Costa" "Aline Souza" "Maria Santos" ...
+##  $ Idade : num  17 18 16 15 15 18
+##  $ Sexo  : Factor w/ 2 levels "F","M": 1 1 1 1 2 2
+##  $ altura: num  180 170 160 150 140 168
+\end{verbatim}
+
+\hypertarget{manipulando-um-data.frame}{%
+\section{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
+
+Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \textbf{cbind()} e \textbf{rbind} para adcionar colunas e linhas rescpectivamente, a um data.frame
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (dados, }\CommentTok{#adcionar uma coluna}
+               \DataTypeTok{Conceito=}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{rbind}\NormalTok{ (dados, }\CommentTok{#adicionar uma linha}
+                \StringTok{"7"}\NormalTok{=}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Caio Pinto"}\NormalTok{, }\DecValTok{21}\NormalTok{, }\StringTok{"M"}\NormalTok{, }\DecValTok{172}\NormalTok{, }\StringTok{"C"}\NormalTok{))}
+\NormalTok{dados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Nome Idade Sexo altura Conceito
+## 1      Lara Lins    17    F    180        A
+## 2   Mayara Costa    18    F    170        A
+## 3    Aline Souza    16    F    160        A
+## 4   Maria Santos    15    F    150        C
+## 5    Jos? Santos    15    M    140        A
+## 6 N?colas Barros    18    M    168        B
+## 7     Caio Pinto    21    M    172        C
+\end{verbatim}
+
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados<-}\StringTok{ }\NormalTok{dados [}\DecValTok{1}\OperatorTok{:}\DecValTok{6}\NormalTok{,] }\CommentTok{#selecionar linha de 1 a 6}
+\NormalTok{dados<-}\StringTok{ }\NormalTok{dados [,}\OperatorTok{-}\DecValTok{5}\NormalTok{] }\CommentTok{#excluir a quinta coluna}
+\NormalTok{dados}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados[dados}\OperatorTok{$}\NormalTok{Sexo}\OperatorTok{==}\StringTok{"F"}\NormalTok{,] }\CommentTok{#exibir s? masculinos}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Nome Idade Sexo altura
+## 1    Lara Lins    17    F    180
+## 2 Mayara Costa    18    F    170
+## 3  Aline Souza    16    F    160
+## 4 Maria Santos    15    F    150
+\end{verbatim}
+
+A ordena??o das linhas de um \textbf{data.frame} segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados [}\KeywordTok{order}\NormalTok{(dados}\OperatorTok{$}\NormalTok{altura),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Nome Idade Sexo altura
+## 5    Jos? Santos    15    M    140
+## 4   Maria Santos    15    F    150
+## 3    Aline Souza    16    F    160
+## 6 N?colas Barros    18    M    168
+## 2   Mayara Costa    18    F    170
+## 1      Lara Lins    17    F    180
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados [}\KeywordTok{rev}\NormalTok{(}\KeywordTok{order}\NormalTok{(dados}\OperatorTok{$}\NormalTok{altura)),]}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Nome Idade Sexo altura
+## 1      Lara Lins    17    F    180
+## 2   Mayara Costa    18    F    170
+## 6 N?colas Barros    18    M    168
+## 3    Aline Souza    16    F    160
+## 4   Maria Santos    15    F    150
+## 5    Jos? Santos    15    M    140
+\end{verbatim}
+
+\hypertarget{separando-um-data.frame-por-grupos}{%
+\subsection{Separando um data.frame por grupos}\label{separando-um-data.frame-por-grupos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{split}\NormalTok{ (dados, sexo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $F
+##           Nome Idade Sexo altura
+## 1    Lara Lins    17    F    180
+## 2 Mayara Costa    18    F    170
+## 3  Aline Souza    16    F    160
+## 4 Maria Santos    15    F    150
+## 
+## $M
+##             Nome Idade Sexo altura
+## 5    Jos? Santos    15    M    140
+## 6 N?colas Barros    18    M    168
+\end{verbatim}
+
+\hypertarget{lista}{%
+\section{Lista}\label{lista}}
+
+Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pes <-}\StringTok{ }\KeywordTok{list}\NormalTok{ (}\DataTypeTok{idade=}\DecValTok{32}\NormalTok{, }\DataTypeTok{nome=}\StringTok{"Maria"}\NormalTok{, }\DataTypeTok{notas=}\KeywordTok{c}\NormalTok{(}\DecValTok{98}\NormalTok{,}\DecValTok{95}\NormalTok{,}\DecValTok{78}\NormalTok{), }\DataTypeTok{B=}\KeywordTok{matrix}\NormalTok{(}\DecValTok{1}\OperatorTok{:}\DecValTok{4}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\NormalTok{pes}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $idade
+## [1] 32
+## 
+## $nome
+## [1] "Maria"
+## 
+## $notas
+## [1] 98 95 78
+## 
+## $B
+##      [,1] [,2]
+## [1,]    1    3
+## [2,]    2    4
+\end{verbatim}
+
+Lista s?o construidas com o comando \textbf{list ()}. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome \textbf{\$} ou \textbf{{[}{]}}
+
+\hypertarget{alguns-comandos-que-retornam-listas}{%
+\subsection{Alguns comandos que retornam listas}\label{alguns-comandos-que-retornam-listas}}
+
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \textbf{t.tes()}, que retorna um objeto que ? uma lista.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{4}\NormalTok{,}\DecValTok{4}\NormalTok{)}
+\NormalTok{tt <-}\StringTok{ }\KeywordTok{t.test}\NormalTok{ (x,y, }\DataTypeTok{var.equal=}\NormalTok{T)}
+\NormalTok{tt}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  x and y
+## t = -3.182, df = 8, p-value = 0.01296
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -3.1044729 -0.4955271
+## sample estimates:
+## mean of x mean of y 
+##       2.6       4.4
+\end{verbatim}
+
+Comprovar que ? uma lista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{is.list}\NormalTok{(tt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] TRUE
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{mode}\NormalTok{ (tt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "list"
+\end{verbatim}
+
+Exibir o componentes da lista
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{names}\NormalTok{(tt)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "statistic"   "parameter"   "p.value"     "conf.int"    "estimate"   
+##  [6] "null.value"  "stderr"      "alternative" "method"      "data.name"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tt}\OperatorTok{$}\NormalTok{conf.int }\CommentTok{#intervalo de confianca }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -3.1044729 -0.4955271
+## attr(,"conf.level")
+## [1] 0.95
+\end{verbatim}
+
+\hypertarget{referencia-1}{%
+\section{Referência}\label{referencia-1}}
+
+MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
+
+\textbf{Prof.~Paulo Justiniando Ribeiro} \textgreater{}\url{http://www.leg.ufpr.br/~paulojus/}\textless{}
+
+\textbf{Prof.~Adriano Azevedo Filho} \textgreater{}\url{http://rpubs.com/adriano/esalq2012inicial}\textless{}
+
+\textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
+
+\textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
 \hypertarget{methods}{%
 \chapter{Methods}\label{methods}}

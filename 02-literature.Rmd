@@ -1,3 +1,673 @@
-# Literature
+# Estruturas de Dados
 
-Here is a review of existing methods.
+## Vetor
+
+Um vetor é simplesmente uma lista de valores.
+A maneira mais simples de usar um vetor é usando o comando **c( )**, que concatena elementos num mesmo objeto.
+Exemplo
+```{r}
+x<- c(2,3,5,7,11) 
+x
+```
+
+Os argumentos de **c( )** podem ser tanto elementos únicos quanto outros objetos. Adicione os três primeiros numeros primos no **vetor x**
+
+```{r}
+y<- c(x,13,17,19)
+y
+```
+
+### Vetores de Sequência
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação **start:end**. Vamos fazer um vetor com valores de 1 a 7:
+```{r}
+1:7
+```
+Uma maneira mais versátil de fazer sequências é chamar a função **seq**. Vamos fazer o mesmo com **seq**:
+```{r}
+seq(1:7)
+```
+
+A função **seq** também permite que você use incrementos diferentes de 1. Experimente com etapas de 0,5
+```{r}
+seq(1,7,0.5)
+seq(7,1,-0.5) 
+```
+
+Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: **numérico**, **caractere**, **complexo** e **lógico**. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
+As funções **mode( )** e **length( )** mostram o tipo e tamanho de um objeto, respectivamente
+
+```{r}
+z<-c(1,3,5,7,11) 
+mode (z)
+length(z)
+
+a <- "Angela"
+b<-TRUE; 
+c<-8i #objetos com tipos diferentes
+mode(a); 
+mode(b); 
+mode(c) #exibe os atributos "tipo" dos objetos 
+```
+
+Se o vetor é muito longo e não "cabe" em uma linha o R vai usar as linhas seguintes para continuar imprimindo o vetor. 
+
+```{r}
+longo<-100:50 #sequência decrescente de 100 a 50
+longo #exibe o conteúdo do objeto 
+```
+Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que [1] indica que o primeiro elemento do vetor estão naquela linha, [17] indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
+assim por diante. 
+
+Você pode recuperar um valor individual dentro de um vetor fornecendo seu índice numérico entre colchetes. Tente obter o valor 18:
+```{r}
+longo[18]
+```
+
+Muitas línguagem de programação iniciam índices de matriz em 0, mas os índices vetoriais de R começam em 1. Obtenha o primeiro valor digitando:
+```{r}
+longo[1]
+```
+Você pode atribuir novos valores dentro de um vetor existente. Tente mudar o terceiro valor **28**:
+```{r}
+longo [3] <- 28
+```
+Se você adicionar novos valores ao final, o vetor aumentará para acomodá-los. Vamos adicionar um valor no final
+```{r}
+longo[101] <- 83
+```
+Você pode usar um vetor entre os colchetes para acessar vários valores. Tente obter a primeira e a terceira palavras
+```{r}
+longo[c(1,3)]
+
+```
+Isso significa que você pode recuperar intervalos de valores. Obter a segunda a quarta palavras:
+```{r}
+longo[2:4]
+```
+Você também pode definir intervalos de valores; apenas forneça os valores em um vetor. Adicione valores 5 a 7:
+```{r}
+longo[5:7] <- c(42,52,75)
+```
+Agora tente acessar o oitavo valor do vetor:
+```{r}
+longo[8]
+```
+
+### Nomes de vetores
+Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função **names**, assim:
+
+```{r}
+solo <- 1:3
+names(solo) <- c("Argila", "Areia","Silte" )
+solo
+```
+
+Agora, defina o valor atual para o "silte"  para um valor diferente usando o nome em vez da posição.
+```{r}
+solo["Silte"]<-20
+```
+
+### Plotando um vetor
+A função **barplot** desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+
+Agora, tente passar o vetor para a função **barplot**:
+```{r}
+chuva <- c(20,50,85)
+barplot(chuva)
+```
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função **names** novamente:
+```{r}
+names(chuva)<- c("Rondonópolis", "Maringá", "Cruzeiro do Sul")
+```
+
+Agora, se você digitar **barplot** com o vetor novamente, você verá os rótulos:
+```{r}
+barplot(chuva)
+```
+Agora, tente chamar barplot em um vetor de números inteiros que variam de 1 a 100:
+
+```{r}
+barplot(1:100)
+```
+
+### Operações matemáticas
+
+A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável **a**
+
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será? adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+
+```{r}
+a <- c(1, 2, 3)
+a + 1
+```
+O mesmo se aplica na divisão, multiplicação ou qualquer outra aritmética básica. Tente dividir nosso vetor por 2:
+```{r}
+a / 2
+```
+
+Agora, tente multiplicar nosso vetor por 2:
+```{r}
+a*2
+```
+Se você adicionar dois vetores, R irá tirar cada valor de cada vetor e adicioná-los. Vamos fazer um segundo vetor para você experimentar e armazená-lo na variável **b**
+
+Tente adicioná-lo ao vetor **a**:
+
+```{r}
+b <- c(4,5,6)
+a+b
+```
+
+Agora tente subtrair b de a:
+```{r}
+a-b
+```
+
+Você também pode tirar dois vetores e comparar cada item. Veja quais valores nos vetores são iguais aos de um segundo vetor
+```{r}
+a == c(1, 99, 3)
+```
+
+Observe que R não testou se os vetores inteiros eram iguais; verificou cada valor no vetor a contra o valor no mesmo índice no nosso novo vetor.
+
+Verifique se cada valor nos vetores são menores que o valor correspondente em outro vetor:
+
+```{r}
+a < c(1, 99, 3)
+```
+
+Funções que normalmente funcionam com escalares também podem operar em cada elemento de um vetor. Tente obter o seno de cada valor em nosso vetor:
+```{r}
+sin(a)
+```
+
+Agora tente obter as raízes quadradas com a função **sqrt**:
+```{r}
+sqrt(a)
+```
+
+### Parcelas de dispersão
+
+A função **plot** leva dois vetores, um para valores X e um para valores Y, e desenha um gr?fico deles.
+
+Vamos desenhar um gr?fico que mostra a rela??o de n?meros e seus senos.
+
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor  com alguns valores fracion?rios entre 0 e 20, e armazen?-lo na vari?vel x. E na vari?vel y um segundo vetor com os senos de x:
+```{r}
+x <- seq(1, 20, 0.1)
+y<-sin(x)
+```
+
+Em seguida, basta chamar o **plot** com seus dois vetores:
+
+```{r}
+plot(x, y)
+```
+
+Observa??o sobre o gr?fico que os valores do primeiro argumento ( x) s?o usados para o eixo horizontal, e os valores do segundo ( y) para o vertical.
+
+Vamos criar um vetor com alguns valores negativos e positivos para voc? e armazen?-lo na vari?vel **valores**.
+
+Tamb?m criaremos um segundo vetor com os valores absolutos do primeiro e armazen?-lo na vari?vel **absoluto**.
+
+Tente tra?ar os vetores, com os **valores** no eixo horizontal e no eixo vertical os absoluto.
+
+```{r}
+valores <- -10:10
+absoluto<- abs(valores)
+plot(valores, absoluto)
+```
+
+### Valores Faltantes
+
+?s vezes, ao trabalhar com dados de amostra, um determinado valor n?o est? dispon?vel. Mas n?o ? uma boa id?ia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra n?o estava dispon?vel: **NA**. Muitas fun??es que funcionam com vetores tratam esse valor especialmente.
+
+Vamos criar um vetor para voc? com uma amostra ausente e armazen?-lo na vari?vel **a**.
+
+Tente obter a soma de seus valores e veja qual ? o resultado:
+```{r}
+a <- c(1, 3, NA, 7, 9)
+sum(a)
+```
+
+A soma ? considerada "n?o dispon?vel" por padr?o porque um dos valores do vetor foi NA. 
+
+Lembre-se desse comando para mostrar ajuda para uma fun??o? Traga documenta??o para a fun??o **sum**:
+```{r}
+help(sum)
+```
+
+Como voc? v? na documenta??o, **sum** pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padr?o, mas se voc? configur?-lo TRUE, todos os **NA** argumentos ser?o removidos do vetor antes do c?lculo ser executado.
+
+Tente rondar **sum** novamente, com o **na.rm** conjunto para **TRUE**:
+```{r}
+sum(a, na.rm = T)
+```
+
+## Matrizes 
+
+H? varias formas de criar uma matriz. O comando **matriz()** recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimens?es.
+Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
+```{r}
+matrix(0,3,4)
+```
+Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, voc? precisar? de um vetor de 12 itens. 
+```{r}
+a <- (1:12)
+
+print (a)
+```
+
+Agora chame matrix com o vetor, o n?mero de linhas e o n?mero de colunas:
+
+```{r}
+matrix (a,# chama o vetor
+        3,# linha
+        4) #coluna
+```
+Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, voc? precisar? de um vetor de 12 itens. N?s vamos fazer isso para voc? agora:
+```{r}
+a <-1:12
+a
+```
+
+Agora chame **matrix** com o vetor, o n?mero de linhas e o n?mero de colunas:
+```{r}
+matrix (a,3,4)
+```
+
+### Outras formas
+```{r}
+matrix (a, 3)
+matrix (a, ,4)
+```
+Note  que as matrizes s?o preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padr?o, est? definido como **FALSE**, para **TRUE**
+```{r}
+matrix(a,3, byrow=T)
+```
+Os valores do vetor s?o copiados para a nova matriz, um por um. Voc? tamb?m pode reformular o pr?prio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
+```{r}
+foliar <- 1:8
+```
+A fun??o **dim** define as **dim**ens?es para uma matriz. Ele aceita um vetor com o n?mero de linhas e o n?mero de colunas a serem atribu?das.
+Atribua novas dimens?es para **foliar** passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
+```{r}
+dim(foliar) <- c(2,4)
+```
+
+O vetor n?o ? mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a fun??o **matrix** para criar uma matriz **5x5**, com seus campos inicializados para qualquer valor que voc? desejar.
+```{r}
+matrix (2,5,5)
+```
+
+### Acesso a Matriz
+
+Obter valores de matrizes n?o ? diferente de vetores; voc? s? precisa fornecer dois ?ndices em vez de um. Abra a  matriz foliar:
+
+```{r}
+print (foliar)
+```
+Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
+```{r}
+foliar[2,3]
+```
+o valor da primeira linha da quarta coluna
+```{r}
+foliar[1,4]
+```
+Voc? pode obter uma linha inteira da matriz omitindo o ?ndice da coluna (mas mantenha a v?rgula). Tente recuperar a segunda linha:
+```{r}
+foliar[2,]
+```
+Para obter uma coluna inteira, omita o ?ndice da linha. Recupere a quarta coluna:
+```{r}
+foliar[,4]
+```
+Voc? pode ler v?rias linhas ou colunas, fornecendo um vetor ou sequ?ncia com seus ?ndices. Tente recuperar as colunas de 2 a 4:
+```{r}
+foliar[,2:4]
+```
+O comando **summary** pode ser usado para obter informa??es da matriz
+```{r}
+summary(foliar)
+```
+
+Se desejar um resumo de todos os elementos da matriz, basta transform?-la em um vetor
+```{r}
+summary(as.vector(foliar))
+```
+
+
+## Visualizações em dados matriciais
+
+Com um mapa de eleva??o. ? bem plana - tudo fica a 1 metro acima do n?vel do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para voc?:
+```{r}
+elevacao <- matrix (1,10,10)
+```
+
+ Na quarta linha, sexta coluna, defina a eleva??o para 0:
+ 
+```{r}
+elevacao [4, 6] <- 0
+```
+ 
+Mapa de contorno dos valores passando a matriz para a  fun??o *contour*
+```{r}
+contour(elevacao)
+```
+criar um gr?fico em perspectiva 3D com a fun??o **persp**:
+```{r}
+persp (elevacao)
+```
+Podemos consertar isso especificando nosso pr?prio valor para o par?metro **expand**.
+```{r}
+persp (elevacao, expand =0.2)
+```
+R inclui alguns conjuntos de dados de amostra. Um deles ? volcanoum mapa 3D de um vulc?o adormecido da Nova Zel?ndia.
+? simplesmente uma matriz de 87x61 com valores de eleva??o, mas mostra o poder das visualiza??es de matriz do R.Criar um mapa de calor
+```{r}
+contour(volcano)
+```
+
+gr?fico em perspectiva:
+```{r}
+persp(volcano, expand=0.2)
+```
+
+A fun??o imageir? criar um mapa de calor:
+```{r}
+image(volcano)
+```
+
+### Mais informações sobre construções de Matrizes
+
+H? outros comandos que podem ser usados para construir matrizes como **cbind()** e **rbind**. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+
+```{r}
+a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
+a
+```
+
+```{r}
+b <- cbind (a,1:5) #adicionar uma terceira coluna
+b
+```
+
+```{r}
+c<- rbind(b,c(28,28,28))
+c
+```
+
+
+Opcionalmente matrizes podem ter nomes associados ?s linhas e colunas ("rownames"e "colnames"). Cada um destes componentes da matrix ? um vetor de nomes.
+
+```{r}
+m1 <- matrix(1:12, ncol = 3) 
+
+dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3")) 
+dimnames(m1)
+```
+
+Matrizes s?o muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table(). 
+
+```{r}
+ margin.table(m1, margin = 1)
+ margin.table(m1, margin = 2)
+ apply(m1, 2, median)
+ 
+```
+
+
+### Fatores
+
+Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma an?lise de experimentos devemos declarar este vetor como um **"fator"**. 
+Pode criar um fator usando o comando **factor()**, ou o comando **gl**.
+```{r}
+factor(rep(paste("T", 1:3, sep = ""), c(4, 4, 3)))
+```
+
+```{r}
+peso  <- c(134.8, 139.7, 147.6, 132.3, 161.7, 157.7, 150.3, 144.7,
+           160.7, 172.7, 163.4, 161.3, 169.8, 168.2, 160.7, 161.0,
+           165.7, 160.0, 158.2, 151.0, 171.8, 157.3, 150.4, 160.4,
+           154.5, 160.4, 148.8, 154.0)
+trat  <- rep(seq(0,300,50), each=4)  #?each
+dados <-  data.frame(peso, trat=as.factor(trat))
+```
+
+### Array
+
+  O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
+No R um array ? definido utilizando a **fun??o array()**. 
+```{r}
+ar1 <- array(1:24, dim = c(3, 4, 2)) 
+ar1
+```
+
+Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para "carregar" e visualizar os dados digite:
+```{r}
+data(Titanic) 
+Titanic
+```
+
+Para obter maiores informa??es sobre estes dados digite:  help(Titanic)
+
+Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+
+1. quantas pessoas havia no total?
+```{r}
+sum(Titanic)
+```
+
+2. quantas pessoas havia na tripula??o (crew)?
+
+```{r}
+sum(Titanic[4, , , ])
+```
+
+3. quantas pessoas sobreviveram e quantas morreram?
+
+```{r}
+apply(Titanic, 4, sum)
+```
+
+4. quais as propor??es de sobreviventes entre homens e mulheres?
+
+```{r}
+margin.table(Titanic, margin = 1)
+```
+
+```{r}
+margin.table(Titanic, margin = 2)
+```
+
+```{r}
+margin.table(Titanic, margin = 3)
+```
+
+```{r}
+margin.table(Titanic, margin = 4)
+```
+
+Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e n?o sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+
+```{r}
+margin.table(Titanic, margin = c(2, 4))
+prop.table(margin.table(Titanic, margin = c(2, 4)), margin = 1)
+prop.table(margin.table(Titanic, margin = c(2, 1)), margin = 1)
+```
+
+## Data.frame
+
+Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Criar o vetor nomes
+```{r}
+nome <- c("Lara Lins",
+          "Mayara Costa",
+          "Aline Souza",
+          "Maria Santos",
+          "Jos? Santos",
+          "N?colas Barros")
+```
+
+criar vetor idade
+```{r}
+idade <- c(17,18,16,15,15,18)
+```
+   
+Criar vetor sexo (categoria=fator)
+```{r}
+sexo <- factor(c("F","F","F","F","M","M"))
+```
+Criar vetor altura
+```{r}
+alt <- c(180,170,160,150,140,168)
+```
+
+Reunir tudo em um data.frame
+```{r}
+dados <- data.frame(nome, idade, sexo, alt)
+```
+
+Ver atributos da tabela
+```{r}
+str(dados)
+```
+
+Adicionar nome as linhas com o comando **row.names()**
+```{r}
+row.names(dados) <- c(1,2,3,4,5,6)
+dados
+```
+```{r}
+names(dados) <- c("Nome", "Idade", "Sexo", "altura")
+dados
+```
+
+### Índice dos Data.frames
+Buscar elementos 
+```{r}
+dados[2,1] #elemento da  linha  2, coluna 1
+dados[2,] #toda linha dois
+
+```
+
+Repare que apesar de "Nomes" ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.
+```{r}
+dados[,1]
+```
+
+Transformar para caracterer
+```{r}
+dados[,1] <- as.character(dados[,1])
+dados[,1]
+```
+
+Acessando aos dados
+```{r}
+dados$Nome
+dados$Nome[3]
+dados$Nome [1:3]
+```
+```{r}
+str(dados)
+```
+
+## Manipulando um Data.frame
+Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos **cbind()** e **rbind** para adcionar colunas e linhas rescpectivamente, a um data.frame
+```{r}
+dados <- cbind (dados, #adcionar uma coluna
+               Conceito=c("A","A","A","C","A","B"))
+```
+
+```{r}
+dados <- rbind (dados, #adicionar uma linha
+                "7"= c("Caio Pinto", 21, "M", 172, "C"))
+dados
+```
+
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+
+```{r}
+dados<- dados [1:6,] #selecionar linha de 1 a 6
+dados<- dados [,-5] #excluir a quinta coluna
+dados
+```
+```{r}
+dados[dados$Sexo=="F",] #exibir s? masculinos
+```
+
+A ordena??o das linhas de um **data.frame** segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til
+```{r}
+dados [order(dados$altura),]
+```
+
+```{r}
+dados [rev(order(dados$altura)),]
+```
+
+### Separando um data.frame por grupos
+
+```{r}
+split (dados, sexo)
+```
+
+## Lista
+
+Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.
+
+
+```{r echo=TRUE}
+pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
+pes
+```
+
+Lista s?o construidas com o comando **list ()**. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome **$** ou **[]**
+
+```{r include=FALSE}
+pes$nome
+pes$notas
+
+pes[1]
+pes[3]
+```
+
+### Alguns comandos que retornam listas
+
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando **t.tes()**, que retorna um objeto que ? uma lista.
+
+```{r}
+x <- c(1,3,2,3,4)
+y <- c(4,5,5,4,4)
+tt <- t.test (x,y, var.equal=T)
+tt
+```
+
+Comprovar que ? uma lista
+```{r}
+is.list(tt)
+mode (tt)
+```
+
+Exibir o componentes da lista
+```{r}
+names(tt)
+```
+
+```{r}
+tt$conf.int #intervalo de confianca 
+```
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
