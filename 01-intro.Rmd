@@ -9,7 +9,6 @@ Começaremos simples, com **números**, **strings** e valores **true/false**. Em
 
 ## Expressões
 
-Digite seu nome no prompt, e o R irá avalio-lo e imprimir a resposta.
 Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 
 ```{r matematica}
@@ -17,6 +16,7 @@ Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 ```
 
 Note que é impresso o resultado, 10.
+
 Digite a frase "Engenharia Agrícola"
 ```{r}
 "Engenharia Agrícola"
