@@ -575,7 +575,7 @@ dados$Nome [1:3]
 str(dados)
 ```
 
-## Manipulando um Data.frame
+### Manipulando um Data.frame
 Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos **cbind()** e **rbind** para adcionar colunas e linhas rescpectivamente, a um data.frame
 ```{r}
 dados <- cbind (dados, #adcionar uma coluna
