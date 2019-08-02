@@ -24,7 +24,7 @@
 <meta name="author" content="Jefferson Vieira José, André Pereira Freire Ferraz" />
 
 
-<meta name="date" content="2019-08-01" />
+<meta name="date" content="2019-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,14 +157,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.4</b> Data.frame</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#indice-dos-data.frames"><i class="fa fa-check"></i><b>3.4.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.4.2</b> Manipulando um Data.frame</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.4.3</b> Separando um data.frame por grupos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5</b> Manipulando um Data.frame</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.1</b> Separando um data.frame por grupos</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.5</b> Lista</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.5.1</b> Alguns comandos que retornam listas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.6</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
@@ -747,9 +746,8 @@ Criar o vetor nomes</p>
 ##  $ Sexo  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 2 2
 ##  $ altura: num  180 170 160 150 140 168</code></pre>
 </div>
-</div>
-<div id="manipulando-um-data.frame" class="section level2">
-<h2><span class="header-section-number">3.5</span> Manipulando um Data.frame</h2>
+<div id="manipulando-um-data.frame" class="section level3">
+<h3><span class="header-section-number">3.4.2</span> Manipulando um Data.frame</h3>
 <p>Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos <strong>cbind()</strong> e <strong>rbind</strong> para adcionar colunas e linhas rescpectivamente, a um data.frame</p>
 <div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span> (dados, <span class="co">#adcionar uma coluna</span></a>
 <a class="sourceLine" id="cb213-2" title="2">               <span class="dt">Conceito=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>))</a></code></pre></div>
@@ -798,8 +796,9 @@ Criar o vetor nomes</p>
 ## 3    Aline Souza    16    F    160
 ## 4   Maria Santos    15    F    150
 ## 5    Jos? Santos    15    M    140</code></pre>
+</div>
 <div id="separando-um-data.frame-por-grupos" class="section level3">
-<h3><span class="header-section-number">3.5.1</span> Separando um data.frame por grupos</h3>
+<h3><span class="header-section-number">3.4.3</span> Separando um data.frame por grupos</h3>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">split</span> (dados, sexo)</a></code></pre></div>
 <pre><code>## $F
 ##           Nome Idade Sexo altura
@@ -815,7 +814,7 @@ Criar o vetor nomes</p>
 </div>
 </div>
 <div id="lista" class="section level2">
-<h2><span class="header-section-number">3.6</span> Lista</h2>
+<h2><span class="header-section-number">3.5</span> Lista</h2>
 <p>Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1">pes &lt;-<span class="st"> </span><span class="kw">list</span> (<span class="dt">idade=</span><span class="dv">32</span>, <span class="dt">nome=</span><span class="st">&quot;Maria&quot;</span>, <span class="dt">notas=</span><span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">95</span>,<span class="dv">78</span>), <span class="dt">B=</span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb226-2" title="2">pes</a></code></pre></div>
@@ -834,7 +833,7 @@ Criar o vetor nomes</p>
 ## [2,]    2    4</code></pre>
 <p>Lista s?o construidas com o comando <strong>list ()</strong>. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome <strong>$</strong> ou <strong>[]</strong></p>
 <div id="alguns-comandos-que-retornam-listas" class="section level3">
-<h3><span class="header-section-number">3.6.1</span> Alguns comandos que retornam listas</h3>
+<h3><span class="header-section-number">3.5.1</span> Alguns comandos que retornam listas</h3>
 <p>Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando <strong>t.tes()</strong>, que retorna um objeto que ? uma lista.</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb228-2" title="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">4</span>)</a>
@@ -867,7 +866,7 @@ Criar o vetor nomes</p>
 </div>
 </div>
 <div id="referencia-1" class="section level2">
-<h2><span class="header-section-number">3.7</span> Referência</h2>
+<h2><span class="header-section-number">3.6</span> Referência</h2>
 <p>MELO, M. P.; PETERNELI, L. A. <strong>Conhecendo o R: Um visão mais que estatística</strong>. Viçosa, MG: UFV, 2013. 222p.</p>
 <p><strong>Prof. Paulo Justiniando Ribeiro</strong> &gt;<a href="http://www.leg.ufpr.br/~paulojus/" class="uri">http://www.leg.ufpr.br/~paulojus/</a>&lt;</p>
 <p><strong>Prof. Adriano Azevedo Filho</strong> &gt;<a href="http://rpubs.com/adriano/esalq2012inicial" class="uri">http://rpubs.com/adriano/esalq2012inicial</a>&lt;</p>

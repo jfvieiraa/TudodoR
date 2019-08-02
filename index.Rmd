@@ -13,3 +13,7 @@ description: "Notas de aulas de práticas estatística com o uso do sistema R."
 # Pré requisitos
 
 Material em construção.
+
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R.  Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina. 
+O material consultado encontra-se referenciado no final de cada capitulo.

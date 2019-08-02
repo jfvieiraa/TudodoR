@@ -124,7 +124,7 @@
   \postauthor{\par}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-08-01}
+    \date{2019-08-02}
 
 \usepackage{booktabs}
 
@@ -140,8 +140,14 @@
 
 Material em construção.
 
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R. Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina.
+O material consultado encontra-se referenciado no final de cada capitulo.
+
 \hypertarget{intro}{%
 \chapter{R Básico}\label{intro}}
+
+Este primeiro Capitulo foi baseado no curso on-line \emph{Code School Try R} e \emph{Datacamp}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitlo.
 
 Iremos abordar as expressões básicas do R.
 Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{true/false}. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
@@ -345,11 +351,11 @@ A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -1.9780396 -0.5698508  0.1948683  0.6431804  1.3500000
+## [1] -2.41167212 -0.57848514  0.04909049  0.67252430  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -1.9780396 -0.5698508  0.1948683  0.6431804  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.41167212 -0.57848514  0.04909049  0.67252430  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -1825,7 +1831,7 @@ Acessando aos dados
 \end{verbatim}
 
 \hypertarget{manipulando-um-data.frame}{%
-\section{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
+\subsection{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
 
 Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \textbf{cbind()} e \textbf{rbind} para adcionar colunas e linhas rescpectivamente, a um data.frame
 

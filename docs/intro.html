@@ -24,7 +24,7 @@
 <meta name="author" content="Jefferson Vieira José, André Pereira Freire Ferraz" />
 
 
-<meta name="date" content="2019-08-01" />
+<meta name="date" content="2019-08-02" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -157,14 +157,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.4</b> Data.frame</a><ul>
 <li class="chapter" data-level="3.4.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#indice-dos-data.frames"><i class="fa fa-check"></i><b>3.4.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.4.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.4.2</b> Manipulando um Data.frame</a></li>
+<li class="chapter" data-level="3.4.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.4.3</b> Separando um data.frame por grupos</a></li>
 </ul></li>
-<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5</b> Manipulando um Data.frame</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.1</b> Separando um data.frame por grupos</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.5</b> Lista</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.5.1</b> Alguns comandos que retornam listas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
-<li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
-</ul></li>
-<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.6</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
 <li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
@@ -195,6 +194,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Chapter 2</span> R Básico</h1>
+<p>Este primeiro Capitulo foi baseado no curso on-line <em>Code School Try R</em> e <em>Datacamp</em>, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitlo.</p>
 <p>Iremos abordar as expressões básicas do R.
 Começaremos simples, com <strong>números</strong>, <strong>strings</strong> e valores <strong>true/false</strong>. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo</p>
 <div id="expressoes" class="section level2">
@@ -270,11 +270,11 @@ Tente atribuir “Engenharia Agrícola”em x.</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -1.97889608 -0.80883977 -0.04349834  0.72791530  1.35000000
+## [1] -2.1889325 -0.6980303 -0.0787493  0.6072034  1.3500000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -1.97889608 -0.80883977 -0.04349834  0.72791530  1.35000000 
+##         0%        25%        50%        75%       100% 
+## -2.1889325 -0.6980303 -0.0787493  0.6072034  1.3500000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>

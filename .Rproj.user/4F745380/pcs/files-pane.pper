@@ -1,8 +1,8 @@
 {
-    "path" : "~/TudodoR/TudodoR",
+    "path" : "~/TudodoR/TudodoR/docs",
     "sortOrder" : [
         {
-            "ascending" : true,
+            "ascending" : false,
             "columnIndex" : 2
         }
     ]
