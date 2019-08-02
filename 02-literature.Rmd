@@ -18,7 +18,7 @@ y
 ```
 
 ### Vetores de Sequência
-Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação **start:end**. Vamos fazer um vetor com valores de 1 a 7:
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação _start:end_. Vamos fazer um vetor com valores de 1 a 7:
 ```{r}
 1:7
 ```
@@ -103,7 +103,7 @@ names(solo) <- c("Argila", "Areia","Silte" )
 solo
 ```
 
-Agora, defina o valor atual para o "silte"  para um valor diferente usando o nome em vez da posição.
+Agora, defina o valor atual para o _silte_  para um valor diferente usando o nome em vez da posição.
 ```{r}
 solo["Silte"]<-20
 ```
@@ -135,7 +135,7 @@ barplot(1:100)
 
 A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável **a**
 
-Se você adicionar um escalar (um único valor) a um vetor, o escalar será? adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
 
 ```{r}
 a <- c(1, 2, 3)
@@ -189,11 +189,11 @@ sqrt(a)
 
 ### Parcelas de dispersão
 
-A função **plot** leva dois vetores, um para valores X e um para valores Y, e desenha um gr?fico deles.
+A função **plot** leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
 
-Vamos desenhar um gr?fico que mostra a rela??o de n?meros e seus senos.
+Vamos desenhar um gráfico que mostra a relação de números e seus senos.
 
-Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor  com alguns valores fracion?rios entre 0 e 20, e armazen?-lo na vari?vel x. E na vari?vel y um segundo vetor com os senos de x:
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor  com alguns valores fracionários entre 0 e 20, e armazenó-lo na variável x. E na variável y um segundo vetor com os senos de x:
 ```{r}
 x <- seq(1, 20, 0.1)
 y<-sin(x)
@@ -205,13 +205,13 @@ Em seguida, basta chamar o **plot** com seus dois vetores:
 plot(x, y)
 ```
 
-Observa??o sobre o gr?fico que os valores do primeiro argumento ( x) s?o usados para o eixo horizontal, e os valores do segundo ( y) para o vertical.
+Observa=se sobre o gráfico que os valores do primeiro argumento **(x)** são usados para o eixo horizontal, e os valores do segundo **(y)** para o vertical.
 
-Vamos criar um vetor com alguns valores negativos e positivos para voc? e armazen?-lo na vari?vel **valores**.
+Vamos criar um vetor com alguns valores negativos e positivos para você e armazenó-lo na variável **valores**.
 
-Tamb?m criaremos um segundo vetor com os valores absolutos do primeiro e armazen?-lo na vari?vel **absoluto**.
+Também criaremos um segundo vetor com os valores absolutos do primeiro e armazenó-lo na variável **absoluto**.
 
-Tente tra?ar os vetores, com os **valores** no eixo horizontal e no eixo vertical os absoluto.
+Tente traçar os vetores, com os **valores** no eixo horizontal e no eixo vertical os absoluto.
 
 ```{r}
 valores <- -10:10
@@ -221,24 +221,24 @@ plot(valores, absoluto)
 
 ### Valores Faltantes
 
-?s vezes, ao trabalhar com dados de amostra, um determinado valor n?o est? dispon?vel. Mas n?o ? uma boa id?ia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra n?o estava dispon?vel: **NA**. Muitas fun??es que funcionam com vetores tratam esse valor especialmente.
+As vezes, ao trabalhar com dados de amostra, um determinado valor não está disponível. Mas não é uma boa idéia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra não estava disponível: **NA**. Muitas funções que funcionam com vetores tratam esse valor especialmente.
 
-Vamos criar um vetor para voc? com uma amostra ausente e armazen?-lo na vari?vel **a**.
+Vamos criar um vetor para você com uma amostra ausente e armazenó-lo na variével **a**.
 
-Tente obter a soma de seus valores e veja qual ? o resultado:
+Tente obter a soma de seus valores e veja qual é o resultado:
 ```{r}
 a <- c(1, 3, NA, 7, 9)
 sum(a)
 ```
 
-A soma ? considerada "n?o dispon?vel" por padr?o porque um dos valores do vetor foi NA. 
+A soma é considerada _"não disponível"_ por padrão porque um dos valores do vetor foi **NA**. 
 
-Lembre-se desse comando para mostrar ajuda para uma fun??o? Traga documenta??o para a fun??o **sum**:
+Lembre-se desse comando para mostrar ajuda para uma função ? Apresente a ajuda para a função **sum**:
 ```{r}
 help(sum)
 ```
 
-Como voc? v? na documenta??o, **sum** pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padr?o, mas se voc? configur?-lo TRUE, todos os **NA** argumentos ser?o removidos do vetor antes do c?lculo ser executado.
+Como você vê na documentação, **sum** pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padrão, mas se você configurá-lo com **TRUE**, todos os argumentos **NA** serão removidos do vetor antes do cálculo ser executado.
 
 Tente rondar **sum** novamente, com o **na.rm** conjunto para **TRUE**:
 ```{r}
@@ -247,32 +247,36 @@ sum(a, na.rm = T)
 
 ## Matrizes 
 
-H? varias formas de criar uma matriz. O comando **matriz()** recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimens?es.
+Há varias formas de criar uma matriz. O comando **matriz()** recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
 Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
+
 ```{r}
 matrix(0,3,4)
 ```
-Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, voc? precisar? de um vetor de 12 itens. 
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, você precisará de um vetor de 12 itens. 
+
 ```{r}
 a <- (1:12)
 
 print (a)
 ```
 
-Agora chame matrix com o vetor, o n?mero de linhas e o n?mero de colunas:
+Agora chame matrix com o vetor, o número de linhas e o número de colunas:
 
 ```{r}
 matrix (a,# chama o vetor
         3,# linha
         4) #coluna
 ```
-Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, voc? precisar? de um vetor de 12 itens. N?s vamos fazer isso para voc? agora:
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, você precisará de um vetor de 12 itens. Nós vamos fazer isso para você agora:
 ```{r}
 a <-1:12
 a
 ```
 
-Agora chame **matrix** com o vetor, o n?mero de linhas e o n?mero de colunas:
+Agora chame **matrix** com o vetor, o número de linhas e o número de colunas:
 ```{r}
 matrix (a,3,4)
 ```
@@ -282,108 +286,119 @@ matrix (a,3,4)
 matrix (a, 3)
 matrix (a, ,4)
 ```
-Note  que as matrizes s?o preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padr?o, est? definido como **FALSE**, para **TRUE**
+Note  que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padrão, está definido como **FALSE**, passe para **TRUE**
 ```{r}
 matrix(a,3, byrow=T)
 ```
-Os valores do vetor s?o copiados para a nova matriz, um por um. Voc? tamb?m pode reformular o pr?prio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
+Os valores do vetor são copiados para a nova matriz, um por um. Você também pode reformular o próprio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
 ```{r}
 foliar <- 1:8
 ```
-A fun??o **dim** define as **dim**ens?es para uma matriz. Ele aceita um vetor com o n?mero de linhas e o n?mero de colunas a serem atribu?das.
+A função **dim** define as **dim**ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
 Atribua novas dimens?es para **foliar** passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
 ```{r}
 dim(foliar) <- c(2,4)
 ```
 
-O vetor n?o ? mais unidimensional. Foi convertido, no local, para uma matriz.
-Agora, use a fun??o **matrix** para criar uma matriz **5x5**, com seus campos inicializados para qualquer valor que voc? desejar.
+O vetor não é mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a função **matrix** para criar uma matriz **5x5**, com seus campos inicializados para qualquer valor que você desejar.
 ```{r}
 matrix (2,5,5)
 ```
 
 ### Acesso a Matriz
 
-Obter valores de matrizes n?o ? diferente de vetores; voc? s? precisa fornecer dois ?ndices em vez de um. Abra a  matriz foliar:
+Obter valores de matrizes não é diferente de vetores; você só precisa fornecer dois índices em vez de um. Abra a  matriz foliar:
 
 ```{r}
 print (foliar)
 ```
+
 Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
 ```{r}
 foliar[2,3]
 ```
-o valor da primeira linha da quarta coluna
+
+O valor da primeira linha da quarta coluna
 ```{r}
 foliar[1,4]
 ```
-Voc? pode obter uma linha inteira da matriz omitindo o ?ndice da coluna (mas mantenha a v?rgula). Tente recuperar a segunda linha:
+
+Você pode obter uma linha inteira da matriz omitindo o índice da coluna (mas mantenha a virgula). Tente recuperar a segunda linha:
 ```{r}
 foliar[2,]
 ```
-Para obter uma coluna inteira, omita o ?ndice da linha. Recupere a quarta coluna:
+
+Para obter uma coluna inteira, omita o índice da linha. Recupere a quarta coluna:
 ```{r}
 foliar[,4]
 ```
-Voc? pode ler v?rias linhas ou colunas, fornecendo um vetor ou sequ?ncia com seus ?ndices. Tente recuperar as colunas de 2 a 4:
+
+Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com seus índices. Tente recuperar as colunas de 2 a 4:
 ```{r}
 foliar[,2:4]
 ```
-O comando **summary** pode ser usado para obter informa??es da matriz
+
+O comando **summary** pode ser usado para obter informações da matriz
 ```{r}
 summary(foliar)
 ```
 
-Se desejar um resumo de todos os elementos da matriz, basta transform?-la em um vetor
+Se desejar um resumo de todos os elementos da matriz, basta transformó-la em um vetor
 ```{r}
 summary(as.vector(foliar))
 ```
 
 
-## Visualizações em dados matriciais
+### Visualizações em dados matriciais
 
-Com um mapa de eleva??o. ? bem plana - tudo fica a 1 metro acima do n?vel do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para voc?:
+Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:
 ```{r}
 elevacao <- matrix (1,10,10)
 ```
 
- Na quarta linha, sexta coluna, defina a eleva??o para 0:
+ Na quarta linha, sexta coluna, defina a elevação para 0:
  
 ```{r}
 elevacao [4, 6] <- 0
 ```
  
-Mapa de contorno dos valores passando a matriz para a  fun??o *contour*
+Mapa de contorno dos valores passando a matriz para a  função *contour*
 ```{r}
 contour(elevacao)
 ```
-criar um gr?fico em perspectiva 3D com a fun??o **persp**:
+
+Criar um gráfico em perspectiva 3D com a função **persp**:
 ```{r}
 persp (elevacao)
 ```
-Podemos consertar isso especificando nosso pr?prio valor para o par?metro **expand**.
+
+Podemos consertar isso especificando nosso próprio valor para o parâmetro **expand**.
 ```{r}
 persp (elevacao, expand =0.2)
 ```
-R inclui alguns conjuntos de dados de amostra. Um deles ? volcanoum mapa 3D de um vulc?o adormecido da Nova Zel?ndia.
-? simplesmente uma matriz de 87x61 com valores de eleva??o, mas mostra o poder das visualiza??es de matriz do R.Criar um mapa de calor
+
+R inclui alguns conjuntos de dados de amostra. Um deles é o  _volcanoum_ mapa 3D de um vulcão adormecido da Nova Zelândia.
+
+É simplesmente uma matriz de 87x61 com valores de elevão, mas mostra o poder das visualizações de matriz do R. Criar um mapa de calor:
+
 ```{r}
 contour(volcano)
 ```
 
-gr?fico em perspectiva:
+Gráfico em perspectiva:
 ```{r}
 persp(volcano, expand=0.2)
 ```
 
-A fun??o imageir? criar um mapa de calor:
+A função **image** criar um mapa de calor:
 ```{r}
 image(volcano)
 ```
 
 ### Mais informações sobre construções de Matrizes
 
-H? outros comandos que podem ser usados para construir matrizes como **cbind()** e **rbind**. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como **cbind( )** e **rbind ( )**. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 ```{r}
 a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
@@ -401,7 +416,7 @@ c
 ```
 
 
-Opcionalmente matrizes podem ter nomes associados ?s linhas e colunas ("rownames"e "colnames"). Cada um destes componentes da matrix ? um vetor de nomes.
+Opcionalmente matrizes podem ter nomes associados ás linhas e colunas ("rownames"e "colnames"). Cada um destes componentes da matrix é um vetor de nomes.
 
 ```{r}
 m1 <- matrix(1:12, ncol = 3) 
