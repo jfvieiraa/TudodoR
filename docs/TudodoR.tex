@@ -24,7 +24,7 @@
 \usepackage{hyperref}
 \hypersetup{unicode=true,
             pdftitle={Uso do sistema R para análise de dados},
-            pdfauthor={Jefferson Vieira José, André Pereira Freire Ferraz},
+            pdfauthor={Jefferson Vieira José, André Pereira Freire Ferraz,Timóteo Herculino da Silva Barros e Dhonathan D. Pessi},
             pdfborder={0 0 0},
             breaklinks=true}
 \urlstyle{same}  % don't use monospace font for urls
@@ -119,7 +119,7 @@
   \title{Uso do sistema R para análise de dados}
     \pretitle{\vspace{\droptitle}\centering\huge}
   \posttitle{\par}
-    \author{Jefferson Vieira José, André Pereira Freire Ferraz}
+    \author{Jefferson Vieira José, André Pereira Freire Ferraz,Timóteo Herculino da Silva Barros e Dhonathan D. Pessi}
     \preauthor{\centering\large\emph}
   \postauthor{\par}
       \predate{\centering\large\emph}
@@ -351,11 +351,11 @@ A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.23741858 -0.57262771 -0.06654971  0.69104350  1.35000000
+## [1] -2.9084028 -0.6107793  0.1185979  0.6785392  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -2.23741858 -0.57262771 -0.06654971  0.69104350  1.35000000 
+##         0%        25%        50%        75%       100% 
+## -2.9084028 -0.6107793  0.1185979  0.6785392  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -435,7 +435,7 @@ Os argumentos de \textbf{c( )} podem ser tanto elementos únicos quanto outros o
 \hypertarget{vetores-de-sequencia}{%
 \subsection{Vetores de Sequência}\label{vetores-de-sequencia}}
 
-Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação \textbf{start:end}. Vamos fazer um vetor com valores de 1 a 7:
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação \emph{start:end}. Vamos fazer um vetor com valores de 1 a 7:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -659,7 +659,7 @@ Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor pr
 ##      1      2      3
 \end{verbatim}
 
-Agora, defina o valor atual para o ``silte'' para um valor diferente usando o nome em vez da posição.
+Agora, defina o valor atual para o \emph{silte} para um valor diferente usando o nome em vez da posição.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -714,7 +714,7 @@ Agora, tente chamar barplot em um vetor de números inteiros que variam de 1 a 1
 
 A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável \textbf{a}
 
-Se você adicionar um escalar (um único valor) a um vetor, o escalar será? adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -831,11 +831,11 @@ Agora tente obter as raízes quadradas com a função \textbf{sqrt}:
 \hypertarget{parcelas-de-dispersao}{%
 \subsection{Parcelas de dispersão}\label{parcelas-de-dispersao}}
 
-A função \textbf{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gr?fico deles.
+A função \textbf{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
 
-Vamos desenhar um gr?fico que mostra a rela??o de n?meros e seus senos.
+Vamos desenhar um gráfico que mostra a relação de números e seus senos.
 
-Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor com alguns valores fracion?rios entre 0 e 20, e armazen?-lo na vari?vel x. E na vari?vel y um segundo vetor com os senos de x:
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor com alguns valores fracionários entre 0 e 20, e armazenó-lo na variável x. E na variável y um segundo vetor com os senos de x:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -854,13 +854,13 @@ Em seguida, basta chamar o \textbf{plot} com seus dois vetores:
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-46-1.pdf}
 
-Observa??o sobre o gr?fico que os valores do primeiro argumento ( x) s?o usados para o eixo horizontal, e os valores do segundo ( y) para o vertical.
+Observa=se sobre o gráfico que os valores do primeiro argumento \textbf{(x)} são usados para o eixo horizontal, e os valores do segundo \textbf{(y)} para o vertical.
 
-Vamos criar um vetor com alguns valores negativos e positivos para voc? e armazen?-lo na vari?vel \textbf{valores}.
+Vamos criar um vetor com alguns valores negativos e positivos para você e armazenó-lo na variável \textbf{valores}.
 
-Tamb?m criaremos um segundo vetor com os valores absolutos do primeiro e armazen?-lo na vari?vel \textbf{absoluto}.
+Também criaremos um segundo vetor com os valores absolutos do primeiro e armazenó-lo na variável \textbf{absoluto}.
 
-Tente tra?ar os vetores, com os \textbf{valores} no eixo horizontal e no eixo vertical os absoluto.
+Tente traçar os vetores, com os \textbf{valores} no eixo horizontal e no eixo vertical os absoluto.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -875,11 +875,11 @@ Tente tra?ar os vetores, com os \textbf{valores} no eixo horizontal e no eixo ve
 \hypertarget{valores-faltantes}{%
 \subsection{Valores Faltantes}\label{valores-faltantes}}
 
-?s vezes, ao trabalhar com dados de amostra, um determinado valor n?o est? dispon?vel. Mas n?o ? uma boa id?ia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra n?o estava dispon?vel: \textbf{NA}. Muitas fun??es que funcionam com vetores tratam esse valor especialmente.
+As vezes, ao trabalhar com dados de amostra, um determinado valor não está disponível. Mas não é uma boa idéia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra não estava disponível: \textbf{NA}. Muitas funções que funcionam com vetores tratam esse valor especialmente.
 
-Vamos criar um vetor para voc? com uma amostra ausente e armazen?-lo na vari?vel \textbf{a}.
+Vamos criar um vetor para você com uma amostra ausente e armazenó-lo na variével \textbf{a}.
 
-Tente obter a soma de seus valores e veja qual ? o resultado:
+Tente obter a soma de seus valores e veja qual é o resultado:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -892,9 +892,9 @@ Tente obter a soma de seus valores e veja qual ? o resultado:
 ## [1] NA
 \end{verbatim}
 
-A soma ? considerada ``n?o dispon?vel'' por padr?o porque um dos valores do vetor foi NA.
+A soma é considerada \emph{``não disponível''} por padrão porque um dos valores do vetor foi \textbf{NA}.
 
-Lembre-se desse comando para mostrar ajuda para uma fun??o? Traga documenta??o para a fun??o \textbf{sum}:
+Lembre-se desse comando para mostrar ajuda para uma função ? Apresente a ajuda para a função \textbf{sum}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -902,7 +902,7 @@ Lembre-se desse comando para mostrar ajuda para uma fun??o? Traga documenta??o p
 \end{Highlighting}
 \end{Shaded}
 
-Como voc? v? na documenta??o, \textbf{sum} pode tomar um argumento opcional \textbf{na.rm},. ? configurado \textbf{FALSE} por padr?o, mas se voc? configur?-lo TRUE, todos os \textbf{NA} argumentos ser?o removidos do vetor antes do c?lculo ser executado.
+Como você vê na documentação, \textbf{sum} pode tomar um argumento opcional \textbf{na.rm},. ? configurado \textbf{FALSE} por padrão, mas se você configurá-lo com \textbf{TRUE}, todos os argumentos \textbf{NA} serão removidos do vetor antes do cálculo ser executado.
 
 Tente rondar \textbf{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{TRUE}:
 
@@ -919,7 +919,7 @@ Tente rondar \textbf{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{
 \hypertarget{matrizes}{%
 \section{Matrizes}\label{matrizes}}
 
-H? varias formas de criar uma matriz. O comando \textbf{matriz()} recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimens?es.
+Há varias formas de criar uma matriz. O comando \textbf{matriz()} recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
 Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
 
 \begin{Shaded}
@@ -935,7 +935,7 @@ Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos
 ## [3,]    0    0    0    0
 \end{verbatim}
 
-Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, voc? precisar? de um vetor de 12 itens.
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, você precisará de um vetor de 12 itens.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -949,7 +949,7 @@ Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para pree
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
 \end{verbatim}
 
-Agora chame matrix com o vetor, o n?mero de linhas e o n?mero de colunas:
+Agora chame matrix com o vetor, o número de linhas e o número de colunas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -966,7 +966,7 @@ Agora chame matrix com o vetor, o n?mero de linhas e o n?mero de colunas:
 ## [3,]    3    6    9   12
 \end{verbatim}
 
-Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, voc? precisar? de um vetor de 12 itens. N?s vamos fazer isso para voc? agora:
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, você precisará de um vetor de 12 itens. Nós vamos fazer isso para você agora:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -979,7 +979,7 @@ Voc? tamb?m pode usar um vetor para inicializar o valor de uma matriz. Para pree
 ##  [1]  1  2  3  4  5  6  7  8  9 10 11 12
 \end{verbatim}
 
-Agora chame \textbf{matrix} com o vetor, o n?mero de linhas e o n?mero de colunas:
+Agora chame \textbf{matrix} com o vetor, o número de linhas e o número de colunas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1023,7 +1023,7 @@ Agora chame \textbf{matrix} com o vetor, o n?mero de linhas e o n?mero de coluna
 ## [3,]    3    6    9   12
 \end{verbatim}
 
-Note que as matrizes s?o preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento \textbf{byrow}, que, por padr?o, est? definido como \textbf{FALSE}, para \textbf{TRUE}
+Note que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento \textbf{byrow}, que, por padrão, está definido como \textbf{FALSE}, passe para \textbf{TRUE}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1038,7 +1038,7 @@ Note que as matrizes s?o preenchidas ao longo das colunas. Para que a matriz sej
 ## [3,]    9   10   11   12
 \end{verbatim}
 
-Os valores do vetor s?o copiados para a nova matriz, um por um. Voc? tamb?m pode reformular o pr?prio \textbf{vetor} em uma \textbf{matriz}. Crie um vetor de 8 itens:
+Os valores do vetor são copiados para a nova matriz, um por um. Você também pode reformular o próprio \textbf{vetor} em uma \textbf{matriz}. Crie um vetor de 8 itens:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1046,7 +1046,7 @@ Os valores do vetor s?o copiados para a nova matriz, um por um. Voc? tamb?m pode
 \end{Highlighting}
 \end{Shaded}
 
-A fun??o \textbf{dim} define as \textbf{dim}ens?es para uma matriz. Ele aceita um vetor com o n?mero de linhas e o n?mero de colunas a serem atribu?das.
+A função \textbf{dim} define as \textbf{dim}ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
 Atribua novas dimens?es para \textbf{foliar} passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
 
 \begin{Shaded}
@@ -1055,8 +1055,8 @@ Atribua novas dimens?es para \textbf{foliar} passando um vetor especificando 2 l
 \end{Highlighting}
 \end{Shaded}
 
-O vetor n?o ? mais unidimensional. Foi convertido, no local, para uma matriz.
-Agora, use a fun??o \textbf{matrix} para criar uma matriz \textbf{5x5}, com seus campos inicializados para qualquer valor que voc? desejar.
+O vetor não é mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a função \textbf{matrix} para criar uma matriz \textbf{5x5}, com seus campos inicializados para qualquer valor que você desejar.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1076,7 +1076,7 @@ Agora, use a fun??o \textbf{matrix} para criar uma matriz \textbf{5x5}, com seus
 \hypertarget{acesso-a-matriz}{%
 \subsection{Acesso a Matriz}\label{acesso-a-matriz}}
 
-Obter valores de matrizes n?o ? diferente de vetores; voc? s? precisa fornecer dois ?ndices em vez de um. Abra a matriz foliar:
+Obter valores de matrizes não é diferente de vetores; você só precisa fornecer dois índices em vez de um. Abra a matriz foliar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1102,7 +1102,7 @@ Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
 ## [1] 6
 \end{verbatim}
 
-o valor da primeira linha da quarta coluna
+O valor da primeira linha da quarta coluna
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1114,7 +1114,7 @@ o valor da primeira linha da quarta coluna
 ## [1] 7
 \end{verbatim}
 
-Voc? pode obter uma linha inteira da matriz omitindo o ?ndice da coluna (mas mantenha a v?rgula). Tente recuperar a segunda linha:
+Você pode obter uma linha inteira da matriz omitindo o índice da coluna (mas mantenha a virgula). Tente recuperar a segunda linha:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1126,7 +1126,7 @@ Voc? pode obter uma linha inteira da matriz omitindo o ?ndice da coluna (mas man
 ## [1] 2 4 6 8
 \end{verbatim}
 
-Para obter uma coluna inteira, omita o ?ndice da linha. Recupere a quarta coluna:
+Para obter uma coluna inteira, omita o índice da linha. Recupere a quarta coluna:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1138,7 +1138,7 @@ Para obter uma coluna inteira, omita o ?ndice da linha. Recupere a quarta coluna
 ## [1] 7 8
 \end{verbatim}
 
-Voc? pode ler v?rias linhas ou colunas, fornecendo um vetor ou sequ?ncia com seus ?ndices. Tente recuperar as colunas de 2 a 4:
+Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com seus índices. Tente recuperar as colunas de 2 a 4:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1152,7 +1152,7 @@ Voc? pode ler v?rias linhas ou colunas, fornecendo um vetor ou sequ?ncia com seu
 ## [2,]    4    6    8
 \end{verbatim}
 
-O comando \textbf{summary} pode ser usado para obter informa??es da matriz
+O comando \textbf{summary} pode ser usado para obter informações da matriz
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1170,7 +1170,7 @@ O comando \textbf{summary} pode ser usado para obter informa??es da matriz
 ##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00
 \end{verbatim}
 
-Se desejar um resumo de todos os elementos da matriz, basta transform?-la em um vetor
+Se desejar um resumo de todos os elementos da matriz, basta transformó-la em um vetor
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1184,9 +1184,9 @@ Se desejar um resumo de todos os elementos da matriz, basta transform?-la em um 
 \end{verbatim}
 
 \hypertarget{visualizacoes-em-dados-matriciais}{%
-\section{Visualizações em dados matriciais}\label{visualizacoes-em-dados-matriciais}}
+\subsection{Visualizações em dados matriciais}\label{visualizacoes-em-dados-matriciais}}
 
-Com um mapa de eleva??o. ? bem plana - tudo fica a 1 metro acima do n?vel do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para voc?:
+Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1194,7 +1194,7 @@ Com um mapa de eleva??o. ? bem plana - tudo fica a 1 metro acima do n?vel do mar
 \end{Highlighting}
 \end{Shaded}
 
-Na quarta linha, sexta coluna, defina a eleva??o para 0:
+Na quarta linha, sexta coluna, defina a elevação para 0:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1202,7 +1202,7 @@ Na quarta linha, sexta coluna, defina a eleva??o para 0:
 \end{Highlighting}
 \end{Shaded}
 
-Mapa de contorno dos valores passando a matriz para a fun??o \emph{contour}
+Mapa de contorno dos valores passando a matriz para a função \emph{contour}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1211,7 +1211,8 @@ Mapa de contorno dos valores passando a matriz para a fun??o \emph{contour}
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-71-1.pdf}
-criar um gr?fico em perspectiva 3D com a fun??o \textbf{persp}:
+
+Criar um gráfico em perspectiva 3D com a função \textbf{persp}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1220,7 +1221,8 @@ criar um gr?fico em perspectiva 3D com a fun??o \textbf{persp}:
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-72-1.pdf}
-Podemos consertar isso especificando nosso pr?prio valor para o par?metro \textbf{expand}.
+
+Podemos consertar isso especificando nosso próprio valor para o parâmetro \textbf{expand}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1229,8 +1231,10 @@ Podemos consertar isso especificando nosso pr?prio valor para o par?metro \textb
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-73-1.pdf}
-R inclui alguns conjuntos de dados de amostra. Um deles ? volcanoum mapa 3D de um vulc?o adormecido da Nova Zel?ndia.
-? simplesmente uma matriz de 87x61 com valores de eleva??o, mas mostra o poder das visualiza??es de matriz do R.Criar um mapa de calor
+
+R inclui alguns conjuntos de dados de amostra. Um deles é o \emph{volcanoum} mapa 3D de um vulcão adormecido da Nova Zelândia.
+
+É simplesmente uma matriz de 87x61 com valores de elevão, mas mostra o poder das visualizações de matriz do R. Criar um mapa de calor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1240,7 +1244,7 @@ R inclui alguns conjuntos de dados de amostra. Um deles ? volcanoum mapa 3D de u
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-74-1.pdf}
 
-gr?fico em perspectiva:
+Gráfico em perspectiva:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1250,7 +1254,7 @@ gr?fico em perspectiva:
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-75-1.pdf}
 
-A fun??o imageir? criar um mapa de calor:
+A função \textbf{image} criar um mapa de calor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1263,7 +1267,7 @@ A fun??o imageir? criar um mapa de calor:
 \hypertarget{mais-informacoes-sobre-construcoes-de-matrizes}{%
 \subsection{Mais informações sobre construções de Matrizes}\label{mais-informacoes-sobre-construcoes-de-matrizes}}
 
-H? outros comandos que podem ser usados para construir matrizes como \textbf{cbind()} e \textbf{rbind}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como \textbf{cbind( )} e \textbf{rbind ( )}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1314,7 +1318,7 @@ H? outros comandos que podem ser usados para construir matrizes como \textbf{cbi
 ## [6,]   28   28   28
 \end{verbatim}
 
-Opcionalmente matrizes podem ter nomes associados ?s linhas e colunas (``rownames''e ``colnames''). Cada um destes componentes da matrix ? um vetor de nomes.
+Opcionalmente matrizes podem ter nomes associados ás linhas e colunas (``rownames''e ``colnames''). Cada um destes componentes da matrix é um vetor de nomes.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1333,7 +1337,7 @@ Opcionalmente matrizes podem ter nomes associados ?s linhas e colunas (``rowname
 ## [1] "C1" "C2" "C3"
 \end{verbatim}
 
-Matrizes s?o muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table().
+Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table().
 
 \begin{Shaded}
 \begin{Highlighting}[]
