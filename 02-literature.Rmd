@@ -435,7 +435,7 @@ Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos 
 ```
 
 
-### Fatores
+## Fatores
 
 Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma an?lise de experimentos devemos declarar este vetor como um **"fator"**. 
 Pode criar um fator usando o comando **factor()**, ou o comando **gl**.
@@ -452,7 +452,7 @@ trat  <- rep(seq(0,300,50), each=4)  #?each
 dados <-  data.frame(peso, trat=as.factor(trat))
 ```
 
-### Array
+## Array
 
   O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
 No R um array ? definido utilizando a **fun??o array()**. 
