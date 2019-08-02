@@ -425,7 +425,7 @@ dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3"))
 dimnames(m1)
 ```
 
-Matrizes s?o muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table(). 
+Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table(). 
 
 ```{r}
  margin.table(m1, margin = 1)
