@@ -344,7 +344,7 @@ O comando **summary** pode ser usado para obter informações da matriz
 summary(foliar)
 ```
 
-Se desejar um resumo de todos os elementos da matriz, basta transformó-la em um vetor
+Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um vetor
 ```{r}
 summary(as.vector(foliar))
 ```
@@ -357,7 +357,7 @@ Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos cri
 elevacao <- matrix (1,10,10)
 ```
 
- Na quarta linha, sexta coluna, defina a elevação para 0:
+Na quarta linha, sexta coluna, defina a elevação para 0:
  
 ```{r}
 elevacao [4, 6] <- 0
@@ -425,7 +425,7 @@ dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3"))
 dimnames(m1)
 ```
 
-Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table(). 
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com **margin.table( )**. 
 
 ```{r}
  margin.table(m1, margin = 1)
@@ -437,7 +437,7 @@ Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos 
 
 ## Fatores
 
-Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma an?lise de experimentos devemos declarar este vetor como um **"fator"**. 
+Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma análise de experimentos devemos declarar este vetor como um **"fator"**. 
 Pode criar um fator usando o comando **factor()**, ou o comando **gl**.
 ```{r}
 factor(rep(paste("T", 1:3, sep = ""), c(4, 4, 3)))
@@ -454,41 +454,41 @@ dados <-  data.frame(peso, trat=as.factor(trat))
 
 ## Array
 
-  O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
-No R um array ? definido utilizando a **fun??o array()**. 
+  O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
+No R um array é definido utilizando a **função array()**. 
 ```{r}
 ar1 <- array(1:24, dim = c(3, 4, 2)) 
 ar1
 ```
 
-Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para "carregar" e visualizar os dados digite:
+Veja agora um exemplo de dados já incluído no R no formato de array. Para "carregar" e visualizar os dados digite:
 ```{r}
 data(Titanic) 
 Titanic
 ```
 
-Para obter maiores informa??es sobre estes dados digite:  help(Titanic)
+Para obter maiores informações sobre estes dados digite:  **help(Titanic)**
 
-Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
 
-1. quantas pessoas havia no total?
+1. Quantas pessoas havia no total?
 ```{r}
 sum(Titanic)
 ```
 
-2. quantas pessoas havia na tripula??o (crew)?
+2. Quantas pessoas havia na tripulação (crew)?
 
 ```{r}
 sum(Titanic[4, , , ])
 ```
 
-3. quantas pessoas sobreviveram e quantas morreram?
+3. Quantas pessoas sobreviveram e quantas morreram?
 
 ```{r}
 apply(Titanic, 4, sum)
 ```
 
-4. quais as propor??es de sobreviventes entre homens e mulheres?
+4. Quais as proporções de sobreviventes entre homens e mulheres?
 
 ```{r}
 margin.table(Titanic, margin = 1)
@@ -506,7 +506,7 @@ margin.table(Titanic, margin = 3)
 margin.table(Titanic, margin = 4)
 ```
 
-Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e n?o sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+Esta função admite ainda índices múltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e não sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
 
 ```{r}
 margin.table(Titanic, margin = c(2, 4))
@@ -516,18 +516,18 @@ prop.table(margin.table(Titanic, margin = c(2, 1)), margin = 1)
 
 ## Data.frame
 
-Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Os datas.frames são muitos semelhantes ás matrizes, pois têm linhas e colunas e, portanto, duas dimensões. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser numérica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
 Criar o vetor nomes
 ```{r}
-nome <- c("Lara Lins",
-          "Mayara Costa",
-          "Aline Souza",
-          "Maria Santos",
-          "Jos? Santos",
-          "N?colas Barros")
+nome <- c("Melissa José",
+          "Jennifer Linhares",
+          "Gedilene Ponciano",
+          "Edinar da Silva",
+          "Osmar Emidio",
+          "Jeeziel Vieira")
 ```
 
-criar vetor idade
+Criar vetor idade
 ```{r}
 idade <- c(17,18,16,15,15,18)
 ```
@@ -536,6 +536,7 @@ Criar vetor sexo (categoria=fator)
 ```{r}
 sexo <- factor(c("F","F","F","F","M","M"))
 ```
+
 Criar vetor altura
 ```{r}
 alt <- c(180,170,160,150,140,168)
@@ -569,7 +570,7 @@ dados[2,] #toda linha dois
 
 ```
 
-Repare que apesar de "Nomes" ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.
+Repare que apesar de "Nomes" ter sido criado como vetor de caracterer o R passou a entender como um fator dentro do data.frame.
 ```{r}
 dados[,1]
 ```
@@ -591,9 +592,10 @@ str(dados)
 ```
 
 ### Manipulando um Data.frame
-Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos **cbind()** e **rbind** para adcionar colunas e linhas rescpectivamente, a um data.frame
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos **cbind( )** e **rbind ( )** para adcionar colunas e linhas rescpectivamente, a um data.frame.
+
 ```{r}
-dados <- cbind (dados, #adcionar uma coluna
+dados <- cbind (dados, #adicionar uma coluna
                Conceito=c("A","A","A","C","A","B"))
 ```
 
@@ -603,7 +605,7 @@ dados <- rbind (dados, #adicionar uma linha
 dados
 ```
 
-Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazena-lo em um outro objeto ou utilizar índices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
 
 ```{r}
 dados<- dados [1:6,] #selecionar linha de 1 a 6
@@ -611,10 +613,10 @@ dados<- dados [,-5] #excluir a quinta coluna
 dados
 ```
 ```{r}
-dados[dados$Sexo=="F",] #exibir s? masculinos
+dados[dados$Sexo=="F",] #exibir só masculinos
 ```
 
-A ordena??o das linhas de um **data.frame** segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til
+A ordenação das linhas de um **data.frame** segundo os dados contidos em determinadas coluna também é extremamente útil
 ```{r}
 dados [order(dados$altura),]
 ```
@@ -631,7 +633,7 @@ split (dados, sexo)
 
 ## Lista
 
-Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.
+Lista são objetos muito úteis, pois são usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores, matrizes, arrays, data.frames e ate mesmo outras listas.
 
 
 ```{r echo=TRUE}
@@ -639,7 +641,7 @@ pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
 pes
 ```
 
-Lista s?o construidas com o comando **list ()**. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome **$** ou **[]**
+Lista são construidas com o comando **list ()**. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
 
 ```{r include=FALSE}
 pes$nome
@@ -651,7 +653,7 @@ pes[3]
 
 ### Alguns comandos que retornam listas
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando **t.tes()**, que retorna um objeto que ? uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando **t.tes( )**, que retorna um objeto que é uma lista.
 
 ```{r}
 x <- c(1,3,2,3,4)
@@ -660,7 +662,7 @@ tt <- t.test (x,y, var.equal=T)
 tt
 ```
 
-Comprovar que ? uma lista
+Comprovar que é uma lista
 ```{r}
 is.list(tt)
 mode (tt)

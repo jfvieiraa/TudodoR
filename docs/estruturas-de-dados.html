@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="intro.html">
-<link rel="next" href="methods.html">
+<link rel="next" href="final-words.html">
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -164,12 +164,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="4" data-path="methods.html"><a href="methods.html"><i class="fa fa-check"></i><b>4</b> Methods</a></li>
-<li class="chapter" data-level="5" data-path="applications.html"><a href="applications.html"><i class="fa fa-check"></i><b>5</b> Applications</a><ul>
-<li class="chapter" data-level="5.1" data-path="applications.html"><a href="applications.html#example-one"><i class="fa fa-check"></i><b>5.1</b> Example one</a></li>
-<li class="chapter" data-level="5.2" data-path="applications.html"><a href="applications.html#example-two"><i class="fa fa-check"></i><b>5.2</b> Example two</a></li>
-</ul></li>
-<li class="chapter" data-level="6" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>6</b> Final Words</a></li>
+<li class="chapter" data-level="4" data-path="final-words.html"><a href="final-words.html"><i class="fa fa-check"></i><b>4</b> Final Words</a></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -461,7 +456,7 @@ Agora, use a função <strong>matrix</strong> para criar uma matriz <strong>5x5<
 ##  Mean   :1.50   Mean   :3.50   Mean   :5.50   Mean   :7.50  
 ##  3rd Qu.:1.75   3rd Qu.:3.75   3rd Qu.:5.75   3rd Qu.:7.75  
 ##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00</code></pre>
-<p>Se desejar um resumo de todos os elementos da matriz, basta transformó-la em um vetor</p>
+<p>Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um vetor</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1"><span class="kw">summary</span>(<span class="kw">as.vector</span>(foliar))</a></code></pre></div>
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.00    2.75    4.50    4.50    6.25    8.00</code></pre>
@@ -530,7 +525,7 @@ Agora, use a função <strong>matrix</strong> para criar uma matriz <strong>5x5<
 ## 
 ## [[2]]
 ## [1] &quot;C1&quot; &quot;C2&quot; &quot;C3&quot;</code></pre>
-<p>Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table().</p>
+<p>Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com <strong>margin.table( )</strong>.</p>
 <div class="sourceCode" id="cb153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb153-1" title="1"> <span class="kw">margin.table</span>(m1, <span class="dt">margin =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## L1 L2 L3 L4 
 ## 15 18 21 24</code></pre>
@@ -544,7 +539,7 @@ Agora, use a função <strong>matrix</strong> para criar uma matriz <strong>5x5<
 </div>
 <div id="fatores" class="section level2">
 <h2><span class="header-section-number">3.3</span> Fatores</h2>
-<p>Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de <strong>“tratamentos”</strong> em uma an?lise de experimentos devemos declarar este vetor como um <strong>“fator”</strong>.
+<p>Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas. Por exemplo: ao criar um vetor de indicadores de <strong>“tratamentos”</strong> em uma análise de experimentos devemos declarar este vetor como um <strong>“fator”</strong>.
 Pode criar um fator usando o comando <strong>factor()</strong>, ou o comando <strong>gl</strong>.</p>
 <div class="sourceCode" id="cb159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb159-1" title="1"><span class="kw">factor</span>(<span class="kw">rep</span>(<span class="kw">paste</span>(<span class="st">&quot;T&quot;</span>, <span class="dv">1</span><span class="op">:</span><span class="dv">3</span>, <span class="dt">sep =</span> <span class="st">&quot;&quot;</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="dv">3</span>)))</a></code></pre></div>
 <pre><code>##  [1] T1 T1 T1 T1 T2 T2 T2 T2 T3 T3 T3
@@ -558,8 +553,8 @@ Pode criar um fator usando o comando <strong>factor()</strong>, ou o comando <st
 </div>
 <div id="array" class="section level2">
 <h2><span class="header-section-number">3.4</span> Array</h2>
-<p>O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
-No R um array ? definido utilizando a <strong>fun??o array()</strong>.</p>
+<p>O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
+No R um array é definido utilizando a <strong>função array()</strong>.</p>
 <div class="sourceCode" id="cb162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb162-1" title="1">ar1 &lt;-<span class="st"> </span><span class="kw">array</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">24</span>, <span class="dt">dim =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">4</span>, <span class="dv">2</span>)) </a>
 <a class="sourceLine" id="cb162-2" title="2">ar1</a></code></pre></div>
 <pre><code>## , , 1
@@ -575,7 +570,7 @@ No R um array ? definido utilizando a <strong>fun??o array()</strong>.</p>
 ## [1,]   13   16   19   22
 ## [2,]   14   17   20   23
 ## [3,]   15   18   21   24</code></pre>
-<p>Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para “carregar” e visualizar os dados digite:</p>
+<p>Veja agora um exemplo de dados já incluído no R no formato de array. Para “carregar” e visualizar os dados digite:</p>
 <div class="sourceCode" id="cb164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb164-1" title="1"><span class="kw">data</span>(Titanic) </a>
 <a class="sourceLine" id="cb164-2" title="2">Titanic</a></code></pre></div>
 <pre><code>## , , Age = Child, Survived = No
@@ -613,26 +608,26 @@ No R um array ? definido utilizando a <strong>fun??o array()</strong>.</p>
 ##   2nd    14     80
 ##   3rd    75     76
 ##   Crew  192     20</code></pre>
-<p>Para obter maiores informa??es sobre estes dados digite: help(Titanic)</p>
-<p>Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.</p>
+<p>Para obter maiores informações sobre estes dados digite: <strong>help(Titanic)</strong></p>
+<p>Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.</p>
 <ol style="list-style-type: decimal">
-<li>quantas pessoas havia no total?</li>
+<li>Quantas pessoas havia no total?</li>
 </ol>
 <div class="sourceCode" id="cb166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb166-1" title="1"><span class="kw">sum</span>(Titanic)</a></code></pre></div>
 <pre><code>## [1] 2201</code></pre>
 <ol start="2" style="list-style-type: decimal">
-<li>quantas pessoas havia na tripula??o (crew)?</li>
+<li>Quantas pessoas havia na tripulação (crew)?</li>
 </ol>
 <div class="sourceCode" id="cb168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb168-1" title="1"><span class="kw">sum</span>(Titanic[<span class="dv">4</span>, , , ])</a></code></pre></div>
 <pre><code>## [1] 885</code></pre>
 <ol start="3" style="list-style-type: decimal">
-<li>quantas pessoas sobreviveram e quantas morreram?</li>
+<li>Quantas pessoas sobreviveram e quantas morreram?</li>
 </ol>
 <div class="sourceCode" id="cb170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb170-1" title="1"><span class="kw">apply</span>(Titanic, <span class="dv">4</span>, sum)</a></code></pre></div>
 <pre><code>##   No  Yes 
 ## 1490  711</code></pre>
 <ol start="4" style="list-style-type: decimal">
-<li>quais as propor??es de sobreviventes entre homens e mulheres?</li>
+<li>Quais as proporções de sobreviventes entre homens e mulheres?</li>
 </ol>
 <div class="sourceCode" id="cb172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb172-1" title="1"><span class="kw">margin.table</span>(Titanic, <span class="dt">margin =</span> <span class="dv">1</span>)</a></code></pre></div>
 <pre><code>## Class
@@ -650,7 +645,7 @@ No R um array ? definido utilizando a <strong>fun??o array()</strong>.</p>
 <pre><code>## Survived
 ##   No  Yes 
 ## 1490  711</code></pre>
-<p>Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e n?o sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.</p>
+<p>Esta função admite ainda índices múltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e não sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.</p>
 <div class="sourceCode" id="cb180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb180-1" title="1"><span class="kw">margin.table</span>(Titanic, <span class="dt">margin =</span> <span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">4</span>))</a></code></pre></div>
 <pre><code>##         Survived
 ## Sex        No  Yes
@@ -669,15 +664,15 @@ No R um array ? definido utilizando a <strong>fun??o array()</strong>.</p>
 </div>
 <div id="data.frame" class="section level2">
 <h2><span class="header-section-number">3.5</span> Data.frame</h2>
-<p>Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+<p>Os datas.frames são muitos semelhantes ás matrizes, pois têm linhas e colunas e, portanto, duas dimensões. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser numérica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
 Criar o vetor nomes</p>
-<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">nome &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Lara Lins&quot;</span>,</a>
-<a class="sourceLine" id="cb186-2" title="2">          <span class="st">&quot;Mayara Costa&quot;</span>,</a>
-<a class="sourceLine" id="cb186-3" title="3">          <span class="st">&quot;Aline Souza&quot;</span>,</a>
-<a class="sourceLine" id="cb186-4" title="4">          <span class="st">&quot;Maria Santos&quot;</span>,</a>
-<a class="sourceLine" id="cb186-5" title="5">          <span class="st">&quot;Jos? Santos&quot;</span>,</a>
-<a class="sourceLine" id="cb186-6" title="6">          <span class="st">&quot;N?colas Barros&quot;</span>)</a></code></pre></div>
-<p>criar vetor idade</p>
+<div class="sourceCode" id="cb186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb186-1" title="1">nome &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Melissa José&quot;</span>,</a>
+<a class="sourceLine" id="cb186-2" title="2">          <span class="st">&quot;Jennifer Linhares&quot;</span>,</a>
+<a class="sourceLine" id="cb186-3" title="3">          <span class="st">&quot;Gedilene Ponciano&quot;</span>,</a>
+<a class="sourceLine" id="cb186-4" title="4">          <span class="st">&quot;Edinar da Silva&quot;</span>,</a>
+<a class="sourceLine" id="cb186-5" title="5">          <span class="st">&quot;Osmar Emidio&quot;</span>,</a>
+<a class="sourceLine" id="cb186-6" title="6">          <span class="st">&quot;Jeeziel Vieira&quot;</span>)</a></code></pre></div>
+<p>Criar vetor idade</p>
 <div class="sourceCode" id="cb187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb187-1" title="1">idade &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">17</span>,<span class="dv">18</span>,<span class="dv">16</span>,<span class="dv">15</span>,<span class="dv">15</span>,<span class="dv">18</span>)</a></code></pre></div>
 <p>Criar vetor sexo (categoria=fator)</p>
 <div class="sourceCode" id="cb188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb188-1" title="1">sexo &lt;-<span class="st"> </span><span class="kw">factor</span>(<span class="kw">c</span>(<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;F&quot;</span>,<span class="st">&quot;M&quot;</span>,<span class="st">&quot;M&quot;</span>))</a></code></pre></div>
@@ -688,133 +683,133 @@ Criar o vetor nomes</p>
 <p>Ver atributos da tabela</p>
 <div class="sourceCode" id="cb191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb191-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
-##  $ nome : Factor w/ 6 levels &quot;Aline Souza&quot;,..: 3 5 1 4 2 6
+##  $ nome : Factor w/ 6 levels &quot;Edinar da Silva&quot;,..: 5 4 2 1 6 3
 ##  $ idade: num  17 18 16 15 15 18
 ##  $ sexo : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 2 2
 ##  $ alt  : num  180 170 160 150 140 168</code></pre>
 <p>Adicionar nome as linhas com o comando <strong>row.names()</strong></p>
 <div class="sourceCode" id="cb193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb193-1" title="1"><span class="kw">row.names</span>(dados) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">6</span>)</a>
 <a class="sourceLine" id="cb193-2" title="2">dados</a></code></pre></div>
-<pre><code>##             nome idade sexo alt
-## 1      Lara Lins    17    F 180
-## 2   Mayara Costa    18    F 170
-## 3    Aline Souza    16    F 160
-## 4   Maria Santos    15    F 150
-## 5    Jos? Santos    15    M 140
-## 6 N?colas Barros    18    M 168</code></pre>
+<pre><code>##                nome idade sexo alt
+## 1      Melissa José    17    F 180
+## 2 Jennifer Linhares    18    F 170
+## 3 Gedilene Ponciano    16    F 160
+## 4   Edinar da Silva    15    F 150
+## 5      Osmar Emidio    15    M 140
+## 6    Jeeziel Vieira    18    M 168</code></pre>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1"><span class="kw">names</span>(dados) &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Nome&quot;</span>, <span class="st">&quot;Idade&quot;</span>, <span class="st">&quot;Sexo&quot;</span>, <span class="st">&quot;altura&quot;</span>)</a>
 <a class="sourceLine" id="cb195-2" title="2">dados</a></code></pre></div>
-<pre><code>##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168</code></pre>
+<pre><code>##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140
+## 6    Jeeziel Vieira    18    M    168</code></pre>
 <div id="indice-dos-data.frames" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Índice dos Data.frames</h3>
 <p>Buscar elementos</p>
 <div class="sourceCode" id="cb197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb197-1" title="1">dados[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co">#elemento da  linha  2, coluna 1</span></a></code></pre></div>
-<pre><code>## [1] Mayara Costa
-## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros</code></pre>
+<pre><code>## [1] Jennifer Linhares
+## 6 Levels: Edinar da Silva Gedilene Ponciano ... Osmar Emidio</code></pre>
 <div class="sourceCode" id="cb199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb199-1" title="1">dados[<span class="dv">2</span>,] <span class="co">#toda linha dois</span></a></code></pre></div>
-<pre><code>##           Nome Idade Sexo altura
-## 2 Mayara Costa    18    F    170</code></pre>
-<p>Repare que apesar de “Nomes” ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.</p>
+<pre><code>##                Nome Idade Sexo altura
+## 2 Jennifer Linhares    18    F    170</code></pre>
+<p>Repare que apesar de “Nomes” ter sido criado como vetor de caracterer o R passou a entender como um fator dentro do data.frame.</p>
 <div class="sourceCode" id="cb201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb201-1" title="1">dados[,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] Lara Lins      Mayara Costa   Aline Souza    Maria Santos  
-## [5] Jos? Santos    N?colas Barros
-## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros</code></pre>
+<pre><code>## [1] Melissa José      Jennifer Linhares Gedilene Ponciano Edinar da Silva  
+## [5] Osmar Emidio      Jeeziel Vieira   
+## 6 Levels: Edinar da Silva Gedilene Ponciano ... Osmar Emidio</code></pre>
 <p>Transformar para caracterer</p>
 <div class="sourceCode" id="cb203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb203-1" title="1">dados[,<span class="dv">1</span>] &lt;-<span class="st"> </span><span class="kw">as.character</span>(dados[,<span class="dv">1</span>])</a>
 <a class="sourceLine" id="cb203-2" title="2">dados[,<span class="dv">1</span>]</a></code></pre></div>
-<pre><code>## [1] &quot;Lara Lins&quot;      &quot;Mayara Costa&quot;   &quot;Aline Souza&quot;    &quot;Maria Santos&quot;  
-## [5] &quot;Jos? Santos&quot;    &quot;N?colas Barros&quot;</code></pre>
+<pre><code>## [1] &quot;Melissa José&quot;      &quot;Jennifer Linhares&quot; &quot;Gedilene Ponciano&quot;
+## [4] &quot;Edinar da Silva&quot;   &quot;Osmar Emidio&quot;      &quot;Jeeziel Vieira&quot;</code></pre>
 <p>Acessando aos dados</p>
 <div class="sourceCode" id="cb205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb205-1" title="1">dados<span class="op">$</span>Nome</a></code></pre></div>
-<pre><code>## [1] &quot;Lara Lins&quot;      &quot;Mayara Costa&quot;   &quot;Aline Souza&quot;    &quot;Maria Santos&quot;  
-## [5] &quot;Jos? Santos&quot;    &quot;N?colas Barros&quot;</code></pre>
+<pre><code>## [1] &quot;Melissa José&quot;      &quot;Jennifer Linhares&quot; &quot;Gedilene Ponciano&quot;
+## [4] &quot;Edinar da Silva&quot;   &quot;Osmar Emidio&quot;      &quot;Jeeziel Vieira&quot;</code></pre>
 <div class="sourceCode" id="cb207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb207-1" title="1">dados<span class="op">$</span>Nome[<span class="dv">3</span>]</a></code></pre></div>
-<pre><code>## [1] &quot;Aline Souza&quot;</code></pre>
+<pre><code>## [1] &quot;Gedilene Ponciano&quot;</code></pre>
 <div class="sourceCode" id="cb209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb209-1" title="1">dados<span class="op">$</span>Nome [<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>]</a></code></pre></div>
-<pre><code>## [1] &quot;Lara Lins&quot;    &quot;Mayara Costa&quot; &quot;Aline Souza&quot;</code></pre>
+<pre><code>## [1] &quot;Melissa José&quot;      &quot;Jennifer Linhares&quot; &quot;Gedilene Ponciano&quot;</code></pre>
 <div class="sourceCode" id="cb211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb211-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    6 obs. of  4 variables:
-##  $ Nome  : chr  &quot;Lara Lins&quot; &quot;Mayara Costa&quot; &quot;Aline Souza&quot; &quot;Maria Santos&quot; ...
+##  $ Nome  : chr  &quot;Melissa José&quot; &quot;Jennifer Linhares&quot; &quot;Gedilene Ponciano&quot; &quot;Edinar da Silva&quot; ...
 ##  $ Idade : num  17 18 16 15 15 18
 ##  $ Sexo  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 1 1 1 1 2 2
 ##  $ altura: num  180 170 160 150 140 168</code></pre>
 </div>
 <div id="manipulando-um-data.frame" class="section level3">
 <h3><span class="header-section-number">3.5.2</span> Manipulando um Data.frame</h3>
-<p>Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos <strong>cbind()</strong> e <strong>rbind</strong> para adcionar colunas e linhas rescpectivamente, a um data.frame</p>
-<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span> (dados, <span class="co">#adcionar uma coluna</span></a>
+<p>Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos <strong>cbind( )</strong> e <strong>rbind ( )</strong> para adcionar colunas e linhas rescpectivamente, a um data.frame.</p>
+<div class="sourceCode" id="cb213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb213-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span> (dados, <span class="co">#adicionar uma coluna</span></a>
 <a class="sourceLine" id="cb213-2" title="2">               <span class="dt">Conceito=</span><span class="kw">c</span>(<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;C&quot;</span>,<span class="st">&quot;A&quot;</span>,<span class="st">&quot;B&quot;</span>))</a></code></pre></div>
 <div class="sourceCode" id="cb214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb214-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">rbind</span> (dados, <span class="co">#adicionar uma linha</span></a>
 <a class="sourceLine" id="cb214-2" title="2">                <span class="st">&quot;7&quot;</span>=<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;Caio Pinto&quot;</span>, <span class="dv">21</span>, <span class="st">&quot;M&quot;</span>, <span class="dv">172</span>, <span class="st">&quot;C&quot;</span>))</a>
 <a class="sourceLine" id="cb214-3" title="3">dados</a></code></pre></div>
-<pre><code>##             Nome Idade Sexo altura Conceito
-## 1      Lara Lins    17    F    180        A
-## 2   Mayara Costa    18    F    170        A
-## 3    Aline Souza    16    F    160        A
-## 4   Maria Santos    15    F    150        C
-## 5    Jos? Santos    15    M    140        A
-## 6 N?colas Barros    18    M    168        B
-## 7     Caio Pinto    21    M    172        C</code></pre>
-<p>Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.</p>
+<pre><code>##                Nome Idade Sexo altura Conceito
+## 1      Melissa José    17    F    180        A
+## 2 Jennifer Linhares    18    F    170        A
+## 3 Gedilene Ponciano    16    F    160        A
+## 4   Edinar da Silva    15    F    150        C
+## 5      Osmar Emidio    15    M    140        A
+## 6    Jeeziel Vieira    18    M    168        B
+## 7        Caio Pinto    21    M    172        C</code></pre>
+<p>Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazena-lo em um outro objeto ou utilizar índices como o sinal negativo para eliminar linhas ou colunas de um data.frame.</p>
 <div class="sourceCode" id="cb216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb216-1" title="1">dados&lt;-<span class="st"> </span>dados [<span class="dv">1</span><span class="op">:</span><span class="dv">6</span>,] <span class="co">#selecionar linha de 1 a 6</span></a>
 <a class="sourceLine" id="cb216-2" title="2">dados&lt;-<span class="st"> </span>dados [,<span class="op">-</span><span class="dv">5</span>] <span class="co">#excluir a quinta coluna</span></a>
 <a class="sourceLine" id="cb216-3" title="3">dados</a></code></pre></div>
-<pre><code>##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168</code></pre>
-<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">dados[dados<span class="op">$</span>Sexo<span class="op">==</span><span class="st">&quot;F&quot;</span>,] <span class="co">#exibir s? masculinos</span></a></code></pre></div>
-<pre><code>##           Nome Idade Sexo altura
-## 1    Lara Lins    17    F    180
-## 2 Mayara Costa    18    F    170
-## 3  Aline Souza    16    F    160
-## 4 Maria Santos    15    F    150</code></pre>
-<p>A ordena??o das linhas de um <strong>data.frame</strong> segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til</p>
+<pre><code>##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140
+## 6    Jeeziel Vieira    18    M    168</code></pre>
+<div class="sourceCode" id="cb218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb218-1" title="1">dados[dados<span class="op">$</span>Sexo<span class="op">==</span><span class="st">&quot;F&quot;</span>,] <span class="co">#exibir só masculinos</span></a></code></pre></div>
+<pre><code>##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150</code></pre>
+<p>A ordenação das linhas de um <strong>data.frame</strong> segundo os dados contidos em determinadas coluna também é extremamente útil</p>
 <div class="sourceCode" id="cb220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb220-1" title="1">dados [<span class="kw">order</span>(dados<span class="op">$</span>altura),]</a></code></pre></div>
-<pre><code>##             Nome Idade Sexo altura
-## 5    Jos? Santos    15    M    140
-## 4   Maria Santos    15    F    150
-## 3    Aline Souza    16    F    160
-## 6 N?colas Barros    18    M    168
-## 2   Mayara Costa    18    F    170
-## 1      Lara Lins    17    F    180</code></pre>
+<pre><code>##                Nome Idade Sexo altura
+## 5      Osmar Emidio    15    M    140
+## 4   Edinar da Silva    15    F    150
+## 3 Gedilene Ponciano    16    F    160
+## 6    Jeeziel Vieira    18    M    168
+## 2 Jennifer Linhares    18    F    170
+## 1      Melissa José    17    F    180</code></pre>
 <div class="sourceCode" id="cb222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb222-1" title="1">dados [<span class="kw">rev</span>(<span class="kw">order</span>(dados<span class="op">$</span>altura)),]</a></code></pre></div>
-<pre><code>##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 6 N?colas Barros    18    M    168
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140</code></pre>
+<pre><code>##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 6    Jeeziel Vieira    18    M    168
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140</code></pre>
 </div>
 <div id="separando-um-data.frame-por-grupos" class="section level3">
 <h3><span class="header-section-number">3.5.3</span> Separando um data.frame por grupos</h3>
 <div class="sourceCode" id="cb224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb224-1" title="1"><span class="kw">split</span> (dados, sexo)</a></code></pre></div>
 <pre><code>## $F
-##           Nome Idade Sexo altura
-## 1    Lara Lins    17    F    180
-## 2 Mayara Costa    18    F    170
-## 3  Aline Souza    16    F    160
-## 4 Maria Santos    15    F    150
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
 ## 
 ## $M
 ##             Nome Idade Sexo altura
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168</code></pre>
+## 5   Osmar Emidio    15    M    140
+## 6 Jeeziel Vieira    18    M    168</code></pre>
 </div>
 </div>
 <div id="lista" class="section level2">
 <h2><span class="header-section-number">3.6</span> Lista</h2>
-<p>Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.</p>
+<p>Lista são objetos muito úteis, pois são usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores, matrizes, arrays, data.frames e ate mesmo outras listas.</p>
 <div class="sourceCode" id="cb226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb226-1" title="1">pes &lt;-<span class="st"> </span><span class="kw">list</span> (<span class="dt">idade=</span><span class="dv">32</span>, <span class="dt">nome=</span><span class="st">&quot;Maria&quot;</span>, <span class="dt">notas=</span><span class="kw">c</span>(<span class="dv">98</span>,<span class="dv">95</span>,<span class="dv">78</span>), <span class="dt">B=</span><span class="kw">matrix</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">2</span>))</a>
 <a class="sourceLine" id="cb226-2" title="2">pes</a></code></pre></div>
 <pre><code>## $idade
@@ -830,10 +825,10 @@ Criar o vetor nomes</p>
 ##      [,1] [,2]
 ## [1,]    1    3
 ## [2,]    2    4</code></pre>
-<p>Lista s?o construidas com o comando <strong>list ()</strong>. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome <strong>$</strong> ou <strong>[]</strong></p>
+<p>Lista são construidas com o comando <strong>list ()</strong>. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome <strong>$</strong> ou <strong>[ ]</strong></p>
 <div id="alguns-comandos-que-retornam-listas" class="section level3">
 <h3><span class="header-section-number">3.6.1</span> Alguns comandos que retornam listas</h3>
-<p>Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando <strong>t.tes()</strong>, que retorna um objeto que ? uma lista.</p>
+<p>Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando <strong>t.tes( )</strong>, que retorna um objeto que é uma lista.</p>
 <div class="sourceCode" id="cb228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb228-1" title="1">x &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb228-2" title="2">y &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">4</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">4</span>,<span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb228-3" title="3">tt &lt;-<span class="st"> </span><span class="kw">t.test</span> (x,y, <span class="dt">var.equal=</span>T)</a>
@@ -849,7 +844,7 @@ Criar o vetor nomes</p>
 ## sample estimates:
 ## mean of x mean of y 
 ##       2.6       4.4</code></pre>
-<p>Comprovar que ? uma lista</p>
+<p>Comprovar que é uma lista</p>
 <div class="sourceCode" id="cb230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb230-1" title="1"><span class="kw">is.list</span>(tt)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <div class="sourceCode" id="cb232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb232-1" title="1"><span class="kw">mode</span> (tt)</a></code></pre></div>
@@ -880,7 +875,7 @@ Criar o vetor nomes</p>
         </div>
       </div>
 <a href="intro.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="methods.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="final-words.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

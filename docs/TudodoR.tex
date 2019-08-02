@@ -349,11 +349,11 @@ A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.1050808 -0.5407201  0.1824415  0.5980497  1.3500000
+## [1] -2.03747859 -0.71636728 -0.05874021  0.72363527  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.1050808 -0.5407201  0.1824415  0.5980497  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.03747859 -0.71636728 -0.05874021  0.72363527  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -1168,7 +1168,7 @@ O comando \textbf{summary} pode ser usado para obter informações da matriz
 ##  Max.   :2.00   Max.   :4.00   Max.   :6.00   Max.   :8.00
 \end{verbatim}
 
-Se desejar um resumo de todos os elementos da matriz, basta transformó-la em um vetor
+Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um vetor
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1335,7 +1335,7 @@ Opcionalmente matrizes podem ter nomes associados ás linhas e colunas (``rownam
 ## [1] "C1" "C2" "C3"
 \end{verbatim}
 
-Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos entre vari?veis. Desta forma ? comum surgir a necessidade de obter os totais marginais, isto ? a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com margin.table().
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com \textbf{margin.table( )}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1373,7 +1373,7 @@ Matrizes são muitas vezes utilizadas para armazenar frequ?ncias de cruzamentos 
 \hypertarget{fatores}{%
 \section{Fatores}\label{fatores}}
 
-Os fatores s?o vetores em que os elementos pertencem a uma ou mais categorias tem?ticas. Por exemplo: ao criar um vetor de indicadores de \textbf{``tratamentos''} em uma an?lise de experimentos devemos declarar este vetor como um \textbf{``fator''}.
+Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas. Por exemplo: ao criar um vetor de indicadores de \textbf{``tratamentos''} em uma análise de experimentos devemos declarar este vetor como um \textbf{``fator''}.
 Pode criar um fator usando o comando \textbf{factor()}, ou o comando \textbf{gl}.
 
 \begin{Shaded}
@@ -1401,8 +1401,8 @@ Pode criar um fator usando o comando \textbf{factor()}, ou o comando \textbf{gl}
 \hypertarget{array}{%
 \section{Array}\label{array}}
 
-O conceito de array generaliza a id?ia de matrix. Enquanto em uma matrix os elementos s?o organizados em duas dimens?es (linhas e colunas), em um array os elementos podem ser organizados em um n?mero arbitr?rio de dimens?es.
-No R um array ? definido utilizando a \textbf{fun??o array()}.
+O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
+No R um array é definido utilizando a \textbf{função array()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1427,7 +1427,7 @@ No R um array ? definido utilizando a \textbf{fun??o array()}.
 ## [3,]   15   18   21   24
 \end{verbatim}
 
-Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para ``carregar'' e visualizar os dados digite:
+Veja agora um exemplo de dados já incluído no R no formato de array. Para ``carregar'' e visualizar os dados digite:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1474,15 +1474,15 @@ Veja agora um exemplo de dados j? inclu?do no R no formato de array. Para ``carr
 ##   Crew  192     20
 \end{verbatim}
 
-Para obter maiores informa??es sobre estes dados digite: help(Titanic)
+Para obter maiores informações sobre estes dados digite: \textbf{help(Titanic)}
 
-Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  quantas pessoas havia no total?
+  Quantas pessoas havia no total?
 \end{enumerate}
 
 \begin{Shaded}
@@ -1500,7 +1500,7 @@ Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utiliza
 \setcounter{enumi}{1}
 \tightlist
 \item
-  quantas pessoas havia na tripula??o (crew)?
+  Quantas pessoas havia na tripulação (crew)?
 \end{enumerate}
 
 \begin{Shaded}
@@ -1518,7 +1518,7 @@ Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utiliza
 \setcounter{enumi}{2}
 \tightlist
 \item
-  quantas pessoas sobreviveram e quantas morreram?
+  Quantas pessoas sobreviveram e quantas morreram?
 \end{enumerate}
 
 \begin{Shaded}
@@ -1537,7 +1537,7 @@ Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utiliza
 \setcounter{enumi}{3}
 \tightlist
 \item
-  quais as propor??es de sobreviventes entre homens e mulheres?
+  Quais as proporções de sobreviventes entre homens e mulheres?
 \end{enumerate}
 
 \begin{Shaded}
@@ -1588,7 +1588,7 @@ Agora vamos responder ?s seguintes perguntas, mostrando os comandos do R utiliza
 ## 1490  711
 \end{verbatim}
 
-Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e n?o sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+Esta função admite ainda índices múltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e não sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1632,21 +1632,21 @@ Esta fun??o admite ainda ?ndices m?ltiplos que permitem outros resumos da tabela
 \hypertarget{data.frame}{%
 \section{Data.frame}\label{data.frame}}
 
-Os datas.frames s?o muitos semelhantes ?s matrizes, pois t?m linhas e colunas e, portanto, duas dimens?es. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser num?rica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Os datas.frames são muitos semelhantes ás matrizes, pois têm linhas e colunas e, portanto, duas dimensões. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser numérica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
 Criar o vetor nomes
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{nome <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Lara Lins"}\NormalTok{,}
-          \StringTok{"Mayara Costa"}\NormalTok{,}
-          \StringTok{"Aline Souza"}\NormalTok{,}
-          \StringTok{"Maria Santos"}\NormalTok{,}
-          \StringTok{"Jos? Santos"}\NormalTok{,}
-          \StringTok{"N?colas Barros"}\NormalTok{)}
+\NormalTok{nome <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\StringTok{"Melissa José"}\NormalTok{,}
+          \StringTok{"Jennifer Linhares"}\NormalTok{,}
+          \StringTok{"Gedilene Ponciano"}\NormalTok{,}
+          \StringTok{"Edinar da Silva"}\NormalTok{,}
+          \StringTok{"Osmar Emidio"}\NormalTok{,}
+          \StringTok{"Jeeziel Vieira"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-criar vetor idade
+Criar vetor idade
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1688,7 +1688,7 @@ Ver atributos da tabela
 
 \begin{verbatim}
 ## 'data.frame':    6 obs. of  4 variables:
-##  $ nome : Factor w/ 6 levels "Aline Souza",..: 3 5 1 4 2 6
+##  $ nome : Factor w/ 6 levels "Edinar da Silva",..: 5 4 2 1 6 3
 ##  $ idade: num  17 18 16 15 15 18
 ##  $ sexo : Factor w/ 2 levels "F","M": 1 1 1 1 2 2
 ##  $ alt  : num  180 170 160 150 140 168
@@ -1704,13 +1704,13 @@ Adicionar nome as linhas com o comando \textbf{row.names()}
 \end{Shaded}
 
 \begin{verbatim}
-##             nome idade sexo alt
-## 1      Lara Lins    17    F 180
-## 2   Mayara Costa    18    F 170
-## 3    Aline Souza    16    F 160
-## 4   Maria Santos    15    F 150
-## 5    Jos? Santos    15    M 140
-## 6 N?colas Barros    18    M 168
+##                nome idade sexo alt
+## 1      Melissa José    17    F 180
+## 2 Jennifer Linhares    18    F 170
+## 3 Gedilene Ponciano    16    F 160
+## 4   Edinar da Silva    15    F 150
+## 5      Osmar Emidio    15    M 140
+## 6    Jeeziel Vieira    18    M 168
 \end{verbatim}
 
 \begin{Shaded}
@@ -1721,13 +1721,13 @@ Adicionar nome as linhas com o comando \textbf{row.names()}
 \end{Shaded}
 
 \begin{verbatim}
-##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140
+## 6    Jeeziel Vieira    18    M    168
 \end{verbatim}
 
 \hypertarget{indice-dos-data.frames}{%
@@ -1742,8 +1742,8 @@ Buscar elementos
 \end{Shaded}
 
 \begin{verbatim}
-## [1] Mayara Costa
-## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros
+## [1] Jennifer Linhares
+## 6 Levels: Edinar da Silva Gedilene Ponciano ... Osmar Emidio
 \end{verbatim}
 
 \begin{Shaded}
@@ -1753,11 +1753,11 @@ Buscar elementos
 \end{Shaded}
 
 \begin{verbatim}
-##           Nome Idade Sexo altura
-## 2 Mayara Costa    18    F    170
+##                Nome Idade Sexo altura
+## 2 Jennifer Linhares    18    F    170
 \end{verbatim}
 
-Repare que apesar de ``Nomes'' ter sido criado como vetor de caracterer o R passou a ented?-lo como um fator dentro do data.frame.
+Repare que apesar de ``Nomes'' ter sido criado como vetor de caracterer o R passou a entender como um fator dentro do data.frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1766,9 +1766,9 @@ Repare que apesar de ``Nomes'' ter sido criado como vetor de caracterer o R pass
 \end{Shaded}
 
 \begin{verbatim}
-## [1] Lara Lins      Mayara Costa   Aline Souza    Maria Santos  
-## [5] Jos? Santos    N?colas Barros
-## 6 Levels: Aline Souza Jos? Santos Lara Lins Maria Santos ... N?colas Barros
+## [1] Melissa José      Jennifer Linhares Gedilene Ponciano Edinar da Silva  
+## [5] Osmar Emidio      Jeeziel Vieira   
+## 6 Levels: Edinar da Silva Gedilene Ponciano ... Osmar Emidio
 \end{verbatim}
 
 Transformar para caracterer
@@ -1781,8 +1781,8 @@ Transformar para caracterer
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Lara Lins"      "Mayara Costa"   "Aline Souza"    "Maria Santos"  
-## [5] "Jos? Santos"    "N?colas Barros"
+## [1] "Melissa José"      "Jennifer Linhares" "Gedilene Ponciano"
+## [4] "Edinar da Silva"   "Osmar Emidio"      "Jeeziel Vieira"
 \end{verbatim}
 
 Acessando aos dados
@@ -1794,8 +1794,8 @@ Acessando aos dados
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Lara Lins"      "Mayara Costa"   "Aline Souza"    "Maria Santos"  
-## [5] "Jos? Santos"    "N?colas Barros"
+## [1] "Melissa José"      "Jennifer Linhares" "Gedilene Ponciano"
+## [4] "Edinar da Silva"   "Osmar Emidio"      "Jeeziel Vieira"
 \end{verbatim}
 
 \begin{Shaded}
@@ -1805,7 +1805,7 @@ Acessando aos dados
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Aline Souza"
+## [1] "Gedilene Ponciano"
 \end{verbatim}
 
 \begin{Shaded}
@@ -1815,7 +1815,7 @@ Acessando aos dados
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "Lara Lins"    "Mayara Costa" "Aline Souza"
+## [1] "Melissa José"      "Jennifer Linhares" "Gedilene Ponciano"
 \end{verbatim}
 
 \begin{Shaded}
@@ -1826,7 +1826,7 @@ Acessando aos dados
 
 \begin{verbatim}
 ## 'data.frame':    6 obs. of  4 variables:
-##  $ Nome  : chr  "Lara Lins" "Mayara Costa" "Aline Souza" "Maria Santos" ...
+##  $ Nome  : chr  "Melissa José" "Jennifer Linhares" "Gedilene Ponciano" "Edinar da Silva" ...
 ##  $ Idade : num  17 18 16 15 15 18
 ##  $ Sexo  : Factor w/ 2 levels "F","M": 1 1 1 1 2 2
 ##  $ altura: num  180 170 160 150 140 168
@@ -1835,11 +1835,11 @@ Acessando aos dados
 \hypertarget{manipulando-um-data.frame}{%
 \subsection{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
 
-Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \textbf{cbind()} e \textbf{rbind} para adcionar colunas e linhas rescpectivamente, a um data.frame
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \textbf{cbind( )} e \textbf{rbind ( )} para adcionar colunas e linhas rescpectivamente, a um data.frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dados <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (dados, }\CommentTok{#adcionar uma coluna}
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{ (dados, }\CommentTok{#adicionar uma coluna}
                \DataTypeTok{Conceito=}\KeywordTok{c}\NormalTok{(}\StringTok{"A"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"C"}\NormalTok{,}\StringTok{"A"}\NormalTok{,}\StringTok{"B"}\NormalTok{))}
 \end{Highlighting}
 \end{Shaded}
@@ -1853,17 +1853,17 @@ Vo? pode manipular um data.frame add ou eliminando colunas ou linhas, assim como
 \end{Shaded}
 
 \begin{verbatim}
-##             Nome Idade Sexo altura Conceito
-## 1      Lara Lins    17    F    180        A
-## 2   Mayara Costa    18    F    170        A
-## 3    Aline Souza    16    F    160        A
-## 4   Maria Santos    15    F    150        C
-## 5    Jos? Santos    15    M    140        A
-## 6 N?colas Barros    18    M    168        B
-## 7     Caio Pinto    21    M    172        C
+##                Nome Idade Sexo altura Conceito
+## 1      Melissa José    17    F    180        A
+## 2 Jennifer Linhares    18    F    170        A
+## 3 Gedilene Ponciano    16    F    160        A
+## 4   Edinar da Silva    15    F    150        C
+## 5      Osmar Emidio    15    M    140        A
+## 6    Jeeziel Vieira    18    M    168        B
+## 7        Caio Pinto    21    M    172        C
 \end{verbatim}
 
-Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazen?-lo em um outro objeto ou utilizar ?ndices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazena-lo em um outro objeto ou utilizar índices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1874,30 +1874,30 @@ Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.fr
 \end{Shaded}
 
 \begin{verbatim}
-##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140
+## 6    Jeeziel Vieira    18    M    168
 \end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dados[dados}\OperatorTok{$}\NormalTok{Sexo}\OperatorTok{==}\StringTok{"F"}\NormalTok{,] }\CommentTok{#exibir s? masculinos}
+\NormalTok{dados[dados}\OperatorTok{$}\NormalTok{Sexo}\OperatorTok{==}\StringTok{"F"}\NormalTok{,] }\CommentTok{#exibir só masculinos}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##           Nome Idade Sexo altura
-## 1    Lara Lins    17    F    180
-## 2 Mayara Costa    18    F    170
-## 3  Aline Souza    16    F    160
-## 4 Maria Santos    15    F    150
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
 \end{verbatim}
 
-A ordena??o das linhas de um \textbf{data.frame} segundo os dados contidos em determinadas coluna tamb?m ? extremamente ?til
+A ordenação das linhas de um \textbf{data.frame} segundo os dados contidos em determinadas coluna também é extremamente útil
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1906,13 +1906,13 @@ A ordena??o das linhas de um \textbf{data.frame} segundo os dados contidos em de
 \end{Shaded}
 
 \begin{verbatim}
-##             Nome Idade Sexo altura
-## 5    Jos? Santos    15    M    140
-## 4   Maria Santos    15    F    150
-## 3    Aline Souza    16    F    160
-## 6 N?colas Barros    18    M    168
-## 2   Mayara Costa    18    F    170
-## 1      Lara Lins    17    F    180
+##                Nome Idade Sexo altura
+## 5      Osmar Emidio    15    M    140
+## 4   Edinar da Silva    15    F    150
+## 3 Gedilene Ponciano    16    F    160
+## 6    Jeeziel Vieira    18    M    168
+## 2 Jennifer Linhares    18    F    170
+## 1      Melissa José    17    F    180
 \end{verbatim}
 
 \begin{Shaded}
@@ -1922,13 +1922,13 @@ A ordena??o das linhas de um \textbf{data.frame} segundo os dados contidos em de
 \end{Shaded}
 
 \begin{verbatim}
-##             Nome Idade Sexo altura
-## 1      Lara Lins    17    F    180
-## 2   Mayara Costa    18    F    170
-## 6 N?colas Barros    18    M    168
-## 3    Aline Souza    16    F    160
-## 4   Maria Santos    15    F    150
-## 5    Jos? Santos    15    M    140
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 6    Jeeziel Vieira    18    M    168
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
+## 5      Osmar Emidio    15    M    140
 \end{verbatim}
 
 \hypertarget{separando-um-data.frame-por-grupos}{%
@@ -1942,22 +1942,22 @@ A ordena??o das linhas de um \textbf{data.frame} segundo os dados contidos em de
 
 \begin{verbatim}
 ## $F
-##           Nome Idade Sexo altura
-## 1    Lara Lins    17    F    180
-## 2 Mayara Costa    18    F    170
-## 3  Aline Souza    16    F    160
-## 4 Maria Santos    15    F    150
+##                Nome Idade Sexo altura
+## 1      Melissa José    17    F    180
+## 2 Jennifer Linhares    18    F    170
+## 3 Gedilene Ponciano    16    F    160
+## 4   Edinar da Silva    15    F    150
 ## 
 ## $M
 ##             Nome Idade Sexo altura
-## 5    Jos? Santos    15    M    140
-## 6 N?colas Barros    18    M    168
+## 5   Osmar Emidio    15    M    140
+## 6 Jeeziel Vieira    18    M    168
 \end{verbatim}
 
 \hypertarget{lista}{%
 \section{Lista}\label{lista}}
 
-Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores matrizes, arrays, data.frames e ate mesmo outras listas.
+Lista são objetos muito úteis, pois são usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores, matrizes, arrays, data.frames e ate mesmo outras listas.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1982,12 +1982,12 @@ Lista s?o objetos muito ?t?is, pois s?o usados para combinar diferente estrutura
 ## [2,]    2    4
 \end{verbatim}
 
-Lista s?o construidas com o comando \textbf{list ()}. Quando voc? exibe um objeto que ? uma lista, cada componente ? mostrado com seu nome \textbf{\$} ou \textbf{{[}{]}}
+Lista são construidas com o comando \textbf{list ()}. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome \textbf{\$} ou \textbf{{[} {]}}
 
 \hypertarget{alguns-comandos-que-retornam-listas}{%
 \subsection{Alguns comandos que retornam listas}\label{alguns-comandos-que-retornam-listas}}
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \textbf{t.tes()}, que retorna um objeto que ? uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \textbf{t.tes( )}, que retorna um objeto que é uma lista.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2012,7 +2012,7 @@ Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode s
 ##       2.6       4.4
 \end{verbatim}
 
-Comprovar que ? uma lista
+Comprovar que é uma lista
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2071,22 +2071,6 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 \textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
-
-\hypertarget{methods}{%
-\chapter{Methods}\label{methods}}
-
-We describe our methods in this chapter.
-
-\hypertarget{applications}{%
-\chapter{Applications}\label{applications}}
-
-Some \emph{significant} applications are demonstrated in this chapter.
-
-\hypertarget{example-one}{%
-\section{Example one}\label{example-one}}
-
-\hypertarget{example-two}{%
-\section{Example two}\label{example-two}}
 
 \hypertarget{final-words}{%
 \chapter{Final Words}\label{final-words}}
