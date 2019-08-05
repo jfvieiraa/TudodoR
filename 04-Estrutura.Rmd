@@ -1,11 +1,10 @@
-
 # Entrada de dados
 
   Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**] (http://www.leg.ufpr.br/~paulojus/modificações) foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
   O diretorio  de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
 
-### Onde os dados devem estar? 
+## Onde os dados devem estar? 
  
 Para saber onde os diretorios estão basta digitar o comando `getwd()`
 ```{r}
