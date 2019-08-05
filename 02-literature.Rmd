@@ -1,16 +1,18 @@
 # Estruturas de Dados
 
+Este segundo Capitulo foi baseado no curso on-line _Code School Try R_ e no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
 ## Vetor
 
 Um vetor é simplesmente uma lista de valores.
-A maneira mais simples de usar um vetor é usando o comando `c( )`, que concatena elementos num mesmo objeto.
+A maneira mais simples de usar um vetor é usando o comando `c()`, que concatena elementos num mesmo objeto.
 Exemplo
 ```{r}
 x<- c(2,3,5,7,11) 
 x
 ```
 
-Os argumentos de `c( )` podem ser tanto elementos únicos quanto outros objetos. Adicione três números no **vetor x**
+Os argumentos de `c()` podem ser tanto elementos únicos quanto outros objetos. Adicione três números no **vetor x**
 
 ```{r}
 y<- c(x,13,17,19)
@@ -22,7 +24,7 @@ Se você precisa de um vetor com uma sequência de números, você pode cria-lo 
 ```{r}
 1:7
 ```
-Uma maneira mais versátil de fazer sequências é chamar a função `seq`. Vamos fazer o mesmo com `seq ( )` :
+Uma maneira mais versátil de fazer sequências é chamar a função `seq`. Vamos fazer o mesmo com `seq ()` :
 ```{r}
 seq(1:7)
 ```
@@ -34,7 +36,7 @@ seq(7,1,-0.5)
 ```
 
 Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: **numérico**, **caractere**, **complexo** e **lógico**. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
-As funções `mode( )` e `length( )` mostram o tipo e tamanho de um objeto, respectivamente.
+As funções `mode()` e `length()` mostram o tipo e tamanho de um objeto, respectivamente.
 
 ```{r}
 z<-c(1,3,5,7,11) 
@@ -80,10 +82,12 @@ Você pode usar um vetor entre os colchetes para acessar vários valores. Tente 
 longo[c(1,3)]
 
 ```
+
 Isso significa que você pode recuperar intervalos de valores. Obter a segunda a quarta palavras:
 ```{r}
 longo[2:4]
 ```
+
 Você também pode definir intervalos de valores; apenas forneça os valores em um vetor. Adicione valores 5 a 7:
 ```{r}
 longo[5:7] <- c(42,52,75)
@@ -95,7 +99,7 @@ longo[8]
 
 ### Nomes de vetores
 Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
-Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função `names ( )`, assim:
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função `names ()`, assim:
 
 ```{r}
 solo <- 1:3
@@ -109,14 +113,15 @@ solo["Silte"]<-20
 ```
 
 ### Plotando um vetor
-A função `barplot ( )` desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+A função `barplot ()` desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
 
 Agora, tente passar o vetor para a função `barplot`:
 ```{r}
 chuva <- c(20,50,85)
 barplot(chuva)
 ```
-Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função `names ( )` novamente:
+
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função `names ()` novamente:
 ```{r}
 names(chuva)<- c("Rondonópolis", "Maringá", "Cruzeiro do Sul")
 ```
@@ -125,8 +130,8 @@ Agora, se você digitar `barplot (chuva)` com o vetor novamente, você verá os 
 ```{r}
 barplot(chuva)
 ```
-Agora, tente chamar `barplot` em um vetor de números inteiros que variam de 1 a 100:
 
+Agora, tente chamar `barplot` em um vetor de números inteiros que variam de 1 a 100:
 ```{r}
 barplot(1:100)
 ```
@@ -141,6 +146,7 @@ Se você adicionar um escalar (um único valor) a um vetor, o escalar será adic
 a <- c(1, 2, 3)
 a + 1
 ```
+
 O mesmo se aplica na divisão, multiplicação ou qualquer outra aritmética básica. Tente dividir nosso vetor por 2:
 ```{r}
 a / 2
@@ -150,6 +156,7 @@ Agora, tente multiplicar nosso vetor por 2:
 ```{r}
 a*2
 ```
+
 Se você adicionar dois vetores, R irá tirar cada valor de cada vetor e adicioná-los. Vamos fazer um segundo vetor para você experimentar e armazená-lo na variável **b**
 
 Tente adicioná-lo ao vetor **a**:
@@ -284,7 +291,6 @@ matrix (a,3,4)
 ### Outras formas
 ```{r}
 matrix (a, 3)
-matrix (a, ,4)
 ```
 
 Note  que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padrão, está definido como **FALSE**, passe para **TRUE**
@@ -401,7 +407,7 @@ image(volcano)
 
 ### Mais informações sobre construções de Matrizes
 
-Há outros comandos que podem ser usados para construir matrizes como `cbind( )` e `rbind ( )`. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como `cbind()` e `rbind ()`. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 ```{r}
 a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
@@ -458,7 +464,7 @@ dados <-  data.frame(peso, trat=as.factor(trat))
 ## Array
 
   O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
-No R um array é definido utilizando a função `array( )`. 
+No R um array é definido utilizando a função `array()`. 
 ```{r}
 ar1 <- array(1:24, dim = c(3, 4, 2)) 
 ar1
@@ -595,7 +601,7 @@ str(dados)
 ```
 
 ### Manipulando um Data.frame
-Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos `cbind( )` e `rbind ( )` para adcionar colunas e linhas rescpectivamente, a um data.frame.
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos `cbind()` e `rbind ()` para adcionar colunas e linhas rescpectivamente, a um data.frame.
 
 ```{r}
 dados <- cbind (dados, #adicionar uma coluna
@@ -644,7 +650,7 @@ pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
 pes
 ```
 
-Lista são construidas com o comando `list ( )`. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
+Lista são construidas com o comando `list ()`. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
 
 ```{r include=FALSE}
 pes$nome
@@ -656,7 +662,7 @@ pes[3]
 
 ### Alguns comandos que retornam listas
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando `t.tes( )`, que retorna um objeto que é uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando `t.tes()`, que retorna um objeto que é uma lista.
 
 ```{r}
 x <- c(1,3,2,3,4)

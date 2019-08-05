@@ -75,7 +75,7 @@ x
 
 Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
 
-Vamos tentar usar a  função `sum( )`, para adicionar alguns números. Entrar:
+Vamos tentar usar a  função `sum()`, para adicionar alguns números. Entrar:
 
 ```{r}
 sum (2, 4, 6)
@@ -94,12 +94,12 @@ sqrt(16)
 ```
 
 ## Ajuda
-A função `help ( )` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
+A função `help ()` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
 ```{r message=TRUE}
 help (mean)
 ```
 
-A função `example ( )` traz exemplos de usos. Tente exibir exemplos para a função `min`:
+A função `example ()` traz exemplos de usos. Tente exibir exemplos para a função `min`:
 
 ```{r}
 example(min)
