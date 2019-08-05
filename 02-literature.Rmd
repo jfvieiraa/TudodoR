@@ -3,14 +3,14 @@
 ## Vetor
 
 Um vetor é simplesmente uma lista de valores.
-A maneira mais simples de usar um vetor é usando o comando **c( )**, que concatena elementos num mesmo objeto.
+A maneira mais simples de usar um vetor é usando o comando `c( )`, que concatena elementos num mesmo objeto.
 Exemplo
 ```{r}
 x<- c(2,3,5,7,11) 
 x
 ```
 
-Os argumentos de **c( )** podem ser tanto elementos únicos quanto outros objetos. Adicione os três primeiros numeros primos no **vetor x**
+Os argumentos de `c( )` podem ser tanto elementos únicos quanto outros objetos. Adicione três números no **vetor x**
 
 ```{r}
 y<- c(x,13,17,19)
@@ -22,19 +22,19 @@ Se você precisa de um vetor com uma sequência de números, você pode cria-lo 
 ```{r}
 1:7
 ```
-Uma maneira mais versátil de fazer sequências é chamar a função **seq**. Vamos fazer o mesmo com **seq**:
+Uma maneira mais versátil de fazer sequências é chamar a função `seq`. Vamos fazer o mesmo com `seq ( )` :
 ```{r}
 seq(1:7)
 ```
 
-A função **seq** também permite que você use incrementos diferentes de 1. Experimente com etapas de 0,5
+A função `seq` também permite que você use incrementos diferentes de 1. Experimente com etapas de 0.5.
 ```{r}
 seq(1,7,0.5)
 seq(7,1,-0.5) 
 ```
 
 Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: **numérico**, **caractere**, **complexo** e **lógico**. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
-As funções **mode( )** e **length( )** mostram o tipo e tamanho de um objeto, respectivamente
+As funções `mode( )` e `length( )` mostram o tipo e tamanho de um objeto, respectivamente.
 
 ```{r}
 z<-c(1,3,5,7,11) 
@@ -95,7 +95,7 @@ longo[8]
 
 ### Nomes de vetores
 Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
-Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função **names**, assim:
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função `names ( )`, assim:
 
 ```{r}
 solo <- 1:3
@@ -109,23 +109,23 @@ solo["Silte"]<-20
 ```
 
 ### Plotando um vetor
-A função **barplot** desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+A função `barplot ( )` desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
 
-Agora, tente passar o vetor para a função **barplot**:
+Agora, tente passar o vetor para a função `barplot`:
 ```{r}
 chuva <- c(20,50,85)
 barplot(chuva)
 ```
-Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função **names** novamente:
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função `names ( )` novamente:
 ```{r}
 names(chuva)<- c("Rondonópolis", "Maringá", "Cruzeiro do Sul")
 ```
 
-Agora, se você digitar **barplot** com o vetor novamente, você verá os rótulos:
+Agora, se você digitar `barplot (chuva)` com o vetor novamente, você verá os rótulos:
 ```{r}
 barplot(chuva)
 ```
-Agora, tente chamar barplot em um vetor de números inteiros que variam de 1 a 100:
+Agora, tente chamar `barplot` em um vetor de números inteiros que variam de 1 a 100:
 
 ```{r}
 barplot(1:100)
@@ -182,14 +182,14 @@ Funções que normalmente funcionam com escalares também podem operar em cada e
 sin(a)
 ```
 
-Agora tente obter as raízes quadradas com a função **sqrt**:
+Agora tente obter as raízes quadradas com a função `sqrt`:
 ```{r}
 sqrt(a)
 ```
 
 ### Parcelas de dispersão
 
-A função **plot** leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
+A função `plot` leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
 
 Vamos desenhar um gráfico que mostra a relação de números e seus senos.
 
@@ -199,7 +199,7 @@ x <- seq(1, 20, 0.1)
 y<-sin(x)
 ```
 
-Em seguida, basta chamar o **plot** com seus dois vetores:
+Em seguida, basta chamar a função `plot` com seus dois vetores:
 
 ```{r}
 plot(x, y)
@@ -233,21 +233,21 @@ sum(a)
 
 A soma é considerada _"não disponível"_ por padrão porque um dos valores do vetor foi **NA**. 
 
-Lembre-se desse comando para mostrar ajuda para uma função ? Apresente a ajuda para a função **sum**:
+Lembre-se desse comando para mostrar ajuda para uma função. Apresente a ajuda para a função `sum`:
 ```{r}
 help(sum)
 ```
 
-Como você vê na documentação, **sum** pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padrão, mas se você configurá-lo com **TRUE**, todos os argumentos **NA** serão removidos do vetor antes do cálculo ser executado.
+Como você vê na documentação, `sum` pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padrão, mas se você configurá-lo com **TRUE**, todos os argumentos **NA** serão removidos do vetor antes do cálculo ser executado.
 
-Tente rondar **sum** novamente, com o **na.rm** conjunto para **TRUE**:
+Tente rondar `sum` novamente, com o **na.rm** conjunto para **TRUE**:
 ```{r}
 sum(a, na.rm = T)
 ```
 
 ## Matrizes 
 
-Há varias formas de criar uma matriz. O comando **matriz()** recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
+Há varias formas de criar uma matriz. O comando `matriz()` recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
 Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
 
 ```{r}
@@ -286,15 +286,18 @@ matrix (a,3,4)
 matrix (a, 3)
 matrix (a, ,4)
 ```
+
 Note  que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padrão, está definido como **FALSE**, passe para **TRUE**
 ```{r}
 matrix(a,3, byrow=T)
 ```
+
 Os valores do vetor são copiados para a nova matriz, um por um. Você também pode reformular o próprio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
 ```{r}
 foliar <- 1:8
 ```
-A função **dim** define as **dim**ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
+
+A função `dim` define as **dim**ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
 Atribua novas dimens?es para **foliar** passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
 ```{r}
 dim(foliar) <- c(2,4)
@@ -339,7 +342,7 @@ Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com 
 foliar[,2:4]
 ```
 
-O comando **summary** pode ser usado para obter informações da matriz
+O comando `summary` pode ser usado para obter informações da matriz
 ```{r}
 summary(foliar)
 ```
@@ -363,12 +366,12 @@ Na quarta linha, sexta coluna, defina a elevação para 0:
 elevacao [4, 6] <- 0
 ```
  
-Mapa de contorno dos valores passando a matriz para a  função *contour*
+Mapa de contorno dos valores passando a matriz para a  função `contour`
 ```{r}
 contour(elevacao)
 ```
 
-Criar um gráfico em perspectiva 3D com a função **persp**:
+Criar um gráfico em perspectiva 3D com a função `persp`:
 ```{r}
 persp (elevacao)
 ```
@@ -391,14 +394,14 @@ Gráfico em perspectiva:
 persp(volcano, expand=0.2)
 ```
 
-A função **image** criar um mapa de calor:
+A função `image` criar um mapa de calor:
 ```{r}
 image(volcano)
 ```
 
 ### Mais informações sobre construções de Matrizes
 
-Há outros comandos que podem ser usados para construir matrizes como **cbind( )** e **rbind ( )**. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como `cbind( )` e `rbind ( )`. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 ```{r}
 a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
@@ -425,7 +428,7 @@ dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3"))
 dimnames(m1)
 ```
 
-Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com **margin.table( )**. 
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com `margin.table( )`. 
 
 ```{r}
  margin.table(m1, margin = 1)
@@ -455,7 +458,7 @@ dados <-  data.frame(peso, trat=as.factor(trat))
 ## Array
 
   O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
-No R um array é definido utilizando a **função array()**. 
+No R um array é definido utilizando a função `array( )`. 
 ```{r}
 ar1 <- array(1:24, dim = c(3, 4, 2)) 
 ar1
@@ -467,7 +470,7 @@ data(Titanic)
 Titanic
 ```
 
-Para obter maiores informações sobre estes dados digite:  **help(Titanic)**
+Para obter maiores informações sobre estes dados digite:  `help(Titanic)`
 
 Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
 
@@ -552,7 +555,7 @@ Ver atributos da tabela
 str(dados)
 ```
 
-Adicionar nome as linhas com o comando **row.names()**
+Adicionar nome as linhas com o comando `row.names()`
 ```{r}
 row.names(dados) <- c(1,2,3,4,5,6)
 dados
@@ -592,7 +595,7 @@ str(dados)
 ```
 
 ### Manipulando um Data.frame
-Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos **cbind( )** e **rbind ( )** para adcionar colunas e linhas rescpectivamente, a um data.frame.
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos `cbind( )` e `rbind ( )` para adcionar colunas e linhas rescpectivamente, a um data.frame.
 
 ```{r}
 dados <- cbind (dados, #adicionar uma coluna
@@ -641,7 +644,7 @@ pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
 pes
 ```
 
-Lista são construidas com o comando **list ()**. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
+Lista são construidas com o comando `list ( )`. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
 
 ```{r include=FALSE}
 pes$nome
@@ -653,7 +656,7 @@ pes[3]
 
 ### Alguns comandos que retornam listas
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando **t.tes( )**, que retorna um objeto que é uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando `t.tes( )`, que retorna um objeto que é uma lista.
 
 ```{r}
 x <- c(1,3,2,3,4)

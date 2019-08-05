@@ -29,7 +29,7 @@ Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
 6*5
 ```
 
-## Valores true/falso
+## Valores Booleanos
 
 Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
 Vamos tentar digitar uma expressões que nos dá um valor lógico:
@@ -75,31 +75,31 @@ x
 
 Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
 
-Vamos tentar usar a  função **sum**, para adicionar alguns números. Entrar:
+Vamos tentar usar a  função `sum( )`, para adicionar alguns números. Entrar:
 
 ```{r}
 sum (2, 4, 6)
 ```
 
-Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função **rep** e forneceria seu argumento **times**:
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função `rep` e forneceria seu argumento **times**:
 
 ```{r}
 rep("Engenharia Agrícola", times=3)
 ```
 
 
-Tente chamar a função **sqrt**  para obter a raiz quadrada 16.
+Tente chamar a função `sqrt`  para obter a raiz quadrada 16.
 ```{r}
 sqrt(16)
 ```
 
 ## Ajuda
-A função **help ( )** traz ajuda para a função desejada. Tente exibir ajuda para a função **mean**:
+A função `help ( )` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
 ```{r message=TRUE}
 help (mean)
 ```
 
-A função **example ( )** traz exemplos de usos. Tente exibir exemplos para a função **min**:
+A função `example ( )` traz exemplos de usos. Tente exibir exemplos para a função `min`:
 
 ```{r}
 example(min)

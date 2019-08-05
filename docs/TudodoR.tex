@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-08-02}
+    \date{2019-08-05}
 
 \usepackage{booktabs}
 
@@ -191,8 +191,8 @@ Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
 ## [1] 30
 \end{verbatim}
 
-\hypertarget{valores-truefalso}{%
-\section{Valores true/falso}\label{valores-truefalso}}
+\hypertarget{valores-booleanos}{%
+\section{Valores Booleanos}\label{valores-booleanos}}
 
 Algumas expressões retornam um ``valor lógico'': TRUE ou FALSE e/ou ``booleanos''.
 Vamos tentar digitar uma expressões que nos dá um valor lógico:
@@ -281,7 +281,7 @@ Tente imprimir o valor atual de x.
 
 Você pode chamar uma \textbf{função} digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses.
 
-Vamos tentar usar a função \textbf{sum}, para adicionar alguns números. Entrar:
+Vamos tentar usar a função \texttt{sum(\ )}, para adicionar alguns números. Entrar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -293,7 +293,7 @@ Vamos tentar usar a função \textbf{sum}, para adicionar alguns números. Entra
 ## [1] 12
 \end{verbatim}
 
-Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função \textbf{rep} e forneceria seu argumento \textbf{times}:
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função \texttt{rep} e forneceria seu argumento \textbf{times}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -305,7 +305,7 @@ Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você 
 ## [1] "Engenharia Agrícola" "Engenharia Agrícola" "Engenharia Agrícola"
 \end{verbatim}
 
-Tente chamar a função \textbf{sqrt} para obter a raiz quadrada 16.
+Tente chamar a função \texttt{sqrt} para obter a raiz quadrada 16.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -320,7 +320,7 @@ Tente chamar a função \textbf{sqrt} para obter a raiz quadrada 16.
 \hypertarget{ajuda}{%
 \section{Ajuda}\label{ajuda}}
 
-A função \textbf{help ( )} traz ajuda para a função desejada. Tente exibir ajuda para a função \textbf{mean}:
+A função \texttt{help\ (\ )} traz ajuda para a função desejada. Tente exibir ajuda para a função \texttt{mean}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -328,7 +328,7 @@ A função \textbf{help ( )} traz ajuda para a função desejada. Tente exibir a
 \end{Highlighting}
 \end{Shaded}
 
-A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos para a função \textbf{min}:
+A função \texttt{example\ (\ )} traz exemplos de usos. Tente exibir exemplos para a função \texttt{min}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -349,11 +349,11 @@ A função \textbf{example ( )} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.03747859 -0.71636728 -0.05874021  0.72363527  1.35000000
+## [1] -2.6544938 -0.7059881 -0.1104170  0.5748942  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -2.03747859 -0.71636728 -0.05874021  0.72363527  1.35000000 
+##         0%        25%        50%        75%       100% 
+## -2.6544938 -0.7059881 -0.1104170  0.5748942  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -403,7 +403,7 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 \section{Vetor}\label{vetor}}
 
 Um vetor é simplesmente uma lista de valores.
-A maneira mais simples de usar um vetor é usando o comando \textbf{c( )}, que concatena elementos num mesmo objeto.
+A maneira mais simples de usar um vetor é usando o comando \texttt{c(\ )}, que concatena elementos num mesmo objeto.
 Exemplo
 
 \begin{Shaded}
@@ -417,7 +417,7 @@ Exemplo
 ## [1]  2  3  5  7 11
 \end{verbatim}
 
-Os argumentos de \textbf{c( )} podem ser tanto elementos únicos quanto outros objetos. Adicione os três primeiros numeros primos no \textbf{vetor x}
+Os argumentos de \texttt{c(\ )} podem ser tanto elementos únicos quanto outros objetos. Adicione três números no \textbf{vetor x}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -445,7 +445,7 @@ Se você precisa de um vetor com uma sequência de números, você pode cria-lo 
 ## [1] 1 2 3 4 5 6 7
 \end{verbatim}
 
-Uma maneira mais versátil de fazer sequências é chamar a função \textbf{seq}. Vamos fazer o mesmo com \textbf{seq}:
+Uma maneira mais versátil de fazer sequências é chamar a função \texttt{seq}. Vamos fazer o mesmo com \texttt{seq\ (\ )} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -457,7 +457,7 @@ Uma maneira mais versátil de fazer sequências é chamar a função \textbf{seq
 ## [1] 1 2 3 4 5 6 7
 \end{verbatim}
 
-A função \textbf{seq} também permite que você use incrementos diferentes de 1. Experimente com etapas de 0,5
+A função \texttt{seq} também permite que você use incrementos diferentes de 1. Experimente com etapas de 0.5.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -480,7 +480,7 @@ A função \textbf{seq} também permite que você use incrementos diferentes de 
 \end{verbatim}
 
 Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: \textbf{numérico}, \textbf{caractere}, \textbf{complexo} e \textbf{lógico}. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
-As funções \textbf{mode( )} e \textbf{length( )} mostram o tipo e tamanho de um objeto, respectivamente
+As funções \texttt{mode(\ )} e \texttt{length(\ )} mostram o tipo e tamanho de um objeto, respectivamente.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -642,7 +642,7 @@ Agora tente acessar o oitavo valor do vetor:
 \subsection{Nomes de vetores}\label{nomes-de-vetores}}
 
 Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
-Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função \textbf{names}, assim:
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função \texttt{names\ (\ )}, assim:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -668,9 +668,9 @@ Agora, defina o valor atual para o \emph{silte} para um valor diferente usando o
 \hypertarget{plotando-um-vetor}{%
 \subsection{Plotando um vetor}\label{plotando-um-vetor}}
 
-A função \textbf{barplot} desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+A função \texttt{barplot\ (\ )} desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
 
-Agora, tente passar o vetor para a função \textbf{barplot}:
+Agora, tente passar o vetor para a função \texttt{barplot}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -680,7 +680,7 @@ Agora, tente passar o vetor para a função \textbf{barplot}:
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-32-1.pdf}
-Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função \textbf{names} novamente:
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função \texttt{names\ (\ )} novamente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -688,7 +688,7 @@ Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótul
 \end{Highlighting}
 \end{Shaded}
 
-Agora, se você digitar \textbf{barplot} com o vetor novamente, você verá os rótulos:
+Agora, se você digitar \texttt{barplot\ (chuva)} com o vetor novamente, você verá os rótulos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -697,7 +697,7 @@ Agora, se você digitar \textbf{barplot} com o vetor novamente, você verá os r
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-34-1.pdf}
-Agora, tente chamar barplot em um vetor de números inteiros que variam de 1 a 100:
+Agora, tente chamar \texttt{barplot} em um vetor de números inteiros que variam de 1 a 100:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -814,7 +814,7 @@ Funções que normalmente funcionam com escalares também podem operar em cada e
 ## [1] 0.8414710 0.9092974 0.1411200
 \end{verbatim}
 
-Agora tente obter as raízes quadradas com a função \textbf{sqrt}:
+Agora tente obter as raízes quadradas com a função \texttt{sqrt}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -829,7 +829,7 @@ Agora tente obter as raízes quadradas com a função \textbf{sqrt}:
 \hypertarget{parcelas-de-dispersao}{%
 \subsection{Parcelas de dispersão}\label{parcelas-de-dispersao}}
 
-A função \textbf{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
+A função \texttt{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
 
 Vamos desenhar um gráfico que mostra a relação de números e seus senos.
 
@@ -842,7 +842,7 @@ Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor com alguns
 \end{Highlighting}
 \end{Shaded}
 
-Em seguida, basta chamar o \textbf{plot} com seus dois vetores:
+Em seguida, basta chamar a função \texttt{plot} com seus dois vetores:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -892,7 +892,7 @@ Tente obter a soma de seus valores e veja qual é o resultado:
 
 A soma é considerada \emph{``não disponível''} por padrão porque um dos valores do vetor foi \textbf{NA}.
 
-Lembre-se desse comando para mostrar ajuda para uma função ? Apresente a ajuda para a função \textbf{sum}:
+Lembre-se desse comando para mostrar ajuda para uma função. Apresente a ajuda para a função \texttt{sum}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -900,9 +900,9 @@ Lembre-se desse comando para mostrar ajuda para uma função ? Apresente a ajuda
 \end{Highlighting}
 \end{Shaded}
 
-Como você vê na documentação, \textbf{sum} pode tomar um argumento opcional \textbf{na.rm},. ? configurado \textbf{FALSE} por padrão, mas se você configurá-lo com \textbf{TRUE}, todos os argumentos \textbf{NA} serão removidos do vetor antes do cálculo ser executado.
+Como você vê na documentação, \texttt{sum} pode tomar um argumento opcional \textbf{na.rm},. ? configurado \textbf{FALSE} por padrão, mas se você configurá-lo com \textbf{TRUE}, todos os argumentos \textbf{NA} serão removidos do vetor antes do cálculo ser executado.
 
-Tente rondar \textbf{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{TRUE}:
+Tente rondar \texttt{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{TRUE}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -917,7 +917,7 @@ Tente rondar \textbf{sum} novamente, com o \textbf{na.rm} conjunto para \textbf{
 \hypertarget{matrizes}{%
 \section{Matrizes}\label{matrizes}}
 
-Há varias formas de criar uma matriz. O comando \textbf{matriz()} recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
+Há varias formas de criar uma matriz. O comando \texttt{matriz()} recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
 Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
 
 \begin{Shaded}
@@ -1044,7 +1044,7 @@ Os valores do vetor são copiados para a nova matriz, um por um. Você também p
 \end{Highlighting}
 \end{Shaded}
 
-A função \textbf{dim} define as \textbf{dim}ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
+A função \texttt{dim} define as \textbf{dim}ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
 Atribua novas dimens?es para \textbf{foliar} passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
 
 \begin{Shaded}
@@ -1150,7 +1150,7 @@ Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com 
 ## [2,]    4    6    8
 \end{verbatim}
 
-O comando \textbf{summary} pode ser usado para obter informações da matriz
+O comando \texttt{summary} pode ser usado para obter informações da matriz
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1200,7 +1200,7 @@ Na quarta linha, sexta coluna, defina a elevação para 0:
 \end{Highlighting}
 \end{Shaded}
 
-Mapa de contorno dos valores passando a matriz para a função \emph{contour}
+Mapa de contorno dos valores passando a matriz para a função \texttt{contour}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1210,7 +1210,7 @@ Mapa de contorno dos valores passando a matriz para a função \emph{contour}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-71-1.pdf}
 
-Criar um gráfico em perspectiva 3D com a função \textbf{persp}:
+Criar um gráfico em perspectiva 3D com a função \texttt{persp}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1252,7 +1252,7 @@ Gráfico em perspectiva:
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-75-1.pdf}
 
-A função \textbf{image} criar um mapa de calor:
+A função \texttt{image} criar um mapa de calor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1265,7 +1265,7 @@ A função \textbf{image} criar um mapa de calor:
 \hypertarget{mais-informacoes-sobre-construcoes-de-matrizes}{%
 \subsection{Mais informações sobre construções de Matrizes}\label{mais-informacoes-sobre-construcoes-de-matrizes}}
 
-Há outros comandos que podem ser usados para construir matrizes como \textbf{cbind( )} e \textbf{rbind ( )}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como \texttt{cbind(\ )} e \texttt{rbind\ (\ )}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1335,7 +1335,7 @@ Opcionalmente matrizes podem ter nomes associados ás linhas e colunas (``rownam
 ## [1] "C1" "C2" "C3"
 \end{verbatim}
 
-Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com \textbf{margin.table( )}.
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com \texttt{margin.table(\ )}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1402,7 +1402,7 @@ Pode criar um fator usando o comando \textbf{factor()}, ou o comando \textbf{gl}
 \section{Array}\label{array}}
 
 O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
-No R um array é definido utilizando a \textbf{função array()}.
+No R um array é definido utilizando a função \texttt{array(\ )}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1474,7 +1474,7 @@ Veja agora um exemplo de dados já incluído no R no formato de array. Para ``ca
 ##   Crew  192     20
 \end{verbatim}
 
-Para obter maiores informações sobre estes dados digite: \textbf{help(Titanic)}
+Para obter maiores informações sobre estes dados digite: \texttt{help(Titanic)}
 
 Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
 
@@ -1694,7 +1694,7 @@ Ver atributos da tabela
 ##  $ alt  : num  180 170 160 150 140 168
 \end{verbatim}
 
-Adicionar nome as linhas com o comando \textbf{row.names()}
+Adicionar nome as linhas com o comando \texttt{row.names()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1835,7 +1835,7 @@ Acessando aos dados
 \hypertarget{manipulando-um-data.frame}{%
 \subsection{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
 
-Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \textbf{cbind( )} e \textbf{rbind ( )} para adcionar colunas e linhas rescpectivamente, a um data.frame.
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \texttt{cbind(\ )} e \texttt{rbind\ (\ )} para adcionar colunas e linhas rescpectivamente, a um data.frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1982,12 +1982,12 @@ Lista são objetos muito úteis, pois são usados para combinar diferente estrut
 ## [2,]    2    4
 \end{verbatim}
 
-Lista são construidas com o comando \textbf{list ()}. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome \textbf{\$} ou \textbf{{[} {]}}
+Lista são construidas com o comando \texttt{list\ (\ )}. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome \textbf{\$} ou \textbf{{[} {]}}
 
 \hypertarget{alguns-comandos-que-retornam-listas}{%
 \subsection{Alguns comandos que retornam listas}\label{alguns-comandos-que-retornam-listas}}
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \textbf{t.tes( )}, que retorna um objeto que é uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \texttt{t.tes(\ )}, que retorna um objeto que é uma lista.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2072,10 +2072,303 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
-\hypertarget{final-words}{%
-\chapter{Final Words}\label{final-words}}
+\hypertarget{diretorio-de-trabalho}{%
+\chapter{Diretório de trabalho}\label{diretorio-de-trabalho}}
 
-We have finished a nice book.
+O diretorio de trabalho ? aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho ? explicitado.
+
+\hypertarget{onde-os-dados-devem-estar}{%
+\subsection{Onde os dados devem estar?}\label{onde-os-dados-devem-estar}}
+
+Para saber onde os diretorios est?o para digitar o comando \textbf{getwd()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{getwd}\NormalTok{() }\CommentTok{#para verificar  diret?rio de trabalho}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "C:/Users/Jefferson/Documents/TudodoR/TudodoR"
+\end{verbatim}
+
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \textbf{setwd()}
+
+Outra forma de mudar o caminho ? com o comando:
+
+Este comando ir? abrir uma tela para que o usu?rio navegue nas pastas e escolha o arquivo a ser aberto.
+
+Voc? pode exibir o conteudo do diret?rio com o comando \textbf{dir()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dir}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
+##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-da.Rmd"        
+##  [7] "06-references.Rmd" "book.bib"          "docs"             
+## [10] "index.Rmd"         "LICENSE"           "packages.bib"     
+## [13] "preamble.tex"      "README.md"         "search_index.json"
+## [16] "style.css"         "TudodoR.Rmd"       "TudodoR.Rproj"    
+## [19] "TudodoR_files"
+\end{verbatim}
+
+\hypertarget{entrando-com-dados}{%
+\subsection{Entrando com dados}\label{entrando-com-dados}}
+
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados j? existem em outro formato para serem importados ou se ser?o digitados diretamente no R.
+
+A seguir s?o descritas 4 formas de entrada de dados com indica??o de quando cada uma das formas deve ser usada.
+
+\hypertarget{vetores}{%
+\subsubsection{Vetores}\label{vetores}}
+
+Podemos entrar com dados definindo vetores com o comando \textbf{c()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esta forma de entrada de dados ? conveniente quando se tem um pequeno n?mero de dados. Quando os dados tem algum elementos repetidos, n?meros sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{), }\DecValTok{5}\NormalTok{)  }\CommentTok{# cria vetor repetindo 5 vezes 2 e 5 alternadamente}
+\NormalTok{vetor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 2 5 2 5 2 5 2 5 2 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{), }\DataTypeTok{each=}\DecValTok{3}\NormalTok{)  }\CommentTok{# cria vetor repetindo 3 vezes 5 e depois 8}
+\NormalTok{vetor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 5 5 8 8 8
+\end{verbatim}
+
+\hypertarget{usando-a-funcao-scan}{%
+\subsubsection{Usando a função scan}\label{usando-a-funcao-scan}}
+
+Est? fun??o coloca o Rem modo prompt onde o usu?rio deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{scan}\NormalTok{()}
+
+\CommentTok{#1: 11}
+\CommentTok{#2: 24}
+\CommentTok{#3: 35}
+\CommentTok{#4: 29}
+\CommentTok{#5: 39}
+\CommentTok{#6: 47}
+\CommentTok{#7:}
+\CommentTok{#Read 6 items}
+
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## numeric(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#[1] 11 24 35 29 39 47}
+\end{Highlighting}
+\end{Shaded}
+
+Este formato ? mais ?gil que o anterior e ? conveniente para digitar vetores longos.
+
+\hypertarget{copiar-e-colar-usando-scan}{%
+\subsubsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan}}
+
+Pode usar o recurso ``copiar e colar'' com o comando \textbf{scan}.
+Ap?s copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando scan(), aperte \textgreater{}ENTER\textless{}, depois cole o texto e, aperte \textgreater{}ENTER\textless{} novamente.s
+
+\hypertarget{lendo-dados-atraves-da-area-de-transferencia}{%
+\subsubsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia}}
+
+Fun??es como scan(), read.table() e outras podem usades para ler os dados diretamente da ?rea de transfer?ncia passando-se a op??o \emph{``clipboard''} ao primeiro argumento.
+
+dados \textless{}- read.table(``clipboard'', header=TRUE, dec=``,'')
+
+\hypertarget{usando-a-funcao-edit}{%
+\subsubsection{9.3 Usando a função edit}\label{usando-a-funcao-edit}}
+
+O comando edit\textbf{(data.frame())} abre uma planilha para digita??o de dados que s?o armazanados como data-frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+Se voce precisar abrir novamente planilha com os dados, para fazer corre??es e/ou inserir mais dados use o comando \textbf{fix}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fix}\NormalTok{(dados)}
+\KeywordTok{head}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data frame with 0 columns and 0 rows
+\end{verbatim}
+
+\hypertarget{exemplo-1}{%
+\paragraph{Exemplo 1}\label{exemplo-1}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{teste <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{50}\NormalTok{)}
+\NormalTok{teste}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10 20 30 40 50
+\end{verbatim}
+
+Por?m houve um erro: o ?ltimo elemento deveria ser 60 e n?o 50, voc? n?o precisar criar novamente um objeto, use o comando \textbf{edit()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{teste2 <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(teste)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exemplo-2}{%
+\subsubsection{Exemplo 2}\label{exemplo-2}}
+
+Com uma planilha com tr?s colunas de dados. Os valores num?ricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando scan(). Abra o arquivo \emph{EVI-prec.xlsx}.
+
+Uma matrix com os dados poder? ser obtida com o comando \textbf{cbind}
+
+Os objeto dados ? um \textbf{data.frame}
+
+Transforme para um data.frame com o comando \textbf{as.data.frame}
+
+Poderia usar o comando data.frame direto
+
+\hypertarget{lendo-dados-de-um-arquivo-texto}{%
+\subsection{Lendo dados de um arquivo texto}\label{lendo-dados-de-um-arquivo-texto}}
+
+? muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a convers?o para dados texto. O comando \textbf{read.table ()} ? extremamente ?til por ler dados de um arquivo-texto no formato de um \textbf{data.frame}
+
+\hypertarget{usando-o-comando-read.table}{%
+\subsection{\texorpdfstring{Usando o Comando \emph{read.table ()}}{Usando o Comando read.table ()}}\label{usando-o-comando-read.table}}
+
+\textbf{Exemplo 1}: Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1}. Na pasta compartilhada \emph{3-DADOS\_ROTINAS} copie o arquivo para sua ?rea de trabalho (C:/R).
+
+\textbf{Exemplo 2}: Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2}.
+
+ex02 \textless{}- read.table(``exemplo2.txt'')
+ex02
+
+Note que este arquivo difere do anterior em um aspecto: os nomes das vari?veis est?o na primeira linha. Para que o R considere isto corretamente temos que inform?-lo disto com o argumento head=T. Portanto para importar este arquivo usamos:
+
+ex02 \textless{}- read.table(``exemplo02.txt'', head=T)
+ex02
+
+\#\#\#Dados do tipo CSV
+
+\textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
+
+ex03 \textless{}- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
+ex03
+
+Note que este arquivo difere do primeiro em outros aspectos.
+\emph{?read.table.}
+
+ex03 \textless{}- read.table( \# l? dados de um arquivo texto
+``exemplo3.csv'', \# nome do arquivo ou o caminho c:/R.exemplo3.csv
+head=T, \# primeira linha ? cabe?alho
+sep=``:'', \# separador de coluna
+dec=``,'') \# virgula como separador
+ex03 \# exibe o objeto
+
+\textbf{sep}: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
+\textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
+\textbf{header}: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+
+\#\#\#A seguir listamos algumas destas fun??es:
+
+\emph{read.dbf()} para arquivos DBASE
+\emph{read.epiinfo()} para arquivos .REC do Epi-Info
+\emph{read.mtp()} para arquivos ``Minitab Portable Worksheet''
+\emph{read.S()} para arquivos do S-PLUS, e restore.data() para ``dumps'' do S-PLUS
+\emph{read.spss()} para dados do SPSS
+\emph{read.systat()} para dados do SYSTAT
+\emph{read.dta()} para dados do STATA
+\emph{read.octave()} para dados do OCTAVE (um clone do MATLAB)
+
+\emph{read.csv}(file, header = TRUE, sep=``,'', dec=``.'')
+\emph{read.csv2}(file, header = TRUE, sep=``;'', dec=``,'')
+\emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.``)
+\emph{read.delim2}(file, header = TRUE, sep=''\t", dec=``,'')
+
+\#\#\#Lendo dados dispon?veis na web
+
+\textbf{Exemplo 4}: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+
+\#\#\#Lendo dados de uma planilha eletr?nica
+
+Com o \textbf{pacote xlsx} ? possivel ler os dados diretamente da planilha eletr?nica do Excel.
+
+install.packages("``)
+require(''xlsx")
+
+O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um \emph{data.frame}.
+
+dados \textless{}- read.xlsx(
+file=``C:/R/EVI\_Prec2.xlsx'', \#comando que l? planilhas
+sheetName = ``Conbea'', \#nome da planilha
+h=T) \#sem cabelho
+
+\#\#\#Exerc?cios
+
+1 Baixe os seguintes arquivos:
+DBC\_2rep\_mamoeiro\_alt\_93.txt
+DIC\_REG\_feijao\_peso\_169.txt
+DIC\_DB\_pinus\_alt
+
+Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o de sua escolha, e confira a estrutura dos dados com str().
+
+\#10 Salvar objetos de dados
+
+Salvar objetos de dados nos formatos \textbf{.txt} ou \textbf{.csv}
+fun??o: \textbf{write.table}
+sintaxe da fun??o:
+\emph{write.table}(x, file, sep="``, dec=''", rownames = T, col.names = T)
+
+principais argumentos:
+x - matriz ou data frame
+file - nome do arquivo ou caminho do arquivo
+sep - separador da coluna
+dec - separador deciminal
+
+\#\#Outras fun??es
+
+write.csv()
+write.csv2()
+write.xlsx ()
+
+\textbf{Exemplo:}
+write.xlsx(dados,``tabela salva.xlsx'')
 
 \bibliography{book.bib,packages.bib}
 
