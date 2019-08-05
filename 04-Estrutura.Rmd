@@ -1,6 +1,6 @@
 # Entrada de dados
 
-  Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**] (http://www.leg.ufpr.br/~paulojus/modificações) foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+  Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
   O diretorio  de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
 
@@ -30,13 +30,13 @@ dir()
 ```
 
  
-### Entrando com dados
+## Entrando com dados
 
 O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
 
-A seguir são descritas 4 formas de entrada de dados com indicão de quando cada uma das formas deve ser usada. 
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada. 
 
-#### Vetores
+### Vetores
 
 Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 2.
 
@@ -54,7 +54,7 @@ vetor <- rep(c(5,8), each=3)  # cria vetor repetindo 3 vezes 5 e depois 8
 vetor
 ```
 
-#### Usando a função scan
+### Usando a função scan
 
 Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:
 
@@ -76,12 +76,12 @@ y
 
 Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
 
-#### Copiar e colar usando scan()
+### Copiar e colar usando scan()
 
 Pode usar o recurso "copiar e colar" com o comando `scan`.
 Após copiar os dados (crtl+C), digite no **prompt**/**console** o comando `scan()`, aperte >ENTER<, depois cole o texto e, aperte >ENTER< novamente.
 
-#### Lendo dados através da área de transferência
+### Lendo dados através da área de transferência
 Funções como `scan()`, `read.table()` e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao *"clipboard"* ao primeiro argumento.
 
 ```{r eval=FALSE, include=FALSE}
@@ -89,7 +89,7 @@ dados <- read.table("clipboard", header=TRUE, dec=",")
 ```
 
 
-#### 9.3 Usando a função edit
+### Usando a função edit
 
 O comando `edit(data.frame())` abre uma planilha para digitação de dados que são armazanados como data-frames. 
 
@@ -106,7 +106,7 @@ fix(dados)
 head(dados)
 ```
 
-##### Exemplo 1
+#### Exemplo 1
 ```{r}
 teste <- c(10,20,30,40,50)
 teste
@@ -152,10 +152,9 @@ dados=data.frame (ano, chuva, evi)
  
  É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando `read.table ()` é extremamente útil por ler dados de um arquivo-texto no formato de um **data.frame**
  
+Usando o Comando `read.table ()`
 
-#### Usando o Comando `read.table ()`
-
-##### Exemplo 1 
+#### Exemplo 1 
 
 Como primeiro exemplo considere importar para o R os dados do arquivo texto *exemplo1.txt*. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
 
@@ -171,7 +170,7 @@ ex01 <- read.table("exemplo1.txt")
  
 ```
 
-##### Exemplo 2 
+#### Exemplo 2 
 Como primeiro exemplo considere importar para o R os dados  do arquivo de texto *exemplo2.txt*. 
 
 ```{r eval=FALSE, include=FALSE}
@@ -186,7 +185,7 @@ ex02 <- read.table("exemplo02.txt", head=T)
 ex02
 ```
 
-#### Dados do tipo CSV
+### Dados do tipo CSV
 
 **Exemplo 3**: Vamos utilizar um arquivo de tipo **CSV**.
 
@@ -243,7 +242,7 @@ require("xlsx")
 
 O comando *read.xlsx()*, do **pacote xlsx**, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um *data.frame*.
 
-```{r}
+```{r eval=FALSE, include=FALSE}
 dados <- read.xlsx(
                     file="C:/R/EVI_Prec2.xlsx",    #comando que lê planilhas
                     sheetName = "Conbea",          #nome da planilha
@@ -259,7 +258,7 @@ DIC_DB_pinus_alt
 
 Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o  de sua escolha, e confira a estrutura dos dados com str().
 
-#10 Salvar objetos de dados
+## Salvar objetos de dados
 
 Salvar objetos de dados nos formatos **.txt** ou **.csv**
 fun??o: **write.table**
@@ -272,7 +271,7 @@ file - nome do arquivo ou caminho do arquivo
 sep - separador da coluna
 dec - separador deciminal
 
-##Outras fun??es
+### Outras funções
 
 write.csv()
 write.csv2()

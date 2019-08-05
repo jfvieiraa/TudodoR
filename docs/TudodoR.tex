@@ -281,7 +281,7 @@ Tente imprimir o valor atual de x.
 
 Você pode chamar uma \textbf{função} digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses.
 
-Vamos tentar usar a função \texttt{sum(\ )}, para adicionar alguns números. Entrar:
+Vamos tentar usar a função \texttt{sum()}, para adicionar alguns números. Entrar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -320,7 +320,7 @@ Tente chamar a função \texttt{sqrt} para obter a raiz quadrada 16.
 \hypertarget{ajuda}{%
 \section{Ajuda}\label{ajuda}}
 
-A função \texttt{help\ (\ )} traz ajuda para a função desejada. Tente exibir ajuda para a função \texttt{mean}:
+A função \texttt{help\ ()} traz ajuda para a função desejada. Tente exibir ajuda para a função \texttt{mean}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -328,7 +328,7 @@ A função \texttt{help\ (\ )} traz ajuda para a função desejada. Tente exibir
 \end{Highlighting}
 \end{Shaded}
 
-A função \texttt{example\ (\ )} traz exemplos de usos. Tente exibir exemplos para a função \texttt{min}:
+A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos para a função \texttt{min}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -349,11 +349,11 @@ A função \texttt{example\ (\ )} traz exemplos de usos. Tente exibir exemplos p
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.6544938 -0.7059881 -0.1104170  0.5748942  1.3500000
+## [1] -3.0337400 -0.5512511 -0.1090364  0.5149960  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##         0%        25%        50%        75%       100% 
-## -2.6544938 -0.7059881 -0.1104170  0.5748942  1.3500000 
+## -3.0337400 -0.5512511 -0.1090364  0.5149960  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -399,11 +399,13 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 \hypertarget{estruturas-de-dados}{%
 \chapter{Estruturas de Dados}\label{estruturas-de-dados}}
 
+Este segundo Capitulo foi baseado no curso on-line \emph{Code School Try R} e no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
 \hypertarget{vetor}{%
 \section{Vetor}\label{vetor}}
 
 Um vetor é simplesmente uma lista de valores.
-A maneira mais simples de usar um vetor é usando o comando \texttt{c(\ )}, que concatena elementos num mesmo objeto.
+A maneira mais simples de usar um vetor é usando o comando \texttt{c()}, que concatena elementos num mesmo objeto.
 Exemplo
 
 \begin{Shaded}
@@ -417,7 +419,7 @@ Exemplo
 ## [1]  2  3  5  7 11
 \end{verbatim}
 
-Os argumentos de \texttt{c(\ )} podem ser tanto elementos únicos quanto outros objetos. Adicione três números no \textbf{vetor x}
+Os argumentos de \texttt{c()} podem ser tanto elementos únicos quanto outros objetos. Adicione três números no \textbf{vetor x}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -445,7 +447,7 @@ Se você precisa de um vetor com uma sequência de números, você pode cria-lo 
 ## [1] 1 2 3 4 5 6 7
 \end{verbatim}
 
-Uma maneira mais versátil de fazer sequências é chamar a função \texttt{seq}. Vamos fazer o mesmo com \texttt{seq\ (\ )} :
+Uma maneira mais versátil de fazer sequências é chamar a função \texttt{seq}. Vamos fazer o mesmo com \texttt{seq\ ()} :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -480,7 +482,7 @@ A função \texttt{seq} também permite que você use incrementos diferentes de 
 \end{verbatim}
 
 Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: \textbf{numérico}, \textbf{caractere}, \textbf{complexo} e \textbf{lógico}. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
-As funções \texttt{mode(\ )} e \texttt{length(\ )} mostram o tipo e tamanho de um objeto, respectivamente.
+As funções \texttt{mode()} e \texttt{length()} mostram o tipo e tamanho de um objeto, respectivamente.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -642,7 +644,7 @@ Agora tente acessar o oitavo valor do vetor:
 \subsection{Nomes de vetores}\label{nomes-de-vetores}}
 
 Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
-Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função \texttt{names\ (\ )}, assim:
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função \texttt{names\ ()}, assim:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -668,7 +670,7 @@ Agora, defina o valor atual para o \emph{silte} para um valor diferente usando o
 \hypertarget{plotando-um-vetor}{%
 \subsection{Plotando um vetor}\label{plotando-um-vetor}}
 
-A função \texttt{barplot\ (\ )} desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+A função \texttt{barplot\ ()} desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
 
 Agora, tente passar o vetor para a função \texttt{barplot}:
 
@@ -680,7 +682,8 @@ Agora, tente passar o vetor para a função \texttt{barplot}:
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-32-1.pdf}
-Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função \texttt{names\ (\ )} novamente:
+
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função \texttt{names\ ()} novamente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -697,6 +700,7 @@ Agora, se você digitar \texttt{barplot\ (chuva)} com o vetor novamente, você v
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-34-1.pdf}
+
 Agora, tente chamar \texttt{barplot} em um vetor de números inteiros que variam de 1 a 100:
 
 \begin{Shaded}
@@ -1008,19 +1012,6 @@ Agora chame \textbf{matrix} com o vetor, o número de linhas e o número de colu
 ## [3,]    3    6    9   12
 \end{verbatim}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\KeywordTok{matrix}\NormalTok{ (a, ,}\DecValTok{4}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-##      [,1] [,2] [,3] [,4]
-## [1,]    1    4    7   10
-## [2,]    2    5    8   11
-## [3,]    3    6    9   12
-\end{verbatim}
-
 Note que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento \textbf{byrow}, que, por padrão, está definido como \textbf{FALSE}, passe para \textbf{TRUE}
 
 \begin{Shaded}
@@ -1265,7 +1256,7 @@ A função \texttt{image} criar um mapa de calor:
 \hypertarget{mais-informacoes-sobre-construcoes-de-matrizes}{%
 \subsection{Mais informações sobre construções de Matrizes}\label{mais-informacoes-sobre-construcoes-de-matrizes}}
 
-Há outros comandos que podem ser usados para construir matrizes como \texttt{cbind(\ )} e \texttt{rbind\ (\ )}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+Há outros comandos que podem ser usados para construir matrizes como \texttt{cbind()} e \texttt{rbind\ ()}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1402,7 +1393,7 @@ Pode criar um fator usando o comando \textbf{factor()}, ou o comando \textbf{gl}
 \section{Array}\label{array}}
 
 O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
-No R um array é definido utilizando a função \texttt{array(\ )}.
+No R um array é definido utilizando a função \texttt{array()}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1835,7 +1826,7 @@ Acessando aos dados
 \hypertarget{manipulando-um-data.frame}{%
 \subsection{Manipulando um Data.frame}\label{manipulando-um-data.frame}}
 
-Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \texttt{cbind(\ )} e \texttt{rbind\ (\ )} para adcionar colunas e linhas rescpectivamente, a um data.frame.
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos \texttt{cbind()} e \texttt{rbind\ ()} para adcionar colunas e linhas rescpectivamente, a um data.frame.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1982,12 +1973,12 @@ Lista são objetos muito úteis, pois são usados para combinar diferente estrut
 ## [2,]    2    4
 \end{verbatim}
 
-Lista são construidas com o comando \texttt{list\ (\ )}. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome \textbf{\$} ou \textbf{{[} {]}}
+Lista são construidas com o comando \texttt{list\ ()}. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome \textbf{\$} ou \textbf{{[} {]}}
 
 \hypertarget{alguns-comandos-que-retornam-listas}{%
 \subsection{Alguns comandos que retornam listas}\label{alguns-comandos-que-retornam-listas}}
 
-Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \texttt{t.tes(\ )}, que retorna um objeto que é uma lista.
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando \texttt{t.tes()}, que retorna um objeto que é uma lista.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2072,19 +2063,21 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
-\hypertarget{diretorio-de-trabalho}{%
-\chapter{Diretório de trabalho}\label{diretorio-de-trabalho}}
+\hypertarget{entrada-de-dados}{%
+\chapter{Entrada de dados}\label{entrada-de-dados}}
 
-O diretorio de trabalho ? aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho ? explicitado.
+Este terceiro Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}} modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+O diretorio de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
 
 \hypertarget{onde-os-dados-devem-estar}{%
-\subsection{Onde os dados devem estar?}\label{onde-os-dados-devem-estar}}
+\section{Onde os dados devem estar?}\label{onde-os-dados-devem-estar}}
 
-Para saber onde os diretorios est?o para digitar o comando \textbf{getwd()}
+Para saber onde os diretorios estão basta digitar o comando \texttt{getwd()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
- \KeywordTok{getwd}\NormalTok{() }\CommentTok{#para verificar  diret?rio de trabalho}
+ \KeywordTok{getwd}\NormalTok{() }\CommentTok{#para verificar  diretório de trabalho}
 \end{Highlighting}
 \end{Shaded}
 
@@ -2092,13 +2085,13 @@ Para saber onde os diretorios est?o para digitar o comando \textbf{getwd()}
 ## [1] "C:/Users/Jefferson/Documents/TudodoR/TudodoR"
 \end{verbatim}
 
-Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \textbf{setwd()}
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \texttt{setwd()}
 
-Outra forma de mudar o caminho ? com o comando:
+Outra forma de mudar o caminho é com o comando:
 
-Este comando ir? abrir uma tela para que o usu?rio navegue nas pastas e escolha o arquivo a ser aberto.
+Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto.
 
-Voc? pode exibir o conteudo do diret?rio com o comando \textbf{dir()}
+Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2108,7 +2101,7 @@ Voc? pode exibir o conteudo do diret?rio com o comando \textbf{dir()}
 
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
-##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-da.Rmd"        
+##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
 ##  [7] "06-references.Rmd" "book.bib"          "docs"             
 ## [10] "index.Rmd"         "LICENSE"           "packages.bib"     
 ## [13] "preamble.tex"      "README.md"         "search_index.json"
@@ -2117,16 +2110,16 @@ Voc? pode exibir o conteudo do diret?rio com o comando \textbf{dir()}
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
-\subsection{Entrando com dados}\label{entrando-com-dados}}
+\section{Entrando com dados}\label{entrando-com-dados}}
 
-O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados j? existem em outro formato para serem importados ou se ser?o digitados diretamente no R.
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
 
-A seguir s?o descritas 4 formas de entrada de dados com indica??o de quando cada uma das formas deve ser usada.
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada.
 
 \hypertarget{vetores}{%
-\subsubsection{Vetores}\label{vetores}}
+\subsection{Vetores}\label{vetores}}
 
-Podemos entrar com dados definindo vetores com o comando \textbf{c()}.
+Podemos entrar com dados definindo vetores com o comando \texttt{c()}, conforme visto no capítulo 2.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2134,7 +2127,7 @@ Podemos entrar com dados definindo vetores com o comando \textbf{c()}.
 \end{Highlighting}
 \end{Shaded}
 
-Esta forma de entrada de dados ? conveniente quando se tem um pequeno n?mero de dados. Quando os dados tem algum elementos repetidos, n?meros sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2159,9 +2152,9 @@ Esta forma de entrada de dados ? conveniente quando se tem um pequeno n?mero de 
 \end{verbatim}
 
 \hypertarget{usando-a-funcao-scan}{%
-\subsubsection{Usando a função scan}\label{usando-a-funcao-scan}}
+\subsection{Usando a função scan}\label{usando-a-funcao-scan}}
 
-Est? fun??o coloca o Rem modo prompt onde o usu?rio deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
+Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2190,25 +2183,23 @@ Est? fun??o coloca o Rem modo prompt onde o usu?rio deve digitar cada dado segui
 \end{Highlighting}
 \end{Shaded}
 
-Este formato ? mais ?gil que o anterior e ? conveniente para digitar vetores longos.
+Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
 
 \hypertarget{copiar-e-colar-usando-scan}{%
-\subsubsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan}}
+\subsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan}}
 
-Pode usar o recurso ``copiar e colar'' com o comando \textbf{scan}.
-Ap?s copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando scan(), aperte \textgreater{}ENTER\textless{}, depois cole o texto e, aperte \textgreater{}ENTER\textless{} novamente.s
+Pode usar o recurso ``copiar e colar'' com o comando \texttt{scan}.
+Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater{}ENTER\textless{}, depois cole o texto e, aperte \textgreater{}ENTER\textless{} novamente.
 
 \hypertarget{lendo-dados-atraves-da-area-de-transferencia}{%
-\subsubsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia}}
+\subsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia}}
 
-Fun??es como scan(), read.table() e outras podem usades para ler os dados diretamente da ?rea de transfer?ncia passando-se a op??o \emph{``clipboard''} ao primeiro argumento.
-
-dados \textless{}- read.table(``clipboard'', header=TRUE, dec=``,'')
+Funções como \texttt{scan()}, \texttt{read.table()} e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao \emph{``clipboard''} ao primeiro argumento.
 
 \hypertarget{usando-a-funcao-edit}{%
-\subsubsection{9.3 Usando a função edit}\label{usando-a-funcao-edit}}
+\subsection{Usando a função edit}\label{usando-a-funcao-edit}}
 
-O comando edit\textbf{(data.frame())} abre uma planilha para digita??o de dados que s?o armazanados como data-frames.
+O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dados que são armazanados como data-frames.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2216,7 +2207,7 @@ O comando edit\textbf{(data.frame())} abre uma planilha para digita??o de dados 
 \end{Highlighting}
 \end{Shaded}
 
-Se voce precisar abrir novamente planilha com os dados, para fazer corre??es e/ou inserir mais dados use o comando \textbf{fix}.
+Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando \texttt{fix}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2230,7 +2221,7 @@ Se voce precisar abrir novamente planilha com os dados, para fazer corre??es e/o
 \end{verbatim}
 
 \hypertarget{exemplo-1}{%
-\paragraph{Exemplo 1}\label{exemplo-1}}
+\subsubsection{Exemplo 1}\label{exemplo-1}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2243,7 +2234,7 @@ Se voce precisar abrir novamente planilha com os dados, para fazer corre??es e/o
 ## [1] 10 20 30 40 50
 \end{verbatim}
 
-Por?m houve um erro: o ?ltimo elemento deveria ser 60 e n?o 50, voc? n?o precisar criar novamente um objeto, use o comando \textbf{edit()}
+Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando \texttt{edit()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2254,11 +2245,11 @@ Por?m houve um erro: o ?ltimo elemento deveria ser 60 e n?o 50, voc? n?o precisa
 \hypertarget{exemplo-2}{%
 \subsubsection{Exemplo 2}\label{exemplo-2}}
 
-Com uma planilha com tr?s colunas de dados. Os valores num?ricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando scan(). Abra o arquivo \emph{EVI-prec.xlsx}.
+Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando \texttt{scan()}. Abra o arquivo \emph{EVI-prec.xlsx}.
 
-Uma matrix com os dados poder? ser obtida com o comando \textbf{cbind}
+Uma matrix com os dados poderá ser obtida com o comando \texttt{cbind}
 
-Os objeto dados ? um \textbf{data.frame}
+Os objeto dados é um \textbf{data.frame}
 
 Transforme para um data.frame com o comando \textbf{as.data.frame}
 
@@ -2267,24 +2258,24 @@ Poderia usar o comando data.frame direto
 \hypertarget{lendo-dados-de-um-arquivo-texto}{%
 \subsection{Lendo dados de um arquivo texto}\label{lendo-dados-de-um-arquivo-texto}}
 
-? muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a convers?o para dados texto. O comando \textbf{read.table ()} ? extremamente ?til por ler dados de um arquivo-texto no formato de um \textbf{data.frame}
+É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando \texttt{read.table\ ()} é extremamente útil por ler dados de um arquivo-texto no formato de um \textbf{data.frame}
 
-\hypertarget{usando-o-comando-read.table}{%
-\subsection{\texorpdfstring{Usando o Comando \emph{read.table ()}}{Usando o Comando read.table ()}}\label{usando-o-comando-read.table}}
+Usando o Comando \texttt{read.table\ ()}
 
-\textbf{Exemplo 1}: Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1}. Na pasta compartilhada \emph{3-DADOS\_ROTINAS} copie o arquivo para sua ?rea de trabalho (C:/R).
+\hypertarget{exemplo-1-1}{%
+\subsubsection{Exemplo 1}\label{exemplo-1-1}}
 
-\textbf{Exemplo 2}: Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2}.
+Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1.txt}. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
 
-ex02 \textless{}- read.table(``exemplo2.txt'')
-ex02
+\hypertarget{exemplo-2-1}{%
+\subsubsection{Exemplo 2}\label{exemplo-2-1}}
 
-Note que este arquivo difere do anterior em um aspecto: os nomes das vari?veis est?o na primeira linha. Para que o R considere isto corretamente temos que inform?-lo disto com o argumento head=T. Portanto para importar este arquivo usamos:
+Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2.txt}.
 
-ex02 \textless{}- read.table(``exemplo02.txt'', head=T)
-ex02
+Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento \emph{head=T}. Portanto para importar este arquivo usamos:
 
-\#\#\#Dados do tipo CSV
+\hypertarget{dados-do-tipo-csv}{%
+\subsection{Dados do tipo CSV}\label{dados-do-tipo-csv}}
 
 \textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
 
@@ -2305,7 +2296,8 @@ ex03 \# exibe o objeto
 \textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
 \textbf{header}: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
 
-\#\#\#A seguir listamos algumas destas fun??es:
+\hypertarget{a-seguir-listamos-algumas-destas-funcoes}{%
+\subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funcoes}}
 
 \emph{read.dbf()} para arquivos DBASE
 \emph{read.epiinfo()} para arquivos .REC do Epi-Info
@@ -2321,25 +2313,20 @@ ex03 \# exibe o objeto
 \emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.``)
 \emph{read.delim2}(file, header = TRUE, sep=''\t", dec=``,'')
 
-\#\#\#Lendo dados dispon?veis na web
+\hypertarget{lendo-dados-disponiveis-na-web}{%
+\subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponiveis-na-web}}
 
 \textbf{Exemplo 4}: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
 
-\#\#\#Lendo dados de uma planilha eletr?nica
+\hypertarget{lendo-dados-de-uma-planilha-eletronica}{%
+\subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletronica}}
 
-Com o \textbf{pacote xlsx} ? possivel ler os dados diretamente da planilha eletr?nica do Excel.
-
-install.packages("``)
-require(''xlsx")
+Com o \textbf{pacote xlsx} é possivel ler os dados diretamente da planilha eletrônica do Excel.
 
 O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um \emph{data.frame}.
 
-dados \textless{}- read.xlsx(
-file=``C:/R/EVI\_Prec2.xlsx'', \#comando que l? planilhas
-sheetName = ``Conbea'', \#nome da planilha
-h=T) \#sem cabelho
-
-\#\#\#Exerc?cios
+\hypertarget{exercicios}{%
+\subsection{Exercícios}\label{exercicios}}
 
 1 Baixe os seguintes arquivos:
 DBC\_2rep\_mamoeiro\_alt\_93.txt
@@ -2348,7 +2335,8 @@ DIC\_DB\_pinus\_alt
 
 Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o de sua escolha, e confira a estrutura dos dados com str().
 
-\#10 Salvar objetos de dados
+\hypertarget{salvar-objetos-de-dados}{%
+\section{Salvar objetos de dados}\label{salvar-objetos-de-dados}}
 
 Salvar objetos de dados nos formatos \textbf{.txt} ou \textbf{.csv}
 fun??o: \textbf{write.table}
@@ -2361,7 +2349,8 @@ file - nome do arquivo ou caminho do arquivo
 sep - separador da coluna
 dec - separador deciminal
 
-\#\#Outras fun??es
+\hypertarget{outras-funcoes}{%
+\subsection{Outras funções}\label{outras-funcoes}}
 
 write.csv()
 write.csv2()
@@ -2369,6 +2358,17 @@ write.xlsx ()
 
 \textbf{Exemplo:}
 write.xlsx(dados,``tabela salva.xlsx'')
+
+\hypertarget{referencia-2}{%
+\section{Referência}\label{referencia-2}}
+
+MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
+
+\textbf{Prof.~Paulo Justiniando Ribeiro} \textgreater{}\url{http://www.leg.ufpr.br/~paulojus/}\textless{}
+
+\textbf{Prof.~Adriano Azevedo Filho} \textgreater{}\url{http://rpubs.com/adriano/esalq2012inicial}\textless{}
+
+\textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
 
 \bibliography{book.bib,packages.bib}
 
