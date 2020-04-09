@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.7646779 -0.6616912 -0.1714690  0.3342939  1.3500000
+## [1] -2.56626486 -0.47039713  0.01504719  0.61591437  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.7646779 -0.6616912 -0.1714690  0.3342939  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.56626486 -0.47039713  0.01504719  0.61591437  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2063,8 +2063,8 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
-\hypertarget{entrada-de-dados-teste-22-ds}{%
-\chapter{Entrada de dados teste 22 ds}\label{entrada-de-dados-teste-22-ds}}
+\hypertarget{entrada-de-dados-teste-22251-ds}{%
+\chapter{Entrada de dados teste 22251 ds}\label{entrada-de-dados-teste-22251-ds}}
 
 Este terceiro Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}} modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
@@ -2102,11 +2102,11 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "06-references.Rmd" "book.bib"          "docs"             
-## [10] "index.Rmd"         "LICENSE"           "packages.bib"     
-## [13] "preamble.tex"      "README.md"         "search_index.json"
-## [16] "style.css"         "TudodoR.Rmd"       "TudodoR.Rproj"    
-## [19] "TudodoR_files"
+##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
+## [10] "docs"              "index.Rmd"         "LICENSE"          
+## [13] "packages.bib"      "preamble.tex"      "README.md"        
+## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
+## [19] "TudodoR.Rproj"     "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -2361,6 +2361,313 @@ write.xlsx(dados,``tabela salva.xlsx'')
 
 \hypertarget{referencia-2}{%
 \section{Referência}\label{referencia-2}}
+
+MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
+
+\textbf{Prof.~Paulo Justiniando Ribeiro} \textgreater{}\url{http://www.leg.ufpr.br/~paulojus/}\textless{}
+
+\textbf{Prof.~Adriano Azevedo Filho} \textgreater{}\url{http://rpubs.com/adriano/esalq2012inicial}\textless{}
+
+\textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
+
+\hypertarget{entrada-de-dados-teste-22251d-ds}{%
+\chapter{Entrada de dados teste 22251d ds}\label{entrada-de-dados-teste-22251d-ds}}
+
+Este terceiro Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}} modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+O diretorio de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
+
+\hypertarget{onde-os-dados-devem-estar-1}{%
+\section{Onde os dados devem estar?}\label{onde-os-dados-devem-estar-1}}
+
+Para saber onde os diretorios estão basta digitar o comando \texttt{getwd()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{getwd}\NormalTok{() }\CommentTok{#para verificar  diretório de trabalho}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "D:/livro/TudodoRa"
+\end{verbatim}
+
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \texttt{setwd()}
+
+Outra forma de mudar o caminho é com o comando:
+
+Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto.
+
+Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{dir}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
+##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
+##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
+## [10] "docs"              "index.Rmd"         "LICENSE"          
+## [13] "packages.bib"      "preamble.tex"      "README.md"        
+## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
+## [19] "TudodoR.Rproj"     "TudodoR_files"
+\end{verbatim}
+
+\hypertarget{entrando-com-dados-1}{%
+\section{Entrando com dados}\label{entrando-com-dados-1}}
+
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
+
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada.
+
+\hypertarget{vetores-1}{%
+\subsection{Vetores}\label{vetores-1}}
+
+Podemos entrar com dados definindo vetores com o comando \texttt{c()}, conforme visto no capítulo 2.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{), }\DecValTok{5}\NormalTok{)  }\CommentTok{# cria vetor repetindo 5 vezes 2 e 5 alternadamente}
+\NormalTok{vetor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] 2 5 2 5 2 5 2 5 2 5
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{), }\DataTypeTok{each=}\DecValTok{3}\NormalTok{)  }\CommentTok{# cria vetor repetindo 3 vezes 5 e depois 8}
+\NormalTok{vetor}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 5 5 5 8 8 8
+\end{verbatim}
+
+\hypertarget{usando-a-funcao-scan-1}{%
+\subsection{Usando a função scan}\label{usando-a-funcao-scan-1}}
+
+Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y <-}\StringTok{ }\KeywordTok{scan}\NormalTok{()}
+
+\CommentTok{#1: 11}
+\CommentTok{#2: 24}
+\CommentTok{#3: 35}
+\CommentTok{#4: 29}
+\CommentTok{#5: 39}
+\CommentTok{#6: 47}
+\CommentTok{#7:}
+\CommentTok{#Read 6 items}
+
+\NormalTok{y}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## numeric(0)
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{#[1] 11 24 35 29 39 47}
+\end{Highlighting}
+\end{Shaded}
+
+Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
+
+\hypertarget{copiar-e-colar-usando-scan-1}{%
+\subsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan-1}}
+
+Pode usar o recurso ``copiar e colar'' com o comando \texttt{scan}.
+Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater ENTER\textless, depois cole o texto e, aperte \textgreater ENTER\textless{} novamente.
+
+\hypertarget{lendo-dados-atraves-da-area-de-transferencia-1}{%
+\subsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia-1}}
+
+Funções como \texttt{scan()}, \texttt{read.table()} e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao \emph{``clipboard''} ao primeiro argumento.
+
+\hypertarget{usando-a-funcao-edit-1}{%
+\subsection{Usando a função edit}\label{usando-a-funcao-edit-1}}
+
+O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dados que são armazanados como data-frames.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando \texttt{fix}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{fix}\NormalTok{(dados)}
+\KeywordTok{head}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## data frame with 0 columns and 0 rows
+\end{verbatim}
+
+\hypertarget{exemplo-1-2}{%
+\subsubsection{Exemplo 1}\label{exemplo-1-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{teste <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{50}\NormalTok{)}
+\NormalTok{teste}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 10 20 30 40 50
+\end{verbatim}
+
+Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando \texttt{edit()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{teste2 <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(teste)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{exemplo-2-2}{%
+\subsubsection{Exemplo 2}\label{exemplo-2-2}}
+
+Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando \texttt{scan()}. Abra o arquivo \emph{EVI-prec.xlsx}.
+
+Uma matrix com os dados poderá ser obtida com o comando \texttt{cbind}
+
+Os objeto dados é um \textbf{data.frame}
+
+Transforme para um data.frame com o comando \textbf{as.data.frame}
+
+Poderia usar o comando data.frame direto
+
+\hypertarget{lendo-dados-de-um-arquivo-texto-1}{%
+\subsection{Lendo dados de um arquivo texto}\label{lendo-dados-de-um-arquivo-texto-1}}
+
+É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando \texttt{read.table\ ()} é extremamente útil por ler dados de um arquivo-texto no formato de um \textbf{data.frame}
+
+Usando o Comando \texttt{read.table\ ()}
+
+\hypertarget{exemplo-1-3}{%
+\subsubsection{Exemplo 1}\label{exemplo-1-3}}
+
+Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1.txt}. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
+
+\hypertarget{exemplo-2-3}{%
+\subsubsection{Exemplo 2}\label{exemplo-2-3}}
+
+Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2.txt}.
+
+Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento \emph{head=T}. Portanto para importar este arquivo usamos:
+
+\hypertarget{dados-do-tipo-csv-1}{%
+\subsection{Dados do tipo CSV}\label{dados-do-tipo-csv-1}}
+
+\textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
+
+ex03 \textless- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
+ex03
+
+Note que este arquivo difere do primeiro em outros aspectos.
+\emph{?read.table.}
+
+ex03 \textless- read.table( \# l? dados de um arquivo texto
+``exemplo3.csv'', \# nome do arquivo ou o caminho c:/R.exemplo3.csv
+head=T, \# primeira linha ? cabe?alho
+sep=``:'', \# separador de coluna
+dec=``,'') \# virgula como separador
+ex03 \# exibe o objeto
+
+\textbf{sep}: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
+\textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
+\textbf{header}: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+
+\hypertarget{a-seguir-listamos-algumas-destas-funcoes-1}{%
+\subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funcoes-1}}
+
+\emph{read.dbf()} para arquivos DBASE
+\emph{read.epiinfo()} para arquivos .REC do Epi-Info
+\emph{read.mtp()} para arquivos ``Minitab Portable Worksheet''
+\emph{read.S()} para arquivos do S-PLUS, e restore.data() para ``dumps'' do S-PLUS
+\emph{read.spss()} para dados do SPSS
+\emph{read.systat()} para dados do SYSTAT
+\emph{read.dta()} para dados do STATA
+\emph{read.octave()} para dados do OCTAVE (um clone do MATLAB)
+
+\emph{read.csv}(file, header = TRUE, sep=``,'', dec=``.'')
+\emph{read.csv2}(file, header = TRUE, sep=``;'', dec=``,'')
+\emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.``)
+\emph{read.delim2}(file, header = TRUE, sep=''\t", dec=``,'')
+
+\hypertarget{lendo-dados-disponiveis-na-web-1}{%
+\subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponiveis-na-web-1}}
+
+\textbf{Exemplo 4}: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+
+\hypertarget{lendo-dados-de-uma-planilha-eletronica-1}{%
+\subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletronica-1}}
+
+Com o \textbf{pacote xlsx} é possivel ler os dados diretamente da planilha eletrônica do Excel.
+
+O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um \emph{data.frame}.
+
+\hypertarget{exercicios-1}{%
+\subsection{Exercícios}\label{exercicios-1}}
+
+1 Baixe os seguintes arquivos:
+DBC\_2rep\_mamoeiro\_alt\_93.txt
+DIC\_REG\_feijao\_peso\_169.txt
+DIC\_DB\_pinus\_alt
+
+Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o de sua escolha, e confira a estrutura dos dados com str().
+
+\hypertarget{salvar-objetos-de-dados-1}{%
+\section{Salvar objetos de dados}\label{salvar-objetos-de-dados-1}}
+
+Salvar objetos de dados nos formatos \textbf{.txt} ou \textbf{.csv}
+fun??o: \textbf{write.table}
+sintaxe da fun??o:
+\emph{write.table}(x, file, sep="``, dec=''", rownames = T, col.names = T)
+
+principais argumentos:
+x - matriz ou data frame
+file - nome do arquivo ou caminho do arquivo
+sep - separador da coluna
+dec - separador deciminal
+
+\hypertarget{outras-funcoes-1}{%
+\subsection{Outras funções}\label{outras-funcoes-1}}
+
+write.csv()
+write.csv2()
+write.xlsx ()
+
+\textbf{Exemplo:}
+write.xlsx(dados,``tabela salva.xlsx'')
+
+\hypertarget{referencia-3}{%
+\section{Referência}\label{referencia-3}}
 
 MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
 
