@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2019-08-05}
+    \date{2020-04-09}
 
 \usepackage{booktabs}
 
@@ -145,7 +145,7 @@ O material consultado encontra-se referenciado no final de cada capitulo.
 \hypertarget{intro}{%
 \chapter{R Básico}\label{intro}}
 
-Este primeiro Capitulo foi baseado no curso on-line \emph{Code School Try R} e \emph{Datacamp}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+Este primeigfgfdgdfgro lklkkkCapitulo foi baseado no curso on-line \emph{Code School Try R} e \emph{Datacamp}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
 Iremos abordar as expressões básicas do R.
 Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{true/false}. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
@@ -235,7 +235,7 @@ E outro valor lógico (sinal duplo de igualdade)
 \section{Variáveis}\label{variaveis}}
 
 Você pode armazenar valores em uma variável para usar mais tarde.
-Digite \textbf{x \textless{}- 28} para armazenar um valor em \textbf{x}.
+Digite \textbf{x \textless- 28} para armazenar um valor em \textbf{x}.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -3.0337400 -0.5512511 -0.1090364  0.5149960  1.3500000
+## [1] -2.7646779 -0.6616912 -0.1714690  0.3342939  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##         0%        25%        50%        75%       100% 
-## -3.0337400 -0.5512511 -0.1090364  0.5149960  1.3500000 
+## -2.7646779 -0.6616912 -0.1714690  0.3342939  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2063,8 +2063,8 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Site Interativo Datacamp} \textgreater{}\url{https://www.datacamp.com/}\textless{}
 
-\hypertarget{entrada-de-dados}{%
-\chapter{Entrada de dados}\label{entrada-de-dados}}
+\hypertarget{entrada-de-dados-teste-22-ds}{%
+\chapter{Entrada de dados teste 22 ds}\label{entrada-de-dados-teste-22-ds}}
 
 Este terceiro Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}} modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
@@ -2082,7 +2082,7 @@ Para saber onde os diretorios estão basta digitar o comando \texttt{getwd()}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "C:/Users/Jefferson/Documents/TudodoR/TudodoR"
+## [1] "D:/livro/TudodoRa"
 \end{verbatim}
 
 Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \texttt{setwd()}
@@ -2189,7 +2189,7 @@ Este formato é mais ágil que o anterior e mais conveniente para digitar vetore
 \subsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan}}
 
 Pode usar o recurso ``copiar e colar'' com o comando \texttt{scan}.
-Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater{}ENTER\textless{}, depois cole o texto e, aperte \textgreater{}ENTER\textless{} novamente.
+Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater ENTER\textless, depois cole o texto e, aperte \textgreater ENTER\textless{} novamente.
 
 \hypertarget{lendo-dados-atraves-da-area-de-transferencia}{%
 \subsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia}}
@@ -2279,13 +2279,13 @@ Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis 
 
 \textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
 
-ex03 \textless{}- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
+ex03 \textless- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
 ex03
 
 Note que este arquivo difere do primeiro em outros aspectos.
 \emph{?read.table.}
 
-ex03 \textless{}- read.table( \# l? dados de um arquivo texto
+ex03 \textless- read.table( \# l? dados de um arquivo texto
 ``exemplo3.csv'', \# nome do arquivo ou o caminho c:/R.exemplo3.csv
 head=T, \# primeira linha ? cabe?alho
 sep=``:'', \# separador de coluna
