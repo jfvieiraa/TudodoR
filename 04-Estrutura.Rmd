@@ -1,4 +1,4 @@
-# Entrada de dados teste 2
+# Entrada de dados teste 22
 
   Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
