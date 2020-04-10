@@ -1,0 +1,1457 @@
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+
+# Pré requisitos
+
+Material em construção.
+
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R.  Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina. 
+O material consultado encontra-se referenciado no final de cada capitulo.
+
+<!--chapter:end:index.Rmd-->
+
+# R Básico {#intro}
+
+Este primeigfgfdgdfgro lklkkkCapitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Iremos abordar as expressões básicas do R. 
+Começaremos simples, com **números**, **strings** e valores **true/false**. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
+
+## Expressões
+
+Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
+
+```{r matematica}
+2+8
+```
+
+Note que é impresso o resultado, 10.
+
+Digite a frase "Engenharia Agrícola"
+```{r}
+"Engenharia Agrícola"
+```
+
+Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
+```{r}
+6*5
+```
+
+## Valores Booleanos
+
+Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
+Vamos tentar digitar uma expressões que nos dá um valor lógico:
+```{r}
+7<12
+```
+
+E outro valor lógico (sinal duplo de igualdade)
+```{r}
+6+5==10
+```
+
+**T** e **F** são taquigrafia para TRUE e FALSE. Tente isso:
+```{r}
+F==FALSE
+```
+
+## Variáveis
+
+Você pode armazenar valores em uma variável para usar mais tarde. 
+Digite **x <- 28** para armazenar um valor em **x**.
+```{r}
+x<-28
+```
+
+Tende dividr **x** por **4**( **/** é o operador da divisão).
+```{r}
+x/4
+```
+
+Você pode retribuir qualquer valor a uma variável a qualquer momento. 
+Tente atribuir "Engenharia Agrícola"em x.
+```{r}
+x <- "Engenharia Agrícola"
+```
+
+Tente imprimir o valor atual de x.
+```{r}
+x
+```
+
+## Funções
+
+Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
+
+Vamos tentar usar a  função `sum()`, para adicionar alguns números. Entrar:
+
+```{r}
+sum (2, 4, 6)
+```
+
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função `rep` e forneceria seu argumento **times**:
+
+```{r}
+rep("Engenharia Agrícola", times=3)
+```
+
+
+Tente chamar a função `sqrt`  para obter a raiz quadrada 16.
+```{r}
+sqrt(16)
+```
+
+## Ajuda
+A função `help ()` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
+```{r message=TRUE}
+help (mean)
+```
+
+A função `example ()` traz exemplos de usos. Tente exibir exemplos para a função `min`:
+
+```{r}
+example(min)
+```
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
+
+<!--chapter:end:01-intro.Rmd-->
+
+# Estruturas de Dados
+
+Este segundo Capitulo foi baseado no curso on-line _Code School Try R_ e no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+## Vetor
+
+Um vetor é simplesmente uma lista de valores.
+A maneira mais simples de usar um vetor é usando o comando `c()`, que concatena elementos num mesmo objeto.
+Exemplo
+```{r}
+x<- c(2,3,5,7,11) 
+x
+```
+
+Os argumentos de `c()` podem ser tanto elementos únicos quanto outros objetos. Adicione três números no **vetor x**
+
+```{r}
+y<- c(x,13,17,19)
+y
+```
+
+### Vetores de Sequência
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação _start:end_. Vamos fazer um vetor com valores de 1 a 7:
+```{r}
+1:7
+```
+Uma maneira mais versátil de fazer sequências é chamar a função `seq`. Vamos fazer o mesmo com `seq ()` :
+```{r}
+seq(1:7)
+```
+
+A função `seq` também permite que você use incrementos diferentes de 1. Experimente com etapas de 0.5.
+```{r}
+seq(1,7,0.5)
+seq(7,1,-0.5) 
+```
+
+Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: **numérico**, **caractere**, **complexo** e **lógico**. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
+As funções `mode()` e `length()` mostram o tipo e tamanho de um objeto, respectivamente.
+
+```{r}
+z<-c(1,3,5,7,11) 
+mode (z)
+length(z)
+
+a <- "Angela"
+b<-TRUE; 
+c<-8i #objetos com tipos diferentes
+mode(a); 
+mode(b); 
+mode(c) #exibe os atributos "tipo" dos objetos 
+```
+
+Se o vetor é muito longo e não "cabe" em uma linha o R vai usar as linhas seguintes para continuar imprimindo o vetor. 
+
+```{r}
+longo<-100:50 #sequência decrescente de 100 a 50
+longo #exibe o conteúdo do objeto 
+```
+Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que [1] indica que o primeiro elemento do vetor estão naquela linha, [17] indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
+assim por diante. 
+
+Você pode recuperar um valor individual dentro de um vetor fornecendo seu índice numérico entre colchetes. Tente obter o valor 18:
+```{r}
+longo[18]
+```
+
+Muitas línguagem de programação iniciam índices de matriz em 0, mas os índices vetoriais de R começam em 1. Obtenha o primeiro valor digitando:
+```{r}
+longo[1]
+```
+Você pode atribuir novos valores dentro de um vetor existente. Tente mudar o terceiro valor **28**:
+```{r}
+longo [3] <- 28
+```
+Se você adicionar novos valores ao final, o vetor aumentará para acomodá-los. Vamos adicionar um valor no final
+```{r}
+longo[101] <- 83
+```
+Você pode usar um vetor entre os colchetes para acessar vários valores. Tente obter a primeira e a terceira palavras
+```{r}
+longo[c(1,3)]
+
+```
+
+Isso significa que você pode recuperar intervalos de valores. Obter a segunda a quarta palavras:
+```{r}
+longo[2:4]
+```
+
+Você também pode definir intervalos de valores; apenas forneça os valores em um vetor. Adicione valores 5 a 7:
+```{r}
+longo[5:7] <- c(42,52,75)
+```
+Agora tente acessar o oitavo valor do vetor:
+```{r}
+longo[8]
+```
+
+### Nomes de vetores
+Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função `names ()`, assim:
+
+```{r}
+solo <- 1:3
+names(solo) <- c("Argila", "Areia","Silte" )
+solo
+```
+
+Agora, defina o valor atual para o _silte_  para um valor diferente usando o nome em vez da posição.
+```{r}
+solo["Silte"]<-20
+```
+
+### Plotando um vetor
+A função `barplot ()` desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+
+Agora, tente passar o vetor para a função `barplot`:
+```{r}
+chuva <- c(20,50,85)
+barplot(chuva)
+```
+
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função `names ()` novamente:
+```{r}
+names(chuva)<- c("Rondonópolis", "Maringá", "Cruzeiro do Sul")
+```
+
+Agora, se você digitar `barplot (chuva)` com o vetor novamente, você verá os rótulos:
+```{r}
+barplot(chuva)
+```
+
+Agora, tente chamar `barplot` em um vetor de números inteiros que variam de 1 a 100:
+```{r}
+barplot(1:100)
+```
+
+### Operações matemáticas
+
+A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável **a**
+
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+
+```{r}
+a <- c(1, 2, 3)
+a + 1
+```
+
+O mesmo se aplica na divisão, multiplicação ou qualquer outra aritmética básica. Tente dividir nosso vetor por 2:
+```{r}
+a / 2
+```
+
+Agora, tente multiplicar nosso vetor por 2:
+```{r}
+a*2
+```
+
+Se você adicionar dois vetores, R irá tirar cada valor de cada vetor e adicioná-los. Vamos fazer um segundo vetor para você experimentar e armazená-lo na variável **b**
+
+Tente adicioná-lo ao vetor **a**:
+
+```{r}
+b <- c(4,5,6)
+a+b
+```
+
+Agora tente subtrair b de a:
+```{r}
+a-b
+```
+
+Você também pode tirar dois vetores e comparar cada item. Veja quais valores nos vetores são iguais aos de um segundo vetor
+```{r}
+a == c(1, 99, 3)
+```
+
+Observe que R não testou se os vetores inteiros eram iguais; verificou cada valor no vetor a contra o valor no mesmo índice no nosso novo vetor.
+
+Verifique se cada valor nos vetores são menores que o valor correspondente em outro vetor:
+
+```{r}
+a < c(1, 99, 3)
+```
+
+Funções que normalmente funcionam com escalares também podem operar em cada elemento de um vetor. Tente obter o seno de cada valor em nosso vetor:
+```{r}
+sin(a)
+```
+
+Agora tente obter as raízes quadradas com a função `sqrt`:
+```{r}
+sqrt(a)
+```
+
+### Parcelas de dispersão
+
+A função `plot` leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
+
+Vamos desenhar um gráfico que mostra a relação de números e seus senos.
+
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor  com alguns valores fracionários entre 0 e 20, e armazenó-lo na variável x. E na variável y um segundo vetor com os senos de x:
+```{r}
+x <- seq(1, 20, 0.1)
+y<-sin(x)
+```
+
+Em seguida, basta chamar a função `plot` com seus dois vetores:
+
+```{r}
+plot(x, y)
+```
+
+Observa=se sobre o gráfico que os valores do primeiro argumento **(x)** são usados para o eixo horizontal, e os valores do segundo **(y)** para o vertical.
+
+Vamos criar um vetor com alguns valores negativos e positivos para você e armazenó-lo na variável **valores**.
+
+Também criaremos um segundo vetor com os valores absolutos do primeiro e armazenó-lo na variável **absoluto**.
+
+Tente traçar os vetores, com os **valores** no eixo horizontal e no eixo vertical os absoluto.
+
+```{r}
+valores <- -10:10
+absoluto<- abs(valores)
+plot(valores, absoluto)
+```
+
+### Valores Faltantes
+
+As vezes, ao trabalhar com dados de amostra, um determinado valor não está disponível. Mas não é uma boa idéia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra não estava disponível: **NA**. Muitas funções que funcionam com vetores tratam esse valor especialmente.
+
+Vamos criar um vetor para você com uma amostra ausente e armazenó-lo na variével **a**.
+
+Tente obter a soma de seus valores e veja qual é o resultado:
+```{r}
+a <- c(1, 3, NA, 7, 9)
+sum(a)
+```
+
+A soma é considerada _"não disponível"_ por padrão porque um dos valores do vetor foi **NA**. 
+
+Lembre-se desse comando para mostrar ajuda para uma função. Apresente a ajuda para a função `sum`:
+```{r}
+help(sum)
+```
+
+Como você vê na documentação, `sum` pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padrão, mas se você configurá-lo com **TRUE**, todos os argumentos **NA** serão removidos do vetor antes do cálculo ser executado.
+
+Tente rondar `sum` novamente, com o **na.rm** conjunto para **TRUE**:
+```{r}
+sum(a, na.rm = T)
+```
+
+## Matrizes 
+
+Há varias formas de criar uma matriz. O comando `matriz()` recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
+Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
+
+```{r}
+matrix(0,3,4)
+```
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, você precisará de um vetor de 12 itens. 
+
+```{r}
+a <- (1:12)
+
+print (a)
+```
+
+Agora chame matrix com o vetor, o número de linhas e o número de colunas:
+
+```{r}
+matrix (a,# chama o vetor
+        3,# linha
+        4) #coluna
+```
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, você precisará de um vetor de 12 itens. Nós vamos fazer isso para você agora:
+```{r}
+a <-1:12
+a
+```
+
+Agora chame **matrix** com o vetor, o número de linhas e o número de colunas:
+```{r}
+matrix (a,3,4)
+```
+
+### Outras formas
+```{r}
+matrix (a, 3)
+```
+
+Note  que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padrão, está definido como **FALSE**, passe para **TRUE**
+```{r}
+matrix(a,3, byrow=T)
+```
+
+Os valores do vetor são copiados para a nova matriz, um por um. Você também pode reformular o próprio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
+```{r}
+foliar <- 1:8
+```
+
+A função `dim` define as **dim**ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
+Atribua novas dimens?es para **foliar** passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
+```{r}
+dim(foliar) <- c(2,4)
+```
+
+O vetor não é mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a função **matrix** para criar uma matriz **5x5**, com seus campos inicializados para qualquer valor que você desejar.
+```{r}
+matrix (2,5,5)
+```
+
+### Acesso a Matriz
+
+Obter valores de matrizes não é diferente de vetores; você só precisa fornecer dois índices em vez de um. Abra a  matriz foliar:
+
+```{r}
+print (foliar)
+```
+
+Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
+```{r}
+foliar[2,3]
+```
+
+O valor da primeira linha da quarta coluna
+```{r}
+foliar[1,4]
+```
+
+Você pode obter uma linha inteira da matriz omitindo o índice da coluna (mas mantenha a virgula). Tente recuperar a segunda linha:
+```{r}
+foliar[2,]
+```
+
+Para obter uma coluna inteira, omita o índice da linha. Recupere a quarta coluna:
+```{r}
+foliar[,4]
+```
+
+Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com seus índices. Tente recuperar as colunas de 2 a 4:
+```{r}
+foliar[,2:4]
+```
+
+O comando `summary` pode ser usado para obter informações da matriz
+```{r}
+summary(foliar)
+```
+
+Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um vetor
+```{r}
+summary(as.vector(foliar))
+```
+
+
+### Visualizações em dados matriciais
+
+Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:
+```{r}
+elevacao <- matrix (1,10,10)
+```
+
+Na quarta linha, sexta coluna, defina a elevação para 0:
+ 
+```{r}
+elevacao [4, 6] <- 0
+```
+ 
+Mapa de contorno dos valores passando a matriz para a  função `contour`
+```{r}
+contour(elevacao)
+```
+
+Criar um gráfico em perspectiva 3D com a função `persp`:
+```{r}
+persp (elevacao)
+```
+
+Podemos consertar isso especificando nosso próprio valor para o parâmetro **expand**.
+```{r}
+persp (elevacao, expand =0.2)
+```
+
+R inclui alguns conjuntos de dados de amostra. Um deles é o  _volcanoum_ mapa 3D de um vulcão adormecido da Nova Zelândia.
+
+É simplesmente uma matriz de 87x61 com valores de elevão, mas mostra o poder das visualizações de matriz do R. Criar um mapa de calor:
+
+```{r}
+contour(volcano)
+```
+
+Gráfico em perspectiva:
+```{r}
+persp(volcano, expand=0.2)
+```
+
+A função `image` criar um mapa de calor:
+```{r}
+image(volcano)
+```
+
+### Mais informações sobre construções de Matrizes
+
+Há outros comandos que podem ser usados para construir matrizes como `cbind()` e `rbind ()`. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+
+```{r}
+a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
+a
+```
+
+```{r}
+b <- cbind (a,1:5) #adicionar uma terceira coluna
+b
+```
+
+```{r}
+c<- rbind(b,c(28,28,28))
+c
+```
+
+
+Opcionalmente matrizes podem ter nomes associados ás linhas e colunas ("rownames"e "colnames"). Cada um destes componentes da matrix é um vetor de nomes.
+
+```{r}
+m1 <- matrix(1:12, ncol = 3) 
+
+dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3")) 
+dimnames(m1)
+```
+
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com `margin.table( )`. 
+
+```{r}
+ margin.table(m1, margin = 1)
+ margin.table(m1, margin = 2)
+ apply(m1, 2, median)
+ 
+```
+
+
+## Fatores
+
+Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma análise de experimentos devemos declarar este vetor como um **"fator"**. 
+Pode criar um fator usando o comando **factor()**, ou o comando **gl**.
+```{r}
+factor(rep(paste("T", 1:3, sep = ""), c(4, 4, 3)))
+```
+
+```{r}
+peso  <- c(134.8, 139.7, 147.6, 132.3, 161.7, 157.7, 150.3, 144.7,
+           160.7, 172.7, 163.4, 161.3, 169.8, 168.2, 160.7, 161.0,
+           165.7, 160.0, 158.2, 151.0, 171.8, 157.3, 150.4, 160.4,
+           154.5, 160.4, 148.8, 154.0)
+trat  <- rep(seq(0,300,50), each=4)  #?each
+dados <-  data.frame(peso, trat=as.factor(trat))
+```
+
+## Array
+
+  O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
+No R um array é definido utilizando a função `array()`. 
+```{r}
+ar1 <- array(1:24, dim = c(3, 4, 2)) 
+ar1
+```
+
+Veja agora um exemplo de dados já incluído no R no formato de array. Para "carregar" e visualizar os dados digite:
+```{r}
+data(Titanic) 
+Titanic
+```
+
+Para obter maiores informações sobre estes dados digite:  `help(Titanic)`
+
+Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+
+1. Quantas pessoas havia no total?
+```{r}
+sum(Titanic)
+```
+
+2. Quantas pessoas havia na tripulação (crew)?
+
+```{r}
+sum(Titanic[4, , , ])
+```
+
+3. Quantas pessoas sobreviveram e quantas morreram?
+
+```{r}
+apply(Titanic, 4, sum)
+```
+
+4. Quais as proporções de sobreviventes entre homens e mulheres?
+
+```{r}
+margin.table(Titanic, margin = 1)
+```
+
+```{r}
+margin.table(Titanic, margin = 2)
+```
+
+```{r}
+margin.table(Titanic, margin = 3)
+```
+
+```{r}
+margin.table(Titanic, margin = 4)
+```
+
+Esta função admite ainda índices múltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e não sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+
+```{r}
+margin.table(Titanic, margin = c(2, 4))
+prop.table(margin.table(Titanic, margin = c(2, 4)), margin = 1)
+prop.table(margin.table(Titanic, margin = c(2, 1)), margin = 1)
+```
+
+## Data.frame
+
+Os datas.frames são muitos semelhantes ás matrizes, pois têm linhas e colunas e, portanto, duas dimensões. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser numérica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Criar o vetor nomes
+```{r}
+nome <- c("Melissa José",
+          "Jennifer Linhares",
+          "Gedilene Ponciano",
+          "Edinar da Silva",
+          "Osmar Emidio",
+          "Jeeziel Vieira")
+```
+
+Criar vetor idade
+```{r}
+idade <- c(17,18,16,15,15,18)
+```
+   
+Criar vetor sexo (categoria=fator)
+```{r}
+sexo <- factor(c("F","F","F","F","M","M"))
+```
+
+Criar vetor altura
+```{r}
+alt <- c(180,170,160,150,140,168)
+```
+
+Reunir tudo em um data.frame
+```{r}
+dados <- data.frame(nome, idade, sexo, alt)
+```
+
+Ver atributos da tabela
+```{r}
+str(dados)
+```
+
+Adicionar nome as linhas com o comando `row.names()`
+```{r}
+row.names(dados) <- c(1,2,3,4,5,6)
+dados
+```
+```{r}
+names(dados) <- c("Nome", "Idade", "Sexo", "altura")
+dados
+```
+
+### Índice dos Data.frames
+Buscar elementos 
+```{r}
+dados[2,1] #elemento da  linha  2, coluna 1
+dados[2,] #toda linha dois
+
+```
+
+Repare que apesar de "Nomes" ter sido criado como vetor de caracterer o R passou a entender como um fator dentro do data.frame.
+```{r}
+dados[,1]
+```
+
+Transformar para caracterer
+```{r}
+dados[,1] <- as.character(dados[,1])
+dados[,1]
+```
+
+Acessando aos dados
+```{r}
+dados$Nome
+dados$Nome[3]
+dados$Nome [1:3]
+```
+```{r}
+str(dados)
+```
+
+### Manipulando um Data.frame
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos `cbind()` e `rbind ()` para adcionar colunas e linhas rescpectivamente, a um data.frame.
+
+```{r}
+dados <- cbind (dados, #adicionar uma coluna
+               Conceito=c("A","A","A","C","A","B"))
+```
+
+```{r}
+dados <- rbind (dados, #adicionar uma linha
+                "7"= c("Caio Pinto", 21, "M", 172, "C"))
+dados
+```
+
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazena-lo em um outro objeto ou utilizar índices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+
+```{r}
+dados<- dados [1:6,] #selecionar linha de 1 a 6
+dados<- dados [,-5] #excluir a quinta coluna
+dados
+```
+```{r}
+dados[dados$Sexo=="F",] #exibir só masculinos
+```
+
+A ordenação das linhas de um **data.frame** segundo os dados contidos em determinadas coluna também é extremamente útil
+```{r}
+dados [order(dados$altura),]
+```
+
+```{r}
+dados [rev(order(dados$altura)),]
+```
+
+### Separando um data.frame por grupos
+
+```{r}
+split (dados, sexo)
+```
+
+## Lista
+
+Lista são objetos muito úteis, pois são usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores, matrizes, arrays, data.frames e ate mesmo outras listas.
+
+
+```{r echo=TRUE}
+pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
+pes
+```
+
+Lista são construidas com o comando `list ()`. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
+
+```{r include=FALSE}
+pes$nome
+pes$notas
+
+pes[1]
+pes[3]
+```
+
+### Alguns comandos que retornam listas
+
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando `t.tes()`, que retorna um objeto que é uma lista.
+
+```{r}
+x <- c(1,3,2,3,4)
+y <- c(4,5,5,4,4)
+tt <- t.test (x,y, var.equal=T)
+tt
+```
+
+Comprovar que é uma lista
+```{r}
+is.list(tt)
+mode (tt)
+```
+
+Exibir o componentes da lista
+```{r}
+names(tt)
+```
+
+```{r}
+tt$conf.int #intervalo de confianca 
+```
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
+
+<!--chapter:end:02-literature.Rmd-->
+
+# Entrada de dados 
+
+  Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+  O diretorio  de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
+
+## Onde os dados devem estar? 
+ 
+Para saber onde os diretorios estão basta digitar o comando `getwd()`
+```{r}
+ getwd() #para verificar  diretório de trabalho
+```
+
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando `setwd()`
+
+```{r eval=FALSE, include=T}
+setwd("C:/R_Curso") #para  altear o diretório de trabalho
+```
+ 
+ Outra forma de mudar o caminho é com o comando: 
+```{r eval=FALSE, include=T}
+caminho<-file.choose() # ou usando as teclhas shift + Crtl + H
+```
+ 
+Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto. 
+ 
+Você pode exibir o conteudo do diretório com o comando `dir()`
+```{r}
+dir()
+```
+
+ 
+## Entrando com dados
+
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
+
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada. 
+
+### Vetores
+
+Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 3.
+
+```{r}
+vetor <- c(2,5,7)
+```
+
+Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+
+```{r}
+vetor <- rep(c(2,5), 5)  # cria vetor repetindo 5 vezes 2 e 5 alternadamente
+vetor
+
+vetor <- rep(c(5,8), each=3)  # cria vetor repetindo 3 vezes 5 e depois 8
+vetor
+```
+
+### Usando a função 'scan'
+
+Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:
+
+```{r}
+y <- scan()
+
+#1: 11
+#2: 24
+#3: 35
+#4: 29
+#5: 39
+#6: 47
+#7:
+#Read 6 items
+
+y
+#[1] 11 24 35 29 39 47
+```
+
+Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
+
+### Copiar e colar usando scan()
+
+Pode usar o recurso "copiar e colar" com o comando `scan`.
+Após copiar os dados (crtl+C), digite no **prompt**/**console** o comando `scan()`, aperte >ENTER<, depois cole o texto e, aperte >ENTER< novamente.
+
+### Lendo dados através da área de transferência
+Funções como `scan()`, `read.table()` e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao *"clipboard"* ao primeiro argumento.
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("clipboard", header=TRUE, dec=",")
+```
+
+
+### Usando a função edit
+
+O comando `edit(data.frame())` abre uma planilha para digitação de dados que são armazanados como data-frames. 
+
+```{r}
+dados <- edit(data.frame())
+
+```
+
+![data-frame](https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1)
+
+Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando `fix`. 
+
+```{r}
+
+fix(dados)
+head(dados)
+```
+
+#### Exemplo 1
+```{r}
+teste <- c(10,20,30,40,50)
+teste
+```
+Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando `edit()`
+
+```{r}
+teste2 <- edit(teste)
+```
+![edit](https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1)
+
+
+#### Exemplo 2
+
+Com uma planilha com  três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando `scan()`. Abra o arquivo . [EVI-prec.xlsx](https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1).
+
+```{r eval=FALSE, include=FALSE}
+ano <- scan()
+chuva <- scan()
+evi <- scan ()
+```
+
+Uma matrix com os dados poderá ser obtida com o comando `cbind`
+
+```{r eval=FALSE, include=T}
+dados <- cbind(ano, chuva, evi)
+```
+
+Os objeto dados é um **data.frame**
+```{r eval=FALSE, include=T}
+is.data.frame(dados)
+```
+
+Transforme para um data.frame com o comando **as.data.frame**
+```{r eval=FALSE, include=T}
+dados_m <- as.data.frame(dados)
+```
+
+Poderia usar o comando data.frame direto
+```{r eval=FALSE, include=T}
+dados=data.frame (ano, chuva, evi)
+```
+
+### Lendo dados de um arquivo texto
+ 
+ É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando `read.table ()` é extremamente útil por ler dados de um arquivo-texto no formato de um **data.frame**
+ 
+Usando o Comando `read.table ()`
+
+#### Exemplo 1 
+
+Como primeiro exemplo considere importar para o R os dados do arquivo texto [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1).
+
+```{r eval=FALSE, include=T}
+ex01 <- read.table("exemplo1.txt") 
+
+#Use os comandos
+  ex01
+  class(ex01)
+  names(ex01)
+  dim(ex01)
+  str(ex01)
+  head(ex01)
+ 
+```
+
+#### Exemplo 2 
+Como primeiro exemplo considere importar para o R os dados  do arquivo de texto [exemplo2.txt](https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1).
+
+```{r eval=FALSE, include=T}
+ex02 <- read.table("exemplo2.txt") 
+ex02
+```
+
+Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento _head=T_. Portanto para importar este arquivo usamos:
+
+```{r eval=FALSE, include=T}
+ex02 <- read.table("exemplo02.txt", head=T) 
+ex02
+```
+
+### Dados do tipo CSV
+
+[Exemplo3.csv](https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1): Vamos utilizar um arquivo de tipo **CSV**.
+
+```{r eval=FALSE, include=T}
+ex03 <- read.table("exemplo3.csv.", head=T, sep=":", dec=",") 
+ex03
+```
+
+Note que este arquivo difere do primeiro em outros aspectos.
+*read.table.*
+
+```{r eval=FALSE, include=T}
+ex03 <- read.table(       # lê dados de um arquivo texto
+  "exemplo3.csv",         # nome do arquivo ou o caminho c:/R.exemplo3.csv
+  head=T,                 # primeira linha ? cabe?alho
+  sep=":",                # separador de coluna 
+  dec=",")                # virgula como separador
+ex03                      # exibe o objeto
+
+```
+                     
+1.**sep**: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)
+
+1.**dec**: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).
+
+1.**header**: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. 'FALSE', assume que os dados se iniciam na primeira linha.
+
+
+### A seguir listamos algumas  destas funções:
+
+1. *read.dbf()* para arquivos DBASE
+1. *read.epiinfo()* para arquivos .REC do Epi-Info
+1. *read.mtp()* para arquivos "Minitab Portable Worksheet"
+1. *read.S()* para arquivos do S-PLUS, e restore.data() para "dumps" do S-PLUS
+1. *read.spss()* para dados do SPSS
+1. *read.systat()* para dados do SYSTAT
+1. *read.dta()* para dados do STATA
+1. *read.octave()* para dados do OCTAVE (um clone do MATLAB)
+1. *read.csv*(file, header = TRUE, sep=",", dec=".")
+1. *read.csv2*(file, header = TRUE, sep=";", dec=",")
+1. *read.delim*(file, header = TRUE, sep="\t", dec=".")
+1. *read.delim2*(file, header = TRUE, sep="\t", dec=",")
+
+### Lendo dados disponíveis na web
+
+**Exemplo 4**: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1) poderiam ser lidos diretamente com o comando a seguir
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1")
+```
+
+### Lendo dados de uma planilha eletrônica
+
+Com o **pacote xlsx** é possivel ler os dados diretamente da planilha eletrônica do Excel.
+
+```{r eval=FALSE, include=T}
+install.packages("")
+require("xlsx")
+```
+
+
+O comando *read.xlsx()*, do **pacote xlsx**, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um *data.frame*.
+
+```{r eval=FALSE, include=T}
+dados <- read.xlsx(
+                    file="C:/R/EVI_Prec.xlsx",     #comando que lê planilhas
+                    sheetName = "Conbea",          #nome da planilha
+                    h=T)                           #sem cabeçalho  
+```
+
+### Exercícios
+
+1. Baixe os seguintes arquivos:
+   - [BanzattoQd1.2.3.txt](https://www.dropbox.com/s/uq1n2sv8an2eoan/BanzattoQd1.2.3.txt?dl=1)
+   - [BanzattoQd3.2.1.txt](https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1)
+   - [BanzattoQd3.4.1.txt](https://www.dropbox.com/s/yv5clm6qljurzbw/BanzattoQd3.4.1.txt?dl=1)
+
+Coloque os arquivos em um local apropriado (de preferncia no mesmo diretorio de trabalho que voce definiu no início da sessão), faça a importação usando a função  de sua escolha, e confira a estrutura dos dados com ´str()´.
+
+## Salvar objetos de dados
+
+Salvar objetos de dados nos formatos **.txt** ou **.csv**
+função: **write.table**
+sintaxe da função:
+  *write.table*(x, file, sep="", dec="", rownames = T, col.names = T)
+  
+Principais argumentos:
+1. x - matriz ou data frame
+1. file - nome do arquivo ou caminho do arquivo
+1. sep - separador da coluna
+1. dec - separador deciminal
+
+### Outras funções
+
+`write.csv()`
+`write.csv2()`
+`write.xlsx ()`
+
+**Exemplo:**
+write.xlsx(dados,"tabela salva.xlsx")
+
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+
+
+<!--chapter:end:04-Estrutura.Rmd-->
+
+# Entrada de dados teste 22251d ds
+
+  Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+  O diretorio  de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
+
+## Onde os dados devem estar? 
+ 
+Para saber onde os diretorios estão basta digitar o comando `getwd()`
+```{r}
+ getwd() #para verificar  diretório de trabalho
+```
+
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando `setwd()`
+
+```{r eval=FALSE, include=FALSE}
+setwd("C:/R_Curso") #para  altear o diretório de trabalho
+```
+ 
+ Outra forma de mudar o caminho é com o comando: 
+```{r eval=FALSE, include=FALSE}
+caminho<-file.choose() # >shit< >Crtl< >H<
+```
+ 
+Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto. 
+ 
+Você pode exibir o conteudo do diretório com o comando `dir()`
+```{r}
+dir()
+```
+
+ 
+## Entrando com dados
+
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
+
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada. 
+
+### Vetores
+
+Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 2.
+
+```{r}
+vetor <- c(2,5,7)
+```
+
+Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+
+```{r}
+vetor <- rep(c(2,5), 5)  # cria vetor repetindo 5 vezes 2 e 5 alternadamente
+vetor
+
+vetor <- rep(c(5,8), each=3)  # cria vetor repetindo 3 vezes 5 e depois 8
+vetor
+```
+
+### Usando a função scan
+
+Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:
+
+```{r}
+y <- scan()
+
+#1: 11
+#2: 24
+#3: 35
+#4: 29
+#5: 39
+#6: 47
+#7:
+#Read 6 items
+
+y
+#[1] 11 24 35 29 39 47
+```
+
+Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
+
+### Copiar e colar usando scan()
+
+Pode usar o recurso "copiar e colar" com o comando `scan`.
+Após copiar os dados (crtl+C), digite no **prompt**/**console** o comando `scan()`, aperte >ENTER<, depois cole o texto e, aperte >ENTER< novamente.
+
+### Lendo dados através da área de transferência
+Funções como `scan()`, `read.table()` e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao *"clipboard"* ao primeiro argumento.
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("clipboard", header=TRUE, dec=",")
+```
+
+
+### Usando a função edit
+
+O comando `edit(data.frame())` abre uma planilha para digitação de dados que são armazanados como data-frames. 
+
+```{r}
+dados <- edit(data.frame())
+
+```
+
+Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando `fix`. 
+
+```{r}
+
+fix(dados)
+head(dados)
+```
+
+#### Exemplo 1
+```{r}
+teste <- c(10,20,30,40,50)
+teste
+```
+Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando `edit()`
+
+```{r}
+teste2 <- edit(teste)
+```
+
+#### Exemplo 2
+
+Com uma planilha com  três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando `scan()`. Abra o arquivo _EVI-prec.xlsx_.
+
+```{r eval=FALSE, include=FALSE}
+ano <- scan()
+chuva <- scan()
+evi <- scan ()
+```
+
+Uma matrix com os dados poderá ser obtida com o comando `cbind`
+
+```{r eval=FALSE, include=FALSE}
+dados <- cbind(ano, chuva, evi)
+```
+
+Os objeto dados é um **data.frame**
+```{r eval=FALSE, include=FALSE}
+is.data.frame(dados)
+```
+
+Transforme para um data.frame com o comando **as.data.frame**
+```{r eval=FALSE, include=FALSE}
+dados_m <- as.data.frame(dados)
+```
+
+Poderia usar o comando data.frame direto
+```{r eval=FALSE, include=FALSE}
+dados=data.frame (ano, chuva, evi)
+```
+
+### Lendo dados de um arquivo texto
+ 
+ É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando `read.table ()` é extremamente útil por ler dados de um arquivo-texto no formato de um **data.frame**
+ 
+Usando o Comando `read.table ()`
+
+#### Exemplo 1 
+
+Como primeiro exemplo considere importar para o R os dados do arquivo texto *exemplo1.txt*. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
+
+```{r eval=FALSE, include=FALSE}
+ex01 <- read.table("exemplo1.txt") 
+  
+  ex01
+  class(ex01)
+  names(ex01)
+  dim(ex01)
+  str(ex01)
+  head(ex01)
+ 
+```
+
+#### Exemplo 2 
+Como primeiro exemplo considere importar para o R os dados  do arquivo de texto *exemplo2.txt*. 
+
+```{r eval=FALSE, include=FALSE}
+ex02 <- read.table("exemplo2.txt") 
+ex02
+```
+
+Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento _head=T_. Portanto para importar este arquivo usamos:
+
+```{r eval=FALSE, include=FALSE}
+ex02 <- read.table("exemplo02.txt", head=T) 
+ex02
+```
+
+### Dados do tipo CSV
+
+**Exemplo 3**: Vamos utilizar um arquivo de tipo **CSV**.
+
+ex03 <- read.table("exemplo3.csv.", head=T, sep=":", dec=",") 
+ex03
+
+Note que este arquivo difere do primeiro em outros aspectos.
+*?read.table.*
+
+ex03 <- read.table(       # l? dados de um arquivo texto
+  "exemplo3.csv",         # nome do arquivo ou o caminho c:/R.exemplo3.csv
+  head=T,                 # primeira linha ? cabe?alho
+  sep=":",                # separador de coluna 
+  dec=",")                # virgula como separador
+ex03                      # exibe o objeto
+
+**sep**: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
+**dec**: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
+**header**: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+
+### A seguir listamos algumas  destas funções:
+
+*read.dbf()* para arquivos DBASE
+*read.epiinfo()* para arquivos .REC do Epi-Info
+*read.mtp()* para arquivos "Minitab Portable Worksheet"
+*read.S()* para arquivos do S-PLUS, e restore.data() para "dumps" do S-PLUS
+*read.spss()* para dados do SPSS
+*read.systat()* para dados do SYSTAT
+*read.dta()* para dados do STATA
+*read.octave()* para dados do OCTAVE (um clone do MATLAB)
+
+*read.csv*(file, header = TRUE, sep=",", dec=".")
+*read.csv2*(file, header = TRUE, sep=";", dec=",")
+*read.delim*(file, header = TRUE, sep="\t", dec=".")
+*read.delim2*(file, header = TRUE, sep="\t", dec=",")
+
+### Lendo dados disponíveis na web
+
+**Exemplo 4**: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("https://www.dropbox.com/s/l8vfauvy2nzhudl/exemplo1.txt?dl=1")
+```
+
+### Lendo dados de uma planilha eletrônica
+
+Com o **pacote xlsx** é possivel ler os dados diretamente da planilha eletrônica do Excel.
+
+```{r eval=FALSE, include=FALSE}
+install.packages("")
+require("xlsx")
+```
+
+
+O comando *read.xlsx()*, do **pacote xlsx**, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um *data.frame*.
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.xlsx(
+                    file="C:/R/EVI_Prec2.xlsx",    #comando que lê planilhas
+                    sheetName = "Conbea",          #nome da planilha
+                    h=T)                           #sem cabeçalho  
+```
+
+### Exercícios
+
+1 Baixe os seguintes arquivos:
+DBC_2rep_mamoeiro_alt_93.txt
+DIC_REG_feijao_peso_169.txt
+DIC_DB_pinus_alt
+
+Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o  de sua escolha, e confira a estrutura dos dados com str().
+
+## Salvar objetos de dados
+
+Salvar objetos de dados nos formatos **.txt** ou **.csv**
+fun??o: **write.table**
+sintaxe da fun??o:
+  *write.table*(x, file, sep="", dec="", rownames = T, col.names = T)
+  
+principais argumentos:
+x - matriz ou data frame
+file - nome do arquivo ou caminho do arquivo
+sep - separador da coluna
+dec - separador deciminal
+
+### Outras funções
+
+write.csv()
+write.csv2()
+write.xlsx ()
+
+**Exemplo:**
+write.xlsx(dados,"tabela salva.xlsx")
+
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+
+
+<!--chapter:end:05-Proximo.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:06-references.Rmd-->
+

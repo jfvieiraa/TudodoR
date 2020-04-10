@@ -1,4 +1,4 @@
-# Entrada de dados teste 22251 ds
+# Entrada de dados 
 
   Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
@@ -13,13 +13,13 @@ Para saber onde os diretorios estão basta digitar o comando `getwd()`
 
 Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando `setwd()`
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 setwd("C:/R_Curso") #para  altear o diretório de trabalho
 ```
  
  Outra forma de mudar o caminho é com o comando: 
-```{r eval=FALSE, include=FALSE}
-caminho<-file.choose() # >shit< >Crtl< >H<
+```{r eval=FALSE, include=T}
+caminho<-file.choose() # ou usando as teclhas shift + Crtl + H
 ```
  
 Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto. 
@@ -38,7 +38,7 @@ A seguir são descritas formas de entrada de dados com indicão de quando cada u
 
 ### Vetores
 
-Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 2.
+Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 3.
 
 ```{r}
 vetor <- c(2,5,7)
@@ -54,7 +54,7 @@ vetor <- rep(c(5,8), each=3)  # cria vetor repetindo 3 vezes 5 e depois 8
 vetor
 ```
 
-### Usando a função scan
+### Usando a função 'scan'
 
 Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:
 
@@ -98,6 +98,8 @@ dados <- edit(data.frame())
 
 ```
 
+![data-frame](https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1)
+
 Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando `fix`. 
 
 ```{r}
@@ -111,15 +113,17 @@ head(dados)
 teste <- c(10,20,30,40,50)
 teste
 ```
-Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando `edit()`
+Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando `edit()`
 
 ```{r}
 teste2 <- edit(teste)
 ```
+![edit](https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1)
+
 
 #### Exemplo 2
 
-Com uma planilha com  três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando `scan()`. Abra o arquivo _EVI-prec.xlsx_.
+Com uma planilha com  três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando `scan()`. Abra o arquivo . [EVI-prec.xlsx](https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1).
 
 ```{r eval=FALSE, include=FALSE}
 ano <- scan()
@@ -129,22 +133,22 @@ evi <- scan ()
 
 Uma matrix com os dados poderá ser obtida com o comando `cbind`
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 dados <- cbind(ano, chuva, evi)
 ```
 
 Os objeto dados é um **data.frame**
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 is.data.frame(dados)
 ```
 
 Transforme para um data.frame com o comando **as.data.frame**
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 dados_m <- as.data.frame(dados)
 ```
 
 Poderia usar o comando data.frame direto
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 dados=data.frame (ano, chuva, evi)
 ```
 
@@ -156,11 +160,12 @@ Usando o Comando `read.table ()`
 
 #### Exemplo 1 
 
-Como primeiro exemplo considere importar para o R os dados do arquivo texto *exemplo1.txt*. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
+Como primeiro exemplo considere importar para o R os dados do arquivo texto [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1).
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 ex01 <- read.table("exemplo1.txt") 
-  
+
+#Use os comandos
   ex01
   class(ex01)
   names(ex01)
@@ -171,111 +176,118 @@ ex01 <- read.table("exemplo1.txt")
 ```
 
 #### Exemplo 2 
-Como primeiro exemplo considere importar para o R os dados  do arquivo de texto *exemplo2.txt*. 
+Como primeiro exemplo considere importar para o R os dados  do arquivo de texto [exemplo2.txt](https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1).
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 ex02 <- read.table("exemplo2.txt") 
 ex02
 ```
 
 Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento _head=T_. Portanto para importar este arquivo usamos:
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 ex02 <- read.table("exemplo02.txt", head=T) 
 ex02
 ```
 
 ### Dados do tipo CSV
 
-**Exemplo 3**: Vamos utilizar um arquivo de tipo **CSV**.
+[Exemplo3.csv](https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1): Vamos utilizar um arquivo de tipo **CSV**.
 
+```{r eval=FALSE, include=T}
 ex03 <- read.table("exemplo3.csv.", head=T, sep=":", dec=",") 
 ex03
+```
 
 Note que este arquivo difere do primeiro em outros aspectos.
-*?read.table.*
+*read.table.*
 
-ex03 <- read.table(       # l? dados de um arquivo texto
+```{r eval=FALSE, include=T}
+ex03 <- read.table(       # lê dados de um arquivo texto
   "exemplo3.csv",         # nome do arquivo ou o caminho c:/R.exemplo3.csv
   head=T,                 # primeira linha ? cabe?alho
   sep=":",                # separador de coluna 
   dec=",")                # virgula como separador
 ex03                      # exibe o objeto
 
-**sep**: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
-**dec**: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
-**header**: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+```
+                     
+1.**sep**: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)
+
+1.**dec**: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).
+
+1.**header**: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. 'FALSE', assume que os dados se iniciam na primeira linha.
+
 
 ### A seguir listamos algumas  destas funções:
 
-*read.dbf()* para arquivos DBASE
-*read.epiinfo()* para arquivos .REC do Epi-Info
-*read.mtp()* para arquivos "Minitab Portable Worksheet"
-*read.S()* para arquivos do S-PLUS, e restore.data() para "dumps" do S-PLUS
-*read.spss()* para dados do SPSS
-*read.systat()* para dados do SYSTAT
-*read.dta()* para dados do STATA
-*read.octave()* para dados do OCTAVE (um clone do MATLAB)
-
-*read.csv*(file, header = TRUE, sep=",", dec=".")
-*read.csv2*(file, header = TRUE, sep=";", dec=",")
-*read.delim*(file, header = TRUE, sep="\t", dec=".")
-*read.delim2*(file, header = TRUE, sep="\t", dec=",")
+1. *read.dbf()* para arquivos DBASE
+1. *read.epiinfo()* para arquivos .REC do Epi-Info
+1. *read.mtp()* para arquivos "Minitab Portable Worksheet"
+1. *read.S()* para arquivos do S-PLUS, e restore.data() para "dumps" do S-PLUS
+1. *read.spss()* para dados do SPSS
+1. *read.systat()* para dados do SYSTAT
+1. *read.dta()* para dados do STATA
+1. *read.octave()* para dados do OCTAVE (um clone do MATLAB)
+1. *read.csv*(file, header = TRUE, sep=",", dec=".")
+1. *read.csv2*(file, header = TRUE, sep=";", dec=",")
+1. *read.delim*(file, header = TRUE, sep="\t", dec=".")
+1. *read.delim2*(file, header = TRUE, sep="\t", dec=",")
 
 ### Lendo dados disponíveis na web
 
-**Exemplo 4**: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+**Exemplo 4**: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1) poderiam ser lidos diretamente com o comando a seguir
 
 ```{r eval=FALSE, include=FALSE}
-dados <- read.table("https://www.dropbox.com/s/l8vfauvy2nzhudl/exemplo1.txt?dl=1")
+dados <- read.table("https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1")
 ```
 
 ### Lendo dados de uma planilha eletrônica
 
 Com o **pacote xlsx** é possivel ler os dados diretamente da planilha eletrônica do Excel.
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 install.packages("")
 require("xlsx")
 ```
 
 
-O comando *read.xlsx()*, do **pacote xlsx**, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um *data.frame*.
+O comando *read.xlsx()*, do **pacote xlsx**, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um *data.frame*.
 
-```{r eval=FALSE, include=FALSE}
+```{r eval=FALSE, include=T}
 dados <- read.xlsx(
-                    file="C:/R/EVI_Prec2.xlsx",    #comando que lê planilhas
+                    file="C:/R/EVI_Prec.xlsx",     #comando que lê planilhas
                     sheetName = "Conbea",          #nome da planilha
                     h=T)                           #sem cabeçalho  
 ```
 
 ### Exercícios
 
-1 Baixe os seguintes arquivos:
-DBC_2rep_mamoeiro_alt_93.txt
-DIC_REG_feijao_peso_169.txt
-DIC_DB_pinus_alt
+1. Baixe os seguintes arquivos:
+   - [BanzattoQd1.2.3.txt](https://www.dropbox.com/s/uq1n2sv8an2eoan/BanzattoQd1.2.3.txt?dl=1)
+   - [BanzattoQd3.2.1.txt](https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1)
+   - [BanzattoQd3.4.1.txt](https://www.dropbox.com/s/yv5clm6qljurzbw/BanzattoQd3.4.1.txt?dl=1)
 
-Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o  de sua escolha, e confira a estrutura dos dados com str().
+Coloque os arquivos em um local apropriado (de preferncia no mesmo diretorio de trabalho que voce definiu no início da sessão), faça a importação usando a função  de sua escolha, e confira a estrutura dos dados com ´str()´.
 
 ## Salvar objetos de dados
 
 Salvar objetos de dados nos formatos **.txt** ou **.csv**
-fun??o: **write.table**
-sintaxe da fun??o:
+função: **write.table**
+sintaxe da função:
   *write.table*(x, file, sep="", dec="", rownames = T, col.names = T)
   
-principais argumentos:
-x - matriz ou data frame
-file - nome do arquivo ou caminho do arquivo
-sep - separador da coluna
-dec - separador deciminal
+Principais argumentos:
+1. x - matriz ou data frame
+1. file - nome do arquivo ou caminho do arquivo
+1. sep - separador da coluna
+1. dec - separador deciminal
 
 ### Outras funções
 
-write.csv()
-write.csv2()
-write.xlsx ()
+`write.csv()`
+`write.csv2()`
+`write.xlsx ()`
 
 **Exemplo:**
 write.xlsx(dados,"tabela salva.xlsx")

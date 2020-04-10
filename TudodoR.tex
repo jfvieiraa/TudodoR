@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -1.90278163 -0.63713267 -0.05243674  0.48648161  1.35000000
+## [1] -2.39852635 -0.64832515 -0.04965032  0.71847298  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##          0%         25%         50%         75%        100% 
-## -1.90278163 -0.63713267 -0.05243674  0.48648161  1.35000000 
+## -2.39852635 -0.64832515 -0.04965032  0.71847298  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2087,7 +2087,19 @@ Para saber onde os diretorios estão basta digitar o comando \texttt{getwd()}
 
 Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \texttt{setwd()}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{setwd}\NormalTok{(}\StringTok{"C:/R_Curso"}\NormalTok{) }\CommentTok{#para  altear o diretório de trabalho}
+\end{Highlighting}
+\end{Shaded}
+
 Outra forma de mudar o caminho é com o comando:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{caminho<-}\KeywordTok{file.choose}\NormalTok{() }\CommentTok{# ou usando as teclhas shift + Crtl + H}
+\end{Highlighting}
+\end{Shaded}
 
 Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto.
 
@@ -2105,8 +2117,8 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 ##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
 ## [10] "docs"              "index.Rmd"         "LICENSE"          
 ## [13] "packages.bib"      "preamble.tex"      "README.md"        
-## [16] "search_index.json" "style.css"         "TudodoR.pdf"      
-## [19] "TudodoR.Rmd"       "TudodoR.Rproj"     "TudodoR_files"
+## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
+## [19] "TudodoR.Rproj"     "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -2119,7 +2131,7 @@ A seguir são descritas formas de entrada de dados com indicão de quando cada u
 \hypertarget{vetores}{%
 \subsection{Vetores}\label{vetores}}
 
-Podemos entrar com dados definindo vetores com o comando \texttt{c()}, conforme visto no capítulo 2.
+Podemos entrar com dados definindo vetores com o comando \texttt{c()}, conforme visto no capítulo 3.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2152,7 +2164,7 @@ Esta forma de entrada de dados é conveniente quando se tem um pequeno número d
 \end{verbatim}
 
 \hypertarget{usando-a-funcao-scan}{%
-\subsection{Usando a função scan}\label{usando-a-funcao-scan}}
+\subsection{Usando a função `scan'}\label{usando-a-funcao-scan}}
 
 Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
 
@@ -2207,6 +2219,12 @@ O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dado
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
+\includegraphics{https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1}
+\caption{data-frame}
+\end{figure}
+
 Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando \texttt{fix}.
 
 \begin{Shaded}
@@ -2234,7 +2252,7 @@ Se voce precisar abrir novamente planilha com os dados, para fazer modificaçõe
 ## [1] 10 20 30 40 50
 \end{verbatim}
 
-Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando \texttt{edit()}
+Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando \texttt{edit()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -2242,18 +2260,48 @@ Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não p
 \end{Highlighting}
 \end{Shaded}
 
+\begin{figure}
+\centering
+\includegraphics{https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1}
+\caption{edit}
+\end{figure}
+
 \hypertarget{exemplo-2}{%
 \subsubsection{Exemplo 2}\label{exemplo-2}}
 
-Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando \texttt{scan()}. Abra o arquivo \emph{EVI-prec.xlsx}.
+Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando \texttt{scan()}. Abra o arquivo . \href{https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1}{EVI-prec.xlsx}.
 
 Uma matrix com os dados poderá ser obtida com o comando \texttt{cbind}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{cbind}\NormalTok{(ano, chuva, evi)}
+\end{Highlighting}
+\end{Shaded}
+
 Os objeto dados é um \textbf{data.frame}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{is.data.frame}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
 
 Transforme para um data.frame com o comando \textbf{as.data.frame}
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados_m <-}\StringTok{ }\KeywordTok{as.data.frame}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
 Poderia usar o comando data.frame direto
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados=}\KeywordTok{data.frame}\NormalTok{ (ano, chuva, evi)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{lendo-dados-de-um-arquivo-texto}{%
 \subsection{Lendo dados de um arquivo texto}\label{lendo-dados-de-um-arquivo-texto}}
@@ -2265,96 +2313,177 @@ Usando o Comando \texttt{read.table\ ()}
 \hypertarget{exemplo-1-1}{%
 \subsubsection{Exemplo 1}\label{exemplo-1-1}}
 
-Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1.txt}. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
+Como primeiro exemplo considere importar para o R os dados do arquivo texto \href{https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1}{exemplo1.txt}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex01 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"exemplo1.txt"}\NormalTok{) }
+
+\CommentTok{#Use os comandos}
+\NormalTok{  ex01}
+  \KeywordTok{class}\NormalTok{(ex01)}
+  \KeywordTok{names}\NormalTok{(ex01)}
+  \KeywordTok{dim}\NormalTok{(ex01)}
+  \KeywordTok{str}\NormalTok{(ex01)}
+  \KeywordTok{head}\NormalTok{(ex01)}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{exemplo-2-1}{%
 \subsubsection{Exemplo 2}\label{exemplo-2-1}}
 
-Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2.txt}.
+Como primeiro exemplo considere importar para o R os dados do arquivo de texto \href{https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1}{exemplo2.txt}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex02 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"exemplo2.txt"}\NormalTok{) }
+\NormalTok{ex02}
+\end{Highlighting}
+\end{Shaded}
 
 Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento \emph{head=T}. Portanto para importar este arquivo usamos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex02 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"exemplo02.txt"}\NormalTok{, }\DataTypeTok{head=}\NormalTok{T) }
+\NormalTok{ex02}
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{dados-do-tipo-csv}{%
 \subsection{Dados do tipo CSV}\label{dados-do-tipo-csv}}
 
-\textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
+\href{https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1}{Exemplo3.csv}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
 
-ex03 \textless- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
-ex03
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex03 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"exemplo3.csv."}\NormalTok{, }\DataTypeTok{head=}\NormalTok{T, }\DataTypeTok{sep=}\StringTok{":"}\NormalTok{, }\DataTypeTok{dec=}\StringTok{","}\NormalTok{) }
+\NormalTok{ex03}
+\end{Highlighting}
+\end{Shaded}
 
 Note que este arquivo difere do primeiro em outros aspectos.
-\emph{?read.table.}
+\emph{read.table.}
 
-ex03 \textless- read.table( \# l? dados de um arquivo texto
-``exemplo3.csv'', \# nome do arquivo ou o caminho c:/R.exemplo3.csv
-head=T, \# primeira linha ? cabe?alho
-sep=``:'', \# separador de coluna
-dec=``,'') \# virgula como separador
-ex03 \# exibe o objeto
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ex03 <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(       }\CommentTok{# lê dados de um arquivo texto}
+  \StringTok{"exemplo3.csv"}\NormalTok{,         }\CommentTok{# nome do arquivo ou o caminho c:/R.exemplo3.csv}
+  \DataTypeTok{head=}\NormalTok{T,                 }\CommentTok{# primeira linha ? cabe?alho}
+  \DataTypeTok{sep=}\StringTok{":"}\NormalTok{,                }\CommentTok{# separador de coluna }
+  \DataTypeTok{dec=}\StringTok{","}\NormalTok{)                }\CommentTok{# virgula como separador}
+\NormalTok{ex03                      }\CommentTok{# exibe o objeto}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{sep}: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
-\textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
-\textbf{header}: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+1.\textbf{sep}: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)
+
+1.\textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).
+
+1.\textbf{header}: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. `FALSE', assume que os dados se iniciam na primeira linha.
 
 \hypertarget{a-seguir-listamos-algumas-destas-funcoes}{%
 \subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funcoes}}
 
-\emph{read.dbf()} para arquivos DBASE
-\emph{read.epiinfo()} para arquivos .REC do Epi-Info
-\emph{read.mtp()} para arquivos ``Minitab Portable Worksheet''
-\emph{read.S()} para arquivos do S-PLUS, e restore.data() para ``dumps'' do S-PLUS
-\emph{read.spss()} para dados do SPSS
-\emph{read.systat()} para dados do SYSTAT
-\emph{read.dta()} para dados do STATA
-\emph{read.octave()} para dados do OCTAVE (um clone do MATLAB)
-
-\emph{read.csv}(file, header = TRUE, sep=``,'', dec=``.'')
-\emph{read.csv2}(file, header = TRUE, sep=``;'', dec=``,'')
-\emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.``)
-\emph{read.delim2}(file, header = TRUE, sep=''\t", dec=``,'')
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  \emph{read.dbf()} para arquivos DBASE
+\item
+  \emph{read.epiinfo()} para arquivos .REC do Epi-Info
+\item
+  \emph{read.mtp()} para arquivos ``Minitab Portable Worksheet''
+\item
+  \emph{read.S()} para arquivos do S-PLUS, e restore.data() para ``dumps'' do S-PLUS
+\item
+  \emph{read.spss()} para dados do SPSS
+\item
+  \emph{read.systat()} para dados do SYSTAT
+\item
+  \emph{read.dta()} para dados do STATA
+\item
+  \emph{read.octave()} para dados do OCTAVE (um clone do MATLAB)
+\item
+  \emph{read.csv}(file, header = TRUE, sep=``,'', dec=``.'')
+\item
+  \emph{read.csv2}(file, header = TRUE, sep=``;'', dec=``,'')
+\item
+  \emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.")
+\item
+  \emph{read.delim2}(file, header = TRUE, sep=``\t", dec='',")
+\end{enumerate}
 
 \hypertarget{lendo-dados-disponiveis-na-web}{%
 \subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponiveis-na-web}}
 
-\textbf{Exemplo 4}: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+\textbf{Exemplo 4}: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do \href{https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1}{exemplo1.txt} poderiam ser lidos diretamente com o comando a seguir
 
 \hypertarget{lendo-dados-de-uma-planilha-eletronica}{%
 \subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletronica}}
 
 Com o \textbf{pacote xlsx} é possivel ler os dados diretamente da planilha eletrônica do Excel.
 
-O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um \emph{data.frame}.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{""}\NormalTok{)}
+\KeywordTok{require}\NormalTok{(}\StringTok{"xlsx"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um \emph{data.frame}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.xlsx}\NormalTok{(}
+                    \DataTypeTok{file=}\StringTok{"C:/R/EVI_Prec.xlsx"}\NormalTok{,     }\CommentTok{#comando que lê planilhas}
+                    \DataTypeTok{sheetName =} \StringTok{"Conbea"}\NormalTok{,          }\CommentTok{#nome da planilha}
+                    \DataTypeTok{h=}\NormalTok{T)                           }\CommentTok{#sem cabeçalho  }
+\end{Highlighting}
+\end{Shaded}
 
 \hypertarget{exercicios}{%
 \subsection{Exercícios}\label{exercicios}}
 
-1 Baixe os seguintes arquivos:
-DBC\_2rep\_mamoeiro\_alt\_93.txt
-DIC\_REG\_feijao\_peso\_169.txt
-DIC\_DB\_pinus\_alt
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Baixe os seguintes arquivos:
 
-Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o de sua escolha, e confira a estrutura dos dados com str().
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.dropbox.com/s/uq1n2sv8an2eoan/BanzattoQd1.2.3.txt?dl=1}{BanzattoQd1.2.3.txt}
+  \item
+    \href{https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1}{BanzattoQd3.2.1.txt}
+  \item
+    \href{https://www.dropbox.com/s/yv5clm6qljurzbw/BanzattoQd3.4.1.txt?dl=1}{BanzattoQd3.4.1.txt}
+  \end{itemize}
+\end{enumerate}
+
+Coloque os arquivos em um local apropriado (de preferncia no mesmo diretorio de trabalho que voce definiu no início da sessão), faça a importação usando a função de sua escolha, e confira a estrutura dos dados com ´str()´.
 
 \hypertarget{salvar-objetos-de-dados}{%
 \section{Salvar objetos de dados}\label{salvar-objetos-de-dados}}
 
 Salvar objetos de dados nos formatos \textbf{.txt} ou \textbf{.csv}
-fun??o: \textbf{write.table}
-sintaxe da fun??o:
+função: \textbf{write.table}
+sintaxe da função:
 \emph{write.table}(x, file, sep="``, dec=''", rownames = T, col.names = T)
 
-principais argumentos:
-x - matriz ou data frame
-file - nome do arquivo ou caminho do arquivo
-sep - separador da coluna
-dec - separador deciminal
+Principais argumentos:
+1. x - matriz ou data frame
+1. file - nome do arquivo ou caminho do arquivo
+1. sep - separador da coluna
+1. dec - separador deciminal
 
 \hypertarget{outras-funcoes}{%
 \subsection{Outras funções}\label{outras-funcoes}}
 
-write.csv()
-write.csv2()
-write.xlsx ()
+\texttt{write.csv()}
+\texttt{write.csv2()}
+\texttt{write.xlsx\ ()}
 
 \textbf{Exemplo:}
 write.xlsx(dados,``tabela salva.xlsx'')
@@ -2412,8 +2541,8 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 ##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
 ## [10] "docs"              "index.Rmd"         "LICENSE"          
 ## [13] "packages.bib"      "preamble.tex"      "README.md"        
-## [16] "search_index.json" "style.css"         "TudodoR.pdf"      
-## [19] "TudodoR.Rmd"       "TudodoR.Rproj"     "TudodoR_files"
+## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
+## [19] "TudodoR.Rproj"     "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados-1}{%
