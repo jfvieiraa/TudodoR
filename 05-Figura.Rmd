@@ -1,0 +1,523 @@
+# Criando Gráficos com o R
+  
+  Este capitulo foi baseado nos livros
+  
+   - [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294)
+   
+   - AQUINO, J. A. **R para cientistas sociais**. - Ilhéus, BA: EDITUS, 2014. 157. 
+  
+   - ANJOS, A. **Análise gráfica com uso do R**. Apostila. Dep. de Estatistica da UFPR, 2016. 127p. 
+   
+   Sites
+   
+   - https://www.statmethods.net/index.html 
+
+   - http://curso-r.github.io/index.html PET Estatística UFPR (2016). **labestData: Biblioteca de Dados para Aprendizado de Estatística**. R package version x.y-z.w.
+   - https://www.statmethods.net/index.html
+  
+  Modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo. 
+
+  
+O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o *graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como
+*lattice*, *ggplot2*, *ggobi* e *rgl*.
+
+O R possui diferentes funções geradoras de gráficos, e essas são classificados como:
+
+   - *Funções gráficas de alto nível*: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: *plot, hist, image, contour, persp etc*.
+
+   - *Funções gráficas de baixo nível*: permitem adicionar novas informações em gráficos já criados, como novos dados, linhas etc. Exemplos: *points, lines, abline,* *polygon, legend etc*.
+
+   - *Funções gráficas iterativas*: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: *locator e identify*.
+
+## Exemplos de gráficos com o R
+Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:
+
+```{r}
+demo(image)
+
+```
+
+```{r}
+demo(persp)
+```
+
+```{r include=T}
+demo(graphics)
+```
+
+## Entrada de dados
+Nesse tópico utlizaremos o arquivo de dados [dadosfisio.csv](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1). 
+
+Dados fisico hidrico de 3 solos com textutas diferentes. 
+
+Cod. | Solo    | Areia | Silte | Argila
+-----|---------|-------|-------|-------
+Z1   |NITOSSOLO|  122  |  121  |  757 
+Z2   |LATOSSOLO|  710  |  80   |  210
+Z3   |LATOSSOLO|  892  |  10   |  98 
+
+Ler dados via web.
+```{r}
+solo <- read.table("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1", sep = ";", header = T, dec = ",")
+```
+
+Verificar a estrutura de dados.
+```{r}
+str(solo)
+
+```
+
+Resumo estatástico da coluna 5 a coluna 8 de todos os solos
+```{r}
+summary(solo[5:8])
+```
+
+Neste exemplo vamos analisar cada solo separadamente usando o comando `subset()`
+```{r}
+solo1 <- subset(solo, z==1)
+solo2 <- subset(solo, z==2)
+solo3 <- subset(solo, z==3)
+
+```
+
+
+
+## Usando a função `plot()`
+
+A função `plot()` inicia um novo gráfico. Em sua forma mais simples a função
+recebe valores de coordenadas *ds* (densidade do solo) e *ptotal* (porosidade total do solo) do solo z1.
+
+```{r}
+plot(solo1$ds,solo1$ptotal)
+```
+
+
+Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type="l" na função `plot()` 
+
+```{r}
+plot(solo1$ds,solo1$ptotal, type = "l")
+
+```
+
+Verifique outras opcões para os gráfico
+
+   - *type = "p"* especifica o tipo de plotagem
+   - *"p"*: pontos,
+   - *"l"*: linhas,
+   - *"b"*: pontos conectados por linhas,
+   - *"o"*: id. mas as linhas estão acima dos pontos,
+   - *"h"*: linhas verticais,
+   - *"s"*: passos, os dados são representados pelo topo das linhas verticais,
+   - *"S"*: id. mas os dados são representados pela parte inferior das linhas verticais
+
+```{r}
+x <- 0:12
+y <- sin(pi/5 * x)
+op <- par(mfrow = c(3,3), mar = .1+ c(2,2,3,1))
+for (tp in c("p","l","b",  "c","o","h",  "s","S","n")) {
+  plot(y ~ x, type = tp, main = paste0("plot(*, type = \"", tp, "\")"))
+  if(tp == "S") {
+    lines(x, y, type = "s", col = "red", lty = 2)
+    mtext("lines(*, type = \"s\", ...)", col = "red", cex = 0.8)
+  }
+}
+par(op)
+```
+
+### Mudando o padrão dos pontos `pch=`
+
+Pode-se usar diferentes padrões para os pontos usando o argumento `pch=`.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
+Use a opção `pch =` para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda `(col =)`.
+
+```{r}
+plot(solo1$ds,solo1$ptotal, pch=21, ylim = c(0,0.6), xlim = c(1,2))
+points(solo2$ds,solo2$ptotal,pch=2, col="blue") 
+points(solo3$ds,solo3$ptotal,pch="%")
+```
+
+Neste exemplo acima note, que foi adicionado o argumento `ylim` e `xlim` eles limitam os valores minimos e maximos: 
+```{r eval=FALSE, include=T}
+
+xlim=c(xmin, xmax) ylim=c(ymin, ymax))
+```
+
+
+Veja um exemplo do padrão dos pontos.
+```{r echo=FALSE}
+plot (0:20,                         #coord. eixo X
+      rep (0,21),                   #coord. eixo y
+      pch = 0:20,                   #padrão dos pontos variando
+      cex = 2,                      #tamanho dos pontos
+      main = "Padrão dos pontos", #Titulo (note o \n)
+      xlab = "pch = ",              #texto do eixo de x
+      ylab = "")                    #texto do eixo de y
+      
+```
+
+
+### Mudando as linhas (`lwd e lty`)
+
+Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento `lwd=`, enquanto os estilos das linhas podem ser modificados com o argumento `lty=`.
+
+
+```{r}
+plot(solo3$ds,solo3$ptotal, lwd=2) # linha grossa
+lines(solo2$ds,solo2$ptotal, lty=2) #linha interrompida
+```
+
+```{r}
+x <- 1:9
+y <- 1:9
+  plot(x, y, type = "n")
+    lines(c(2, 8), c(8, 8), lwd = 2)
+    lines(c(2, 8), c(7, 7), lty = 2, lwd = 2)
+    lines(c(2, 8), c(6, 6), lty = 3, lwd = 2)
+    lines(c(2, 8), c(5, 5), lty = 4, lwd = 2)
+    lines(c(2, 8), c(4, 4), lty = 5, lwd = 2)
+    lines(c(2, 8), c(3, 3), lty = 6, lwd = 2)
+```
+
+
+
+### Adicionando  linhas a um grafico de pontos
+
+A função utilizada para inserir linhas é `abline()`.
+Vamos usar a função `abline` para inserir uma linha que mostra a média dos dados do eixo Y.
+o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.
+
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal))) 
+```
+
+
+Para passar uma linha que passa pela média de x
+```{r}
+plot(solo3$ds,solo3$ptotal)
+
+```
+
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(v=mean(solo3$ds))) ## o v é de vertical
+```
+
+Também é possível inserir as duas linhas ao mesmo tempo.
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col="red"))
+```
+
+Com cores diferentes
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col=c(2,4)))
+```
+
+
+### Definindo o intervalo dos eixos
+
+Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem diferentes amplitudes como nosso exemplo do solos, deve usar o argumento `type=n`. Com este argumento um gráfico em branco é criado.
+
+```{r}
+plot(c(1.55,2),c(0,0.6),type='n')
+points(solo3$ds,solo3$ptotal, pch=2)
+points(solo2$ds,solo2$ptotal)
+
+```
+
+
+### Personalizando os gráficos
+
+Alguns parâmetros podem ser usados no intuito de personalizar um gráfico no R. 
+
+Exemplo:
+```{r}
+
+plot(solo1$ptotal,solo1$ds)
+
+plot(solo1$ptotal,solo1$ds,          #plota ds e ptotal
+xlab="Macroporosdiade (%)",          #nomeia o eixo x
+ylab=expression(Ds~(mg~Kg^{-1})),    #nomeia o eixo y
+main="Como personalizar um gráfico", #referente ao título
+xlim=c(0.48,0.64),                   #limites do eixo x
+ylim=c(0,2), col="red",              #limites do eixo y
+pch=22,                              #padrão dos pontos
+bg="yellow",                         #cor de preenchimento
+tcl=0.4,                             #tamanho dos traços dos eixos
+las=1,                               #orientação do texto em y
+cex=1.5,                             #tamanho do objeto do ponto
+bty="l",                             #altera as bordas
+abline(lm(solo1$ds~solo1$ptotal)))   #regressao dos pontos
+```
+
+Veja o `demo(plotmath)` para saber mais sobre anotações em gráficos.
+
+## Histogramas
+
+A função `hist()` produz um histograma dos dados informados em seu argumento enquanto a função `barplot()` produz um gráfico de barras.
+
+```{r}
+hist(solo1$ds)
+rug(solo1$ds)
+```
+
+### Personalizando gráficos
+Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
+default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
+informações detalhadas desses parâmetros se usar os recursos de ajuda do R. 
+
+```{r}
+hist(solo1$ds, #histograma de ds
+     main="Histograma Personalizado\ndensidade do solo",#título
+     xlab=expression(Ds~(mg~Kg^{-1})), #texto do eixo das abscissas
+     ylab="Probabilidades", #texto do eixo das ordenadas
+     xlim=c(1,2), #limites do eixo de x
+     ylim=c(0,10), #limites do eixo y
+     col="lightblue", #cor das colunas
+     border="white", #cor das bordas das colunas
+     adj=0, #alinhamento dos textos 0, 0.5 e 1
+     col.axis="red") #cor do texto nos eixos
+```
+
+## Gráficos de Barras
+  Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos
+
+```{r}
+barplot(solo$ptotal,names.arg=solo$z, horiz = T)
+        
+```
+
+## Boxplots
+
+Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em *delineamento inteiramente casualizado* com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
+
+```{r}
+dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1")
+str(dados)
+```
+
+*trat* 
+Fator de níveis nominais. Tratamento aplicado para controle do pulgão.
+
+*rept*
+Número inteiro que identifica as repetições de cada tratamento.
+
+*pulgões*
+Número de pulgões coletados 36 horas após a pulverização dos tratamentos.
+
+
+Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é `boxplot` `( x , data =)` , em que `x` é uma fórmula e `data =` denota o quadro de dados que fornece os dados. 
+
+Um exemplo de uma fórmula é `y ~ group` onde um boxplot separado para a variável numérica é gerado para cada valor de group. 
+
+```{r}
+x11()
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #título
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3)                     #cor verde  
+                          
+```
+
+Adicione `horizontal = TRUE` para inverter a orientação do eixo.
+
+```{r}
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #t?tulo
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3, horizontal = T,     #cor verde  
+        notch=T)                   #teste para mediana
+```
+
+### Boxplot com fatorial
+
+Boxplot com 2 fatores, com caixas coloridas para facilitar a interpretação.
+
+**Efeito de Recipientes para duas Espécies de Eucalipto**
+
+Experimento em esquema fatorial 3x2 para estudar o efeito de 3 tipos de recipientes para a produção de mudas de duas espécies de Eucalipto. O experimento foi instalado em delineamento inteiramente casualizado.
+
+*recipie*
+São os níveis de recipiente estudados: 
+   - SPP - saco plástico pequeno;
+   - SPG - saco plástico grande; e
+   - Lam - laminado.
+
+*especie*
+São as espécies de Eucalipto: *Eucalyptus citriodora* e *Eucalyptus grandis*
+
+*rept*
+Identifica as repetições de cada combinação dos fatores recipiente e espécie.
+
+*alt*
+Altura das mudas aos 80 dias de idade (cm).
+
+Baixar dados via web.
+
+```{r}
+fat <- read.table("https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1")
+str(fat)
+```
+
+Gerar o gráfico boxpolt com o comando abaixo.
+
+```{r}
+boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
+        col=(c("gold","darkgreen","brown")),
+        main="Fatorial", xlab="Recipiente e Espécies",
+        ylab="Altura de plantas (cm)")
+```
+
+
+## Cores
+
+  Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando `col="red"` (escrevendo o nome da cor) ou `col=2` (usando números).
+O comando abaixo mostra os números que especificam algumas cores.
+
+```{r}
+pie(rep(1,30),col=rainbow(30))
+```
+
+Veja sua tabela de cores executando o script [paletedecores.R](https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1).
+
+Podemos também criar cores personalizadas usando a função do `rgb()`, que recebe como argumentos as quantidades de vermelho *(red)*, verde *(green)* e azul *(blue)* e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1. 
+
+Exemplos:
+
+```{r}
+goiaba <- rgb(0.94, 0.41, 0.40)
+goiaba.semitrans <- rgb(0.94, 0.41, 0.40, alpha = 0.5)
+vitamina <- rgb(red = c(0.87, 0.70), green = c(0.83, 0.77),
+blue = c(0.71, 0.30), names = c("leite", "abacate"))
+```
+
+
+## Interagindo com a Janela gráfica
+
+Poderemos com o mouse marcar o ponte desejado usando a função `identify ()`
+
+```{r}
+plot(solo1$ds~solo1$ptotal)
+identify(solo1$ds,
+                  n=1)
+```
+
+
+## Texto e tamanho do símbolo
+
+As seguintes opções podem ser usadas para controlar o tamanho do texto e do símbolo em gráficos.
+
+`cex`	número que indica o valor pelo qual o texto e os símbolos de plotagem devem ser dimensionados em relação ao padrão. 
+*1 = padrão, 1,5 é 50% maior, 0,5 é 50% menor, etc.*
+
+```{r eval=FALSE, include=FALSE}
+boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
+        col=(c("gold","aquamarine","aliceblue")),
+          main="Fatorial", 
+          xlab="Recipiente e Esp?cies",
+          ylab="Altura de plantas (cm)",
+            cex.axis=1,               #ampliação da anotação do eixo em relação ao cex
+            cex.lab=1.5,              #ampliação dos rótulos x e y em relação ao cex
+            cex.main=1.5)             #ampliação de títulos em relação ao cex
+              
+```
+
+
+## Fontes
+
+Você pode definir facilmente o tamanho e o estilo da fonte, mas a familia de fontes é um pouco mais complicada.
+
+**Fonte**	Número inteiro que especifica a fonte a ser usada para texto. 
+1 = simples, 2 = negrito, 3 = itálico, 4 = negrito itálico, 5 = símbolo
+
+```{r}
+plot(1:10,1:10,type="n")
+windowsFonts(
+  A=windowsFont("Arial Black"),
+  B=windowsFont("Bookman Old Style"),
+  C=windowsFont("Comic Sans MS"),
+  D=windowsFont("Symbol")
+)
+text(3,3,"Hello World Default")
+text(4,4,family="A","Hello World from Arial Black")
+text(5,5,family="B","Hello World from Bookman Old Style")
+text(6,6,family="C","Hello World from Comic Sans MS")
+text(7,7,family="D", "Hello World from Symbol")
+
+```
+
+
+```{r}
+plot(solo1$ds,solo1$ptotal,
+     main="Fatorial", 
+        xlab="Recipiente e Espécies",
+        ylab="Altura de plantas (cm)",
+        cex.axis=1,                         #ampliação da anotação do eixo em relação ao cex
+        cex.lab=1.5,                        #ampliação dos rótulos x e y em relação ao cex
+        cex.main=1.5,                       #ampliação de títulos em relação ao cex
+        font.axis=3,                        #fonte para anotação de eixo
+        font.main=4,                        #fonte para títulos
+        font.lab=4,                         #fonte para rótulos
+        text(1.5,0.5,family="A", "Engenharia Agrícola",cex =1,pos =2))
+            
+        
+```
+
+## Visualizar vários gráficos
+
+```{r}
+x11()
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #título
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3,                     #cor verde  
+        notch=F)                   #teste para mediana
+
+```
+
+
+### Varios gráficos na mesma janela gráfica
+
+Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função `par()`.
+
+**Exemplo 1**
+
+```{r}
+par(mfrow = c(2,2)) #2 linhas e 2 colunas
+plot(solo1$ptotal,solo1$ds)
+boxplot(solo1$ds,solo2$ds, solo3$ds)
+hist(solo$ptotal)
+plot(solo$ptotal,solo$ds)
+```
+
+**Exemplo 2**
+
+```{r}
+par(mfrow = c(2,3))
+pairs(solo)
+hist(solo$ds)
+plot(solo$ds, col=solo$z)
+plot(density(solo$ds))
+```
+
+
+## Salvando gráficos
+
+Você pode salvar o gráfico em vários formatos no menu 
+*Arquivo -> Salvar como*.
+
+Você também pode salvar o gráfico via código usando uma das seguintes funções.
+```{r}
+
+pdf (file = "meugráfico.pdf")	          #ficheiro PDF
+win.metafile ("meu grafico.wmf")	      #metarquivo do windows
+png ("meu grafico.png")         	      #arquivo png
+jpeg ("meu grafico.jpg")	              #arquivo jpeg
+bmp ("meu grafico.bmp")	                #arquivo bmp
+postscript ("meu grafico.ps")	          #arquivo postscript
+```
+
+
