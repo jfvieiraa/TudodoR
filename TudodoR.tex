@@ -145,7 +145,7 @@ O material consultado encontra-se referenciado no final de cada capitulo.
 \hypertarget{intro}{%
 \chapter{R Básico}\label{intro}}
 
-Este primeigfgfdgdfgro lklkkkCapitulo foi baseado no curso on-line \emph{Code School Try R} e \emph{Datacamp}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+Este primeio capitulo foi baseado no curso on-line \emph{Code School Try R} e \emph{Datacamp}, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
 Iremos abordar as expressões básicas do R.
 Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{true/false}. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.100194255 -0.802744971  0.003621638  0.659519485  1.350000000
+## [1] -2.85696244 -0.50512699 -0.09263229  0.63854716  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##           0%          25%          50%          75%         100% 
-## -2.100194255 -0.802744971  0.003621638  0.659519485  1.350000000 
+##          0%         25%         50%         75%        100% 
+## -2.85696244 -0.50512699 -0.09263229  0.63854716  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2114,7 +2114,7 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Figura.Rmd"     "06-references.Rmd" "07-Figura_2.Rmd"  
+##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-references.Rmd"
 ## [10] "book.bib"          "docs"              "index.Rmd"        
 ## [13] "LICENSE"           "meu grafico.bmp"   "meu grafico.jpg"  
 ## [16] "meu grafico.png"   "meu grafico.ps"    "meu grafico.wmf"  
@@ -3841,7 +3841,7 @@ O código abaixo é um exemplo de um gráfico bem simples, construído a partir 
 
 Aqui, essas formas geomótricas são pontos, selecionados pela função \texttt{geom\_point()}, gerando, assim, um gráfico de dispersão.
 
-A fun?ção \texttt{aes()} vem da palavra \emph{Aesthetics} define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função \texttt{colour}.
+A função \texttt{aes()} vem da palavra \emph{Aesthetics} define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função \texttt{colour}.
 
 Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.
 
@@ -4359,8 +4359,8 @@ Criando o gráfico
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-226-1.pdf}
 
-\hypertarget{deliamento-em-blocos-casualizados--dbc}{%
-\subsection{Deliamento em blocos casualizados- DBC}\label{deliamento-em-blocos-casualizados--dbc}}
+\hypertarget{delineamento-em-blocos-casualizados--dbc}{%
+\subsection{Delineamento em blocos casualizados- DBC}\label{delineamento-em-blocos-casualizados--dbc}}
 
 \textbf{Efeito do Promalin sobre Furtos de Macieira}
 
@@ -4622,11 +4622,12 @@ Grafico de distribuição de temperatura minima para cada mês
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-243-1.pdf}
 
-\#Referência
+\hypertarget{referencia-3}{%
+\chapter{Referência}\label{referencia-3}}
 
 GROLEMUND, G. WICKHAM, H. R for Data Science Site: \url{http://r4ds.had.co.nz/}
 
-sITE: \url{https://www.statmethods.net/index.html}
+SITE: \url{https://www.statmethods.net/index.html}
 
 CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p.~Site: \url{http://shop.oreilly.com/pesouct/0636920023135.do}
 

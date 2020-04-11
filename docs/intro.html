@@ -209,7 +209,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="5.11" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#salvando-graficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="6" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
 <li class="chapter" data-level="6.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#personalizando-os-graficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
 <li class="chapter" data-level="6.1.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
@@ -220,10 +219,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
 <li class="chapter" data-level="6.2.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#regressao"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
-<li class="chapter" data-level="6.2.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#deliamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Deliamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
 <li class="chapter" data-level="6.2.3" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#dados-climaticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
 </ul></li>
 </ul></li>
+<li class="chapter" data-level="7" data-path="referencia-3.html"><a href="referencia-3.html"><i class="fa fa-check"></i><b>7</b> Referência</a></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -246,7 +247,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Capitulo 2</span> R Básico</h1>
-<p>Este primeigfgfdgdfgro lklkkkCapitulo foi baseado no curso on-line <em>Code School Try R</em> e <em>Datacamp</em>, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.</p>
+<p>Este primeio capitulo foi baseado no curso on-line <em>Code School Try R</em> e <em>Datacamp</em>, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.</p>
 <p>Iremos abordar as expressões básicas do R.
 Começaremos simples, com <strong>números</strong>, <strong>strings</strong> e valores <strong>true/false</strong>. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo</p>
 <div id="expressoes" class="section level2">
@@ -322,11 +323,11 @@ Tente atribuir “Engenharia Agrícola”em x.</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -2.56577936 -0.75813513  0.05349763  0.69968703  1.35000000
+## [1] -2.43558245 -0.45479514  0.05790952  0.76696993  1.35000000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
 ##          0%         25%         50%         75%        100% 
-## -2.56577936 -0.75813513  0.05349763  0.69968703  1.35000000 
+## -2.43558245 -0.45479514  0.05790952  0.76696993  1.35000000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>

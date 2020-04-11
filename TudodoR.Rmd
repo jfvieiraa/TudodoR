@@ -22,7 +22,7 @@ O material consultado encontra-se referenciado no final de cada capitulo.
 
 # R Básico {#intro}
 
-Este primeigfgfdgdfgro lklkkkCapitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+Este primeio capitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -1643,12 +1643,6 @@ Você também pode salvar o gráfico via código usando uma das seguintes funç�
 
 <!--chapter:end:05-Figura.Rmd-->
 
-`r if (knitr::is_html_output()) '
-# References {-}
-'`
-
-<!--chapter:end:06-references.Rmd-->
-
 # Gráficos com ggplot2
 
 Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na *Grammar of Graphics* (Gramática dos Gráficos) para descrever os gráficos de dados.
@@ -1688,7 +1682,7 @@ ggplot(data = fisio, aes(x = ds, y = cc)) +
 
 Aqui, essas formas geomótricas são pontos, selecionados pela função `geom_point()`, gerando, assim, um gráfico de dispersão.
 
-A fun?ção `aes()` vem da palavra *Aesthetics* define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função `colour`.
+A função `aes()` vem da palavra *Aesthetics* define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função `colour`.
 
 Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.
 
@@ -1996,7 +1990,7 @@ ggplot(dados,aes(x=gesso,y=peso,color=peso))  +
 ```
 
 
-### Deliamento em blocos casualizados- DBC
+### Delineamento em blocos casualizados- DBC
 
 **Efeito do Promalin sobre Furtos de Macieira**
 
@@ -2154,11 +2148,11 @@ ggplot(data = roo, aes(x = (Tmin), fill=factor(mm)))+
 
 
 
-#Referência
+# Referência
 
 GROLEMUND, G. WICKHAM, H. R for Data Science  Site: http://r4ds.had.co.nz/
 
-sITE: https://www.statmethods.net/index.html
+SITE: https://www.statmethods.net/index.html
 
 CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p. Site: http://shop.oreilly.com/pesouct/0636920023135.do
 
@@ -2172,4 +2166,10 @@ CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher
 
 
 <!--chapter:end:07-Figura_2.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:08-references.Rmd-->
 
