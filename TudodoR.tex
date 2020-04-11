@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.85696244 -0.50512699 -0.09263229  0.63854716  1.35000000
+## [1] -2.6577231 -0.6961202  0.1043678  0.6899721  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -2.85696244 -0.50512699 -0.09263229  0.63854716  1.35000000 
+##         0%        25%        50%        75%       100% 
+## -2.6577231 -0.6961202  0.1043678  0.6899721  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2114,14 +2114,15 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-references.Rmd"
-## [10] "book.bib"          "docs"              "index.Rmd"        
-## [13] "LICENSE"           "meu grafico.bmp"   "meu grafico.jpg"  
-## [16] "meu grafico.png"   "meu grafico.ps"    "meu grafico.wmf"  
-## [19] "meugráfico.pdf"    "packages.bib"      "preamble.tex"     
-## [22] "README.md"         "search_index.json" "style.css"        
-## [25] "TudodoR.log"       "TudodoR.pdf"       "TudodoR.Rmd"      
-## [28] "TudodoR.Rproj"     "TudodoR.tex"       "TudodoR_files"
+##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-teste_esta.Rmd"
+## [10] "09-references.Rmd" "book.bib"          "docs"             
+## [13] "index.Rmd"         "LICENSE"           "meu grafico.bmp"  
+## [16] "meu grafico.jpg"   "meu grafico.png"   "meu grafico.ps"   
+## [19] "meu grafico.wmf"   "meugráfico.pdf"    "packages.bib"     
+## [22] "preamble.tex"      "README.md"         "search_index.json"
+## [25] "style.css"         "TudodoR.log"       "TudodoR.pdf"      
+## [28] "TudodoR.Rmd"       "TudodoR.Rproj"     "TudodoR.tex"      
+## [31] "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -4630,6 +4631,735 @@ GROLEMUND, G. WICKHAM, H. R for Data Science Site: \url{http://r4ds.had.co.nz/}
 SITE: \url{https://www.statmethods.net/index.html}
 
 CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p.~Site: \url{http://shop.oreilly.com/pesouct/0636920023135.do}
+
+Este Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}}
+
+\hypertarget{testes-estatisticos}{%
+\chapter{Testes Estatísticos}\label{testes-estatisticos}}
+
+O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.
+
+\hypertarget{teste-t-de-student}{%
+\section{Teste t de Student}\label{teste-t-de-student}}
+
+O teste t é bastante usado em várias situações do cotidiano quando se deseja fazer comparações entre \emph{uma ou mais médias}, sejam elas dependentes ou não.
+Abaixo estão exemplos de vários modos de realizarmos o teste t.
+
+Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pira_tem <-}\StringTok{ }\KeywordTok{read.csv2}\NormalTok{ (}\StringTok{"https://www.dropbox.com/s/zvp5iftcpb6bdpe/pira_tem.csv?dl=1"}\NormalTok{,}
+  \DataTypeTok{dec=}\StringTok{"."}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(pira_tem)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    768 obs. of  5 variables:
+##  $ hora   : Factor w/ 96 levels "0:00","0:15",..: 1 2 3 4 5 6 7 8 49 50 ...
+##  $ periodo: Factor w/ 4 levels "equi_out","equi_prim",..: 4 4 4 4 4 4 4 4 4 4 ...
+##  $ local  : Factor w/ 2 levels "campo","estufa": 2 2 2 2 2 2 2 2 2 2 ...
+##  $ temp   : num  23.1 22.9 22.7 22.6 22.5 ...
+##  $ X      : logi  NA NA NA NA NA NA ...
+\end{verbatim}
+
+Apresentação dos dados em forma de gráfico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data=}\NormalTok{ pira_tem, }\KeywordTok{aes}\NormalTok{ (}\DataTypeTok{x =}\NormalTok{ hora, }\DataTypeTok{y =}\NormalTok{ temp, }\DataTypeTok{colour =}\NormalTok{periodo)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size=}\DecValTok{2}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_line}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_grid}\NormalTok{(.}\OperatorTok{~}\NormalTok{local) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Horas"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Temperatura ºC"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{             }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Variação da temperatura mediana}\CharTok{\textbackslash{}n}\StringTok{ nas quatro efemêrides") +}
+\StringTok{             theme(plot.title=element_text(face="}\NormalTok{bold}\StringTok{", size=12, hjust = 0.5))  +}
+\StringTok{  theme_bw()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to
+## adjust the group aesthetic?
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-245-1.pdf}
+
+\texttt{t.test()}
+Realiza o teste t-Student para uma ou duas amostras.
+
+sintaxe:
+\texttt{t.test(amostra1,\ amostra2,\ opções)}
+
+\textbf{Parâmetros}
+
+\emph{amostra1:} Vetor contendo a amostra da qual se quer testar a média populacional, ou comparar a média populacional com a média populacional da amostra 2.
+
+\emph{amostra2:} Vetor contendo a amostra 2 para comparação da média populacional com a média populacional da amostra 1.
+
+\textbf{Opções}
+
+\emph{alternative:} string indicando a hipótese alternativa desejada.
+Valores possíveis: \emph{``two-sided'', ``less'' ou ``greater''}.
+
+\emph{mu:} valor indicando o verdadeiro valor da média populacional para o caso de uma amostra, ou a diferença entre as mêdias para o caso de duas amostras.
+
+\emph{paired:}
+- TRUE - realiza o teste t pareado.
+- FALSE - realiza o teste t não pareado.
+
+\emph{var.equal}:
+- TRUE - indica que a variância populacional é igual nas duas amostras.
+- FALSE - indica que a variância populacional de cada amostra é diferente.
+
+\emph{conf.level}: coeficiente de confiança do intervalo.
+
+\hypertarget{para-uma-media}{%
+\subsection{Para uma média}\label{para-uma-media}}
+
+Vamos testar se a temperatura horaria do solsticio de verão no campo tem média igual ou maior que \textbf{21 ºC} na cidade de Piracicaba-SP.
+
+\emph{H0: mu \textgreater= 21}
+
+\emph{IC 95 para mu}
+
+1.0 Passo filtrar os dados pelo fator ``periodo'' com o nivel sol\_verao (solsticio de verão).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \CommentTok{#Dividir os dados - subset()}
+\NormalTok{    sol_verao_amb <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(pira_tem, periodo }\OperatorTok{==}\StringTok{ "sol_verao"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+2.0 Passo filtrar os dados pelo fator ``local'' com o nivel campo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{ sol_verao_camp <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(sol_verao_amb, local }\OperatorTok{==}\StringTok{ "campo"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+3.0 Verificar dados graficamente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{attach}\NormalTok{(pira_tem)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## The following objects are masked from pira_tem (pos = 6):
+## 
+##     hora, local, periodo, temp, X
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-248-1.pdf}
+
+4.0 Usar o teste T
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,                     }\CommentTok{#amostra a ser testada}
+\DataTypeTok{mu=}\DecValTok{21}\NormalTok{,                                          }\CommentTok{#hipótese de nulidade}
+\DataTypeTok{alternative=}\StringTok{"greater"}\NormalTok{,                         }\CommentTok{#teste unilateral pela direita}
+\DataTypeTok{conf.level =} \FloatTok{0.95}\NormalTok{ )                         }\CommentTok{#Intervalo de confiancia de 95%  }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  sol_verao_camp$temp
+## t = 21.648, df = 95, p-value < 2.2e-16
+## alternative hypothesis: true mean is greater than 21
+## 95 percent confidence interval:
+##  24.96332      Inf
+## sample estimates:
+## mean of x 
+##  25.29271
+\end{verbatim}
+
+Agora basta fazer a interpretação correta da saída do R.
+Para saber qual hipótese foi aceita, basta verificar o valor do \emph{p-value} e estipular um nível de significância. Se neste exemplo o nível de significância fosse de 5\% a hipótese alternativa seria aceita uma vez que o \emph{p-value} foi menor ou igual a 0,05. Caso o \emph{p-value} tivesse sido maior que 5\% então aceitaríamos a hipótese de nulidade.
+Como a hipótese alternativa foi a aceita isso implica que a temperatura do ar no solsticio de verão possui média estatisticamente diferente do valor 21ºC a um nível de significância de 5\%.
+
+\textbf{Exercicio 1}
+
+Vamos testar se X tem média estatiscamente igual a 35 ou maior
+H0: mu =\textgreater35
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\KeywordTok{c}\NormalTok{ (}\FloatTok{30.5}\NormalTok{,}\FloatTok{35.3}\NormalTok{,}\FloatTok{33.2}\NormalTok{,}\FloatTok{40.8}\NormalTok{,}\FloatTok{42.3}\NormalTok{,}\FloatTok{41.5}\NormalTok{,}\FloatTok{36.3}\NormalTok{,}\FloatTok{43.2}\NormalTok{,}\FloatTok{34.6}\NormalTok{,}\FloatTok{38.5}\NormalTok{)}
+
+\KeywordTok{boxplot}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-250-1.pdf}
+
+Teste t.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(x,}
+       \DataTypeTok{mu=}\DecValTok{35}\NormalTok{,}
+       \DataTypeTok{alternative =} \StringTok{"greater"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  x
+## t = 1.9323, df = 9, p-value = 0.04268
+## alternative hypothesis: true mean is greater than 35
+## 95 percent confidence interval:
+##  35.13453      Inf
+## sample estimates:
+## mean of x 
+##     37.62
+\end{verbatim}
+
+Com foi significativo admitimos que a amostra \emph{x} é oriunda de um população com média maior que o valor de 35, com nivel de 5\% de significância.
+
+\textbf{Exercicio 2}
+
+Um pesquisador afirmou que a temperatura média de solsticio de verão medido na casa de vegetação em Piracicaba-SP tem média \textbf{22,2 ºC}.
+Desconfiando desse resultado um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:
+
+\emph{H0: mu = 22,2}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  sol_verao_amb <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(pira_tem, periodo }\OperatorTok{==}\StringTok{ "sol_verao"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  sol_verao_est <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(sol_verao_amb, local }\OperatorTok{==}\StringTok{ "estufa"}\NormalTok{)}
+  \KeywordTok{boxplot}\NormalTok{(sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-253-1.pdf}
+
+Essa afirmação é verdadeira?
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(sol_verao_est}\OperatorTok{$}\NormalTok{temp,            }\CommentTok{#amostra a ser testada}
+\DataTypeTok{mu=}\FloatTok{22.2}\NormalTok{,                              }\CommentTok{#hipótese de nulidade}
+\DataTypeTok{alternative=}\StringTok{"two.sided"}\NormalTok{,              }\CommentTok{#teste bilateral não considera se é maior ou menor}
+\DataTypeTok{conf.level =} \FloatTok{0.99}\NormalTok{)                    }\CommentTok{#significância de 1%        }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  sol_verao_est$temp
+## t = 10.98, df = 95, p-value < 2.2e-16
+## alternative hypothesis: true mean is not equal to 22.2
+## 99 percent confidence interval:
+##  25.06976 26.87629
+## sample estimates:
+## mean of x 
+##  25.97302
+\end{verbatim}
+
+\hypertarget{para-duas-medias-independentes}{%
+\subsection{Para duas médias independentes}\label{para-duas-medias-independentes}}
+
+Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
+alem de seguirem distribuição normal.
+
+Vamos a um exemplo:
+
+Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5\% de significância.
+\emph{H0: mu da temp da casa de vegetação = mu da temp do campo}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp, sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-255-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp, sol_verao_est}\OperatorTok{$}\NormalTok{temp, }\CommentTok{#amostras a serem testadas}
+      \DataTypeTok{alternative =} \StringTok{"greater"}\NormalTok{,                  }\CommentTok{#unilateral a direita }
+      \DataTypeTok{var.equal =}\NormalTok{ T )                            }\CommentTok{#variância homogênea}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Two Sample t-test
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## t = -1.7147, df = 190, p-value = 0.956
+## alternative hypothesis: true difference in means is greater than 0
+## 95 percent confidence interval:
+##  -1.336097       Inf
+## sample estimates:
+## mean of x mean of y 
+##  25.29271  25.97302
+\end{verbatim}
+
+Uma vez que o \emph{p-value} foi maior que 0,05, podemos concluir que as médias de temperatura dos dois ambientes não são diferentes, estatisticamente, a 5\% de significância.
+Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.
+
+\hypertarget{para-duas-medias-dependentes}{%
+\subsection{Para duas médias dependentes}\label{para-duas-medias-dependentes}}
+
+Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
+As hipóteses se mantêm. Agora basta adicionar o argumento \texttt{paired=T}, informando que as amostras são dependentes.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{t.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp, sol_verao_est}\OperatorTok{$}\NormalTok{temp, }\CommentTok{#amostras a serem testadas}
+      \DataTypeTok{conf.level=}\FloatTok{0.99}\NormalTok{,                          }\CommentTok{#nível de confiança}
+      \DataTypeTok{paired=}\NormalTok{T,                                 }\CommentTok{#indica dependência entre as amostras}
+      \DataTypeTok{var.equal =}\NormalTok{ T )                           }\CommentTok{#variância homogênea      }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## t = -3.8433, df = 95, p-value = 0.0002193
+## alternative hypothesis: true difference in means is not equal to 0
+## 99 percent confidence interval:
+##  -1.1455999 -0.2150251
+## sample estimates:
+## mean of the differences 
+##              -0.6803125
+\end{verbatim}
+
+Note que a estatística do teste-t pareado não é baseada na média dos tratamentos, e sim na diferença entre os pares de tratamentos.
+
+\hypertarget{teste-de-variancia}{%
+\section{Teste de variância}\label{teste-de-variancia}}
+
+\hypertarget{usando-o-teste-de-f}{%
+\subsection{Usando o teste de F}\label{usando-o-teste-de-f}}
+
+\emph{H0: a variancias das amostras são homogeneas }
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{var.test}\NormalTok{ (sol_verao_camp}\OperatorTok{$}\NormalTok{temp, sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  F test to compare two variances
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## F = 0.33301, num df = 95, denom df = 95, p-value = 1.801e-07
+## alternative hypothesis: true ratio of variances is not equal to 1
+## 95 percent confidence interval:
+##  0.2221988 0.4990825
+## sample estimates:
+## ratio of variances 
+##          0.3330098
+\end{verbatim}
+
+As variâncias não são homogeneas.
+
+Vamos resolver novamente o exercicio anterior, modificando o argumento \texttt{var.equal}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+ \KeywordTok{t.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp, sol_verao_est}\OperatorTok{$}\NormalTok{temp, }\CommentTok{#amostras a serem testadas}
+      \DataTypeTok{conf.level=}\FloatTok{0.99}\NormalTok{,                          }\CommentTok{#nível de confiança}
+      \DataTypeTok{paired=}\NormalTok{T,                                 }\CommentTok{#indica dependência entre as amostras}
+      \DataTypeTok{var.equal =}\NormalTok{ F )                           }\CommentTok{#variância homogênea }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Paired t-test
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## t = -3.8433, df = 95, p-value = 0.0002193
+## alternative hypothesis: true difference in means is not equal to 0
+## 99 percent confidence interval:
+##  -1.1455999 -0.2150251
+## sample estimates:
+## mean of the differences 
+##              -0.6803125
+\end{verbatim}
+
+\hypertarget{teste-para-a-normalidade---shapiro.test}{%
+\section{\texorpdfstring{Teste para a normalidade - \texttt{shapiro.test()}}{Teste para a normalidade - shapiro.test()}}\label{teste-para-a-normalidade---shapiro.test}}
+
+Por vezes temos necessidade de identificar com certa confiança se uma amostra ou conjunto de dados segue a distribuição normal. Isso e possível, no R, com o uso do comando \texttt{shapiro.test()}
+
+Verifique normalidade dos dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  sol_verao_camp$temp
+## W = 0.90789, p-value = 5.043e-06
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  sol_verao_est$temp
+## W = 0.85041, p-value = 2.027e-08
+\end{verbatim}
+
+O comando \texttt{qqnorm()}nos fornece diretamente um gráfico da distribuição de percentagens
+acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp) }\CommentTok{#obtendo o normal probability plot só para comparação}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-260-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{qqnorm}\NormalTok{(sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-260-2.pdf}
+
+\hypertarget{teste-u-de-mann-whitney}{%
+\section{Teste U de Mann-Whitney}\label{teste-u-de-mann-whitney}}
+
+\emph{H0: mu da temp da casa de vegetação = mu da temp do campo}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{wilcox.test}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp,}
+  \DataTypeTok{alternative =} \StringTok{"two.side"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Wilcoxon rank sum test with continuity correction
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## W = 4579, p-value = 0.941
+## alternative hypothesis: true location shift is not equal to 0
+\end{verbatim}
+
+\hypertarget{covariancia-e-correlacao}{%
+\section{Covariância e Correlação}\label{covariancia-e-correlacao}}
+
+A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos \texttt{cov(x,y)} e \texttt{cor(x,y)}, respectivamente.
+São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.
+
+A correlação de \textbf{Pearson} é uma medida paramétrica de associação linear entre duas variaveis.
+
+A correlação de ordem de \textbf{Sperman} é uma medidad não paramétrica de associação entre duas variáveis
+
+A correlação de ordem de \textbf{Kendall} é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{help}\NormalTok{ (}\StringTok{"cor.test"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Plote os valores
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }\DataTypeTok{las=}\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-263-1.pdf}
+
+Teste de correlação de Pearson
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"pearson"}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9250728
+\end{verbatim}
+
+Teste de correlação de Pearson (the default)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9250728
+\end{verbatim}
+
+Teste de correlação de Pearson trocando o X e Y
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(sol_verao_est}\OperatorTok{$}\NormalTok{temp, sol_verao_camp}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9250728
+\end{verbatim}
+
+Teste de correlação de Spearman
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.9412321
+\end{verbatim}
+
+Teste de correlação de Kendall
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"kendall"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8113615
+\end{verbatim}
+
+Teste de correlação de Pearson
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor.test}\NormalTok{ (sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"pearson"}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Pearson's product-moment correlation
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## t = 23.615, df = 94, p-value < 2.2e-16
+## alternative hypothesis: true correlation is not equal to 0
+## 95 percent confidence interval:
+##  0.8895702 0.9494668
+## sample estimates:
+##       cor 
+## 0.9250728
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor.test}\NormalTok{ (sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"spearman"}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in cor.test.default(sol_verao_camp$temp, sol_verao_est$temp, method
+## = "spearman"): Cannot compute exact p-value with ties
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Spearman's rank correlation rho
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## S = 8664.7, p-value < 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.9412321
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor.test}\NormalTok{ (sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp, }
+    \DataTypeTok{method =} \StringTok{"spearman"}\NormalTok{, }\DataTypeTok{exact =}\NormalTok{ F}
+\NormalTok{    )}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Spearman's rank correlation rho
+## 
+## data:  sol_verao_camp$temp and sol_verao_est$temp
+## S = 8664.7, p-value < 2.2e-16
+## alternative hypothesis: true rho is not equal to 0
+## sample estimates:
+##       rho 
+## 0.9412321
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cov}\NormalTok{ (sol_verao_camp}\OperatorTok{$}\NormalTok{temp,sol_verao_est}\OperatorTok{$}\NormalTok{temp)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 6.051517
+\end{verbatim}
+
+\hypertarget{outros-testes}{%
+\section{Outros testes}\label{outros-testes}}
+
+Utilizaremos o banco de dados \href{https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0}{dadosfisio}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fisio <-}\StringTok{ }\KeywordTok{read.csv2}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1"}\NormalTok{)}
+\KeywordTok{attach}\NormalTok{(fisio)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## The following objects are masked _by_ .GlobalEnv:
+## 
+##     a, b, x, y, z
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from fisio (pos = 6):
+## 
+##     a, b, cc, cota, ds, ma, ptotal, tibe, tibo, x, X120, X3, X60,
+##     X90, y, z
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pairs}\NormalTok{(fisio[,}\DecValTok{4}\OperatorTok{:}\DecValTok{10}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-274-1.pdf}
+
+Teste de Spearman
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{cor}\NormalTok{(fisio[,}\DecValTok{3}\OperatorTok{:}\DecValTok{8}\NormalTok{],}\DataTypeTok{method =} \StringTok{"spearman"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                   y        cota           ds           cc          ma
+## y       1.000000000  0.03913488 -0.007304133 -0.005043318 -0.02834692
+## cota    0.039134875  1.00000000 -0.625860523  0.506913897  0.51222110
+## ds     -0.007304133 -0.62586052  1.000000000 -0.719094380 -0.80918958
+## cc     -0.005043318  0.50691390 -0.719094380  1.000000000  0.40193585
+## ma     -0.028346924  0.51222110 -0.809189577  0.401935847  1.00000000
+## ptotal -0.001391263  0.54405131 -0.962597591  0.812104786  0.75424837
+##              ptotal
+## y      -0.001391263
+## cota    0.544051305
+## ds     -0.962597591
+## cc      0.812104786
+## ma      0.754248369
+## ptotal  1.000000000
+\end{verbatim}
+
+\hypertarget{hydrogof}{%
+\subsection{hydroGOF}\label{hydrogof}}
+
+Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(hydroGOF)}
+\end{Highlighting}
+\end{Shaded}
+
+Cálculo das medidas numéricas de qualidade do ajuste para o ``melhor'' caso (inatingível)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{gof}\NormalTok{(}\DataTypeTok{sim =}\NormalTok{ fisio}\OperatorTok{$}\NormalTok{ds, }\DataTypeTok{obs=}\NormalTok{ fisio}\OperatorTok{$}\NormalTok{cc)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            [,1]
+## ME         1.36
+## MAE        1.36
+## MSE        1.90
+## RMSE       1.38
+## NRMSE % 1866.00
+## PBIAS %  453.80
+## RSR       18.66
+## rSD        2.24
+## NSE     -350.47
+## mNSE     -20.82
+## rNSE    -460.60
+## d          0.07
+## md         0.04
+## rd        -0.22
+## cp      -911.57
+## r         -0.87
+## R2         0.75
+## bR2        0.15
+## KGE       -4.06
+## VE        -3.54
+\end{verbatim}
 
 \bibliography{book.bib,packages.bib}
 

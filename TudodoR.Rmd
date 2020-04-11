@@ -2167,9 +2167,355 @@ CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher
 
 <!--chapter:end:07-Figura_2.Rmd-->
 
+Este  Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/)
+
+# Testes Estatísticos
+
+O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.
+
+## Teste t de Student
+
+O teste t é bastante usado em várias situações do cotidiano quando se deseja fazer comparações entre *uma ou mais médias*, sejam elas dependentes ou não.
+Abaixo estão exemplos de vários modos de realizarmos o teste t. 
+
+Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo.
+```{r}
+pira_tem <- read.csv2 ("https://www.dropbox.com/s/zvp5iftcpb6bdpe/pira_tem.csv?dl=1",
+  dec=".")
+str(pira_tem)
+```
+Apresentação dos dados em forma de gráfico
+```{r}
+library(ggplot2)
+ggplot(data= pira_tem, aes (x = hora, y = temp, colour =periodo)) +
+  geom_point(size=2,shape=19) +
+  geom_line() +
+  facet_grid(.~local) +
+  xlab("Horas") +
+  ylab("Temperatura ºC") + 
+             ggtitle("Variação da temperatura mediana\n nas quatro efemêrides") +
+             theme(plot.title=element_text(face="bold", size=12, hjust = 0.5))  +
+  theme_bw()
+```
+
+`t.test()`
+Realiza o teste t-Student para uma ou duas amostras.
+
+sintaxe:
+`t.test(amostra1, amostra2, opções)`
+
+**Parâmetros**
+
+*amostra1:* Vetor contendo a amostra da qual se quer testar a média populacional, ou comparar a média populacional com a média populacional da amostra 2.
+
+*amostra2:* Vetor contendo a amostra 2 para comparação da média populacional com a  média populacional da amostra 1.
+
+**Opções**
+
+*alternative:* string indicando a hipótese alternativa desejada.
+ Valores possíveis: *"two-sided", "less" ou "greater"*.
+ 
+*mu:* valor indicando o verdadeiro valor da média populacional para o caso de uma  amostra, ou a diferença entre as mêdias para o caso de duas amostras.
+
+*paired:* 
+   - TRUE - realiza o teste t pareado. 
+   - FALSE - realiza o teste t não pareado.
+   
+*var.equal*:
+   - TRUE - indica que a variância populacional é  igual nas duas amostras.
+   - FALSE - indica que a variância populacional de cada amostra é diferente.
+   
+*conf.level*: coeficiente de confiança do intervalo.
+
+### Para uma média
+
+Vamos testar se a temperatura  horaria do solsticio de verão no campo tem média igual ou maior que **21 ºC** na cidade de Piracicaba-SP.
+
+*H0: mu >= 21*
+
+*IC 95 para mu*
+
+1.0 Passo filtrar os dados pelo fator "periodo" com o nivel sol_verao (solsticio de verão).
+
+```{r}
+ #Dividir os dados - subset()
+    sol_verao_amb <- subset(pira_tem, periodo == "sol_verao")
+```
+
+2.0 Passo filtrar os dados pelo fator "local" com o nivel campo.
+
+```{r}
+ sol_verao_camp <- subset(sol_verao_amb, local == "campo")
+```
+
+3.0 Verificar dados graficamente
+```{r}
+attach(pira_tem)
+boxplot(temp)
+```
+
+4.0 Usar o teste T
+
+```{r}
+t.test(sol_verao_camp$temp,                     #amostra a ser testada
+mu=21,                                          #hipótese de nulidade
+alternative="greater",                         #teste unilateral pela direita
+conf.level = 0.95 )                         #Intervalo de confiancia de 95%  
+
+```
+
+Agora basta fazer a interpretação correta da saída do R.
+Para saber qual hipótese foi aceita, basta verificar o valor do *p-value* e estipular um nível de significância. Se neste exemplo o nível de significância fosse de 5% a hipótese alternativa seria aceita uma vez que o *p-value* foi menor ou igual a 0,05. Caso o *p-value* tivesse sido maior que 5% então aceitaríamos a hipótese de nulidade.
+Como a hipótese alternativa foi a aceita isso implica que a  temperatura do ar no solsticio de verão possui média estatisticamente diferente do valor 21ºC a um nível de significância de 5%.
+
+**Exercicio 1**
+
+Vamos testar se X tem média estatiscamente igual a 35 ou maior
+H0: mu =>35
+
+```{r}
+x <-c (30.5,35.3,33.2,40.8,42.3,41.5,36.3,43.2,34.6,38.5)
+
+boxplot(x)
+```
+
+Teste t.
+```{r}
+t.test(x,
+       mu=35,
+       alternative = "greater")
+
+```
+
+Com foi significativo admitimos que a amostra *x* é oriunda de um população com média maior que o valor de 35, com nivel de 5% de significância.
+
+**Exercicio 2**
+
+Um pesquisador afirmou que a temperatura  média de solsticio de verão medido na casa de vegetação em Piracicaba-SP tem média **22,2 ºC**.
+Desconfiando desse resultado um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:
+
+*H0: mu = 22,2*
+
+```{r}
+  sol_verao_amb <- subset(pira_tem, periodo == "sol_verao")
+```
+
+```{r}
+  sol_verao_est <- subset(sol_verao_amb, local == "estufa")
+  boxplot(sol_verao_est$temp)
+```
+
+Essa afirmação é verdadeira?
+
+```{r}
+t.test(sol_verao_est$temp,            #amostra a ser testada
+mu=22.2,                              #hipótese de nulidade
+alternative="two.sided",              #teste bilateral não considera se é maior ou menor
+conf.level = 0.99)                    #significância de 1%        
+```
+
+### Para duas médias independentes
+
+Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
+alem de seguirem distribuição normal. 
+
+Vamos a um exemplo:
+
+Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5% de significância.
+*H0: mu da temp da casa de vegetação = mu da temp do campo*
+
+```{r}
+boxplot(sol_verao_camp$temp, sol_verao_est$temp)
+
+t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      alternative = "greater",                  #unilateral a direita 
+      var.equal = T )                            #variância homogênea
+```
+
+Uma vez que o *p-value* foi maior que 0,05, podemos concluir que as médias de temperatura dos dois ambientes não são diferentes, estatisticamente, a 5% de significância.
+Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.
+
+### Para duas médias dependentes
+
+Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
+As hipóteses se mantêm. Agora basta adicionar o argumento `paired=T`, informando que as amostras são dependentes.
+
+```{r}
+t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      conf.level=0.99,                          #nível de confiança
+      paired=T,                                 #indica dependência entre as amostras
+      var.equal = T )                           #variância homogênea      
+```
+
+Note que a estatística do teste-t pareado não é baseada na média dos tratamentos, e sim na diferença entre os pares de tratamentos.
+
+
+## Teste de variância
+
+### Usando o teste de F
+
+*H0: a variancias das amostras são homogeneas *
+
+```{r}
+var.test (sol_verao_camp$temp, sol_verao_est$temp)
+```
+
+As variâncias não são homogeneas.
+
+Vamos resolver novamente o exercicio anterior, modificando o argumento `var.equal`
+ 
+```{r}
+ 
+ t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      conf.level=0.99,                          #nível de confiança
+      paired=T,                                 #indica dependência entre as amostras
+      var.equal = F )                           #variância homogênea 
+```
+ 
+
+## Teste para a normalidade - `shapiro.test()` 
+
+Por vezes temos necessidade de identificar com certa confiança se uma amostra ou conjunto de dados segue a distribuição normal. Isso e possível, no R, com o uso do comando `shapiro.test()`
+
+Verifique normalidade dos dados
+
+```{r}
+shapiro.test(sol_verao_camp$temp)
+shapiro.test(sol_verao_est$temp)
+```
+
+O comando `qqnorm()`nos fornece diretamente um gráfico da distribuição de percentagens
+acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal.
+
+```{r}
+qqnorm(sol_verao_camp$temp) #obtendo o normal probability plot só para comparação
+qqnorm(sol_verao_est$temp)
+
+```
+
+## Teste U de Mann-Whitney
+
+*H0: mu da temp da casa de vegetação = mu da temp do campo*
+```{r}
+wilcox.test(sol_verao_camp$temp,sol_verao_est$temp,
+  alternative = "two.side")
+```
+
+
+## Covariância e Correlação
+
+A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos `cov(x,y)` e `cor(x,y)`, respectivamente. 
+São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.
+
+A correlação  de **Pearson** é uma medida paramétrica de associação linear entre duas variaveis.
+
+A correlação de ordem de **Sperman** é uma medidad não paramétrica de associação entre duas variáveis
+
+A correlação de ordem de **Kendall** é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y
+
+```{r}
+help ("cor.test")
+```
+
+Plote os valores
+```{r}
+plot(sol_verao_camp$temp,sol_verao_est$temp, las=2)
+
+```
+
+Teste de correlação de Pearson
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "pearson"
+    )
+```
+
+Teste de correlação de Pearson (the default)
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp)
+```
+
+Teste de correlação de Pearson trocando o X e Y
+```{r}
+cor(sol_verao_est$temp, sol_verao_camp$temp)
+```
+
+Teste de correlação de Spearman 
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman")
+```
+
+Teste de correlação de Kendall
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "kendall")
+```
+
+Teste de correlação de Pearson
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "pearson"
+    )
+```
+
+
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman"
+    )
+```
+
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman", exact = F
+    )
+```
+
+
+```{r}
+cov (sol_verao_camp$temp,sol_verao_est$temp)
+```
+
+## Outros testes
+
+Utilizaremos o banco de dados [dadosfisio](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0) 
+
+```{r}
+fisio <- read.csv2("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1")
+attach(fisio)
+```
+
+
+```{r}
+pairs(fisio[,4:10])
+```
+
+Teste de Spearman
+```{r}
+cor(fisio[,3:8],method = "spearman")
+```
+
+### hydroGOF
+
+Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.
+
+```{r}
+library(hydroGOF)
+
+
+```
+
+Cálculo das medidas numéricas de qualidade do ajuste para o “melhor” caso (inatingível)
+```{r}
+gof(sim = fisio$ds, obs= fisio$cc)
+```
+
+<!--chapter:end:08-teste_esta.Rmd-->
+
 `r if (knitr::is_html_output()) '
 # References {-}
 '`
 
-<!--chapter:end:08-references.Rmd-->
+<!--chapter:end:09-references.Rmd-->
 

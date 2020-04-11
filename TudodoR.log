@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  11 APR 2020 15:00
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  11 APR 2020 16:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,12 +820,6 @@ a Agrícola"[]
  []
 
 [9]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 359--359
-[]\TU/lmtt/m/n/10 ## [1] -2.85696244 -0.50512699 -0.09263229  0.63854716  1.350
-00000[] 
- []
-
-
 Overfull \hbox (69.75pt too wide) in paragraph at lines 359--359
 []\TU/lmtt/m/n/10 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "
 Huber[]s function")[] 
@@ -1042,21 +1036,27 @@ Chapter 4.
 [45
 
 ]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2125--2125
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2126--2126
 []\TU/lmtt/m/n/10 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura
 .Rmd"[] 
  []
 
 
-Overfull \hbox (6.75pt too wide) in paragraph at lines 2125--2125
-[]\TU/lmtt/m/n/10 ##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-reference
-s.Rmd"[] 
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2126--2126
+[]\TU/lmtt/m/n/10 ##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-teste_est
+a.Rmd"[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 2126--2126
+[]\TU/lmtt/m/n/10 ## [22] "preamble.tex"      "README.md"         "search_index
+.json"[] 
  []
 
 [46] [47]
 
 LaTeX Warning: File `https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1' 
-not found on input line 2227.
+not found on input line 2228.
 
 
 ! LaTeX Error: File `https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1' 
@@ -1066,7 +1066,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2227 ...ox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1}
+l.2228 ...ox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1}
                                                    
 Here is how much of TeX's memory you used:
  23201 strings out of 494894
