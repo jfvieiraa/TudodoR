@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  9 APR 2020 21:00
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  11 APR 2020 10:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -821,7 +821,7 @@ a Agrícola"[]
 
 [9]
 Overfull \hbox (1.5pt too wide) in paragraph at lines 359--359
-[]\TU/lmtt/m/n/10 ## [1] -2.39852635 -0.64832515 -0.04965032  0.71847298  1.350
+[]\TU/lmtt/m/n/10 ## [1] -1.93877665 -0.71908603  0.01503835  0.78379515  1.350
 00000[] 
  []
 
@@ -1042,7 +1042,7 @@ Chapter 4.
 [45
 
 ]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 2122--2122
+Overfull \hbox (1.5pt too wide) in paragraph at lines 2125--2125
 []\TU/lmtt/m/n/10 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura
 .Rmd"[] 
  []
@@ -1050,7 +1050,7 @@ Overfull \hbox (1.5pt too wide) in paragraph at lines 2122--2122
 [46] [47]
 
 LaTeX Warning: File `https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1' 
-not found on input line 2224.
+not found on input line 2227.
 
 
 ! LaTeX Error: File `https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1' 
@@ -1060,7 +1060,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.2224 ...ox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1}
+l.2227 ...ox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1}
                                                    
 Here is how much of TeX's memory you used:
  23201 strings out of 494894

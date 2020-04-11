@@ -131,8 +131,11 @@ Use a opção `pch =` para especificar simbolos a serem usados ao traçar pontos
 
 ```{r}
 plot(solo1$ds,solo1$ptotal, pch=21, ylim = c(0,0.6), xlim = c(1,2))
-points(solo2$ds,solo2$ptotal,pch=2, col="blue") 
-points(solo3$ds,solo3$ptotal,pch="%")
+
+
+plot(solo2$ds,solo2$ptotal,pch=2, col="blue") 
+
+plot(solo3$ds,solo3$ptotal,pch="%")
 ```
 
 Neste exemplo acima note, que foi adicionado o argumento `ylim` e `xlim` eles limitam os valores minimos e maximos: 
@@ -143,7 +146,7 @@ xlim=c(xmin, xmax) ylim=c(ymin, ymax))
 
 
 Veja um exemplo do padrão dos pontos.
-```{r echo=FALSE}
+```{r}
 plot (0:20,                         #coord. eixo X
       rep (0,21),                   #coord. eixo y
       pch = 0:20,                   #padrão dos pontos variando
@@ -162,7 +165,7 @@ Você pode alterar linhas usando as seguintes opções. Isso é particularmente 
 
 ```{r}
 plot(solo3$ds,solo3$ptotal, lwd=2) # linha grossa
-lines(solo2$ds,solo2$ptotal, lty=2) #linha interrompida
+plot(solo2$ds,solo2$ptotal, lty=2) #linha interrompida
 ```
 
 ```{r}
@@ -399,8 +402,7 @@ Poderemos com o mouse marcar o ponte desejado usando a função `identify ()`
 
 ```{r}
 plot(solo1$ds~solo1$ptotal)
-identify(solo1$ds,
-                  n=1)
+identify(solo1$ds,n=1)
 ```
 
 
@@ -415,7 +417,7 @@ As seguintes opções podem ser usadas para controlar o tamanho do texto e do s�
 boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
         col=(c("gold","aquamarine","aliceblue")),
           main="Fatorial", 
-          xlab="Recipiente e Esp?cies",
+          xlab="Recipiente e Espécies",
           ylab="Altura de plantas (cm)",
             cex.axis=1,               #ampliação da anotação do eixo em relação ao cex
             cex.lab=1.5,              #ampliação dos rótulos x e y em relação ao cex
@@ -423,46 +425,6 @@ boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F,
               
 ```
 
-
-## Fontes
-
-Você pode definir facilmente o tamanho e o estilo da fonte, mas a familia de fontes é um pouco mais complicada.
-
-**Fonte**	Número inteiro que especifica a fonte a ser usada para texto. 
-1 = simples, 2 = negrito, 3 = itálico, 4 = negrito itálico, 5 = símbolo
-
-```{r}
-plot(1:10,1:10,type="n")
-windowsFonts(
-  A=windowsFont("Arial Black"),
-  B=windowsFont("Bookman Old Style"),
-  C=windowsFont("Comic Sans MS"),
-  D=windowsFont("Symbol")
-)
-text(3,3,"Hello World Default")
-text(4,4,family="A","Hello World from Arial Black")
-text(5,5,family="B","Hello World from Bookman Old Style")
-text(6,6,family="C","Hello World from Comic Sans MS")
-text(7,7,family="D", "Hello World from Symbol")
-
-```
-
-
-```{r}
-plot(solo1$ds,solo1$ptotal,
-     main="Fatorial", 
-        xlab="Recipiente e Espécies",
-        ylab="Altura de plantas (cm)",
-        cex.axis=1,                         #ampliação da anotação do eixo em relação ao cex
-        cex.lab=1.5,                        #ampliação dos rótulos x e y em relação ao cex
-        cex.main=1.5,                       #ampliação de títulos em relação ao cex
-        font.axis=3,                        #fonte para anotação de eixo
-        font.main=4,                        #fonte para títulos
-        font.lab=4,                         #fonte para rótulos
-        text(1.5,0.5,family="A", "Engenharia Agrícola",cex =1,pos =2))
-            
-        
-```
 
 ## Visualizar vários gráficos
 
@@ -510,14 +472,12 @@ Você pode salvar o gráfico em vários formatos no menu
 *Arquivo -> Salvar como*.
 
 Você também pode salvar o gráfico via código usando uma das seguintes funções.
-```{r}
 
-pdf (file = "meugráfico.pdf")	          #ficheiro PDF
-win.metafile ("meu grafico.wmf")	      #metarquivo do windows
-png ("meu grafico.png")         	      #arquivo png
-jpeg ("meu grafico.jpg")	              #arquivo jpeg
-bmp ("meu grafico.bmp")	                #arquivo bmp
-postscript ("meu grafico.ps")	          #arquivo postscript
-```
 
+`pdf (file = "meugráfico.pdf")	`          #ficheiro PDF
+`win.metafile ("meu grafico.wmf")`	      #metarquivo do windows
+`png ("meu grafico.png") `        	      #arquivo png
+`jpeg ("meu grafico.jpg")`	              #arquivo jpeg
+`bmp ("meu grafico.bmp")`	                #arquivo bmp
+`postscript ("meu grafico.ps")	`          #arquivo postscript
 

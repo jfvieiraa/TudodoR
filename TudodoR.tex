@@ -122,7 +122,7 @@
     \preauthor{}\postauthor{}
       \predate{\centering\large\emph}
   \postdate{\par}
-    \date{2020-04-09}
+    \date{2020-04-11}
 
 \usepackage{booktabs}
 
@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.39852635 -0.64832515 -0.04965032  0.71847298  1.35000000
+## [1] -1.93877665 -0.71908603  0.01503835  0.78379515  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##          0%         25%         50%         75%        100% 
-## -2.39852635 -0.64832515 -0.04965032  0.71847298  1.35000000 
+## -1.93877665 -0.71908603  0.01503835  0.78379515  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2114,11 +2114,14 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
+##  [7] "05-Figura.Rmd"     "06-references.Rmd" "book.bib"         
 ## [10] "docs"              "index.Rmd"         "LICENSE"          
-## [13] "packages.bib"      "preamble.tex"      "README.md"        
-## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
-## [19] "TudodoR.Rproj"     "TudodoR_files"
+## [13] "meu grafico.bmp"   "meu grafico.jpg"   "meu grafico.png"  
+## [16] "meu grafico.ps"    "meu grafico.wmf"   "meugráfico.pdf"   
+## [19] "packages.bib"      "preamble.tex"      "README.md"        
+## [22] "search_index.json" "style.css"         "TudodoR.log"      
+## [25] "TudodoR.pdf"       "TudodoR.Rmd"       "TudodoR.Rproj"    
+## [28] "TudodoR.tex"       "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -2499,312 +2502,1269 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
 
-\hypertarget{entrada-de-dados-teste-22251d-ds}{%
-\chapter{Entrada de dados teste 22251d ds}\label{entrada-de-dados-teste-22251d-ds}}
+\hypertarget{criando-graficos-com-o-r}{%
+\chapter{Criando Gráficos com o R}\label{criando-graficos-com-o-r}}
 
-Este terceiro Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}} modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+Este capitulo foi baseado nos livros
 
-O diretorio de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
+\begin{itemize}
+\item
+  \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}
+\item
+  AQUINO, J. A. \textbf{R para cientistas sociais}. - Ilhéus, BA: EDITUS, 2014. 157.
+\item
+  ANJOS, A. \textbf{Análise gráfica com uso do R}. Apostila. Dep. de Estatistica da UFPR, 2016. 127p.
+\end{itemize}
 
-\hypertarget{onde-os-dados-devem-estar-1}{%
-\section{Onde os dados devem estar?}\label{onde-os-dados-devem-estar-1}}
+Sites
 
-Para saber onde os diretorios estão basta digitar o comando \texttt{getwd()}
+\begin{itemize}
+\item
+  \url{https://www.statmethods.net/index.html}
+\item
+  \url{http://curso-r.github.io/index.html} PET Estatística UFPR (2016). \textbf{labestData: Biblioteca de Dados para Aprendizado de Estatística}. R package version x.y-z.w.
+\item
+  \url{https://www.statmethods.net/index.html}
+\end{itemize}
+
+Modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o \emph{graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como
+}lattice\emph{, }ggplot2\emph{, }ggobi* e \emph{rgl}.
+
+O R possui diferentes funções geradoras de gráficos, e essas são classificados como:
+
+\begin{itemize}
+\item
+  \emph{Funções gráficas de alto nível}: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: \emph{plot, hist, image, contour, persp etc}.
+\item
+  \emph{Funções gráficas de baixo nível}: permitem adicionar novas informações em gráficos já criados, como novos dados, linhas etc. Exemplos: \emph{points, lines, abline,} \emph{polygon, legend etc}.
+\item
+  \emph{Funções gráficas iterativas}: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: \emph{locator e identify}.
+\end{itemize}
+
+\hypertarget{exemplos-de-graficos-com-o-r}{%
+\section{Exemplos de gráficos com o R}\label{exemplos-de-graficos-com-o-r}}
+
+Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
- \KeywordTok{getwd}\NormalTok{() }\CommentTok{#para verificar  diretório de trabalho}
+\KeywordTok{demo}\NormalTok{(image)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "D:/livro/TudodoRa"
+## 
+## 
+##  demo(image)
+##  ---- ~~~~~
+## 
+## > #  Copyright (C) 1997-2009 The R Core Team
+## > 
+## > require(datasets)
+## 
+## > require(grDevices); require(graphics)
+## 
+## > x <- 10*(1:nrow(volcano)); x.at <- seq(100, 800, by=100)
+## 
+## > y <- 10*(1:ncol(volcano)); y.at <- seq(100, 600, by=100)
+## 
+## >                    # Using Terrain Colors
+## > 
+## > image(x, y, volcano, col=terrain.colors(100),axes=FALSE)
 \end{verbatim}
 
-Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando \texttt{setwd()}
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-1.pdf}
 
-Outra forma de mudar o caminho é com o comando:
+\begin{verbatim}
+## 
+## > contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="brown")
+## 
+## > axis(1, at=x.at)
+## 
+## > axis(2, at=y.at)
+## 
+## > box()
+## 
+## > title(main="Maunga Whau Volcano", sub = "col=terrain.colors(100)", font.main=4)
+## 
+## >                    # Using Heat Colors
+## > 
+## > image(x, y, volcano, col=heat.colors(100), axes=FALSE)
+\end{verbatim}
 
-Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-2.pdf}
 
-Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
+\begin{verbatim}
+## 
+## > contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="brown")
+## 
+## > axis(1, at=x.at)
+## 
+## > axis(2, at=y.at)
+## 
+## > box()
+## 
+## > title(main="Maunga Whau Volcano", sub = "col=heat.colors(100)", font.main=4)
+## 
+## >                    # Using Gray Scale
+## > 
+## > image(x, y, volcano, col=gray(100:200/200), axes=FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-3.pdf}
+
+\begin{verbatim}
+## 
+## > contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col="black")
+## 
+## > axis(1, at=x.at)
+## 
+## > axis(2, at=y.at)
+## 
+## > box()
+## 
+## > title(main="Maunga Whau Volcano \n col=gray(100:200/200)", font.main=4)
+## 
+## > ## Filled Contours are even nicer sometimes :
+## > example(filled.contour)
+## 
+## flld.c> require("grDevices") # for colours
+## 
+## flld.c> filled.contour(volcano, asp = 1) # simple
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-4.pdf}
+
+\begin{verbatim}
+## 
+## flld.c> x <- 10*1:nrow(volcano)
+## 
+## flld.c> y <- 10*1:ncol(volcano)
+## 
+## flld.c> filled.contour(x, y, volcano, color = function(n) hcl.colors(n, "terrain"),
+## flld.c+     plot.title = title(main = "The Topography of Maunga Whau",
+## flld.c+     xlab = "Meters North", ylab = "Meters West"),
+## flld.c+     plot.axes = { axis(1, seq(100, 800, by = 100))
+## flld.c+                   axis(2, seq(100, 600, by = 100)) },
+## flld.c+     key.title = title(main = "Height\n(meters)"),
+## flld.c+     key.axes = axis(4, seq(90, 190, by = 10)))  # maybe also asp = 1
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-5.pdf}
+
+\begin{verbatim}
+## 
+## flld.c> mtext(paste("filled.contour(.) from", R.version.string),
+## flld.c+       side = 1, line = 4, adj = 1, cex = .66)
+## 
+## flld.c> # Annotating a filled contour plot
+## flld.c> a <- expand.grid(1:20, 1:20)
+## 
+## flld.c> b <- matrix(a[,1] + a[,2], 20)
+## 
+## flld.c> filled.contour(x = 1:20, y = 1:20, z = b,
+## flld.c+                plot.axes = { axis(1); axis(2); points(10, 10) })
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-6.pdf}
+
+\begin{verbatim}
+## 
+## flld.c> ## Persian Rug Art:
+## flld.c> x <- y <- seq(-4*pi, 4*pi, len = 27)
+## 
+## flld.c> r <- sqrt(outer(x^2, y^2, "+"))
+## 
+## flld.c> filled.contour(cos(r^2)*exp(-r/(2*pi)), axes = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-7.pdf}
+
+\begin{verbatim}
+## 
+## flld.c> ## rather, the key *should* be labeled:
+## flld.c> filled.contour(cos(r^2)*exp(-r/(2*pi)), frame.plot = FALSE,
+## flld.c+                plot.axes = {})
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-145-8.pdf}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{dir}\NormalTok{()}
+\KeywordTok{demo}\NormalTok{(persp)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
-##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Proximo.Rmd"    "06-references.Rmd" "book.bib"         
-## [10] "docs"              "index.Rmd"         "LICENSE"          
-## [13] "packages.bib"      "preamble.tex"      "README.md"        
-## [16] "search_index.json" "style.css"         "TudodoR.Rmd"      
-## [19] "TudodoR.Rproj"     "TudodoR_files"
+## 
+## 
+##  demo(persp)
+##  ---- ~~~~~
+## 
+## > ### Demos for  persp()  plots   -- things not in  example(persp)
+## > ### -------------------------
+## > 
+## > require(datasets)
+## 
+## > require(grDevices); require(graphics)
+## 
+## > ## (1) The Obligatory Mathematical surface.
+## > ##     Rotated sinc function.
+## > 
+## > x <- seq(-10, 10, length.out = 50)
+## 
+## > y <- x
+## 
+## > rotsinc <- function(x,y)
+## + {
+## +     sinc <- function(x) { y <- sin(x)/x ; y[is.na(y)] <- 1; y }
+## +     10 * sinc( sqrt(x^2+y^2) )
+## + }
+## 
+## > sinc.exp <- expression(z == Sinc(sqrt(x^2 + y^2)))
+## 
+## > z <- outer(x, y, rotsinc)
+## 
+## > oldpar <- par(bg = "white")
+## 
+## > persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue")
 \end{verbatim}
 
-\hypertarget{entrando-com-dados-1}{%
-\section{Entrando com dados}\label{entrando-com-dados-1}}
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-1.pdf}
 
-O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
+\begin{verbatim}
+## 
+## > title(sub=".")## work around persp+plotmath bug
+## 
+## > title(main = sinc.exp)
+## 
+## > persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = "lightblue",
+## +       ltheta = 120, shade = 0.75, ticktype = "detailed",
+## +       xlab = "X", ylab = "Y", zlab = "Z")
+\end{verbatim}
 
-A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-2.pdf}
 
-\hypertarget{vetores-1}{%
-\subsection{Vetores}\label{vetores-1}}
+\begin{verbatim}
+## 
+## > title(sub=".")## work around persp+plotmath bug
+## 
+## > title(main = sinc.exp)
+## 
+## > ## (2) Visualizing a simple DEM model
+## > 
+## > z <- 2 * volcano        # Exaggerate the relief
+## 
+## > x <- 10 * (1:nrow(z))   # 10 meter spacing (S to N)
+## 
+## > y <- 10 * (1:ncol(z))   # 10 meter spacing (E to W)
+## 
+## > persp(x, y, z, theta = 120, phi = 15, scale = FALSE, axes = FALSE)
+\end{verbatim}
 
-Podemos entrar com dados definindo vetores com o comando \texttt{c()}, conforme visto no capítulo 2.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-3.pdf}
+
+\begin{verbatim}
+## 
+## > ## (3) Now something more complex
+## > ##     We border the surface, to make it more "slice like"
+## > ##     and color the top and sides of the surface differently.
+## > 
+## > z0 <- min(z) - 20
+## 
+## > z <- rbind(z0, cbind(z0, z, z0), z0)
+## 
+## > x <- c(min(x) - 1e-10, x, max(x) + 1e-10)
+## 
+## > y <- c(min(y) - 1e-10, y, max(y) + 1e-10)
+## 
+## > fill <- matrix("green3", nrow = nrow(z)-1, ncol = ncol(z)-1)
+## 
+## > fill[ , i2 <- c(1,ncol(fill))] <- "gray"
+## 
+## > fill[i1 <- c(1,nrow(fill)) , ] <- "gray"
+## 
+## > par(bg = "lightblue")
+## 
+## > persp(x, y, z, theta = 120, phi = 15, col = fill, scale = FALSE, axes = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-4.pdf}
+
+\begin{verbatim}
+## 
+## > title(main = "Maunga Whau\nOne of 50 Volcanoes in the Auckland Region.",
+## +       font.main = 4)
+## 
+## > par(bg = "slategray")
+## 
+## > persp(x, y, z, theta = 135, phi = 30, col = fill, scale = FALSE,
+## +       ltheta = -120, lphi = 15, shade = 0.65, axes = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-5.pdf}
+
+\begin{verbatim}
+## 
+## > ## Don't draw the grid lines :  border = NA
+## > persp(x, y, z, theta = 135, phi = 30, col = "green3", scale = FALSE,
+## +       ltheta = -120, shade = 0.75, border = NA, box = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-6.pdf}
+
+\begin{verbatim}
+## 
+## > ## `color gradient in the soil' :
+## > fcol <- fill ; fcol[] <- terrain.colors(nrow(fcol))
+## 
+## > persp(x, y, z, theta = 135, phi = 30, col = fcol, scale = FALSE,
+## +       ltheta = -120, shade = 0.3, border = NA, box = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-7.pdf}
+
+\begin{verbatim}
+## 
+## > ## `image like' colors on top :
+## > fcol <- fill
+## 
+## > zi <- volcano[ -1,-1] + volcano[ -1,-61] +
+## +            volcano[-87,-1] + volcano[-87,-61]  ## / 4
+## 
+## > fcol[-i1,-i2] <-
+## +     terrain.colors(20)[cut(zi,
+## +                            stats::quantile(zi, seq(0,1, length.out = 21)),
+## +                            include.lowest = TRUE)]
+## 
+## > persp(x, y, 2*z, theta = 110, phi = 40, col = fcol, scale = FALSE,
+## +       ltheta = -120, shade = 0.4, border = NA, box = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-146-8.pdf}
+
+\begin{verbatim}
+## 
+## > ## reset par():
+## > par(oldpar)
+\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{vetor <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{,}\DecValTok{7}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
-Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{5}\NormalTok{), }\DecValTok{5}\NormalTok{)  }\CommentTok{# cria vetor repetindo 5 vezes 2 e 5 alternadamente}
-\NormalTok{vetor}
+\KeywordTok{demo}\NormalTok{(graphics)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 2 5 2 5 2 5 2 5 2 5
+## 
+## 
+##  demo(graphics)
+##  ---- ~~~~~~~~
+## 
+## > #  Copyright (C) 1997-2009 The R Core Team
+## > 
+## > require(datasets)
+## 
+## > require(grDevices); require(graphics)
+## 
+## > ## Here is some code which illustrates some of the differences between
+## > ## R and S graphics capabilities.  Note that colors are generally specified
+## > ## by a character string name (taken from the X11 rgb.txt file) and that line
+## > ## textures are given similarly.  The parameter "bg" sets the background
+## > ## parameter for the plot and there is also an "fg" parameter which sets
+## > ## the foreground color.
+## > 
+## > 
+## > x <- stats::rnorm(50)
+## 
+## > opar <- par(bg = "white")
+## 
+## > plot(x, ann = FALSE, type = "n")
 \end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-1.pdf}
+
+\begin{verbatim}
+## 
+## > abline(h = 0, col = gray(.90))
+## 
+## > lines(x, col = "green4", lty = "dotted")
+## 
+## > points(x, bg = "limegreen", pch = 21)
+## 
+## > title(main = "Simple Use of Color In a Plot",
+## +       xlab = "Just a Whisper of a Label",
+## +       col.main = "blue", col.lab = gray(.8),
+## +       cex.main = 1.2, cex.lab = 1.0, font.main = 4, font.lab = 3)
+## 
+## > ## A little color wheel.    This code just plots equally spaced hues in
+## > ## a pie chart.    If you have a cheap SVGA monitor (like me) you will
+## > ## probably find that numerically equispaced does not mean visually
+## > ## equispaced.  On my display at home, these colors tend to cluster at
+## > ## the RGB primaries.  On the other hand on the SGI Indy at work the
+## > ## effect is near perfect.
+## > 
+## > par(bg = "gray")
+## 
+## > pie(rep(1,24), col = rainbow(24), radius = 0.9)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-2.pdf}
+
+\begin{verbatim}
+## 
+## > title(main = "A Sample Color Wheel", cex.main = 1.4, font.main = 3)
+## 
+## > title(xlab = "(Use this as a test of monitor linearity)",
+## +       cex.lab = 0.8, font.lab = 3)
+## 
+## > ## We have already confessed to having these.  This is just showing off X11
+## > ## color names (and the example (from the postscript manual) is pretty "cute".
+## > 
+## > pie.sales <- c(0.12, 0.3, 0.26, 0.16, 0.04, 0.12)
+## 
+## > names(pie.sales) <- c("Blueberry", "Cherry",
+## +              "Apple", "Boston Cream", "Other", "Vanilla Cream")
+## 
+## > pie(pie.sales,
+## +     col = c("purple","violetred1","green3","cornsilk","cyan","white"))
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-3.pdf}
+
+\begin{verbatim}
+## 
+## > title(main = "January Pie Sales", cex.main = 1.8, font.main = 1)
+## 
+## > title(xlab = "(Don't try this at home kids)", cex.lab = 0.8, font.lab = 3)
+## 
+## > ## Boxplots:  I couldn't resist the capability for filling the "box".
+## > ## The use of color seems like a useful addition, it focuses attention
+## > ## on the central bulk of the data.
+## > 
+## > par(bg="cornsilk")
+## 
+## > n <- 10
+## 
+## > g <- gl(n, 100, n*100)
+## 
+## > x <- rnorm(n*100) + sqrt(as.numeric(g))
+## 
+## > boxplot(split(x,g), col="lavender", notch=TRUE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-4.pdf}
+
+\begin{verbatim}
+## 
+## > title(main="Notched Boxplots", xlab="Group", font.main=4, font.lab=1)
+## 
+## > ## An example showing how to fill between curves.
+## > 
+## > par(bg="white")
+## 
+## > n <- 100
+## 
+## > x <- c(0,cumsum(rnorm(n)))
+## 
+## > y <- c(0,cumsum(rnorm(n)))
+## 
+## > xx <- c(0:n, n:0)
+## 
+## > yy <- c(x, rev(y))
+## 
+## > plot(xx, yy, type="n", xlab="Time", ylab="Distance")
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-5.pdf}
+
+\begin{verbatim}
+## 
+## > polygon(xx, yy, col="gray")
+## 
+## > title("Distance Between Brownian Motions")
+## 
+## > ## Colored plot margins, axis labels and titles.    You do need to be
+## > ## careful with these kinds of effects.    It's easy to go completely
+## > ## over the top and you can end up with your lunch all over the keyboard.
+## > ## On the other hand, my market research clients love it.
+## > 
+## > x <- c(0.00, 0.40, 0.86, 0.85, 0.69, 0.48, 0.54, 1.09, 1.11, 1.73, 2.05, 2.02)
+## 
+## > par(bg="lightgray")
+## 
+## > plot(x, type="n", axes=FALSE, ann=FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-6.pdf}
+
+\begin{verbatim}
+## 
+## > usr <- par("usr")
+## 
+## > rect(usr[1], usr[3], usr[2], usr[4], col="cornsilk", border="black")
+## 
+## > lines(x, col="blue")
+## 
+## > points(x, pch=21, bg="lightcyan", cex=1.25)
+## 
+## > axis(2, col.axis="blue", las=1)
+## 
+## > axis(1, at=1:12, lab=month.abb, col.axis="blue")
+## 
+## > box()
+## 
+## > title(main= "The Level of Interest in R", font.main=4, col.main="red")
+## 
+## > title(xlab= "1996", col.lab="red")
+## 
+## > ## A filled histogram, showing how to change the font used for the
+## > ## main title without changing the other annotation.
+## > 
+## > par(bg="cornsilk")
+## 
+## > x <- rnorm(1000)
+## 
+## > hist(x, xlim=range(-4, 4, x), col="lavender", main="")
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-7.pdf}
+
+\begin{verbatim}
+## 
+## > title(main="1000 Normal Random Variates", font.main=3)
+## 
+## > ## A scatterplot matrix
+## > ## The good old Iris data (yet again)
+## > 
+## > pairs(iris[1:4], main="Edgar Anderson's Iris Data", font.main=4, pch=19)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-8.pdf}
+
+\begin{verbatim}
+## 
+## > pairs(iris[1:4], main="Edgar Anderson's Iris Data", pch=21,
+## +       bg = c("red", "green3", "blue")[unclass(iris$Species)])
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-9.pdf}
+
+\begin{verbatim}
+## 
+## > ## Contour plotting
+## > ## This produces a topographic map of one of Auckland's many volcanic "peaks".
+## > 
+## > x <- 10*1:nrow(volcano)
+## 
+## > y <- 10*1:ncol(volcano)
+## 
+## > lev <- pretty(range(volcano), 10)
+## 
+## > par(bg = "lightcyan")
+## 
+## > pin <- par("pin")
+## 
+## > xdelta <- diff(range(x))
+## 
+## > ydelta <- diff(range(y))
+## 
+## > xscale <- pin[1]/xdelta
+## 
+## > yscale <- pin[2]/ydelta
+## 
+## > scale <- min(xscale, yscale)
+## 
+## > xadd <- 0.5*(pin[1]/scale - xdelta)
+## 
+## > yadd <- 0.5*(pin[2]/scale - ydelta)
+## 
+## > plot(numeric(0), numeric(0),
+## +      xlim = range(x)+c(-1,1)*xadd, ylim = range(y)+c(-1,1)*yadd,
+## +      type = "n", ann = FALSE)
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-10.pdf}
+
+\begin{verbatim}
+## 
+## > usr <- par("usr")
+## 
+## > rect(usr[1], usr[3], usr[2], usr[4], col="green3")
+## 
+## > contour(x, y, volcano, levels = lev, col="yellow", lty="solid", add=TRUE)
+## 
+## > box()
+## 
+## > title("A Topographic Map of Maunga Whau", font= 4)
+## 
+## > title(xlab = "Meters North", ylab = "Meters West", font= 3)
+## 
+## > mtext("10 Meter Contour Spacing", side=3, line=0.35, outer=FALSE,
+## +       at = mean(par("usr")[1:2]), cex=0.7, font=3)
+## 
+## > ## Conditioning plots
+## > 
+## > par(bg="cornsilk")
+## 
+## > coplot(lat ~ long | depth, data = quakes, pch = 21, bg = "green3")
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-147-11.pdf}
+
+\begin{verbatim}
+## 
+## > par(opar)
+\end{verbatim}
+
+\hypertarget{entrada-de-dados-1}{%
+\section{Entrada de dados}\label{entrada-de-dados-1}}
+
+Nesse tópico utlizaremos o arquivo de dados \href{https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1}{dadosfisio.csv}.
+
+Dados fisico hidrico de 3 solos com textutas diferentes.
+
+\begin{longtable}[]{@{}lllll@{}}
+\toprule
+Cod. & Solo & Areia & Silte & Argila\tabularnewline
+\midrule
+\endhead
+Z1 & NITOSSOLO & 122 & 121 & 757\tabularnewline
+Z2 & LATOSSOLO & 710 & 80 & 210\tabularnewline
+Z3 & LATOSSOLO & 892 & 10 & 98\tabularnewline
+\bottomrule
+\end{longtable}
+
+Ler dados via web.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{vetor <-}\StringTok{ }\KeywordTok{rep}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{,}\DecValTok{8}\NormalTok{), }\DataTypeTok{each=}\DecValTok{3}\NormalTok{)  }\CommentTok{# cria vetor repetindo 3 vezes 5 e depois 8}
-\NormalTok{vetor}
+\NormalTok{solo <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1"}\NormalTok{, }\DataTypeTok{sep =} \StringTok{";"}\NormalTok{, }\DataTypeTok{header =}\NormalTok{ T, }\DataTypeTok{dec =} \StringTok{","}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Verificar a estrutura de dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(solo)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 5 5 5 8 8 8
+## 'data.frame':    108 obs. of  16 variables:
+##  $ z     : int  1 1 1 1 1 1 1 1 1 1 ...
+##  $ x     : int  1 1 1 1 1 1 3 3 3 3 ...
+##  $ y     : int  1 3 5 7 9 11 1 3 5 7 ...
+##  $ cota  : num  9.15 8.95 8.78 8.59 8.48 8.41 8.93 8.76 8.58 8.48 ...
+##  $ ds    : num  1.5 1.47 1.47 1.39 1.38 ...
+##  $ cc    : num  0.398 0.382 0.351 0.372 0.356 ...
+##  $ ma    : num  0.129 0.153 0.185 0.188 0.208 ...
+##  $ ptotal: num  0.526 0.535 0.537 0.561 0.564 ...
+##  $ tibo  : num  46.1 19.2 172.8 96 30.7 ...
+##  $ tibe  : num  26.8 26.1 113.9 74.8 37.2 ...
+##  $ a     : num  926 384 275 1207 151 ...
+##  $ b     : num  -0.529 -0.418 -0.131 -0.376 -0.227 ...
+##  $ X3    : num  518 243 238 798 118 ...
+##  $ X60   : num  153.2 92.7 176.5 335.4 69.9 ...
+##  $ X90   : num  106.2 69.4 161.2 258.4 59.8 ...
+##  $ X120  : num  73.6 52 147.2 199 51.1 ...
 \end{verbatim}
 
-\hypertarget{usando-a-funcao-scan-1}{%
-\subsection{Usando a função scan}\label{usando-a-funcao-scan-1}}
-
-Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
+Resumo estatástico da coluna 5 a coluna 8 de todos os solos
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{y <-}\StringTok{ }\KeywordTok{scan}\NormalTok{()}
-
-\CommentTok{#1: 11}
-\CommentTok{#2: 24}
-\CommentTok{#3: 35}
-\CommentTok{#4: 29}
-\CommentTok{#5: 39}
-\CommentTok{#6: 47}
-\CommentTok{#7:}
-\CommentTok{#Read 6 items}
-
-\NormalTok{y}
+\KeywordTok{summary}\NormalTok{(solo[}\DecValTok{5}\OperatorTok{:}\DecValTok{8}\NormalTok{])}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## numeric(0)
+##        ds              cc               ma               ptotal      
+##  Min.   :1.263   Min.   :0.1501   Min.   :0.004834   Min.   :0.2257  
+##  1st Qu.:1.500   1st Qu.:0.2505   1st Qu.:0.047689   1st Qu.:0.3090  
+##  Median :1.722   Median :0.2712   Median :0.081510   Median :0.3284  
+##  Mean   :1.660   Mean   :0.2998   Mean   :0.090675   Mean   :0.3905  
+##  3rd Qu.:1.787   3rd Qu.:0.3579   3rd Qu.:0.129955   3rd Qu.:0.5269  
+##  Max.   :1.960   Max.   :0.4997   Max.   :0.238551   Max.   :0.6015
 \end{verbatim}
 
+Neste exemplo vamos analisar cada solo separadamente usando o comando \texttt{subset()}
+
 \begin{Shaded}
 \begin{Highlighting}[]
-\CommentTok{#[1] 11 24 35 29 39 47}
+\NormalTok{solo1 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(solo, z}\OperatorTok{==}\DecValTok{1}\NormalTok{)}
+\NormalTok{solo2 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(solo, z}\OperatorTok{==}\DecValTok{2}\NormalTok{)}
+\NormalTok{solo3 <-}\StringTok{ }\KeywordTok{subset}\NormalTok{(solo, z}\OperatorTok{==}\DecValTok{3}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
-Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
+\hypertarget{usando-a-funcao-plot}{%
+\section{\texorpdfstring{Usando a função \texttt{plot()}}{Usando a função plot()}}\label{usando-a-funcao-plot}}
 
-\hypertarget{copiar-e-colar-usando-scan-1}{%
-\subsection{Copiar e colar usando scan()}\label{copiar-e-colar-usando-scan-1}}
-
-Pode usar o recurso ``copiar e colar'' com o comando \texttt{scan}.
-Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater ENTER\textless, depois cole o texto e, aperte \textgreater ENTER\textless{} novamente.
-
-\hypertarget{lendo-dados-atraves-da-area-de-transferencia-1}{%
-\subsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia-1}}
-
-Funções como \texttt{scan()}, \texttt{read.table()} e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao \emph{``clipboard''} ao primeiro argumento.
-
-\hypertarget{usando-a-funcao-edit-1}{%
-\subsection{Usando a função edit}\label{usando-a-funcao-edit-1}}
-
-O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dados que são armazanados como data-frames.
+A função \texttt{plot()} inicia um novo gráfico. Em sua forma mais simples a função
+recebe valores de coordenadas \emph{ds} (densidade do solo) e \emph{ptotal} (porosidade total do solo) do solo z1.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{dados <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(}\KeywordTok{data.frame}\NormalTok{())}
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds,solo1}\OperatorTok{$}\NormalTok{ptotal)}
 \end{Highlighting}
 \end{Shaded}
 
-Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando \texttt{fix}.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-152-1.pdf}
+
+Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type=``l'' na função \texttt{plot()}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{fix}\NormalTok{(dados)}
-\KeywordTok{head}\NormalTok{(dados)}
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds,solo1}\OperatorTok{$}\NormalTok{ptotal, }\DataTypeTok{type =} \StringTok{"l"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-153-1.pdf}
+
+Verifique outras opcões para os gráfico
+
+\begin{itemize}
+\tightlist
+\item
+  \emph{type = ``p''} especifica o tipo de plotagem
+\item
+  \emph{``p''}: pontos,
+\item
+  \emph{``l''}: linhas,
+\item
+  \emph{``b''}: pontos conectados por linhas,
+\item
+  \emph{``o''}: id. mas as linhas estão acima dos pontos,
+\item
+  \emph{``h''}: linhas verticais,
+\item
+  \emph{``s''}: passos, os dados são representados pelo topo das linhas verticais,
+\item
+  \emph{``S''}: id. mas os dados são representados pela parte inferior das linhas verticais
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{0}\OperatorTok{:}\DecValTok{12}
+\NormalTok{y <-}\StringTok{ }\KeywordTok{sin}\NormalTok{(pi}\OperatorTok{/}\DecValTok{5} \OperatorTok{*}\StringTok{ }\NormalTok{x)}
+\NormalTok{op <-}\StringTok{ }\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{), }\DataTypeTok{mar =} \FloatTok{.1}\OperatorTok{+}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{))}
+\ControlFlowTok{for}\NormalTok{ (tp }\ControlFlowTok{in} \KeywordTok{c}\NormalTok{(}\StringTok{"p"}\NormalTok{,}\StringTok{"l"}\NormalTok{,}\StringTok{"b"}\NormalTok{,  }\StringTok{"c"}\NormalTok{,}\StringTok{"o"}\NormalTok{,}\StringTok{"h"}\NormalTok{,  }\StringTok{"s"}\NormalTok{,}\StringTok{"S"}\NormalTok{,}\StringTok{"n"}\NormalTok{)) \{}
+  \KeywordTok{plot}\NormalTok{(y }\OperatorTok{~}\StringTok{ }\NormalTok{x, }\DataTypeTok{type =}\NormalTok{ tp, }\DataTypeTok{main =} \KeywordTok{paste0}\NormalTok{(}\StringTok{"plot(*, type = }\CharTok{\textbackslash{}"}\StringTok{"}\NormalTok{, tp, }\StringTok{"}\CharTok{\textbackslash{}"}\StringTok{)"}\NormalTok{))}
+  \ControlFlowTok{if}\NormalTok{(tp }\OperatorTok{==}\StringTok{ "S"}\NormalTok{) \{}
+    \KeywordTok{lines}\NormalTok{(x, y, }\DataTypeTok{type =} \StringTok{"s"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{mtext}\NormalTok{(}\StringTok{"lines(*, type = }\CharTok{\textbackslash{}"}\StringTok{s}\CharTok{\textbackslash{}"}\StringTok{, ...)"}\NormalTok{, }\DataTypeTok{col =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{cex =} \FloatTok{0.8}\NormalTok{)}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-154-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(op)}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{mudando-o-padrao-dos-pontos-pch}{%
+\subsection{\texorpdfstring{Mudando o padrão dos pontos \texttt{pch=}}{Mudando o padrão dos pontos pch=}}\label{mudando-o-padrao-dos-pontos-pch}}
+
+Pode-se usar diferentes padrões para os pontos usando o argumento \texttt{pch=}.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
+Use a opção \texttt{pch\ =} para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda \texttt{(col\ =)}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds,solo1}\OperatorTok{$}\NormalTok{ptotal, }\DataTypeTok{pch=}\DecValTok{21}\NormalTok{, }\DataTypeTok{ylim =} \KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.6}\NormalTok{), }\DataTypeTok{xlim =} \KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-155-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo2}\OperatorTok{$}\NormalTok{ds,solo2}\OperatorTok{$}\NormalTok{ptotal,}\DataTypeTok{pch=}\DecValTok{2}\NormalTok{, }\DataTypeTok{col=}\StringTok{"blue"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-155-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal,}\DataTypeTok{pch=}\StringTok{"%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-155-3.pdf}
+
+Neste exemplo acima note, que foi adicionado o argumento \texttt{ylim} e \texttt{xlim} eles limitam os valores minimos e maximos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{xlim=}\KeywordTok{c}\NormalTok{(xmin, xmax) ylim=}\KeywordTok{c}\NormalTok{(ymin, ymax)}\ErrorTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Veja um exemplo do padrão dos pontos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{ (}\DecValTok{0}\OperatorTok{:}\DecValTok{20}\NormalTok{,                         }\CommentTok{#coord. eixo X}
+      \KeywordTok{rep}\NormalTok{ (}\DecValTok{0}\NormalTok{,}\DecValTok{21}\NormalTok{),                   }\CommentTok{#coord. eixo y}
+      \DataTypeTok{pch =} \DecValTok{0}\OperatorTok{:}\DecValTok{20}\NormalTok{,                   }\CommentTok{#padrão dos pontos variando}
+      \DataTypeTok{cex =} \DecValTok{2}\NormalTok{,                      }\CommentTok{#tamanho dos pontos}
+      \DataTypeTok{main =} \StringTok{"Padrão dos pontos"}\NormalTok{, }\CommentTok{#Titulo (note o \textbackslash{}n)}
+      \DataTypeTok{xlab =} \StringTok{"pch = "}\NormalTok{,              }\CommentTok{#texto do eixo de x}
+      \DataTypeTok{ylab =} \StringTok{""}\NormalTok{)                    }\CommentTok{#texto do eixo de y}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-157-1.pdf}
+
+\hypertarget{mudando-as-linhas-lwd-e-lty}{%
+\subsection{\texorpdfstring{Mudando as linhas (\texttt{lwd\ e\ lty})}{Mudando as linhas (lwd e lty)}}\label{mudando-as-linhas-lwd-e-lty}}
+
+Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento \texttt{lwd=}, enquanto os estilos das linhas podem ser modificados com o argumento \texttt{lty=}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\DataTypeTok{lwd=}\DecValTok{2}\NormalTok{) }\CommentTok{# linha grossa}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-158-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo2}\OperatorTok{$}\NormalTok{ds,solo2}\OperatorTok{$}\NormalTok{ptotal, }\DataTypeTok{lty=}\DecValTok{2}\NormalTok{) }\CommentTok{#linha interrompida}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-158-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{9}
+\NormalTok{y <-}\StringTok{ }\DecValTok{1}\OperatorTok{:}\DecValTok{9}
+  \KeywordTok{plot}\NormalTok{(x, y, }\DataTypeTok{type =} \StringTok{"n"}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{), }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{7}\NormalTok{, }\DecValTok{7}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{2}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{6}\NormalTok{, }\DecValTok{6}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{3}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{5}\NormalTok{, }\DecValTok{5}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{4}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{5}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+    \KeywordTok{lines}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{, }\DecValTok{8}\NormalTok{), }\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{, }\DecValTok{3}\NormalTok{), }\DataTypeTok{lty =} \DecValTok{6}\NormalTok{, }\DataTypeTok{lwd =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-159-1.pdf}
+
+\hypertarget{adicionando-linhas-a-um-grafico-de-pontos}{%
+\subsection{Adicionando linhas a um grafico de pontos}\label{adicionando-linhas-a-um-grafico-de-pontos}}
+
+A função utilizada para inserir linhas é \texttt{abline()}.
+Vamos usar a função \texttt{abline} para inserir uma linha que mostra a média dos dados do eixo Y.
+o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ptotal))) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-160-1.pdf}
+
+Para passar uma linha que passa pela média de x
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-161-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\KeywordTok{abline}\NormalTok{(}\DataTypeTok{v=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds))) }\CommentTok{## o v é de vertical}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-162-1.pdf}
+
+Também é possível inserir as duas linhas ao mesmo tempo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ptotal), }\DataTypeTok{v=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds),}\DataTypeTok{col=}\StringTok{"red"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-163-1.pdf}
+
+Com cores diferentes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\KeywordTok{abline}\NormalTok{(}\DataTypeTok{h=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ptotal), }\DataTypeTok{v=}\KeywordTok{mean}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds),}\DataTypeTok{col=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{4}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-164-1.pdf}
+
+\hypertarget{definindo-o-intervalo-dos-eixos}{%
+\subsection{Definindo o intervalo dos eixos}\label{definindo-o-intervalo-dos-eixos}}
+
+Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem diferentes amplitudes como nosso exemplo do solos, deve usar o argumento \texttt{type=n}. Com este argumento um gráfico em branco é criado.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\FloatTok{1.55}\NormalTok{,}\DecValTok{2}\NormalTok{),}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\FloatTok{0.6}\NormalTok{),}\DataTypeTok{type=}\StringTok{'n'}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(solo3}\OperatorTok{$}\NormalTok{ds,solo3}\OperatorTok{$}\NormalTok{ptotal, }\DataTypeTok{pch=}\DecValTok{2}\NormalTok{)}
+\KeywordTok{points}\NormalTok{(solo2}\OperatorTok{$}\NormalTok{ds,solo2}\OperatorTok{$}\NormalTok{ptotal)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-165-1.pdf}
+
+\hypertarget{personalizando-os-graficos}{%
+\subsection{Personalizando os gráficos}\label{personalizando-os-graficos}}
+
+Alguns parâmetros podem ser usados no intuito de personalizar um gráfico no R.
+
+Exemplo:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ptotal,solo1}\OperatorTok{$}\NormalTok{ds)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-166-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ptotal,solo1}\OperatorTok{$}\NormalTok{ds,          }\CommentTok{#plota ds e ptotal}
+\DataTypeTok{xlab=}\StringTok{"Macroporosdiade (%)"}\NormalTok{,          }\CommentTok{#nomeia o eixo x}
+\DataTypeTok{ylab=}\KeywordTok{expression}\NormalTok{(Ds}\OperatorTok{~}\NormalTok{(mg}\OperatorTok{~}\NormalTok{Kg}\OperatorTok{^}\NormalTok{\{}\OperatorTok{-}\DecValTok{1}\NormalTok{\})),    }\CommentTok{#nomeia o eixo y}
+\DataTypeTok{main=}\StringTok{"Como personalizar um gráfico"}\NormalTok{, }\CommentTok{#referente ao título}
+\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\FloatTok{0.48}\NormalTok{,}\FloatTok{0.64}\NormalTok{),                   }\CommentTok{#limites do eixo x}
+\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{2}\NormalTok{), }\DataTypeTok{col=}\StringTok{"red"}\NormalTok{,              }\CommentTok{#limites do eixo y}
+\DataTypeTok{pch=}\DecValTok{22}\NormalTok{,                              }\CommentTok{#padrão dos pontos}
+\DataTypeTok{bg=}\StringTok{"yellow"}\NormalTok{,                         }\CommentTok{#cor de preenchimento}
+\DataTypeTok{tcl=}\FloatTok{0.4}\NormalTok{,                             }\CommentTok{#tamanho dos traços dos eixos}
+\DataTypeTok{las=}\DecValTok{1}\NormalTok{,                               }\CommentTok{#orientação do texto em y}
+\DataTypeTok{cex=}\FloatTok{1.5}\NormalTok{,                             }\CommentTok{#tamanho do objeto do ponto}
+\DataTypeTok{bty=}\StringTok{"l"}\NormalTok{,                             }\CommentTok{#altera as bordas}
+\KeywordTok{abline}\NormalTok{(}\KeywordTok{lm}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds}\OperatorTok{~}\NormalTok{solo1}\OperatorTok{$}\NormalTok{ptotal)))   }\CommentTok{#regressao dos pontos}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-166-2.pdf}
+
+Veja o \texttt{demo(plotmath)} para saber mais sobre anotações em gráficos.
+
+\hypertarget{histogramas}{%
+\section{Histogramas}\label{histogramas}}
+
+A função \texttt{hist()} produz um histograma dos dados informados em seu argumento enquanto a função \texttt{barplot()} produz um gráfico de barras.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds)}
+\KeywordTok{rug}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-167-1.pdf}
+
+\hypertarget{personalizando-graficos}{%
+\subsection{Personalizando gráficos}\label{personalizando-graficos}}
+
+Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
+default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
+informações detalhadas desses parâmetros se usar os recursos de ajuda do R.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds, }\CommentTok{#histograma de ds}
+     \DataTypeTok{main=}\StringTok{"Histograma Personalizado}\CharTok{\textbackslash{}n}\StringTok{densidade do solo"}\NormalTok{,}\CommentTok{#título}
+     \DataTypeTok{xlab=}\KeywordTok{expression}\NormalTok{(Ds}\OperatorTok{~}\NormalTok{(mg}\OperatorTok{~}\NormalTok{Kg}\OperatorTok{^}\NormalTok{\{}\OperatorTok{-}\DecValTok{1}\NormalTok{\})), }\CommentTok{#texto do eixo das abscissas}
+     \DataTypeTok{ylab=}\StringTok{"Probabilidades"}\NormalTok{, }\CommentTok{#texto do eixo das ordenadas}
+     \DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{2}\NormalTok{), }\CommentTok{#limites do eixo de x}
+     \DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{10}\NormalTok{), }\CommentTok{#limites do eixo y}
+     \DataTypeTok{col=}\StringTok{"lightblue"}\NormalTok{, }\CommentTok{#cor das colunas}
+     \DataTypeTok{border=}\StringTok{"white"}\NormalTok{, }\CommentTok{#cor das bordas das colunas}
+     \DataTypeTok{adj=}\DecValTok{0}\NormalTok{, }\CommentTok{#alinhamento dos textos 0, 0.5 e 1}
+     \DataTypeTok{col.axis=}\StringTok{"red"}\NormalTok{) }\CommentTok{#cor do texto nos eixos}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-168-1.pdf}
+
+\hypertarget{graficos-de-barras}{%
+\section{Gráficos de Barras}\label{graficos-de-barras}}
+
+Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{barplot}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ptotal,}\DataTypeTok{names.arg=}\NormalTok{solo}\OperatorTok{$}\NormalTok{z, }\DataTypeTok{horiz =}\NormalTok{ T)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-169-1.pdf}
+
+\hypertarget{boxplots}{%
+\section{Boxplots}\label{boxplots}}
+
+Dados de um experimento visando controle de pulgão (\emph{Aphis gossypii Glover}) em cultura de pepino, instalado em \emph{delineamento inteiramente casualizado} com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1"}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(dados)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## data frame with 0 columns and 0 rows
+## 'data.frame':    30 obs. of  3 variables:
+##  $ trat   : Factor w/ 5 levels "Azinfos etilico",..: 5 1 3 4 2 5 1 3 4 2 ...
+##  $ rept   : int  1 1 1 1 1 2 2 2 2 2 ...
+##  $ pulgoes: int  2370 1282 562 173 193 1687 1527 321 127 71 ...
 \end{verbatim}
 
-\hypertarget{exemplo-1-2}{%
-\subsubsection{Exemplo 1}\label{exemplo-1-2}}
+\emph{trat}
+Fator de níveis nominais. Tratamento aplicado para controle do pulgão.
+
+\emph{rept}
+Número inteiro que identifica as repetições de cada tratamento.
+
+\emph{pulgões}
+Número de pulgões coletados 36 horas após a pulverização dos tratamentos.
+
+Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é \texttt{boxplot} \texttt{(\ x\ ,\ data\ =)} , em que \texttt{x} é uma fórmula e \texttt{data\ =} denota o quadro de dados que fornece os dados.
+
+Um exemplo de uma fórmula é \texttt{y\ \textasciitilde{}\ group} onde um boxplot separado para a variável numérica é gerado para cada valor de group.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{teste <-}\StringTok{ }\KeywordTok{c}\NormalTok{(}\DecValTok{10}\NormalTok{,}\DecValTok{20}\NormalTok{,}\DecValTok{30}\NormalTok{,}\DecValTok{40}\NormalTok{,}\DecValTok{50}\NormalTok{)}
-\NormalTok{teste}
+\KeywordTok{x11}\NormalTok{()}
+\KeywordTok{boxplot}\NormalTok{(pulgoes}\OperatorTok{~}\NormalTok{trat,              }\CommentTok{#formula do boxplot}
+        \DataTypeTok{data =}\NormalTok{ dados,              }\CommentTok{#conjunto de dados}
+        \DataTypeTok{main=}\StringTok{"boxplot"}\NormalTok{,            }\CommentTok{#título}
+        \DataTypeTok{xlab=}\StringTok{"Controle do pulgão"}\NormalTok{, }\CommentTok{#texto do eixo x }
+        \DataTypeTok{ylab=}\StringTok{"Numero de plugões",  #texto do eixo y}
+\StringTok{        col=3)                     #cor verde  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-171-1.pdf}
+
+Adicione \texttt{horizontal\ =\ TRUE} para inverter a orientação do eixo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(pulgoes}\OperatorTok{~}\NormalTok{trat,              }\CommentTok{#formula do boxplot}
+        \DataTypeTok{data =}\NormalTok{ dados,              }\CommentTok{#conjunto de dados}
+        \DataTypeTok{main=}\StringTok{"boxplot"}\NormalTok{,            }\CommentTok{#t?tulo}
+        \DataTypeTok{xlab=}\StringTok{"Controle do pulgão"}\NormalTok{, }\CommentTok{#texto do eixo x }
+        \DataTypeTok{ylab=}\StringTok{"Numero de plugões",  #texto do eixo y}
+\StringTok{        col=3, horizontal = T,     #cor verde  }
+\StringTok{        notch=T)                   #teste para mediana}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-## [1] 10 20 30 40 50
+## Warning in bxp(list(stats = structure(c(825, 871, 972.5, 1282, 1527, 44, :
+## some notches went outside hinges ('box'): maybe set notch=FALSE
 \end{verbatim}
 
-Porém houve um erro: o ú?ltimo elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando \texttt{edit()}
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-172-1.pdf}
+
+\hypertarget{boxplot-com-fatorial}{%
+\subsection{Boxplot com fatorial}\label{boxplot-com-fatorial}}
+
+Boxplot com 2 fatores, com caixas coloridas para facilitar a interpretação.
+
+\textbf{Efeito de Recipientes para duas Espécies de Eucalipto}
+
+Experimento em esquema fatorial 3x2 para estudar o efeito de 3 tipos de recipientes para a produção de mudas de duas espécies de Eucalipto. O experimento foi instalado em delineamento inteiramente casualizado.
+
+\emph{recipie}
+São os níveis de recipiente estudados:
+- SPP - saco plástico pequeno;
+- SPG - saco plástico grande; e
+- Lam - laminado.
+
+\emph{especie}
+São as espécies de Eucalipto: \emph{Eucalyptus citriodora} e \emph{Eucalyptus grandis}
+
+\emph{rept}
+Identifica as repetições de cada combinação dos fatores recipiente e espécie.
+
+\emph{alt}
+Altura das mudas aos 80 dias de idade (cm).
+
+Baixar dados via web.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\NormalTok{teste2 <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(teste)}
+\NormalTok{fat <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1"}\NormalTok{)}
+\KeywordTok{str}\NormalTok{(fat)}
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{exemplo-2-2}{%
-\subsubsection{Exemplo 2}\label{exemplo-2-2}}
+\begin{verbatim}
+## 'data.frame':    24 obs. of  4 variables:
+##  $ recipie: Factor w/ 3 levels "Lam","SPG","SPP": 3 3 2 2 1 1 3 3 2 2 ...
+##  $ especie: Factor w/ 2 levels "E. citriodora",..: 1 2 1 2 1 2 1 2 1 2 ...
+##  $ rept   : int  1 1 1 1 1 1 2 2 2 2 ...
+##  $ alt    : num  26.2 24.8 25.7 19.6 22.8 19.8 26 24.6 26.3 21.1 ...
+\end{verbatim}
 
-Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando \texttt{scan()}. Abra o arquivo \emph{EVI-prec.xlsx}.
+Gerar o gráfico boxpolt com o comando abaixo.
 
-Uma matrix com os dados poderá ser obtida com o comando \texttt{cbind}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{boxplot}\NormalTok{(fat}\OperatorTok{$}\NormalTok{alt}\OperatorTok{~}\NormalTok{fat}\OperatorTok{$}\NormalTok{recipie}\OperatorTok{*}\NormalTok{especie, }\DataTypeTok{data=}\NormalTok{fat, }\DataTypeTok{notch=}\NormalTok{F, }
+        \DataTypeTok{col=}\NormalTok{(}\KeywordTok{c}\NormalTok{(}\StringTok{"gold"}\NormalTok{,}\StringTok{"darkgreen"}\NormalTok{,}\StringTok{"brown"}\NormalTok{)),}
+        \DataTypeTok{main=}\StringTok{"Fatorial"}\NormalTok{, }\DataTypeTok{xlab=}\StringTok{"Recipiente e Espécies"}\NormalTok{,}
+        \DataTypeTok{ylab=}\StringTok{"Altura de plantas (cm)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-Os objeto dados é um \textbf{data.frame}
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-174-1.pdf}
 
-Transforme para um data.frame com o comando \textbf{as.data.frame}
+\hypertarget{cores}{%
+\section{Cores}\label{cores}}
 
-Poderia usar o comando data.frame direto
+Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando \texttt{col="red"} (escrevendo o nome da cor) ou \texttt{col=2} (usando números).
+O comando abaixo mostra os números que especificam algumas cores.
 
-\hypertarget{lendo-dados-de-um-arquivo-texto-1}{%
-\subsection{Lendo dados de um arquivo texto}\label{lendo-dados-de-um-arquivo-texto-1}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{pie}\NormalTok{(}\KeywordTok{rep}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{30}\NormalTok{),}\DataTypeTok{col=}\KeywordTok{rainbow}\NormalTok{(}\DecValTok{30}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
-É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando \texttt{read.table\ ()} é extremamente útil por ler dados de um arquivo-texto no formato de um \textbf{data.frame}
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-175-1.pdf}
 
-Usando o Comando \texttt{read.table\ ()}
+Veja sua tabela de cores executando o script \href{https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1}{paletedecores.R}.
 
-\hypertarget{exemplo-1-3}{%
-\subsubsection{Exemplo 1}\label{exemplo-1-3}}
+Podemos também criar cores personalizadas usando a função do \texttt{rgb()}, que recebe como argumentos as quantidades de vermelho \emph{(red)}, verde \emph{(green)} e azul \emph{(blue)} e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1.
 
-Como primeiro exemplo considere importar para o R os dados do arquivo texto \emph{exemplo1.txt}. Na pasta compartilhada copie o arquivo para sua área de trabalho (C:/R).
+Exemplos:
 
-\hypertarget{exemplo-2-3}{%
-\subsubsection{Exemplo 2}\label{exemplo-2-3}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{goiaba <-}\StringTok{ }\KeywordTok{rgb}\NormalTok{(}\FloatTok{0.94}\NormalTok{, }\FloatTok{0.41}\NormalTok{, }\FloatTok{0.40}\NormalTok{)}
+\NormalTok{goiaba.semitrans <-}\StringTok{ }\KeywordTok{rgb}\NormalTok{(}\FloatTok{0.94}\NormalTok{, }\FloatTok{0.41}\NormalTok{, }\FloatTok{0.40}\NormalTok{, }\DataTypeTok{alpha =} \FloatTok{0.5}\NormalTok{)}
+\NormalTok{vitamina <-}\StringTok{ }\KeywordTok{rgb}\NormalTok{(}\DataTypeTok{red =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.87}\NormalTok{, }\FloatTok{0.70}\NormalTok{), }\DataTypeTok{green =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.83}\NormalTok{, }\FloatTok{0.77}\NormalTok{),}
+\DataTypeTok{blue =} \KeywordTok{c}\NormalTok{(}\FloatTok{0.71}\NormalTok{, }\FloatTok{0.30}\NormalTok{), }\DataTypeTok{names =} \KeywordTok{c}\NormalTok{(}\StringTok{"leite"}\NormalTok{, }\StringTok{"abacate"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
 
-Como primeiro exemplo considere importar para o R os dados do arquivo de texto \emph{exemplo2.txt}.
+\hypertarget{interagindo-com-a-janela-grafica}{%
+\section{Interagindo com a Janela gráfica}\label{interagindo-com-a-janela-grafica}}
 
-Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento \emph{head=T}. Portanto para importar este arquivo usamos:
+Poderemos com o mouse marcar o ponte desejado usando a função \texttt{identify\ ()}
 
-\hypertarget{dados-do-tipo-csv-1}{%
-\subsection{Dados do tipo CSV}\label{dados-do-tipo-csv-1}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds}\OperatorTok{~}\NormalTok{solo1}\OperatorTok{$}\NormalTok{ptotal)}
+\KeywordTok{identify}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds,}\DataTypeTok{n=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
 
-\textbf{Exemplo 3}: Vamos utilizar um arquivo de tipo \textbf{CSV}.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-177-1.pdf}
 
-ex03 \textless- read.table(``exemplo3.csv.'', head=T, sep=``:'', dec=``,'')
-ex03
+\begin{verbatim}
+## integer(0)
+\end{verbatim}
 
-Note que este arquivo difere do primeiro em outros aspectos.
-\emph{?read.table.}
+\hypertarget{texto-e-tamanho-do-simbolo}{%
+\section{Texto e tamanho do símbolo}\label{texto-e-tamanho-do-simbolo}}
 
-ex03 \textless- read.table( \# l? dados de um arquivo texto
-``exemplo3.csv'', \# nome do arquivo ou o caminho c:/R.exemplo3.csv
-head=T, \# primeira linha ? cabe?alho
-sep=``:'', \# separador de coluna
-dec=``,'') \# virgula como separador
-ex03 \# exibe o objeto
+As seguintes opções podem ser usadas para controlar o tamanho do texto e do símbolo em gráficos.
 
-\textbf{sep}: caractere utilizado para separa??o dos campos e valores. Normalmente ? utilizado o ponto e v?rgula (;)
-\textbf{dec}: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou v?rgula (,).
-\textbf{header}: TRUE, assume que a primeira linha da tabela cont?m r?tulos das vari?veis. FALSE, assume que os dados se iniciam na primeira linha.
+\texttt{cex} número que indica o valor pelo qual o texto e os símbolos de plotagem devem ser dimensionados em relação ao padrão.
+\emph{1 = padrão, 1,5 é 50\% maior, 0,5 é 50\% menor, etc.}
 
-\hypertarget{a-seguir-listamos-algumas-destas-funcoes-1}{%
-\subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funcoes-1}}
+\hypertarget{visualizar-varios-graficos}{%
+\section{Visualizar vários gráficos}\label{visualizar-varios-graficos}}
 
-\emph{read.dbf()} para arquivos DBASE
-\emph{read.epiinfo()} para arquivos .REC do Epi-Info
-\emph{read.mtp()} para arquivos ``Minitab Portable Worksheet''
-\emph{read.S()} para arquivos do S-PLUS, e restore.data() para ``dumps'' do S-PLUS
-\emph{read.spss()} para dados do SPSS
-\emph{read.systat()} para dados do SYSTAT
-\emph{read.dta()} para dados do STATA
-\emph{read.octave()} para dados do OCTAVE (um clone do MATLAB)
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{x11}\NormalTok{()}
+\KeywordTok{boxplot}\NormalTok{(pulgoes}\OperatorTok{~}\NormalTok{trat,              }\CommentTok{#formula do boxplot}
+        \DataTypeTok{data =}\NormalTok{ dados,              }\CommentTok{#conjunto de dados}
+        \DataTypeTok{main=}\StringTok{"boxplot"}\NormalTok{,            }\CommentTok{#título}
+        \DataTypeTok{xlab=}\StringTok{"Controle do pulgão"}\NormalTok{, }\CommentTok{#texto do eixo x }
+        \DataTypeTok{ylab=}\StringTok{"Numero de plugões",  #texto do eixo y}
+\StringTok{        col=3,                     #cor verde  }
+\StringTok{        notch=F)                   #teste para mediana}
+\end{Highlighting}
+\end{Shaded}
 
-\emph{read.csv}(file, header = TRUE, sep=``,'', dec=``.'')
-\emph{read.csv2}(file, header = TRUE, sep=``;'', dec=``,'')
-\emph{read.delim}(file, header = TRUE, sep=``\t", dec=''.``)
-\emph{read.delim2}(file, header = TRUE, sep=''\t", dec=``,'')
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-179-1.pdf}
 
-\hypertarget{lendo-dados-disponiveis-na-web-1}{%
-\subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponiveis-na-web-1}}
+\hypertarget{varios-graficos-na-mesma-janela-grafica}{%
+\subsection{Varios gráficos na mesma janela gráfica}\label{varios-graficos-na-mesma-janela-grafica}}
 
-\textbf{Exemplo 4}: As fun??es permitem ler ainda dados diretamente dispon?veis na web. Por exemplo os dados do Exemplo 1 poderiam ser lidos diretamente com o comando a seguir
+Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função \texttt{par()}.
 
-\hypertarget{lendo-dados-de-uma-planilha-eletronica-1}{%
-\subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletronica-1}}
+\textbf{Exemplo 1}
 
-Com o \textbf{pacote xlsx} é possivel ler os dados diretamente da planilha eletrônica do Excel.
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{)) }\CommentTok{#2 linhas e 2 colunas}
+\KeywordTok{plot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ptotal,solo1}\OperatorTok{$}\NormalTok{ds)}
+\KeywordTok{boxplot}\NormalTok{(solo1}\OperatorTok{$}\NormalTok{ds,solo2}\OperatorTok{$}\NormalTok{ds, solo3}\OperatorTok{$}\NormalTok{ds)}
+\KeywordTok{hist}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ptotal)}
+\KeywordTok{plot}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ptotal,solo}\OperatorTok{$}\NormalTok{ds)}
+\end{Highlighting}
+\end{Shaded}
 
-O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, l? o conte?do de uma planilha eletronica para o R com a estrutura de dados de um \emph{data.frame}.
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-180-1.pdf}
 
-\hypertarget{exercicios-1}{%
-\subsection{Exercícios}\label{exercicios-1}}
+\textbf{Exemplo 2}
 
-1 Baixe os seguintes arquivos:
-DBC\_2rep\_mamoeiro\_alt\_93.txt
-DIC\_REG\_feijao\_peso\_169.txt
-DIC\_DB\_pinus\_alt
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{3}\NormalTok{))}
+\KeywordTok{pairs}\NormalTok{(solo)}
+\end{Highlighting}
+\end{Shaded}
 
-Coloque os arquivos em um local apropriado (de prefer?ncia no mesmo diret?rio de trabalho que voce definiu no in?cio da sess?o), fa?a a importa??o usando a fun??o de sua escolha, e confira a estrutura dos dados com str().
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-181-1.pdf}
 
-\hypertarget{salvar-objetos-de-dados-1}{%
-\section{Salvar objetos de dados}\label{salvar-objetos-de-dados-1}}
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{hist}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ds)}
+\KeywordTok{plot}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ds, }\DataTypeTok{col=}\NormalTok{solo}\OperatorTok{$}\NormalTok{z)}
+\KeywordTok{plot}\NormalTok{(}\KeywordTok{density}\NormalTok{(solo}\OperatorTok{$}\NormalTok{ds))}
+\end{Highlighting}
+\end{Shaded}
 
-Salvar objetos de dados nos formatos \textbf{.txt} ou \textbf{.csv}
-fun??o: \textbf{write.table}
-sintaxe da fun??o:
-\emph{write.table}(x, file, sep="``, dec=''", rownames = T, col.names = T)
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-181-2.pdf}
 
-principais argumentos:
-x - matriz ou data frame
-file - nome do arquivo ou caminho do arquivo
-sep - separador da coluna
-dec - separador deciminal
+\hypertarget{salvando-graficos}{%
+\section{Salvando gráficos}\label{salvando-graficos}}
 
-\hypertarget{outras-funcoes-1}{%
-\subsection{Outras funções}\label{outras-funcoes-1}}
+Você pode salvar o gráfico em vários formatos no menu
+\emph{Arquivo -\textgreater{} Salvar como}.
 
-write.csv()
-write.csv2()
-write.xlsx ()
+Você também pode salvar o gráfico via código usando uma das seguintes funções.
 
-\textbf{Exemplo:}
-write.xlsx(dados,``tabela salva.xlsx'')
-
-\hypertarget{referencia-3}{%
-\section{Referência}\label{referencia-3}}
-
-MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
-
-\textbf{Prof.~Paulo Justiniando Ribeiro} \textgreater{}\url{http://www.leg.ufpr.br/~paulojus/}\textless{}
-
-\textbf{Prof.~Adriano Azevedo Filho} \textgreater{}\url{http://rpubs.com/adriano/esalq2012inicial}\textless{}
-
-\textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
+\texttt{pdf\ (file\ =\ "meugráfico.pdf")} \#ficheiro PDF
+\texttt{win.metafile\ ("meu\ grafico.wmf")} \#metarquivo do windows
+\texttt{png\ ("meu\ grafico.png")} \#arquivo png
+\texttt{jpeg\ ("meu\ grafico.jpg")} \#arquivo jpeg
+\texttt{bmp\ ("meu\ grafico.bmp")} \#arquivo bmp
+\texttt{postscript\ ("meu\ grafico.ps")} \#arquivo postscript
 
 \bibliography{book.bib,packages.bib}
 

@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-10" />
+<meta name="date" content="2020-04-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -204,11 +204,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.7" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
 <li class="chapter" data-level="5.8" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#interagindo-com-a-janela-grafica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
 <li class="chapter" data-level="5.9" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#texto-e-tamanho-do-simbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
-<li class="chapter" data-level="5.10" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#fontes"><i class="fa fa-check"></i><b>5.10</b> Fontes</a></li>
-<li class="chapter" data-level="5.11" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#visualizar-varios-graficos"><i class="fa fa-check"></i><b>5.11</b> Visualizar vários gráficos</a><ul>
-<li class="chapter" data-level="5.11.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#varios-graficos-na-mesma-janela-grafica"><i class="fa fa-check"></i><b>5.11.1</b> Varios gráficos na mesma janela gráfica</a></li>
+<li class="chapter" data-level="5.10" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#visualizar-varios-graficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#varios-graficos-na-mesma-janela-grafica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
 </ul></li>
-<li class="chapter" data-level="5.12" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#salvando-graficos"><i class="fa fa-check"></i><b>5.12</b> Salvando gráficos</a></li>
+<li class="chapter" data-level="5.11" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#salvando-graficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -257,7 +256,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="exemplos-de-graficos-com-o-r" class="section level2">
 <h2><span class="header-section-number">5.1</span> Exemplos de gráficos com o R</h2>
 <p>Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">demo</span>(image)</a></code></pre></div>
+<div class="sourceCode" id="cb267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb267-1" title="1"><span class="kw">demo</span>(image)</a></code></pre></div>
 <pre><code>## 
 ## 
 ##  demo(image)
@@ -276,7 +275,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt;                    # Using Terrain Colors
 ## &gt; 
 ## &gt; image(x, y, volcano, col=terrain.colors(100),axes=FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-1.png" width="672" /></p>
 <pre><code>## 
 ## &gt; contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col=&quot;brown&quot;)
 ## 
@@ -291,7 +290,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt;                    # Using Heat Colors
 ## &gt; 
 ## &gt; image(x, y, volcano, col=heat.colors(100), axes=FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-2.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-2.png" width="672" /></p>
 <pre><code>## 
 ## &gt; contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col=&quot;brown&quot;)
 ## 
@@ -306,7 +305,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt;                    # Using Gray Scale
 ## &gt; 
 ## &gt; image(x, y, volcano, col=gray(100:200/200), axes=FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-3.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-3.png" width="672" /></p>
 <pre><code>## 
 ## &gt; contour(x, y, volcano, levels=seq(90, 200, by=5), add=TRUE, col=&quot;black&quot;)
 ## 
@@ -324,7 +323,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## flld.c&gt; require(&quot;grDevices&quot;) # for colours
 ## 
 ## flld.c&gt; filled.contour(volcano, asp = 1) # simple</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-4.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-4.png" width="672" /></p>
 <pre><code>## 
 ## flld.c&gt; x &lt;- 10*1:nrow(volcano)
 ## 
@@ -337,7 +336,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## flld.c+                   axis(2, seq(100, 600, by = 100)) },
 ## flld.c+     key.title = title(main = &quot;Height\n(meters)&quot;),
 ## flld.c+     key.axes = axis(4, seq(90, 190, by = 10)))  # maybe also asp = 1</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-5.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-5.png" width="672" /></p>
 <pre><code>## 
 ## flld.c&gt; mtext(paste(&quot;filled.contour(.) from&quot;, R.version.string),
 ## flld.c+       side = 1, line = 4, adj = 1, cex = .66)
@@ -349,7 +348,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## flld.c&gt; filled.contour(x = 1:20, y = 1:20, z = b,
 ## flld.c+                plot.axes = { axis(1); axis(2); points(10, 10) })</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-6.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-6.png" width="672" /></p>
 <pre><code>## 
 ## flld.c&gt; ## Persian Rug Art:
 ## flld.c&gt; x &lt;- y &lt;- seq(-4*pi, 4*pi, len = 27)
@@ -357,13 +356,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## flld.c&gt; r &lt;- sqrt(outer(x^2, y^2, &quot;+&quot;))
 ## 
 ## flld.c&gt; filled.contour(cos(r^2)*exp(-r/(2*pi)), axes = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-7.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-7.png" width="672" /></p>
 <pre><code>## 
 ## flld.c&gt; ## rather, the key *should* be labeled:
 ## flld.c&gt; filled.contour(cos(r^2)*exp(-r/(2*pi)), frame.plot = FALSE,
 ## flld.c+                plot.axes = {})</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-1-8.png" width="672" /></p>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1"><span class="kw">demo</span>(persp)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-145-8.png" width="672" /></p>
+<div class="sourceCode" id="cb276"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb276-1" title="1"><span class="kw">demo</span>(persp)</a></code></pre></div>
 <pre><code>## 
 ## 
 ##  demo(persp)
@@ -396,7 +395,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; oldpar &lt;- par(bg = &quot;white&quot;)
 ## 
 ## &gt; persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = &quot;lightblue&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-1.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(sub=&quot;.&quot;)## work around persp+plotmath bug
 ## 
@@ -405,7 +404,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; persp(x, y, z, theta = 30, phi = 30, expand = 0.5, col = &quot;lightblue&quot;,
 ## +       ltheta = 120, shade = 0.75, ticktype = &quot;detailed&quot;,
 ## +       xlab = &quot;X&quot;, ylab = &quot;Y&quot;, zlab = &quot;Z&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-2.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-2.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(sub=&quot;.&quot;)## work around persp+plotmath bug
 ## 
@@ -420,7 +419,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; y &lt;- 10 * (1:ncol(z))   # 10 meter spacing (E to W)
 ## 
 ## &gt; persp(x, y, z, theta = 120, phi = 15, scale = FALSE, axes = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-3.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-3.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## (3) Now something more complex
 ## &gt; ##     We border the surface, to make it more &quot;slice like&quot;
@@ -443,7 +442,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; par(bg = &quot;lightblue&quot;)
 ## 
 ## &gt; persp(x, y, z, theta = 120, phi = 15, col = fill, scale = FALSE, axes = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-4.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-4.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(main = &quot;Maunga Whau\nOne of 50 Volcanoes in the Auckland Region.&quot;,
 ## +       font.main = 4)
@@ -452,19 +451,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## &gt; persp(x, y, z, theta = 135, phi = 30, col = fill, scale = FALSE,
 ## +       ltheta = -120, lphi = 15, shade = 0.65, axes = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-5.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-5.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## Don&#39;t draw the grid lines :  border = NA
 ## &gt; persp(x, y, z, theta = 135, phi = 30, col = &quot;green3&quot;, scale = FALSE,
 ## +       ltheta = -120, shade = 0.75, border = NA, box = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-6.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-6.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## `color gradient in the soil&#39; :
 ## &gt; fcol &lt;- fill ; fcol[] &lt;- terrain.colors(nrow(fcol))
 ## 
 ## &gt; persp(x, y, z, theta = 135, phi = 30, col = fcol, scale = FALSE,
 ## +       ltheta = -120, shade = 0.3, border = NA, box = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-7.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-7.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## `image like&#39; colors on top :
 ## &gt; fcol &lt;- fill
@@ -479,11 +478,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## &gt; persp(x, y, 2*z, theta = 110, phi = 40, col = fcol, scale = FALSE,
 ## +       ltheta = -120, shade = 0.4, border = NA, box = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-2-8.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-146-8.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## reset par():
 ## &gt; par(oldpar)</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1"><span class="kw">demo</span>(graphics)</a></code></pre></div>
+<div class="sourceCode" id="cb286"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb286-1" title="1"><span class="kw">demo</span>(graphics)</a></code></pre></div>
 <pre><code>## 
 ## 
 ##  demo(graphics)
@@ -508,7 +507,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; opar &lt;- par(bg = &quot;white&quot;)
 ## 
 ## &gt; plot(x, ann = FALSE, type = &quot;n&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-1.png" width="672" /></p>
 <pre><code>## 
 ## &gt; abline(h = 0, col = gray(.90))
 ## 
@@ -531,7 +530,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; par(bg = &quot;gray&quot;)
 ## 
 ## &gt; pie(rep(1,24), col = rainbow(24), radius = 0.9)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-2.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-2.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(main = &quot;A Sample Color Wheel&quot;, cex.main = 1.4, font.main = 3)
 ## 
@@ -548,7 +547,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ## &gt; pie(pie.sales,
 ## +     col = c(&quot;purple&quot;,&quot;violetred1&quot;,&quot;green3&quot;,&quot;cornsilk&quot;,&quot;cyan&quot;,&quot;white&quot;))</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-3.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-3.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(main = &quot;January Pie Sales&quot;, cex.main = 1.8, font.main = 1)
 ## 
@@ -567,7 +566,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; x &lt;- rnorm(n*100) + sqrt(as.numeric(g))
 ## 
 ## &gt; boxplot(split(x,g), col=&quot;lavender&quot;, notch=TRUE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-4.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-4.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(main=&quot;Notched Boxplots&quot;, xlab=&quot;Group&quot;, font.main=4, font.lab=1)
 ## 
@@ -586,7 +585,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; yy &lt;- c(x, rev(y))
 ## 
 ## &gt; plot(xx, yy, type=&quot;n&quot;, xlab=&quot;Time&quot;, ylab=&quot;Distance&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-5.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-5.png" width="672" /></p>
 <pre><code>## 
 ## &gt; polygon(xx, yy, col=&quot;gray&quot;)
 ## 
@@ -602,7 +601,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; par(bg=&quot;lightgray&quot;)
 ## 
 ## &gt; plot(x, type=&quot;n&quot;, axes=FALSE, ann=FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-6.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-6.png" width="672" /></p>
 <pre><code>## 
 ## &gt; usr &lt;- par(&quot;usr&quot;)
 ## 
@@ -630,7 +629,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; x &lt;- rnorm(1000)
 ## 
 ## &gt; hist(x, xlim=range(-4, 4, x), col=&quot;lavender&quot;, main=&quot;&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-7.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-7.png" width="672" /></p>
 <pre><code>## 
 ## &gt; title(main=&quot;1000 Normal Random Variates&quot;, font.main=3)
 ## 
@@ -638,11 +637,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; ## The good old Iris data (yet again)
 ## &gt; 
 ## &gt; pairs(iris[1:4], main=&quot;Edgar Anderson&#39;s Iris Data&quot;, font.main=4, pch=19)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-8.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-8.png" width="672" /></p>
 <pre><code>## 
 ## &gt; pairs(iris[1:4], main=&quot;Edgar Anderson&#39;s Iris Data&quot;, pch=21,
 ## +       bg = c(&quot;red&quot;, &quot;green3&quot;, &quot;blue&quot;)[unclass(iris$Species)])</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-9.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-9.png" width="672" /></p>
 <pre><code>## 
 ## &gt; ## Contour plotting
 ## &gt; ## This produces a topographic map of one of Auckland&#39;s many volcanic &quot;peaks&quot;.
@@ -674,7 +673,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; plot(numeric(0), numeric(0),
 ## +      xlim = range(x)+c(-1,1)*xadd, ylim = range(y)+c(-1,1)*yadd,
 ## +      type = &quot;n&quot;, ann = FALSE)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-10.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-10.png" width="672" /></p>
 <pre><code>## 
 ## &gt; usr &lt;- par(&quot;usr&quot;)
 ## 
@@ -696,7 +695,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## &gt; par(bg=&quot;cornsilk&quot;)
 ## 
 ## &gt; coplot(lat ~ long | depth, data = quakes, pch = 21, bg = &quot;green3&quot;)</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-3-11.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-147-11.png" width="672" /></p>
 <pre><code>## 
 ## &gt; par(opar)</code></pre>
 </div>
@@ -739,9 +738,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tbody>
 </table>
 <p>Ler dados via web.</p>
-<div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">solo &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1">solo &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
 <p>Verificar a estrutura de dados.</p>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb34-1" title="1"><span class="kw">str</span>(solo)</a></code></pre></div>
+<div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">str</span>(solo)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    108 obs. of  16 variables:
 ##  $ z     : int  1 1 1 1 1 1 1 1 1 1 ...
 ##  $ x     : int  1 1 1 1 1 1 3 3 3 3 ...
@@ -760,7 +759,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ X90   : num  106.2 69.4 161.2 258.4 59.8 ...
 ##  $ X120  : num  73.6 52 147.2 199 51.1 ...</code></pre>
 <p>Resumo estatástico da coluna 5 a coluna 8 de todos os solos</p>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb36-1" title="1"><span class="kw">summary</span>(solo[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>])</a></code></pre></div>
+<div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1"><span class="kw">summary</span>(solo[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>])</a></code></pre></div>
 <pre><code>##        ds              cc               ma               ptotal      
 ##  Min.   :1.263   Min.   :0.1501   Min.   :0.004834   Min.   :0.2257  
 ##  1st Qu.:1.500   1st Qu.:0.2505   1st Qu.:0.047689   1st Qu.:0.3090  
@@ -769,19 +768,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  3rd Qu.:1.787   3rd Qu.:0.3579   3rd Qu.:0.129955   3rd Qu.:0.5269  
 ##  Max.   :1.960   Max.   :0.4997   Max.   :0.238551   Max.   :0.6015</code></pre>
 <p>Neste exemplo vamos analisar cada solo separadamente usando o comando <code>subset()</code></p>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb38-1" title="1">solo1 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb38-2" title="2">solo2 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb38-3" title="3">solo3 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">3</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1">solo1 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb304-2" title="2">solo2 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb304-3" title="3">solo3 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">3</span>)</a></code></pre></div>
 </div>
 <div id="usando-a-funcao-plot" class="section level2">
 <h2><span class="header-section-number">5.3</span> Usando a função <code>plot()</code></h2>
 <p>A função <code>plot()</code> inicia um novo gráfico. Em sua forma mais simples a função
 recebe valores de coordenadas <em>ds</em> (densidade do solo) e <em>ptotal</em> (porosidade total do solo) do solo z1.</p>
-<div class="sourceCode" id="cb39"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb39-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-8-1.png" width="672" /></p>
+<div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
 <p>Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type=“l” na função <code>plot()</code></p>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb40-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-9-1.png" width="672" /></p>
+<div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
 <p>Verifique outras opcões para os gráfico</p>
 <ul>
 <li><em>type = “p”</em> especifica o tipo de plotagem</li>
@@ -793,133 +792,143 @@ recebe valores de coordenadas <em>ds</em> (densidade do solo) e <em>ptotal</em> 
 <li><em>“s”</em>: passos, os dados são representados pelo topo das linhas verticais,</li>
 <li><em>“S”</em>: id. mas os dados são representados pela parte inferior das linhas verticais</li>
 </ul>
-<div class="sourceCode" id="cb41"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb41-1" title="1">x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">12</span></a>
-<a class="sourceLine" id="cb41-2" title="2">y &lt;-<span class="st"> </span><span class="kw">sin</span>(pi<span class="op">/</span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x)</a>
-<a class="sourceLine" id="cb41-3" title="3">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">mar =</span> <span class="fl">.1</span><span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>))</a>
-<a class="sourceLine" id="cb41-4" title="4"><span class="cf">for</span> (tp <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,  <span class="st">&quot;c&quot;</span>,<span class="st">&quot;o&quot;</span>,<span class="st">&quot;h&quot;</span>,  <span class="st">&quot;s&quot;</span>,<span class="st">&quot;S&quot;</span>,<span class="st">&quot;n&quot;</span>)) {</a>
-<a class="sourceLine" id="cb41-5" title="5">  <span class="kw">plot</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">type =</span> tp, <span class="dt">main =</span> <span class="kw">paste0</span>(<span class="st">&quot;plot(*, type = </span><span class="ch">\&quot;</span><span class="st">&quot;</span>, tp, <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">)&quot;</span>))</a>
-<a class="sourceLine" id="cb41-6" title="6">  <span class="cf">if</span>(tp <span class="op">==</span><span class="st"> &quot;S&quot;</span>) {</a>
-<a class="sourceLine" id="cb41-7" title="7">    <span class="kw">lines</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;s&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb41-8" title="8">    <span class="kw">mtext</span>(<span class="st">&quot;lines(*, type = </span><span class="ch">\&quot;</span><span class="st">s</span><span class="ch">\&quot;</span><span class="st">, ...)&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</a>
-<a class="sourceLine" id="cb41-9" title="9">  }</a>
-<a class="sourceLine" id="cb41-10" title="10">}</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb42-1" title="1"><span class="kw">par</span>(op)</a></code></pre></div>
+<div class="sourceCode" id="cb307"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb307-1" title="1">x &lt;-<span class="st"> </span><span class="dv">0</span><span class="op">:</span><span class="dv">12</span></a>
+<a class="sourceLine" id="cb307-2" title="2">y &lt;-<span class="st"> </span><span class="kw">sin</span>(pi<span class="op">/</span><span class="dv">5</span> <span class="op">*</span><span class="st"> </span>x)</a>
+<a class="sourceLine" id="cb307-3" title="3">op &lt;-<span class="st"> </span><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>), <span class="dt">mar =</span> <span class="fl">.1</span><span class="op">+</span><span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>))</a>
+<a class="sourceLine" id="cb307-4" title="4"><span class="cf">for</span> (tp <span class="cf">in</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>,<span class="st">&quot;l&quot;</span>,<span class="st">&quot;b&quot;</span>,  <span class="st">&quot;c&quot;</span>,<span class="st">&quot;o&quot;</span>,<span class="st">&quot;h&quot;</span>,  <span class="st">&quot;s&quot;</span>,<span class="st">&quot;S&quot;</span>,<span class="st">&quot;n&quot;</span>)) {</a>
+<a class="sourceLine" id="cb307-5" title="5">  <span class="kw">plot</span>(y <span class="op">~</span><span class="st"> </span>x, <span class="dt">type =</span> tp, <span class="dt">main =</span> <span class="kw">paste0</span>(<span class="st">&quot;plot(*, type = </span><span class="ch">\&quot;</span><span class="st">&quot;</span>, tp, <span class="st">&quot;</span><span class="ch">\&quot;</span><span class="st">)&quot;</span>))</a>
+<a class="sourceLine" id="cb307-6" title="6">  <span class="cf">if</span>(tp <span class="op">==</span><span class="st"> &quot;S&quot;</span>) {</a>
+<a class="sourceLine" id="cb307-7" title="7">    <span class="kw">lines</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;s&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lty =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb307-8" title="8">    <span class="kw">mtext</span>(<span class="st">&quot;lines(*, type = </span><span class="ch">\&quot;</span><span class="st">s</span><span class="ch">\&quot;</span><span class="st">, ...)&quot;</span>, <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">cex =</span> <span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb307-9" title="9">  }</a>
+<a class="sourceLine" id="cb307-10" title="10">}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-154-1.png" width="672" /></p>
+<div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">par</span>(op)</a></code></pre></div>
 <div id="mudando-o-padrao-dos-pontos-pch" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Mudando o padrão dos pontos <code>pch=</code></h3>
 <p>Pode-se usar diferentes padrões para os pontos usando o argumento <code>pch=</code>.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
 Use a opção <code>pch =</code> para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda <code>(col =)</code>.</p>
-<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb43-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb43-2" title="2"><span class="kw">points</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>) </a>
-<a class="sourceLine" id="cb43-3" title="3"><span class="kw">points</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="st">&quot;%&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-11-1.png" width="672" /></p>
+<div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
+<div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">plot</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-155-2.png" width="672" /></p>
+<div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="st">&quot;%&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-155-3.png" width="672" /></p>
 <p>Neste exemplo acima note, que foi adicionado o argumento <code>ylim</code> e <code>xlim</code> eles limitam os valores minimos e maximos:</p>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb44-1" title="1">xlim=<span class="kw">c</span>(xmin, xmax) ylim=<span class="kw">c</span>(ymin, ymax)<span class="er">)</span></a></code></pre></div>
-<p>Veja um exemplo do padrão dos pontos.
-<img src="TudodoR_files/figure-html/unnamed-chunk-13-1.png" width="672" /></p>
+<div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1">xlim=<span class="kw">c</span>(xmin, xmax) ylim=<span class="kw">c</span>(ymin, ymax)<span class="er">)</span></a></code></pre></div>
+<p>Veja um exemplo do padrão dos pontos.</p>
+<div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1"><span class="kw">plot</span> (<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>,                         <span class="co">#coord. eixo X</span></a>
+<a class="sourceLine" id="cb313-2" title="2">      <span class="kw">rep</span> (<span class="dv">0</span>,<span class="dv">21</span>),                   <span class="co">#coord. eixo y</span></a>
+<a class="sourceLine" id="cb313-3" title="3">      <span class="dt">pch =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span>,                   <span class="co">#padrão dos pontos variando</span></a>
+<a class="sourceLine" id="cb313-4" title="4">      <span class="dt">cex =</span> <span class="dv">2</span>,                      <span class="co">#tamanho dos pontos</span></a>
+<a class="sourceLine" id="cb313-5" title="5">      <span class="dt">main =</span> <span class="st">&quot;Padrão dos pontos&quot;</span>, <span class="co">#Titulo (note o \n)</span></a>
+<a class="sourceLine" id="cb313-6" title="6">      <span class="dt">xlab =</span> <span class="st">&quot;pch = &quot;</span>,              <span class="co">#texto do eixo de x</span></a>
+<a class="sourceLine" id="cb313-7" title="7">      <span class="dt">ylab =</span> <span class="st">&quot;&quot;</span>)                    <span class="co">#texto do eixo de y</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-157-1.png" width="672" /></p>
 </div>
 <div id="mudando-as-linhas-lwd-e-lty" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Mudando as linhas (<code>lwd e lty</code>)</h3>
 <p>Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento <code>lwd=</code>, enquanto os estilos das linhas podem ser modificados com o argumento <code>lty=</code>.</p>
-<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb45-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="dt">lwd=</span><span class="dv">2</span>) <span class="co"># linha grossa</span></a>
-<a class="sourceLine" id="cb45-2" title="2"><span class="kw">lines</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal, <span class="dt">lty=</span><span class="dv">2</span>) <span class="co">#linha interrompida</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb46-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">9</span></a>
-<a class="sourceLine" id="cb46-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">9</span></a>
-<a class="sourceLine" id="cb46-3" title="3">  <span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</a>
-<a class="sourceLine" id="cb46-4" title="4">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">8</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb46-5" title="5">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb46-6" title="6">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">6</span>), <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb46-7" title="7">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">lty =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb46-8" title="8">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">lty =</span> <span class="dv">5</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb46-9" title="9">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">lty =</span> <span class="dv">6</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="dt">lwd=</span><span class="dv">2</span>) <span class="co"># linha grossa</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
+<div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1"><span class="kw">plot</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal, <span class="dt">lty=</span><span class="dv">2</span>) <span class="co">#linha interrompida</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-158-2.png" width="672" /></p>
+<div class="sourceCode" id="cb316"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb316-1" title="1">x &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb316-2" title="2">y &lt;-<span class="st"> </span><span class="dv">1</span><span class="op">:</span><span class="dv">9</span></a>
+<a class="sourceLine" id="cb316-3" title="3">  <span class="kw">plot</span>(x, y, <span class="dt">type =</span> <span class="st">&quot;n&quot;</span>)</a>
+<a class="sourceLine" id="cb316-4" title="4">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">8</span>, <span class="dv">8</span>), <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb316-5" title="5">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">7</span>, <span class="dv">7</span>), <span class="dt">lty =</span> <span class="dv">2</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb316-6" title="6">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">6</span>, <span class="dv">6</span>), <span class="dt">lty =</span> <span class="dv">3</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb316-7" title="7">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">5</span>, <span class="dv">5</span>), <span class="dt">lty =</span> <span class="dv">4</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb316-8" title="8">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>), <span class="dt">lty =</span> <span class="dv">5</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb316-9" title="9">    <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">2</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">3</span>), <span class="dt">lty =</span> <span class="dv">6</span>, <span class="dt">lwd =</span> <span class="dv">2</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-159-1.png" width="672" /></p>
 </div>
 <div id="adicionando-linhas-a-um-grafico-de-pontos" class="section level3">
 <h3><span class="header-section-number">5.3.3</span> Adicionando linhas a um grafico de pontos</h3>
 <p>A função utilizada para inserir linhas é <code>abline()</code>.
 Vamos usar a função <code>abline</code> para inserir uma linha que mostra a média dos dados do eixo Y.
 o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.</p>
-<div class="sourceCode" id="cb47"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb47-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal))) </a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal))) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
 <p>Para passar uma linha que passa pela média de x</p>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb48-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
-<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb49-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds))) <span class="co">## o v é de vertical</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-18-1.png" width="672" /></p>
+<div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
+<div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds))) <span class="co">## o v é de vertical</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
 <p>Também é possível inserir as duas linhas ao mesmo tempo.</p>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb50-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-19-1.png" width="672" /></p>
+<div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
 <p>Com cores diferentes</p>
-<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb51-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-20-1.png" width="672" /></p>
+<div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 </div>
 <div id="definindo-o-intervalo-dos-eixos" class="section level3">
 <h3><span class="header-section-number">5.3.4</span> Definindo o intervalo dos eixos</h3>
 <p>Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem diferentes amplitudes como nosso exemplo do solos, deve usar o argumento <code>type=n</code>. Com este argumento um gráfico em branco é criado.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb52-1" title="1"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="fl">1.55</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>),<span class="dt">type=</span><span class="st">&#39;n&#39;</span>)</a>
-<a class="sourceLine" id="cb52-2" title="2"><span class="kw">points</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="dt">pch=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb52-3" title="3"><span class="kw">points</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-21-1.png" width="672" /></p>
+<div class="sourceCode" id="cb322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb322-1" title="1"><span class="kw">plot</span>(<span class="kw">c</span>(<span class="fl">1.55</span>,<span class="dv">2</span>),<span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>),<span class="dt">type=</span><span class="st">&#39;n&#39;</span>)</a>
+<a class="sourceLine" id="cb322-2" title="2"><span class="kw">points</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="dt">pch=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb322-3" title="3"><span class="kw">points</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-165-1.png" width="672" /></p>
 </div>
 <div id="personalizando-os-graficos" class="section level3">
 <h3><span class="header-section-number">5.3.5</span> Personalizando os gráficos</h3>
 <p>Alguns parâmetros podem ser usados no intuito de personalizar um gráfico no R.</p>
 <p>Exemplo:</p>
-<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-22-1.png" width="672" /></p>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb54-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds,          <span class="co">#plota ds e ptotal</span></a>
-<a class="sourceLine" id="cb54-2" title="2"><span class="dt">xlab=</span><span class="st">&quot;Macroporosdiade (%)&quot;</span>,          <span class="co">#nomeia o eixo x</span></a>
-<a class="sourceLine" id="cb54-3" title="3"><span class="dt">ylab=</span><span class="kw">expression</span>(Ds<span class="op">~</span>(mg<span class="op">~</span>Kg<span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>})),    <span class="co">#nomeia o eixo y</span></a>
-<a class="sourceLine" id="cb54-4" title="4"><span class="dt">main=</span><span class="st">&quot;Como personalizar um gráfico&quot;</span>, <span class="co">#referente ao título</span></a>
-<a class="sourceLine" id="cb54-5" title="5"><span class="dt">xlim=</span><span class="kw">c</span>(<span class="fl">0.48</span>,<span class="fl">0.64</span>),                   <span class="co">#limites do eixo x</span></a>
-<a class="sourceLine" id="cb54-6" title="6"><span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,              <span class="co">#limites do eixo y</span></a>
-<a class="sourceLine" id="cb54-7" title="7"><span class="dt">pch=</span><span class="dv">22</span>,                              <span class="co">#padrão dos pontos</span></a>
-<a class="sourceLine" id="cb54-8" title="8"><span class="dt">bg=</span><span class="st">&quot;yellow&quot;</span>,                         <span class="co">#cor de preenchimento</span></a>
-<a class="sourceLine" id="cb54-9" title="9"><span class="dt">tcl=</span><span class="fl">0.4</span>,                             <span class="co">#tamanho dos traços dos eixos</span></a>
-<a class="sourceLine" id="cb54-10" title="10"><span class="dt">las=</span><span class="dv">1</span>,                               <span class="co">#orientação do texto em y</span></a>
-<a class="sourceLine" id="cb54-11" title="11"><span class="dt">cex=</span><span class="fl">1.5</span>,                             <span class="co">#tamanho do objeto do ponto</span></a>
-<a class="sourceLine" id="cb54-12" title="12"><span class="dt">bty=</span><span class="st">&quot;l&quot;</span>,                             <span class="co">#altera as bordas</span></a>
-<a class="sourceLine" id="cb54-13" title="13"><span class="kw">abline</span>(<span class="kw">lm</span>(solo1<span class="op">$</span>ds<span class="op">~</span>solo1<span class="op">$</span>ptotal)))   <span class="co">#regressao dos pontos</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-22-2.png" width="672" /></p>
+<div class="sourceCode" id="cb323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb323-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-166-1.png" width="672" /></p>
+<div class="sourceCode" id="cb324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb324-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds,          <span class="co">#plota ds e ptotal</span></a>
+<a class="sourceLine" id="cb324-2" title="2"><span class="dt">xlab=</span><span class="st">&quot;Macroporosdiade (%)&quot;</span>,          <span class="co">#nomeia o eixo x</span></a>
+<a class="sourceLine" id="cb324-3" title="3"><span class="dt">ylab=</span><span class="kw">expression</span>(Ds<span class="op">~</span>(mg<span class="op">~</span>Kg<span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>})),    <span class="co">#nomeia o eixo y</span></a>
+<a class="sourceLine" id="cb324-4" title="4"><span class="dt">main=</span><span class="st">&quot;Como personalizar um gráfico&quot;</span>, <span class="co">#referente ao título</span></a>
+<a class="sourceLine" id="cb324-5" title="5"><span class="dt">xlim=</span><span class="kw">c</span>(<span class="fl">0.48</span>,<span class="fl">0.64</span>),                   <span class="co">#limites do eixo x</span></a>
+<a class="sourceLine" id="cb324-6" title="6"><span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">2</span>), <span class="dt">col=</span><span class="st">&quot;red&quot;</span>,              <span class="co">#limites do eixo y</span></a>
+<a class="sourceLine" id="cb324-7" title="7"><span class="dt">pch=</span><span class="dv">22</span>,                              <span class="co">#padrão dos pontos</span></a>
+<a class="sourceLine" id="cb324-8" title="8"><span class="dt">bg=</span><span class="st">&quot;yellow&quot;</span>,                         <span class="co">#cor de preenchimento</span></a>
+<a class="sourceLine" id="cb324-9" title="9"><span class="dt">tcl=</span><span class="fl">0.4</span>,                             <span class="co">#tamanho dos traços dos eixos</span></a>
+<a class="sourceLine" id="cb324-10" title="10"><span class="dt">las=</span><span class="dv">1</span>,                               <span class="co">#orientação do texto em y</span></a>
+<a class="sourceLine" id="cb324-11" title="11"><span class="dt">cex=</span><span class="fl">1.5</span>,                             <span class="co">#tamanho do objeto do ponto</span></a>
+<a class="sourceLine" id="cb324-12" title="12"><span class="dt">bty=</span><span class="st">&quot;l&quot;</span>,                             <span class="co">#altera as bordas</span></a>
+<a class="sourceLine" id="cb324-13" title="13"><span class="kw">abline</span>(<span class="kw">lm</span>(solo1<span class="op">$</span>ds<span class="op">~</span>solo1<span class="op">$</span>ptotal)))   <span class="co">#regressao dos pontos</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-166-2.png" width="672" /></p>
 <p>Veja o <code>demo(plotmath)</code> para saber mais sobre anotações em gráficos.</p>
 </div>
 </div>
 <div id="histogramas" class="section level2">
 <h2><span class="header-section-number">5.4</span> Histogramas</h2>
 <p>A função <code>hist()</code> produz um histograma dos dados informados em seu argumento enquanto a função <code>barplot()</code> produz um gráfico de barras.</p>
-<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb55-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds)</a>
-<a class="sourceLine" id="cb55-2" title="2"><span class="kw">rug</span>(solo1<span class="op">$</span>ds)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-23-1.png" width="672" /></p>
+<div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds)</a>
+<a class="sourceLine" id="cb325-2" title="2"><span class="kw">rug</span>(solo1<span class="op">$</span>ds)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
 <div id="personalizando-graficos" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Personalizando gráficos</h3>
 <p>Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
 default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
 informações detalhadas desses parâmetros se usar os recursos de ajuda do R.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb56-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds, <span class="co">#histograma de ds</span></a>
-<a class="sourceLine" id="cb56-2" title="2">     <span class="dt">main=</span><span class="st">&quot;Histograma Personalizado</span><span class="ch">\n</span><span class="st">densidade do solo&quot;</span>,<span class="co">#título</span></a>
-<a class="sourceLine" id="cb56-3" title="3">     <span class="dt">xlab=</span><span class="kw">expression</span>(Ds<span class="op">~</span>(mg<span class="op">~</span>Kg<span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>})), <span class="co">#texto do eixo das abscissas</span></a>
-<a class="sourceLine" id="cb56-4" title="4">     <span class="dt">ylab=</span><span class="st">&quot;Probabilidades&quot;</span>, <span class="co">#texto do eixo das ordenadas</span></a>
-<a class="sourceLine" id="cb56-5" title="5">     <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="co">#limites do eixo de x</span></a>
-<a class="sourceLine" id="cb56-6" title="6">     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="co">#limites do eixo y</span></a>
-<a class="sourceLine" id="cb56-7" title="7">     <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="co">#cor das colunas</span></a>
-<a class="sourceLine" id="cb56-8" title="8">     <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, <span class="co">#cor das bordas das colunas</span></a>
-<a class="sourceLine" id="cb56-9" title="9">     <span class="dt">adj=</span><span class="dv">0</span>, <span class="co">#alinhamento dos textos 0, 0.5 e 1</span></a>
-<a class="sourceLine" id="cb56-10" title="10">     <span class="dt">col.axis=</span><span class="st">&quot;red&quot;</span>) <span class="co">#cor do texto nos eixos</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-24-1.png" width="672" /></p>
+<div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds, <span class="co">#histograma de ds</span></a>
+<a class="sourceLine" id="cb326-2" title="2">     <span class="dt">main=</span><span class="st">&quot;Histograma Personalizado</span><span class="ch">\n</span><span class="st">densidade do solo&quot;</span>,<span class="co">#título</span></a>
+<a class="sourceLine" id="cb326-3" title="3">     <span class="dt">xlab=</span><span class="kw">expression</span>(Ds<span class="op">~</span>(mg<span class="op">~</span>Kg<span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>})), <span class="co">#texto do eixo das abscissas</span></a>
+<a class="sourceLine" id="cb326-4" title="4">     <span class="dt">ylab=</span><span class="st">&quot;Probabilidades&quot;</span>, <span class="co">#texto do eixo das ordenadas</span></a>
+<a class="sourceLine" id="cb326-5" title="5">     <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="co">#limites do eixo de x</span></a>
+<a class="sourceLine" id="cb326-6" title="6">     <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="co">#limites do eixo y</span></a>
+<a class="sourceLine" id="cb326-7" title="7">     <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, <span class="co">#cor das colunas</span></a>
+<a class="sourceLine" id="cb326-8" title="8">     <span class="dt">border=</span><span class="st">&quot;white&quot;</span>, <span class="co">#cor das bordas das colunas</span></a>
+<a class="sourceLine" id="cb326-9" title="9">     <span class="dt">adj=</span><span class="dv">0</span>, <span class="co">#alinhamento dos textos 0, 0.5 e 1</span></a>
+<a class="sourceLine" id="cb326-10" title="10">     <span class="dt">col.axis=</span><span class="st">&quot;red&quot;</span>) <span class="co">#cor do texto nos eixos</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-168-1.png" width="672" /></p>
 </div>
 </div>
 <div id="graficos-de-barras" class="section level2">
 <h2><span class="header-section-number">5.5</span> Gráficos de Barras</h2>
 <p>Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos</p>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb57-1" title="1"><span class="kw">barplot</span>(solo<span class="op">$</span>ptotal,<span class="dt">names.arg=</span>solo<span class="op">$</span>z, <span class="dt">horiz =</span> T)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-25-1.png" width="672" /></p>
+<div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1"><span class="kw">barplot</span>(solo<span class="op">$</span>ptotal,<span class="dt">names.arg=</span>solo<span class="op">$</span>z, <span class="dt">horiz =</span> T)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
 </div>
 <div id="boxplots" class="section level2">
 <h2><span class="header-section-number">5.6</span> Boxplots</h2>
 <p>Dados de um experimento visando controle de pulgão (<em>Aphis gossypii Glover</em>) em cultura de pepino, instalado em <em>delineamento inteiramente casualizado</em> com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.</p>
-<div class="sourceCode" id="cb58"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb58-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1&quot;</span>)</a>
-<a class="sourceLine" id="cb58-2" title="2"><span class="kw">str</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb328"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb328-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb328-2" title="2"><span class="kw">str</span>(dados)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    30 obs. of  3 variables:
 ##  $ trat   : Factor w/ 5 levels &quot;Azinfos etilico&quot;,..: 5 1 3 4 2 5 1 3 4 2 ...
 ##  $ rept   : int  1 1 1 1 1 2 2 2 2 2 ...
@@ -932,25 +941,25 @@ Número inteiro que identifica as repetições de cada tratamento.</p>
 Número de pulgões coletados 36 horas após a pulverização dos tratamentos.</p>
 <p>Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é <code>boxplot</code> <code>( x , data =)</code> , em que <code>x</code> é uma fórmula e <code>data =</code> denota o quadro de dados que fornece os dados.</p>
 <p>Um exemplo de uma fórmula é <code>y ~ group</code> onde um boxplot separado para a variável numérica é gerado para cada valor de group.</p>
-<div class="sourceCode" id="cb60"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb60-1" title="1"><span class="kw">x11</span>()</a>
-<a class="sourceLine" id="cb60-2" title="2"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
-<a class="sourceLine" id="cb60-3" title="3">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
-<a class="sourceLine" id="cb60-4" title="4">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#título</span></a>
-<a class="sourceLine" id="cb60-5" title="5">        <span class="dt">xlab=</span><span class="st">&quot;Controle do pulgão&quot;</span>, <span class="co">#texto do eixo x </span></a>
-<a class="sourceLine" id="cb60-6" title="6">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
-<a class="sourceLine" id="cb60-7" title="7"><span class="st">        col=3)                     #cor verde  </span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-27-1.png" width="672" /></p>
+<div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">x11</span>()</a>
+<a class="sourceLine" id="cb330-2" title="2"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
+<a class="sourceLine" id="cb330-3" title="3">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
+<a class="sourceLine" id="cb330-4" title="4">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#título</span></a>
+<a class="sourceLine" id="cb330-5" title="5">        <span class="dt">xlab=</span><span class="st">&quot;Controle do pulgão&quot;</span>, <span class="co">#texto do eixo x </span></a>
+<a class="sourceLine" id="cb330-6" title="6">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
+<a class="sourceLine" id="cb330-7" title="7"><span class="st">        col=3)                     #cor verde  </span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
 <p>Adicione <code>horizontal = TRUE</code> para inverter a orientação do eixo.</p>
-<div class="sourceCode" id="cb61"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb61-1" title="1"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
-<a class="sourceLine" id="cb61-2" title="2">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
-<a class="sourceLine" id="cb61-3" title="3">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#t?tulo</span></a>
-<a class="sourceLine" id="cb61-4" title="4">        <span class="dt">xlab=</span><span class="st">&quot;Controle do pulgão&quot;</span>, <span class="co">#texto do eixo x </span></a>
-<a class="sourceLine" id="cb61-5" title="5">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
-<a class="sourceLine" id="cb61-6" title="6"><span class="st">        col=3, horizontal = T,     #cor verde  </span></a>
-<a class="sourceLine" id="cb61-7" title="7"><span class="st">        notch=T)                   #teste para mediana</span></a></code></pre></div>
+<div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
+<a class="sourceLine" id="cb331-2" title="2">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
+<a class="sourceLine" id="cb331-3" title="3">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#t?tulo</span></a>
+<a class="sourceLine" id="cb331-4" title="4">        <span class="dt">xlab=</span><span class="st">&quot;Controle do pulgão&quot;</span>, <span class="co">#texto do eixo x </span></a>
+<a class="sourceLine" id="cb331-5" title="5">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
+<a class="sourceLine" id="cb331-6" title="6"><span class="st">        col=3, horizontal = T,     #cor verde  </span></a>
+<a class="sourceLine" id="cb331-7" title="7"><span class="st">        notch=T)                   #teste para mediana</span></a></code></pre></div>
 <pre><code>## Warning in bxp(list(stats = structure(c(825, 871, 972.5, 1282, 1527, 44, :
 ## some notches went outside hinges (&#39;box&#39;): maybe set notch=FALSE</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-28-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-172-1.png" width="672" /></p>
 <div id="boxplot-com-fatorial" class="section level3">
 <h3><span class="header-section-number">5.6.1</span> Boxplot com fatorial</h3>
 <p>Boxplot com 2 fatores, com caixas coloridas para facilitar a interpretação.</p>
@@ -968,42 +977,41 @@ Identifica as repetições de cada combinação dos fatores recipiente e espéci
 <p><em>alt</em>
 Altura das mudas aos 80 dias de idade (cm).</p>
 <p>Baixar dados via web.</p>
-<div class="sourceCode" id="cb63"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb63-1" title="1">fat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1&quot;</span>)</a>
-<a class="sourceLine" id="cb63-2" title="2"><span class="kw">str</span>(fat)</a></code></pre></div>
+<div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1">fat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb333-2" title="2"><span class="kw">str</span>(fat)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  4 variables:
 ##  $ recipie: Factor w/ 3 levels &quot;Lam&quot;,&quot;SPG&quot;,&quot;SPP&quot;: 3 3 2 2 1 1 3 3 2 2 ...
 ##  $ especie: Factor w/ 2 levels &quot;E. citriodora&quot;,..: 1 2 1 2 1 2 1 2 1 2 ...
 ##  $ rept   : int  1 1 1 1 1 1 2 2 2 2 ...
 ##  $ alt    : num  26.2 24.8 25.7 19.6 22.8 19.8 26 24.6 26.3 21.1 ...</code></pre>
 <p>Gerar o gráfico boxpolt com o comando abaixo.</p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb65-1" title="1"><span class="kw">boxplot</span>(fat<span class="op">$</span>alt<span class="op">~</span>fat<span class="op">$</span>recipie<span class="op">*</span>especie, <span class="dt">data=</span>fat, <span class="dt">notch=</span>F, </a>
-<a class="sourceLine" id="cb65-2" title="2">        <span class="dt">col=</span>(<span class="kw">c</span>(<span class="st">&quot;gold&quot;</span>,<span class="st">&quot;darkgreen&quot;</span>,<span class="st">&quot;brown&quot;</span>)),</a>
-<a class="sourceLine" id="cb65-3" title="3">        <span class="dt">main=</span><span class="st">&quot;Fatorial&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Recipiente e Espécies&quot;</span>,</a>
-<a class="sourceLine" id="cb65-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Altura de plantas (cm)&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-30-1.png" width="672" /></p>
+<div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="kw">boxplot</span>(fat<span class="op">$</span>alt<span class="op">~</span>fat<span class="op">$</span>recipie<span class="op">*</span>especie, <span class="dt">data=</span>fat, <span class="dt">notch=</span>F, </a>
+<a class="sourceLine" id="cb335-2" title="2">        <span class="dt">col=</span>(<span class="kw">c</span>(<span class="st">&quot;gold&quot;</span>,<span class="st">&quot;darkgreen&quot;</span>,<span class="st">&quot;brown&quot;</span>)),</a>
+<a class="sourceLine" id="cb335-3" title="3">        <span class="dt">main=</span><span class="st">&quot;Fatorial&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Recipiente e Espécies&quot;</span>,</a>
+<a class="sourceLine" id="cb335-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Altura de plantas (cm)&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-174-1.png" width="672" /></p>
 </div>
 </div>
 <div id="cores" class="section level2">
 <h2><span class="header-section-number">5.7</span> Cores</h2>
 <p>Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando <code>col="red"</code> (escrevendo o nome da cor) ou <code>col=2</code> (usando números).
 O comando abaixo mostra os números que especificam algumas cores.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb66-1" title="1"><span class="kw">pie</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>),<span class="dt">col=</span><span class="kw">rainbow</span>(<span class="dv">30</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-31-1.png" width="672" /></p>
+<div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="kw">pie</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>),<span class="dt">col=</span><span class="kw">rainbow</span>(<span class="dv">30</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
 <p>Veja sua tabela de cores executando o script <a href="https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1">paletedecores.R</a>.</p>
 <p>Podemos também criar cores personalizadas usando a função do <code>rgb()</code>, que recebe como argumentos as quantidades de vermelho <em>(red)</em>, verde <em>(green)</em> e azul <em>(blue)</em> e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1.</p>
 <p>Exemplos:</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb67-1" title="1">goiaba &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.94</span>, <span class="fl">0.41</span>, <span class="fl">0.40</span>)</a>
-<a class="sourceLine" id="cb67-2" title="2">goiaba.semitrans &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.94</span>, <span class="fl">0.41</span>, <span class="fl">0.40</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a>
-<a class="sourceLine" id="cb67-3" title="3">vitamina &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="dt">red =</span> <span class="kw">c</span>(<span class="fl">0.87</span>, <span class="fl">0.70</span>), <span class="dt">green =</span> <span class="kw">c</span>(<span class="fl">0.83</span>, <span class="fl">0.77</span>),</a>
-<a class="sourceLine" id="cb67-4" title="4"><span class="dt">blue =</span> <span class="kw">c</span>(<span class="fl">0.71</span>, <span class="fl">0.30</span>), <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;leite&quot;</span>, <span class="st">&quot;abacate&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1">goiaba &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.94</span>, <span class="fl">0.41</span>, <span class="fl">0.40</span>)</a>
+<a class="sourceLine" id="cb337-2" title="2">goiaba.semitrans &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.94</span>, <span class="fl">0.41</span>, <span class="fl">0.40</span>, <span class="dt">alpha =</span> <span class="fl">0.5</span>)</a>
+<a class="sourceLine" id="cb337-3" title="3">vitamina &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="dt">red =</span> <span class="kw">c</span>(<span class="fl">0.87</span>, <span class="fl">0.70</span>), <span class="dt">green =</span> <span class="kw">c</span>(<span class="fl">0.83</span>, <span class="fl">0.77</span>),</a>
+<a class="sourceLine" id="cb337-4" title="4"><span class="dt">blue =</span> <span class="kw">c</span>(<span class="fl">0.71</span>, <span class="fl">0.30</span>), <span class="dt">names =</span> <span class="kw">c</span>(<span class="st">&quot;leite&quot;</span>, <span class="st">&quot;abacate&quot;</span>))</a></code></pre></div>
 </div>
 <div id="interagindo-com-a-janela-grafica" class="section level2">
 <h2><span class="header-section-number">5.8</span> Interagindo com a Janela gráfica</h2>
 <p>Poderemos com o mouse marcar o ponte desejado usando a função <code>identify ()</code></p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb68-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds<span class="op">~</span>solo1<span class="op">$</span>ptotal)</a>
-<a class="sourceLine" id="cb68-2" title="2"><span class="kw">identify</span>(solo1<span class="op">$</span>ds,</a>
-<a class="sourceLine" id="cb68-3" title="3">                  <span class="dt">n=</span><span class="dv">1</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-33-1.png" width="672" /></p>
+<div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds<span class="op">~</span>solo1<span class="op">$</span>ptotal)</a>
+<a class="sourceLine" id="cb338-2" title="2"><span class="kw">identify</span>(solo1<span class="op">$</span>ds,<span class="dt">n=</span><span class="dv">1</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
 <pre><code>## integer(0)</code></pre>
 </div>
 <div id="texto-e-tamanho-do-simbolo" class="section level2">
@@ -1012,70 +1020,48 @@ O comando abaixo mostra os números que especificam algumas cores.</p>
 <p><code>cex</code> número que indica o valor pelo qual o texto e os símbolos de plotagem devem ser dimensionados em relação ao padrão.
 <em>1 = padrão, 1,5 é 50% maior, 0,5 é 50% menor, etc.</em></p>
 </div>
-<div id="fontes" class="section level2">
-<h2><span class="header-section-number">5.10</span> Fontes</h2>
-<p>Você pode definir facilmente o tamanho e o estilo da fonte, mas a familia de fontes é um pouco mais complicada.</p>
-<p><strong>Fonte</strong> Número inteiro que especifica a fonte a ser usada para texto.
-1 = simples, 2 = negrito, 3 = itálico, 4 = negrito itálico, 5 = símbolo</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb70-1" title="1"><span class="kw">plot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dv">1</span><span class="op">:</span><span class="dv">10</span>,<span class="dt">type=</span><span class="st">&quot;n&quot;</span>)</a>
-<a class="sourceLine" id="cb70-2" title="2"><span class="kw">windowsFonts</span>(</a>
-<a class="sourceLine" id="cb70-3" title="3">  <span class="dt">A=</span><span class="kw">windowsFont</span>(<span class="st">&quot;Arial Black&quot;</span>),</a>
-<a class="sourceLine" id="cb70-4" title="4">  <span class="dt">B=</span><span class="kw">windowsFont</span>(<span class="st">&quot;Bookman Old Style&quot;</span>),</a>
-<a class="sourceLine" id="cb70-5" title="5">  <span class="dt">C=</span><span class="kw">windowsFont</span>(<span class="st">&quot;Comic Sans MS&quot;</span>),</a>
-<a class="sourceLine" id="cb70-6" title="6">  <span class="dt">D=</span><span class="kw">windowsFont</span>(<span class="st">&quot;Symbol&quot;</span>)</a>
-<a class="sourceLine" id="cb70-7" title="7">)</a>
-<a class="sourceLine" id="cb70-8" title="8"><span class="kw">text</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="st">&quot;Hello World Default&quot;</span>)</a>
-<a class="sourceLine" id="cb70-9" title="9"><span class="kw">text</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dt">family=</span><span class="st">&quot;A&quot;</span>,<span class="st">&quot;Hello World from Arial Black&quot;</span>)</a>
-<a class="sourceLine" id="cb70-10" title="10"><span class="kw">text</span>(<span class="dv">5</span>,<span class="dv">5</span>,<span class="dt">family=</span><span class="st">&quot;B&quot;</span>,<span class="st">&quot;Hello World from Bookman Old Style&quot;</span>)</a>
-<a class="sourceLine" id="cb70-11" title="11"><span class="kw">text</span>(<span class="dv">6</span>,<span class="dv">6</span>,<span class="dt">family=</span><span class="st">&quot;C&quot;</span>,<span class="st">&quot;Hello World from Comic Sans MS&quot;</span>)</a>
-<a class="sourceLine" id="cb70-12" title="12"><span class="kw">text</span>(<span class="dv">7</span>,<span class="dv">7</span>,<span class="dt">family=</span><span class="st">&quot;D&quot;</span>, <span class="st">&quot;Hello World from Symbol&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb71-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal,</a>
-<a class="sourceLine" id="cb71-2" title="2">     <span class="dt">main=</span><span class="st">&quot;Fatorial&quot;</span>, </a>
-<a class="sourceLine" id="cb71-3" title="3">        <span class="dt">xlab=</span><span class="st">&quot;Recipiente e Espécies&quot;</span>,</a>
-<a class="sourceLine" id="cb71-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Altura de plantas (cm)&quot;</span>,</a>
-<a class="sourceLine" id="cb71-5" title="5">        <span class="dt">cex.axis=</span><span class="dv">1</span>,                         <span class="co">#ampliação da anotação do eixo em relação ao cex</span></a>
-<a class="sourceLine" id="cb71-6" title="6">        <span class="dt">cex.lab=</span><span class="fl">1.5</span>,                        <span class="co">#ampliação dos rótulos x e y em relação ao cex</span></a>
-<a class="sourceLine" id="cb71-7" title="7">        <span class="dt">cex.main=</span><span class="fl">1.5</span>,                       <span class="co">#ampliação de títulos em relação ao cex</span></a>
-<a class="sourceLine" id="cb71-8" title="8">        <span class="dt">font.axis=</span><span class="dv">3</span>,                        <span class="co">#fonte para anotação de eixo</span></a>
-<a class="sourceLine" id="cb71-9" title="9">        <span class="dt">font.main=</span><span class="dv">4</span>,                        <span class="co">#fonte para títulos</span></a>
-<a class="sourceLine" id="cb71-10" title="10">        <span class="dt">font.lab=</span><span class="dv">4</span>,                         <span class="co">#fonte para rótulos</span></a>
-<a class="sourceLine" id="cb71-11" title="11">        <span class="kw">text</span>(<span class="fl">1.5</span>,<span class="fl">0.5</span>,<span class="dt">family=</span><span class="st">&quot;A&quot;</span>, <span class="st">&quot;Engenharia Agrícola&quot;</span>,<span class="dt">cex =</span><span class="dv">1</span>,<span class="dt">pos =</span><span class="dv">2</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-36-1.png" width="672" /></p>
-</div>
 <div id="visualizar-varios-graficos" class="section level2">
-<h2><span class="header-section-number">5.11</span> Visualizar vários gráficos</h2>
+<h2><span class="header-section-number">5.10</span> Visualizar vários gráficos</h2>
+<div class="sourceCode" id="cb340"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb340-1" title="1"><span class="kw">x11</span>()</a>
+<a class="sourceLine" id="cb340-2" title="2"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
+<a class="sourceLine" id="cb340-3" title="3">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
+<a class="sourceLine" id="cb340-4" title="4">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#título</span></a>
+<a class="sourceLine" id="cb340-5" title="5">        <span class="dt">xlab=</span><span class="st">&quot;Controle do pulgão&quot;</span>, <span class="co">#texto do eixo x </span></a>
+<a class="sourceLine" id="cb340-6" title="6">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
+<a class="sourceLine" id="cb340-7" title="7"><span class="st">        col=3,                     #cor verde  </span></a>
+<a class="sourceLine" id="cb340-8" title="8"><span class="st">        notch=F)                   #teste para mediana</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 <div id="varios-graficos-na-mesma-janela-grafica" class="section level3">
-<h3><span class="header-section-number">5.11.1</span> Varios gráficos na mesma janela gráfica</h3>
+<h3><span class="header-section-number">5.10.1</span> Varios gráficos na mesma janela gráfica</h3>
 <p>Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função <code>par()</code>.</p>
 <p><strong>Exemplo 1</strong></p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb72-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co">#2 linhas e 2 colunas</span></a>
-<a class="sourceLine" id="cb72-2" title="2"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds)</a>
-<a class="sourceLine" id="cb72-3" title="3"><span class="kw">boxplot</span>(solo1<span class="op">$</span>ds,solo2<span class="op">$</span>ds, solo3<span class="op">$</span>ds)</a>
-<a class="sourceLine" id="cb72-4" title="4"><span class="kw">hist</span>(solo<span class="op">$</span>ptotal)</a>
-<a class="sourceLine" id="cb72-5" title="5"><span class="kw">plot</span>(solo<span class="op">$</span>ptotal,solo<span class="op">$</span>ds)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-38-1.png" width="672" /></p>
+<div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co">#2 linhas e 2 colunas</span></a>
+<a class="sourceLine" id="cb341-2" title="2"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds)</a>
+<a class="sourceLine" id="cb341-3" title="3"><span class="kw">boxplot</span>(solo1<span class="op">$</span>ds,solo2<span class="op">$</span>ds, solo3<span class="op">$</span>ds)</a>
+<a class="sourceLine" id="cb341-4" title="4"><span class="kw">hist</span>(solo<span class="op">$</span>ptotal)</a>
+<a class="sourceLine" id="cb341-5" title="5"><span class="kw">plot</span>(solo<span class="op">$</span>ptotal,solo<span class="op">$</span>ds)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-180-1.png" width="672" /></p>
 <p><strong>Exemplo 2</strong></p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb73-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb73-2" title="2"><span class="kw">pairs</span>(solo)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-39-1.png" width="672" /></p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">hist</span>(solo<span class="op">$</span>ds)</a>
-<a class="sourceLine" id="cb74-2" title="2"><span class="kw">plot</span>(solo<span class="op">$</span>ds, <span class="dt">col=</span>solo<span class="op">$</span>z)</a>
-<a class="sourceLine" id="cb74-3" title="3"><span class="kw">plot</span>(<span class="kw">density</span>(solo<span class="op">$</span>ds))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-39-2.png" width="672" /></p>
+<div class="sourceCode" id="cb342"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb342-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb342-2" title="2"><span class="kw">pairs</span>(solo)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-181-1.png" width="672" /></p>
+<div class="sourceCode" id="cb343"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb343-1" title="1"><span class="kw">hist</span>(solo<span class="op">$</span>ds)</a>
+<a class="sourceLine" id="cb343-2" title="2"><span class="kw">plot</span>(solo<span class="op">$</span>ds, <span class="dt">col=</span>solo<span class="op">$</span>z)</a>
+<a class="sourceLine" id="cb343-3" title="3"><span class="kw">plot</span>(<span class="kw">density</span>(solo<span class="op">$</span>ds))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-181-2.png" width="672" /></p>
 </div>
 </div>
 <div id="salvando-graficos" class="section level2">
-<h2><span class="header-section-number">5.12</span> Salvando gráficos</h2>
+<h2><span class="header-section-number">5.11</span> Salvando gráficos</h2>
 <p>Você pode salvar o gráfico em vários formatos no menu
 <em>Arquivo -&gt; Salvar como</em>.</p>
 <p>Você também pode salvar o gráfico via código usando uma das seguintes funções.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb75-1" title="1"><span class="kw">pdf</span> (<span class="dt">file =</span> <span class="st">&quot;meugráfico.pdf&quot;</span>)             <span class="co">#ficheiro PDF</span></a>
-<a class="sourceLine" id="cb75-2" title="2"><span class="kw">win.metafile</span> (<span class="st">&quot;meu grafico.wmf&quot;</span>)          <span class="co">#metarquivo do windows</span></a>
-<a class="sourceLine" id="cb75-3" title="3"><span class="kw">png</span> (<span class="st">&quot;meu grafico.png&quot;</span>)                   <span class="co">#arquivo png</span></a>
-<a class="sourceLine" id="cb75-4" title="4"><span class="kw">jpeg</span> (<span class="st">&quot;meu grafico.jpg&quot;</span>)                  <span class="co">#arquivo jpeg</span></a>
-<a class="sourceLine" id="cb75-5" title="5"><span class="kw">bmp</span> (<span class="st">&quot;meu grafico.bmp&quot;</span>)                 <span class="co">#arquivo bmp</span></a>
-<a class="sourceLine" id="cb75-6" title="6"><span class="kw">postscript</span> (<span class="st">&quot;meu grafico.ps&quot;</span>)             <span class="co">#arquivo postscript</span></a></code></pre></div>
+<p><code>pdf (file = "meugráfico.pdf")</code> #ficheiro PDF
+<code>win.metafile ("meu grafico.wmf")</code> #metarquivo do windows
+<code>png ("meu grafico.png")</code> #arquivo png
+<code>jpeg ("meu grafico.jpg")</code> #arquivo jpeg
+<code>bmp ("meu grafico.bmp")</code> #arquivo bmp
+<code>postscript ("meu grafico.ps")</code> #arquivo postscript</p>
 
 </div>
 </div>
