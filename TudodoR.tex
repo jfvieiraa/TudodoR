@@ -349,11 +349,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -1.93877665 -0.71908603  0.01503835  0.78379515  1.35000000
+## [1] -2.100194255 -0.802744971  0.003621638  0.659519485  1.350000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##          0%         25%         50%         75%        100% 
-## -1.93877665 -0.71908603  0.01503835  0.78379515  1.35000000 
+##           0%          25%          50%          75%         100% 
+## -2.100194255 -0.802744971  0.003621638  0.659519485  1.350000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2114,14 +2114,14 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \begin{verbatim}
 ##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
 ##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Figura.Rmd"     "06-references.Rmd" "book.bib"         
-## [10] "docs"              "index.Rmd"         "LICENSE"          
-## [13] "meu grafico.bmp"   "meu grafico.jpg"   "meu grafico.png"  
-## [16] "meu grafico.ps"    "meu grafico.wmf"   "meugráfico.pdf"   
-## [19] "packages.bib"      "preamble.tex"      "README.md"        
-## [22] "search_index.json" "style.css"         "TudodoR.log"      
-## [25] "TudodoR.pdf"       "TudodoR.Rmd"       "TudodoR.Rproj"    
-## [28] "TudodoR.tex"       "TudodoR_files"
+##  [7] "05-Figura.Rmd"     "06-references.Rmd" "07-Figura_2.Rmd"  
+## [10] "book.bib"          "docs"              "index.Rmd"        
+## [13] "LICENSE"           "meu grafico.bmp"   "meu grafico.jpg"  
+## [16] "meu grafico.png"   "meu grafico.ps"    "meu grafico.wmf"  
+## [19] "meugráfico.pdf"    "packages.bib"      "preamble.tex"     
+## [22] "README.md"         "search_index.json" "style.css"        
+## [25] "TudodoR.log"       "TudodoR.pdf"       "TudodoR.Rmd"      
+## [28] "TudodoR.Rproj"     "TudodoR.tex"       "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -3760,11 +3760,875 @@ Você pode salvar o gráfico em vários formatos no menu
 Você também pode salvar o gráfico via código usando uma das seguintes funções.
 
 \texttt{pdf\ (file\ =\ "meugráfico.pdf")} \#ficheiro PDF
+
 \texttt{win.metafile\ ("meu\ grafico.wmf")} \#metarquivo do windows
+
 \texttt{png\ ("meu\ grafico.png")} \#arquivo png
+
 \texttt{jpeg\ ("meu\ grafico.jpg")} \#arquivo jpeg
+
 \texttt{bmp\ ("meu\ grafico.bmp")} \#arquivo bmp
+
 \texttt{postscript\ ("meu\ grafico.ps")} \#arquivo postscript
+
+\hypertarget{graficos-com-ggplot2}{%
+\chapter{Gráficos com ggplot2}\label{graficos-com-ggplot2}}
+
+Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na \emph{Grammar of Graphics} (Gramática dos Gráficos) para descrever os gráficos de dados.
+
+Utilize o codigo abaixo para instalar o pacote ggplot2
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{install.packages}\NormalTok{(}\StringTok{"ggplot2"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Sempre carregue o pacote antes de utilizá-lo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Utilizaremos o banco de dados:
+\href{https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1}{dadosfisio}
+
+Baixar os dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{fisio <-}\StringTok{ }\KeywordTok{read.csv2}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Veja as primeiras linhas.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{head}\NormalTok{(fisio)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##   z x  y cota       ds        cc        ma    ptotal   tibo   tibe
+## 1 1 1  1 9.15 1.501258 0.3975615 0.1288555 0.5264170  46.08  26.78
+## 2 1 1  3 8.95 1.474362 0.3818767 0.1530250 0.5349017  19.20  26.10
+## 3 1 1  5 8.78 1.469118 0.3514075 0.1851484 0.5365559 172.80 113.92
+## 4 1 1  7 8.59 1.392845 0.3724094 0.1882073 0.5606167  96.00  74.83
+## 5 1 1  9 8.48 1.383309 0.3559554 0.2076696 0.5636250  30.72  37.20
+## 6 1 1 11 8.41 1.417010 0.3144429 0.2385509 0.5529937 151.32 124.52
+##           a          b       X3       X60       X90      X120
+## 1  926.3955 -0.5290035 518.0810 153.24778 106.20581  73.60416
+## 2  383.8130 -0.4176008 242.5903  92.74121  69.43243  51.98188
+## 3  275.3272 -0.1307566 238.4857 176.48417 161.19222 147.22529
+## 4 1206.7585 -0.3764298 798.0272 335.41915 258.38731 199.04648
+## 5  151.4032 -0.2270424 117.9800  69.94649  59.76121  51.05906
+## 6  368.7992 -0.1549382 311.0754 217.73464 195.56291 175.64890
+\end{verbatim}
+
+O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa a densidade do solo e ao eixo x a variavel capacidade de campo.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-186-1.pdf}
+
+Aqui, essas formas geomótricas são pontos, selecionados pela função \texttt{geom\_point()}, gerando, assim, um gráfico de dispersão.
+
+A fun?ção \texttt{aes()} vem da palavra \emph{Aesthetics} define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função \texttt{colour}.
+
+Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc, }\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-187-1.pdf}
+
+Agora, a variável \emph{z} (classe de solo) foi mapeada a cor dos pontos, sendo que pontos vermelhos correspondem ao Nitossolo (valor 1) e pontos azuis e verdes os Latossolos. Observe que inserimos a variável \emph{z} como um fator, pois temos interesse apenas nos valores ``1'', ``2'' e ``3''. No entanto, tambem podemos mapear uma variável contínua a cor dos pontos:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc, }\DataTypeTok{colour =}\NormalTok{ ptotal)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-188-1.pdf}
+
+A porosidade do solo (ptotal), é representado pela tonalidade da cor azul.
+
+Também podemos mapear o tamanho dos pontos a uma variável de interesse.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc, }\DataTypeTok{colour =}\NormalTok{ ptotal, }\DataTypeTok{size =}\NormalTok{ ma)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-189-1.pdf}
+
+Outros \texttt{geoms} bastante utilizados:
+
+\begin{itemize}
+\tightlist
+\item
+  geom\_line: para retas definidas por pares (x,y)
+\item
+  geom\_abline: para retas definidas por um intercepto e uma inclinação
+\item
+  geom\_hline: para retas horizontais
+\item
+  geom\_boxplot: para boxplots
+\item
+  geom\_histogram: para histogramas
+\item
+  geom\_density: para densidades
+\item
+  geom\_area: para áreas
+\item
+  geom\_bar: para barras
+\end{itemize}
+
+Veja a seguir como é fácil gerar diversos Gráficos diferentes utilizando a mesma estrutura do gráfico de dispersão acima:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(z), }\DataTypeTok{y =}\NormalTok{ ds)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-190-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gra <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds)) }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gra }\OperatorTok{+}\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-192-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gra }\OperatorTok{+}\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{(}\DataTypeTok{binwidth=}\NormalTok{.}\DecValTok{05}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-193-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{gra }\OperatorTok{+}\StringTok{ }\KeywordTok{geom_density}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_histogram}\NormalTok{ (}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y=}\NormalTok{..density..),              }\DataTypeTok{binwidth=}\NormalTok{.}\DecValTok{05}\NormalTok{,}
+    \DataTypeTok{colour=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"white"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_density}\NormalTok{(}\DataTypeTok{alpha=}\NormalTok{.}\DecValTok{2}\NormalTok{, }\DataTypeTok{fill=}\StringTok{"#FF6666"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-194-1.pdf}
+
+\textbf{Exemplo}
+Baixar dados via web.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Criar gráficos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ dados, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{y =}\NormalTok{ peso, }\DataTypeTok{x =}\NormalTok{ promalin, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(promalin)))}
+\end{Highlighting}
+\end{Shaded}
+
+Nestes exemplos, a altura da barra representará o valor em uma coluna do quadro de dados. Isso é feito usando \texttt{stat="identity"} em vez do padrão \texttt{stat="bin"}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar }\OperatorTok{+}\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-197-1.pdf}
+
+Gráfico de barras agrupados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar }\OperatorTok{+}\StringTok{   }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{position=}\KeywordTok{position_dodge}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-198-1.pdf}
+
+Empilhado
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar }\OperatorTok{+}\StringTok{   }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{, }\DataTypeTok{colour =}\StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-199-1.pdf}
+
+\hypertarget{personalizando-os-graficos-1}{%
+\section{Personalizando os gráficos}\label{personalizando-os-graficos-1}}
+
+\hypertarget{cores-1}{%
+\subsection{Cores}\label{cores-1}}
+
+O aspecto \texttt{colour} do boxplot, muda a cor do contorno. Para mudar o preenchimento, basta usar o \texttt{fill}.
+
+Usando \texttt{colour}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(z), }\DataTypeTok{y =}\NormalTok{ ds, }\DataTypeTok{colour =} \KeywordTok{factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-200-1.pdf}
+
+Usando \texttt{fill}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(z), }\DataTypeTok{y =}\NormalTok{ ds, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-201-1.pdf}
+
+Mude a cor dos objetos sem atribuir a uma variavel. Para isso, observe que os aspectos \texttt{colour} e \texttt{fill} são especificados fora do \texttt{aes()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(z), }\DataTypeTok{y =}\NormalTok{ ds)) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"darkblue"}\NormalTok{, }\DataTypeTok{fill=} \StringTok{"blue"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-202-1.pdf}
+
+\hypertarget{eixos}{%
+\subsection{Eixos}\label{eixos}}
+
+Para alterar os rotulos dos eixos acrescentamos as funções \texttt{xlab()} ou \texttt{ylab()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box <-}\StringTok{ }\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(z), }\DataTypeTok{y =}\NormalTok{ ds, }\DataTypeTok{fill =} \KeywordTok{factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{()}\OperatorTok{+}
+\StringTok{  }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Classes de solo"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{ylab}\NormalTok{(}\KeywordTok{expression}\NormalTok{(}\KeywordTok{paste}\NormalTok{(Densidade}\OperatorTok{~}\NormalTok{do}\OperatorTok{~}\NormalTok{solo,}\StringTok{" g cm "}\OperatorTok{^}\NormalTok{\{}\OperatorTok{-}\DecValTok{3}\NormalTok{\} )))}
+\end{Highlighting}
+\end{Shaded}
+
+Alterar os limites dos Gráficos usamos as funções \texttt{xlim()} e \texttt{ylim()}.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{  box }\OperatorTok{+}\StringTok{ }\KeywordTok{ylim}\NormalTok{ (}\KeywordTok{c}\NormalTok{(}\FloatTok{1.0}\NormalTok{,}\FloatTok{2.0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-204-1.pdf}
+
+Especifique marcas de escala diretamente
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box }\OperatorTok{+}\StringTok{ }\KeywordTok{coord_cartesian}\NormalTok{(}\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{)) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{2}\NormalTok{, }\FloatTok{0.20}\NormalTok{))  }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-205-1.pdf}
+
+Troque os eixos x e y
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box }\OperatorTok{+}
+\StringTok{  }\KeywordTok{coord_flip}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-206-1.pdf}
+
+Definir rótulos de marca de escala
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box2 <-}\StringTok{ }\NormalTok{box }\OperatorTok{+}
+\StringTok{          }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{),}
+            \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Nitossolo"}\NormalTok{,}\StringTok{"Latossolo"}\NormalTok{, }\StringTok{"Latossolo"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{legenda}{%
+\subsection{Legenda}\label{legenda}}
+
+Remover legenda para uma estética específica \texttt{(fill)}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box2 }\OperatorTok{+}\StringTok{ }\KeywordTok{guides}\NormalTok{(}\DataTypeTok{fill=}\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-208-1.pdf}
+
+Também pode ser feito ao especificar a \texttt{scale}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box2 }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_discrete}\NormalTok{(}\DataTypeTok{guide=}\OtherTok{FALSE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-209-1.pdf}
+
+Isso remove todas as legendas
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box2 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-210-1.pdf}
+
+Alterando a ordem dos itens na legenda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box2 }\OperatorTok{+}\StringTok{ }\KeywordTok{scale_fill_discrete}\NormalTok{(}\DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\StringTok{"2"}\NormalTok{,}\StringTok{"3"}\NormalTok{,}\StringTok{"1"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-211-1.pdf}
+
+Modificando o texto de legenda de tétulos e rótulos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 <-}\StringTok{ }\NormalTok{box2 }\OperatorTok{+}
+\StringTok{        }\KeywordTok{scale_fill_discrete}\NormalTok{(}\DataTypeTok{name=}\StringTok{"Classes}\CharTok{\textbackslash{}n}\StringTok{de solo"}\NormalTok{,}
+                          \DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{),}
+                          \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"CTI"}\NormalTok{, }\StringTok{"FEI"}\NormalTok{, }\StringTok{"IAPAR"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+Modificando a aparência do título e dos rótulos da legenda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Título}
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.title =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{size=}\DecValTok{13}\NormalTok{, }\DataTypeTok{face=}\StringTok{"bold"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-213-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{# Níveis}
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.text =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{, }\DataTypeTok{size =} \DecValTok{12}\NormalTok{, }\DataTypeTok{face =} \StringTok{"bold"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-213-2.pdf}
+
+Modificando a caixa de legenda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{())}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-214-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.background =} \KeywordTok{element_rect}\NormalTok{(}\DataTypeTok{fill=}\StringTok{"gray90"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-214-2.pdf}
+
+Mudando a posição da legenda
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-215-1.pdf}
+
+Posicione a legenda no gráfico, em que x, y é 0,0 (canto inferior esquerdo) a 1,1 (canto superior direito)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\KeywordTok{c}\NormalTok{(.}\DecValTok{5}\NormalTok{, }\FloatTok{.5}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-216-1.pdf}
+
+Defina o ``ponto de ancoragem'' da legenda (o canto inferior esquerdo é 0,0; o canto superior direito é 1,1)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.justification=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{), }\DataTypeTok{legend.position=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-217-1.pdf}
+
+Coloque o canto inferior direito da caixa de legenda no canto inferior direito do gráfico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.justification=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{), }\DataTypeTok{legend.position=}\KeywordTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{0}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-218-1.pdf}
+
+\hypertarget{titulo}{%
+\subsection{Título}\label{titulo}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{ggtitle}\NormalTok{(}\StringTok{"Variabilidade da densidade do solo}\CharTok{\textbackslash{}n}\StringTok{ em diferentes solos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-219-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{box3 }\OperatorTok{+}\StringTok{ }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{title=}\StringTok{"Variabilidade da densidade do solo}\CharTok{\textbackslash{}n}\StringTok{ em diferentes solos"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-219-2.pdf}
+
+\hypertarget{facets}{%
+\subsection{Facets}\label{facets}}
+
+Outra funcionalidade muito importante do \textbf{ggplot2} é o uso de \texttt{facets}.
+Você quer dividir seus dados por uma ou mais variáveis e plotar os subconjuntos de dados juntos.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc, }\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_grid}\NormalTok{(z}\OperatorTok{~}\NormalTok{.)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-220-1.pdf}
+
+Podemos colocar os graficos lado a lado também.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ fisio, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ ds, }\DataTypeTok{y =}\NormalTok{ cc, }\DataTypeTok{colour =} \KeywordTok{as.factor}\NormalTok{(z))) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{facet_grid}\NormalTok{(.}\OperatorTok{~}\NormalTok{z)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-221-1.pdf}
+
+\hypertarget{exemplos}{%
+\section{Exemplos}\label{exemplos}}
+
+\hypertarget{regressao}{%
+\subsection{Regressão}\label{regressao}}
+
+\textbf{Efeito do Gesso no Peso de grãos de feijão}
+Estudo sobre o efeito do gesso no peso de grãos de feijo (\emph{Phaseolus vulgaris} L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 n?veis de gesso, de 0 a 300, igualmente espaados em 50 kg ha-1.
+
+Baixar dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/r6jz7mrktbgnbnx/BanzattoQd7.2.1.txt?dl=1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Verificar a estrutura dos dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    28 obs. of  3 variables:
+##  $ gesso: int  0 0 0 0 50 50 50 50 100 100 ...
+##  $ rept : int  1 2 3 4 1 2 3 4 1 2 ...
+##  $ peso : num  135 140 148 132 162 ...
+\end{verbatim}
+
+Analise de regressão
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{model <-}\StringTok{ }\KeywordTok{lm}\NormalTok{(  gesso }\OperatorTok{~}\StringTok{ }\NormalTok{peso, dados)}
+
+\KeywordTok{summary}\NormalTok{(model)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = gesso ~ peso, data = dados)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -120.41  -70.79  -31.57   74.22  179.24 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)  
+## (Intercept) -451.935    282.012  -1.603    0.121  
+## peso           3.849      1.799   2.139    0.042 *
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 95.7 on 26 degrees of freedom
+## Multiple R-squared:  0.1496, Adjusted R-squared:  0.1169 
+## F-statistic: 4.575 on 1 and 26 DF,  p-value: 0.04201
+\end{verbatim}
+
+Extrair a equação do modelo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{eqn <-}\StringTok{ }\KeywordTok{as.character}\NormalTok{(}\KeywordTok{as.expression}\NormalTok{(}\KeywordTok{substitute}\NormalTok{(}\KeywordTok{italic}\NormalTok{(y) }\OperatorTok{==}\StringTok{ }\NormalTok{a }\OperatorTok{+}\StringTok{ }\NormalTok{b }\OperatorTok{*}\StringTok{ }\KeywordTok{italic}\NormalTok{(x) }\OperatorTok{*}\StringTok{ ","} \OperatorTok{~}\ErrorTok{~}\StringTok{ }\KeywordTok{italic}\NormalTok{(r)}\OperatorTok{^}\DecValTok{2} \OperatorTok{~}\StringTok{ "="} \OperatorTok{~}\StringTok{ }\NormalTok{r2,}\KeywordTok{list}\NormalTok{(}\DataTypeTok{a =} \KeywordTok{format}\NormalTok{(}\KeywordTok{coef}\NormalTok{(model)[}\DecValTok{1}\NormalTok{], }\DataTypeTok{digits=}\DecValTok{3}\NormalTok{),}\DataTypeTok{b =} \KeywordTok{format}\NormalTok{(}\KeywordTok{coef}\NormalTok{(model)[}\DecValTok{2}\NormalTok{], }\DataTypeTok{digits=}\DecValTok{3}\NormalTok{), }\DataTypeTok{r2 =} \KeywordTok{format}\NormalTok{(}\KeywordTok{summary}\NormalTok{(model)}\OperatorTok{$}\NormalTok{r.squared, }\DataTypeTok{digits=}\DecValTok{3}\NormalTok{)))))}
+\end{Highlighting}
+\end{Shaded}
+
+Criando o gráfico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{gesso,}\DataTypeTok{y=}\NormalTok{peso,}\DataTypeTok{color=}\NormalTok{peso))  }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_point}\NormalTok{(}\DataTypeTok{size=}\FloatTok{2.9}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"grey10"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{theme_bw}\NormalTok{(}\DataTypeTok{base_size =} \DecValTok{10}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{        }\KeywordTok{ylab}\NormalTok{(}\KeywordTok{expression}\NormalTok{(}\KeywordTok{paste}\NormalTok{(  }\StringTok{"Peso (g)"}\NormalTok{ )))  }\OperatorTok{+}\StringTok{ }
+\StringTok{        }\KeywordTok{xlab}\NormalTok{(}\KeywordTok{expression}\NormalTok{(}\KeywordTok{paste}\NormalTok{(Gesso,}\StringTok{" kg ha"}\OperatorTok{^}\NormalTok{\{}\OperatorTok{-}\DecValTok{1}\NormalTok{\} )))  }\OperatorTok{+}\StringTok{ }
+\StringTok{        }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\NormalTok{eqn, }\DataTypeTok{parse=}\OtherTok{TRUE}\NormalTok{, }\DataTypeTok{x=}\OtherTok{Inf}\NormalTok{, }\DataTypeTok{y=}\OperatorTok{-}\OtherTok{Inf}\NormalTok{,}
+             \DataTypeTok{hjust=}\FloatTok{1.}\NormalTok{, }\DataTypeTok{vjust=}\OperatorTok{-}\NormalTok{.}\DecValTok{5}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}\StringTok{    }
+\StringTok{        }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{se =}\NormalTok{ T, }\DataTypeTok{colour=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{size=}\NormalTok{.}\DecValTok{85}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-226-1.pdf}
+
+\hypertarget{deliamento-em-blocos-casualizados--dbc}{%
+\subsection{Deliamento em blocos casualizados- DBC}\label{deliamento-em-blocos-casualizados--dbc}}
+
+\textbf{Efeito do Promalin sobre Furtos de Macieira}
+
+Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espaçadas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
+
+Baixar dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Verificar Estrutura dos dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    20 obs. of  3 variables:
+##  $ promalin: Factor w/ 5 levels "12.5","12.5+12.5",..: 1 3 4 2 5 1 3 4 2 5 ...
+##  $ bloco   : Factor w/ 4 levels "I","II","III",..: 1 1 1 1 1 2 2 2 2 2 ...
+##  $ peso    : num  142 140 141 151 154 ...
+\end{verbatim}
+
+Transformação categorica
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados}\OperatorTok{$}\NormalTok{promalin =}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(dados}\OperatorTok{$}\NormalTok{promalin)}
+\NormalTok{dados}\OperatorTok{$}\NormalTok{bloco=}\StringTok{ }\KeywordTok{as.factor}\NormalTok{(dados}\OperatorTok{$}\NormalTok{bloco)}
+\end{Highlighting}
+\end{Shaded}
+
+Estatistísca descritiva
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##        promalin bloco        peso      
+##  12.5      :4   I  :5   Min.   :130.6  
+##  12.5+12.5 :4   II :5   1st Qu.:136.8  
+##  25.0      :4   III:5   Median :141.6  
+##  50.0      :4   IV :5   Mean   :143.0  
+##  Testemunha:4           3rd Qu.:146.4  
+##                         Max.   :165.0
+\end{verbatim}
+
+Ativar o pacote ggplot
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\end{Highlighting}
+\end{Shaded}
+
+Fazer o gráfico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-232-1.pdf}
+
+Analisando os blocos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{geom_point}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{bloco,}\DataTypeTok{ncol=}\DecValTok{4}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-233-1.pdf}
+
+Inserindo medias
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{facet_wrap}\NormalTok{(}\OperatorTok{~}\NormalTok{bloco,}\DataTypeTok{ncol=}\DecValTok{4}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-234-1.pdf}
+
+Inserindo legenda nos eixos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{       }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{  }
+\StringTok{       }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-235-1.pdf}
+
+Inserindo legenda nos eixos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.y=}\NormalTok{mean, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{1}\NormalTok{,}\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{  }
+\StringTok{      }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{panel.grid.minor =} \KeywordTok{element_line}\NormalTok{(}\DataTypeTok{colour =} \StringTok{"red"}\NormalTok{, }\DataTypeTok{linetype =} \StringTok{"dotted"}\NormalTok{)) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-236-1.pdf}
+
+Inserindo \texttt{tema\_bw} preto e branco
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.y=}\NormalTok{mean, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{1}\NormalTok{,}\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{  }
+\StringTok{      }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme_bw}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-237-1.pdf}
+
+Inserindo legenda no topo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.y=}\NormalTok{mean, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{1}\NormalTok{,}\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{  }
+\StringTok{      }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-238-1.pdf}
+
+Mudando escala do eixo y
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(dados,}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x=}\NormalTok{promalin ,}\DataTypeTok{y=}\NormalTok{peso, }\DataTypeTok{fill=}\NormalTok{promalin)) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{geom_boxplot}\NormalTok{(}\DataTypeTok{size=}\FloatTok{0.55}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{19}\NormalTok{, }\DataTypeTok{colour=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{stat_summary}\NormalTok{(}\DataTypeTok{fun.y=}\NormalTok{mean, }\DataTypeTok{geom=}\StringTok{"point"}\NormalTok{,}\DataTypeTok{shape=}\DecValTok{1}\NormalTok{,}\DataTypeTok{size=}\DecValTok{2}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{      }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{  }
+\StringTok{      }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{scale_y_continuous}\NormalTok{(}\DataTypeTok{breaks=}\KeywordTok{seq}\NormalTok{(}\DecValTok{0}\NormalTok{, }\DecValTok{180}\NormalTok{, }\DecValTok{5}\NormalTok{)) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{theme}\NormalTok{( }\DataTypeTok{axis.text.x  =} \KeywordTok{element_text}\NormalTok{(}\DataTypeTok{angle=}\DecValTok{90}\NormalTok{, }\DataTypeTok{vjust=}\DecValTok{0}\NormalTok{, }\DataTypeTok{size=}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-239-1.pdf}
+
+\hypertarget{dados-climaticos}{%
+\subsection{Dados Climáticos}\label{dados-climaticos}}
+
+Dados climáticos de Rondonópolis - MT
+
+Baixar dados no banco de dados o arquivo \href{https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1}{roo.xlsx}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{roo <-}\StringTok{ }\KeywordTok{read.csv2}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1"}\NormalTok{)}
+\KeywordTok{View}\NormalTok{(roo)}
+
+\KeywordTok{str}\NormalTok{(roo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    4337 obs. of  11 variables:
+##  $ dd    : int  1 1 2 3 4 5 6 7 8 9 ...
+##  $ mm    : int  1 2 2 2 2 2 2 2 2 2 ...
+##  $ ano   : int  1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 ...
+##  $ Prec  : num  NA 8.2 51 0.6 0 0 0 2.4 NA 0.8 ...
+##  $ Tmax  : num  30 35.6 31.8 35.4 35.6 36.4 36.8 36.8 36.6 35.2 ...
+##  $ Tmin  : num  21.7 21.8 21.8 21.5 22.1 22.5 23.5 23.5 24.3 22.9 ...
+##  $ n     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Tbs   : num  NA NA 25.1 25 26.6 ...
+##  $ Tbu   : num  NA NA 23.9 23 23.9 ...
+##  $ UR    : num  NA NA 89.8 86.5 80 ...
+##  $ Vvento: num  NA NA 0.125 0.125 0.275 0.325 0.2 0.175 0.15 0.25 ...
+\end{verbatim}
+
+Boxplot para tempearatura minima
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ roo, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =} \KeywordTok{factor}\NormalTok{(mm),}\DataTypeTok{y =}\NormalTok{ (Tmin)))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_boxplot}\NormalTok{() }\OperatorTok{+}
+\StringTok{  }\KeywordTok{scale_x_discrete}\NormalTok{(}\DataTypeTok{breaks=}\KeywordTok{c}\NormalTok{(}\StringTok{"1"}\NormalTok{, }\StringTok{"2"}\NormalTok{, }\StringTok{"3"}\NormalTok{, }\StringTok{"4"}\NormalTok{, }\StringTok{"5"}\NormalTok{, }\StringTok{"6"}\NormalTok{, }\StringTok{"7"}\NormalTok{, }\StringTok{"8"}\NormalTok{, }\StringTok{"9"}\NormalTok{, }\StringTok{"10"}\NormalTok{, }\StringTok{"11"}\NormalTok{,}\StringTok{"12"}\NormalTok{),}
+            \DataTypeTok{labels=}\KeywordTok{c}\NormalTok{(}\StringTok{"Jan"}\NormalTok{,}\StringTok{"Fev"}\NormalTok{, }\StringTok{"Mar"}\NormalTok{, }\StringTok{"Abr"}\NormalTok{, }\StringTok{"Mai"}\NormalTok{, }\StringTok{"Jun"}\NormalTok{, }\StringTok{"Jul"}\NormalTok{, }\StringTok{"Ago"}\NormalTok{, }\StringTok{"Set"}\NormalTok{, }\StringTok{"Out"}\NormalTok{, }\StringTok{"Nov"}\NormalTok{, }\StringTok{"Dez"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 222 rows containing non-finite values (stat_boxplot).
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-241-1.pdf}
+
+Grafico de distruição de temperatura minima total
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ roo, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ (Tmin)))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 222 rows containing non-finite values (stat_density).
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-242-1.pdf}
+
+Grafico de distribuição de temperatura minima para cada mês
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(}\DataTypeTok{data =}\NormalTok{ roo, }\KeywordTok{aes}\NormalTok{(}\DataTypeTok{x =}\NormalTok{ (Tmin), }\DataTypeTok{fill=}\KeywordTok{factor}\NormalTok{(mm)))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_density}\NormalTok{() }
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Removed 222 rows containing non-finite values (stat_density).
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-243-1.pdf}
+
+\#Referência
+
+GROLEMUND, G. WICKHAM, H. R for Data Science Site: \url{http://r4ds.had.co.nz/}
+
+sITE: \url{https://www.statmethods.net/index.html}
+
+CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p.~Site: \url{http://shop.oreilly.com/pesouct/0636920023135.do}
 
 \bibliography{book.bib,packages.bib}
 

@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Chapter 4 Entrada de dados | Uso do sistema R para análise de dados</title>
+  <title>Capitulo 4 Entrada de dados | Uso do sistema R para análise de dados</title>
   <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Chapter 4 Entrada de dados | Uso do sistema R para análise de dados" />
+  <meta property="og:title" content="Capitulo 4 Entrada de dados | Uso do sistema R para análise de dados" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Chapter 4 Entrada de dados | Uso do sistema R para análise de dados" />
+  <meta name="twitter:title" content="Capitulo 4 Entrada de dados | Uso do sistema R para análise de dados" />
   
   <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   
@@ -210,6 +210,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="5.11" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#salvando-graficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="6" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#personalizando-os-graficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
+<li class="chapter" data-level="6.1.4" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#titulo"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
+<li class="chapter" data-level="6.1.5" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#regressao"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
+<li class="chapter" data-level="6.2.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#deliamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Deliamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.3" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#dados-climaticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+</ul></li>
+</ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -231,7 +245,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="entrada-de-dados" class="section level1">
-<h1><span class="header-section-number">Chapter 4</span> Entrada de dados</h1>
+<h1><span class="header-section-number">Capitulo 4</span> Entrada de dados</h1>
 <p>Este terceiro Capitulo foi baseado no livro <a href="https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294"><strong>Conhecendo o R: Um visão mais que estatística</strong></a>, e na página do <a href="http://www.leg.ufpr.br/~paulojus/"><strong>Prof. Paulo Justiniando Ribeiro</strong></a> modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.</p>
 <p>O diretorio de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.</p>
 <div id="onde-os-dados-devem-estar" class="section level2">
@@ -248,14 +262,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="kw">dir</span>()</a></code></pre></div>
 <pre><code>##  [1] &quot;_bookdown.yml&quot;     &quot;_bookdown_files&quot;   &quot;_output.yml&quot;      
 ##  [4] &quot;01-intro.Rmd&quot;      &quot;02-literature.Rmd&quot; &quot;04-Estrutura.Rmd&quot; 
-##  [7] &quot;05-Figura.Rmd&quot;     &quot;06-references.Rmd&quot; &quot;book.bib&quot;         
-## [10] &quot;docs&quot;              &quot;index.Rmd&quot;         &quot;LICENSE&quot;          
-## [13] &quot;meu grafico.bmp&quot;   &quot;meu grafico.jpg&quot;   &quot;meu grafico.png&quot;  
-## [16] &quot;meu grafico.ps&quot;    &quot;meu grafico.wmf&quot;   &quot;meugráfico.pdf&quot;   
-## [19] &quot;packages.bib&quot;      &quot;preamble.tex&quot;      &quot;README.md&quot;        
-## [22] &quot;search_index.json&quot; &quot;style.css&quot;         &quot;TudodoR.log&quot;      
-## [25] &quot;TudodoR.pdf&quot;       &quot;TudodoR.Rmd&quot;       &quot;TudodoR.Rproj&quot;    
-## [28] &quot;TudodoR.tex&quot;       &quot;TudodoR_files&quot;</code></pre>
+##  [7] &quot;05-Figura.Rmd&quot;     &quot;06-references.Rmd&quot; &quot;07-Figura_2.Rmd&quot;  
+## [10] &quot;book.bib&quot;          &quot;docs&quot;              &quot;index.Rmd&quot;        
+## [13] &quot;LICENSE&quot;           &quot;meu grafico.bmp&quot;   &quot;meu grafico.jpg&quot;  
+## [16] &quot;meu grafico.png&quot;   &quot;meu grafico.ps&quot;    &quot;meu grafico.wmf&quot;  
+## [19] &quot;meugráfico.pdf&quot;    &quot;packages.bib&quot;      &quot;preamble.tex&quot;     
+## [22] &quot;README.md&quot;         &quot;search_index.json&quot; &quot;style.css&quot;        
+## [25] &quot;TudodoR.log&quot;       &quot;TudodoR.pdf&quot;       &quot;TudodoR.Rmd&quot;      
+## [28] &quot;TudodoR.Rproj&quot;     &quot;TudodoR.tex&quot;       &quot;TudodoR_files&quot;</code></pre>
 </div>
 <div id="entrando-com-dados" class="section level2">
 <h2><span class="header-section-number">4.2</span> Entrando com dados</h2>

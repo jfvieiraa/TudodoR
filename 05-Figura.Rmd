@@ -475,9 +475,14 @@ Você também pode salvar o gráfico via código usando uma das seguintes funç�
 
 
 `pdf (file = "meugráfico.pdf")	`          #ficheiro PDF
+
 `win.metafile ("meu grafico.wmf")`	      #metarquivo do windows
+
 `png ("meu grafico.png") `        	      #arquivo png
+
 `jpeg ("meu grafico.jpg")`	              #arquivo jpeg
+
 `bmp ("meu grafico.bmp")`	                #arquivo bmp
+
 `postscript ("meu grafico.ps")	`          #arquivo postscript
 

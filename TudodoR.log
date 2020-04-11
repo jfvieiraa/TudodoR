@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  11 APR 2020 10:25
+This is XeTeX, Version 3.14159265-2.6-0.999991 (TeX Live 2019/W32TeX) (preloaded format=xelatex 2019.7.29)  11 APR 2020 14:03
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -820,9 +820,21 @@ a Agrícola"[]
  []
 
 [9]
-Overfull \hbox (1.5pt too wide) in paragraph at lines 359--359
-[]\TU/lmtt/m/n/10 ## [1] -1.93877665 -0.71908603  0.01503835  0.78379515  1.350
-00000[] 
+Overfull \hbox (27.75pt too wide) in paragraph at lines 359--359
+[]\TU/lmtt/m/n/10 ## [1] -2.100194255 -0.802744971  0.003621638  0.659519485  1
+.350000000[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 359--359
+[]\TU/lmtt/m/n/10 ##           0%          25%          50%          75%       
+  100%[] 
+ []
+
+
+Overfull \hbox (6.75pt too wide) in paragraph at lines 359--359
+[]\TU/lmtt/m/n/10 ## -2.100194255 -0.802744971  0.003621638  0.659519485  1.350
+000000[] 
  []
 
 
