@@ -327,12 +327,17 @@ Teste de Spearman
 cor(fisio[,3:8],method = "spearman")
 ```
 
+### hydroGOF
 
-Vamos utilizar o pacote hydroGoF.
+Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.
 
 ```{r}
 library(hydroGOF)
 
-gof(sim = fisio$ds, obs= fisio$cc)
+
 ```
 
+Cálculo das medidas numéricas de qualidade do ajuste para o “melhor” caso (inatingível)
+```{r}
+gof(sim = fisio$ds, obs= fisio$cc)
+```
