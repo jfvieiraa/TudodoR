@@ -1,0 +1,321 @@
+# Análide de variância (ANOVA)
+
+Estudos estatísticos contemporâneos contemplam a análise de variância tendo em vista que este procedimento permite identificar e quantificar as variações ocorridas em um experimento, discriminando a parte da variação associada ao modelo pelo qual o experimento foi procedido da variação que se dá devido ao acaso.
+No R encontram-se diversos procedimentos para se executar a ANOVA. A tabela abaixo mostra alguns modelos e suas usuais formulações:
+
+
+Modelo                  |Fórmula| Comentário
+------------------------|-------|----------------               |
+DIC                     |y~t    | t é um fator
+DBC                     |y~t+b  | t e b são fatores
+DQL                     |y~t+l+c| t, l e c são fatores    
+Fatorial/ DIC           |y~N*P  | igual a N + P + N:P
+Fatorial/ DBC           |y~b+N*P| igual a b+N+P+N:P
+Regressão linear simples|y~x    | x é uma variável exploratória
+Regressão quadrática    |y~x+x2 | x2 é um objeto x2<-x^2
+
+
+Os modelos de análise de variância simples podem ser trabalhados também a partir da função `lm()` simplesmente indicando um fator como variável independente. No entanto, existem outras funções que também realizam análises de variância para casos específicos (como a `aov()` para amostras balanceadas) ou modelos lineares mais complexos como análise de modelos mistos ou hierarquicas função `lme()` do pacote nlme e modelos não lineares `nls()` e `glm()` para ANOVA, com estrutura de erros especificada.
+
+
+## Delineamento inteiramente casualizado  
+
+O delineamento inteiramente casualizado é o  mais simples de todos os delineamentos experimentais.
+
+Este delineamento apresenta as seguintes caracterítiscas:
+
+   - Utiliza apenas os princópios da *repetição* e da *casualização*, deixando de lado o principio do *controle local*, e, portanto, as repetições não são organizadas em blocos;
+  
+   - Os tratamentos são designados às parcelas de forma inteiramente  casual, com números iguais ou diferentes repetições por tratamento.
+  
+**Vantagens em relações a outros delineamentos**
+
+   - é um delineamento bastante flexível, visto que o número de tratamentos e de repetições depende apenas do número de parcelas disponíveis;
+   - o número de repetições pode ser diferente de um tratamento para outro;
+   - a análise estatística é simples, mesmo quando o número de repetições por tratamento é variável;
+  - o número de grau de liberdade para o resíduo é o maior possível;
+  
+**Desvantagens em relações a outros delineamentos**
+
+   - exige homogeneidade total das condições experimentais;
+   - pode conduzir a uma estimativa de variância residual bastante alta, uma vez que, não se aplica o controle local;
+  
+Este delineamento é mais utilizado em experimentos de laboratório e nos ensaios com vasos, realizados dentro de casas de vegetação, nos quais as condições experimentais podem ser controladas. Nos experimentos realizados com vasos, estes devem ser cte mudados de posição, de forma interamente casual.
+  
+### Análise de experimento  em DIC  
+
+Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em delineamento inteiramente casualizado com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
+O primeiro passo é ler os dados.
+
+Importando dados
+```{r}
+dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1") 
+```
+
+
+Conferir se temos fatores para fazer a análise de variância
+```{r}
+str(dados)
+```
+
+Lembramos que pulgoes deve ter conteudo numerico e trat deve ser fator
+```{r}
+dados$trat<-as.factor(dados$trat)
+dados$pulgoes<-as.numeric(dados$pulgoes)
+```
+
+Verificação gráfica**
+É importante notar que as barras simplesmente refletem a variância dos dados dentro da cada tratamento e não são adequadas para detectar diferenças entre tratamentos.
+```{r}
+plot(dados$trat, dados$pulgoes)
+```
+
+
+### Análise de variância
+
+Fazendo a análise de variância
+```{r}
+m0 <- lm (dados$pulgoes ~ dados$trat)
+```
+
+```{r}
+anova(m0)
+```
+
+Extraindo o coeficiente de variação
+```{r}
+
+require(agricolae)
+cv.model(m0)
+```
+
+Análise gráfica dos resíduos
+```{r}
+par(mfrow = c(2,2))
+plot(m0)
+```
+
+Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade.  A variabilidade dos erros apresentam um forma de cone.
+
+Teste das pressuposições da análise de variância**
+```{r}
+# Teste de Bartllet para homocedasticidade
+bartlett.test(m0$res, dados$trat)
+```
+
+Como observamos uma significancia estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
+### Transformação de dados
+
+Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+
+Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catalogos de transformação:
+
+   - Transformação de raiz quadrada: frequentemente utilizada para dados de contagens, que geralmente seguem a distribuição de Poison, na qual a média é igual a variância. Quando ocorrem zeros ou valores baixos (menores que 10 ou 15), as transformação recomendadas são raiz quadrada + 0,5 ou 1,0.
+
+   - Transformação angular: recomendavel para dados expressos em porcentagens, que geralmente segue distribuição binomial.
+
+   - Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos.
+
+```{r}
+m1 <- lm (log(dados$pulgoes) ~ dados$trat)
+```
+
+#### Transformação de dados BOX-COX
+
+Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
+
+A função `boxcox(`) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse
+
+```{r}
+require(MASS) 
+  boxcox(m0)
+  #Com zoom
+  boxcox(m0, lam = seq(-1, 1, 1/10))
+```
+
+```{r}
+
+  boxcox(m0)
+  abline(v=0.2)
+  locator()
+```
+
+
+#### Análise de variância - Ajuste com a variável transformada.
+
+```{r}
+m1 <- lm (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+**análise gráfica dos resíduos**
+```{r}
+par(mfrow = c(2,2))
+plot(m1)
+```
+
+Os pressupostos foram atendindos 
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+
+shapiro.test(m1$res)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+
+bartlett.test(m1$res, dados$trat)
+```
+
+Resumo do modelo ajustado - Contraste 
+```{r}
+summary(m1)
+```
+
+Resumo do modelo ajustado - Contraste em relação a testemunha
+
+```{r}
+dados$trat <- relevel(dados$trat, "Testemunha")
+```
+
+```{r}
+m1 <- lm (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+
+```{r}
+summary(m1)
+```
+
+### Aplicando teste de Tukey para comparar médias
+
+No R, o teste de Tukey é apresentado através de intervalos de confiança. A interpretação é: se o intervalo de confiança para a diferença entre duas médias não incluir o valor zero, significa que se rejeita a hipótese nula, caso contrário, não se rejeita. O resultado pode ser visto através de uma tabela e/ou graficamente:
+
+
+```{r}
+m1 <- aov (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+```{r}
+dados.tu <- TukeyHSD (m1)
+```
+
+```{r}
+print(dados.tu)
+```
+
+```{r}
+plot(dados.tu)
+```
+
+
+**Teste Tukey com pacote Agricolae**
+
+```{r}
+library(agricolae)
+```
+
+```{r}
+summary(m1)
+```
+
+
+```{r}
+tu <- HSD.test(y = dados$pulgoes^0.2,
+         trt = dados$trat,
+         MSerror = deviance(m1)/df.residual(m1), #quadrado m?dio do residuo
+         DFerror = df.residual(m1),
+         console = T)
+```
+
+```{r}
+str(tu)
+```
+
+
+```{r}
+tu$groups
+```
+
+```{r}
+write.table(tu$groups,
+            "tab.xls",
+            sep = "\t",
+            quote = F,
+            row.names = F)
+```
+
+
+### Aplicando teste para agrupar médias
+
+**carregando a biblioteca necessária**
+```{r}
+#install.packages("laercio")
+require(laercio)
+```
+
+Teste de Duncan
+
+```{r}
+LDuncan (m1, "dados$trat")
+```
+
+```{r}
+LTukey (m1, "dados$trat")
+```
+
+Compração via Scott-Knott
+```{r}
+require(ScottKnott)
+attach(dados)
+dados1.SK<- SK(trat,pulgoes, model='pulgoes^0.2 ~ trat', which='trat',error='Within',sig.level=0.05)
+summary(dados1.SK)
+```
+
+
+
+Pacote para analise de experimentos 
+
+```{r}
+library(ExpDes.pt)
+```
+
+Conhecer o pacote
+```{r}
+ls("package:ExpDes.pt")
+```
+
+```{r}
+x <- dic(trat = trat,resp = pulgoes^0.2,quali = T,mcomp = "tukey")
+```
+
+
+**Recursos adicionais para comparações múltiplas**
+
+Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção `dependencies=TRUE` para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes.
+
+```{r}
+#install.packages("multcompView", dep = TRUE) 
+require(multcomp) 
+require(multcompView)
+```
+```{r}
+multcompBoxplot(pulgoes ~ trat, data = dados, compFn = "TukeyHSD", decreasing = FALSE)
+```
+
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.
+
+ZEVIANI, W. M. estatística Básica e Experimentação no R. 45p.
+
+http://www.leg.ufpr.br/~paulojus/
