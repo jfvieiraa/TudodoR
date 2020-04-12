@@ -1,4 +1,4 @@
-# Análide de variância (ANOVA)
+# Analise de variância (ANOVA)
 
 Estudos estatísticos contemporâneos contemplam a análise de variância tendo em vista que este procedimento permite identificar e quantificar as variações ocorridas em um experimento, discriminando a parte da variação associada ao modelo pelo qual o experimento foi procedido da variação que se dá devido ao acaso.
 No R encontram-se diversos procedimentos para se executar a ANOVA. A tabela abaixo mostra alguns modelos e suas usuais formulações:
@@ -229,7 +229,7 @@ summary(m1)
 ```{r}
 tu <- HSD.test(y = dados$pulgoes^0.2,
          trt = dados$trat,
-         MSerror = deviance(m1)/df.residual(m1), #quadrado m?dio do residuo
+         MSerror = deviance(m1)/df.residual(m1), #quadrado médio do residuo
          DFerror = df.residual(m1),
          console = T)
 ```
@@ -270,29 +270,11 @@ LDuncan (m1, "dados$trat")
 LTukey (m1, "dados$trat")
 ```
 
-Compração via Scott-Knott
-```{r}
-require(ScottKnott)
-attach(dados)
-dados1.SK<- SK(trat,pulgoes, model='pulgoes^0.2 ~ trat', which='trat',error='Within',sig.level=0.05)
-summary(dados1.SK)
-```
-
-
 
 Pacote para analise de experimentos 
 
 ```{r}
 library(ExpDes.pt)
-```
-
-Conhecer o pacote
-```{r}
-ls("package:ExpDes.pt")
-```
-
-```{r}
-x <- dic(trat = trat,resp = pulgoes^0.2,quali = T,mcomp = "tukey")
 ```
 
 

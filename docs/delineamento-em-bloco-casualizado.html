@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados</title>
+  <title>chapter9 Delineamento em bloco casualizado | Uso do sistema R para análise de dados</title>
   <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
+  <meta property="og:title" content="chapter9 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
+  <meta name="twitter:title" content="chapter9 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
   
   <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   
@@ -24,14 +24,14 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-11" />
+<meta name="date" content="2020-04-12" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="references.html"/>
+<link rel="prev" href="testes-estatísticos.html"/>
 
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
@@ -167,6 +167,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
 </ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
 <li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
 <li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
@@ -227,32 +228,41 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
-<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
-<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
-<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
+<li class="chapter" data-level="7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html"><i class="fa fa-check"></i><b>7</b> Analise de variância (ANOVA)</a><ul>
+<li class="chapter" data-level="7.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-inteiramente-casualizado"><i class="fa fa-check"></i><b>7.1</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-em-dic"><i class="fa fa-check"></i><b>7.1.1</b> Análise de experimento em DIC</a></li>
+<li class="chapter" data-level="7.1.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-variância"><i class="fa fa-check"></i><b>7.1.2</b> Análise de variância</a></li>
+<li class="chapter" data-level="7.1.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#transformação-de-dados"><i class="fa fa-check"></i><b>7.1.3</b> Transformação de dados</a></li>
+<li class="chapter" data-level="7.1.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-de-tukey-para-comparar-médias"><i class="fa fa-check"></i><b>7.1.4</b> Aplicando teste de Tukey para comparar médias</a></li>
+<li class="chapter" data-level="7.1.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-para-agrupar-médias"><i class="fa fa-check"></i><b>7.1.5</b> Aplicando teste para agrupar médias</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
-<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
+<li class="chapter" data-level="7.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-4"><i class="fa fa-check"></i><b>7.2</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
-<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
-<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
-<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
-<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
+<li class="chapter" data-level="8" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>8</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="8.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>8.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>8.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="8.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>8.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="8.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>8.1.3</b> Para duas médias dependentes</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>8.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>8.2.1</b> Usando o teste de F</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>8.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="8.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>8.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="8.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>8.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="8.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>8.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>8.6.1</b> hydroGOF</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
-<li class="chapter" data-level="8" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>8</b> Delineamento em bloco casualizado</a><ul>
-<li class="chapter" data-level="8.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.1</b> Análise de experimento DBC</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.1</b> Análise de variância</a></li>
-<li class="chapter" data-level="8.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.2</b> Transformação de dados</a></li>
+<li class="chapter" data-level="9" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>9</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="9.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>9.1</b> Análise de experimento DBC</a><ul>
+<li class="chapter" data-level="9.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância-1"><i class="fa fa-check"></i><b>9.1.1</b> Análise de variância</a></li>
+<li class="chapter" data-level="9.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados-1"><i class="fa fa-check"></i><b>9.1.2</b> Transformação de dados</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.2</b> Pacote para analise de experimentos</a></li>
-<li class="chapter" data-level="8.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.3</b> Teste não parametrico</a></li>
-<li class="chapter" data-level="8.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>8.4</b> Exercicio 1</a></li>
-<li class="chapter" data-level="8.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-4"><i class="fa fa-check"></i><b>8.5</b> Referência</a></li>
+<li class="chapter" data-level="9.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>9.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="9.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>9.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="9.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>9.4</b> Exercicio 1</a></li>
+<li class="chapter" data-level="9.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-5"><i class="fa fa-check"></i><b>9.5</b> Referência</a></li>
 </ul></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -275,7 +285,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="delineamento-em-bloco-casualizado" class="section level1">
-<h1><span class="header-section-number">Capitulo 8</span> Delineamento em bloco casualizado</h1>
+<h1><span class="header-section-number">chapter9</span> Delineamento em bloco casualizado</h1>
 <p>O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:</p>
 <ul>
 <li><p>repetição</p></li>
@@ -284,49 +294,49 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como <em>Two Way ANOVA</em>.</p>
 <div id="análise-de-experimento-dbc" class="section level2">
-<h2><span class="header-section-number">8.1</span> Análise de experimento DBC</h2>
+<h2><span class="header-section-number">9.1</span> Análise de experimento DBC</h2>
 <p>Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.</p>
 <p>Importando dados</p>
-<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1&quot;</span>) </a></code></pre></div>
 <p>conferir se temos fatores para fazer a análise de variância</p>
-<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb561"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb561-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
 ##  $ promalin: Factor w/ 5 levels &quot;12.5&quot;,&quot;12.5+12.5&quot;,..: 1 3 4 2 5 1 3 4 2 5 ...
 ##  $ bloco   : Factor w/ 4 levels &quot;I&quot;,&quot;II&quot;,&quot;III&quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
 ##  $ peso    : num  142 140 141 151 154 ...</code></pre>
 <p>Lembramos que o <em>peso</em> deve ter conteudo numerico e o <em>promalin</em> e <em>bloco</em> deve ser fator.</p>
-<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" title="1">dados<span class="op">$</span>promalin&lt;-<span class="kw">as.factor</span>(dados<span class="op">$</span>promalin)</a>
-<a class="sourceLine" id="cb492-2" title="2">dados<span class="op">$</span>bloco&lt;-<span class="kw">as.numeric</span>(dados<span class="op">$</span>bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb563"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb563-1" title="1">dados<span class="op">$</span>promalin&lt;-<span class="kw">as.factor</span>(dados<span class="op">$</span>promalin)</a>
+<a class="sourceLine" id="cb563-2" title="2">dados<span class="op">$</span>bloco&lt;-<span class="kw">as.numeric</span>(dados<span class="op">$</span>bloco)</a></code></pre></div>
 <p>Verificação gráfica**</p>
-<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" title="1"><span class="kw">require</span>(lattice)</a></code></pre></div>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="kw">require</span>(lattice)</a></code></pre></div>
 <pre><code>## Loading required package: lattice</code></pre>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span>promalin, </a>
-<a class="sourceLine" id="cb495-2" title="2">        <span class="dt">groups =</span> bloco, </a>
-<a class="sourceLine" id="cb495-3" title="3">        <span class="dt">data=</span> dados)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span>promalin, </a>
+<a class="sourceLine" id="cb566-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb566-3" title="3">        <span class="dt">data=</span> dados)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
 <p>O efeito do bloco é aditivo?</p>
 <p>Ligar as observações com o mesmo bloco com a função <code>type ="o"</code></p>
-<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
-<a class="sourceLine" id="cb496-2" title="2">        <span class="dt">groups =</span> bloco, </a>
-<a class="sourceLine" id="cb496-3" title="3">        <span class="dt">data=</span> dados,</a>
-<a class="sourceLine" id="cb496-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
+<div class="sourceCode" id="cb567"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb567-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
+<a class="sourceLine" id="cb567-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb567-3" title="3">        <span class="dt">data=</span> dados,</a>
+<a class="sourceLine" id="cb567-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-319-1.png" width="672" /></p>
 <p>Reordenar os tratamentos</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1"><span class="kw">require</span>(plyr)</a></code></pre></div>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" title="1"><span class="kw">require</span>(plyr)</a></code></pre></div>
 <pre><code>## Loading required package: plyr</code></pre>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1">dados<span class="op">$</span>promalin &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">reorder</span>(promalin, peso))</a>
-<a class="sourceLine" id="cb499-2" title="2">dados &lt;-<span class="st"> </span><span class="kw">arrange</span>(dados, promalin, bloco)</a></code></pre></div>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" title="1">dados<span class="op">$</span>promalin &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">reorder</span>(promalin, peso))</a>
+<a class="sourceLine" id="cb570-2" title="2">dados &lt;-<span class="st"> </span><span class="kw">arrange</span>(dados, promalin, bloco)</a></code></pre></div>
 <p>Graficos reordenados da menor média a maior média por tratamento</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
-<a class="sourceLine" id="cb500-2" title="2">        <span class="dt">groups =</span> bloco, </a>
-<a class="sourceLine" id="cb500-3" title="3">        <span class="dt">data=</span> dados,</a>
-<a class="sourceLine" id="cb500-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
-<div id="análise-de-variância" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Análise de variância</h3>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
+<a class="sourceLine" id="cb571-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb571-3" title="3">        <span class="dt">data=</span> dados,</a>
+<a class="sourceLine" id="cb571-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-321-1.png" width="672" /></p>
+<div id="análise-de-variância-1" class="section level3">
+<h3><span class="header-section-number">9.1.1</span> Análise de variância</h3>
 <p>Fazendo a análise de variância</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">lm</span> (dados<span class="op">$</span>peso <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>bloco <span class="op">+</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">lm</span> (dados<span class="op">$</span>peso <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>bloco <span class="op">+</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: dados$peso
@@ -337,20 +347,19 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Extraindo o coeficiente de variação</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" title="1"><span class="kw">require</span>(agricolae)</a></code></pre></div>
-<pre><code>## Loading required package: agricolae</code></pre>
-<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" title="1"><span class="kw">cv.model</span>(m0)</a></code></pre></div>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1"><span class="kw">require</span>(agricolae)</a>
+<a class="sourceLine" id="cb575-2" title="2"><span class="kw">cv.model</span>(m0)</a></code></pre></div>
 <pre><code>## [1] 3.774477</code></pre>
 <p>Análise gráfica dos resíduos</p>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb508-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb577-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-325-1.png" width="672" /></p>
 <p>Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade.</p>
 <div id="teste-das-pressuposições-da-análise-de-variância" class="section level4">
-<h4><span class="header-section-number">8.1.1.1</span> Teste das pressuposições da análise de variância</h4>
+<h4><span class="header-section-number">9.1.1.1</span> Teste das pressuposições da análise de variância</h4>
 <div id="teste-de-bartllet-para-homocedasticidade" class="section level5">
-<h5><span class="header-section-number">8.1.1.1.1</span> Teste de Bartllet para homocedasticidade</h5>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" title="1"><span class="kw">bartlett.test</span>(m0<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
+<h5><span class="header-section-number">9.1.1.1.1</span> Teste de Bartllet para homocedasticidade</h5>
+<div class="sourceCode" id="cb578"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb578-1" title="1"><span class="kw">bartlett.test</span>(m0<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -359,8 +368,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Como observamos uma não significancia estatística neste resultado <em>(p-value = 0.7819)</em>, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.</p>
 </div>
 <div id="teste-de-shapiro-wilk-para-normalidade" class="section level5">
-<h5><span class="header-section-number">8.1.1.1.2</span> Teste de Shapiro-Wilk para Normalidade</h5>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" title="1"><span class="kw">shapiro.test</span>(m0<span class="op">$</span>res)</a></code></pre></div>
+<h5><span class="header-section-number">9.1.1.1.2</span> Teste de Shapiro-Wilk para Normalidade</h5>
+<div class="sourceCode" id="cb580"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb580-1" title="1"><span class="kw">shapiro.test</span>(m0<span class="op">$</span>res)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -370,44 +379,43 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 </div>
-<div id="transformação-de-dados" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Transformação de dados</h3>
+<div id="transformação-de-dados-1" class="section level3">
+<h3><span class="header-section-number">9.1.2</span> Transformação de dados</h3>
 <p>Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.</p>
 <div id="transformação-de-dados-com-o-box-cox" class="section level4">
-<h4><span class="header-section-number">8.1.2.1</span> Transformação de dados com o BOX-COX</h4>
+<h4><span class="header-section-number">9.1.2.1</span> Transformação de dados com o BOX-COX</h4>
 <p>Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.</p>
 <p>A função <code>boxcox()</code> do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse.</p>
-<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1"><span class="kw">require</span>(MASS) </a></code></pre></div>
-<pre><code>## Loading required package: MASS</code></pre>
-<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb515-1" title="1">  <span class="kw">boxcox</span>(m0)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" title="1">  <span class="kw">boxcox</span>(m0, <span class="dt">lam =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">10</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-291-2.png" width="672" /></p>
+<div class="sourceCode" id="cb582"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb582-1" title="1"><span class="kw">require</span>(MASS) </a>
+<a class="sourceLine" id="cb582-2" title="2">  <span class="kw">boxcox</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-328-1.png" width="672" /></p>
+<div class="sourceCode" id="cb583"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb583-1" title="1">  <span class="kw">boxcox</span>(m0, <span class="dt">lam =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">10</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-328-2.png" width="672" /></p>
 <p>Localizando o ponto máximo.</p>
 </div>
-<div id="análise-de-variância---ajuste-com-a-variável-transformada." class="section level4">
-<h4><span class="header-section-number">8.1.2.2</span> Análise de variância - Ajuste com a variável transformada.</h4>
-<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb517-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">aov</span> (<span class="kw">log</span>(dados<span class="op">$</span>peso) <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
+<div id="análise-de-variância---ajuste-com-a-variável-transformada.-1" class="section level4">
+<h4><span class="header-section-number">9.1.2.2</span> Análise de variância - Ajuste com a variável transformada.</h4>
+<div class="sourceCode" id="cb584"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb584-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">aov</span> (<span class="kw">log</span>(dados<span class="op">$</span>peso) <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
 <p>Anáise gráfica dos resíduos</p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb518-2" title="2"><span class="kw">plot</span>(m1)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
+<div class="sourceCode" id="cb585"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb585-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb585-2" title="2"><span class="kw">plot</span>(m1)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-331-1.png" width="672" /></p>
 <p>Os pressupostos foram atendindos ?</p>
 <p>Teste de Shapiro-Wilk para Normalidade</p>
-<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb519-1" title="1"><span class="kw">shapiro.test</span>(m1<span class="op">$</span>res)</a></code></pre></div>
+<div class="sourceCode" id="cb586"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb586-1" title="1"><span class="kw">shapiro.test</span>(m1<span class="op">$</span>res)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  m1$res
 ## W = 0.93909, p-value = 0.2305</code></pre>
 <p>Teste de Bartllet para homocedasticidade</p>
-<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb521-1" title="1"><span class="kw">bartlett.test</span>(m1<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
+<div class="sourceCode" id="cb588"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb588-1" title="1"><span class="kw">bartlett.test</span>(m1<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
 ## data:  m1$res and dados$promalin
 ## Bartlett&#39;s K-squared = 2.1761, df = 4, p-value = 0.7034</code></pre>
-<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb523-1" title="1"><span class="kw">anova</span>(m1)</a></code></pre></div>
+<div class="sourceCode" id="cb590"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb590-1" title="1"><span class="kw">anova</span>(m1)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: log(dados$peso)
@@ -420,21 +428,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 </div>
 <div id="pacote-para-analise-de-experimentos" class="section level2">
-<h2><span class="header-section-number">8.2</span> Pacote para analise de experimentos</h2>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" title="1"><span class="kw">library</span>(ExpDes.pt)</a></code></pre></div>
-<pre><code>## 
-## Attaching package: &#39;ExpDes.pt&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:MASS&#39;:
-## 
-##     ginv</code></pre>
-<pre><code>## The following objects are masked from &#39;package:agricolae&#39;:
-## 
-##     lastC, order.group, tapply.stat</code></pre>
-<pre><code>## The following object is masked from &#39;package:stats&#39;:
-## 
-##     ccf</code></pre>
+<h2><span class="header-section-number">9.2</span> Pacote para analise de experimentos</h2>
+<div class="sourceCode" id="cb592"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb592-1" title="1"><span class="kw">library</span>(ExpDes.pt)</a></code></pre></div>
 <p>Conhecer o pacote ExpDes.pt</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" title="1"><span class="kw">ls</span>(<span class="st">&quot;package:ExpDes.pt&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb593"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb593-1" title="1"><span class="kw">ls</span>(<span class="st">&quot;package:ExpDes.pt&quot;</span>)</a></code></pre></div>
 <pre><code>##  [1] &quot;anscombetukey&quot;  &quot;bartlett&quot;       &quot;ccboot&quot;         &quot;ccf&quot;           
 ##  [5] &quot;dbc&quot;            &quot;dic&quot;            &quot;dql&quot;            &quot;duncan&quot;        
 ##  [9] &quot;faixas&quot;         &quot;fat2.ad.dbc&quot;    &quot;fat2.ad.dic&quot;    &quot;fat2.dbc&quot;      
@@ -446,11 +443,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [33] &quot;reg.nl&quot;         &quot;reg.poly&quot;       &quot;samiuddin&quot;      &quot;scottknott&quot;    
 ## [37] &quot;snk&quot;            &quot;tapply.stat&quot;    &quot;tukey&quot;</code></pre>
 <p>Utilizando o exemplo anterior.</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" title="1">x &lt;-<span class="st"> </span><span class="kw">dbc</span>(<span class="dt">trat =</span> dados<span class="op">$</span>promalin,</a>
-<a class="sourceLine" id="cb532-2" title="2">          <span class="dt">bloco =</span> dados<span class="op">$</span>bloco,</a>
-<a class="sourceLine" id="cb532-3" title="3">          <span class="dt">resp =</span> <span class="kw">log</span>(dados<span class="op">$</span>peso),</a>
-<a class="sourceLine" id="cb532-4" title="4">          <span class="dt">quali =</span> T,</a>
-<a class="sourceLine" id="cb532-5" title="5">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb595"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb595-1" title="1">x &lt;-<span class="st"> </span><span class="kw">dbc</span>(<span class="dt">trat =</span> dados<span class="op">$</span>promalin,</a>
+<a class="sourceLine" id="cb595-2" title="2">          <span class="dt">bloco =</span> dados<span class="op">$</span>bloco,</a>
+<a class="sourceLine" id="cb595-3" title="3">          <span class="dt">resp =</span> <span class="kw">log</span>(dados<span class="op">$</span>peso),</a>
+<a class="sourceLine" id="cb595-4" title="4">          <span class="dt">quali =</span> T,</a>
+<a class="sourceLine" id="cb595-5" title="5">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>)</a></code></pre></div>
 <pre><code>## ------------------------------------------------------------------------
 ## Quadro da analise de variancia
 ## ------------------------------------------------------------------------
@@ -484,17 +481,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  b    25.0    4.927864 
 ## ------------------------------------------------------------------------</code></pre>
 <p>Carregar pacotes</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb534-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb534-2" title="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb597"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb597-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb597-2" title="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <pre><code>## 
 ## Attaching package: &#39;dplyr&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:MASS&#39;:
-## 
-##     select</code></pre>
 <pre><code>## The following objects are masked from &#39;package:plyr&#39;:
 ## 
 ##     arrange, count, desc, failwith, id, mutate, rename, summarise,
 ##     summarize</code></pre>
+<pre><code>## The following object is masked from &#39;package:MASS&#39;:
+## 
+##     select</code></pre>
 <pre><code>## The following objects are masked from &#39;package:stats&#39;:
 ## 
 ##     filter, lag</code></pre>
@@ -502,35 +499,35 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     intersect, setdiff, setequal, union</code></pre>
 <p>Calculo do erro</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" title="1">erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, promalin), </a>
-<a class="sourceLine" id="cb540-2" title="2">       <span class="dt">avg =</span> <span class="kw">mean</span>(peso), <span class="dt">sd =</span> <span class="kw">sd</span>(peso))</a></code></pre></div>
+<div class="sourceCode" id="cb603"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb603-1" title="1">erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, promalin), </a>
+<a class="sourceLine" id="cb603-2" title="2">       <span class="dt">avg =</span> <span class="kw">mean</span>(peso), <span class="dt">sd =</span> <span class="kw">sd</span>(peso))</a></code></pre></div>
 <p>Gerando gráfico</p>
-<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" title="1"><span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(promalin, avg, <span class="dt">fill=</span>promalin))<span class="op">+</span></a>
-<a class="sourceLine" id="cb541-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb541-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-4" title="4"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb541-5" title="5"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb541-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb541-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-8" title="8"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;ab&quot;</span>, <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-9" title="9"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-10" title="10"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-11" title="11"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">4</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-12" title="12"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;a&quot;</span>, <span class="dt">x=</span><span class="dv">5</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-13" title="13"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb541-14" title="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb604"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb604-1" title="1"><span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(promalin, avg, <span class="dt">fill=</span>promalin))<span class="op">+</span></a>
+<a class="sourceLine" id="cb604-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb604-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-4" title="4"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb604-5" title="5"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb604-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb604-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-8" title="8"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;ab&quot;</span>, <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-9" title="9"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-10" title="10"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-11" title="11"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">4</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-12" title="12"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;a&quot;</span>, <span class="dt">x=</span><span class="dv">5</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-13" title="13"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb604-14" title="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Ignoring unknown parameters: with</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-340-1.png" width="672" /></p>
 </div>
 <div id="teste-não-parametrico" class="section level2">
-<h2><span class="header-section-number">8.3</span> Teste não parametrico</h2>
+<h2><span class="header-section-number">9.3</span> Teste não parametrico</h2>
 <p>As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: <strong>kruskal</strong>, <strong>waerden.test</strong>, <strong>friedman</strong>, <strong>durbin.test</strong> e <strong>Conover (1999)</strong>.
 Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).</p>
 <p>Carregar pacote</p>
-<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb543-1" title="1"><span class="kw">library</span>(agricolae)</a></code></pre></div>
+<div class="sourceCode" id="cb606"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb606-1" title="1"><span class="kw">library</span>(agricolae)</a></code></pre></div>
 <p>A função <code>kruskal</code> é usada para N amostras (N&gt; 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos).</p>
-<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb544-1" title="1">woutKruskal&lt;-<span class="kw">with</span>(dados,<span class="kw">kruskal</span>(promalin, <span class="dt">y =</span> peso</a>
-<a class="sourceLine" id="cb544-2" title="2">  ,<span class="dt">p.adj=</span><span class="st">&quot;bon&quot;</span>,<span class="dt">group=</span>T, <span class="dt">console=</span>T))</a></code></pre></div>
+<div class="sourceCode" id="cb607"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb607-1" title="1">woutKruskal&lt;-<span class="kw">with</span>(dados,<span class="kw">kruskal</span>(promalin, <span class="dt">y =</span> peso</a>
+<a class="sourceLine" id="cb607-2" title="2">  ,<span class="dt">p.adj=</span><span class="st">&quot;bon&quot;</span>,<span class="dt">group=</span>T, <span class="dt">console=</span>T))</a></code></pre></div>
 <pre><code>## 
 ## Study: peso ~ promalin
 ## Kruskal-Wallis test&#39;s
@@ -564,7 +561,7 @@ Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) est�
 ## 12.5+12.5   7.75      b
 ## 25.0        7.50      b
 ## 50.0        7.00      b</code></pre>
-<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb546-1" title="1"><span class="kw">print</span>(woutKruskal<span class="op">$</span>group)</a></code></pre></div>
+<div class="sourceCode" id="cb609"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb609-1" title="1"><span class="kw">print</span>(woutKruskal<span class="op">$</span>group)</a></code></pre></div>
 <pre><code>##             peso groups
 ## Testemunha 18.25      a
 ## 12.5       12.00     ab
@@ -572,16 +569,16 @@ Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) est�
 ## 25.0        7.50      b
 ## 50.0        7.00      b</code></pre>
 <p>Gráficos</p>
-<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
-<a class="sourceLine" id="cb548-2" title="2"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
-<a class="sourceLine" id="cb548-3" title="3"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb548-4" title="4"><span class="kw">plot</span>(woutKruskal)</a>
-<a class="sourceLine" id="cb548-5" title="5"><span class="kw">plot</span>(woutKruskal,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+<div class="sourceCode" id="cb611"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb611-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb611-2" title="2"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
+<a class="sourceLine" id="cb611-3" title="3"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb611-4" title="4"><span class="kw">plot</span>(woutKruskal)</a>
+<a class="sourceLine" id="cb611-5" title="5"><span class="kw">plot</span>(woutKruskal,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-343-1.png" width="672" /></p>
 <p>A função <code>friedman</code> é usada para análise de tratamentos do estudo randomizado
 de bloco completo, onde a resposta não pode ser tratada através da análise de variância.</p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1">woutfriedman &lt;-<span class="st"> </span>out&lt;-<span class="kw">with</span>(dados,<span class="kw">friedman</span>(bloco,promalin, peso,<span class="dt">alpha=</span><span class="fl">0.05</span>, <span class="dt">group=</span>T,</a>
-<a class="sourceLine" id="cb549-2" title="2">  <span class="dt">console=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb612"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb612-1" title="1">woutfriedman &lt;-<span class="st"> </span>out&lt;-<span class="kw">with</span>(dados,<span class="kw">friedman</span>(bloco,promalin, peso,<span class="dt">alpha=</span><span class="fl">0.05</span>, <span class="dt">group=</span>T,</a>
+<a class="sourceLine" id="cb612-2" title="2">  <span class="dt">console=</span><span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## 
 ## Study: peso ~ bloco + promalin 
 ## 
@@ -617,47 +614,47 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## 12.5                  8      b
 ## 12.5+12.5             8      b</code></pre>
 <p>Grafico</p>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
-<a class="sourceLine" id="cb551-2" title="2"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
-<a class="sourceLine" id="cb551-3" title="3"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb551-4" title="4"><span class="kw">plot</span>(woutfriedman)</a>
-<a class="sourceLine" id="cb551-5" title="5"><span class="kw">plot</span>(woutfriedman,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-308-1.png" width="672" /></p>
+<div class="sourceCode" id="cb614"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb614-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb614-2" title="2"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
+<a class="sourceLine" id="cb614-3" title="3"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb614-4" title="4"><span class="kw">plot</span>(woutfriedman)</a>
+<a class="sourceLine" id="cb614-5" title="5"><span class="kw">plot</span>(woutfriedman,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-345-1.png" width="672" /></p>
 </div>
 <div id="exercicio-1" class="section level2">
-<h2><span class="header-section-number">8.4</span> Exercicio 1</h2>
+<h2><span class="header-section-number">9.4</span> Exercicio 1</h2>
 <p>Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.</p>
 <p>Comparação de métodos de Semeadura do Mamoeiro</p>
 <p>Estudo realizado em Jaboticabal - SP por Ruiz (1977) que comparou métodos de semeadura no mamoeiro. O experimento foi instalado em delineamento de blocos casualizados, com 4 repetições, avaliando 3 métodos de semeadura. Foram avaliadas duas unidades experimentais por método em cada bloco.</p>
 <p>Importando dados</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb552-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/40m95attfw2fdh2/BanzattoQd4.7.1.txt?dl=1&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb615"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb615-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/40m95attfw2fdh2/BanzattoQd4.7.1.txt?dl=1&quot;</span>) </a></code></pre></div>
 <p>Conferir se temos fatores para fazer a análise de variância</p>
-<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb616"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb616-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  3 variables:
 ##  $ bloco : Factor w/ 4 levels &quot;I&quot;,&quot;II&quot;,&quot;III&quot;,..: 1 1 2 2 3 3 4 4 1 1 ...
 ##  $ semead: Factor w/ 3 levels &quot;Direta no campo&quot;,..: 1 1 1 1 1 1 1 1 2 2 ...
 ##  $ altura: num  136.1 105.3 98.8 86.8 108.8 ...</code></pre>
 <p>Gráficos</p>
-<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" title="1"><span class="kw">addmargins</span>(<span class="kw">with</span>(dados,</a>
-<a class="sourceLine" id="cb555-2" title="2">  <span class="kw">tapply</span>(<span class="dt">X =</span> altura,</a>
-<a class="sourceLine" id="cb555-3" title="3">    <span class="dt">INDEX =</span> <span class="kw">list</span>(semead, bloco),</a>
-<a class="sourceLine" id="cb555-4" title="4">    <span class="dt">FUN =</span> sum)))</a></code></pre></div>
+<div class="sourceCode" id="cb618"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb618-1" title="1"><span class="kw">addmargins</span>(<span class="kw">with</span>(dados,</a>
+<a class="sourceLine" id="cb618-2" title="2">  <span class="kw">tapply</span>(<span class="dt">X =</span> altura,</a>
+<a class="sourceLine" id="cb618-3" title="3">    <span class="dt">INDEX =</span> <span class="kw">list</span>(semead, bloco),</a>
+<a class="sourceLine" id="cb618-4" title="4">    <span class="dt">FUN =</span> sum)))</a></code></pre></div>
 <pre><code>##                     I    II   III    IV    Sum
 ## Direta no campo 241.4 185.6 218.5 162.9  808.4
 ## Recip. ao sol   157.7 120.7 129.0  80.1  487.5
 ## Recip. ripado   123.5 127.1 132.9 109.8  493.3
 ## Sum             522.6 433.4 480.4 352.8 1789.2</code></pre>
-<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1"><span class="kw">xyplot</span>(altura <span class="op">~</span><span class="st"> </span>semead, <span class="dt">data =</span> dados,</a>
-<a class="sourceLine" id="cb557-2" title="2">  <span class="dt">groups =</span> bloco, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;a&quot;</span>),</a>
-<a class="sourceLine" id="cb557-3" title="3">  <span class="dt">xlab =</span> <span class="st">&quot;Método de semeadura de mamoeiro&quot;</span>,</a>
-<a class="sourceLine" id="cb557-4" title="4">  <span class="dt">ylab =</span> <span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>,</a>
-<a class="sourceLine" id="cb557-5" title="5">  <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Bloco&quot;</span>, <span class="dt">cex.title =</span> <span class="dv">1</span>, <span class="dt">columns =</span> <span class="dv">2</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
+<div class="sourceCode" id="cb620"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb620-1" title="1"><span class="kw">xyplot</span>(altura <span class="op">~</span><span class="st"> </span>semead, <span class="dt">data =</span> dados,</a>
+<a class="sourceLine" id="cb620-2" title="2">  <span class="dt">groups =</span> bloco, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;a&quot;</span>),</a>
+<a class="sourceLine" id="cb620-3" title="3">  <span class="dt">xlab =</span> <span class="st">&quot;Método de semeadura de mamoeiro&quot;</span>,</a>
+<a class="sourceLine" id="cb620-4" title="4">  <span class="dt">ylab =</span> <span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>,</a>
+<a class="sourceLine" id="cb620-5" title="5">  <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Bloco&quot;</span>, <span class="dt">cex.title =</span> <span class="dv">1</span>, <span class="dt">columns =</span> <span class="dv">2</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-349-1.png" width="672" /></p>
 <p>Análise de Variância</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">aov</span>(altura<span class="op">~</span>bloco<span class="op">+</span>semead, <span class="dt">data=</span>dados)</a>
-<a class="sourceLine" id="cb558-2" title="2"><span class="kw">class</span>(m0)</a></code></pre></div>
+<div class="sourceCode" id="cb621"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb621-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">aov</span>(altura<span class="op">~</span>bloco<span class="op">+</span>semead, <span class="dt">data=</span>dados)</a>
+<a class="sourceLine" id="cb621-2" title="2"><span class="kw">class</span>(m0)</a></code></pre></div>
 <pre><code>## [1] &quot;aov&quot; &quot;lm&quot;</code></pre>
-<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<div class="sourceCode" id="cb623"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb623-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
 <pre><code>## Analysis of Variance Table
 ## 
 ## Response: altura
@@ -667,7 +664,7 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## Residuals 18 2201.9   122.3                      
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
-<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" title="1"><span class="kw">summary</span>(m0)</a></code></pre></div>
+<div class="sourceCode" id="cb625"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb625-1" title="1"><span class="kw">summary</span>(m0)</a></code></pre></div>
 <pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
 ## bloco        3   2648     883   7.216  0.00222 ** 
 ## semead       2   8429    4215  34.453 7.01e-07 ***
@@ -675,18 +672,18 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
 <p>Checagem gráfica</p>
-<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb564-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
-<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" title="1"><span class="kw">layout</span>(<span class="dv">1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb627"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb627-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb627-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-351-1.png" width="672" /></p>
+<div class="sourceCode" id="cb628"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb628-1" title="1"><span class="kw">layout</span>(<span class="dv">1</span>)</a></code></pre></div>
 <p>Teste das pressuposições de normalidade de homocedasticidade</p>
-<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(m0))</a></code></pre></div>
+<div class="sourceCode" id="cb629"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb629-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(m0))</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  residuals(m0)
 ## W = 0.95197, p-value = 0.2988</code></pre>
-<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" title="1"><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(m0)<span class="op">~</span>dados<span class="op">$</span>semead)</a></code></pre></div>
+<div class="sourceCode" id="cb631"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb631-1" title="1"><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(m0)<span class="op">~</span>dados<span class="op">$</span>semead)</a></code></pre></div>
 <pre><code>## 
 ##  Bartlett test of homogeneity of variances
 ## 
@@ -694,13 +691,13 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## Bartlett&#39;s K-squared = 4.5219, df = 2, p-value = 0.1043</code></pre>
 <p>Teste de médias</p>
 <p><strong>Teste de Tukey</strong></p>
-<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" title="1"><span class="kw">require</span>(agricolae)</a></code></pre></div>
-<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1">tu &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">HSD.test</span>(altura, semead,</a>
-<a class="sourceLine" id="cb571-2" title="2"><span class="dt">DFerror=</span><span class="kw">df.residual</span>(m0),</a>
-<a class="sourceLine" id="cb571-3" title="3"><span class="dt">MSerror=</span><span class="kw">deviance</span>(m0)<span class="op">/</span><span class="kw">df.residual</span>(m0)))</a></code></pre></div>
-<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" title="1"><span class="kw">plot</span>(tu)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
-<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">print</span>(tu)</a></code></pre></div>
+<div class="sourceCode" id="cb633"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb633-1" title="1"><span class="kw">require</span>(agricolae)</a></code></pre></div>
+<div class="sourceCode" id="cb634"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb634-1" title="1">tu &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">HSD.test</span>(altura, semead,</a>
+<a class="sourceLine" id="cb634-2" title="2"><span class="dt">DFerror=</span><span class="kw">df.residual</span>(m0),</a>
+<a class="sourceLine" id="cb634-3" title="3"><span class="dt">MSerror=</span><span class="kw">deviance</span>(m0)<span class="op">/</span><span class="kw">df.residual</span>(m0)))</a></code></pre></div>
+<div class="sourceCode" id="cb635"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb635-1" title="1"><span class="kw">plot</span>(tu)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-355-1.png" width="672" /></p>
+<div class="sourceCode" id="cb636"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb636-1" title="1"><span class="kw">print</span>(tu)</a></code></pre></div>
 <pre><code>## $statistics
 ##    MSerror Df  Mean       CV      MSD
 ##   122.3258 18 74.55 14.83581 14.11359
@@ -726,36 +723,36 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## 
 ## attr(,&quot;class&quot;)
 ## [1] &quot;group&quot;</code></pre>
-<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1"><span class="kw">require</span>(dplyr)</a>
-<a class="sourceLine" id="cb575-2" title="2"><span class="kw">require</span>(ggplot2)</a>
-<a class="sourceLine" id="cb575-3" title="3">  erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, semead), </a>
-<a class="sourceLine" id="cb575-4" title="4">    <span class="dt">avg =</span> <span class="kw">mean</span>(altura), <span class="dt">sd =</span> <span class="kw">sd</span>(altura))</a>
-<a class="sourceLine" id="cb575-5" title="5"></a>
-<a class="sourceLine" id="cb575-6" title="6">  </a>
-<a class="sourceLine" id="cb575-7" title="7">  <span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(semead, avg, <span class="dt">fill=</span>semead))<span class="op">+</span></a>
-<a class="sourceLine" id="cb575-8" title="8"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
-<a class="sourceLine" id="cb575-9" title="9"><span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-10" title="10"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb575-11" title="11"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb575-12" title="12"><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb575-13" title="13"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-14" title="14"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">1</span>], <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-15" title="15"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">2</span>], <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-16" title="16"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">3</span>], <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-17" title="17"><span class="st">    </span></a>
-<a class="sourceLine" id="cb575-18" title="18"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb575-19" title="19"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb638"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb638-1" title="1"><span class="kw">require</span>(dplyr)</a>
+<a class="sourceLine" id="cb638-2" title="2"><span class="kw">require</span>(ggplot2)</a>
+<a class="sourceLine" id="cb638-3" title="3">  erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, semead), </a>
+<a class="sourceLine" id="cb638-4" title="4">    <span class="dt">avg =</span> <span class="kw">mean</span>(altura), <span class="dt">sd =</span> <span class="kw">sd</span>(altura))</a>
+<a class="sourceLine" id="cb638-5" title="5"></a>
+<a class="sourceLine" id="cb638-6" title="6">  </a>
+<a class="sourceLine" id="cb638-7" title="7">  <span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(semead, avg, <span class="dt">fill=</span>semead))<span class="op">+</span></a>
+<a class="sourceLine" id="cb638-8" title="8"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb638-9" title="9"><span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-10" title="10"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb638-11" title="11"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb638-12" title="12"><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb638-13" title="13"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-14" title="14"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">1</span>], <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-15" title="15"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">2</span>], <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-16" title="16"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">3</span>], <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-17" title="17"><span class="st">    </span></a>
+<a class="sourceLine" id="cb638-18" title="18"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb638-19" title="19"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
 <pre><code>## Warning: Ignoring unknown parameters: with</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-320-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-357-1.png" width="672" /></p>
 <p><strong>Teste de Scott-Knott</strong></p>
-<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1">  <span class="kw">library</span>(ScottKnott)</a>
-<a class="sourceLine" id="cb577-2" title="2">  sk &lt;-<span class="st"> </span><span class="kw">SK</span>(<span class="dt">x=</span>dados, <span class="dt">y=</span>dados<span class="op">$</span>altura, <span class="dt">model=</span><span class="st">&quot;altura~bloco+semead&quot;</span>, <span class="dt">which=</span><span class="st">&quot;semead&quot;</span>)</a>
-<a class="sourceLine" id="cb577-3" title="3">  <span class="kw">summary</span>(sk)</a></code></pre></div>
+<div class="sourceCode" id="cb640"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb640-1" title="1">  <span class="kw">library</span>(ScottKnott)</a>
+<a class="sourceLine" id="cb640-2" title="2">  sk &lt;-<span class="st"> </span><span class="kw">SK</span>(<span class="dt">x=</span>dados, <span class="dt">y=</span>dados<span class="op">$</span>altura, <span class="dt">model=</span><span class="st">&quot;altura~bloco+semead&quot;</span>, <span class="dt">which=</span><span class="st">&quot;semead&quot;</span>)</a>
+<a class="sourceLine" id="cb640-3" title="3">  <span class="kw">summary</span>(sk)</a></code></pre></div>
 <pre><code>##           Levels    Means SK(5%)
 ##  Direta no campo 101.0500      a
 ##    Recip. ripado  61.6625      b
 ##    Recip. ao sol  60.9375      b</code></pre>
-<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" title="1"><span class="kw">print</span>(sk)</a></code></pre></div>
+<div class="sourceCode" id="cb642"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb642-1" title="1"><span class="kw">print</span>(sk)</a></code></pre></div>
 <pre><code>## $av
 ## Call:
 ##    aov(formula = altura ~ bloco + semead, data = dat)
@@ -789,8 +786,8 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## attr(,&quot;class&quot;)
 ## [1] &quot;SK&quot;   &quot;list&quot;</code></pre>
 </div>
-<div id="referência-4" class="section level2">
-<h2><span class="header-section-number">8.5</span> Referência</h2>
+<div id="referência-5" class="section level2">
+<h2><span class="header-section-number">9.5</span> Referência</h2>
 <p>MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.</p>
 <p>BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.</p>
 <p>ZEVIANI, W. M. Estatística Básica e Experimentação no R. 45p.</p>
@@ -803,7 +800,7 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
           </div>
         </div>
       </div>
-<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="testes-estatísticos.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
 
     </div>
   </div>
