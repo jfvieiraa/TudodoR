@@ -2,7 +2,7 @@
     "path" : "D:/livro/TudodoRa",
     "sortOrder" : [
         {
-            "ascending" : false,
+            "ascending" : true,
             "columnIndex" : 2
         }
     ]

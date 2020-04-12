@@ -1,34 +1,45 @@
-\documentclass[]{book}
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{book}
 \usepackage{lmodern}
 \usepackage{amssymb,amsmath}
 \usepackage{ifxetex,ifluatex}
-\usepackage{fixltx2e} % provides \textsubscript
 \ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
   \usepackage[T1]{fontenc}
   \usepackage[utf8]{inputenc}
-\else % if luatex or xelatex
-  \ifxetex
-    \usepackage{mathspec}
-  \else
-    \usepackage{fontspec}
-  \fi
-  \defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
 \fi
-% use upquote if available, for straight quotes in verbatim environments
+% Use upquote if available, for straight quotes in verbatim environments
 \IfFileExists{upquote.sty}{\usepackage{upquote}}{}
-% use microtype if available
-\IfFileExists{microtype.sty}{%
-\usepackage{microtype}
-\UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
 }{}
-\usepackage{hyperref}
-\hypersetup{unicode=true,
-            pdftitle={Uso do sistema R para análise de dados},
-            pdfborder={0 0 0},
-            breaklinks=true}
-\urlstyle{same}  % don't use monospace font for urls
-\usepackage{natbib}
-\bibliographystyle{apalike}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={Uso do sistema R para análise de dados},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
 \usepackage{color}
 \usepackage{fancyvrb}
 \newcommand{\VerbBar}{|}
@@ -70,6 +81,14 @@
 \newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
 \newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 \usepackage{longtable,booktabs}
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
 \usepackage{graphicx,grffile}
 \makeatletter
 \def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
@@ -79,52 +98,21 @@
 % margins by default, and it is still possible to overwrite the defaults
 % using explicit options in \includegraphics[width, height, ...]{}
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
-\IfFileExists{parskip.sty}{%
-\usepackage{parskip}
-}{% else
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{6pt plus 2pt minus 1pt}
-}
-\setlength{\emergencystretch}{3em}  % prevent overfull lines
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
 \providecommand{\tightlist}{%
   \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \setcounter{secnumdepth}{5}
-% Redefines (sub)paragraphs to behave more like sections
-\ifx\paragraph\undefined\else
-\let\oldparagraph\paragraph
-\renewcommand{\paragraph}[1]{\oldparagraph{#1}\mbox{}}
-\fi
-\ifx\subparagraph\undefined\else
-\let\oldsubparagraph\subparagraph
-\renewcommand{\subparagraph}[1]{\oldsubparagraph{#1}\mbox{}}
-\fi
-
-%%% Use protect on footnotes to avoid problems with footnotes in titles
-\let\rmarkdownfootnote\footnote%
-\def\footnote{\protect\rmarkdownfootnote}
-
-%%% Change title format to be more compact
-\usepackage{titling}
-
-% Create subtitle command for use in maketitle
-\providecommand{\subtitle}[1]{
-  \posttitle{
-    \begin{center}\large#1\end{center}
-    }
-}
-
-\setlength{\droptitle}{-2em}
-
-  \title{Uso do sistema R para análise de dados}
-    \pretitle{\vspace{\droptitle}\centering\huge}
-  \posttitle{\par}
-    \author{}
-    \preauthor{}\postauthor{}
-      \predate{\centering\large\emph}
-  \postdate{\par}
-    \date{2020-04-11}
-
 \usepackage{booktabs}
+\usepackage[]{natbib}
+\bibliographystyle{apalike}
+
+\title{Uso do sistema R para análise de dados}
+\author{}
+\date{\vspace{-2.5em}2020-04-11}
 
 \begin{document}
 \maketitle
@@ -133,8 +121,8 @@
 \setcounter{tocdepth}{1}
 \tableofcontents
 }
-\hypertarget{pre-requisitos}{%
-\chapter{Pré requisitos}\label{pre-requisitos}}
+\hypertarget{pruxe9-requisitos}{%
+\chapter{Pré requisitos}\label{pruxe9-requisitos}}
 
 Material em construção.
 
@@ -150,8 +138,8 @@ Este primeio capitulo foi baseado no curso on-line \emph{Code School Try R} e \e
 Iremos abordar as expressões básicas do R.
 Começaremos simples, com \textbf{números}, \textbf{strings} e valores \textbf{true/false}. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
 
-\hypertarget{expressoes}{%
-\section{Expressões}\label{expressoes}}
+\hypertarget{expressuxf5es}{%
+\section{Expressões}\label{expressuxf5es}}
 
 Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
 
@@ -231,8 +219,8 @@ E outro valor lógico (sinal duplo de igualdade)
 ## [1] TRUE
 \end{verbatim}
 
-\hypertarget{variaveis}{%
-\section{Variáveis}\label{variaveis}}
+\hypertarget{variuxe1veis}{%
+\section{Variáveis}\label{variuxe1veis}}
 
 Você pode armazenar valores em uma variável para usar mais tarde.
 Digite \textbf{x \textless- 28} para armazenar um valor em \textbf{x}.
@@ -276,8 +264,8 @@ Tente imprimir o valor atual de x.
 ## [1] "Engenharia Agrícola"
 \end{verbatim}
 
-\hypertarget{funcoes}{%
-\section{Funções}\label{funcoes}}
+\hypertarget{funuxe7uxf5es}{%
+\section{Funções}\label{funuxe7uxf5es}}
 
 Você pode chamar uma \textbf{função} digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses.
 
@@ -349,11 +337,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.6577231 -0.6961202  0.1043678  0.6899721  1.3500000
+## [1] -2.1499421 -0.4059580  0.2592357  0.6704064  1.3500000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##         0%        25%        50%        75%       100% 
-## -2.6577231 -0.6961202  0.1043678  0.6899721  1.3500000 
+## -2.1499421 -0.4059580  0.2592357  0.6704064  1.3500000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -383,8 +371,8 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min+           identical(n0, pmax(n0, 4)))
 \end{verbatim}
 
-\hypertarget{referencia}{%
-\section{Referência}\label{referencia}}
+\hypertarget{referuxeancia}{%
+\section{Referência}\label{referuxeancia}}
 
 MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
 
@@ -432,8 +420,8 @@ Os argumentos de \texttt{c()} podem ser tanto elementos únicos quanto outros ob
 ## [1]  2  3  5  7 11 13 17 19
 \end{verbatim}
 
-\hypertarget{vetores-de-sequencia}{%
-\subsection{Vetores de Sequência}\label{vetores-de-sequencia}}
+\hypertarget{vetores-de-sequuxeancia}{%
+\subsection{Vetores de Sequência}\label{vetores-de-sequuxeancia}}
 
 Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação \emph{start:end}. Vamos fazer um vetor com valores de 1 a 7:
 
@@ -548,9 +536,9 @@ Se o vetor é muito longo e não ``cabe'' em uma linha o R vai usar as linhas se
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
-## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
-## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50
+##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84  83  82
+## [20]  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67  66  65  64  63
+## [39]  62  61  60  59  58  57  56  55  54  53  52  51  50
 \end{verbatim}
 
 Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que {[}1{]} indica que o primeiro elemento do vetor estão naquela linha, {[}17{]} indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
@@ -711,8 +699,8 @@ Agora, tente chamar \texttt{barplot} em um vetor de números inteiros que variam
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-35-1.pdf}
 
-\hypertarget{operacoes-matematicas}{%
-\subsection{Operações matemáticas}\label{operacoes-matematicas}}
+\hypertarget{operauxe7uxf5es-matemuxe1ticas}{%
+\subsection{Operações matemáticas}\label{operauxe7uxf5es-matemuxe1ticas}}
 
 A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável \textbf{a}
 
@@ -830,8 +818,8 @@ Agora tente obter as raízes quadradas com a função \texttt{sqrt}:
 ## [1] 1.000000 1.414214 1.732051
 \end{verbatim}
 
-\hypertarget{parcelas-de-dispersao}{%
-\subsection{Parcelas de dispersão}\label{parcelas-de-dispersao}}
+\hypertarget{parcelas-de-dispersuxe3o}{%
+\subsection{Parcelas de dispersão}\label{parcelas-de-dispersuxe3o}}
 
 A função \texttt{plot} leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
 
@@ -1172,8 +1160,8 @@ Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um
 ##    1.00    2.75    4.50    4.50    6.25    8.00
 \end{verbatim}
 
-\hypertarget{visualizacoes-em-dados-matriciais}{%
-\subsection{Visualizações em dados matriciais}\label{visualizacoes-em-dados-matriciais}}
+\hypertarget{visualizauxe7uxf5es-em-dados-matriciais}{%
+\subsection{Visualizações em dados matriciais}\label{visualizauxe7uxf5es-em-dados-matriciais}}
 
 Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:
 
@@ -1253,8 +1241,8 @@ A função \texttt{image} criar um mapa de calor:
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-76-1.pdf}
 
-\hypertarget{mais-informacoes-sobre-construcoes-de-matrizes}{%
-\subsection{Mais informações sobre construções de Matrizes}\label{mais-informacoes-sobre-construcoes-de-matrizes}}
+\hypertarget{mais-informauxe7uxf5es-sobre-construuxe7uxf5es-de-matrizes}{%
+\subsection{Mais informações sobre construções de Matrizes}\label{mais-informauxe7uxf5es-sobre-construuxe7uxf5es-de-matrizes}}
 
 Há outros comandos que podem ser usados para construir matrizes como \texttt{cbind()} e \texttt{rbind\ ()}. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
 
@@ -1721,8 +1709,8 @@ Adicionar nome as linhas com o comando \texttt{row.names()}
 ## 6    Jeeziel Vieira    18    M    168
 \end{verbatim}
 
-\hypertarget{indice-dos-data.frames}{%
-\subsection{Índice dos Data.frames}\label{indice-dos-data.frames}}
+\hypertarget{uxedndice-dos-data.frames}{%
+\subsection{Índice dos Data.frames}\label{uxedndice-dos-data.frames}}
 
 Buscar elementos
 
@@ -2050,8 +2038,8 @@ Exibir o componentes da lista
 ## [1] 0.95
 \end{verbatim}
 
-\hypertarget{referencia-1}{%
-\section{Referência}\label{referencia-1}}
+\hypertarget{referuxeancia-1}{%
+\section{Referência}\label{referuxeancia-1}}
 
 MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
 
@@ -2112,17 +2100,17 @@ Você pode exibir o conteudo do diretório com o comando \texttt{dir()}
 \end{Shaded}
 
 \begin{verbatim}
-##  [1] "_bookdown.yml"     "_bookdown_files"   "_output.yml"      
-##  [4] "01-intro.Rmd"      "02-literature.Rmd" "04-Estrutura.Rmd" 
-##  [7] "05-Figura.Rmd"     "07-Figura_2.Rmd"   "08-teste_esta.Rmd"
-## [10] "09-references.Rmd" "book.bib"          "docs"             
-## [13] "index.Rmd"         "LICENSE"           "meu grafico.bmp"  
-## [16] "meu grafico.jpg"   "meu grafico.png"   "meu grafico.ps"   
-## [19] "meu grafico.wmf"   "meugráfico.pdf"    "packages.bib"     
-## [22] "preamble.tex"      "README.md"         "search_index.json"
-## [25] "style.css"         "TudodoR.log"       "TudodoR.pdf"      
-## [28] "TudodoR.Rmd"       "TudodoR.Rproj"     "TudodoR.tex"      
-## [31] "TudodoR_files"
+##  [1] "_bookdown.yml"      "_bookdown_files"    "_output.yml"       
+##  [4] "01-intro.Rmd"       "02-literature.Rmd"  "04-Estrutura.Rmd"  
+##  [7] "05-Figura.Rmd"      "07-Figura_2.Rmd"    "08-teste_esta.Rmd" 
+## [10] "09-teste_esta2.Rmd" "10-references.Rmd"  "book.bib"          
+## [13] "docs"               "index.Rmd"          "LICENSE"           
+## [16] "meu grafico.bmp"    "meu grafico.jpg"    "meu grafico.png"   
+## [19] "meu grafico.ps"     "meu grafico.wmf"    "meugráfico.pdf"    
+## [22] "packages.bib"       "preamble.tex"       "README.md"         
+## [25] "search_index.json"  "style.css"          "TudodoR.log"       
+## [28] "TudodoR.pdf"        "TudodoR.Rmd"        "TudodoR.Rproj"     
+## [31] "TudodoR.tex"        "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -2167,8 +2155,8 @@ Esta forma de entrada de dados é conveniente quando se tem um pequeno número d
 ## [1] 5 5 5 8 8 8
 \end{verbatim}
 
-\hypertarget{usando-a-funcao-scan}{%
-\subsection{Usando a função `scan'}\label{usando-a-funcao-scan}}
+\hypertarget{usando-a-funuxe7uxe3o-scan}{%
+\subsection{Usando a função `scan'}\label{usando-a-funuxe7uxe3o-scan}}
 
 Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla . Para encerrar a entrada de dados basta digitar duas vezes consecutivas. Veja o seguinte resultado:
 
@@ -2207,13 +2195,13 @@ Este formato é mais ágil que o anterior e mais conveniente para digitar vetore
 Pode usar o recurso ``copiar e colar'' com o comando \texttt{scan}.
 Após copiar os dados (crtl+C), digite no \textbf{prompt}/\textbf{console} o comando \texttt{scan()}, aperte \textgreater ENTER\textless, depois cole o texto e, aperte \textgreater ENTER\textless{} novamente.
 
-\hypertarget{lendo-dados-atraves-da-area-de-transferencia}{%
-\subsection{Lendo dados através da área de transferência}\label{lendo-dados-atraves-da-area-de-transferencia}}
+\hypertarget{lendo-dados-atravuxe9s-da-uxe1rea-de-transferuxeancia}{%
+\subsection{Lendo dados através da área de transferência}\label{lendo-dados-atravuxe9s-da-uxe1rea-de-transferuxeancia}}
 
 Funções como \texttt{scan()}, \texttt{read.table()} e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao \emph{``clipboard''} ao primeiro argumento.
 
-\hypertarget{usando-a-funcao-edit}{%
-\subsection{Usando a função edit}\label{usando-a-funcao-edit}}
+\hypertarget{usando-a-funuxe7uxe3o-edit}{%
+\subsection{Usando a função edit}\label{usando-a-funuxe7uxe3o-edit}}
 
 O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dados que são armazanados como data-frames.
 
@@ -2386,8 +2374,8 @@ Note que este arquivo difere do primeiro em outros aspectos.
 
 1.\textbf{header}: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. `FALSE', assume que os dados se iniciam na primeira linha.
 
-\hypertarget{a-seguir-listamos-algumas-destas-funcoes}{%
-\subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funcoes}}
+\hypertarget{a-seguir-listamos-algumas-destas-funuxe7uxf5es}{%
+\subsection{A seguir listamos algumas destas funções:}\label{a-seguir-listamos-algumas-destas-funuxe7uxf5es}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2418,13 +2406,13 @@ Note que este arquivo difere do primeiro em outros aspectos.
   \emph{read.delim2}(file, header = TRUE, sep=``\t", dec='',")
 \end{enumerate}
 
-\hypertarget{lendo-dados-disponiveis-na-web}{%
-\subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponiveis-na-web}}
+\hypertarget{lendo-dados-disponuxedveis-na-web}{%
+\subsection{Lendo dados disponíveis na web}\label{lendo-dados-disponuxedveis-na-web}}
 
 \textbf{Exemplo 4}: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do \href{https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1}{exemplo1.txt} poderiam ser lidos diretamente com o comando a seguir
 
-\hypertarget{lendo-dados-de-uma-planilha-eletronica}{%
-\subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletronica}}
+\hypertarget{lendo-dados-de-uma-planilha-eletruxf4nica}{%
+\subsection{Lendo dados de uma planilha eletrônica}\label{lendo-dados-de-uma-planilha-eletruxf4nica}}
 
 Com o \textbf{pacote xlsx} é possivel ler os dados diretamente da planilha eletrônica do Excel.
 
@@ -2446,8 +2434,8 @@ O comando \emph{read.xlsx()}, do \textbf{pacote xlsx}, lê o conteúdo de uma pl
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{exercicios}{%
-\subsection{Exercícios}\label{exercicios}}
+\hypertarget{exercuxedcios}{%
+\subsection{Exercícios}\label{exercuxedcios}}
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -2482,8 +2470,8 @@ Principais argumentos:
 1. sep - separador da coluna
 1. dec - separador deciminal
 
-\hypertarget{outras-funcoes}{%
-\subsection{Outras funções}\label{outras-funcoes}}
+\hypertarget{outras-funuxe7uxf5es}{%
+\subsection{Outras funções}\label{outras-funuxe7uxf5es}}
 
 \texttt{write.csv()}
 \texttt{write.csv2()}
@@ -2492,8 +2480,8 @@ Principais argumentos:
 \textbf{Exemplo:}
 write.xlsx(dados,``tabela salva.xlsx'')
 
-\hypertarget{referencia-2}{%
-\section{Referência}\label{referencia-2}}
+\hypertarget{referuxeancia-2}{%
+\section{Referência}\label{referuxeancia-2}}
 
 MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatística}. Viçosa, MG: UFV, 2013. 222p.
 
@@ -2503,8 +2491,8 @@ MELO, M. P.; PETERNELI, L. A. \textbf{Conhecendo o R: Um visão mais que estatí
 
 \textbf{Prof.~Fernando de Pol Mayer} \textgreater{}\url{https://fernandomayer.github.io/ce083-2016-2/}\textless{}
 
-\hypertarget{criando-graficos-com-o-r}{%
-\chapter{Criando Gráficos com o R}\label{criando-graficos-com-o-r}}
+\hypertarget{criando-gruxe1ficos-com-o-r}{%
+\chapter{Criando Gráficos com o R}\label{criando-gruxe1ficos-com-o-r}}
 
 Este capitulo foi baseado nos livros
 
@@ -2544,8 +2532,8 @@ O R possui diferentes funções geradoras de gráficos, e essas são classificad
   \emph{Funções gráficas iterativas}: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: \emph{locator e identify}.
 \end{itemize}
 
-\hypertarget{exemplos-de-graficos-com-o-r}{%
-\section{Exemplos de gráficos com o R}\label{exemplos-de-graficos-com-o-r}}
+\hypertarget{exemplos-de-gruxe1ficos-com-o-r}{%
+\section{Exemplos de gráficos com o R}\label{exemplos-de-gruxe1ficos-com-o-r}}
 
 Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:
 
@@ -3202,8 +3190,8 @@ Neste exemplo vamos analisar cada solo separadamente usando o comando \texttt{su
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{usando-a-funcao-plot}{%
-\section{\texorpdfstring{Usando a função \texttt{plot()}}{Usando a função plot()}}\label{usando-a-funcao-plot}}
+\hypertarget{usando-a-funuxe7uxe3o-plot}{%
+\section{\texorpdfstring{Usando a função \texttt{plot()}}{Usando a função plot()}}\label{usando-a-funuxe7uxe3o-plot}}
 
 A função \texttt{plot()} inicia um novo gráfico. Em sua forma mais simples a função
 recebe valores de coordenadas \emph{ds} (densidade do solo) e \emph{ptotal} (porosidade total do solo) do solo z1.
@@ -3271,8 +3259,8 @@ Verifique outras opcões para os gráfico
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{mudando-o-padrao-dos-pontos-pch}{%
-\subsection{\texorpdfstring{Mudando o padrão dos pontos \texttt{pch=}}{Mudando o padrão dos pontos pch=}}\label{mudando-o-padrao-dos-pontos-pch}}
+\hypertarget{mudando-o-padruxe3o-dos-pontos-pch}{%
+\subsection{\texorpdfstring{Mudando o padrão dos pontos \texttt{pch=}}{Mudando o padrão dos pontos pch=}}\label{mudando-o-padruxe3o-dos-pontos-pch}}
 
 Pode-se usar diferentes padrões para os pontos usando o argumento \texttt{pch=}.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
 Use a opção \texttt{pch\ =} para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda \texttt{(col\ =)}.
@@ -3430,8 +3418,8 @@ Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem dife
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-165-1.pdf}
 
-\hypertarget{personalizando-os-graficos}{%
-\subsection{Personalizando os gráficos}\label{personalizando-os-graficos}}
+\hypertarget{personalizando-os-gruxe1ficos}{%
+\subsection{Personalizando os gráficos}\label{personalizando-os-gruxe1ficos}}
 
 Alguns parâmetros podem ser usados no intuito de personalizar um gráfico no R.
 
@@ -3481,8 +3469,8 @@ A função \texttt{hist()} produz um histograma dos dados informados em seu argu
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-167-1.pdf}
 
-\hypertarget{personalizando-graficos}{%
-\subsection{Personalizando gráficos}\label{personalizando-graficos}}
+\hypertarget{personalizando-gruxe1ficos}{%
+\subsection{Personalizando gráficos}\label{personalizando-gruxe1ficos}}
 
 Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
 default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
@@ -3505,8 +3493,8 @@ informações detalhadas desses parâmetros se usar os recursos de ajuda do R.
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-168-1.pdf}
 
-\hypertarget{graficos-de-barras}{%
-\section{Gráficos de Barras}\label{graficos-de-barras}}
+\hypertarget{gruxe1ficos-de-barras}{%
+\section{Gráficos de Barras}\label{gruxe1ficos-de-barras}}
 
 Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos
 
@@ -3579,8 +3567,8 @@ Adicione \texttt{horizontal\ =\ TRUE} para inverter a orientação do eixo.
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in bxp(list(stats = structure(c(825, 871, 972.5, 1282, 1527, 44, :
-## some notches went outside hinges ('box'): maybe set notch=FALSE
+## Warning in bxp(list(stats = structure(c(825, 871, 972.5, 1282, 1527, 44, : some
+## notches went outside hinges ('box'): maybe set notch=FALSE
 \end{verbatim}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-172-1.pdf}
@@ -3668,8 +3656,8 @@ Exemplos:
 \end{Highlighting}
 \end{Shaded}
 
-\hypertarget{interagindo-com-a-janela-grafica}{%
-\section{Interagindo com a Janela gráfica}\label{interagindo-com-a-janela-grafica}}
+\hypertarget{interagindo-com-a-janela-gruxe1fica}{%
+\section{Interagindo com a Janela gráfica}\label{interagindo-com-a-janela-gruxe1fica}}
 
 Poderemos com o mouse marcar o ponte desejado usando a função \texttt{identify\ ()}
 
@@ -3686,16 +3674,16 @@ Poderemos com o mouse marcar o ponte desejado usando a função \texttt{identify
 ## integer(0)
 \end{verbatim}
 
-\hypertarget{texto-e-tamanho-do-simbolo}{%
-\section{Texto e tamanho do símbolo}\label{texto-e-tamanho-do-simbolo}}
+\hypertarget{texto-e-tamanho-do-suxedmbolo}{%
+\section{Texto e tamanho do símbolo}\label{texto-e-tamanho-do-suxedmbolo}}
 
 As seguintes opções podem ser usadas para controlar o tamanho do texto e do símbolo em gráficos.
 
 \texttt{cex} número que indica o valor pelo qual o texto e os símbolos de plotagem devem ser dimensionados em relação ao padrão.
 \emph{1 = padrão, 1,5 é 50\% maior, 0,5 é 50\% menor, etc.}
 
-\hypertarget{visualizar-varios-graficos}{%
-\section{Visualizar vários gráficos}\label{visualizar-varios-graficos}}
+\hypertarget{visualizar-vuxe1rios-gruxe1ficos}{%
+\section{Visualizar vários gráficos}\label{visualizar-vuxe1rios-gruxe1ficos}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -3712,8 +3700,8 @@ As seguintes opções podem ser usadas para controlar o tamanho do texto e do s�
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-179-1.pdf}
 
-\hypertarget{varios-graficos-na-mesma-janela-grafica}{%
-\subsection{Varios gráficos na mesma janela gráfica}\label{varios-graficos-na-mesma-janela-grafica}}
+\hypertarget{varios-gruxe1ficos-na-mesma-janela-gruxe1fica}{%
+\subsection{Varios gráficos na mesma janela gráfica}\label{varios-gruxe1ficos-na-mesma-janela-gruxe1fica}}
 
 Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função \texttt{par()}.
 
@@ -3752,8 +3740,8 @@ Você pode dar instruções para o programa mostrar diversos gráficos pequenos 
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-181-2.pdf}
 
-\hypertarget{salvando-graficos}{%
-\section{Salvando gráficos}\label{salvando-graficos}}
+\hypertarget{salvando-gruxe1ficos}{%
+\section{Salvando gráficos}\label{salvando-gruxe1ficos}}
 
 Você pode salvar o gráfico em vários formatos no menu
 \emph{Arquivo -\textgreater{} Salvar como}.
@@ -3772,8 +3760,8 @@ Você também pode salvar o gráfico via código usando uma das seguintes funç�
 
 \texttt{postscript\ ("meu\ grafico.ps")} \#arquivo postscript
 
-\hypertarget{graficos-com-ggplot2}{%
-\chapter{Gráficos com ggplot2}\label{graficos-com-ggplot2}}
+\hypertarget{gruxe1ficos-com-ggplot2}{%
+\chapter{Gráficos com ggplot2}\label{gruxe1ficos-com-ggplot2}}
 
 Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na \emph{Grammar of Graphics} (Gramática dos Gráficos) para descrever os gráficos de dados.
 
@@ -3813,20 +3801,20 @@ Veja as primeiras linhas.
 \end{Shaded}
 
 \begin{verbatim}
-##   z x  y cota       ds        cc        ma    ptotal   tibo   tibe
-## 1 1 1  1 9.15 1.501258 0.3975615 0.1288555 0.5264170  46.08  26.78
-## 2 1 1  3 8.95 1.474362 0.3818767 0.1530250 0.5349017  19.20  26.10
-## 3 1 1  5 8.78 1.469118 0.3514075 0.1851484 0.5365559 172.80 113.92
-## 4 1 1  7 8.59 1.392845 0.3724094 0.1882073 0.5606167  96.00  74.83
-## 5 1 1  9 8.48 1.383309 0.3559554 0.2076696 0.5636250  30.72  37.20
-## 6 1 1 11 8.41 1.417010 0.3144429 0.2385509 0.5529937 151.32 124.52
-##           a          b       X3       X60       X90      X120
-## 1  926.3955 -0.5290035 518.0810 153.24778 106.20581  73.60416
-## 2  383.8130 -0.4176008 242.5903  92.74121  69.43243  51.98188
-## 3  275.3272 -0.1307566 238.4857 176.48417 161.19222 147.22529
-## 4 1206.7585 -0.3764298 798.0272 335.41915 258.38731 199.04648
-## 5  151.4032 -0.2270424 117.9800  69.94649  59.76121  51.05906
-## 6  368.7992 -0.1549382 311.0754 217.73464 195.56291 175.64890
+##   z x  y cota       ds        cc        ma    ptotal   tibo   tibe         a
+## 1 1 1  1 9.15 1.501258 0.3975615 0.1288555 0.5264170  46.08  26.78  926.3955
+## 2 1 1  3 8.95 1.474362 0.3818767 0.1530250 0.5349017  19.20  26.10  383.8130
+## 3 1 1  5 8.78 1.469118 0.3514075 0.1851484 0.5365559 172.80 113.92  275.3272
+## 4 1 1  7 8.59 1.392845 0.3724094 0.1882073 0.5606167  96.00  74.83 1206.7585
+## 5 1 1  9 8.48 1.383309 0.3559554 0.2076696 0.5636250  30.72  37.20  151.4032
+## 6 1 1 11 8.41 1.417010 0.3144429 0.2385509 0.5529937 151.32 124.52  368.7992
+##            b       X3       X60       X90      X120
+## 1 -0.5290035 518.0810 153.24778 106.20581  73.60416
+## 2 -0.4176008 242.5903  92.74121  69.43243  51.98188
+## 3 -0.1307566 238.4857 176.48417 161.19222 147.22529
+## 4 -0.3764298 798.0272 335.41915 258.38731 199.04648
+## 5 -0.2270424 117.9800  69.94649  59.76121  51.05906
+## 6 -0.1549382 311.0754 217.73464 195.56291 175.64890
 \end{verbatim}
 
 O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa a densidade do solo e ao eixo x a variavel capacidade de campo.
@@ -3996,8 +3984,8 @@ Empilhado
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-199-1.pdf}
 
-\hypertarget{personalizando-os-graficos-1}{%
-\section{Personalizando os gráficos}\label{personalizando-os-graficos-1}}
+\hypertarget{personalizando-os-gruxe1ficos-1}{%
+\section{Personalizando os gráficos}\label{personalizando-os-gruxe1ficos-1}}
 
 \hypertarget{cores-1}{%
 \subsection{Cores}\label{cores-1}}
@@ -4225,8 +4213,8 @@ Coloque o canto inferior direito da caixa de legenda no canto inferior direito d
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-218-1.pdf}
 
-\hypertarget{titulo}{%
-\subsection{Título}\label{titulo}}
+\hypertarget{tuxedtulo}{%
+\subsection{Título}\label{tuxedtulo}}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4275,8 +4263,8 @@ Podemos colocar os graficos lado a lado também.
 \hypertarget{exemplos}{%
 \section{Exemplos}\label{exemplos}}
 
-\hypertarget{regressao}{%
-\subsection{Regressão}\label{regressao}}
+\hypertarget{regressuxe3o}{%
+\subsection{Regressão}\label{regressuxe3o}}
 
 \textbf{Efeito do Gesso no Peso de grãos de feijão}
 Estudo sobre o efeito do gesso no peso de grãos de feijo (\emph{Phaseolus vulgaris} L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 n?veis de gesso, de 0 a 300, igualmente espaados em 50 kg ha-1.
@@ -4357,6 +4345,10 @@ Criando o gráfico
 \StringTok{        }\KeywordTok{stat_smooth}\NormalTok{(}\DataTypeTok{method =}\NormalTok{ lm, }\DataTypeTok{se =}\NormalTok{ T, }\DataTypeTok{colour=}\StringTok{"red"}\NormalTok{, }\DataTypeTok{size=}\NormalTok{.}\DecValTok{85}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## `geom_smooth()` using formula 'y ~ x'
+\end{verbatim}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-226-1.pdf}
 
@@ -4491,6 +4483,10 @@ Inserindo legenda nos eixos
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Warning: `fun.y` is deprecated. Use `fun` instead.
+\end{verbatim}
+
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-236-1.pdf}
 
 Inserindo \texttt{tema\_bw} preto e branco
@@ -4506,6 +4502,10 @@ Inserindo \texttt{tema\_bw} preto e branco
 \StringTok{      }\KeywordTok{theme_bw}\NormalTok{() }
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: `fun.y` is deprecated. Use `fun` instead.
+\end{verbatim}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-237-1.pdf}
 
@@ -4523,6 +4523,10 @@ Inserindo legenda no topo
 \StringTok{      }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }
 \end{Highlighting}
 \end{Shaded}
+
+\begin{verbatim}
+## Warning: `fun.y` is deprecated. Use `fun` instead.
+\end{verbatim}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-238-1.pdf}
 
@@ -4543,10 +4547,14 @@ Mudando escala do eixo y
 \end{Highlighting}
 \end{Shaded}
 
+\begin{verbatim}
+## Warning: `fun.y` is deprecated. Use `fun` instead.
+\end{verbatim}
+
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-239-1.pdf}
 
-\hypertarget{dados-climaticos}{%
-\subsection{Dados Climáticos}\label{dados-climaticos}}
+\hypertarget{dados-climuxe1ticos}{%
+\subsection{Dados Climáticos}\label{dados-climuxe1ticos}}
 
 Dados climáticos de Rondonópolis - MT
 
@@ -4623,8 +4631,8 @@ Grafico de distribuição de temperatura minima para cada mês
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-243-1.pdf}
 
-\hypertarget{referencia-3}{%
-\chapter{Referência}\label{referencia-3}}
+\hypertarget{referuxeancia-3}{%
+\section{Referência}\label{referuxeancia-3}}
 
 GROLEMUND, G. WICKHAM, H. R for Data Science Site: \url{http://r4ds.had.co.nz/}
 
@@ -4634,8 +4642,8 @@ CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher
 
 Este Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}}
 
-\hypertarget{testes-estatisticos}{%
-\chapter{Testes Estatísticos}\label{testes-estatisticos}}
+\hypertarget{testes-estatuxedsticos}{%
+\chapter{Testes Estatísticos}\label{testes-estatuxedsticos}}
 
 O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.
 
@@ -4682,10 +4690,10 @@ Apresentação dos dados em forma de gráfico
 \end{Shaded}
 
 \begin{verbatim}
-## geom_path: Each group consists of only one observation. Do you need to
-## adjust the group aesthetic?
-## geom_path: Each group consists of only one observation. Do you need to
-## adjust the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to adjust
+## the group aesthetic?
+## geom_path: Each group consists of only one observation. Do you need to adjust
+## the group aesthetic?
 \end{verbatim}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-245-1.pdf}
@@ -4719,8 +4727,8 @@ Valores possíveis: \emph{``two-sided'', ``less'' ou ``greater''}.
 
 \emph{conf.level}: coeficiente de confiança do intervalo.
 
-\hypertarget{para-uma-media}{%
-\subsection{Para uma média}\label{para-uma-media}}
+\hypertarget{para-uma-muxe9dia}{%
+\subsection{Para uma média}\label{para-uma-muxe9dia}}
 
 Vamos testar se a temperatura horaria do solsticio de verão no campo tem média igual ou maior que \textbf{21 ºC} na cidade de Piracicaba-SP.
 
@@ -4754,7 +4762,7 @@ Vamos testar se a temperatura horaria do solsticio de verão no campo tem média
 \end{Shaded}
 
 \begin{verbatim}
-## The following objects are masked from pira_tem (pos = 6):
+## The following objects are masked from pira_tem (pos = 13):
 ## 
 ##     hora, local, periodo, temp, X
 \end{verbatim}
@@ -4884,8 +4892,8 @@ Essa afirmação é verdadeira?
 ##  25.97302
 \end{verbatim}
 
-\hypertarget{para-duas-medias-independentes}{%
-\subsection{Para duas médias independentes}\label{para-duas-medias-independentes}}
+\hypertarget{para-duas-muxe9dias-independentes}{%
+\subsection{Para duas médias independentes}\label{para-duas-muxe9dias-independentes}}
 
 Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
 alem de seguirem distribuição normal.
@@ -4928,8 +4936,8 @@ Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(
 Uma vez que o \emph{p-value} foi maior que 0,05, podemos concluir que as médias de temperatura dos dois ambientes não são diferentes, estatisticamente, a 5\% de significância.
 Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.
 
-\hypertarget{para-duas-medias-dependentes}{%
-\subsection{Para duas médias dependentes}\label{para-duas-medias-dependentes}}
+\hypertarget{para-duas-muxe9dias-dependentes}{%
+\subsection{Para duas médias dependentes}\label{para-duas-muxe9dias-dependentes}}
 
 Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
 As hipóteses se mantêm. Agora basta adicionar o argumento \texttt{paired=T}, informando que as amostras são dependentes.
@@ -4959,8 +4967,8 @@ As hipóteses se mantêm. Agora basta adicionar o argumento \texttt{paired=T}, i
 
 Note que a estatística do teste-t pareado não é baseada na média dos tratamentos, e sim na diferença entre os pares de tratamentos.
 
-\hypertarget{teste-de-variancia}{%
-\section{Teste de variância}\label{teste-de-variancia}}
+\hypertarget{teste-de-variuxe2ncia}{%
+\section{Teste de variância}\label{teste-de-variuxe2ncia}}
 
 \hypertarget{usando-o-teste-de-f}{%
 \subsection{Usando o teste de F}\label{usando-o-teste-de-f}}
@@ -5089,8 +5097,8 @@ acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráf
 ## alternative hypothesis: true location shift is not equal to 0
 \end{verbatim}
 
-\hypertarget{covariancia-e-correlacao}{%
-\section{Covariância e Correlação}\label{covariancia-e-correlacao}}
+\hypertarget{covariuxe2ncia-e-correlauxe7uxe3o}{%
+\section{Covariância e Correlação}\label{covariuxe2ncia-e-correlauxe7uxe3o}}
 
 A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos \texttt{cov(x,y)} e \texttt{cor(x,y)}, respectivamente.
 São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.
@@ -5214,8 +5222,8 @@ Teste de correlação de Pearson
 \end{Shaded}
 
 \begin{verbatim}
-## Warning in cor.test.default(sol_verao_camp$temp, sol_verao_est$temp, method
-## = "spearman"): Cannot compute exact p-value with ties
+## Warning in cor.test.default(sol_verao_camp$temp, sol_verao_est$temp, method =
+## "spearman"): Cannot compute exact p-value with ties
 \end{verbatim}
 
 \begin{verbatim}
@@ -5279,10 +5287,10 @@ Utilizaremos o banco de dados \href{https://www.dropbox.com/s/zg7fyg1iewtji49/da
 \end{verbatim}
 
 \begin{verbatim}
-## The following objects are masked from fisio (pos = 6):
+## The following objects are masked from fisio (pos = 13):
 ## 
-##     a, b, cc, cota, ds, ma, ptotal, tibe, tibo, x, X120, X3, X60,
-##     X90, y, z
+##     a, b, cc, cota, ds, ma, ptotal, tibe, tibo, x, X120, X3, X60, X90,
+##     y, z
 \end{verbatim}
 
 \begin{Shaded}
@@ -5361,7 +5369,894 @@ Cálculo das medidas numéricas de qualidade do ajuste para o ``melhor'' caso (i
 ## VE        -3.54
 \end{verbatim}
 
-\bibliography{book.bib,packages.bib}
+\hypertarget{delineamento-em-bloco-casualizado}{%
+\chapter{Delineamento em bloco casualizado}\label{delineamento-em-bloco-casualizado}}
 
+O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:
+
+\begin{itemize}
+\item
+  repetição
+\item
+  casualização
+\item
+  controle local
+\end{itemize}
+
+É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como \emph{Two Way ANOVA}.
+
+\hypertarget{anuxe1lise-de-experimento-dbc}{%
+\section{Análise de experimento DBC}\label{anuxe1lise-de-experimento-dbc}}
+
+Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
+
+Importando dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+conferir se temos fatores para fazer a análise de variância
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    20 obs. of  3 variables:
+##  $ promalin: Factor w/ 5 levels "12.5","12.5+12.5",..: 1 3 4 2 5 1 3 4 2 5 ...
+##  $ bloco   : Factor w/ 4 levels "I","II","III",..: 1 1 1 1 1 2 2 2 2 2 ...
+##  $ peso    : num  142 140 141 151 154 ...
+\end{verbatim}
+
+Lembramos que o \emph{peso} deve ter conteudo numerico e o \emph{promalin} e \emph{bloco} deve ser fator.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados}\OperatorTok{$}\NormalTok{promalin<-}\KeywordTok{as.factor}\NormalTok{(dados}\OperatorTok{$}\NormalTok{promalin)}
+\NormalTok{dados}\OperatorTok{$}\NormalTok{bloco<-}\KeywordTok{as.numeric}\NormalTok{(dados}\OperatorTok{$}\NormalTok{bloco)}
+\end{Highlighting}
+\end{Shaded}
+
+Verificação gráfica**
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(lattice)}
+\KeywordTok{xyplot}\NormalTok{(peso }\OperatorTok{~}\StringTok{ }\NormalTok{promalin, }
+        \DataTypeTok{groups =}\NormalTok{ bloco, }
+        \DataTypeTok{data=}\NormalTok{ dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-281-1.pdf}
+
+O efeito do bloco é aditivo?
+
+Ligar as observações com o mesmo bloco com a função \texttt{type\ ="o"}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xyplot}\NormalTok{(peso }\OperatorTok{~}\StringTok{ }\KeywordTok{reorder}\NormalTok{(promalin, peso), }
+        \DataTypeTok{groups =}\NormalTok{ bloco, }
+        \DataTypeTok{data=}\NormalTok{ dados,}
+        \DataTypeTok{type =} \StringTok{"o"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-282-1.pdf}
+
+Reordenar os tratamentos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(plyr)}
+\NormalTok{dados}\OperatorTok{$}\NormalTok{promalin <-}\StringTok{ }\KeywordTok{with}\NormalTok{(dados, }\KeywordTok{reorder}\NormalTok{(promalin, peso))}
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{arrange}\NormalTok{(dados, promalin, bloco)}
+\end{Highlighting}
+\end{Shaded}
+
+Graficos reordenados da menor média a maior média por tratamento
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xyplot}\NormalTok{(peso }\OperatorTok{~}\StringTok{ }\KeywordTok{reorder}\NormalTok{(promalin, peso), }
+        \DataTypeTok{groups =}\NormalTok{ bloco, }
+        \DataTypeTok{data=}\NormalTok{ dados,}
+        \DataTypeTok{type =} \StringTok{"o"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-284-1.pdf}
+
+\hypertarget{anuxe1lise-de-variuxe2ncia}{%
+\subsection{Análise de variância}\label{anuxe1lise-de-variuxe2ncia}}
+
+Fazendo a análise de variância
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m0 <-}\StringTok{ }\KeywordTok{lm}\NormalTok{ (dados}\OperatorTok{$}\NormalTok{peso }\OperatorTok{~}\StringTok{ }\NormalTok{dados}\OperatorTok{$}\NormalTok{bloco }\OperatorTok{+}\StringTok{ }\NormalTok{dados}\OperatorTok{$}\NormalTok{promalin, }\DataTypeTok{data =}\NormalTok{ dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: dados$peso
+##                Df Sum Sq Mean Sq F value   Pr(>F)   
+## dados$bloco     1  71.57  71.572  2.4574 0.139291   
+## dados$promalin  4 788.95 197.238  6.7721 0.002994 **
+## Residuals      14 407.75  29.125                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Extraindo o coeficiente de variação
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(agricolae)}
+\KeywordTok{cv.model}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 3.774477
+\end{verbatim}
+
+Análise gráfica dos resíduos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-288-1.pdf}
+
+Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade.
+
+\hypertarget{teste-das-pressuposiuxe7uxf5es-da-anuxe1lise-de-variuxe2ncia}{%
+\subsubsection{Teste das pressuposições da análise de variância}\label{teste-das-pressuposiuxe7uxf5es-da-anuxe1lise-de-variuxe2ncia}}
+
+\hypertarget{teste-de-bartllet-para-homocedasticidade}{%
+\paragraph{Teste de Bartllet para homocedasticidade}\label{teste-de-bartllet-para-homocedasticidade}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{bartlett.test}\NormalTok{(m0}\OperatorTok{$}\NormalTok{res, dados}\OperatorTok{$}\NormalTok{promalin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m0$res and dados$promalin
+## Bartlett's K-squared = 1.7485, df = 4, p-value = 0.7819
+\end{verbatim}
+
+Como observamos uma não significancia estatística neste resultado \emph{(p-value = 0.7819)}, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+
+\hypertarget{teste-de-shapiro-wilk-para-normalidade}{%
+\paragraph{Teste de Shapiro-Wilk para Normalidade}\label{teste-de-shapiro-wilk-para-normalidade}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(m0}\OperatorTok{$}\NormalTok{res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m0$res
+## W = 0.855, p-value = 0.006472
+\end{verbatim}
+
+Como observamos uma significancia estatística neste resultado \emph{(p-value = 0.006472)}, devemos rejeitar a hipótese nula de que os residuoes tedem a distruibuição normal.
+
+\hypertarget{transformauxe7uxe3o-de-dados}{%
+\subsection{Transformação de dados}\label{transformauxe7uxe3o-de-dados}}
+
+Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+
+\hypertarget{transformauxe7uxe3o-de-dados-com-o-box-cox}{%
+\subsubsection{Transformação de dados com o BOX-COX}\label{transformauxe7uxe3o-de-dados-com-o-box-cox}}
+
+Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
+
+A função \texttt{boxcox()} do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(MASS) }
+  \KeywordTok{boxcox}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-291-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{boxcox}\NormalTok{(m0, }\DataTypeTok{lam =} \KeywordTok{seq}\NormalTok{(}\OperatorTok{-}\DecValTok{8}\NormalTok{, }\DecValTok{8}\NormalTok{, }\DecValTok{1}\OperatorTok{/}\DecValTok{10}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-291-2.pdf}
+
+Localizando o ponto máximo.
+
+\hypertarget{anuxe1lise-de-variuxe2ncia---ajuste-com-a-variuxe1vel-transformada.}{%
+\subsubsection{Análise de variância - Ajuste com a variável transformada.}\label{anuxe1lise-de-variuxe2ncia---ajuste-com-a-variuxe1vel-transformada.}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m1 <-}\StringTok{ }\KeywordTok{aov}\NormalTok{ (}\KeywordTok{log}\NormalTok{(dados}\OperatorTok{$}\NormalTok{peso) }\OperatorTok{~}\StringTok{ }\NormalTok{dados}\OperatorTok{$}\NormalTok{promalin, }\DataTypeTok{data =}\NormalTok{ dados)}
+\end{Highlighting}
+\end{Shaded}
+
+Anáise gráfica dos resíduos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow =} \KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-294-1.pdf}
+
+Os pressupostos foram atendindos ?
+
+Teste de Shapiro-Wilk para Normalidade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(m1}\OperatorTok{$}\NormalTok{res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m1$res
+## W = 0.93909, p-value = 0.2305
+\end{verbatim}
+
+Teste de Bartllet para homocedasticidade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{bartlett.test}\NormalTok{(m1}\OperatorTok{$}\NormalTok{res, dados}\OperatorTok{$}\NormalTok{promalin)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m1$res and dados$promalin
+## Bartlett's K-squared = 2.1761, df = 4, p-value = 0.7034
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(m1)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: log(dados$peso)
+##                Df   Sum Sq   Mean Sq F value   Pr(>F)   
+## dados$promalin  4 0.036571 0.0091428  6.0129 0.004296 **
+## Residuals      15 0.022808 0.0015205                    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\hypertarget{pacote-para-analise-de-experimentos}{%
+\section{Pacote para analise de experimentos}\label{pacote-para-analise-de-experimentos}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ExpDes.pt)}
+\end{Highlighting}
+\end{Shaded}
+
+Conhecer o pacote ExpDes.pt
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ls}\NormalTok{(}\StringTok{"package:ExpDes.pt"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##  [1] "anscombetukey"  "bartlett"       "ccboot"         "ccf"           
+##  [5] "dbc"            "dic"            "dql"            "duncan"        
+##  [9] "faixas"         "fat2.ad.dbc"    "fat2.ad.dic"    "fat2.dbc"      
+## [13] "fat2.dic"       "fat3.ad.dbc"    "fat3.ad.dic"    "fat3.dbc"      
+## [17] "fat3.dic"       "ginv"           "graficos"       "han"           
+## [21] "lastC"          "layard"         "levene"         "lsd"           
+## [25] "lsdb"           "oneilldbc"      "oneillmathews"  "order.group"   
+## [29] "order.stat.SNK" "plotres"        "psub2.dbc"      "psub2.dic"     
+## [33] "reg.nl"         "reg.poly"       "samiuddin"      "scottknott"    
+## [37] "snk"            "tapply.stat"    "tukey"
+\end{verbatim}
+
+Utilizando o exemplo anterior.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{x <-}\StringTok{ }\KeywordTok{dbc}\NormalTok{(}\DataTypeTok{trat =}\NormalTok{ dados}\OperatorTok{$}\NormalTok{promalin,}
+          \DataTypeTok{bloco =}\NormalTok{ dados}\OperatorTok{$}\NormalTok{bloco,}
+          \DataTypeTok{resp =} \KeywordTok{log}\NormalTok{(dados}\OperatorTok{$}\NormalTok{peso),}
+          \DataTypeTok{quali =}\NormalTok{ T,}
+          \DataTypeTok{mcomp =} \StringTok{"tukey"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL       SQ        QM     Fc   Pr>Fc
+## Tratamento  4 0.036571 0.0091428 5.7552 0.00800
+## Bloco       3 0.003745 0.0012483 0.7858 0.52459
+## Residuo    12 0.019063 0.0015886               
+## Total      19 0.059379                         
+## ------------------------------------------------------------------------
+## CV = 0.8 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.005994506 
+## ATENCAO: a 5% de significancia, os residuos nao podem ser considerados normais!
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.8927087 
+## De acordo com o teste de oneillmathews a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     Testemunha      5.043544 
+## ab    12.5    4.961465 
+##  b    12.5+12.5   4.940843 
+##  b    50.0    4.932278 
+##  b    25.0    4.927864 
+## ------------------------------------------------------------------------
+\end{verbatim}
+
+Carregar pacotes
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(ggplot2)}
+\KeywordTok{library}\NormalTok{(dplyr)}
+\end{Highlighting}
+\end{Shaded}
+
+Calculo do erro
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{erro =}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\KeywordTok{group_by}\NormalTok{(dados, promalin), }
+       \DataTypeTok{avg =} \KeywordTok{mean}\NormalTok{(peso), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(peso))}
+\end{Highlighting}
+\end{Shaded}
+
+Gerando gráfico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{ggplot}\NormalTok{(erro, }\KeywordTok{aes}\NormalTok{(promalin, avg, }\DataTypeTok{fill=}\NormalTok{promalin))}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}\OperatorTok{+}
+\StringTok{  }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{avg}\OperatorTok{-}\NormalTok{sd, }\DataTypeTok{ymax =}\NormalTok{avg}\OperatorTok{+}\NormalTok{sd), }\DataTypeTok{with=}\FloatTok{0.1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Peso médio dos frutos (g)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\StringTok{"ab"}\NormalTok{, }\DataTypeTok{x=}\DecValTok{1}\NormalTok{, }\DataTypeTok{y=}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{x=}\DecValTok{2}\NormalTok{, }\DataTypeTok{y=}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{) }\OperatorTok{+}
+\StringTok{      }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{x=}\DecValTok{3}\NormalTok{, }\DataTypeTok{y=}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\StringTok{"b"}\NormalTok{, }\DataTypeTok{x=}\DecValTok{4}\NormalTok{, }\DataTypeTok{y=}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{      }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\StringTok{"a"}\NormalTok{, }\DataTypeTok{x=}\DecValTok{5}\NormalTok{, }\DataTypeTok{y=}\DecValTok{100}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{  }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\OperatorTok{+}
+\StringTok{  }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{caption =} \StringTok{"Médias seguidas de mesma letra indicam diferença nula à 5%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Ignoring unknown parameters: with
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-303-1.pdf}
+
+\hypertarget{teste-nuxe3o-parametrico}{%
+\section{Teste não parametrico}\label{teste-nuxe3o-parametrico}}
+
+As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: \textbf{kruskal}, \textbf{waerden.test}, \textbf{friedman}, \textbf{durbin.test} e \textbf{Conover (1999)}.
+Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).
+
+Carregar pacote
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{library}\NormalTok{(agricolae)}
+\end{Highlighting}
+\end{Shaded}
+
+A função \texttt{kruskal} é usada para N amostras (N\textgreater{} 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{woutKruskal<-}\KeywordTok{with}\NormalTok{(dados,}\KeywordTok{kruskal}\NormalTok{(promalin, }\DataTypeTok{y =}\NormalTok{ peso}
+\NormalTok{  ,}\DataTypeTok{p.adj=}\StringTok{"bon"}\NormalTok{,}\DataTypeTok{group=}\NormalTok{T, }\DataTypeTok{console=}\NormalTok{T))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Study: peso ~ promalin
+## Kruskal-Wallis test's
+## Ties or no Ties
+## 
+## Critical Value: 10.41429
+## Degrees of freedom: 4
+## Pvalue Chisq  : 0.03399839 
+## 
+## promalin,  means of the ranks
+## 
+##             peso r
+## 12.5       12.00 4
+## 12.5+12.5   7.75 4
+## 25.0        7.50 4
+## 50.0        7.00 4
+## Testemunha 18.25 4
+## 
+## Post Hoc Analysis
+## 
+## P value adjustment method: bonferroni
+## t-Student: 3.286039
+## Alpha    : 0.05
+## Minimum Significant Difference: 10.40002 
+## 
+## Treatments with the same letter are not significantly different.
+## 
+##             peso groups
+## Testemunha 18.25      a
+## 12.5       12.00     ab
+## 12.5+12.5   7.75      b
+## 25.0        7.50      b
+## 50.0        7.00      b
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(woutKruskal}\OperatorTok{$}\NormalTok{group)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             peso groups
+## Testemunha 18.25      a
+## 12.5       12.00     ab
+## 12.5+12.5   7.75      b
+## 25.0        7.50      b
+## 50.0        7.00      b
+\end{verbatim}
+
+Gráficos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{),}\DataTypeTok{mar=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{bar.group}\NormalTok{(woutKruskal}\OperatorTok{$}\NormalTok{group,}\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{), }\DataTypeTok{xlab =}\StringTok{"promalin"}\NormalTok{)}
+\KeywordTok{bar.group}\NormalTok{(woutKruskal}\OperatorTok{$}\NormalTok{group,}\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{),}\DataTypeTok{horiz =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(woutKruskal)}
+\KeywordTok{plot}\NormalTok{(woutKruskal,}\DataTypeTok{variation=}\StringTok{"IQR"}\NormalTok{,}\DataTypeTok{horiz =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-306-1.pdf}
+
+A função \texttt{friedman} é usada para análise de tratamentos do estudo randomizado
+de bloco completo, onde a resposta não pode ser tratada através da análise de variância.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{woutfriedman <-}\StringTok{ }\NormalTok{out<-}\KeywordTok{with}\NormalTok{(dados,}\KeywordTok{friedman}\NormalTok{(bloco,promalin, peso,}\DataTypeTok{alpha=}\FloatTok{0.05}\NormalTok{, }\DataTypeTok{group=}\NormalTok{T,}
+  \DataTypeTok{console=}\OtherTok{TRUE}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Study: peso ~ bloco + promalin 
+## 
+## promalin,  Sum of the ranks
+## 
+##            peso r
+## 12.5          8 4
+## 12.5+12.5     8 4
+## 25.0         10 4
+## 50.0         14 4
+## Testemunha   20 4
+## 
+## Friedman's Test
+## ===============
+## Adjusted for ties
+## Critical Value: 10.4
+## P.Value Chisq: 0.0342027
+## F Value: 5.571429
+## P.Value F: 0.009007502 
+## 
+## Post Hoc Analysis
+## 
+## Alpha: 0.05 ; DF Error: 12
+## t-Student: 2.178813
+## LSD: 6.656383 
+## 
+## Treatments with the same letter are not significantly different.
+## 
+##            Sum of ranks groups
+## Testemunha           20      a
+## 50.0                 14     ab
+## 25.0                 10      b
+## 12.5                  8      b
+## 12.5+12.5             8      b
+\end{verbatim}
+
+Grafico
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{),}\DataTypeTok{mar=}\KeywordTok{c}\NormalTok{(}\DecValTok{3}\NormalTok{,}\DecValTok{3}\NormalTok{,}\DecValTok{1}\NormalTok{,}\DecValTok{1}\NormalTok{),}\DataTypeTok{cex=}\FloatTok{0.8}\NormalTok{)}
+\KeywordTok{bar.group}\NormalTok{(woutfriedman}\OperatorTok{$}\NormalTok{group,}\DataTypeTok{ylim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{), }\DataTypeTok{xlab =}\StringTok{"promalin"}\NormalTok{)}
+\KeywordTok{bar.group}\NormalTok{(woutfriedman}\OperatorTok{$}\NormalTok{group,}\DataTypeTok{xlim=}\KeywordTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{,}\DecValTok{100}\NormalTok{),}\DataTypeTok{horiz =} \OtherTok{TRUE}\NormalTok{)}
+\KeywordTok{plot}\NormalTok{(woutfriedman)}
+\KeywordTok{plot}\NormalTok{(woutfriedman,}\DataTypeTok{variation=}\StringTok{"IQR"}\NormalTok{,}\DataTypeTok{horiz =} \OtherTok{TRUE}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-308-1.pdf}
+
+\hypertarget{exercicio-1}{%
+\section{Exercicio 1}\label{exercicio-1}}
+
+Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.
+
+Comparação de métodos de Semeadura do Mamoeiro
+
+Estudo realizado em Jaboticabal - SP por Ruiz (1977) que comparou métodos de semeadura no mamoeiro. O experimento foi instalado em delineamento de blocos casualizados, com 4 repetições, avaliando 3 métodos de semeadura. Foram avaliadas duas unidades experimentais por método em cada bloco.
+
+Importando dados
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados <-}\StringTok{ }\KeywordTok{read.table}\NormalTok{(}\StringTok{"https://www.dropbox.com/s/40m95attfw2fdh2/BanzattoQd4.7.1.txt?dl=1"}\NormalTok{) }
+\end{Highlighting}
+\end{Shaded}
+
+Conferir se temos fatores para fazer a análise de variância
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{str}\NormalTok{(dados)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 'data.frame':    24 obs. of  3 variables:
+##  $ bloco : Factor w/ 4 levels "I","II","III",..: 1 1 2 2 3 3 4 4 1 1 ...
+##  $ semead: Factor w/ 3 levels "Direta no campo",..: 1 1 1 1 1 1 1 1 2 2 ...
+##  $ altura: num  136.1 105.3 98.8 86.8 108.8 ...
+\end{verbatim}
+
+Gráficos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{addmargins}\NormalTok{(}\KeywordTok{with}\NormalTok{(dados,}
+  \KeywordTok{tapply}\NormalTok{(}\DataTypeTok{X =}\NormalTok{ altura,}
+    \DataTypeTok{INDEX =} \KeywordTok{list}\NormalTok{(semead, bloco),}
+    \DataTypeTok{FUN =}\NormalTok{ sum)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##                     I    II   III    IV    Sum
+## Direta no campo 241.4 185.6 218.5 162.9  808.4
+## Recip. ao sol   157.7 120.7 129.0  80.1  487.5
+## Recip. ripado   123.5 127.1 132.9 109.8  493.3
+## Sum             522.6 433.4 480.4 352.8 1789.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{xyplot}\NormalTok{(altura }\OperatorTok{~}\StringTok{ }\NormalTok{semead, }\DataTypeTok{data =}\NormalTok{ dados,}
+  \DataTypeTok{groups =}\NormalTok{ bloco, }\DataTypeTok{type =} \KeywordTok{c}\NormalTok{(}\StringTok{"p"}\NormalTok{, }\StringTok{"a"}\NormalTok{),}
+  \DataTypeTok{xlab =} \StringTok{"Método de semeadura de mamoeiro"}\NormalTok{,}
+  \DataTypeTok{ylab =} \StringTok{"Altura média de planta de mamoeiro aos 147 DAS (cm)"}\NormalTok{,}
+  \DataTypeTok{auto.key =} \KeywordTok{list}\NormalTok{(}\DataTypeTok{title =} \StringTok{"Bloco"}\NormalTok{, }\DataTypeTok{cex.title =} \DecValTok{1}\NormalTok{, }\DataTypeTok{columns =} \DecValTok{2}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-312-1.pdf}
+
+Análise de Variância
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{m0 <-}\StringTok{ }\KeywordTok{aov}\NormalTok{(altura}\OperatorTok{~}\NormalTok{bloco}\OperatorTok{+}\NormalTok{semead, }\DataTypeTok{data=}\NormalTok{dados)}
+\KeywordTok{class}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "aov" "lm"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{anova}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Analysis of Variance Table
+## 
+## Response: altura
+##           Df Sum Sq Mean Sq F value    Pr(>F)    
+## bloco      3 2648.2   882.7  7.2162  0.002219 ** 
+## semead     2 8429.1  4214.6 34.4535 7.014e-07 ***
+## Residuals 18 2201.9   122.3                      
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{summary}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##             Df Sum Sq Mean Sq F value   Pr(>F)    
+## bloco        3   2648     883   7.216  0.00222 ** 
+## semead       2   8429    4215  34.453 7.01e-07 ***
+## Residuals   18   2202     122                     
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Checagem gráfica
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{par}\NormalTok{(}\DataTypeTok{mfrow=}\KeywordTok{c}\NormalTok{(}\DecValTok{2}\NormalTok{,}\DecValTok{2}\NormalTok{))}
+\KeywordTok{plot}\NormalTok{(m0)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-314-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{layout}\NormalTok{(}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+Teste das pressuposições de normalidade de homocedasticidade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{shapiro.test}\NormalTok{(}\KeywordTok{residuals}\NormalTok{(m0))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(m0)
+## W = 0.95197, p-value = 0.2988
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{bartlett.test}\NormalTok{(}\KeywordTok{residuals}\NormalTok{(m0)}\OperatorTok{~}\NormalTok{dados}\OperatorTok{$}\NormalTok{semead)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  residuals(m0) by dados$semead
+## Bartlett's K-squared = 4.5219, df = 2, p-value = 0.1043
+\end{verbatim}
+
+Teste de médias
+
+\textbf{Teste de Tukey}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(agricolae)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{tu <-}\StringTok{ }\KeywordTok{with}\NormalTok{(dados, }\KeywordTok{HSD.test}\NormalTok{(altura, semead,}
+\DataTypeTok{DFerror=}\KeywordTok{df.residual}\NormalTok{(m0),}
+\DataTypeTok{MSerror=}\KeywordTok{deviance}\NormalTok{(m0)}\OperatorTok{/}\KeywordTok{df.residual}\NormalTok{(m0)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{plot}\NormalTok{(tu)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-318-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(tu)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $statistics
+##    MSerror Df  Mean       CV      MSD
+##   122.3258 18 74.55 14.83581 14.11359
+## 
+## $parameters
+##    test name.t ntr StudentizedRange alpha
+##   Tukey semead   3         3.609304  0.05
+## 
+## $means
+##                   altura       std r  Min   Max    Q25    Q50     Q75
+## Direta no campo 101.0500 19.263956 8 70.5 136.1 91.000 102.05 109.025
+## Recip. ao sol    60.9375 15.187489 8 36.3  79.8 53.175  63.25  69.650
+## Recip. ripado    61.6625  9.544922 8 43.7  77.1 58.575  62.95  65.425
+## 
+## $comparison
+## NULL
+## 
+## $groups
+##                   altura groups
+## Direta no campo 101.0500      a
+## Recip. ripado    61.6625      b
+## Recip. ao sol    60.9375      b
+## 
+## attr(,"class")
+## [1] "group"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{require}\NormalTok{(dplyr)}
+\KeywordTok{require}\NormalTok{(ggplot2)}
+\NormalTok{  erro =}\StringTok{ }\KeywordTok{summarise}\NormalTok{(}\KeywordTok{group_by}\NormalTok{(dados, semead), }
+    \DataTypeTok{avg =} \KeywordTok{mean}\NormalTok{(altura), }\DataTypeTok{sd =} \KeywordTok{sd}\NormalTok{(altura))}
+
+  
+  \KeywordTok{ggplot}\NormalTok{(erro, }\KeywordTok{aes}\NormalTok{(semead, avg, }\DataTypeTok{fill=}\NormalTok{semead))}\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_bar}\NormalTok{(}\DataTypeTok{stat=}\StringTok{"identity"}\NormalTok{)}\OperatorTok{+}
+\StringTok{    }\KeywordTok{geom_errorbar}\NormalTok{(}\KeywordTok{aes}\NormalTok{(}\DataTypeTok{ymin=}\NormalTok{avg}\OperatorTok{-}\NormalTok{sd, }\DataTypeTok{ymax =}\NormalTok{avg}\OperatorTok{+}\NormalTok{sd), }\DataTypeTok{with=}\FloatTok{0.1}\NormalTok{, }\DataTypeTok{col=}\StringTok{"black"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{xlab}\NormalTok{(}\StringTok{"Tratamentos"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{ylab}\NormalTok{(}\StringTok{"Altura média de planta de mamoeiro aos 147 DAS (cm)"}\NormalTok{) }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{theme_bw}\NormalTok{() }\OperatorTok{+}\StringTok{ }
+\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"top"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\NormalTok{tu}\OperatorTok{$}\NormalTok{groups}\OperatorTok{$}\NormalTok{groups[}\DecValTok{1}\NormalTok{], }\DataTypeTok{x=}\DecValTok{1}\NormalTok{, }\DataTypeTok{y=}\DecValTok{20}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{    }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\NormalTok{tu}\OperatorTok{$}\NormalTok{groups}\OperatorTok{$}\NormalTok{groups[}\DecValTok{2}\NormalTok{], }\DataTypeTok{x=}\DecValTok{2}\NormalTok{, }\DataTypeTok{y=}\DecValTok{20}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{    }\KeywordTok{annotate}\NormalTok{(}\StringTok{"text"}\NormalTok{, }\DataTypeTok{label=}\NormalTok{tu}\OperatorTok{$}\NormalTok{groups}\OperatorTok{$}\NormalTok{groups[}\DecValTok{3}\NormalTok{], }\DataTypeTok{x=}\DecValTok{3}\NormalTok{, }\DataTypeTok{y=}\DecValTok{20}\NormalTok{, }\DataTypeTok{size =} \DecValTok{5}\NormalTok{)  }\OperatorTok{+}
+\StringTok{    }
+\StringTok{    }\KeywordTok{theme}\NormalTok{(}\DataTypeTok{legend.position=}\StringTok{"none"}\NormalTok{) }\OperatorTok{+}
+\StringTok{    }\KeywordTok{labs}\NormalTok{(}\DataTypeTok{caption =} \StringTok{"Médias seguidas de mesma letra indicam diferença nula à 5%"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: Ignoring unknown parameters: with
+\end{verbatim}
+
+\includegraphics{TudodoR_files/figure-latex/unnamed-chunk-320-1.pdf}
+
+\textbf{Teste de Scott-Knott}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+  \KeywordTok{library}\NormalTok{(ScottKnott)}
+\NormalTok{  sk <-}\StringTok{ }\KeywordTok{SK}\NormalTok{(}\DataTypeTok{x=}\NormalTok{dados, }\DataTypeTok{y=}\NormalTok{dados}\OperatorTok{$}\NormalTok{altura, }\DataTypeTok{model=}\StringTok{"altura~bloco+semead"}\NormalTok{, }\DataTypeTok{which=}\StringTok{"semead"}\NormalTok{)}
+  \KeywordTok{summary}\NormalTok{(sk)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##           Levels    Means SK(5%)
+##  Direta no campo 101.0500      a
+##    Recip. ripado  61.6625      b
+##    Recip. ao sol  60.9375      b
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{print}\NormalTok{(sk)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## $av
+## Call:
+##    aov(formula = altura ~ bloco + semead, data = dat)
+## 
+## Terms:
+##                    bloco   semead Residuals
+## Sum of Squares  2648.193 8429.103  2201.864
+## Deg. of Freedom        3        2        18
+## 
+## Residual standard error: 11.0601
+## Estimated effects may be unbalanced
+## 
+## $groups
+## [1] 1 2 2
+## 
+## $nms
+## [1] "Direta no campo" "Recip. ao sol"   "Recip. ripado"  
+## 
+## $ord
+## [1] 1 3 2
+## 
+## $m.inf
+##                     mean  min   max
+## Direta no campo 101.0500 70.5 136.1
+## Recip. ripado    61.6625 43.7  77.1
+## Recip. ao sol    60.9375 36.3  79.8
+## 
+## $sig.level
+## [1] 0.05
+## 
+## attr(,"class")
+## [1] "SK"   "list"
+\end{verbatim}
+
+\hypertarget{referuxeancia-4}{%
+\section{Referência}\label{referuxeancia-4}}
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.
+
+ZEVIANI, W. M. Estatística Básica e Experimentação no R. 45p.
+
+Site: \url{http://www.leg.ufpr.br/~paulojus/}
+
+  \bibliography{book.bib,packages.bib}
 
 \end{document}
