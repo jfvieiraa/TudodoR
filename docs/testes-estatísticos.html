@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>chapter8 Testes Estatísticos | Uso do sistema R para análise de dados</title>
+  <title>chapter7 Testes Estatísticos | Uso do sistema R para análise de dados</title>
   <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="chapter8 Testes Estatísticos | Uso do sistema R para análise de dados" />
+  <meta property="og:title" content="chapter7 Testes Estatísticos | Uso do sistema R para análise de dados" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="chapter8 Testes Estatísticos | Uso do sistema R para análise de dados" />
+  <meta name="twitter:title" content="chapter7 Testes Estatísticos | Uso do sistema R para análise de dados" />
   
   <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="analise-de-variância-anova.html"/>
-<link rel="next" href="delineamento-em-bloco-casualizado.html"/>
+<link rel="prev" href="gráficos-com-ggplot2.html"/>
+<link rel="next" href="analise-de-variância-anova.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -167,7 +167,6 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
 <li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
 <li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
@@ -228,42 +227,40 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul></li>
 <li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html"><i class="fa fa-check"></i><b>7</b> Analise de variância (ANOVA)</a><ul>
-<li class="chapter" data-level="7.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-inteiramente-casualizado"><i class="fa fa-check"></i><b>7.1</b> Delineamento inteiramente casualizado</a><ul>
-<li class="chapter" data-level="7.1.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-em-dic"><i class="fa fa-check"></i><b>7.1.1</b> Análise de experimento em DIC</a></li>
-<li class="chapter" data-level="7.1.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-variância"><i class="fa fa-check"></i><b>7.1.2</b> Análise de variância</a></li>
-<li class="chapter" data-level="7.1.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#transformação-de-dados"><i class="fa fa-check"></i><b>7.1.3</b> Transformação de dados</a></li>
-<li class="chapter" data-level="7.1.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-de-tukey-para-comparar-médias"><i class="fa fa-check"></i><b>7.1.4</b> Aplicando teste de Tukey para comparar médias</a></li>
-<li class="chapter" data-level="7.1.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-para-agrupar-médias"><i class="fa fa-check"></i><b>7.1.5</b> Aplicando teste para agrupar médias</a></li>
+<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
 </ul></li>
-<li class="chapter" data-level="7.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-4"><i class="fa fa-check"></i><b>7.2</b> Referência</a></li>
+<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
 </ul></li>
-<li class="chapter" data-level="8" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>8</b> Testes Estatísticos</a><ul>
-<li class="chapter" data-level="8.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>8.1</b> Teste t de Student</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>8.1.1</b> Para uma média</a></li>
-<li class="chapter" data-level="8.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>8.1.2</b> Para duas médias independentes</a></li>
-<li class="chapter" data-level="8.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>8.1.3</b> Para duas médias dependentes</a></li>
-</ul></li>
-<li class="chapter" data-level="8.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>8.2</b> Teste de variância</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>8.2.1</b> Usando o teste de F</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>8.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
-<li class="chapter" data-level="8.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>8.4</b> Teste U de Mann-Whitney</a></li>
-<li class="chapter" data-level="8.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>8.5</b> Covariância e Correlação</a></li>
-<li class="chapter" data-level="8.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>8.6</b> Outros testes</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>8.6.1</b> hydroGOF</a></li>
+<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="9" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>9</b> Delineamento em bloco casualizado</a><ul>
-<li class="chapter" data-level="9.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>9.1</b> Análise de experimento DBC</a><ul>
-<li class="chapter" data-level="9.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância-1"><i class="fa fa-check"></i><b>9.1.1</b> Análise de variância</a></li>
-<li class="chapter" data-level="9.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados-1"><i class="fa fa-check"></i><b>9.1.2</b> Transformação de dados</a></li>
+<li class="chapter" data-level="8" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html"><i class="fa fa-check"></i><b>8</b> Analise de variância (ANOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-inteiramente-casualizado"><i class="fa fa-check"></i><b>8.1</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-em-dic"><i class="fa fa-check"></i><b>8.1.1</b> Análise de experimento em DIC</a></li>
+<li class="chapter" data-level="8.1.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.2</b> Análise de variância</a></li>
+<li class="chapter" data-level="8.1.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.3</b> Transformação de dados</a></li>
+<li class="chapter" data-level="8.1.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-de-tukey-para-comparar-médias"><i class="fa fa-check"></i><b>8.1.4</b> Aplicando teste de Tukey para comparar médias</a></li>
+<li class="chapter" data-level="8.1.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-para-agrupar-médias"><i class="fa fa-check"></i><b>8.1.5</b> Aplicando teste para agrupar médias</a></li>
 </ul></li>
-<li class="chapter" data-level="9.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>9.2</b> Pacote para analise de experimentos</a></li>
-<li class="chapter" data-level="9.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>9.3</b> Teste não parametrico</a></li>
-<li class="chapter" data-level="9.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>9.4</b> Exercicio 1</a></li>
-<li class="chapter" data-level="9.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-5"><i class="fa fa-check"></i><b>9.5</b> Referência</a></li>
+<li class="chapter" data-level="8.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-4"><i class="fa fa-check"></i><b>8.2</b> Referência</a></li>
+<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-em-bloco-casualizado"><i class="fa fa-check"></i><b>8.3</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.3.1</b> Análise de experimento DBC</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.3.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.3.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="8.3.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-1"><i class="fa fa-check"></i><b>8.3.4</b> Exercicio 1</a></li>
 </ul></li>
+<li class="chapter" data-level="8.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-5"><i class="fa fa-check"></i><b>8.4</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
 
@@ -285,16 +282,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
             <section class="normal" id="section-">
 <div id="testes-estatísticos" class="section level1">
-<h1><span class="header-section-number">chapter8</span> Testes Estatísticos</h1>
+<h1><span class="header-section-number">chapter7</span> Testes Estatísticos</h1>
 <p>O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.</p>
 <div id="teste-t-de-student" class="section level2">
-<h2><span class="header-section-number">8.1</span> Teste t de Student</h2>
+<h2><span class="header-section-number">7.1</span> Teste t de Student</h2>
 <p>O teste t é bastante usado em várias situações do cotidiano quando se deseja fazer comparações entre <em>uma ou mais médias</em>, sejam elas dependentes ou não.
 Abaixo estão exemplos de vários modos de realizarmos o teste t.</p>
 <p>Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo.</p>
-<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1">pira_tem &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="st">&quot;https://www.dropbox.com/s/zvp5iftcpb6bdpe/pira_tem.csv?dl=1&quot;</span>,</a>
-<a class="sourceLine" id="cb495-2" title="2">  <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>)</a>
-<a class="sourceLine" id="cb495-3" title="3"><span class="kw">str</span>(pira_tem)</a></code></pre></div>
+<div class="sourceCode" id="cb424"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb424-1" title="1">pira_tem &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="st">&quot;https://www.dropbox.com/s/zvp5iftcpb6bdpe/pira_tem.csv?dl=1&quot;</span>,</a>
+<a class="sourceLine" id="cb424-2" title="2">  <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>)</a>
+<a class="sourceLine" id="cb424-3" title="3"><span class="kw">str</span>(pira_tem)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    768 obs. of  5 variables:
 ##  $ hora   : Factor w/ 96 levels &quot;0:00&quot;,&quot;0:15&quot;,..: 1 2 3 4 5 6 7 8 49 50 ...
 ##  $ periodo: Factor w/ 4 levels &quot;equi_out&quot;,&quot;equi_prim&quot;,..: 4 4 4 4 4 4 4 4 4 4 ...
@@ -302,21 +299,21 @@ Abaixo estão exemplos de vários modos de realizarmos o teste t.</p>
 ##  $ temp   : num  23.1 22.9 22.7 22.6 22.5 ...
 ##  $ X      : logi  NA NA NA NA NA NA ...</code></pre>
 <p>Apresentação dos dados em forma de gráfico</p>
-<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb497-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data=</span> pira_tem, <span class="kw">aes</span> (<span class="dt">x =</span> hora, <span class="dt">y =</span> temp, <span class="dt">colour =</span>periodo)) <span class="op">+</span></a>
-<a class="sourceLine" id="cb497-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">2</span>,<span class="dt">shape=</span><span class="dv">19</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb497-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
-<a class="sourceLine" id="cb497-5" title="5"><span class="st">  </span><span class="kw">facet_grid</span>(.<span class="op">~</span>local) <span class="op">+</span></a>
-<a class="sourceLine" id="cb497-6" title="6"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Horas&quot;</span>) <span class="op">+</span></a>
-<a class="sourceLine" id="cb497-7" title="7"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Temperatura ºC&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb497-8" title="8"><span class="st">             </span><span class="kw">ggtitle</span>(<span class="st">&quot;Variação da temperatura mediana</span><span class="ch">\n</span><span class="st"> nas quatro efemêrides&quot;) +</span></a>
-<a class="sourceLine" id="cb497-9" title="9"><span class="st">             theme(plot.title=element_text(face=&quot;</span>bold<span class="st">&quot;, size=12, hjust = 0.5))  +</span></a>
-<a class="sourceLine" id="cb497-10" title="10"><span class="st">  theme_bw()</span></a></code></pre></div>
+<div class="sourceCode" id="cb426"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb426-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb426-2" title="2"><span class="kw">ggplot</span>(<span class="dt">data=</span> pira_tem, <span class="kw">aes</span> (<span class="dt">x =</span> hora, <span class="dt">y =</span> temp, <span class="dt">colour =</span>periodo)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-3" title="3"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="dv">2</span>,<span class="dt">shape=</span><span class="dv">19</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-4" title="4"><span class="st">  </span><span class="kw">geom_line</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-5" title="5"><span class="st">  </span><span class="kw">facet_grid</span>(.<span class="op">~</span>local) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-6" title="6"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Horas&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb426-7" title="7"><span class="st">  </span><span class="kw">ylab</span>(<span class="st">&quot;Temperatura ºC&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb426-8" title="8"><span class="st">             </span><span class="kw">ggtitle</span>(<span class="st">&quot;Variação da temperatura mediana</span><span class="ch">\n</span><span class="st"> nas quatro efemêrides&quot;) +</span></a>
+<a class="sourceLine" id="cb426-9" title="9"><span class="st">             theme(plot.title=element_text(face=&quot;</span>bold<span class="st">&quot;, size=12, hjust = 0.5))  +</span></a>
+<a class="sourceLine" id="cb426-10" title="10"><span class="st">  theme_bw()</span></a></code></pre></div>
 <pre><code>## geom_path: Each group consists of only one observation. Do you need to adjust
 ## the group aesthetic?
 ## geom_path: Each group consists of only one observation. Do you need to adjust
 ## the group aesthetic?</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-245-1.png" width="672" /></p>
 <p><code>t.test()</code>
 Realiza o teste t-Student para uma ou duas amostras.</p>
 <p>sintaxe:
@@ -336,24 +333,24 @@ Valores possíveis: <em>“two-sided”, “less” ou “greater”</em>.</p>
 - FALSE - indica que a variância populacional de cada amostra é diferente.</p>
 <p><em>conf.level</em>: coeficiente de confiança do intervalo.</p>
 <div id="para-uma-média" class="section level3">
-<h3><span class="header-section-number">8.1.1</span> Para uma média</h3>
+<h3><span class="header-section-number">7.1.1</span> Para uma média</h3>
 <p>Vamos testar se a temperatura horaria do solsticio de verão no campo tem média igual ou maior que <strong>21 ºC</strong> na cidade de Piracicaba-SP.</p>
 <p><em>H0: mu &gt;= 21</em></p>
 <p><em>IC 95 para mu</em></p>
 <p>1.0 Passo filtrar os dados pelo fator “periodo” com o nivel sol_verao (solsticio de verão).</p>
-<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1"> <span class="co">#Dividir os dados - subset()</span></a>
-<a class="sourceLine" id="cb499-2" title="2">    sol_verao_amb &lt;-<span class="st"> </span><span class="kw">subset</span>(pira_tem, periodo <span class="op">==</span><span class="st"> &quot;sol_verao&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb428"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb428-1" title="1"> <span class="co">#Dividir os dados - subset()</span></a>
+<a class="sourceLine" id="cb428-2" title="2">    sol_verao_amb &lt;-<span class="st"> </span><span class="kw">subset</span>(pira_tem, periodo <span class="op">==</span><span class="st"> &quot;sol_verao&quot;</span>)</a></code></pre></div>
 <p>2.0 Passo filtrar os dados pelo fator “local” com o nivel campo.</p>
-<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" title="1"> sol_verao_camp &lt;-<span class="st"> </span><span class="kw">subset</span>(sol_verao_amb, local <span class="op">==</span><span class="st"> &quot;campo&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb429"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb429-1" title="1"> sol_verao_camp &lt;-<span class="st"> </span><span class="kw">subset</span>(sol_verao_amb, local <span class="op">==</span><span class="st"> &quot;campo&quot;</span>)</a></code></pre></div>
 <p>3.0 Verificar dados graficamente</p>
-<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1"><span class="kw">attach</span>(pira_tem)</a>
-<a class="sourceLine" id="cb501-2" title="2"><span class="kw">boxplot</span>(temp)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-285-1.png" width="672" /></p>
+<div class="sourceCode" id="cb430"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb430-1" title="1"><span class="kw">attach</span>(pira_tem)</a>
+<a class="sourceLine" id="cb430-2" title="2"><span class="kw">boxplot</span>(temp)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-248-1.png" width="672" /></p>
 <p>4.0 Usar o teste T</p>
-<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp,                     <span class="co">#amostra a ser testada</span></a>
-<a class="sourceLine" id="cb502-2" title="2"><span class="dt">mu=</span><span class="dv">21</span>,                                          <span class="co">#hipótese de nulidade</span></a>
-<a class="sourceLine" id="cb502-3" title="3"><span class="dt">alternative=</span><span class="st">&quot;greater&quot;</span>,                         <span class="co">#teste unilateral pela direita</span></a>
-<a class="sourceLine" id="cb502-4" title="4"><span class="dt">conf.level =</span> <span class="fl">0.95</span> )                         <span class="co">#Intervalo de confiancia de 95%  </span></a></code></pre></div>
+<div class="sourceCode" id="cb431"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb431-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp,                     <span class="co">#amostra a ser testada</span></a>
+<a class="sourceLine" id="cb431-2" title="2"><span class="dt">mu=</span><span class="dv">21</span>,                                          <span class="co">#hipótese de nulidade</span></a>
+<a class="sourceLine" id="cb431-3" title="3"><span class="dt">alternative=</span><span class="st">&quot;greater&quot;</span>,                         <span class="co">#teste unilateral pela direita</span></a>
+<a class="sourceLine" id="cb431-4" title="4"><span class="dt">conf.level =</span> <span class="fl">0.95</span> )                         <span class="co">#Intervalo de confiancia de 95%  </span></a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -371,14 +368,14 @@ Como a hipótese alternativa foi a aceita isso implica que a temperatura do ar n
 <p><strong>Exercicio 1</strong></p>
 <p>Vamos testar se X tem média estatiscamente igual a 35 ou maior
 H0: mu =&gt;35</p>
-<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" title="1">x &lt;-<span class="kw">c</span> (<span class="fl">30.5</span>,<span class="fl">35.3</span>,<span class="fl">33.2</span>,<span class="fl">40.8</span>,<span class="fl">42.3</span>,<span class="fl">41.5</span>,<span class="fl">36.3</span>,<span class="fl">43.2</span>,<span class="fl">34.6</span>,<span class="fl">38.5</span>)</a>
-<a class="sourceLine" id="cb504-2" title="2"></a>
-<a class="sourceLine" id="cb504-3" title="3"><span class="kw">boxplot</span>(x)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-287-1.png" width="672" /></p>
+<div class="sourceCode" id="cb433"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb433-1" title="1">x &lt;-<span class="kw">c</span> (<span class="fl">30.5</span>,<span class="fl">35.3</span>,<span class="fl">33.2</span>,<span class="fl">40.8</span>,<span class="fl">42.3</span>,<span class="fl">41.5</span>,<span class="fl">36.3</span>,<span class="fl">43.2</span>,<span class="fl">34.6</span>,<span class="fl">38.5</span>)</a>
+<a class="sourceLine" id="cb433-2" title="2"></a>
+<a class="sourceLine" id="cb433-3" title="3"><span class="kw">boxplot</span>(x)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-250-1.png" width="672" /></p>
 <p>Teste t.</p>
-<div class="sourceCode" id="cb505"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb505-1" title="1"><span class="kw">t.test</span>(x,</a>
-<a class="sourceLine" id="cb505-2" title="2">       <span class="dt">mu=</span><span class="dv">35</span>,</a>
-<a class="sourceLine" id="cb505-3" title="3">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb434"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb434-1" title="1"><span class="kw">t.test</span>(x,</a>
+<a class="sourceLine" id="cb434-2" title="2">       <span class="dt">mu=</span><span class="dv">35</span>,</a>
+<a class="sourceLine" id="cb434-3" title="3">       <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -395,15 +392,15 @@ H0: mu =&gt;35</p>
 <p>Um pesquisador afirmou que a temperatura média de solsticio de verão medido na casa de vegetação em Piracicaba-SP tem média <strong>22,2 ºC</strong>.
 Desconfiando desse resultado um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:</p>
 <p><em>H0: mu = 22,2</em></p>
-<div class="sourceCode" id="cb507"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb507-1" title="1">  sol_verao_amb &lt;-<span class="st"> </span><span class="kw">subset</span>(pira_tem, periodo <span class="op">==</span><span class="st"> &quot;sol_verao&quot;</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" title="1">  sol_verao_est &lt;-<span class="st"> </span><span class="kw">subset</span>(sol_verao_amb, local <span class="op">==</span><span class="st"> &quot;estufa&quot;</span>)</a>
-<a class="sourceLine" id="cb508-2" title="2">  <span class="kw">boxplot</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-290-1.png" width="672" /></p>
+<div class="sourceCode" id="cb436"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb436-1" title="1">  sol_verao_amb &lt;-<span class="st"> </span><span class="kw">subset</span>(pira_tem, periodo <span class="op">==</span><span class="st"> &quot;sol_verao&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb437"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb437-1" title="1">  sol_verao_est &lt;-<span class="st"> </span><span class="kw">subset</span>(sol_verao_amb, local <span class="op">==</span><span class="st"> &quot;estufa&quot;</span>)</a>
+<a class="sourceLine" id="cb437-2" title="2">  <span class="kw">boxplot</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-253-1.png" width="672" /></p>
 <p>Essa afirmação é verdadeira?</p>
-<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" title="1"><span class="kw">t.test</span>(sol_verao_est<span class="op">$</span>temp,            <span class="co">#amostra a ser testada</span></a>
-<a class="sourceLine" id="cb509-2" title="2"><span class="dt">mu=</span><span class="fl">22.2</span>,                              <span class="co">#hipótese de nulidade</span></a>
-<a class="sourceLine" id="cb509-3" title="3"><span class="dt">alternative=</span><span class="st">&quot;two.sided&quot;</span>,              <span class="co">#teste bilateral não considera se é maior ou menor</span></a>
-<a class="sourceLine" id="cb509-4" title="4"><span class="dt">conf.level =</span> <span class="fl">0.99</span>)                    <span class="co">#significância de 1%        </span></a></code></pre></div>
+<div class="sourceCode" id="cb438"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb438-1" title="1"><span class="kw">t.test</span>(sol_verao_est<span class="op">$</span>temp,            <span class="co">#amostra a ser testada</span></a>
+<a class="sourceLine" id="cb438-2" title="2"><span class="dt">mu=</span><span class="fl">22.2</span>,                              <span class="co">#hipótese de nulidade</span></a>
+<a class="sourceLine" id="cb438-3" title="3"><span class="dt">alternative=</span><span class="st">&quot;two.sided&quot;</span>,              <span class="co">#teste bilateral não considera se é maior ou menor</span></a>
+<a class="sourceLine" id="cb438-4" title="4"><span class="dt">conf.level =</span> <span class="fl">0.99</span>)                    <span class="co">#significância de 1%        </span></a></code></pre></div>
 <pre><code>## 
 ##  One Sample t-test
 ## 
@@ -417,17 +414,17 @@ Desconfiando desse resultado um outro pesquisador com dados provinientes da mesm
 ##  25.97302</code></pre>
 </div>
 <div id="para-duas-médias-independentes" class="section level3">
-<h3><span class="header-section-number">8.1.2</span> Para duas médias independentes</h3>
+<h3><span class="header-section-number">7.1.2</span> Para duas médias independentes</h3>
 <p>Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
 alem de seguirem distribuição normal.</p>
 <p>Vamos a um exemplo:</p>
 <p>Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5% de significância.
 <em>H0: mu da temp da casa de vegetação = mu da temp do campo</em></p>
-<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" title="1"><span class="kw">boxplot</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-292-1.png" width="672" /></p>
-<div class="sourceCode" id="cb512"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb512-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
-<a class="sourceLine" id="cb512-2" title="2">      <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,                  <span class="co">#unilateral a direita </span></a>
-<a class="sourceLine" id="cb512-3" title="3">      <span class="dt">var.equal =</span> T )                            <span class="co">#variância homogênea</span></a></code></pre></div>
+<div class="sourceCode" id="cb440"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb440-1" title="1"><span class="kw">boxplot</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-255-1.png" width="672" /></p>
+<div class="sourceCode" id="cb441"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb441-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
+<a class="sourceLine" id="cb441-2" title="2">      <span class="dt">alternative =</span> <span class="st">&quot;greater&quot;</span>,                  <span class="co">#unilateral a direita </span></a>
+<a class="sourceLine" id="cb441-3" title="3">      <span class="dt">var.equal =</span> T )                            <span class="co">#variância homogênea</span></a></code></pre></div>
 <pre><code>## 
 ##  Two Sample t-test
 ## 
@@ -443,13 +440,13 @@ alem de seguirem distribuição normal.</p>
 Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.</p>
 </div>
 <div id="para-duas-médias-dependentes" class="section level3">
-<h3><span class="header-section-number">8.1.3</span> Para duas médias dependentes</h3>
+<h3><span class="header-section-number">7.1.3</span> Para duas médias dependentes</h3>
 <p>Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
 As hipóteses se mantêm. Agora basta adicionar o argumento <code>paired=T</code>, informando que as amostras são dependentes.</p>
-<div class="sourceCode" id="cb514"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb514-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
-<a class="sourceLine" id="cb514-2" title="2">      <span class="dt">conf.level=</span><span class="fl">0.99</span>,                          <span class="co">#nível de confiança</span></a>
-<a class="sourceLine" id="cb514-3" title="3">      <span class="dt">paired=</span>T,                                 <span class="co">#indica dependência entre as amostras</span></a>
-<a class="sourceLine" id="cb514-4" title="4">      <span class="dt">var.equal =</span> T )                           <span class="co">#variância homogênea      </span></a></code></pre></div>
+<div class="sourceCode" id="cb443"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb443-1" title="1"><span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
+<a class="sourceLine" id="cb443-2" title="2">      <span class="dt">conf.level=</span><span class="fl">0.99</span>,                          <span class="co">#nível de confiança</span></a>
+<a class="sourceLine" id="cb443-3" title="3">      <span class="dt">paired=</span>T,                                 <span class="co">#indica dependência entre as amostras</span></a>
+<a class="sourceLine" id="cb443-4" title="4">      <span class="dt">var.equal =</span> T )                           <span class="co">#variância homogênea      </span></a></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -465,11 +462,11 @@ As hipóteses se mantêm. Agora basta adicionar o argumento <code>paired=T</code
 </div>
 </div>
 <div id="teste-de-variância" class="section level2">
-<h2><span class="header-section-number">8.2</span> Teste de variância</h2>
+<h2><span class="header-section-number">7.2</span> Teste de variância</h2>
 <div id="usando-o-teste-de-f" class="section level3">
-<h3><span class="header-section-number">8.2.1</span> Usando o teste de F</h3>
+<h3><span class="header-section-number">7.2.1</span> Usando o teste de F</h3>
 <p><em>H0: a variancias das amostras são homogeneas </em></p>
-<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" title="1"><span class="kw">var.test</span> (sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb445"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb445-1" title="1"><span class="kw">var.test</span> (sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## 
 ##  F test to compare two variances
 ## 
@@ -483,10 +480,10 @@ As hipóteses se mantêm. Agora basta adicionar o argumento <code>paired=T</code
 ##          0.3330098</code></pre>
 <p>As variâncias não são homogeneas.</p>
 <p>Vamos resolver novamente o exercicio anterior, modificando o argumento <code>var.equal</code></p>
-<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" title="1"> <span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
-<a class="sourceLine" id="cb518-2" title="2">      <span class="dt">conf.level=</span><span class="fl">0.99</span>,                          <span class="co">#nível de confiança</span></a>
-<a class="sourceLine" id="cb518-3" title="3">      <span class="dt">paired=</span>T,                                 <span class="co">#indica dependência entre as amostras</span></a>
-<a class="sourceLine" id="cb518-4" title="4">      <span class="dt">var.equal =</span> F )                           <span class="co">#variância homogênea </span></a></code></pre></div>
+<div class="sourceCode" id="cb447"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb447-1" title="1"> <span class="kw">t.test</span>(sol_verao_camp<span class="op">$</span>temp, sol_verao_est<span class="op">$</span>temp, <span class="co">#amostras a serem testadas</span></a>
+<a class="sourceLine" id="cb447-2" title="2">      <span class="dt">conf.level=</span><span class="fl">0.99</span>,                          <span class="co">#nível de confiança</span></a>
+<a class="sourceLine" id="cb447-3" title="3">      <span class="dt">paired=</span>T,                                 <span class="co">#indica dependência entre as amostras</span></a>
+<a class="sourceLine" id="cb447-4" title="4">      <span class="dt">var.equal =</span> F )                           <span class="co">#variância homogênea </span></a></code></pre></div>
 <pre><code>## 
 ##  Paired t-test
 ## 
@@ -501,16 +498,16 @@ As hipóteses se mantêm. Agora basta adicionar o argumento <code>paired=T</code
 </div>
 </div>
 <div id="teste-para-a-normalidade---shapiro.test" class="section level2">
-<h2><span class="header-section-number">8.3</span> Teste para a normalidade - <code>shapiro.test()</code></h2>
+<h2><span class="header-section-number">7.3</span> Teste para a normalidade - <code>shapiro.test()</code></h2>
 <p>Por vezes temos necessidade de identificar com certa confiança se uma amostra ou conjunto de dados segue a distribuição normal. Isso e possível, no R, com o uso do comando <code>shapiro.test()</code></p>
 <p>Verifique normalidade dos dados</p>
-<div class="sourceCode" id="cb520"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb520-1" title="1"><span class="kw">shapiro.test</span>(sol_verao_camp<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb449"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb449-1" title="1"><span class="kw">shapiro.test</span>(sol_verao_camp<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
 ## data:  sol_verao_camp$temp
 ## W = 0.90789, p-value = 5.043e-06</code></pre>
-<div class="sourceCode" id="cb522"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb522-1" title="1"><span class="kw">shapiro.test</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb451"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb451-1" title="1"><span class="kw">shapiro.test</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## 
 ##  Shapiro-Wilk normality test
 ## 
@@ -518,16 +515,16 @@ As hipóteses se mantêm. Agora basta adicionar o argumento <code>paired=T</code
 ## W = 0.85041, p-value = 2.027e-08</code></pre>
 <p>O comando <code>qqnorm()</code>nos fornece diretamente um gráfico da distribuição de percentagens
 acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal.</p>
-<div class="sourceCode" id="cb524"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb524-1" title="1"><span class="kw">qqnorm</span>(sol_verao_camp<span class="op">$</span>temp) <span class="co">#obtendo o normal probability plot só para comparação</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-297-1.png" width="672" /></p>
-<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" title="1"><span class="kw">qqnorm</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-297-2.png" width="672" /></p>
+<div class="sourceCode" id="cb453"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb453-1" title="1"><span class="kw">qqnorm</span>(sol_verao_camp<span class="op">$</span>temp) <span class="co">#obtendo o normal probability plot só para comparação</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-260-1.png" width="672" /></p>
+<div class="sourceCode" id="cb454"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb454-1" title="1"><span class="kw">qqnorm</span>(sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-260-2.png" width="672" /></p>
 </div>
 <div id="teste-u-de-mann-whitney" class="section level2">
-<h2><span class="header-section-number">8.4</span> Teste U de Mann-Whitney</h2>
+<h2><span class="header-section-number">7.4</span> Teste U de Mann-Whitney</h2>
 <p><em>H0: mu da temp da casa de vegetação = mu da temp do campo</em></p>
-<div class="sourceCode" id="cb526"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb526-1" title="1"><span class="kw">wilcox.test</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp,</a>
-<a class="sourceLine" id="cb526-2" title="2">  <span class="dt">alternative =</span> <span class="st">&quot;two.side&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb455"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb455-1" title="1"><span class="kw">wilcox.test</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp,</a>
+<a class="sourceLine" id="cb455-2" title="2">  <span class="dt">alternative =</span> <span class="st">&quot;two.side&quot;</span>)</a></code></pre></div>
 <pre><code>## 
 ##  Wilcoxon rank sum test with continuity correction
 ## 
@@ -536,39 +533,39 @@ acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráf
 ## alternative hypothesis: true location shift is not equal to 0</code></pre>
 </div>
 <div id="covariância-e-correlação" class="section level2">
-<h2><span class="header-section-number">8.5</span> Covariância e Correlação</h2>
+<h2><span class="header-section-number">7.5</span> Covariância e Correlação</h2>
 <p>A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos <code>cov(x,y)</code> e <code>cor(x,y)</code>, respectivamente.
 São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.</p>
 <p>A correlação de <strong>Pearson</strong> é uma medida paramétrica de associação linear entre duas variaveis.</p>
 <p>A correlação de ordem de <strong>Sperman</strong> é uma medidad não paramétrica de associação entre duas variáveis</p>
 <p>A correlação de ordem de <strong>Kendall</strong> é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y</p>
-<div class="sourceCode" id="cb528"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb528-1" title="1"><span class="kw">help</span> (<span class="st">&quot;cor.test&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb457"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb457-1" title="1"><span class="kw">help</span> (<span class="st">&quot;cor.test&quot;</span>)</a></code></pre></div>
 <p>Plote os valores</p>
-<div class="sourceCode" id="cb529"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb529-1" title="1"><span class="kw">plot</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, <span class="dt">las=</span><span class="dv">2</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-300-1.png" width="672" /></p>
+<div class="sourceCode" id="cb458"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb458-1" title="1"><span class="kw">plot</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, <span class="dt">las=</span><span class="dv">2</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-263-1.png" width="672" /></p>
 <p>Teste de correlação de Pearson</p>
-<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb530-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span></a>
-<a class="sourceLine" id="cb530-3" title="3">    )</a></code></pre></div>
+<div class="sourceCode" id="cb459"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb459-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb459-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span></a>
+<a class="sourceLine" id="cb459-3" title="3">    )</a></code></pre></div>
 <pre><code>## [1] 0.9250728</code></pre>
 <p>Teste de correlação de Pearson (the default)</p>
-<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb461"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb461-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## [1] 0.9250728</code></pre>
 <p>Teste de correlação de Pearson trocando o X e Y</p>
-<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb534-1" title="1"><span class="kw">cor</span>(sol_verao_est<span class="op">$</span>temp, sol_verao_camp<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb463"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb463-1" title="1"><span class="kw">cor</span>(sol_verao_est<span class="op">$</span>temp, sol_verao_camp<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## [1] 0.9250728</code></pre>
 <p>Teste de correlação de Spearman</p>
-<div class="sourceCode" id="cb536"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb536-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb536-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb465"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb465-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb465-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] 0.9412321</code></pre>
 <p>Teste de correlação de Kendall</p>
-<div class="sourceCode" id="cb538"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb538-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb538-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb467"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb467-1" title="1"><span class="kw">cor</span>(sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb467-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;kendall&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] 0.8113615</code></pre>
 <p>Teste de correlação de Pearson</p>
-<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb540-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span></a>
-<a class="sourceLine" id="cb540-3" title="3">    )</a></code></pre></div>
+<div class="sourceCode" id="cb469"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb469-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb469-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;pearson&quot;</span></a>
+<a class="sourceLine" id="cb469-3" title="3">    )</a></code></pre></div>
 <pre><code>## 
 ##  Pearson&#39;s product-moment correlation
 ## 
@@ -580,9 +577,9 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
 ## sample estimates:
 ##       cor 
 ## 0.9250728</code></pre>
-<div class="sourceCode" id="cb542"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb542-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb542-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span></a>
-<a class="sourceLine" id="cb542-3" title="3">    )</a></code></pre></div>
+<div class="sourceCode" id="cb471"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb471-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb471-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span></a>
+<a class="sourceLine" id="cb471-3" title="3">    )</a></code></pre></div>
 <pre><code>## Warning in cor.test.default(sol_verao_camp$temp, sol_verao_est$temp, method =
 ## &quot;spearman&quot;): Cannot compute exact p-value with ties</code></pre>
 <pre><code>## 
@@ -594,9 +591,9 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
 ## sample estimates:
 ##       rho 
 ## 0.9412321</code></pre>
-<div class="sourceCode" id="cb545"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb545-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
-<a class="sourceLine" id="cb545-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="dt">exact =</span> F</a>
-<a class="sourceLine" id="cb545-3" title="3">    )</a></code></pre></div>
+<div class="sourceCode" id="cb474"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb474-1" title="1"><span class="kw">cor.test</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp, </a>
+<a class="sourceLine" id="cb474-2" title="2">    <span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>, <span class="dt">exact =</span> F</a>
+<a class="sourceLine" id="cb474-3" title="3">    )</a></code></pre></div>
 <pre><code>## 
 ##  Spearman&#39;s rank correlation rho
 ## 
@@ -606,21 +603,21 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
 ## sample estimates:
 ##       rho 
 ## 0.9412321</code></pre>
-<div class="sourceCode" id="cb547"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb547-1" title="1"><span class="kw">cov</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
+<div class="sourceCode" id="cb476"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb476-1" title="1"><span class="kw">cov</span> (sol_verao_camp<span class="op">$</span>temp,sol_verao_est<span class="op">$</span>temp)</a></code></pre></div>
 <pre><code>## [1] 6.051517</code></pre>
 </div>
 <div id="outros-testes" class="section level2">
-<h2><span class="header-section-number">8.6</span> Outros testes</h2>
+<h2><span class="header-section-number">7.6</span> Outros testes</h2>
 <p>Utilizaremos o banco de dados <a href="https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0">dadosfisio</a></p>
-<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1">fisio &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>)</a>
-<a class="sourceLine" id="cb549-2" title="2"><span class="kw">attach</span>(fisio)</a></code></pre></div>
+<div class="sourceCode" id="cb478"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb478-1" title="1">fisio &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb478-2" title="2"><span class="kw">attach</span>(fisio)</a></code></pre></div>
 <pre><code>## The following objects are masked _by_ .GlobalEnv:
 ## 
 ##     a, b, x, y, z</code></pre>
-<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="kw">pairs</span>(fisio[,<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-311-1.png" width="672" /></p>
+<div class="sourceCode" id="cb480"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb480-1" title="1"><span class="kw">pairs</span>(fisio[,<span class="dv">4</span><span class="op">:</span><span class="dv">10</span>])</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-274-1.png" width="672" /></p>
 <p>Teste de Spearman</p>
-<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb552-1" title="1"><span class="kw">cor</span>(fisio[,<span class="dv">3</span><span class="op">:</span><span class="dv">8</span>],<span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb481"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb481-1" title="1"><span class="kw">cor</span>(fisio[,<span class="dv">3</span><span class="op">:</span><span class="dv">8</span>],<span class="dt">method =</span> <span class="st">&quot;spearman&quot;</span>)</a></code></pre></div>
 <pre><code>##                   y        cota           ds           cc          ma
 ## y       1.000000000  0.03913488 -0.007304133 -0.005043318 -0.02834692
 ## cota    0.039134875  1.00000000 -0.625860523  0.506913897  0.51222110
@@ -636,9 +633,9 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
 ## ma      0.754248369
 ## ptotal  1.000000000</code></pre>
 <div id="hydrogof" class="section level3">
-<h3><span class="header-section-number">8.6.1</span> hydroGOF</h3>
+<h3><span class="header-section-number">7.6.1</span> hydroGOF</h3>
 <p>Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.</p>
-<div class="sourceCode" id="cb554"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb554-1" title="1"><span class="kw">library</span>(hydroGOF)</a></code></pre></div>
+<div class="sourceCode" id="cb483"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb483-1" title="1"><span class="kw">library</span>(hydroGOF)</a></code></pre></div>
 <pre><code>## Loading required package: zoo</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;zoo&#39;</code></pre>
@@ -646,7 +643,7 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
 ## 
 ##     as.Date, as.Date.numeric</code></pre>
 <p>Cálculo das medidas numéricas de qualidade do ajuste para o “melhor” caso (inatingível)</p>
-<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" title="1"><span class="kw">gof</span>(<span class="dt">sim =</span> fisio<span class="op">$</span>ds, <span class="dt">obs=</span> fisio<span class="op">$</span>cc)</a></code></pre></div>
+<div class="sourceCode" id="cb487"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb487-1" title="1"><span class="kw">gof</span>(<span class="dt">sim =</span> fisio<span class="op">$</span>ds, <span class="dt">obs=</span> fisio<span class="op">$</span>cc)</a></code></pre></div>
 <pre><code>##            [,1]
 ## ME         1.36
 ## MAE        1.36
@@ -677,8 +674,8 @@ São medidads utilizadas no estudo do comportamento conjunto de duas variáveis 
           </div>
         </div>
       </div>
-<a href="analise-de-variância-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="delineamento-em-bloco-casualizado.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="gráficos-com-ggplot2.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="analise-de-variância-anova.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
