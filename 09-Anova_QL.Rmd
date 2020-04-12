@@ -1,2 +1,2 @@
-# Quadrado Latino
+## Quadrado Latino
 
