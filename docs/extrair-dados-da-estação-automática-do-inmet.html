@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title> 4 Entrada de dados | Uso do sistema R para análise de dados</title>
+  <title> 15 Extrair dados da estação automática do INMET | Uso do sistema R para análise de dados</title>
   <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
-  <meta property="og:title" content=" 4 Entrada de dados | Uso do sistema R para análise de dados" />
+  <meta property="og:title" content=" 15 Extrair dados da estação automática do INMET | Uso do sistema R para análise de dados" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content=" 4 Entrada de dados | Uso do sistema R para análise de dados" />
+  <meta name="twitter:title" content=" 15 Extrair dados da estação automática do INMET | Uso do sistema R para análise de dados" />
   
   <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="estruturas-de-dados.html"/>
-<link rel="next" href="criando-gráficos-com-o-r.html"/>
+<link rel="prev" href="trabalhando-com-dados-temporais-no-r.html"/>
+<link rel="next" href="realizando-o-teste-mann-kendall-para-tendência-em-r.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -289,247 +289,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="entrada-de-dados" class="section level1">
-<h1><span class="header-section-number"> 4</span> Entrada de dados</h1>
-<p>Este terceiro Capitulo foi baseado no livro <a href="https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294"><strong>Conhecendo o R: Um visão mais que estatística</strong></a>, e na página do <a href="http://www.leg.ufpr.br/~paulojus/"><strong>Prof. Paulo Justiniando Ribeiro</strong></a> modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.</p>
-<p>O diretorio de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.</p>
-<div id="onde-os-dados-devem-estar" class="section level2">
-<h2><span class="header-section-number">4.1</span> Onde os dados devem estar?</h2>
-<p>Para saber onde os diretorios estão basta digitar o comando <code>getwd()</code></p>
-<div class="sourceCode" id="cb236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb236-1" title="1"> <span class="kw">getwd</span>() <span class="co">#para verificar  diretório de trabalho</span></a></code></pre></div>
-<pre><code>## [1] &quot;D:/livro/TudodoRa&quot;</code></pre>
-<p>Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando <code>setwd()</code></p>
-<div class="sourceCode" id="cb238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb238-1" title="1"><span class="kw">setwd</span>(<span class="st">&quot;C:/R_Curso&quot;</span>) <span class="co">#para  altear o diretório de trabalho</span></a></code></pre></div>
-<p>Outra forma de mudar o caminho é com o comando:</p>
-<div class="sourceCode" id="cb239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb239-1" title="1">caminho&lt;-<span class="kw">file.choose</span>() <span class="co"># ou usando as teclhas shift + Crtl + H</span></a></code></pre></div>
-<p>Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto.</p>
-<p>Você pode exibir o conteudo do diretório com o comando <code>dir()</code></p>
-<div class="sourceCode" id="cb240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb240-1" title="1"><span class="kw">dir</span>()</a></code></pre></div>
-<pre><code>##  [1] &quot;_bookdown.yml&quot;             &quot;_bookdown_files&quot;          
-##  [3] &quot;_output.yml&quot;               &quot;01-R_basico.Rmd&quot;          
-##  [5] &quot;02-Estrutura_basica.Rmd&quot;   &quot;03-Entrada_dados.Rmd&quot;     
-##  [7] &quot;04-Criando_graficos.Rmd&quot;   &quot;05-Criando_graficos_2.Rmd&quot;
-##  [9] &quot;06-Teste_T_corre.Rmd&quot;      &quot;07-Anova_dic.Rmd&quot;         
-## [11] &quot;08-Anova_DBC.Rmd&quot;          &quot;09-Anova_QL.Rmd&quot;          
-## [13] &quot;10-Regressao_L_M.Rmd&quot;      &quot;11-Regressao_N_linear.Rmd&quot;
-## [15] &quot;12-Resolucao_Livro.Rmd&quot;    &quot;13-Dados_clima.Rmd&quot;       
-## [17] &quot;14-Dados_tempor.Rmd&quot;       &quot;15-Extrair_dados.Rmd&quot;     
-## [19] &quot;16-Tendencia_tempora.Rmd&quot;  &quot;17-Referencia.Rmd&quot;        
-## [21] &quot;book.bib&quot;                  &quot;docs&quot;                     
-## [23] &quot;index.Rmd&quot;                 &quot;LICENSE&quot;                  
-## [25] &quot;packages.bib&quot;              &quot;preamble.tex&quot;             
-## [27] &quot;README.md&quot;                 &quot;search_index.json&quot;        
-## [29] &quot;style.css&quot;                 &quot;tab.xls&quot;                  
-## [31] &quot;TudodoR.log&quot;               &quot;TudodoR.Rmd&quot;              
-## [33] &quot;TudodoR.Rproj&quot;             &quot;TudodoR.tex&quot;              
-## [35] &quot;TudodoR_files&quot;</code></pre>
-</div>
-<div id="entrando-com-dados" class="section level2">
-<h2><span class="header-section-number">4.2</span> Entrando com dados</h2>
-<p>O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.</p>
-<p>A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada.</p>
-<div id="vetores" class="section level3">
-<h3><span class="header-section-number">4.2.1</span> Vetores</h3>
-<p>Podemos entrar com dados definindo vetores com o comando <code>c()</code>, conforme visto no capítulo 3.</p>
-<div class="sourceCode" id="cb242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb242-1" title="1">vetor &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">7</span>)</a></code></pre></div>
-<p>Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.</p>
-<div class="sourceCode" id="cb243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb243-1" title="1">vetor &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">5</span>), <span class="dv">5</span>)  <span class="co"># cria vetor repetindo 5 vezes 2 e 5 alternadamente</span></a>
-<a class="sourceLine" id="cb243-2" title="2">vetor</a></code></pre></div>
-<pre><code>##  [1] 2 5 2 5 2 5 2 5 2 5</code></pre>
-<div class="sourceCode" id="cb245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb245-1" title="1">vetor &lt;-<span class="st"> </span><span class="kw">rep</span>(<span class="kw">c</span>(<span class="dv">5</span>,<span class="dv">8</span>), <span class="dt">each=</span><span class="dv">3</span>)  <span class="co"># cria vetor repetindo 3 vezes 5 e depois 8</span></a>
-<a class="sourceLine" id="cb245-2" title="2">vetor</a></code></pre></div>
-<pre><code>## [1] 5 5 5 8 8 8</code></pre>
-</div>
-<div id="usando-a-função-scan" class="section level3">
-<h3><span class="header-section-number">4.2.2</span> Usando a função ‘scan’</h3>
-<p>Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:</p>
-<div class="sourceCode" id="cb247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb247-1" title="1">y &lt;-<span class="st"> </span><span class="kw">scan</span>()</a>
-<a class="sourceLine" id="cb247-2" title="2"></a>
-<a class="sourceLine" id="cb247-3" title="3"><span class="co">#1: 11</span></a>
-<a class="sourceLine" id="cb247-4" title="4"><span class="co">#2: 24</span></a>
-<a class="sourceLine" id="cb247-5" title="5"><span class="co">#3: 35</span></a>
-<a class="sourceLine" id="cb247-6" title="6"><span class="co">#4: 29</span></a>
-<a class="sourceLine" id="cb247-7" title="7"><span class="co">#5: 39</span></a>
-<a class="sourceLine" id="cb247-8" title="8"><span class="co">#6: 47</span></a>
-<a class="sourceLine" id="cb247-9" title="9"><span class="co">#7:</span></a>
-<a class="sourceLine" id="cb247-10" title="10"><span class="co">#Read 6 items</span></a>
-<a class="sourceLine" id="cb247-11" title="11"></a>
-<a class="sourceLine" id="cb247-12" title="12">y</a></code></pre></div>
-<pre><code>## numeric(0)</code></pre>
-<div class="sourceCode" id="cb249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb249-1" title="1"><span class="co">#[1] 11 24 35 29 39 47</span></a></code></pre></div>
-<p>Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.</p>
-</div>
-<div id="copiar-e-colar-usando-scan" class="section level3">
-<h3><span class="header-section-number">4.2.3</span> Copiar e colar usando scan()</h3>
-<p>Pode usar o recurso “copiar e colar” com o comando <code>scan</code>.
-Após copiar os dados (crtl+C), digite no <strong>prompt</strong>/<strong>console</strong> o comando <code>scan()</code>, aperte &gt;ENTER&lt;, depois cole o texto e, aperte &gt;ENTER&lt; novamente.</p>
-</div>
-<div id="lendo-dados-através-da-área-de-transferência" class="section level3">
-<h3><span class="header-section-number">4.2.4</span> Lendo dados através da área de transferência</h3>
-<p>Funções como <code>scan()</code>, <code>read.table()</code> e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao <em>“clipboard”</em> ao primeiro argumento.</p>
-</div>
-<div id="usando-a-função-edit" class="section level3">
-<h3><span class="header-section-number">4.2.5</span> Usando a função edit</h3>
-<p>O comando <code>edit(data.frame())</code> abre uma planilha para digitação de dados que são armazanados como data-frames.</p>
-<div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">edit</span>(<span class="kw">data.frame</span>())</a></code></pre></div>
-<div class="figure">
-<img src="https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1" alt="data-frame" />
-<p class="caption">data-frame</p>
-</div>
-<p>Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando <code>fix</code>.</p>
-<div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="kw">fix</span>(dados)</a>
-<a class="sourceLine" id="cb251-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
-<pre><code>## data frame with 0 columns and 0 rows</code></pre>
-<div id="exemplo-1" class="section level4">
-<h4><span class="header-section-number">4.2.5.1</span> Exemplo 1</h4>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">teste &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb253-2" title="2">teste</a></code></pre></div>
-<pre><code>## [1] 10 20 30 40 50</code></pre>
-<p>Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando <code>edit()</code></p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">teste2 &lt;-<span class="st"> </span><span class="kw">edit</span>(teste)</a></code></pre></div>
-<div class="figure">
-<img src="https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1" alt="edit" />
-<p class="caption">edit</p>
-</div>
-</div>
-<div id="exemplo-2" class="section level4">
-<h4><span class="header-section-number">4.2.5.2</span> Exemplo 2</h4>
-<p>Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando <code>scan()</code>. Abra o arquivo . <a href="https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1">EVI-prec.xlsx</a>.</p>
-<p>Uma matrix com os dados poderá ser obtida com o comando <code>cbind</code></p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span>(ano, chuva, evi)</a></code></pre></div>
-<p>Os objeto dados é um <strong>data.frame</strong></p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">is.data.frame</span>(dados)</a></code></pre></div>
-<p>Transforme para um data.frame com o comando <strong>as.data.frame</strong></p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1">dados_m &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(dados)</a></code></pre></div>
-<p>Poderia usar o comando data.frame direto</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1">dados=<span class="kw">data.frame</span> (ano, chuva, evi)</a></code></pre></div>
-</div>
-</div>
-<div id="lendo-dados-de-um-arquivo-texto" class="section level3">
-<h3><span class="header-section-number">4.2.6</span> Lendo dados de um arquivo texto</h3>
-<p>É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando <code>read.table ()</code> é extremamente útil por ler dados de um arquivo-texto no formato de um <strong>data.frame</strong></p>
-<p>Usando o Comando <code>read.table ()</code></p>
-<div id="exemplo-1-1" class="section level4">
-<h4><span class="header-section-number">4.2.6.1</span> Exemplo 1</h4>
-<p>Como primeiro exemplo considere importar para o R os dados do arquivo texto <a href="https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1">exemplo1.txt</a>.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1">ex01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo1.txt&quot;</span>) </a>
-<a class="sourceLine" id="cb260-2" title="2"></a>
-<a class="sourceLine" id="cb260-3" title="3"><span class="co">#Use os comandos</span></a>
-<a class="sourceLine" id="cb260-4" title="4">  ex01</a>
-<a class="sourceLine" id="cb260-5" title="5">  <span class="kw">class</span>(ex01)</a>
-<a class="sourceLine" id="cb260-6" title="6">  <span class="kw">names</span>(ex01)</a>
-<a class="sourceLine" id="cb260-7" title="7">  <span class="kw">dim</span>(ex01)</a>
-<a class="sourceLine" id="cb260-8" title="8">  <span class="kw">str</span>(ex01)</a>
-<a class="sourceLine" id="cb260-9" title="9">  <span class="kw">head</span>(ex01)</a></code></pre></div>
-</div>
-<div id="exemplo-2-1" class="section level4">
-<h4><span class="header-section-number">4.2.6.2</span> Exemplo 2</h4>
-<p>Como primeiro exemplo considere importar para o R os dados do arquivo de texto <a href="https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1">exemplo2.txt</a>.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo2.txt&quot;</span>) </a>
-<a class="sourceLine" id="cb261-2" title="2">ex02</a></code></pre></div>
-<p>Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento <em>head=T</em>. Portanto para importar este arquivo usamos:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo02.txt&quot;</span>, <span class="dt">head=</span>T) </a>
-<a class="sourceLine" id="cb262-2" title="2">ex02</a></code></pre></div>
-</div>
-</div>
-<div id="dados-do-tipo-csv" class="section level3">
-<h3><span class="header-section-number">4.2.7</span> Dados do tipo CSV</h3>
-<p><a href="https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1">Exemplo3.csv</a>: Vamos utilizar um arquivo de tipo <strong>CSV</strong>.</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo3.csv.&quot;</span>, <span class="dt">head=</span>T, <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>) </a>
-<a class="sourceLine" id="cb263-2" title="2">ex03</a></code></pre></div>
-<p>Note que este arquivo difere do primeiro em outros aspectos.
-<em>read.table.</em></p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(       <span class="co"># lê dados de um arquivo texto</span></a>
-<a class="sourceLine" id="cb264-2" title="2">  <span class="st">&quot;exemplo3.csv&quot;</span>,         <span class="co"># nome do arquivo ou o caminho c:/R.exemplo3.csv</span></a>
-<a class="sourceLine" id="cb264-3" title="3">  <span class="dt">head=</span>T,                 <span class="co"># primeira linha ? cabe?alho</span></a>
-<a class="sourceLine" id="cb264-4" title="4">  <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>,                <span class="co"># separador de coluna </span></a>
-<a class="sourceLine" id="cb264-5" title="5">  <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)                <span class="co"># virgula como separador</span></a>
-<a class="sourceLine" id="cb264-6" title="6">ex03                      <span class="co"># exibe o objeto</span></a></code></pre></div>
-<p>1.<strong>sep</strong>: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)</p>
-<p>1.<strong>dec</strong>: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).</p>
-<p>1.<strong>header</strong>: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. ‘FALSE’, assume que os dados se iniciam na primeira linha.</p>
-</div>
-<div id="a-seguir-listamos-algumas-destas-funções" class="section level3">
-<h3><span class="header-section-number">4.2.8</span> A seguir listamos algumas destas funções:</h3>
-<ol style="list-style-type: decimal">
-<li><em>read.dbf()</em> para arquivos DBASE</li>
-<li><em>read.epiinfo()</em> para arquivos .REC do Epi-Info</li>
-<li><em>read.mtp()</em> para arquivos “Minitab Portable Worksheet”</li>
-<li><em>read.S()</em> para arquivos do S-PLUS, e restore.data() para “dumps” do S-PLUS</li>
-<li><em>read.spss()</em> para dados do SPSS</li>
-<li><em>read.systat()</em> para dados do SYSTAT</li>
-<li><em>read.dta()</em> para dados do STATA</li>
-<li><em>read.octave()</em> para dados do OCTAVE (um clone do MATLAB)</li>
-<li><em>read.csv</em>(file, header = TRUE, sep=“,”, dec=“.”)</li>
-<li><em>read.csv2</em>(file, header = TRUE, sep=“;”, dec=“,”)</li>
-<li><em>read.delim</em>(file, header = TRUE, sep=“, dec=”.")</li>
-<li><em>read.delim2</em>(file, header = TRUE, sep=“, dec=”,")</li>
-</ol>
-</div>
-<div id="lendo-dados-disponíveis-na-web" class="section level3">
-<h3><span class="header-section-number">4.2.9</span> Lendo dados disponíveis na web</h3>
-<p><strong>Exemplo 4</strong>: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do <a href="https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1">exemplo1.txt</a> poderiam ser lidos diretamente com o comando a seguir</p>
-</div>
-<div id="lendo-dados-de-uma-planilha-eletrônica" class="section level3">
-<h3><span class="header-section-number">4.2.10</span> Lendo dados de uma planilha eletrônica</h3>
-<p>Com o <strong>pacote xlsx</strong> é possivel ler os dados diretamente da planilha eletrônica do Excel.</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb265-2" title="2"><span class="kw">require</span>(<span class="st">&quot;xlsx&quot;</span>)</a></code></pre></div>
-<p>O comando <em>read.xlsx()</em>, do <strong>pacote xlsx</strong>, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um <em>data.frame</em>.</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(</a>
-<a class="sourceLine" id="cb266-2" title="2">                    <span class="dt">file=</span><span class="st">&quot;C:/R/EVI_Prec.xlsx&quot;</span>,     <span class="co">#comando que lê planilhas</span></a>
-<a class="sourceLine" id="cb266-3" title="3">                    <span class="dt">sheetName =</span> <span class="st">&quot;Conbea&quot;</span>,          <span class="co">#nome da planilha</span></a>
-<a class="sourceLine" id="cb266-4" title="4">                    <span class="dt">h=</span>T)                           <span class="co">#sem cabeçalho  </span></a></code></pre></div>
-</div>
-<div id="exercícios" class="section level3">
-<h3><span class="header-section-number">4.2.11</span> Exercícios</h3>
-<ol style="list-style-type: decimal">
-<li>Baixe os seguintes arquivos:
-<ul>
-<li><a href="https://www.dropbox.com/s/uq1n2sv8an2eoan/BanzattoQd1.2.3.txt?dl=1">BanzattoQd1.2.3.txt</a></li>
-<li><a href="https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1">BanzattoQd3.2.1.txt</a></li>
-<li><a href="https://www.dropbox.com/s/yv5clm6qljurzbw/BanzattoQd3.4.1.txt?dl=1">BanzattoQd3.4.1.txt</a></li>
-</ul></li>
-</ol>
-<p>Coloque os arquivos em um local apropriado (de preferncia no mesmo diretorio de trabalho que voce definiu no início da sessão), faça a importação usando a função de sua escolha, e confira a estrutura dos dados com ´str()´.</p>
-</div>
-</div>
-<div id="salvar-objetos-de-dados" class="section level2">
-<h2><span class="header-section-number">4.3</span> Salvar objetos de dados</h2>
-<p>Salvar objetos de dados nos formatos <strong>.txt</strong> ou <strong>.csv</strong>
-função: <strong>write.table</strong>
-sintaxe da função:
-<em>write.table</em>(x, file, sep="“, dec=”", rownames = T, col.names = T)</p>
-<p>Principais argumentos:
-1. x - matriz ou data frame
-1. file - nome do arquivo ou caminho do arquivo
-1. sep - separador da coluna
-1. dec - separador deciminal</p>
-<div id="outras-funções" class="section level3">
-<h3><span class="header-section-number">4.3.1</span> Outras funções</h3>
-<p><code>write.csv()</code>
-<code>write.csv2()</code>
-<code>write.xlsx ()</code></p>
-<p><strong>Exemplo:</strong>
-write.xlsx(dados,“tabela salva.xlsx”)</p>
-</div>
-</div>
-<div id="referência-2" class="section level2">
-<h2><span class="header-section-number">4.4</span> Referência</h2>
-<p>MELO, M. P.; PETERNELI, L. A. <strong>Conhecendo o R: Um visão mais que estatística</strong>. Viçosa, MG: UFV, 2013. 222p.</p>
-<p><strong>Prof. Paulo Justiniando Ribeiro</strong> &gt;<a href="http://www.leg.ufpr.br/~paulojus/" class="uri">http://www.leg.ufpr.br/~paulojus/</a>&lt;</p>
-<p><strong>Prof. Adriano Azevedo Filho</strong> &gt;<a href="http://rpubs.com/adriano/esalq2012inicial" class="uri">http://rpubs.com/adriano/esalq2012inicial</a>&lt;</p>
-<p><strong>Prof. Fernando de Pol Mayer</strong> &gt;<a href="https://fernandomayer.github.io/ce083-2016-2/" class="uri">https://fernandomayer.github.io/ce083-2016-2/</a>&lt;</p>
+<div id="extrair-dados-da-estação-automática-do-inmet" class="section level1">
+<h1><span class="header-section-number"> 15</span> Extrair dados da estação automática do INMET</h1>
 
-</div>
 </div>
             </section>
 
           </div>
         </div>
       </div>
-<a href="estruturas-de-dados.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="criando-gráficos-com-o-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="trabalhando-com-dados-temporais-no-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="realizando-o-teste-mann-kendall-para-tendência-em-r.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
