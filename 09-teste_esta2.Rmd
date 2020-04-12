@@ -1,4 +1,4 @@
-# Delineamento em bloco casualizado
+# Delineamento em bloco casualizado 
 
 O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:
 
