@@ -2513,6 +2513,12 @@ gof(sim = fisio$ds, obs= fisio$cc)
 
 <!--chapter:end:08-teste_esta.Rmd-->
 
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:09-references.Rmd-->
+
 # Análide de variância (ANOVA)
 
 Estudos estatísticos contemporâneos contemplam a análise de variância tendo em vista que este procedimento permite identificar e quantificar as variações ocorridas em um experimento, discriminando a parte da variação associada ao modelo pelo qual o experimento foi procedido da variação que se dá devido ao acaso.
@@ -2835,7 +2841,7 @@ ZEVIANI, W. M. estatística Básica e Experimentação no R. 45p.
 
 http://www.leg.ufpr.br/~paulojus/
 
-<!--chapter:end:09-teste_dic.Rmd-->
+<!--chapter:end:09-teste_esta1.Rmd-->
 
 # Delineamento em bloco casualizado 
 
