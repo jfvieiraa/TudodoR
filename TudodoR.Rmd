@@ -2829,15 +2829,15 @@ multcompBoxplot(pulgoes ~ trat, data = dados, compFn = "TukeyHSD", decreasing = 
 
 MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
 
-BANZATTO, D. A; KRONKA, S. N. Experimenta??o agr?cola. Jaboticabal, SP: FUNEP, 2006, 237p.
+BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.
 
-ZEVIANI, W. M. estatística B?sica e Experimenta??o no R. 45p.
+ZEVIANI, W. M. estatística Básica e Experimentação no R. 45p.
 
 http://www.leg.ufpr.br/~paulojus/
 
 <!--chapter:end:09-teste_dic.Rmd-->
 
-## Delineamento em bloco casualizado 
+# Delineamento em bloco casualizado 
 
 O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:
 
@@ -2849,7 +2849,7 @@ O delineamento em blocos casualizados (DBC) tem três princípios basicos de exp
 
 É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como *Two Way ANOVA*.
 
-### Análise de experimento DBC  
+## Análise de experimento DBC  
 
 Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
 
@@ -2904,7 +2904,7 @@ xyplot(peso ~ reorder(promalin, peso),
         type = "o")
 ```
 
-#### Análise de variância
+### Análise de variância
 
 Fazendo a análise de variância
 
@@ -2930,9 +2930,9 @@ plot(m0)
 
 Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade. 
 
-##### Teste das pressuposições da análise de variância
+#### Teste das pressuposições da análise de variância
 
-###### Teste de Bartllet para homocedasticidade
+##### Teste de Bartllet para homocedasticidade
 ```{r}
 
 bartlett.test(m0$res, dados$promalin)
@@ -2940,7 +2940,7 @@ bartlett.test(m0$res, dados$promalin)
 
 Como observamos uma não significancia estatística neste resultado *(p-value = 0.7819)*, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
 
-###### Teste de Shapiro-Wilk para Normalidade
+##### Teste de Shapiro-Wilk para Normalidade
 
 ```{r}
 
@@ -2949,11 +2949,11 @@ shapiro.test(m0$res)
 
 Como observamos uma significancia estatística neste resultado *(p-value = 0.006472)*, devemos rejeitar a hipótese nula de que os residuoes tedem a distruibuição normal.
 
-#### Transformação de dados
+### Transformação de dados
 
 Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
 
-##### Transformação de dados com o BOX-COX
+#### Transformação de dados com o BOX-COX
 
 Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
 
@@ -2972,7 +2972,7 @@ Localizando o ponto máximo.
   locator()
 ```
 
-##### Análise de variância - Ajuste com a variável transformada.
+#### Análise de variância - Ajuste com a variável transformada.
 
 ```{r}
 m1 <- aov (log(dados$peso) ~ dados$promalin, data = dados)
@@ -3002,7 +3002,7 @@ anova(m1)
 ```
 
 
-### Pacote para analise de experimentos 
+## Pacote para analise de experimentos 
 
 ```{r}
 library(ExpDes.pt)
@@ -3054,7 +3054,7 @@ ggplot(erro, aes(promalin, avg, fill=promalin))+
   
 ```
 
-### Teste não parametrico
+## Teste não parametrico
 
 As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: **kruskal**, **waerden.test**, **friedman**, **durbin.test** e **Conover (1999)**.
 Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).
@@ -3101,7 +3101,7 @@ plot(woutfriedman,variation="IQR",horiz = TRUE)
 ```
 
 
-### Exercicio  1
+## Exercicio  1
 
 Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.
 
