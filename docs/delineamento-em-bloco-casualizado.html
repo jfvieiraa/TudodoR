@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados</title>
+  <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 8 Delineamento em bloco casualizado | Uso do sistema R para análise de dados" />
+  
+  <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2020-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="references.html"/>
+
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uso do sistema R para análise de dados</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
+<li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequência"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#nomes-de-vetores"><i class="fa fa-check"></i><b>3.1.2</b> Nomes de vetores</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#plotando-um-vetor"><i class="fa fa-check"></i><b>3.1.3</b> Plotando um vetor</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operações-matemáticas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersão"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
+<li class="chapter" data-level="3.1.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#valores-faltantes"><i class="fa fa-check"></i><b>3.1.6</b> Valores Faltantes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>3.2</b> Matrizes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#outras-formas"><i class="fa fa-check"></i><b>3.2.1</b> Outras formas</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#acesso-a-matriz"><i class="fa fa-check"></i><b>3.2.2</b> Acesso a Matriz</a></li>
+<li class="chapter" data-level="3.2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizações-em-dados-matriciais"><i class="fa fa-check"></i><b>3.2.3</b> Visualizações em dados matriciais</a></li>
+<li class="chapter" data-level="3.2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informações-sobre-construções-de-matrizes"><i class="fa fa-check"></i><b>3.2.4</b> Mais informações sobre construções de Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>3.3</b> Fatores</a></li>
+<li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#array"><i class="fa fa-check"></i><b>3.4</b> Array</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.5</b> Data.frame</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#índice-dos-data.frames"><i class="fa fa-check"></i><b>3.5.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.5.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5.2</b> Manipulando um Data.frame</a></li>
+<li class="chapter" data-level="3.5.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.3</b> Separando um data.frame por grupos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
+<li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
+<li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#vetores"><i class="fa fa-check"></i><b>4.2.1</b> Vetores</a></li>
+<li class="chapter" data-level="4.2.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-scan"><i class="fa fa-check"></i><b>4.2.2</b> Usando a função ‘scan’</a></li>
+<li class="chapter" data-level="4.2.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#copiar-e-colar-usando-scan"><i class="fa fa-check"></i><b>4.2.3</b> Copiar e colar usando scan()</a></li>
+<li class="chapter" data-level="4.2.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-através-da-área-de-transferência"><i class="fa fa-check"></i><b>4.2.4</b> Lendo dados através da área de transferência</a></li>
+<li class="chapter" data-level="4.2.5" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-edit"><i class="fa fa-check"></i><b>4.2.5</b> Usando a função edit</a></li>
+<li class="chapter" data-level="4.2.6" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-um-arquivo-texto"><i class="fa fa-check"></i><b>4.2.6</b> Lendo dados de um arquivo texto</a></li>
+<li class="chapter" data-level="4.2.7" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#dados-do-tipo-csv"><i class="fa fa-check"></i><b>4.2.7</b> Dados do tipo CSV</a></li>
+<li class="chapter" data-level="4.2.8" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#a-seguir-listamos-algumas-destas-funções"><i class="fa fa-check"></i><b>4.2.8</b> A seguir listamos algumas destas funções:</a></li>
+<li class="chapter" data-level="4.2.9" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-disponíveis-na-web"><i class="fa fa-check"></i><b>4.2.9</b> Lendo dados disponíveis na web</a></li>
+<li class="chapter" data-level="4.2.10" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-uma-planilha-eletrônica"><i class="fa fa-check"></i><b>4.2.10</b> Lendo dados de uma planilha eletrônica</a></li>
+<li class="chapter" data-level="4.2.11" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#exercícios"><i class="fa fa-check"></i><b>4.2.11</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#salvar-objetos-de-dados"><i class="fa fa-check"></i><b>4.3</b> Salvar objetos de dados</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#outras-funções"><i class="fa fa-check"></i><b>4.3.1</b> Outras funções</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#referência-2"><i class="fa fa-check"></i><b>4.4</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html"><i class="fa fa-check"></i><b>5</b> Criando Gráficos com o R</a><ul>
+<li class="chapter" data-level="5.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#exemplos-de-gráficos-com-o-r"><i class="fa fa-check"></i><b>5.1</b> Exemplos de gráficos com o R</a></li>
+<li class="chapter" data-level="5.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#entrada-de-dados-1"><i class="fa fa-check"></i><b>5.2</b> Entrada de dados</a></li>
+<li class="chapter" data-level="5.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#usando-a-função-plot"><i class="fa fa-check"></i><b>5.3</b> Usando a função <code>plot()</code></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-o-padrão-dos-pontos-pch"><i class="fa fa-check"></i><b>5.3.1</b> Mudando o padrão dos pontos <code>pch=</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-as-linhas-lwd-e-lty"><i class="fa fa-check"></i><b>5.3.2</b> Mudando as linhas (<code>lwd e lty</code>)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#adicionando-linhas-a-um-grafico-de-pontos"><i class="fa fa-check"></i><b>5.3.3</b> Adicionando linhas a um grafico de pontos</a></li>
+<li class="chapter" data-level="5.3.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#definindo-o-intervalo-dos-eixos"><i class="fa fa-check"></i><b>5.3.4</b> Definindo o intervalo dos eixos</a></li>
+<li class="chapter" data-level="5.3.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-os-gráficos"><i class="fa fa-check"></i><b>5.3.5</b> Personalizando os gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#histogramas"><i class="fa fa-check"></i><b>5.4</b> Histogramas</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-gráficos"><i class="fa fa-check"></i><b>5.4.1</b> Personalizando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#gráficos-de-barras"><i class="fa fa-check"></i><b>5.5</b> Gráficos de Barras</a></li>
+<li class="chapter" data-level="5.6" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplots"><i class="fa fa-check"></i><b>5.6</b> Boxplots</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplot-com-fatorial"><i class="fa fa-check"></i><b>5.6.1</b> Boxplot com fatorial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
+<li class="chapter" data-level="5.8" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#interagindo-com-a-janela-gráfica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
+<li class="chapter" data-level="5.9" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#texto-e-tamanho-do-símbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
+<li class="chapter" data-level="5.10" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#visualizar-vários-gráficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#varios-gráficos-na-mesma-janela-gráfica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#salvando-gráficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#personalizando-os-gráficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
+<li class="chapter" data-level="6.1.4" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#título"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
+<li class="chapter" data-level="6.1.5" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#regressão"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
+<li class="chapter" data-level="6.2.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#dados-climáticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>8</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.1</b> Análise de experimento DBC</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.1</b> Análise de variância</a></li>
+<li class="chapter" data-level="8.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.2</b> Transformação de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="8.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="8.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>8.4</b> Exercicio 1</a></li>
+<li class="chapter" data-level="8.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-4"><i class="fa fa-check"></i><b>8.5</b> Referência</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uso do sistema R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="delineamento-em-bloco-casualizado" class="section level1">
+<h1><span class="header-section-number">Capitulo 8</span> Delineamento em bloco casualizado</h1>
+<p>O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:</p>
+<ul>
+<li><p>repetição</p></li>
+<li><p>casualização</p></li>
+<li><p>controle local</p></li>
+</ul>
+<p>É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como <em>Two Way ANOVA</em>.</p>
+<div id="análise-de-experimento-dbc" class="section level2">
+<h2><span class="header-section-number">8.1</span> Análise de experimento DBC</h2>
+<p>Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.</p>
+<p>Importando dados</p>
+<div class="sourceCode" id="cb489"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb489-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1&quot;</span>) </a></code></pre></div>
+<p>conferir se temos fatores para fazer a análise de variância</p>
+<div class="sourceCode" id="cb490"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb490-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
+##  $ promalin: Factor w/ 5 levels &quot;12.5&quot;,&quot;12.5+12.5&quot;,..: 1 3 4 2 5 1 3 4 2 5 ...
+##  $ bloco   : Factor w/ 4 levels &quot;I&quot;,&quot;II&quot;,&quot;III&quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
+##  $ peso    : num  142 140 141 151 154 ...</code></pre>
+<p>Lembramos que o <em>peso</em> deve ter conteudo numerico e o <em>promalin</em> e <em>bloco</em> deve ser fator.</p>
+<div class="sourceCode" id="cb492"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb492-1" title="1">dados<span class="op">$</span>promalin&lt;-<span class="kw">as.factor</span>(dados<span class="op">$</span>promalin)</a>
+<a class="sourceLine" id="cb492-2" title="2">dados<span class="op">$</span>bloco&lt;-<span class="kw">as.numeric</span>(dados<span class="op">$</span>bloco)</a></code></pre></div>
+<p>Verificação gráfica**</p>
+<div class="sourceCode" id="cb493"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb493-1" title="1"><span class="kw">require</span>(lattice)</a></code></pre></div>
+<pre><code>## Loading required package: lattice</code></pre>
+<div class="sourceCode" id="cb495"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb495-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span>promalin, </a>
+<a class="sourceLine" id="cb495-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb495-3" title="3">        <span class="dt">data=</span> dados)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-281-1.png" width="672" /></p>
+<p>O efeito do bloco é aditivo?</p>
+<p>Ligar as observações com o mesmo bloco com a função <code>type ="o"</code></p>
+<div class="sourceCode" id="cb496"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb496-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
+<a class="sourceLine" id="cb496-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb496-3" title="3">        <span class="dt">data=</span> dados,</a>
+<a class="sourceLine" id="cb496-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-282-1.png" width="672" /></p>
+<p>Reordenar os tratamentos</p>
+<div class="sourceCode" id="cb497"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb497-1" title="1"><span class="kw">require</span>(plyr)</a></code></pre></div>
+<pre><code>## Loading required package: plyr</code></pre>
+<div class="sourceCode" id="cb499"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb499-1" title="1">dados<span class="op">$</span>promalin &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">reorder</span>(promalin, peso))</a>
+<a class="sourceLine" id="cb499-2" title="2">dados &lt;-<span class="st"> </span><span class="kw">arrange</span>(dados, promalin, bloco)</a></code></pre></div>
+<p>Graficos reordenados da menor média a maior média por tratamento</p>
+<div class="sourceCode" id="cb500"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb500-1" title="1"><span class="kw">xyplot</span>(peso <span class="op">~</span><span class="st"> </span><span class="kw">reorder</span>(promalin, peso), </a>
+<a class="sourceLine" id="cb500-2" title="2">        <span class="dt">groups =</span> bloco, </a>
+<a class="sourceLine" id="cb500-3" title="3">        <span class="dt">data=</span> dados,</a>
+<a class="sourceLine" id="cb500-4" title="4">        <span class="dt">type =</span> <span class="st">&quot;o&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-284-1.png" width="672" /></p>
+<div id="análise-de-variância" class="section level3">
+<h3><span class="header-section-number">8.1.1</span> Análise de variância</h3>
+<p>Fazendo a análise de variância</p>
+<div class="sourceCode" id="cb501"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb501-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">lm</span> (dados<span class="op">$</span>peso <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>bloco <span class="op">+</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
+<div class="sourceCode" id="cb502"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb502-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: dados$peso
+##                Df Sum Sq Mean Sq F value   Pr(&gt;F)   
+## dados$bloco     1  71.57  71.572  2.4574 0.139291   
+## dados$promalin  4 788.95 197.238  6.7721 0.002994 **
+## Residuals      14 407.75  29.125                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Extraindo o coeficiente de variação</p>
+<div class="sourceCode" id="cb504"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb504-1" title="1"><span class="kw">require</span>(agricolae)</a></code></pre></div>
+<pre><code>## Loading required package: agricolae</code></pre>
+<div class="sourceCode" id="cb506"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb506-1" title="1"><span class="kw">cv.model</span>(m0)</a></code></pre></div>
+<pre><code>## [1] 3.774477</code></pre>
+<p>Análise gráfica dos resíduos</p>
+<div class="sourceCode" id="cb508"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb508-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb508-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-288-1.png" width="672" /></p>
+<p>Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade.</p>
+<div id="teste-das-pressuposições-da-análise-de-variância" class="section level4">
+<h4><span class="header-section-number">8.1.1.1</span> Teste das pressuposições da análise de variância</h4>
+<div id="teste-de-bartllet-para-homocedasticidade" class="section level5">
+<h5><span class="header-section-number">8.1.1.1.1</span> Teste de Bartllet para homocedasticidade</h5>
+<div class="sourceCode" id="cb509"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb509-1" title="1"><span class="kw">bartlett.test</span>(m0<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m0$res and dados$promalin
+## Bartlett&#39;s K-squared = 1.7485, df = 4, p-value = 0.7819</code></pre>
+<p>Como observamos uma não significancia estatística neste resultado <em>(p-value = 0.7819)</em>, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.</p>
+</div>
+<div id="teste-de-shapiro-wilk-para-normalidade" class="section level5">
+<h5><span class="header-section-number">8.1.1.1.2</span> Teste de Shapiro-Wilk para Normalidade</h5>
+<div class="sourceCode" id="cb511"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb511-1" title="1"><span class="kw">shapiro.test</span>(m0<span class="op">$</span>res)</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m0$res
+## W = 0.855, p-value = 0.006472</code></pre>
+<p>Como observamos uma significancia estatística neste resultado <em>(p-value = 0.006472)</em>, devemos rejeitar a hipótese nula de que os residuoes tedem a distruibuição normal.</p>
+</div>
+</div>
+</div>
+<div id="transformação-de-dados" class="section level3">
+<h3><span class="header-section-number">8.1.2</span> Transformação de dados</h3>
+<p>Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.</p>
+<div id="transformação-de-dados-com-o-box-cox" class="section level4">
+<h4><span class="header-section-number">8.1.2.1</span> Transformação de dados com o BOX-COX</h4>
+<p>Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.</p>
+<p>A função <code>boxcox()</code> do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse.</p>
+<div class="sourceCode" id="cb513"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb513-1" title="1"><span class="kw">require</span>(MASS) </a></code></pre></div>
+<pre><code>## Loading required package: MASS</code></pre>
+<div class="sourceCode" id="cb515"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb515-1" title="1">  <span class="kw">boxcox</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-291-1.png" width="672" /></p>
+<div class="sourceCode" id="cb516"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb516-1" title="1">  <span class="kw">boxcox</span>(m0, <span class="dt">lam =</span> <span class="kw">seq</span>(<span class="op">-</span><span class="dv">8</span>, <span class="dv">8</span>, <span class="dv">1</span><span class="op">/</span><span class="dv">10</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-291-2.png" width="672" /></p>
+<p>Localizando o ponto máximo.</p>
+</div>
+<div id="análise-de-variância---ajuste-com-a-variável-transformada." class="section level4">
+<h4><span class="header-section-number">8.1.2.2</span> Análise de variância - Ajuste com a variável transformada.</h4>
+<div class="sourceCode" id="cb517"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb517-1" title="1">m1 &lt;-<span class="st"> </span><span class="kw">aov</span> (<span class="kw">log</span>(dados<span class="op">$</span>peso) <span class="op">~</span><span class="st"> </span>dados<span class="op">$</span>promalin, <span class="dt">data =</span> dados)</a></code></pre></div>
+<p>Anáise gráfica dos resíduos</p>
+<div class="sourceCode" id="cb518"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb518-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb518-2" title="2"><span class="kw">plot</span>(m1)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-294-1.png" width="672" /></p>
+<p>Os pressupostos foram atendindos ?</p>
+<p>Teste de Shapiro-Wilk para Normalidade</p>
+<div class="sourceCode" id="cb519"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb519-1" title="1"><span class="kw">shapiro.test</span>(m1<span class="op">$</span>res)</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m1$res
+## W = 0.93909, p-value = 0.2305</code></pre>
+<p>Teste de Bartllet para homocedasticidade</p>
+<div class="sourceCode" id="cb521"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb521-1" title="1"><span class="kw">bartlett.test</span>(m1<span class="op">$</span>res, dados<span class="op">$</span>promalin)</a></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m1$res and dados$promalin
+## Bartlett&#39;s K-squared = 2.1761, df = 4, p-value = 0.7034</code></pre>
+<div class="sourceCode" id="cb523"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb523-1" title="1"><span class="kw">anova</span>(m1)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: log(dados$peso)
+##                Df   Sum Sq   Mean Sq F value   Pr(&gt;F)   
+## dados$promalin  4 0.036571 0.0091428  6.0129 0.004296 **
+## Residuals      15 0.022808 0.0015205                    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+</div>
+</div>
+<div id="pacote-para-analise-de-experimentos" class="section level2">
+<h2><span class="header-section-number">8.2</span> Pacote para analise de experimentos</h2>
+<div class="sourceCode" id="cb525"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb525-1" title="1"><span class="kw">library</span>(ExpDes.pt)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;ExpDes.pt&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MASS&#39;:
+## 
+##     ginv</code></pre>
+<pre><code>## The following objects are masked from &#39;package:agricolae&#39;:
+## 
+##     lastC, order.group, tapply.stat</code></pre>
+<pre><code>## The following object is masked from &#39;package:stats&#39;:
+## 
+##     ccf</code></pre>
+<p>Conhecer o pacote ExpDes.pt</p>
+<div class="sourceCode" id="cb530"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb530-1" title="1"><span class="kw">ls</span>(<span class="st">&quot;package:ExpDes.pt&quot;</span>)</a></code></pre></div>
+<pre><code>##  [1] &quot;anscombetukey&quot;  &quot;bartlett&quot;       &quot;ccboot&quot;         &quot;ccf&quot;           
+##  [5] &quot;dbc&quot;            &quot;dic&quot;            &quot;dql&quot;            &quot;duncan&quot;        
+##  [9] &quot;faixas&quot;         &quot;fat2.ad.dbc&quot;    &quot;fat2.ad.dic&quot;    &quot;fat2.dbc&quot;      
+## [13] &quot;fat2.dic&quot;       &quot;fat3.ad.dbc&quot;    &quot;fat3.ad.dic&quot;    &quot;fat3.dbc&quot;      
+## [17] &quot;fat3.dic&quot;       &quot;ginv&quot;           &quot;graficos&quot;       &quot;han&quot;           
+## [21] &quot;lastC&quot;          &quot;layard&quot;         &quot;levene&quot;         &quot;lsd&quot;           
+## [25] &quot;lsdb&quot;           &quot;oneilldbc&quot;      &quot;oneillmathews&quot;  &quot;order.group&quot;   
+## [29] &quot;order.stat.SNK&quot; &quot;plotres&quot;        &quot;psub2.dbc&quot;      &quot;psub2.dic&quot;     
+## [33] &quot;reg.nl&quot;         &quot;reg.poly&quot;       &quot;samiuddin&quot;      &quot;scottknott&quot;    
+## [37] &quot;snk&quot;            &quot;tapply.stat&quot;    &quot;tukey&quot;</code></pre>
+<p>Utilizando o exemplo anterior.</p>
+<div class="sourceCode" id="cb532"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb532-1" title="1">x &lt;-<span class="st"> </span><span class="kw">dbc</span>(<span class="dt">trat =</span> dados<span class="op">$</span>promalin,</a>
+<a class="sourceLine" id="cb532-2" title="2">          <span class="dt">bloco =</span> dados<span class="op">$</span>bloco,</a>
+<a class="sourceLine" id="cb532-3" title="3">          <span class="dt">resp =</span> <span class="kw">log</span>(dados<span class="op">$</span>peso),</a>
+<a class="sourceLine" id="cb532-4" title="4">          <span class="dt">quali =</span> T,</a>
+<a class="sourceLine" id="cb532-5" title="5">          <span class="dt">mcomp =</span> <span class="st">&quot;tukey&quot;</span>)</a></code></pre></div>
+<pre><code>## ------------------------------------------------------------------------
+## Quadro da analise de variancia
+## ------------------------------------------------------------------------
+##            GL       SQ        QM     Fc   Pr&gt;Fc
+## Tratamento  4 0.036571 0.0091428 5.7552 0.00800
+## Bloco       3 0.003745 0.0012483 0.7858 0.52459
+## Residuo    12 0.019063 0.0015886               
+## Total      19 0.059379                         
+## ------------------------------------------------------------------------
+## CV = 0.8 %
+## 
+## ------------------------------------------------------------------------
+## Teste de normalidade dos residuos 
+## valor-p:  0.005994506 
+## ATENCAO: a 5% de significancia, os residuos nao podem ser considerados normais!
+## ------------------------------------------------------------------------
+## 
+## ------------------------------------------------------------------------
+## Teste de homogeneidade de variancia 
+## valor-p:  0.8927087 
+## De acordo com o teste de oneillmathews a 5% de significancia, as variancias podem ser consideradas homogeneas.
+## ------------------------------------------------------------------------
+## 
+## Teste de Tukey
+## ------------------------------------------------------------------------
+## Grupos Tratamentos Medias
+## a     Testemunha      5.043544 
+## ab    12.5    4.961465 
+##  b    12.5+12.5   4.940843 
+##  b    50.0    4.932278 
+##  b    25.0    4.927864 
+## ------------------------------------------------------------------------</code></pre>
+<p>Carregar pacotes</p>
+<div class="sourceCode" id="cb534"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb534-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb534-2" title="2"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<pre><code>## 
+## Attaching package: &#39;dplyr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:MASS&#39;:
+## 
+##     select</code></pre>
+<pre><code>## The following objects are masked from &#39;package:plyr&#39;:
+## 
+##     arrange, count, desc, failwith, id, mutate, rename, summarise,
+##     summarize</code></pre>
+<pre><code>## The following objects are masked from &#39;package:stats&#39;:
+## 
+##     filter, lag</code></pre>
+<pre><code>## The following objects are masked from &#39;package:base&#39;:
+## 
+##     intersect, setdiff, setequal, union</code></pre>
+<p>Calculo do erro</p>
+<div class="sourceCode" id="cb540"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb540-1" title="1">erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, promalin), </a>
+<a class="sourceLine" id="cb540-2" title="2">       <span class="dt">avg =</span> <span class="kw">mean</span>(peso), <span class="dt">sd =</span> <span class="kw">sd</span>(peso))</a></code></pre></div>
+<p>Gerando gráfico</p>
+<div class="sourceCode" id="cb541"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb541-1" title="1"><span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(promalin, avg, <span class="dt">fill=</span>promalin))<span class="op">+</span></a>
+<a class="sourceLine" id="cb541-2" title="2"><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb541-3" title="3"><span class="st">  </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-4" title="4"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb541-5" title="5"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb541-6" title="6"><span class="st">  </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb541-7" title="7"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-8" title="8"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;ab&quot;</span>, <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-9" title="9"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-10" title="10"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-11" title="11"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;b&quot;</span>, <span class="dt">x=</span><span class="dv">4</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-12" title="12"><span class="st">      </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span><span class="st">&quot;a&quot;</span>, <span class="dt">x=</span><span class="dv">5</span>, <span class="dt">y=</span><span class="dv">100</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-13" title="13"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb541-14" title="14"><span class="st">  </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Ignoring unknown parameters: with</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-303-1.png" width="672" /></p>
+</div>
+<div id="teste-não-parametrico" class="section level2">
+<h2><span class="header-section-number">8.3</span> Teste não parametrico</h2>
+<p>As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: <strong>kruskal</strong>, <strong>waerden.test</strong>, <strong>friedman</strong>, <strong>durbin.test</strong> e <strong>Conover (1999)</strong>.
+Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).</p>
+<p>Carregar pacote</p>
+<div class="sourceCode" id="cb543"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb543-1" title="1"><span class="kw">library</span>(agricolae)</a></code></pre></div>
+<p>A função <code>kruskal</code> é usada para N amostras (N&gt; 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos).</p>
+<div class="sourceCode" id="cb544"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb544-1" title="1">woutKruskal&lt;-<span class="kw">with</span>(dados,<span class="kw">kruskal</span>(promalin, <span class="dt">y =</span> peso</a>
+<a class="sourceLine" id="cb544-2" title="2">  ,<span class="dt">p.adj=</span><span class="st">&quot;bon&quot;</span>,<span class="dt">group=</span>T, <span class="dt">console=</span>T))</a></code></pre></div>
+<pre><code>## 
+## Study: peso ~ promalin
+## Kruskal-Wallis test&#39;s
+## Ties or no Ties
+## 
+## Critical Value: 10.41429
+## Degrees of freedom: 4
+## Pvalue Chisq  : 0.03399839 
+## 
+## promalin,  means of the ranks
+## 
+##             peso r
+## 12.5       12.00 4
+## 12.5+12.5   7.75 4
+## 25.0        7.50 4
+## 50.0        7.00 4
+## Testemunha 18.25 4
+## 
+## Post Hoc Analysis
+## 
+## P value adjustment method: bonferroni
+## t-Student: 3.286039
+## Alpha    : 0.05
+## Minimum Significant Difference: 10.40002 
+## 
+## Treatments with the same letter are not significantly different.
+## 
+##             peso groups
+## Testemunha 18.25      a
+## 12.5       12.00     ab
+## 12.5+12.5   7.75      b
+## 25.0        7.50      b
+## 50.0        7.00      b</code></pre>
+<div class="sourceCode" id="cb546"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb546-1" title="1"><span class="kw">print</span>(woutKruskal<span class="op">$</span>group)</a></code></pre></div>
+<pre><code>##             peso groups
+## Testemunha 18.25      a
+## 12.5       12.00     ab
+## 12.5+12.5   7.75      b
+## 25.0        7.50      b
+## 50.0        7.00      b</code></pre>
+<p>Gráficos</p>
+<div class="sourceCode" id="cb548"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb548-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb548-2" title="2"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
+<a class="sourceLine" id="cb548-3" title="3"><span class="kw">bar.group</span>(woutKruskal<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb548-4" title="4"><span class="kw">plot</span>(woutKruskal)</a>
+<a class="sourceLine" id="cb548-5" title="5"><span class="kw">plot</span>(woutKruskal,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-306-1.png" width="672" /></p>
+<p>A função <code>friedman</code> é usada para análise de tratamentos do estudo randomizado
+de bloco completo, onde a resposta não pode ser tratada através da análise de variância.</p>
+<div class="sourceCode" id="cb549"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb549-1" title="1">woutfriedman &lt;-<span class="st"> </span>out&lt;-<span class="kw">with</span>(dados,<span class="kw">friedman</span>(bloco,promalin, peso,<span class="dt">alpha=</span><span class="fl">0.05</span>, <span class="dt">group=</span>T,</a>
+<a class="sourceLine" id="cb549-2" title="2">  <span class="dt">console=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<pre><code>## 
+## Study: peso ~ bloco + promalin 
+## 
+## promalin,  Sum of the ranks
+## 
+##            peso r
+## 12.5          8 4
+## 12.5+12.5     8 4
+## 25.0         10 4
+## 50.0         14 4
+## Testemunha   20 4
+## 
+## Friedman&#39;s Test
+## ===============
+## Adjusted for ties
+## Critical Value: 10.4
+## P.Value Chisq: 0.0342027
+## F Value: 5.571429
+## P.Value F: 0.009007502 
+## 
+## Post Hoc Analysis
+## 
+## Alpha: 0.05 ; DF Error: 12
+## t-Student: 2.178813
+## LSD: 6.656383 
+## 
+## Treatments with the same letter are not significantly different.
+## 
+##            Sum of ranks groups
+## Testemunha           20      a
+## 50.0                 14     ab
+## 25.0                 10      b
+## 12.5                  8      b
+## 12.5+12.5             8      b</code></pre>
+<p>Grafico</p>
+<div class="sourceCode" id="cb551"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb551-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>),<span class="dt">mar=</span><span class="kw">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">1</span>),<span class="dt">cex=</span><span class="fl">0.8</span>)</a>
+<a class="sourceLine" id="cb551-2" title="2"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">xlab =</span><span class="st">&quot;promalin&quot;</span>)</a>
+<a class="sourceLine" id="cb551-3" title="3"><span class="kw">bar.group</span>(woutfriedman<span class="op">$</span>group,<span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">100</span>),<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb551-4" title="4"><span class="kw">plot</span>(woutfriedman)</a>
+<a class="sourceLine" id="cb551-5" title="5"><span class="kw">plot</span>(woutfriedman,<span class="dt">variation=</span><span class="st">&quot;IQR&quot;</span>,<span class="dt">horiz =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-308-1.png" width="672" /></p>
+</div>
+<div id="exercicio-1" class="section level2">
+<h2><span class="header-section-number">8.4</span> Exercicio 1</h2>
+<p>Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.</p>
+<p>Comparação de métodos de Semeadura do Mamoeiro</p>
+<p>Estudo realizado em Jaboticabal - SP por Ruiz (1977) que comparou métodos de semeadura no mamoeiro. O experimento foi instalado em delineamento de blocos casualizados, com 4 repetições, avaliando 3 métodos de semeadura. Foram avaliadas duas unidades experimentais por método em cada bloco.</p>
+<p>Importando dados</p>
+<div class="sourceCode" id="cb552"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb552-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/40m95attfw2fdh2/BanzattoQd4.7.1.txt?dl=1&quot;</span>) </a></code></pre></div>
+<p>Conferir se temos fatores para fazer a análise de variância</p>
+<div class="sourceCode" id="cb553"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb553-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    24 obs. of  3 variables:
+##  $ bloco : Factor w/ 4 levels &quot;I&quot;,&quot;II&quot;,&quot;III&quot;,..: 1 1 2 2 3 3 4 4 1 1 ...
+##  $ semead: Factor w/ 3 levels &quot;Direta no campo&quot;,..: 1 1 1 1 1 1 1 1 2 2 ...
+##  $ altura: num  136.1 105.3 98.8 86.8 108.8 ...</code></pre>
+<p>Gráficos</p>
+<div class="sourceCode" id="cb555"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb555-1" title="1"><span class="kw">addmargins</span>(<span class="kw">with</span>(dados,</a>
+<a class="sourceLine" id="cb555-2" title="2">  <span class="kw">tapply</span>(<span class="dt">X =</span> altura,</a>
+<a class="sourceLine" id="cb555-3" title="3">    <span class="dt">INDEX =</span> <span class="kw">list</span>(semead, bloco),</a>
+<a class="sourceLine" id="cb555-4" title="4">    <span class="dt">FUN =</span> sum)))</a></code></pre></div>
+<pre><code>##                     I    II   III    IV    Sum
+## Direta no campo 241.4 185.6 218.5 162.9  808.4
+## Recip. ao sol   157.7 120.7 129.0  80.1  487.5
+## Recip. ripado   123.5 127.1 132.9 109.8  493.3
+## Sum             522.6 433.4 480.4 352.8 1789.2</code></pre>
+<div class="sourceCode" id="cb557"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb557-1" title="1"><span class="kw">xyplot</span>(altura <span class="op">~</span><span class="st"> </span>semead, <span class="dt">data =</span> dados,</a>
+<a class="sourceLine" id="cb557-2" title="2">  <span class="dt">groups =</span> bloco, <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;p&quot;</span>, <span class="st">&quot;a&quot;</span>),</a>
+<a class="sourceLine" id="cb557-3" title="3">  <span class="dt">xlab =</span> <span class="st">&quot;Método de semeadura de mamoeiro&quot;</span>,</a>
+<a class="sourceLine" id="cb557-4" title="4">  <span class="dt">ylab =</span> <span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>,</a>
+<a class="sourceLine" id="cb557-5" title="5">  <span class="dt">auto.key =</span> <span class="kw">list</span>(<span class="dt">title =</span> <span class="st">&quot;Bloco&quot;</span>, <span class="dt">cex.title =</span> <span class="dv">1</span>, <span class="dt">columns =</span> <span class="dv">2</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-312-1.png" width="672" /></p>
+<p>Análise de Variância</p>
+<div class="sourceCode" id="cb558"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb558-1" title="1">m0 &lt;-<span class="st"> </span><span class="kw">aov</span>(altura<span class="op">~</span>bloco<span class="op">+</span>semead, <span class="dt">data=</span>dados)</a>
+<a class="sourceLine" id="cb558-2" title="2"><span class="kw">class</span>(m0)</a></code></pre></div>
+<pre><code>## [1] &quot;aov&quot; &quot;lm&quot;</code></pre>
+<div class="sourceCode" id="cb560"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb560-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: altura
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## bloco      3 2648.2   882.7  7.2162  0.002219 ** 
+## semead     2 8429.1  4214.6 34.4535 7.014e-07 ***
+## Residuals 18 2201.9   122.3                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb562"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb562-1" title="1"><span class="kw">summary</span>(m0)</a></code></pre></div>
+<pre><code>##             Df Sum Sq Mean Sq F value   Pr(&gt;F)    
+## bloco        3   2648     883   7.216  0.00222 ** 
+## semead       2   8429    4215  34.453 7.01e-07 ***
+## Residuals   18   2202     122                     
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<p>Checagem gráfica</p>
+<div class="sourceCode" id="cb564"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb564-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb564-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-314-1.png" width="672" /></p>
+<div class="sourceCode" id="cb565"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb565-1" title="1"><span class="kw">layout</span>(<span class="dv">1</span>)</a></code></pre></div>
+<p>Teste das pressuposições de normalidade de homocedasticidade</p>
+<div class="sourceCode" id="cb566"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb566-1" title="1"><span class="kw">shapiro.test</span>(<span class="kw">residuals</span>(m0))</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  residuals(m0)
+## W = 0.95197, p-value = 0.2988</code></pre>
+<div class="sourceCode" id="cb568"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb568-1" title="1"><span class="kw">bartlett.test</span>(<span class="kw">residuals</span>(m0)<span class="op">~</span>dados<span class="op">$</span>semead)</a></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  residuals(m0) by dados$semead
+## Bartlett&#39;s K-squared = 4.5219, df = 2, p-value = 0.1043</code></pre>
+<p>Teste de médias</p>
+<p><strong>Teste de Tukey</strong></p>
+<div class="sourceCode" id="cb570"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb570-1" title="1"><span class="kw">require</span>(agricolae)</a></code></pre></div>
+<div class="sourceCode" id="cb571"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb571-1" title="1">tu &lt;-<span class="st"> </span><span class="kw">with</span>(dados, <span class="kw">HSD.test</span>(altura, semead,</a>
+<a class="sourceLine" id="cb571-2" title="2"><span class="dt">DFerror=</span><span class="kw">df.residual</span>(m0),</a>
+<a class="sourceLine" id="cb571-3" title="3"><span class="dt">MSerror=</span><span class="kw">deviance</span>(m0)<span class="op">/</span><span class="kw">df.residual</span>(m0)))</a></code></pre></div>
+<div class="sourceCode" id="cb572"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb572-1" title="1"><span class="kw">plot</span>(tu)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-318-1.png" width="672" /></p>
+<div class="sourceCode" id="cb573"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb573-1" title="1"><span class="kw">print</span>(tu)</a></code></pre></div>
+<pre><code>## $statistics
+##    MSerror Df  Mean       CV      MSD
+##   122.3258 18 74.55 14.83581 14.11359
+## 
+## $parameters
+##    test name.t ntr StudentizedRange alpha
+##   Tukey semead   3         3.609304  0.05
+## 
+## $means
+##                   altura       std r  Min   Max    Q25    Q50     Q75
+## Direta no campo 101.0500 19.263956 8 70.5 136.1 91.000 102.05 109.025
+## Recip. ao sol    60.9375 15.187489 8 36.3  79.8 53.175  63.25  69.650
+## Recip. ripado    61.6625  9.544922 8 43.7  77.1 58.575  62.95  65.425
+## 
+## $comparison
+## NULL
+## 
+## $groups
+##                   altura groups
+## Direta no campo 101.0500      a
+## Recip. ripado    61.6625      b
+## Recip. ao sol    60.9375      b
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;group&quot;</code></pre>
+<div class="sourceCode" id="cb575"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb575-1" title="1"><span class="kw">require</span>(dplyr)</a>
+<a class="sourceLine" id="cb575-2" title="2"><span class="kw">require</span>(ggplot2)</a>
+<a class="sourceLine" id="cb575-3" title="3">  erro =<span class="st"> </span><span class="kw">summarise</span>(<span class="kw">group_by</span>(dados, semead), </a>
+<a class="sourceLine" id="cb575-4" title="4">    <span class="dt">avg =</span> <span class="kw">mean</span>(altura), <span class="dt">sd =</span> <span class="kw">sd</span>(altura))</a>
+<a class="sourceLine" id="cb575-5" title="5"></a>
+<a class="sourceLine" id="cb575-6" title="6">  </a>
+<a class="sourceLine" id="cb575-7" title="7">  <span class="kw">ggplot</span>(erro, <span class="kw">aes</span>(semead, avg, <span class="dt">fill=</span>semead))<span class="op">+</span></a>
+<a class="sourceLine" id="cb575-8" title="8"><span class="st">    </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)<span class="op">+</span></a>
+<a class="sourceLine" id="cb575-9" title="9"><span class="st">    </span><span class="kw">geom_errorbar</span>(<span class="kw">aes</span>(<span class="dt">ymin=</span>avg<span class="op">-</span>sd, <span class="dt">ymax =</span>avg<span class="op">+</span>sd), <span class="dt">with=</span><span class="fl">0.1</span>, <span class="dt">col=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-10" title="10"><span class="st">    </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb575-11" title="11"><span class="st">    </span><span class="kw">ylab</span>(<span class="st">&quot;Altura média de planta de mamoeiro aos 147 DAS (cm)&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb575-12" title="12"><span class="st">    </span><span class="kw">theme_bw</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb575-13" title="13"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-14" title="14"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">1</span>], <span class="dt">x=</span><span class="dv">1</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-15" title="15"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">2</span>], <span class="dt">x=</span><span class="dv">2</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-16" title="16"><span class="st">    </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>tu<span class="op">$</span>groups<span class="op">$</span>groups[<span class="dv">3</span>], <span class="dt">x=</span><span class="dv">3</span>, <span class="dt">y=</span><span class="dv">20</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-17" title="17"><span class="st">    </span></a>
+<a class="sourceLine" id="cb575-18" title="18"><span class="st">    </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb575-19" title="19"><span class="st">    </span><span class="kw">labs</span>(<span class="dt">caption =</span> <span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%&quot;</span>)</a></code></pre></div>
+<pre><code>## Warning: Ignoring unknown parameters: with</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-320-1.png" width="672" /></p>
+<p><strong>Teste de Scott-Knott</strong></p>
+<div class="sourceCode" id="cb577"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb577-1" title="1">  <span class="kw">library</span>(ScottKnott)</a>
+<a class="sourceLine" id="cb577-2" title="2">  sk &lt;-<span class="st"> </span><span class="kw">SK</span>(<span class="dt">x=</span>dados, <span class="dt">y=</span>dados<span class="op">$</span>altura, <span class="dt">model=</span><span class="st">&quot;altura~bloco+semead&quot;</span>, <span class="dt">which=</span><span class="st">&quot;semead&quot;</span>)</a>
+<a class="sourceLine" id="cb577-3" title="3">  <span class="kw">summary</span>(sk)</a></code></pre></div>
+<pre><code>##           Levels    Means SK(5%)
+##  Direta no campo 101.0500      a
+##    Recip. ripado  61.6625      b
+##    Recip. ao sol  60.9375      b</code></pre>
+<div class="sourceCode" id="cb579"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb579-1" title="1"><span class="kw">print</span>(sk)</a></code></pre></div>
+<pre><code>## $av
+## Call:
+##    aov(formula = altura ~ bloco + semead, data = dat)
+## 
+## Terms:
+##                    bloco   semead Residuals
+## Sum of Squares  2648.193 8429.103  2201.864
+## Deg. of Freedom        3        2        18
+## 
+## Residual standard error: 11.0601
+## Estimated effects may be unbalanced
+## 
+## $groups
+## [1] 1 2 2
+## 
+## $nms
+## [1] &quot;Direta no campo&quot; &quot;Recip. ao sol&quot;   &quot;Recip. ripado&quot;  
+## 
+## $ord
+## [1] 1 3 2
+## 
+## $m.inf
+##                     mean  min   max
+## Direta no campo 101.0500 70.5 136.1
+## Recip. ripado    61.6625 43.7  77.1
+## Recip. ao sol    60.9375 36.3  79.8
+## 
+## $sig.level
+## [1] 0.05
+## 
+## attr(,&quot;class&quot;)
+## [1] &quot;SK&quot;   &quot;list&quot;</code></pre>
+</div>
+<div id="referência-4" class="section level2">
+<h2><span class="header-section-number">8.5</span> Referência</h2>
+<p>MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.</p>
+<p>BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.</p>
+<p>ZEVIANI, W. M. Estatística Básica e Experimentação no R. 45p.</p>
+<p>Site: <a href="http://www.leg.ufpr.br/~paulojus/" class="uri">http://www.leg.ufpr.br/~paulojus/</a></p>
+
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="references.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TudodoR.pdf", "TudodoR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>

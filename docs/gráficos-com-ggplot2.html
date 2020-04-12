@@ -1,0 +1,721 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Capitulo 6 Gráficos com ggplot2 | Uso do sistema R para análise de dados</title>
+  <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Capitulo 6 Gráficos com ggplot2 | Uso do sistema R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Capitulo 6 Gráficos com ggplot2 | Uso do sistema R para análise de dados" />
+  
+  <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2020-04-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="criando-gráficos-com-o-r.html"/>
+<link rel="next" href="testes-estatísticos.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uso do sistema R para análise de dados</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
+<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
+<li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequência"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#nomes-de-vetores"><i class="fa fa-check"></i><b>3.1.2</b> Nomes de vetores</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#plotando-um-vetor"><i class="fa fa-check"></i><b>3.1.3</b> Plotando um vetor</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operações-matemáticas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersão"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
+<li class="chapter" data-level="3.1.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#valores-faltantes"><i class="fa fa-check"></i><b>3.1.6</b> Valores Faltantes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>3.2</b> Matrizes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#outras-formas"><i class="fa fa-check"></i><b>3.2.1</b> Outras formas</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#acesso-a-matriz"><i class="fa fa-check"></i><b>3.2.2</b> Acesso a Matriz</a></li>
+<li class="chapter" data-level="3.2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizações-em-dados-matriciais"><i class="fa fa-check"></i><b>3.2.3</b> Visualizações em dados matriciais</a></li>
+<li class="chapter" data-level="3.2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informações-sobre-construções-de-matrizes"><i class="fa fa-check"></i><b>3.2.4</b> Mais informações sobre construções de Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>3.3</b> Fatores</a></li>
+<li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#array"><i class="fa fa-check"></i><b>3.4</b> Array</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.5</b> Data.frame</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#índice-dos-data.frames"><i class="fa fa-check"></i><b>3.5.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.5.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5.2</b> Manipulando um Data.frame</a></li>
+<li class="chapter" data-level="3.5.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.3</b> Separando um data.frame por grupos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
+<li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
+<li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#vetores"><i class="fa fa-check"></i><b>4.2.1</b> Vetores</a></li>
+<li class="chapter" data-level="4.2.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-scan"><i class="fa fa-check"></i><b>4.2.2</b> Usando a função ‘scan’</a></li>
+<li class="chapter" data-level="4.2.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#copiar-e-colar-usando-scan"><i class="fa fa-check"></i><b>4.2.3</b> Copiar e colar usando scan()</a></li>
+<li class="chapter" data-level="4.2.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-através-da-área-de-transferência"><i class="fa fa-check"></i><b>4.2.4</b> Lendo dados através da área de transferência</a></li>
+<li class="chapter" data-level="4.2.5" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-edit"><i class="fa fa-check"></i><b>4.2.5</b> Usando a função edit</a></li>
+<li class="chapter" data-level="4.2.6" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-um-arquivo-texto"><i class="fa fa-check"></i><b>4.2.6</b> Lendo dados de um arquivo texto</a></li>
+<li class="chapter" data-level="4.2.7" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#dados-do-tipo-csv"><i class="fa fa-check"></i><b>4.2.7</b> Dados do tipo CSV</a></li>
+<li class="chapter" data-level="4.2.8" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#a-seguir-listamos-algumas-destas-funções"><i class="fa fa-check"></i><b>4.2.8</b> A seguir listamos algumas destas funções:</a></li>
+<li class="chapter" data-level="4.2.9" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-disponíveis-na-web"><i class="fa fa-check"></i><b>4.2.9</b> Lendo dados disponíveis na web</a></li>
+<li class="chapter" data-level="4.2.10" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-uma-planilha-eletrônica"><i class="fa fa-check"></i><b>4.2.10</b> Lendo dados de uma planilha eletrônica</a></li>
+<li class="chapter" data-level="4.2.11" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#exercícios"><i class="fa fa-check"></i><b>4.2.11</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#salvar-objetos-de-dados"><i class="fa fa-check"></i><b>4.3</b> Salvar objetos de dados</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#outras-funções"><i class="fa fa-check"></i><b>4.3.1</b> Outras funções</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#referência-2"><i class="fa fa-check"></i><b>4.4</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html"><i class="fa fa-check"></i><b>5</b> Criando Gráficos com o R</a><ul>
+<li class="chapter" data-level="5.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#exemplos-de-gráficos-com-o-r"><i class="fa fa-check"></i><b>5.1</b> Exemplos de gráficos com o R</a></li>
+<li class="chapter" data-level="5.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#entrada-de-dados-1"><i class="fa fa-check"></i><b>5.2</b> Entrada de dados</a></li>
+<li class="chapter" data-level="5.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#usando-a-função-plot"><i class="fa fa-check"></i><b>5.3</b> Usando a função <code>plot()</code></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-o-padrão-dos-pontos-pch"><i class="fa fa-check"></i><b>5.3.1</b> Mudando o padrão dos pontos <code>pch=</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-as-linhas-lwd-e-lty"><i class="fa fa-check"></i><b>5.3.2</b> Mudando as linhas (<code>lwd e lty</code>)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#adicionando-linhas-a-um-grafico-de-pontos"><i class="fa fa-check"></i><b>5.3.3</b> Adicionando linhas a um grafico de pontos</a></li>
+<li class="chapter" data-level="5.3.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#definindo-o-intervalo-dos-eixos"><i class="fa fa-check"></i><b>5.3.4</b> Definindo o intervalo dos eixos</a></li>
+<li class="chapter" data-level="5.3.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-os-gráficos"><i class="fa fa-check"></i><b>5.3.5</b> Personalizando os gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#histogramas"><i class="fa fa-check"></i><b>5.4</b> Histogramas</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-gráficos"><i class="fa fa-check"></i><b>5.4.1</b> Personalizando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#gráficos-de-barras"><i class="fa fa-check"></i><b>5.5</b> Gráficos de Barras</a></li>
+<li class="chapter" data-level="5.6" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplots"><i class="fa fa-check"></i><b>5.6</b> Boxplots</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplot-com-fatorial"><i class="fa fa-check"></i><b>5.6.1</b> Boxplot com fatorial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
+<li class="chapter" data-level="5.8" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#interagindo-com-a-janela-gráfica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
+<li class="chapter" data-level="5.9" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#texto-e-tamanho-do-símbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
+<li class="chapter" data-level="5.10" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#visualizar-vários-gráficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#varios-gráficos-na-mesma-janela-gráfica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#salvando-gráficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#personalizando-os-gráficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
+<li class="chapter" data-level="6.1.4" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#título"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
+<li class="chapter" data-level="6.1.5" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#regressão"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
+<li class="chapter" data-level="6.2.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#dados-climáticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="chapter" data-level="8" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>8</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.1</b> Análise de experimento DBC</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.1</b> Análise de variância</a></li>
+<li class="chapter" data-level="8.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.2</b> Transformação de dados</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="8.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="8.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>8.4</b> Exercicio 1</a></li>
+<li class="chapter" data-level="8.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-4"><i class="fa fa-check"></i><b>8.5</b> Referência</a></li>
+</ul></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uso do sistema R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="gráficos-com-ggplot2" class="section level1">
+<h1><span class="header-section-number">Capitulo 6</span> Gráficos com ggplot2</h1>
+<p>Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na <em>Grammar of Graphics</em> (Gramática dos Gráficos) para descrever os gráficos de dados.</p>
+<p>Utilize o codigo abaixo para instalar o pacote ggplot2</p>
+<div class="sourceCode" id="cb344"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb344-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;ggplot2&quot;</span>)</a></code></pre></div>
+<p>Sempre carregue o pacote antes de utilizá-lo.</p>
+<div class="sourceCode" id="cb345"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb345-1" title="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<p>Utilizaremos o banco de dados:
+<a href="https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1">dadosfisio</a></p>
+<p>Baixar os dados</p>
+<div class="sourceCode" id="cb346"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb346-1" title="1">fisio &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>)</a></code></pre></div>
+<p>Veja as primeiras linhas.</p>
+<div class="sourceCode" id="cb347"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb347-1" title="1"><span class="kw">head</span>(fisio)</a></code></pre></div>
+<pre><code>##   z x  y cota       ds        cc        ma    ptotal   tibo   tibe         a
+## 1 1 1  1 9.15 1.501258 0.3975615 0.1288555 0.5264170  46.08  26.78  926.3955
+## 2 1 1  3 8.95 1.474362 0.3818767 0.1530250 0.5349017  19.20  26.10  383.8130
+## 3 1 1  5 8.78 1.469118 0.3514075 0.1851484 0.5365559 172.80 113.92  275.3272
+## 4 1 1  7 8.59 1.392845 0.3724094 0.1882073 0.5606167  96.00  74.83 1206.7585
+## 5 1 1  9 8.48 1.383309 0.3559554 0.2076696 0.5636250  30.72  37.20  151.4032
+## 6 1 1 11 8.41 1.417010 0.3144429 0.2385509 0.5529937 151.32 124.52  368.7992
+##            b       X3       X60       X90      X120
+## 1 -0.5290035 518.0810 153.24778 106.20581  73.60416
+## 2 -0.4176008 242.5903  92.74121  69.43243  51.98188
+## 3 -0.1307566 238.4857 176.48417 161.19222 147.22529
+## 4 -0.3764298 798.0272 335.41915 258.38731 199.04648
+## 5 -0.2270424 117.9800  69.94649  59.76121  51.05906
+## 6 -0.1549382 311.0754 217.73464 195.56291 175.64890</code></pre>
+<p>O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa a densidade do solo e ao eixo x a variavel capacidade de campo.</p>
+<div class="sourceCode" id="cb349"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb349-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb349-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-186-1.png" width="672" /></p>
+<p>Aqui, essas formas geomótricas são pontos, selecionados pela função <code>geom_point()</code>, gerando, assim, um gráfico de dispersão.</p>
+<p>A função <code>aes()</code> vem da palavra <em>Aesthetics</em> define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função <code>colour</code>.</p>
+<p>Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.</p>
+<div class="sourceCode" id="cb350"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb350-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc, <span class="dt">colour =</span> <span class="kw">as.factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb350-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-187-1.png" width="672" /></p>
+<p>Agora, a variável <em>z</em> (classe de solo) foi mapeada a cor dos pontos, sendo que pontos vermelhos correspondem ao Nitossolo (valor 1) e pontos azuis e verdes os Latossolos. Observe que inserimos a variável <em>z</em> como um fator, pois temos interesse apenas nos valores “1”, “2” e “3”. No entanto, tambem podemos mapear uma variável contínua a cor dos pontos:</p>
+<div class="sourceCode" id="cb351"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb351-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc, <span class="dt">colour =</span> ptotal)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb351-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-188-1.png" width="672" /></p>
+<p>A porosidade do solo (ptotal), é representado pela tonalidade da cor azul.</p>
+<p>Também podemos mapear o tamanho dos pontos a uma variável de interesse.</p>
+<div class="sourceCode" id="cb352"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb352-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc, <span class="dt">colour =</span> ptotal, <span class="dt">size =</span> ma)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb352-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-189-1.png" width="672" /></p>
+<p>Outros <code>geoms</code> bastante utilizados:</p>
+<ul>
+<li>geom_line: para retas definidas por pares (x,y)</li>
+<li>geom_abline: para retas definidas por um intercepto e uma inclinação</li>
+<li>geom_hline: para retas horizontais</li>
+<li>geom_boxplot: para boxplots</li>
+<li>geom_histogram: para histogramas</li>
+<li>geom_density: para densidades</li>
+<li>geom_area: para áreas</li>
+<li>geom_bar: para barras</li>
+</ul>
+<p>Veja a seguir como é fácil gerar diversos Gráficos diferentes utilizando a mesma estrutura do gráfico de dispersão acima:</p>
+<div class="sourceCode" id="cb353"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb353-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(z), <span class="dt">y =</span> ds)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb353-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-190-1.png" width="672" /></p>
+<div class="sourceCode" id="cb354"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb354-1" title="1">gra &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds)) </a></code></pre></div>
+<div class="sourceCode" id="cb355"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb355-1" title="1">gra <span class="op">+</span><span class="st">  </span><span class="kw">geom_histogram</span>()</a></code></pre></div>
+<pre><code>## `stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-192-1.png" width="672" /></p>
+<div class="sourceCode" id="cb357"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb357-1" title="1">gra <span class="op">+</span><span class="st">  </span><span class="kw">geom_histogram</span>(<span class="dt">binwidth=</span>.<span class="dv">05</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-193-1.png" width="672" /></p>
+<div class="sourceCode" id="cb358"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb358-1" title="1">gra <span class="op">+</span><span class="st"> </span><span class="kw">geom_density</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb358-2" title="2"><span class="st">  </span><span class="kw">geom_histogram</span> (<span class="kw">aes</span>(<span class="dt">y=</span>..density..),              <span class="dt">binwidth=</span>.<span class="dv">05</span>,</a>
+<a class="sourceLine" id="cb358-3" title="3">    <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">fill=</span><span class="st">&quot;white&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb358-4" title="4"><span class="st">    </span><span class="kw">geom_density</span>(<span class="dt">alpha=</span>.<span class="dv">2</span>, <span class="dt">fill=</span><span class="st">&quot;#FF6666&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-194-1.png" width="672" /></p>
+<p><strong>Exemplo</strong>
+Baixar dados via web.</p>
+<div class="sourceCode" id="cb359"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb359-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1&quot;</span>)</a></code></pre></div>
+<p>Criar gráficos.</p>
+<div class="sourceCode" id="cb360"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb360-1" title="1">bar &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> dados, <span class="kw">aes</span>(<span class="dt">y =</span> peso, <span class="dt">x =</span> promalin, <span class="dt">fill =</span> <span class="kw">factor</span>(promalin)))</a></code></pre></div>
+<p>Nestes exemplos, a altura da barra representará o valor em uma coluna do quadro de dados. Isso é feito usando <code>stat="identity"</code> em vez do padrão <code>stat="bin"</code>.</p>
+<div class="sourceCode" id="cb361"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb361-1" title="1">bar <span class="op">+</span><span class="st">  </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-197-1.png" width="672" /></p>
+<p>Gráfico de barras agrupados</p>
+<div class="sourceCode" id="cb362"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb362-1" title="1">bar <span class="op">+</span><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">position=</span><span class="kw">position_dodge</span>())</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-198-1.png" width="672" /></p>
+<p>Empilhado</p>
+<div class="sourceCode" id="cb363"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb363-1" title="1">bar <span class="op">+</span><span class="st">   </span><span class="kw">geom_bar</span>(<span class="dt">stat=</span><span class="st">&quot;identity&quot;</span>, <span class="dt">colour =</span><span class="st">&quot;black&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-199-1.png" width="672" /></p>
+<div id="personalizando-os-gráficos-1" class="section level2">
+<h2><span class="header-section-number">6.1</span> Personalizando os gráficos</h2>
+<div id="cores-1" class="section level3">
+<h3><span class="header-section-number">6.1.1</span> Cores</h3>
+<p>O aspecto <code>colour</code> do boxplot, muda a cor do contorno. Para mudar o preenchimento, basta usar o <code>fill</code>.</p>
+<p>Usando <code>colour</code></p>
+<div class="sourceCode" id="cb364"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb364-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(z), <span class="dt">y =</span> ds, <span class="dt">colour =</span> <span class="kw">factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb364-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-200-1.png" width="672" /></p>
+<p>Usando <code>fill</code></p>
+<div class="sourceCode" id="cb365"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb365-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(z), <span class="dt">y =</span> ds, <span class="dt">fill =</span> <span class="kw">factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb365-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-201-1.png" width="672" /></p>
+<p>Mude a cor dos objetos sem atribuir a uma variavel. Para isso, observe que os aspectos <code>colour</code> e <code>fill</code> são especificados fora do <code>aes()</code>.</p>
+<div class="sourceCode" id="cb366"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb366-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(z), <span class="dt">y =</span> ds)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb366-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">colour =</span> <span class="st">&quot;darkblue&quot;</span>, <span class="dt">fill=</span> <span class="st">&quot;blue&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-202-1.png" width="672" /></p>
+</div>
+<div id="eixos" class="section level3">
+<h3><span class="header-section-number">6.1.2</span> Eixos</h3>
+<p>Para alterar os rotulos dos eixos acrescentamos as funções <code>xlab()</code> ou <code>ylab()</code>.</p>
+<div class="sourceCode" id="cb367"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb367-1" title="1">box &lt;-<span class="st"> </span><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(z), <span class="dt">y =</span> ds, <span class="dt">fill =</span> <span class="kw">factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb367-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>()<span class="op">+</span></a>
+<a class="sourceLine" id="cb367-3" title="3"><span class="st">  </span><span class="kw">xlab</span>(<span class="st">&quot;Classes de solo&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb367-4" title="4"><span class="st">  </span><span class="kw">ylab</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(Densidade<span class="op">~</span>do<span class="op">~</span>solo,<span class="st">&quot; g cm &quot;</span><span class="op">^</span>{<span class="op">-</span><span class="dv">3</span>} )))</a></code></pre></div>
+<p>Alterar os limites dos Gráficos usamos as funções <code>xlim()</code> e <code>ylim()</code>.</p>
+<div class="sourceCode" id="cb368"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb368-1" title="1">  box <span class="op">+</span><span class="st"> </span><span class="kw">ylim</span> (<span class="kw">c</span>(<span class="fl">1.0</span>,<span class="fl">2.0</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-204-1.png" width="672" /></p>
+<p>Especifique marcas de escala diretamente</p>
+<div class="sourceCode" id="cb369"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb369-1" title="1">box <span class="op">+</span><span class="st"> </span><span class="kw">coord_cartesian</span>(<span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb369-2" title="2"><span class="st">    </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="fl">0.20</span>))  </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-205-1.png" width="672" /></p>
+<p>Troque os eixos x e y</p>
+<div class="sourceCode" id="cb370"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb370-1" title="1">box <span class="op">+</span></a>
+<a class="sourceLine" id="cb370-2" title="2"><span class="st">  </span><span class="kw">coord_flip</span>()</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-206-1.png" width="672" /></p>
+<p>Definir rótulos de marca de escala</p>
+<div class="sourceCode" id="cb371"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb371-1" title="1">box2 &lt;-<span class="st"> </span>box <span class="op">+</span></a>
+<a class="sourceLine" id="cb371-2" title="2"><span class="st">          </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>),</a>
+<a class="sourceLine" id="cb371-3" title="3">            <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Nitossolo&quot;</span>,<span class="st">&quot;Latossolo&quot;</span>, <span class="st">&quot;Latossolo&quot;</span>))</a></code></pre></div>
+</div>
+<div id="legenda" class="section level3">
+<h3><span class="header-section-number">6.1.3</span> Legenda</h3>
+<p>Remover legenda para uma estética específica <code>(fill)</code></p>
+<div class="sourceCode" id="cb372"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb372-1" title="1">box2 <span class="op">+</span><span class="st"> </span><span class="kw">guides</span>(<span class="dt">fill=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-208-1.png" width="672" /></p>
+<p>Também pode ser feito ao especificar a <code>scale</code></p>
+<div class="sourceCode" id="cb373"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb373-1" title="1">box2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_discrete</span>(<span class="dt">guide=</span><span class="ot">FALSE</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-209-1.png" width="672" /></p>
+<p>Isso remove todas as legendas</p>
+<div class="sourceCode" id="cb374"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb374-1" title="1">box2 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;none&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-210-1.png" width="672" /></p>
+<p>Alterando a ordem dos itens na legenda</p>
+<div class="sourceCode" id="cb375"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb375-1" title="1">box2 <span class="op">+</span><span class="st"> </span><span class="kw">scale_fill_discrete</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;2&quot;</span>,<span class="st">&quot;3&quot;</span>,<span class="st">&quot;1&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-211-1.png" width="672" /></p>
+<p>Modificando o texto de legenda de tétulos e rótulos</p>
+<div class="sourceCode" id="cb376"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb376-1" title="1">box3 &lt;-<span class="st"> </span>box2 <span class="op">+</span></a>
+<a class="sourceLine" id="cb376-2" title="2"><span class="st">        </span><span class="kw">scale_fill_discrete</span>(<span class="dt">name=</span><span class="st">&quot;Classes</span><span class="ch">\n</span><span class="st">de solo&quot;</span>,</a>
+<a class="sourceLine" id="cb376-3" title="3">                          <span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>),</a>
+<a class="sourceLine" id="cb376-4" title="4">                          <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;CTI&quot;</span>, <span class="st">&quot;FEI&quot;</span>, <span class="st">&quot;IAPAR&quot;</span>))</a></code></pre></div>
+<p>Modificando a aparência do título e dos rótulos da legenda</p>
+<div class="sourceCode" id="cb377"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb377-1" title="1"><span class="co"># Título</span></a>
+<a class="sourceLine" id="cb377-2" title="2">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.title =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size=</span><span class="dv">13</span>, <span class="dt">face=</span><span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-213-1.png" width="672" /></p>
+<div class="sourceCode" id="cb378"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb378-1" title="1"><span class="co"># Níveis</span></a>
+<a class="sourceLine" id="cb378-2" title="2">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.text =</span> <span class="kw">element_text</span>(<span class="dt">colour=</span><span class="st">&quot;black&quot;</span>, <span class="dt">size =</span> <span class="dv">12</span>, <span class="dt">face =</span> <span class="st">&quot;bold&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-213-2.png" width="672" /></p>
+<p>Modificando a caixa de legenda</p>
+<div class="sourceCode" id="cb379"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb379-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.background =</span> <span class="kw">element_rect</span>())</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-214-1.png" width="672" /></p>
+<div class="sourceCode" id="cb380"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb380-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.background =</span> <span class="kw">element_rect</span>(<span class="dt">fill=</span><span class="st">&quot;gray90&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-214-2.png" width="672" /></p>
+<p>Mudando a posição da legenda</p>
+<div class="sourceCode" id="cb381"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb381-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-215-1.png" width="672" /></p>
+<p>Posicione a legenda no gráfico, em que x, y é 0,0 (canto inferior esquerdo) a 1,1 (canto superior direito)</p>
+<div class="sourceCode" id="cb382"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb382-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="kw">c</span>(.<span class="dv">5</span>, <span class="fl">.5</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-216-1.png" width="672" /></p>
+<p>Defina o “ponto de ancoragem” da legenda (o canto inferior esquerdo é 0,0; o canto superior direito é 1,1)</p>
+<div class="sourceCode" id="cb383"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb383-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.justification=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>), <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">0</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-217-1.png" width="672" /></p>
+<p>Coloque o canto inferior direito da caixa de legenda no canto inferior direito do gráfico</p>
+<div class="sourceCode" id="cb384"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb384-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">theme</span>(<span class="dt">legend.justification=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>), <span class="dt">legend.position=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">0</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-218-1.png" width="672" /></p>
+</div>
+<div id="título" class="section level3">
+<h3><span class="header-section-number">6.1.4</span> Título</h3>
+<div class="sourceCode" id="cb385"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb385-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">ggtitle</span>(<span class="st">&quot;Variabilidade da densidade do solo</span><span class="ch">\n</span><span class="st"> em diferentes solos&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-219-1.png" width="672" /></p>
+<div class="sourceCode" id="cb386"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb386-1" title="1">box3 <span class="op">+</span><span class="st"> </span><span class="kw">labs</span>(<span class="dt">title=</span><span class="st">&quot;Variabilidade da densidade do solo</span><span class="ch">\n</span><span class="st"> em diferentes solos&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-219-2.png" width="672" /></p>
+</div>
+<div id="facets" class="section level3">
+<h3><span class="header-section-number">6.1.5</span> Facets</h3>
+<p>Outra funcionalidade muito importante do <strong>ggplot2</strong> é o uso de <code>facets</code>.
+Você quer dividir seus dados por uma ou mais variáveis e plotar os subconjuntos de dados juntos.</p>
+<div class="sourceCode" id="cb387"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb387-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc, <span class="dt">colour =</span> <span class="kw">as.factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb387-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb387-3" title="3"><span class="st">  </span><span class="kw">facet_grid</span>(z<span class="op">~</span>.)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-220-1.png" width="672" /></p>
+<p>Podemos colocar os graficos lado a lado também.</p>
+<div class="sourceCode" id="cb388"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb388-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> fisio, <span class="kw">aes</span>(<span class="dt">x =</span> ds, <span class="dt">y =</span> cc, <span class="dt">colour =</span> <span class="kw">as.factor</span>(z))) <span class="op">+</span></a>
+<a class="sourceLine" id="cb388-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb388-3" title="3"><span class="st">  </span><span class="kw">facet_grid</span>(.<span class="op">~</span>z)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-221-1.png" width="672" /></p>
+</div>
+</div>
+<div id="exemplos" class="section level2">
+<h2><span class="header-section-number">6.2</span> Exemplos</h2>
+<div id="regressão" class="section level3">
+<h3><span class="header-section-number">6.2.1</span> Regressão</h3>
+<p><strong>Efeito do Gesso no Peso de grãos de feijão</strong>
+Estudo sobre o efeito do gesso no peso de grãos de feijo (<em>Phaseolus vulgaris</em> L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 n?veis de gesso, de 0 a 300, igualmente espaados em 50 kg ha-1.</p>
+<p>Baixar dados</p>
+<div class="sourceCode" id="cb389"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb389-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/r6jz7mrktbgnbnx/BanzattoQd7.2.1.txt?dl=1&quot;</span>)</a></code></pre></div>
+<p>Verificar a estrutura dos dados</p>
+<div class="sourceCode" id="cb390"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb390-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    28 obs. of  3 variables:
+##  $ gesso: int  0 0 0 0 50 50 50 50 100 100 ...
+##  $ rept : int  1 2 3 4 1 2 3 4 1 2 ...
+##  $ peso : num  135 140 148 132 162 ...</code></pre>
+<p>Analise de regressão</p>
+<div class="sourceCode" id="cb392"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb392-1" title="1">model &lt;-<span class="st"> </span><span class="kw">lm</span>(  gesso <span class="op">~</span><span class="st"> </span>peso, dados)</a>
+<a class="sourceLine" id="cb392-2" title="2"></a>
+<a class="sourceLine" id="cb392-3" title="3"><span class="kw">summary</span>(model)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = gesso ~ peso, data = dados)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -120.41  -70.79  -31.57   74.22  179.24 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)  
+## (Intercept) -451.935    282.012  -1.603    0.121  
+## peso           3.849      1.799   2.139    0.042 *
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 95.7 on 26 degrees of freedom
+## Multiple R-squared:  0.1496, Adjusted R-squared:  0.1169 
+## F-statistic: 4.575 on 1 and 26 DF,  p-value: 0.04201</code></pre>
+<p>Extrair a equação do modelo</p>
+<div class="sourceCode" id="cb394"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb394-1" title="1">eqn &lt;-<span class="st"> </span><span class="kw">as.character</span>(<span class="kw">as.expression</span>(<span class="kw">substitute</span>(<span class="kw">italic</span>(y) <span class="op">==</span><span class="st"> </span>a <span class="op">+</span><span class="st"> </span>b <span class="op">*</span><span class="st"> </span><span class="kw">italic</span>(x) <span class="op">*</span><span class="st"> &quot;,&quot;</span> <span class="op">~</span><span class="er">~</span><span class="st"> </span><span class="kw">italic</span>(r)<span class="op">^</span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;=&quot;</span> <span class="op">~</span><span class="st"> </span>r2,<span class="kw">list</span>(<span class="dt">a =</span> <span class="kw">format</span>(<span class="kw">coef</span>(model)[<span class="dv">1</span>], <span class="dt">digits=</span><span class="dv">3</span>),<span class="dt">b =</span> <span class="kw">format</span>(<span class="kw">coef</span>(model)[<span class="dv">2</span>], <span class="dt">digits=</span><span class="dv">3</span>), <span class="dt">r2 =</span> <span class="kw">format</span>(<span class="kw">summary</span>(model)<span class="op">$</span>r.squared, <span class="dt">digits=</span><span class="dv">3</span>)))))</a></code></pre></div>
+<p>Criando o gráfico</p>
+<div class="sourceCode" id="cb395"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb395-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>gesso,<span class="dt">y=</span>peso,<span class="dt">color=</span>peso))  <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb395-2" title="2"><span class="st">  </span><span class="kw">geom_point</span>(<span class="dt">size=</span><span class="fl">2.9</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;grey10&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb395-3" title="3"><span class="st">    </span><span class="kw">theme_bw</span>(<span class="dt">base_size =</span> <span class="dv">10</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb395-4" title="4"><span class="st">        </span><span class="kw">ylab</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(  <span class="st">&quot;Peso (g)&quot;</span> )))  <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb395-5" title="5"><span class="st">        </span><span class="kw">xlab</span>(<span class="kw">expression</span>(<span class="kw">paste</span>(Gesso,<span class="st">&quot; kg ha&quot;</span><span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>} )))  <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb395-6" title="6"><span class="st">        </span><span class="kw">annotate</span>(<span class="st">&quot;text&quot;</span>, <span class="dt">label=</span>eqn, <span class="dt">parse=</span><span class="ot">TRUE</span>, <span class="dt">x=</span><span class="ot">Inf</span>, <span class="dt">y=</span><span class="op">-</span><span class="ot">Inf</span>,</a>
+<a class="sourceLine" id="cb395-7" title="7">             <span class="dt">hjust=</span><span class="fl">1.</span>, <span class="dt">vjust=</span><span class="op">-</span>.<span class="dv">5</span>, <span class="dt">size =</span> <span class="dv">5</span>)  <span class="op">+</span><span class="st">    </span></a>
+<a class="sourceLine" id="cb395-8" title="8"><span class="st">        </span><span class="kw">stat_smooth</span>(<span class="dt">method =</span> lm, <span class="dt">se =</span> T, <span class="dt">colour=</span><span class="st">&quot;red&quot;</span>, <span class="dt">size=</span>.<span class="dv">85</span>)</a></code></pre></div>
+<pre><code>## `geom_smooth()` using formula &#39;y ~ x&#39;</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-226-1.png" width="672" /></p>
+</div>
+<div id="delineamento-em-blocos-casualizados--dbc" class="section level3">
+<h3><span class="header-section-number">6.2.2</span> Delineamento em blocos casualizados- DBC</h3>
+<p><strong>Efeito do Promalin sobre Furtos de Macieira</strong></p>
+<p>Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espaçadas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.</p>
+<p>Baixar dados</p>
+<div class="sourceCode" id="cb397"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb397-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1&quot;</span>)</a></code></pre></div>
+<p>Verificar Estrutura dos dados</p>
+<div class="sourceCode" id="cb398"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb398-1" title="1"><span class="kw">str</span>(dados)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    20 obs. of  3 variables:
+##  $ promalin: Factor w/ 5 levels &quot;12.5&quot;,&quot;12.5+12.5&quot;,..: 1 3 4 2 5 1 3 4 2 5 ...
+##  $ bloco   : Factor w/ 4 levels &quot;I&quot;,&quot;II&quot;,&quot;III&quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
+##  $ peso    : num  142 140 141 151 154 ...</code></pre>
+<p>Transformação categorica</p>
+<div class="sourceCode" id="cb400"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb400-1" title="1">dados<span class="op">$</span>promalin =<span class="st"> </span><span class="kw">as.factor</span>(dados<span class="op">$</span>promalin)</a>
+<a class="sourceLine" id="cb400-2" title="2">dados<span class="op">$</span>bloco=<span class="st"> </span><span class="kw">as.factor</span>(dados<span class="op">$</span>bloco)</a></code></pre></div>
+<p>Estatistísca descritiva</p>
+<div class="sourceCode" id="cb401"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb401-1" title="1"><span class="kw">summary</span>(dados)</a></code></pre></div>
+<pre><code>##        promalin bloco        peso      
+##  12.5      :4   I  :5   Min.   :130.6  
+##  12.5+12.5 :4   II :5   1st Qu.:136.8  
+##  25.0      :4   III:5   Median :141.6  
+##  50.0      :4   IV :5   Mean   :143.0  
+##  Testemunha:4           3rd Qu.:146.4  
+##                         Max.   :165.0</code></pre>
+<p>Ativar o pacote ggplot</p>
+<div class="sourceCode" id="cb403"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb403-1" title="1"><span class="kw">library</span>(ggplot2)</a></code></pre></div>
+<p>Fazer o gráfico</p>
+<div class="sourceCode" id="cb404"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb404-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb404-2" title="2"><span class="st">      </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb404-3" title="3"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-232-1.png" width="672" /></p>
+<p>Analisando os blocos</p>
+<div class="sourceCode" id="cb405"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb405-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-2" title="2"><span class="st">       </span><span class="kw">geom_point</span>() <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-3" title="3"><span class="st">       </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb405-4" title="4"><span class="st">       </span><span class="kw">facet_wrap</span>(<span class="op">~</span>bloco,<span class="dt">ncol=</span><span class="dv">4</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-233-1.png" width="672" /></p>
+<p>Inserindo medias</p>
+<div class="sourceCode" id="cb406"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb406-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-3" title="3"><span class="st">  </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb406-4" title="4"><span class="st">  </span><span class="kw">facet_wrap</span>(<span class="op">~</span>bloco,<span class="dt">ncol=</span><span class="dv">4</span>) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-234-1.png" width="672" /></p>
+<p>Inserindo legenda nos eixos</p>
+<div class="sourceCode" id="cb407"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb407-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-2" title="2"><span class="st">       </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-3" title="3"><span class="st">       </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb407-4" title="4"><span class="st">       </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb407-5" title="5"><span class="st">       </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-235-1.png" width="672" /></p>
+<p>Inserindo legenda nos eixos</p>
+<div class="sourceCode" id="cb408"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb408-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb408-2" title="2"><span class="st">      </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb408-3" title="3"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb408-4" title="4"><span class="st">      </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span>mean, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>,<span class="dt">shape=</span><span class="dv">1</span>,<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb408-5" title="5"><span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb408-6" title="6"><span class="st">      </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb408-7" title="7"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">panel.grid.minor =</span> <span class="kw">element_line</span>(<span class="dt">colour =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">linetype =</span> <span class="st">&quot;dotted&quot;</span>)) </a></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-236-1.png" width="672" /></p>
+<p>Inserindo <code>tema_bw</code> preto e branco</p>
+<div class="sourceCode" id="cb410"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb410-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb410-2" title="2"><span class="st">      </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb410-3" title="3"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb410-4" title="4"><span class="st">      </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span>mean, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>,<span class="dt">shape=</span><span class="dv">1</span>,<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb410-5" title="5"><span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb410-6" title="6"><span class="st">      </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb410-7" title="7"><span class="st">      </span><span class="kw">theme_bw</span>() </a></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-237-1.png" width="672" /></p>
+<p>Inserindo legenda no topo</p>
+<div class="sourceCode" id="cb412"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb412-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb412-2" title="2"><span class="st">      </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb412-3" title="3"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb412-4" title="4"><span class="st">      </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span>mean, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>,<span class="dt">shape=</span><span class="dv">1</span>,<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb412-5" title="5"><span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb412-6" title="6"><span class="st">      </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb412-7" title="7"><span class="st">      </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb412-8" title="8"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) </a></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-238-1.png" width="672" /></p>
+<p>Mudando escala do eixo y</p>
+<div class="sourceCode" id="cb414"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb414-1" title="1"><span class="kw">ggplot</span>(dados,<span class="kw">aes</span>(<span class="dt">x=</span>promalin ,<span class="dt">y=</span>peso, <span class="dt">fill=</span>promalin)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb414-2" title="2"><span class="st">      </span><span class="kw">geom_boxplot</span>(<span class="dt">size=</span><span class="fl">0.55</span>,<span class="dt">shape=</span><span class="dv">19</span>, <span class="dt">colour=</span><span class="st">&quot;black&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb414-3" title="3"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb414-4" title="4"><span class="st">      </span><span class="kw">stat_summary</span>(<span class="dt">fun.y=</span>mean, <span class="dt">geom=</span><span class="st">&quot;point&quot;</span>,<span class="dt">shape=</span><span class="dv">1</span>,<span class="dt">size=</span><span class="dv">2</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb414-5" title="5"><span class="st">      </span><span class="kw">xlab</span>(<span class="st">&quot;Tratamentos&quot;</span>) <span class="op">+</span><span class="st">  </span></a>
+<a class="sourceLine" id="cb414-6" title="6"><span class="st">      </span><span class="kw">ylab</span>(<span class="st">&quot;Peso médio dos frutos (g)&quot;</span>)  <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-7" title="7"><span class="st">      </span><span class="kw">theme_bw</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-8" title="8"><span class="st">      </span><span class="kw">theme</span>(<span class="dt">legend.position=</span><span class="st">&quot;top&quot;</span>) <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-9" title="9"><span class="st">      </span><span class="kw">scale_y_continuous</span>(<span class="dt">breaks=</span><span class="kw">seq</span>(<span class="dv">0</span>, <span class="dv">180</span>, <span class="dv">5</span>)) <span class="op">+</span></a>
+<a class="sourceLine" id="cb414-10" title="10"><span class="st">      </span><span class="kw">theme</span>( <span class="dt">axis.text.x  =</span> <span class="kw">element_text</span>(<span class="dt">angle=</span><span class="dv">90</span>, <span class="dt">vjust=</span><span class="dv">0</span>, <span class="dt">size=</span><span class="dv">10</span>))</a></code></pre></div>
+<pre><code>## Warning: `fun.y` is deprecated. Use `fun` instead.</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-239-1.png" width="672" /></p>
+</div>
+<div id="dados-climáticos" class="section level3">
+<h3><span class="header-section-number">6.2.3</span> Dados Climáticos</h3>
+<p>Dados climáticos de Rondonópolis - MT</p>
+<p>Baixar dados no banco de dados o arquivo <a href="https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1">roo.xlsx</a></p>
+<div class="sourceCode" id="cb416"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb416-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb416-2" title="2"><span class="kw">View</span>(roo)</a>
+<a class="sourceLine" id="cb416-3" title="3"></a>
+<a class="sourceLine" id="cb416-4" title="4"><span class="kw">str</span>(roo)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4337 obs. of  11 variables:
+##  $ dd    : int  1 1 2 3 4 5 6 7 8 9 ...
+##  $ mm    : int  1 2 2 2 2 2 2 2 2 2 ...
+##  $ ano   : int  1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 ...
+##  $ Prec  : num  NA 8.2 51 0.6 0 0 0 2.4 NA 0.8 ...
+##  $ Tmax  : num  30 35.6 31.8 35.4 35.6 36.4 36.8 36.8 36.6 35.2 ...
+##  $ Tmin  : num  21.7 21.8 21.8 21.5 22.1 22.5 23.5 23.5 24.3 22.9 ...
+##  $ n     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Tbs   : num  NA NA 25.1 25 26.6 ...
+##  $ Tbu   : num  NA NA 23.9 23 23.9 ...
+##  $ UR    : num  NA NA 89.8 86.5 80 ...
+##  $ Vvento: num  NA NA 0.125 0.125 0.275 0.325 0.2 0.175 0.15 0.25 ...</code></pre>
+<p>Boxplot para tempearatura minima</p>
+<div class="sourceCode" id="cb418"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb418-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> roo, <span class="kw">aes</span>(<span class="dt">x =</span> <span class="kw">factor</span>(mm),<span class="dt">y =</span> (Tmin)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb418-2" title="2"><span class="st">  </span><span class="kw">geom_boxplot</span>() <span class="op">+</span></a>
+<a class="sourceLine" id="cb418-3" title="3"><span class="st">  </span><span class="kw">scale_x_discrete</span>(<span class="dt">breaks=</span><span class="kw">c</span>(<span class="st">&quot;1&quot;</span>, <span class="st">&quot;2&quot;</span>, <span class="st">&quot;3&quot;</span>, <span class="st">&quot;4&quot;</span>, <span class="st">&quot;5&quot;</span>, <span class="st">&quot;6&quot;</span>, <span class="st">&quot;7&quot;</span>, <span class="st">&quot;8&quot;</span>, <span class="st">&quot;9&quot;</span>, <span class="st">&quot;10&quot;</span>, <span class="st">&quot;11&quot;</span>,<span class="st">&quot;12&quot;</span>),</a>
+<a class="sourceLine" id="cb418-4" title="4">            <span class="dt">labels=</span><span class="kw">c</span>(<span class="st">&quot;Jan&quot;</span>,<span class="st">&quot;Fev&quot;</span>, <span class="st">&quot;Mar&quot;</span>, <span class="st">&quot;Abr&quot;</span>, <span class="st">&quot;Mai&quot;</span>, <span class="st">&quot;Jun&quot;</span>, <span class="st">&quot;Jul&quot;</span>, <span class="st">&quot;Ago&quot;</span>, <span class="st">&quot;Set&quot;</span>, <span class="st">&quot;Out&quot;</span>, <span class="st">&quot;Nov&quot;</span>, <span class="st">&quot;Dez&quot;</span>))</a></code></pre></div>
+<pre><code>## Warning: Removed 222 rows containing non-finite values (stat_boxplot).</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-241-1.png" width="672" /></p>
+<p>Grafico de distruição de temperatura minima total</p>
+<div class="sourceCode" id="cb420"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb420-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> roo, <span class="kw">aes</span>(<span class="dt">x =</span> (Tmin)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb420-2" title="2"><span class="st">  </span><span class="kw">geom_density</span>()</a></code></pre></div>
+<pre><code>## Warning: Removed 222 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-242-1.png" width="672" /></p>
+<p>Grafico de distribuição de temperatura minima para cada mês</p>
+<div class="sourceCode" id="cb422"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb422-1" title="1"><span class="kw">ggplot</span>(<span class="dt">data =</span> roo, <span class="kw">aes</span>(<span class="dt">x =</span> (Tmin), <span class="dt">fill=</span><span class="kw">factor</span>(mm)))<span class="op">+</span></a>
+<a class="sourceLine" id="cb422-2" title="2"><span class="st">  </span><span class="kw">geom_density</span>() </a></code></pre></div>
+<pre><code>## Warning: Removed 222 rows containing non-finite values (stat_density).</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-243-1.png" width="672" /></p>
+</div>
+</div>
+<div id="referência-3" class="section level2">
+<h2><span class="header-section-number">6.3</span> Referência</h2>
+<p>GROLEMUND, G. WICKHAM, H. R for Data Science Site: <a href="http://r4ds.had.co.nz/" class="uri">http://r4ds.had.co.nz/</a></p>
+<p>SITE: <a href="https://www.statmethods.net/index.html" class="uri">https://www.statmethods.net/index.html</a></p>
+<p>CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O’Reilly Media, 2002,416 p. Site: <a href="http://shop.oreilly.com/pesouct/0636920023135.do" class="uri">http://shop.oreilly.com/pesouct/0636920023135.do</a></p>
+
+<p>Este Capitulo foi baseado no livro <a href="https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294"><strong>Conhecendo o R: Um visão mais que estatística</strong></a>, e na página do <a href="http://www.leg.ufpr.br/~paulojus/"><strong>Prof. Paulo Justiniando Ribeiro</strong></a></p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="criando-gráficos-com-o-r.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="testes-estatísticos.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TudodoR.pdf", "TudodoR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
