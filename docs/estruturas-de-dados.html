@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+<html lang="" xml:lang="">
 <head>
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Capitulo 3 Estruturas de Dados | Uso do sistema R para análise de dados</title>
   <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
-  <meta name="generator" content="bookdown 0.12 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Capitulo 3 Estruturas de Dados | Uso do sistema R para análise de dados" />
   <meta property="og:type" content="book" />
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="intro.html">
-<link rel="next" href="entrada-de-dados.html">
+<link rel="prev" href="intro.html"/>
+<link rel="next" href="entrada-de-dados.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -40,6 +40,9 @@
 <link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
 
 
 
@@ -130,115 +133,125 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
 <li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressoes"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
 <li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variaveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funcoes"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
 <li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referencia"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
 <li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
-<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequencia"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
+<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequência"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
 <li class="chapter" data-level="3.1.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#nomes-de-vetores"><i class="fa fa-check"></i><b>3.1.2</b> Nomes de vetores</a></li>
 <li class="chapter" data-level="3.1.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#plotando-um-vetor"><i class="fa fa-check"></i><b>3.1.3</b> Plotando um vetor</a></li>
-<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operacoes-matematicas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
-<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersao"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operações-matemáticas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersão"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
 <li class="chapter" data-level="3.1.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#valores-faltantes"><i class="fa fa-check"></i><b>3.1.6</b> Valores Faltantes</a></li>
 </ul></li>
 <li class="chapter" data-level="3.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>3.2</b> Matrizes</a><ul>
 <li class="chapter" data-level="3.2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#outras-formas"><i class="fa fa-check"></i><b>3.2.1</b> Outras formas</a></li>
 <li class="chapter" data-level="3.2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#acesso-a-matriz"><i class="fa fa-check"></i><b>3.2.2</b> Acesso a Matriz</a></li>
-<li class="chapter" data-level="3.2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizacoes-em-dados-matriciais"><i class="fa fa-check"></i><b>3.2.3</b> Visualizações em dados matriciais</a></li>
-<li class="chapter" data-level="3.2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informacoes-sobre-construcoes-de-matrizes"><i class="fa fa-check"></i><b>3.2.4</b> Mais informações sobre construções de Matrizes</a></li>
+<li class="chapter" data-level="3.2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizações-em-dados-matriciais"><i class="fa fa-check"></i><b>3.2.3</b> Visualizações em dados matriciais</a></li>
+<li class="chapter" data-level="3.2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informações-sobre-construções-de-matrizes"><i class="fa fa-check"></i><b>3.2.4</b> Mais informações sobre construções de Matrizes</a></li>
 </ul></li>
 <li class="chapter" data-level="3.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>3.3</b> Fatores</a></li>
 <li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#array"><i class="fa fa-check"></i><b>3.4</b> Array</a></li>
 <li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.5</b> Data.frame</a><ul>
-<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#indice-dos-data.frames"><i class="fa fa-check"></i><b>3.5.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#índice-dos-data.frames"><i class="fa fa-check"></i><b>3.5.1</b> Índice dos Data.frames</a></li>
 <li class="chapter" data-level="3.5.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5.2</b> Manipulando um Data.frame</a></li>
 <li class="chapter" data-level="3.5.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.3</b> Separando um data.frame por grupos</a></li>
 </ul></li>
 <li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
 <li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
 </ul></li>
-<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referencia-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
 <li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
 <li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
 <li class="chapter" data-level="4.2.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#vetores"><i class="fa fa-check"></i><b>4.2.1</b> Vetores</a></li>
-<li class="chapter" data-level="4.2.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-funcao-scan"><i class="fa fa-check"></i><b>4.2.2</b> Usando a função ‘scan’</a></li>
+<li class="chapter" data-level="4.2.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-scan"><i class="fa fa-check"></i><b>4.2.2</b> Usando a função ‘scan’</a></li>
 <li class="chapter" data-level="4.2.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#copiar-e-colar-usando-scan"><i class="fa fa-check"></i><b>4.2.3</b> Copiar e colar usando scan()</a></li>
-<li class="chapter" data-level="4.2.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-atraves-da-area-de-transferencia"><i class="fa fa-check"></i><b>4.2.4</b> Lendo dados através da área de transferência</a></li>
-<li class="chapter" data-level="4.2.5" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-funcao-edit"><i class="fa fa-check"></i><b>4.2.5</b> Usando a função edit</a></li>
+<li class="chapter" data-level="4.2.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-através-da-área-de-transferência"><i class="fa fa-check"></i><b>4.2.4</b> Lendo dados através da área de transferência</a></li>
+<li class="chapter" data-level="4.2.5" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-edit"><i class="fa fa-check"></i><b>4.2.5</b> Usando a função edit</a></li>
 <li class="chapter" data-level="4.2.6" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-um-arquivo-texto"><i class="fa fa-check"></i><b>4.2.6</b> Lendo dados de um arquivo texto</a></li>
 <li class="chapter" data-level="4.2.7" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#dados-do-tipo-csv"><i class="fa fa-check"></i><b>4.2.7</b> Dados do tipo CSV</a></li>
-<li class="chapter" data-level="4.2.8" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#a-seguir-listamos-algumas-destas-funcoes"><i class="fa fa-check"></i><b>4.2.8</b> A seguir listamos algumas destas funções:</a></li>
-<li class="chapter" data-level="4.2.9" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-disponiveis-na-web"><i class="fa fa-check"></i><b>4.2.9</b> Lendo dados disponíveis na web</a></li>
-<li class="chapter" data-level="4.2.10" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-uma-planilha-eletronica"><i class="fa fa-check"></i><b>4.2.10</b> Lendo dados de uma planilha eletrônica</a></li>
-<li class="chapter" data-level="4.2.11" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#exercicios"><i class="fa fa-check"></i><b>4.2.11</b> Exercícios</a></li>
+<li class="chapter" data-level="4.2.8" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#a-seguir-listamos-algumas-destas-funções"><i class="fa fa-check"></i><b>4.2.8</b> A seguir listamos algumas destas funções:</a></li>
+<li class="chapter" data-level="4.2.9" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-disponíveis-na-web"><i class="fa fa-check"></i><b>4.2.9</b> Lendo dados disponíveis na web</a></li>
+<li class="chapter" data-level="4.2.10" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-uma-planilha-eletrônica"><i class="fa fa-check"></i><b>4.2.10</b> Lendo dados de uma planilha eletrônica</a></li>
+<li class="chapter" data-level="4.2.11" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#exercícios"><i class="fa fa-check"></i><b>4.2.11</b> Exercícios</a></li>
 </ul></li>
 <li class="chapter" data-level="4.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#salvar-objetos-de-dados"><i class="fa fa-check"></i><b>4.3</b> Salvar objetos de dados</a><ul>
-<li class="chapter" data-level="4.3.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#outras-funcoes"><i class="fa fa-check"></i><b>4.3.1</b> Outras funções</a></li>
+<li class="chapter" data-level="4.3.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#outras-funções"><i class="fa fa-check"></i><b>4.3.1</b> Outras funções</a></li>
 </ul></li>
-<li class="chapter" data-level="4.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#referencia-2"><i class="fa fa-check"></i><b>4.4</b> Referência</a></li>
+<li class="chapter" data-level="4.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#referência-2"><i class="fa fa-check"></i><b>4.4</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="5" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html"><i class="fa fa-check"></i><b>5</b> Criando Gráficos com o R</a><ul>
-<li class="chapter" data-level="5.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#exemplos-de-graficos-com-o-r"><i class="fa fa-check"></i><b>5.1</b> Exemplos de gráficos com o R</a></li>
-<li class="chapter" data-level="5.2" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#entrada-de-dados-1"><i class="fa fa-check"></i><b>5.2</b> Entrada de dados</a></li>
-<li class="chapter" data-level="5.3" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#usando-a-funcao-plot"><i class="fa fa-check"></i><b>5.3</b> Usando a função <code>plot()</code></a><ul>
-<li class="chapter" data-level="5.3.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#mudando-o-padrao-dos-pontos-pch"><i class="fa fa-check"></i><b>5.3.1</b> Mudando o padrão dos pontos <code>pch=</code></a></li>
-<li class="chapter" data-level="5.3.2" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#mudando-as-linhas-lwd-e-lty"><i class="fa fa-check"></i><b>5.3.2</b> Mudando as linhas (<code>lwd e lty</code>)</a></li>
-<li class="chapter" data-level="5.3.3" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#adicionando-linhas-a-um-grafico-de-pontos"><i class="fa fa-check"></i><b>5.3.3</b> Adicionando linhas a um grafico de pontos</a></li>
-<li class="chapter" data-level="5.3.4" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#definindo-o-intervalo-dos-eixos"><i class="fa fa-check"></i><b>5.3.4</b> Definindo o intervalo dos eixos</a></li>
-<li class="chapter" data-level="5.3.5" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#personalizando-os-graficos"><i class="fa fa-check"></i><b>5.3.5</b> Personalizando os gráficos</a></li>
+<li class="chapter" data-level="5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html"><i class="fa fa-check"></i><b>5</b> Criando Gráficos com o R</a><ul>
+<li class="chapter" data-level="5.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#exemplos-de-gráficos-com-o-r"><i class="fa fa-check"></i><b>5.1</b> Exemplos de gráficos com o R</a></li>
+<li class="chapter" data-level="5.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#entrada-de-dados-1"><i class="fa fa-check"></i><b>5.2</b> Entrada de dados</a></li>
+<li class="chapter" data-level="5.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#usando-a-função-plot"><i class="fa fa-check"></i><b>5.3</b> Usando a função <code>plot()</code></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-o-padrão-dos-pontos-pch"><i class="fa fa-check"></i><b>5.3.1</b> Mudando o padrão dos pontos <code>pch=</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-as-linhas-lwd-e-lty"><i class="fa fa-check"></i><b>5.3.2</b> Mudando as linhas (<code>lwd e lty</code>)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#adicionando-linhas-a-um-grafico-de-pontos"><i class="fa fa-check"></i><b>5.3.3</b> Adicionando linhas a um grafico de pontos</a></li>
+<li class="chapter" data-level="5.3.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#definindo-o-intervalo-dos-eixos"><i class="fa fa-check"></i><b>5.3.4</b> Definindo o intervalo dos eixos</a></li>
+<li class="chapter" data-level="5.3.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-os-gráficos"><i class="fa fa-check"></i><b>5.3.5</b> Personalizando os gráficos</a></li>
 </ul></li>
-<li class="chapter" data-level="5.4" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#histogramas"><i class="fa fa-check"></i><b>5.4</b> Histogramas</a><ul>
-<li class="chapter" data-level="5.4.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#personalizando-graficos"><i class="fa fa-check"></i><b>5.4.1</b> Personalizando gráficos</a></li>
+<li class="chapter" data-level="5.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#histogramas"><i class="fa fa-check"></i><b>5.4</b> Histogramas</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-gráficos"><i class="fa fa-check"></i><b>5.4.1</b> Personalizando gráficos</a></li>
 </ul></li>
-<li class="chapter" data-level="5.5" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#graficos-de-barras"><i class="fa fa-check"></i><b>5.5</b> Gráficos de Barras</a></li>
-<li class="chapter" data-level="5.6" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#boxplots"><i class="fa fa-check"></i><b>5.6</b> Boxplots</a><ul>
-<li class="chapter" data-level="5.6.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#boxplot-com-fatorial"><i class="fa fa-check"></i><b>5.6.1</b> Boxplot com fatorial</a></li>
+<li class="chapter" data-level="5.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#gráficos-de-barras"><i class="fa fa-check"></i><b>5.5</b> Gráficos de Barras</a></li>
+<li class="chapter" data-level="5.6" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplots"><i class="fa fa-check"></i><b>5.6</b> Boxplots</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplot-com-fatorial"><i class="fa fa-check"></i><b>5.6.1</b> Boxplot com fatorial</a></li>
 </ul></li>
-<li class="chapter" data-level="5.7" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
-<li class="chapter" data-level="5.8" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#interagindo-com-a-janela-grafica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
-<li class="chapter" data-level="5.9" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#texto-e-tamanho-do-simbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
-<li class="chapter" data-level="5.10" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#visualizar-varios-graficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
-<li class="chapter" data-level="5.10.1" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#varios-graficos-na-mesma-janela-grafica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
+<li class="chapter" data-level="5.7" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
+<li class="chapter" data-level="5.8" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#interagindo-com-a-janela-gráfica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
+<li class="chapter" data-level="5.9" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#texto-e-tamanho-do-símbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
+<li class="chapter" data-level="5.10" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#visualizar-vários-gráficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#varios-gráficos-na-mesma-janela-gráfica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
 </ul></li>
-<li class="chapter" data-level="5.11" data-path="criando-graficos-com-o-r.html"><a href="criando-graficos-com-o-r.html#salvando-graficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
+<li class="chapter" data-level="5.11" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#salvando-gráficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
 </ul></li>
-<li class="chapter" data-level="6" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
-<li class="chapter" data-level="6.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#personalizando-os-graficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
-<li class="chapter" data-level="6.1.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
-<li class="chapter" data-level="6.1.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
-<li class="chapter" data-level="6.1.3" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
-<li class="chapter" data-level="6.1.4" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#titulo"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
-<li class="chapter" data-level="6.1.5" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
+<li class="chapter" data-level="6" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#personalizando-os-gráficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
+<li class="chapter" data-level="6.1.4" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#título"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
+<li class="chapter" data-level="6.1.5" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
 </ul></li>
-<li class="chapter" data-level="6.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
-<li class="chapter" data-level="6.2.1" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#regressao"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
-<li class="chapter" data-level="6.2.2" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
-<li class="chapter" data-level="6.2.3" data-path="graficos-com-ggplot2.html"><a href="graficos-com-ggplot2.html#dados-climaticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#regressão"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
+<li class="chapter" data-level="6.2.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#dados-climáticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="7" data-path="referencia-3.html"><a href="referencia-3.html"><i class="fa fa-check"></i><b>7</b> Referência</a></li>
-<li class="chapter" data-level="8" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html"><i class="fa fa-check"></i><b>8</b> Testes Estatísticos</a><ul>
-<li class="chapter" data-level="8.1" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>8.1</b> Teste t de Student</a><ul>
-<li class="chapter" data-level="8.1.1" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#para-uma-media"><i class="fa fa-check"></i><b>8.1.1</b> Para uma média</a></li>
-<li class="chapter" data-level="8.1.2" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#para-duas-medias-independentes"><i class="fa fa-check"></i><b>8.1.2</b> Para duas médias independentes</a></li>
-<li class="chapter" data-level="8.1.3" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#para-duas-medias-dependentes"><i class="fa fa-check"></i><b>8.1.3</b> Para duas médias dependentes</a></li>
+<li class="chapter" data-level="8" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html"><i class="fa fa-check"></i><b>8</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="8.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.1</b> Análise de experimento DBC</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.1</b> Análise de variância</a></li>
+<li class="chapter" data-level="8.1.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.2</b> Transformação de dados</a></li>
 </ul></li>
-<li class="chapter" data-level="8.2" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#teste-de-variancia"><i class="fa fa-check"></i><b>8.2</b> Teste de variância</a><ul>
-<li class="chapter" data-level="8.2.1" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>8.2.1</b> Usando o teste de F</a></li>
-</ul></li>
-<li class="chapter" data-level="8.3" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>8.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
-<li class="chapter" data-level="8.4" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>8.4</b> Teste U de Mann-Whitney</a></li>
-<li class="chapter" data-level="8.5" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#covariancia-e-correlacao"><i class="fa fa-check"></i><b>8.5</b> Covariância e Correlação</a></li>
-<li class="chapter" data-level="8.6" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#outros-testes"><i class="fa fa-check"></i><b>8.6</b> Outros testes</a><ul>
-<li class="chapter" data-level="8.6.1" data-path="testes-estatisticos.html"><a href="testes-estatisticos.html#hydrogof"><i class="fa fa-check"></i><b>8.6.1</b> hydroGOF</a></li>
-</ul></li>
+<li class="chapter" data-level="8.2" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="8.3" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="8.4" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#exercicio-1"><i class="fa fa-check"></i><b>8.4</b> Exercicio 1</a></li>
+<li class="chapter" data-level="8.5" data-path="delineamento-em-bloco-casualizado.html"><a href="delineamento-em-bloco-casualizado.html#referência-4"><i class="fa fa-check"></i><b>8.5</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -276,7 +289,7 @@ Exemplo</p>
 <div class="sourceCode" id="cb33"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb33-1" title="1">y&lt;-<span class="st"> </span><span class="kw">c</span>(x,<span class="dv">13</span>,<span class="dv">17</span>,<span class="dv">19</span>)</a>
 <a class="sourceLine" id="cb33-2" title="2">y</a></code></pre></div>
 <pre><code>## [1]  2  3  5  7 11 13 17 19</code></pre>
-<div id="vetores-de-sequencia" class="section level3">
+<div id="vetores-de-sequência" class="section level3">
 <h3><span class="header-section-number">3.1.1</span> Vetores de Sequência</h3>
 <p>Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação <em>start:end</em>. Vamos fazer um vetor com valores de 1 a 7:</p>
 <div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb35-1" title="1"><span class="dv">1</span><span class="op">:</span><span class="dv">7</span></a></code></pre></div>
@@ -308,9 +321,9 @@ As funções <code>mode()</code> e <code>length()</code> mostram o tipo e tamanh
 <p>Se o vetor é muito longo e não “cabe” em uma linha o R vai usar as linhas seguintes para continuar imprimindo o vetor.</p>
 <div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb53-1" title="1">longo&lt;-<span class="dv">100</span><span class="op">:</span><span class="dv">50</span> <span class="co">#sequência decrescente de 100 a 50</span></a>
 <a class="sourceLine" id="cb53-2" title="2">longo <span class="co">#exibe o conteúdo do objeto </span></a></code></pre></div>
-<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84
-## [18]  83  82  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67
-## [35]  66  65  64  63  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
+<pre><code>##  [1] 100  99  98  97  96  95  94  93  92  91  90  89  88  87  86  85  84  83  82
+## [20]  81  80  79  78  77  76  75  74  73  72  71  70  69  68  67  66  65  64  63
+## [39]  62  61  60  59  58  57  56  55  54  53  52  51  50</code></pre>
 <p>Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que [1] indica que o primeiro elemento do vetor estão naquela linha, [17] indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
 assim por diante.</p>
 <p>Você pode recuperar um valor individual dentro de um vetor fornecendo seu índice numérico entre colchetes. Tente obter o valor 18:</p>
@@ -363,7 +376,7 @@ Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor pr
 <div class="sourceCode" id="cb74"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb74-1" title="1"><span class="kw">barplot</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">100</span>)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-35-1.png" width="672" /></p>
 </div>
-<div id="operacoes-matematicas" class="section level3">
+<div id="operações-matemáticas" class="section level3">
 <h3><span class="header-section-number">3.1.4</span> Operações matemáticas</h3>
 <p>A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável <strong>a</strong></p>
 <p>Se você adicionar um escalar (um único valor) a um vetor, o escalar será adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:</p>
@@ -398,7 +411,7 @@ Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor pr
 <div class="sourceCode" id="cb91"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb91-1" title="1"><span class="kw">sqrt</span>(a)</a></code></pre></div>
 <pre><code>## [1] 1.000000 1.414214 1.732051</code></pre>
 </div>
-<div id="parcelas-de-dispersao" class="section level3">
+<div id="parcelas-de-dispersão" class="section level3">
 <h3><span class="header-section-number">3.1.5</span> Parcelas de dispersão</h3>
 <p>A função <code>plot</code> leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.</p>
 <p>Vamos desenhar um gráfico que mostra a relação de números e seus senos.</p>
@@ -532,7 +545,7 @@ Agora, use a função <strong>matrix</strong> para criar uma matriz <strong>5x5<
 <pre><code>##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
 ##    1.00    2.75    4.50    4.50    6.25    8.00</code></pre>
 </div>
-<div id="visualizacoes-em-dados-matriciais" class="section level3">
+<div id="visualizações-em-dados-matriciais" class="section level3">
 <h3><span class="header-section-number">3.2.3</span> Visualizações em dados matriciais</h3>
 <p>Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:</p>
 <div class="sourceCode" id="cb135"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb135-1" title="1">elevacao &lt;-<span class="st"> </span><span class="kw">matrix</span> (<span class="dv">1</span>,<span class="dv">10</span>,<span class="dv">10</span>)</a></code></pre></div>
@@ -558,7 +571,7 @@ Agora, use a função <strong>matrix</strong> para criar uma matriz <strong>5x5<
 <div class="sourceCode" id="cb142"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb142-1" title="1"><span class="kw">image</span>(volcano)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-76-1.png" width="672" /></p>
 </div>
-<div id="mais-informacoes-sobre-construcoes-de-matrizes" class="section level3">
+<div id="mais-informações-sobre-construções-de-matrizes" class="section level3">
 <h3><span class="header-section-number">3.2.4</span> Mais informações sobre construções de Matrizes</h3>
 <p>Há outros comandos que podem ser usados para construir matrizes como <code>cbind()</code> e <code>rbind ()</code>. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).</p>
 <div class="sourceCode" id="cb143"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb143-1" title="1">a &lt;-<span class="st"> </span><span class="kw">matrix</span> (<span class="dv">10</span><span class="op">:</span><span class="dv">1</span>,<span class="dt">ncol=</span><span class="dv">2</span>) <span class="co">#construir uma matriz qualquer</span></a>
@@ -777,7 +790,7 @@ Criar o vetor nomes</p>
 ## 4   Edinar da Silva    15    F    150
 ## 5      Osmar Emidio    15    M    140
 ## 6    Jeeziel Vieira    18    M    168</code></pre>
-<div id="indice-dos-data.frames" class="section level3">
+<div id="índice-dos-data.frames" class="section level3">
 <h3><span class="header-section-number">3.5.1</span> Índice dos Data.frames</h3>
 <p>Buscar elementos</p>
 <div class="sourceCode" id="cb195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb195-1" title="1">dados[<span class="dv">2</span>,<span class="dv">1</span>] <span class="co">#elemento da  linha  2, coluna 1</span></a></code></pre></div>
@@ -930,7 +943,7 @@ Criar o vetor nomes</p>
 ## [1] 0.95</code></pre>
 </div>
 </div>
-<div id="referencia-1" class="section level2">
+<div id="referência-1" class="section level2">
 <h2><span class="header-section-number">3.7</span> Referência</h2>
 <p>MELO, M. P.; PETERNELI, L. A. <strong>Conhecendo o R: Um visão mais que estatística</strong>. Viçosa, MG: UFV, 2013. 222p.</p>
 <p><strong>Prof. Paulo Justiniando Ribeiro</strong> &gt;<a href="http://www.leg.ufpr.br/~paulojus/" class="uri">http://www.leg.ufpr.br/~paulojus/</a>&lt;</p>
@@ -951,11 +964,13 @@ Criar o vetor nomes</p>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
 <script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
 <script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
 <script>
 gitbook.require(["gitbook"], function(gitbook) {
 gitbook.start({
@@ -963,12 +978,11 @@ gitbook.start({
 "github": false,
 "facebook": true,
 "twitter": true,
-"google": false,
 "linkedin": false,
 "weibo": false,
 "instapaper": false,
 "vk": false,
-"all": ["facebook", "google", "twitter", "linkedin", "weibo", "instapaper"]
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
 },
 "fontsettings": {
 "theme": "white",
@@ -980,6 +994,10 @@ gitbook.start({
 "text": null
 },
 "history": {
+"link": null,
+"text": null
+},
+"view": {
 "link": null,
 "text": null
 },
