@@ -843,6 +843,12 @@ MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística*
 
 <!--chapter:end:02-literature.Rmd-->
 
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:03-references.Rmd-->
+
 # Entrada de dados 
 
   Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
@@ -2512,12 +2518,6 @@ gof(sim = fisio$ds, obs= fisio$cc)
 ```
 
 <!--chapter:end:08-teste_esta.Rmd-->
-
-`r if (knitr::is_html_output()) '
-# References {-}
-'`
-
-<!--chapter:end:09-references.Rmd-->
 
 # Análide de variância (ANOVA)
 
