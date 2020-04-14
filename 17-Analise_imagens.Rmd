@@ -1,0 +1,50 @@
+# Análisando imagens de ensaios na agrícultura
+
+Vamos instalar os pacotes necessários para esta tarefa
+```{r eval=FALSE, include=FALSE}
+install.packages("devtools")
+library(devtools)
+install_github("filipematias23/FIELDimageR")
+install.packages("sp")
+install.packages("raster")
+install.packages("rgdal")
+```
+
+Carregar os pacote
+
+```{r}
+library(FIELDimageR)
+library(raster)
+```
+
+Baixar dados
+
+
+Ler dados
+```{r}
+EX1<-stack("https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1")
+```
+
+Plotar
+```{r}
+plotRGB(EX1, r = 1, g = 2, b = 3)
+
+```
+
+
+Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB
+```{r}
+
+EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE")
+```
+
+
+Aplicado os índices de vegetação
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green` 
+
+```{r}
+EX1.Indices<- indices(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
+                      index = c("NGRDI","BGI"), myIndex = c("(Red-Blue)/Green"))
+```
+
+
