@@ -373,7 +373,7 @@ require(ggplot2)
 print(sk)
 ```
 
-## Referência
+### Referência
 
 MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
 

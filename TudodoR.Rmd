@@ -1,0 +1,308 @@
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+
+# Pré requisitos
+
+Material em construção.
+
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R.  Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina. 
+O material consultado encontra-se referenciado no final de cada capitulo.
+
+<!--chapter:end:index.Rmd-->
+
+
+# R Básico {#intro}
+
+Placeholder
+
+
+## Expressões
+## Valores Booleanos
+## Variáveis
+## Funções
+## Ajuda
+## Referência
+
+<!--chapter:end:01-R_basico.Rmd-->
+
+
+# Estruturas de Dados
+
+Placeholder
+
+
+## Vetor
+### Vetores de Sequência
+### Nomes de vetores
+### Plotando um vetor
+### Operações matemáticas
+### Parcelas de dispersão
+### Valores Faltantes
+## Matrizes 
+### Outras formas
+### Acesso a Matriz
+### Visualizações em dados matriciais
+### Mais informações sobre construções de Matrizes
+## Fatores
+## Array
+## Data.frame
+### Índice dos Data.frames
+### Manipulando um Data.frame
+### Separando um data.frame por grupos
+## Lista
+### Alguns comandos que retornam listas
+## Referência
+
+<!--chapter:end:02-Estrutura_basica.Rmd-->
+
+
+# Entrada de dados 
+
+Placeholder
+
+
+## Onde os dados devem estar? 
+## Entrando com dados
+### Vetores
+### Usando a função 'scan'
+### Copiar e colar usando scan()
+### Lendo dados através da área de transferência
+### Usando a função edit
+#### Exemplo 1
+#### Exemplo 2
+### Lendo dados de um arquivo texto
+#### Exemplo 1 
+#### Exemplo 2 
+### Dados do tipo CSV
+### A seguir listamos algumas  destas funções:
+### Lendo dados disponíveis na web
+### Lendo dados de uma planilha eletrônica
+### Exercícios
+## Salvar objetos de dados
+### Outras funções
+## Referência
+
+<!--chapter:end:03-Entrada_dados.Rmd-->
+
+
+# Criando Gráficos com o R
+
+Placeholder
+
+
+## Exemplos de gráficos com o R
+## Entrada de dados
+## Usando a função `plot()`
+### Mudando o padrão dos pontos `pch=`
+### Mudando as linhas (`lwd e lty`)
+### Adicionando  linhas a um grafico de pontos
+### Definindo o intervalo dos eixos
+### Personalizando os gráficos
+## Histogramas
+### Personalizando gráficos
+## Gráficos de Barras
+## Boxplots
+### Boxplot com fatorial
+## Cores
+## Interagindo com a Janela gráfica
+## Texto e tamanho do símbolo
+## Visualizar vários gráficos
+### Varios gráficos na mesma janela gráfica
+## Salvando gráficos
+
+<!--chapter:end:04-Criando_graficos.Rmd-->
+
+
+# Gráficos com ggplot2
+
+Placeholder
+
+
+## Personalizando os gráficos
+### Cores
+### Eixos
+### Legenda
+### Título
+### Facets
+## Exemplos
+### Regressão
+### Delineamento em blocos casualizados- DBC
+### Dados Climáticos
+## Referência
+
+<!--chapter:end:05-Criando_graficos_2.Rmd-->
+
+
+# Testes Estatísticos
+
+Placeholder
+
+
+## Teste t de Student
+### Para uma média
+### Para duas médias independentes
+### Para duas médias dependentes
+## Teste de variância
+### Usando o teste de F
+## Teste para a normalidade - `shapiro.test()` 
+## Teste U de Mann-Whitney
+## Covariância e Correlação
+## Outros testes
+### hydroGOF
+
+<!--chapter:end:06-Teste_T_corre.Rmd-->
+
+
+# Analise de variância (ANOVA)
+
+Placeholder
+
+
+## Delineamento inteiramente casualizado  
+### Análise de experimento  em DIC  
+### Análise de variância
+### Transformação de dados
+#### Transformação de dados BOX-COX
+#### Análise de variância - Ajuste com a variável transformada.
+### Aplicando teste de Tukey para comparar médias
+### Aplicando teste para agrupar médias
+## Referência
+
+<!--chapter:end:07-Anova_dic.Rmd-->
+
+
+
+## Delineamento em bloco casualizado 
+### Análise de experimento DBC  
+#### Análise de variância
+##### Teste das pressuposições da análise de variância
+####### Teste de Bartllet para homocedasticidade
+####### Teste de Shapiro-Wilk para Normalidade
+#### Transformação de dados
+##### Transformação de dados com o BOX-COX
+##### Análise de variância - Ajuste com a variável transformada.
+### Pacote para analise de experimentos 
+### Teste não parametrico
+### Exercicio  1
+### Referência
+
+<!--chapter:end:08-Anova_DBC.Rmd-->
+
+## Quadrado Latino
+
+
+<!--chapter:end:09-Anova_QL.Rmd-->
+
+## Regressão Linear simples
+
+<!--chapter:end:10-Regressao_L_M.Rmd-->
+
+## Regressão não linear
+
+<!--chapter:end:11-Regressao_N_linear.Rmd-->
+
+## Resolução do Livro Banzatto Kronka
+
+<!--chapter:end:12-Resolucao_Livro.Rmd-->
+
+# Acesso a bancos de dados climáticos
+
+<!--chapter:end:13-Dados_clima.Rmd-->
+
+# Trabalhando com dados temporais no R
+
+<!--chapter:end:14-Dados_tempor.Rmd-->
+
+# Extrair dados da estação automática do INMET
+
+<!--chapter:end:15-Extrair_dados.Rmd-->
+
+# Realizando o Teste Mann-Kendall para Tendência em R
+
+<!--chapter:end:16-Tendencia_tempora.Rmd-->
+
+---
+output:
+  word_document: default
+  html_document: default
+---
+# Análisando imagens de ensaios na agrícultura
+
+ Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
+
+É necessário instalar alguns pacotes necessários para aplicar esta tarefa:
+```{r eval=FALSE, include=T}
+install.packages("devtools")
+library(devtools)
+install_github("filipematias23/FIELDimageR")
+install.packages("sp")
+install.packages("raster")
+install.packages("rgdal")
+```
+
+Carregar os pacote que foram baixados: 
+
+```{r}
+library(FIELDimageR)
+library(raster)
+```
+
+Baixar a imagem ortomosaicada:
+
+```{r}
+EX1<-stack("https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1")
+```
+
+Plotar a imagem nas bandas RGB: 
+```{r}
+plotRGB(EX1, r = 1, g = 2, b = 3)
+
+```
+
+
+Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB
+```{r}
+
+EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE")
+```
+
+
+Aplicado os índices de vegetação.
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green` 
+
+```{r}
+EX1.Indices<- indices(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
+                      index = c("NGRDI","BGI"), myIndex = c("(Red-Blue)/Green"))
+```
+
+
+
+<!--chapter:end:17-Analise_imagens.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:18-Referencia.Rmd-->
+

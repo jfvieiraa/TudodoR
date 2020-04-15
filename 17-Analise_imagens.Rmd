@@ -1,7 +1,14 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
 # Análisando imagens de ensaios na agrícultura
 
-Vamos instalar os pacotes necessários para esta tarefa
-```{r eval=FALSE, include=FALSE}
+ Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
+
+É necessário instalar alguns pacotes necessários para aplicar esta tarefa:
+```{r eval=FALSE, include=T}
 install.packages("devtools")
 library(devtools)
 install_github("filipematias23/FIELDimageR")
@@ -10,22 +17,20 @@ install.packages("raster")
 install.packages("rgdal")
 ```
 
-Carregar os pacote
+Carregar os pacote que foram baixados: 
 
 ```{r}
 library(FIELDimageR)
 library(raster)
 ```
 
-Baixar dados
+Baixar a imagem ortomosaicada:
 
-
-Ler dados
 ```{r}
 EX1<-stack("https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1")
 ```
 
-Plotar
+Plotar a imagem nas bandas RGB: 
 ```{r}
 plotRGB(EX1, r = 1, g = 2, b = 3)
 
@@ -39,7 +44,7 @@ EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE
 ```
 
 
-Aplicado os índices de vegetação
+Aplicado os índices de vegetação.
 Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green` 
 
 ```{r}
