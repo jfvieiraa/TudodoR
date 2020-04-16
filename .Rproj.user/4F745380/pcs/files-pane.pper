@@ -1,8 +1,8 @@
 {
-    "path" : "C:/Users",
+    "path" : "C:/Users/Jefferson/Dropbox/Livro",
     "sortOrder" : [
         {
-            "ascending" : true,
+            "ascending" : false,
             "columnIndex" : 2
         }
     ]

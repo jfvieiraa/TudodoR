@@ -1,0 +1,225 @@
+---
+output:
+  word_document: default
+  html_document: default
+---
+## Classificação de imagens de satélites
+
+Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.
+
+
+Carregar pacotes necessários para trabalhar com os dados raster.
+Caso não tenha algum dos pacotes, realize a sua instalação.
+```{r eval=T, include=T}
+library(raster)
+library(knitr)
+library(sp)
+library(rgdal)
+library(ggplot2)
+library(viridis)
+library(rasterVis)
+library(LSRS)
+```
+
+Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
+
+
+```{r eval=T, include=FALSE}
+imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
+```
+
+```{r eval=FALSE, include=T}
+imagesentinel=raster('sentinel2.tif')
+```
+
+Visualizar os dados
+```{r}
+imagesentinel
+```
+
+
+É necessário criar camadas individuais para cada uma das bandas espectrais:
+```{r}
+b1 <- raster('sentinel2.tif', band=1)
+b2 <- raster('sentinel2.tif', band=2)
+b3 <- raster('sentinel2.tif', band=3)
+b4 <- raster('sentinel2.tif', band=4)
+b5 <- raster('sentinel2.tif', band=5)
+b6 <- raster('sentinel2.tif', band=6)
+b7 <- raster('sentinel2.tif', band=7)
+b8 <- raster('sentinel2.tif', band=8)
+b9 <- raster('sentinel2.tif', band=9)
+b10 <- raster('sentinel2.tif', band=10)
+b11 <- raster('sentinel2.tif', band=11)
+b12 <- raster('sentinel2.tif', band=12)
+```
+
+Comparar duas bandas para ver se elas possuem a mesma extensão:
+```{r}
+compareRaster(b2, b3)
+
+```
+
+
+Plotar a banda 4 para pré-visualização:
+```{r}
+plot(b4)
+
+image(b4)
+```
+
+
+
+Visualizar a imagem nas bandas do RGB:
+```{r}
+RGB <- stack(list(b4, b3, b2))              
+plotRGB(RGB, axes = TRUE, stretch = "lin", main = "Sentinel RGB colour composite")
+```
+
+Juntar todas as bandas num só arquivo:
+```{r}
+t <- stack(b1,b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12)
+st <- brick('sentinel2.tif')
+plot(st)
+```
+
+Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.
+
+Criar a VI (vegetation index) por meio de função
+
+```{r}
+VI <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+```
+
+*NDVI:*
+
+```{r}
+ndvi <- VI(st, 8, 4)
+plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
+```
+
+
+**Outras fórmula de aplicar o NDVI**
+
+```{r}
+vi2 <- function(x, y) {
+  (x - y) / (x + y)
+}
+ndvi2 <- overlay(st[[8]], st[[4]], fun=vi2)
+plot(ndvi2, col=rev(terrain.colors(10)), main="Sentinel2-NDVI")
+```
+
+
+**Visualizar o NDVI em histograma**
+
+```{r}
+hist(ndvi,
+     main = "Distribuição dos valores de NDVI",
+     xlab = "NDVI",
+     ylab= "Frequência",
+     col = "wheat",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = 'n')
+axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))
+```
+
+Visualizar apenas a vegetação  com NDVI acima de 0.4:
+
+```{r}
+veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
+plot(veg, main='Vegetação')
+```
+
+
+Reclassificar o NDVI e difini-lo por classes numéricas:
+
+```{r}
+vegc <- reclassify(ndvi, c(-Inf,0.25,1, 0.25,0.3,2, 0.3,0.4,3, 0.4,0.5,4, 0.5,Inf, 5))
+plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
+```
+
+
+
+**Criar uma classificação não supervisionada a partir do NDVI:**
+
+Converter o raster (NDVI) a um vetor/matriz:
+
+```{r}
+nr <-getValues(ndvi)
+str(nr)
+```
+
+É importante definir o gerador de pontos, porque o *"kmeans"* inicia os centros em locais aleatórios: 
+
+```{r}
+set.seed(99)
+```
+
+Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método `Lloyd`
+```{r}
+kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500,
+                     nstart = 5, algorithm = "Lloyd")
+```
+
+Ver o vetor/matriz:
+
+```{r}
+str(kmncluster)
+```
+
+Crie uma cópia do NDVI para não perder os dados:
+
+```{r}
+knr <- ndvi
+```
+
+Agora substitua os valores das células de varredura pelo `kmncluster$cluster`:
+
+```{r}
+knr[] <- kmncluster$cluster
+```
+
+Realize o plot do NDVI e do kmeans:
+
+```{r}
+par(mfrow = c(1, 2))
+plot(ndvi, col = rev(terrain.colors(10)), main = "NDVI")
+plot(knr, main = "Kmeans", col = viridis_pal(option = "D")(10))
+```
+
+
+Se quiser traçar a classificação kmeans ao lado da renderização  do RGB para verificar a qualidade da classificação e identificação das classes:
+
+```{r}
+par(mfrow = c(1, 2))
+plotRGB(RGB, axes = FALSE, stretch = "lin", main = "RGB")
+plot(knr, main = "Kmeans", yaxt = 'n', col = viridis_pal(option = "D")(10))
+```
+
+Aplicar outros índices de vegetação com o `pacote LSRS`:
+
+```{r}
+NDVI=NDVI(b8,b4)
+SAVI=SAVI(b8,b4)
+TGSI=TGSI(b4,b2,b3)
+MSAVI=MSAVI(b8,b4, Pixel.Depth=1)
+EVI=EVI(b8,b4,b2,Pixel.Depth=1)
+NBR=NBR(b8,b11)
+```
+
+```{r}
+par(mfrow = c(3, 2))
+plot(NDVI,lwd=4,main="NDVI",xlab="easting", ylab="northing")
+plot(SAVI,lwd=4,main="SAVI",xlab="easting", ylab="northing")
+plot(TGSI,lwd=4,main="TGSI",xlab="easting", ylab="northing")
+plot(MSAVI,lwd=4,main="MSAVI",xlab="easting", ylab="northing")
+plot(EVI,lwd=4,main="EVI",xlab="easting", ylab="northing")
+plot(NBR,lwd=4,main="NBR",xlab="easting", ylab="northing")
+```
+
