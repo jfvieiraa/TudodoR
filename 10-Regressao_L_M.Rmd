@@ -1,1 +1,202 @@
 ## Regressão Linear simples
+
+Iremos utilizar o pacote tidyverse
+```{r}
+library(tidyverse)
+```
+
+
+Regressão linear é  uma equação para se estimar a condicional (valor esperado) de 
+uma variável y, dados os valores de algumas outras variáveis x.
+
+y= a+bx
+
+Vamos utilizar o exemplo do banco de dados do R
+
+```{r}
+View(Orange)
+```
+
+```{r}
+qplot(x=age,y=circumference,data=Orange)
+```
+
+```{r}
+cor.test(Orange$age,Orange$circumference)
+```
+
+```{r}
+rl<- lm(circumference ~ age , data = Orange)
+```
+
+Zerando o intercepto 
+```{r}
+rl0<- lm(circumference ~ 0+ age , data = Orange)
+```
+
+```{r}
+plot(rl) #plots diagnósticos
+```
+
+```{r}
+shapiro.test (residuals(rl))
+
+bartlett.test(rl$res, Orange$Tree, Orange$age)
+```
+
+Resultado da Regressãolinear
+```{r}
+summary(rl)
+```
+
+
+Rejeição da hipótese nula (variáveis não são relacionadas)
+*valor p <0.005*
+R-square explica o quanto o modelo explica da variação
+
+Gráfico
+```{r}
+ggplot(Orange,aes(x=age,y=circumference))+ geom_point(colour="steelblue",size=4)+
+  geom_smooth(method="lm",colour="black")+labs(title="Regressão linear de Orange")+
+  theme_minimal()  
+```
+
+
+Gerar graficos com o pacote ggpmisc
+```{r}
+library(ggpmisc)
+```
+
+Gráfico
+```{r}
+formula <- y ~ poly(x, 2, raw = TRUE)
+ggplot(Orange, aes(x=age, y=circumference)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = formula) +
+  stat_poly_eq(aes(label =  paste(..eq.label.., ..adj.rr.label.., sep = "~~~~")),
+    formula = formula, parse = TRUE)
+
+```
+
+
+Outras funções interessantes
+```{r}
+coefficients(rl) # coeficientes do modelo
+confint(rl, level=0.95) # intervalo de confiança
+fitted(rl) # valores previstos
+residuals(rl) # residuais
+anova(rl) # tabela ANOVA
+```
+
+
+Qualquer modelo de Regressão polinomial pode ser obtido com um comando
+simples: o `lm()` que vem do inglês "linear models".
+
+Veja o exemplo abaixo:
+```{r}
+fert<-c(10,20,30,40,50,60,70,80,90,100)
+prod<-c(42,61,81,94,98,96,83,79,59,43)
+plot(fert,prod)
+dados = data.frame(fert,prod)
+```
+
+Observe a necessidade do argumento `I()` para interações como x^2.
+
+```{r}
+reg <- lm ( #ajusta uma Regressão
+        prod ~ fert + I (fert^2)) #modelo de Regressão quadrática
+reg
+```
+
+Para "desenhar" a curva ajustada...
+
+```{r}
+#curve(15.51667+2.95720*x-0.02716*x*x,0,100,add=T,col=2)
+```
+
+Várias outras análises podem ser feitas como anteriormente na Regressão linear. Veja uma delas:
+
+```{r}
+ anova(reg)
+```
+
+```{r}
+ formula <- y ~ poly(x, 2, raw = TRUE)
+ ggplot(dados, aes(x=fert, y=prod)) +
+   geom_point() +
+   geom_smooth(method = "lm", formula = formula) +
+   stat_poly_eq(aes(label =  paste(..eq.label.., ..adj.rr.label.., 
+     sep = "~~italic(\"with\")~~")),
+     formula = formula, parse = TRUE)
+```
+
+
+## Regressão Linear Multipla
+
+Os modelos múltiplos  são aqueles em que duas ou mais variáveis independentes influenciam na variação da variavel dependente. Eles podem ser de grau 1,2 ou maior. O exemplo a seguir aborda uma Regressão polinomial multipla  de 2º grau, com duas variáveis independentes.
+
+ y= a+ bx + b1x1 + b2x2 + b3x3...
+
+Exemplo:
+
+```{r}
+library(car)
+```
+
+```{r}
+data(iris)
+head(iris)
+```
+
+VIF - variation inflation factor / fator de inflação da vari?ncia
+
+```{r}
+fit1<-lm(Sepal.Length ~ Sepal.Width + Petal.Length, data=iris)
+```
+
+```{r}
+vif(fit1)# ok, valores <5
+summary(fit1)
+
+```
+
+```{r}
+fit2 <- lm (Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data=iris)
+vif(fit2) #problemático, valores>10
+summary(fit2)
+```
+
+```{r}
+fit3<-lm(Sepal.Length ~ Sepal.Width * Petal.Length, data=iris)
+vif(fit3)# muito problemático, valores muito altos
+summary(fit3)
+```
+
+Outras funções interessantes
+
+```{r}
+coefficients(fit1) # coeficientes
+confint(fit1, level=0.95) # Intervalos de confiança
+fitted(fit1) # valores previstos
+residuals(fit1) # residuais
+anova(fit1) # tabela anova
+
+vcov(fit1) # matriz de covariancia 
+```
+
+
+### Referência
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+ZEVIANI, W. M. Estatástica Básica e Experimentação no R. 45p.
+
+http://www.leg.ufpr.br/~paulojus/
+
+https://docs.r4photobiology.info/ggpmisc/articles/user-guide-1.html
+
+
+
+ 
+
+

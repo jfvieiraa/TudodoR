@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-16" />
+<meta name="date" content="2020-04-17" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -265,8 +265,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.3.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-para-entregar"><i class="fa fa-check"></i><b>8.3.3</b> Exercicio para entregar</a></li>
 </ul></li>
 <li class="chapter" data-level="8.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-simples"><i class="fa fa-check"></i><b>8.4</b> Regressão Linear simples</a></li>
-<li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.5</b> Regressão não linear</a></li>
-<li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#resolução-do-livro-banzatto-kronka"><i class="fa fa-check"></i><b>8.6</b> Resolução do Livro Banzatto Kronka</a></li>
+<li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-multipla"><i class="fa fa-check"></i><b>8.5</b> Regressão Linear Multipla</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-6"><i class="fa fa-check"></i><b>8.5.1</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a></li>
+<li class="chapter" data-level="8.7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#resolução-do-livro-banzatto-kronka"><i class="fa fa-check"></i><b>8.7</b> Resolução do Livro Banzatto Kronka</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html"><i class="fa fa-check"></i><b>9</b> Acesso a bancos de dados climáticos</a></li>
 <li class="chapter" data-level="10" data-path="trabalhando-com-dados-temporais-no-r.html"><a href="trabalhando-com-dados-temporais-no-r.html"><i class="fa fa-check"></i><b>10</b> Trabalhando com dados temporais no R</a></li>
@@ -374,11 +377,11 @@ Tente atribuir “Engenharia Agrícola”em x.</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -1.8979308 -0.4948775  0.1291165  0.8164389  1.3500000
+## [1] -2.0985524 -0.5024248  0.2646341  0.9402465  1.3500000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
 ##         0%        25%        50%        75%       100% 
-## -1.8979308 -0.4948775  0.1291165  0.8164389  1.3500000 
+## -2.0985524 -0.5024248  0.2646341  0.9402465  1.3500000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>
