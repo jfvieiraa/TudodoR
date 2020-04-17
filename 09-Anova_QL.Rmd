@@ -1,2 +1,345 @@
 ## Quadrado Latino
 
+Essa material foi baseado nas aulas do [Prof. Walmes Zeviani](https://www.youtube.com/user/walmes).
+
+### Banco de dados
+
+Iremos instalar o pacote com banco de dados.
+
+O [labestData](https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData#descrio) é um pacote para o software R de computação estatística que possui centenas de conjuntos de dados para o ensino e aprendizado de Estatística. O pacote é desenvolvido pelo PET Estatística UFPR e conta com a participação de professores e colaboradores. O nome
+labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as aulas práticas do Curso de Estatística na UFPR.
+
+```{r}
+library(devtools)
+```
+
+Instalação
+
+Do repositório de desenvolvimento no GitLab.
+
+```{r eval=FALSE, include=T}
+install_git(url = "https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData.git",
+            branch = "master", build_vignettes = TRUE)
+```
+
+Do repositório de divulgação no GitHub.
+
+```{r eval=FALSE, include=T}
+install_github(repo = "labestData",
+               username = "pet-estatistica",
+               ref = "master", build_vignettes = TRUE)
+```
+
+Instalação por Arquivos Compactados
+```{r eval=FALSE, include=T}
+
+install.packages("http://leg.ufpr.br/~walmes/pacotes/labestData_0.1.17.458.zip",
+  repos = NULL)
+```
+
+Lendo arquivos de dados
+```{r eval=T, include=F}
+require(labestData)
+```
+
+Escolhendo os dados
+
+```{r eval=FALSE, include=T}
+labestDataView()
+```
+
+###Escolher o banco de dados
+```{r}
+PimentelEg6.2
+```
+
+
+```{r}
+help("PimentelEg6.2")
+```
+
+Experimento de competição de variedades de cana-de-açúcar no qual foram usadas cinco variedades dispostas em um delineamento quadrado latino 5 times 5. Converte para nome de objeto mais simples.
+
+```{r}
+pim <- PimentelEg6.2 
+help(pim)
+```
+
+Verificar estrutura dos dados
+```{r}
+str(pim)
+```
+
+Vendo o quadrado no plano.
+```{r}
+require(reshape)
+```
+
+
+Pacote gráfico
+```{r}
+require(latticeExtra)
+```
+
+Gerar gráfico
+```{r}
+levelplot(prod~linha+coluna, data=pim, aspect="iso") + 
+  layer(with(pim, panel.text(x=linha, y=coluna, label=paste(varied, prod))))
+```
+
+ANOVA
+
+```{r}
+m0 = lm (prod ~linha + coluna + varied, data = pim)
+```
+
+pressuposto seja atendidos?
+```{r}
+par(mfrow = c(2,2)) 
+plot(m0)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+bartlett.test(m0$residuals ~ pim$varied)
+```
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
+Quadro de análise de variância.
+```{r}
+anova(m0)
+summary(m0)
+```
+
+Teste de média de comparações múltiplas
+```{r}
+library(doBy) # obter as médias ajustadas 
+library(multcomp)
+p0 = LSmeans(m0, effect = "varied", level = 0.95)
+```
+
+Verificar estrutura
+```{r}
+str(p0)
+p0
+
+```
+
+
+```{r}
+library(devtools) 
+install_github("walmes/wzRfun", ref = "master") 
+require(wzRfun)
+```
+
+Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.
+```{r}
+tu <- summary(glht(m0, linfct=mcp(varied="Tukey"))) 
+tu
+```
+
+Resumo compacto com letras.
+
+```{r}
+cld(tu)
+#cld(tu, decreasing=T)
+```
+
+Medias com intervalo de confiança
+
+```{r}
+ci <- confint(glht(m0, linfct= p0$L)) 
+str(ci)
+```
+
+Juntar com os nomes dos tratramentos com os intervalos
+
+```{r}
+ci <- cbind(p0$grid, ci$confint)
+```
+
+Colocar as letras. onde estão as letras?
+```{r}
+str(cld(tu))
+ci$cld <- cld(tu)$mcletters$Letters 
+ci$cld
+str(ci)
+ci$varied <- factor(ci$varied)
+```
+
+Representação gráfica dos resultados
+```{r}
+require(latticeExtra) 
+segplot(varied~lwr+upr, 
+        centers=Estimate, 
+        data=ci, 
+        draw=F, #desenhar segmentos 
+        xlab = expression("Tratamento"), 
+        ylab = "Número de perfilhos", 
+        sub = list("Médias seguidas de mesma letra indicam diferença nula à 5%.", 
+                   font=1, cex=0.8)) + 
+layer(panel.text( x = centers, 
+                 y = z, 
+                 labels = sprintf("%0.2f %s", centers, ci$cld), 
+                 pos = 3))
+```
+
+### Exercicios
+```{r}
+require(labestData)
+
+ZimmermannTb5.15
+help(ZimmermannTb5.15) 
+str(ZimmermannTb5.15)
+```
+Atribuir um nome menor ao conjunto de dados
+```{r}
+dados <- ZimmermannTb5.15
+
+```
+
+
+
+Gráfico do layout
+```{r}
+require(latticeExtra) 
+
+levelplot(perf~linha+coluna, 
+          data=dados, aspect="iso")+ 
+          layer(with(dados, 
+          panel.text(x=linha, y=coluna, 
+          label=paste(trat, perf))))
+```
+
+```{r}
+require(latticeExtra)
+```
+
+Gráfico do layout
+
+```{r}
+levelplot(perf~linha+coluna, 
+          data=dados, aspect="iso")+ 
+          layer(with(dados, 
+          panel.text(x=linha, y=coluna, 
+          label=paste(trat, perf))))
+```
+
+ANOVA
+
+```{r}
+m0 = lm (perf~linha + coluna + trat, data = dados)
+```
+
+Foram atendidos?
+
+```{r}
+par(mfrow = c(2,2)) 
+plot(m0)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+bartlett.test(m0$res, dados$trat)
+```
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
+Quadro de análise de variância
+```{r}
+anova(m0)
+summary(m0)
+```
+
+Comparações múltiplas.
+```{r}
+library(doBy) 
+library(multcomp) 
+
+p0 = LSmeans(m0, effect = "trat", level = 0.95) 
+
+str(p0)
+```
+
+Criando a tabela com as estimativas
+
+```{r}
+library(devtools) 
+#install_github("walmes/wzRfun", ref = "master") 
+require(wzRfun)
+```
+
+Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.
+
+```{r}
+tu <- summary(glht(m0, linfct=mcp(trat="Tukey"))) 
+tu
+```
+
+Resumo compacto com letras.
+
+```{r}
+cld(tu)
+#cld(tu, decreasing=T)
+```
+
+Medias com intervalo de confiança
+
+```{r}
+ci <- confint(glht(m0, linfct= p0$L)) 
+ci
+```
+
+Juntar com os nomes dos tratramentos com os intervalos
+
+```{r}
+ci <- cbind(p0$grid, ci$confint) 
+
+ci$cld <- cld(tu)$mcletters$Letters 
+
+str(cld(tu))
+
+```
+
+Representação gráfica dos resultados.
+```{r}
+require(latticeExtra) 
+
+segplot(trat~lwr+upr, 
+        centers=Estimate, 
+        data=ci, 
+        draw=F,
+        xlab = expression(" "), ylab = " ", 
+        sub = list("Médias seguidas de mesma letra indicam diferença nula à 5%.",
+        font=1, cex=0.8)) + 
+        layer(panel.text( x = centers, 
+        y = z, 
+        labels = sprintf("%0.2f %s", centers, ci$cld), 
+        pos = 3))
+```
+
+### Exercicio para entregar
+DiasEg9.4
+help(“DiasEg9.4”)
+
+BarbinPg104
+help(“BarbinPg104”)
+
+ZimmermannTb12.27
+help(ZimmermannTb12.27)
+
+ZimmermannTb12.26
+help(ZimmermannTb12.26)
+
+StorckEg2.3.5
+help(StorckEg2.3.5)
+
+ZimmermannTb16.10 
+help(ZimmermannTb16.10)

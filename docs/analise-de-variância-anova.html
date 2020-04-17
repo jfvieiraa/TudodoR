@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-15" />
+<meta name="date" content="2020-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-1"><i class="fa fa-check"></i><b>8.2.4</b> Exercicio 1</a></li>
 <li class="chapter" data-level="8.2.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-5"><i class="fa fa-check"></i><b>8.2.5</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#quadrado-latino"><i class="fa fa-check"></i><b>8.3</b> Quadrado Latino</a></li>
+<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#quadrado-latino"><i class="fa fa-check"></i><b>8.3</b> Quadrado Latino</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#banco-de-dados"><i class="fa fa-check"></i><b>8.3.1</b> Banco de dados</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicios"><i class="fa fa-check"></i><b>8.3.2</b> Exercicios</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-para-entregar"><i class="fa fa-check"></i><b>8.3.3</b> Exercicio para entregar</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-simples"><i class="fa fa-check"></i><b>8.4</b> Regressão Linear simples</a></li>
 <li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.5</b> Regressão não linear</a></li>
 <li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#resolução-do-livro-banzatto-kronka"><i class="fa fa-check"></i><b>8.6</b> Resolução do Livro Banzatto Kronka</a></li>
@@ -1234,7 +1238,670 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 </div>
 <div id="quadrado-latino" class="section level2">
 <h2><span class="header-section-number">8.3</span> Quadrado Latino</h2>
+<p>Essa material foi baseado nas aulas do <a href="https://www.youtube.com/user/walmes">Prof. Walmes Zeviani</a>.</p>
+<div id="banco-de-dados" class="section level3">
+<h3><span class="header-section-number">8.3.1</span> Banco de dados</h3>
+<p>Iremos instalar o pacote com banco de dados.</p>
+<p>O <a href="https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData#descrio">labestData</a> é um pacote para o software R de computação estatística que possui centenas de conjuntos de dados para o ensino e aprendizado de Estatística. O pacote é desenvolvido pelo PET Estatística UFPR e conta com a participação de professores e colaboradores. O nome
+labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as aulas práticas do Curso de Estatística na UFPR.</p>
+<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb644-1" title="1"><span class="kw">library</span>(devtools)</a></code></pre></div>
+<pre><code>## Loading required package: usethis</code></pre>
+<p>Instalação</p>
+<p>Do repositório de desenvolvimento no GitLab.</p>
+<div class="sourceCode" id="cb646"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb646-1" title="1"><span class="kw">install_git</span>(<span class="dt">url =</span> <span class="st">&quot;https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData.git&quot;</span>,</a>
+<a class="sourceLine" id="cb646-2" title="2">            <span class="dt">branch =</span> <span class="st">&quot;master&quot;</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Do repositório de divulgação no GitHub.</p>
+<div class="sourceCode" id="cb647"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb647-1" title="1"><span class="kw">install_github</span>(<span class="dt">repo =</span> <span class="st">&quot;labestData&quot;</span>,</a>
+<a class="sourceLine" id="cb647-2" title="2">               <span class="dt">username =</span> <span class="st">&quot;pet-estatistica&quot;</span>,</a>
+<a class="sourceLine" id="cb647-3" title="3">               <span class="dt">ref =</span> <span class="st">&quot;master&quot;</span>, <span class="dt">build_vignettes =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<p>Instalação por Arquivos Compactados</p>
+<div class="sourceCode" id="cb648"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb648-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;http://leg.ufpr.br/~walmes/pacotes/labestData_0.1.17.458.zip&quot;</span>,</a>
+<a class="sourceLine" id="cb648-2" title="2">  <span class="dt">repos =</span> <span class="ot">NULL</span>)</a></code></pre></div>
+<p>Lendo arquivos de dados</p>
+<p>Escolhendo os dados</p>
+<div class="sourceCode" id="cb649"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb649-1" title="1"><span class="kw">labestDataView</span>()</a></code></pre></div>
+<p>###Escolher o banco de dados</p>
+<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb650-1" title="1">PimentelEg6<span class="fl">.2</span></a></code></pre></div>
+<pre><code>##    linha coluna varied prod
+## 1      1      1      D  432
+## 2      2      1      C  724
+## 3      3      1      E  489
+## 4      4      1      B  494
+## 5      5      1      A  515
+## 6      1      2      A  518
+## 7      2      2      E  478
+## 8      3      2      B  384
+## 9      4      2      D  500
+## 10     5      2      C  660
+## 11     1      3      B  458
+## 12     2      3      A  524
+## 13     3      3      C  556
+## 14     4      3      E  313
+## 15     5      3      D  438
+## 16     1      4      C  583
+## 17     2      4      B  550
+## 18     3      4      D  297
+## 19     4      4      A  486
+## 20     5      4      E  394
+## 21     1      5      E  331
+## 22     2      5      D  400
+## 23     3      5      A  420
+## 24     4      5      C  501
+## 25     5      5      B  318</code></pre>
+<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb652-1" title="1"><span class="kw">help</span>(<span class="st">&quot;PimentelEg6.2&quot;</span>)</a></code></pre></div>
+<p>Experimento de competição de variedades de cana-de-açúcar no qual foram usadas cinco variedades dispostas em um delineamento quadrado latino 5 times 5. Converte para nome de objeto mais simples.</p>
+<div class="sourceCode" id="cb653"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb653-1" title="1">pim &lt;-<span class="st"> </span>PimentelEg6<span class="fl">.2</span> </a>
+<a class="sourceLine" id="cb653-2" title="2"><span class="kw">help</span>(pim)</a></code></pre></div>
+<pre><code>## No documentation for &#39;pim&#39; in specified packages and libraries:
+## you could try &#39;??pim&#39;</code></pre>
+<p>Verificar estrutura dos dados</p>
+<div class="sourceCode" id="cb655"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb655-1" title="1"><span class="kw">str</span>(pim)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    25 obs. of  4 variables:
+##  $ linha : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 1 2 3 4 5 ...
+##  $ coluna: Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
+##  $ varied: Factor w/ 5 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 4 3 5 2 1 1 5 2 4 3 ...
+##  $ prod  : int  432 724 489 494 515 518 478 384 500 660 ...</code></pre>
+<p>Vendo o quadrado no plano.</p>
+<div class="sourceCode" id="cb657"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb657-1" title="1"><span class="kw">require</span>(reshape)</a></code></pre></div>
+<pre><code>## Loading required package: reshape</code></pre>
+<pre><code>## 
+## Attaching package: &#39;reshape&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:dplyr&#39;:
+## 
+##     rename</code></pre>
+<pre><code>## The following objects are masked from &#39;package:plyr&#39;:
+## 
+##     rename, round_any</code></pre>
+<p>Pacote gráfico</p>
+<div class="sourceCode" id="cb662"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb662-1" title="1"><span class="kw">require</span>(latticeExtra)</a></code></pre></div>
+<pre><code>## Loading required package: latticeExtra</code></pre>
+<pre><code>## 
+## Attaching package: &#39;latticeExtra&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
+## 
+##     layer</code></pre>
+<p>Gerar gráfico</p>
+<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb666-1" title="1"><span class="kw">levelplot</span>(prod<span class="op">~</span>linha<span class="op">+</span>coluna, <span class="dt">data=</span>pim, <span class="dt">aspect=</span><span class="st">&quot;iso&quot;</span>) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb666-2" title="2"><span class="st">  </span><span class="kw">layer</span>(<span class="kw">with</span>(pim, <span class="kw">panel.text</span>(<span class="dt">x=</span>linha, <span class="dt">y=</span>coluna, <span class="dt">label=</span><span class="kw">paste</span>(varied, prod))))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-372-1.png" width="672" /></p>
+<p>ANOVA</p>
+<div class="sourceCode" id="cb667"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb667-1" title="1">m0 =<span class="st"> </span><span class="kw">lm</span> (prod <span class="op">~</span>linha <span class="op">+</span><span class="st"> </span>coluna <span class="op">+</span><span class="st"> </span>varied, <span class="dt">data =</span> pim)</a></code></pre></div>
+<p>pressuposto seja atendidos?</p>
+<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb668-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </a>
+<a class="sourceLine" id="cb668-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-374-1.png" width="672" /></p>
+<p>Teste de Bartllet para homocedasticidade</p>
+<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb669-1" title="1"><span class="kw">bartlett.test</span>(m0<span class="op">$</span>residuals <span class="op">~</span><span class="st"> </span>pim<span class="op">$</span>varied)</a></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m0$residuals by pim$varied
+## Bartlett&#39;s K-squared = 5.6629, df = 4, p-value = 0.2258</code></pre>
+<p>Teste de Shapiro-Wilk para Normalidade</p>
+<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" title="1"><span class="kw">shapiro.test</span>(m0<span class="op">$</span>res)</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m0$res
+## W = 0.97701, p-value = 0.8202</code></pre>
+<p>Quadro de análise de variância.</p>
+<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: prod
+##           Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## linha      4  30481    7620  2.6804 0.0831343 .  
+## coluna     4  55641   13910  4.8930 0.0142293 *  
+## varied     4 137488   34372 12.0905 0.0003585 ***
+## Residuals 12  34115    2843                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb675-1" title="1"><span class="kw">summary</span>(m0)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = prod ~ linha + coluna + varied, data = pim)
+## 
+## Residuals:
+##    Min     1Q Median     3Q    Max 
+## -66.56 -25.16  -1.56  23.24  69.04 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept)   546.76      38.45  14.220 7.14e-09 ***
+## linha2         70.80      33.72   2.100  0.05759 .  
+## linha3        -35.20      33.72  -1.044  0.31713    
+## linha4         -5.60      33.72  -0.166  0.87087    
+## linha5          0.60      33.72   0.018  0.98610    
+## coluna2       -22.80      33.72  -0.676  0.51178    
+## coluna3       -73.00      33.72  -2.165  0.05127 .  
+## coluna4       -68.80      33.72  -2.040  0.06397 .  
+## coluna5      -136.80      33.72  -4.057  0.00159 ** 
+## variedB       -51.80      33.72  -1.536  0.15045    
+## variedC       112.20      33.72   3.327  0.00603 ** 
+## variedD       -79.20      33.72  -2.349  0.03680 *  
+## variedE       -91.60      33.72  -2.716  0.01873 *  
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 53.32 on 12 degrees of freedom
+## Multiple R-squared:  0.8676, Adjusted R-squared:  0.7353 
+## F-statistic: 6.555 on 12 and 12 DF,  p-value: 0.001366</code></pre>
+<p>Teste de média de comparações múltiplas</p>
+<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb677-1" title="1"><span class="kw">library</span>(doBy) <span class="co"># obter as médias ajustadas </span></a>
+<a class="sourceLine" id="cb677-2" title="2"><span class="kw">library</span>(multcomp)</a>
+<a class="sourceLine" id="cb677-3" title="3">p0 =<span class="st"> </span><span class="kw">LSmeans</span>(m0, <span class="dt">effect =</span> <span class="st">&quot;varied&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>)</a></code></pre></div>
+<p>Verificar estrutura</p>
+<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb678-1" title="1"><span class="kw">str</span>(p0)</a></code></pre></div>
+<pre><code>## List of 3
+##  $ coef:&#39;data.frame&#39;:    5 obs. of  5 variables:
+##   ..$ estimate : num [1:5] 493 441 605 413 401
+##   ..$ std.error: num [1:5] 23.8 23.8 23.8 23.8 23.8
+##   ..$ statistic: num [1:5] 20.7 18.5 25.4 17.3 16.8
+##   ..$ df       : num [1:5] 12 12 12 12 12
+##   ..$ p.value  : num [1:5] 9.55e-11 3.49e-10 8.57e-12 7.34e-10 1.04e-09
+##  $ grid:&#39;data.frame&#39;:    5 obs. of  1 variable:
+##   ..$ varied: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##  $ L   : &#39;linest_matrix_class&#39; num [1:5, 1:13] 1 1 1 1 1 0.2 0.2 0.2 0.2 0.2 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : NULL
+##   .. ..$ : chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   ..- attr(*, &quot;grid&quot;)=&#39;data.frame&#39;:  5 obs. of  1 variable:
+##   .. ..$ varied: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##  - attr(*, &quot;class&quot;)= chr &quot;linest_class&quot;</code></pre>
+<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb680-1" title="1">p0</a></code></pre></div>
+<pre><code>## Coefficients:
+##      estimate std.error statistic      df p.value
+## [1,]  492.600    23.845    20.659  12.000       0
+## [2,]  440.800    23.845    18.486  12.000       0
+## [3,]  604.800    23.845    25.364  12.000       0
+## [4,]  413.400    23.845    17.337  12.000       0
+## [5,]  401.000    23.845    16.817  12.000       0</code></pre>
+<div class="sourceCode" id="cb682"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb682-1" title="1"><span class="kw">library</span>(devtools) </a>
+<a class="sourceLine" id="cb682-2" title="2"><span class="kw">install_github</span>(<span class="st">&quot;walmes/wzRfun&quot;</span>, <span class="dt">ref =</span> <span class="st">&quot;master&quot;</span>) </a></code></pre></div>
+<pre><code>## Using github PAT from envvar GITHUB_PAT</code></pre>
+<pre><code>## Skipping install of &#39;wzRfun&#39; from a github remote, the SHA1 (a90b379a) has not changed since last install.
+##   Use `force = TRUE` to force installation</code></pre>
+<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb685-1" title="1"><span class="kw">require</span>(wzRfun)</a></code></pre></div>
+<pre><code>## Loading required package: wzRfun</code></pre>
+<pre><code>## ----------------------------------------------------------------------
+##   wzRfun: Walmes Zeviani&#39;s collection of functions
+## 
+##   wzRfun (0.91, built on 2019-07-11) was loaded.
+##   Consult online documentation at:
+##     http://leg.ufpr.br/~walmes/pacotes/wzRfun
+##   For collaboration, support or bug report, visit:
+##     https://github.com/walmes/wzRfun/issues
+##   For general information: packageDescription(&quot;wzRfun&quot;)
+##   To access the package documentation: help(package = &quot;wzRfun&quot;)
+## ----------------------------------------------------------------------</code></pre>
+<p>Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.</p>
+<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb688-1" title="1">tu &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">glht</span>(m0, <span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">varied=</span><span class="st">&quot;Tukey&quot;</span>))) </a>
+<a class="sourceLine" id="cb688-2" title="2">tu</a></code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = prod ~ linha + coluna + varied, data = pim)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error t value Pr(&gt;|t|)    
+## B - A == 0   -51.80      33.72  -1.536  0.56046    
+## C - A == 0   112.20      33.72   3.327  0.03940 *  
+## D - A == 0   -79.20      33.72  -2.349  0.19545    
+## E - A == 0   -91.60      33.72  -2.716  0.10963    
+## C - B == 0   164.00      33.72   4.863  0.00294 ** 
+## D - B == 0   -27.40      33.72  -0.813  0.92176    
+## E - B == 0   -39.80      33.72  -1.180  0.76213    
+## D - C == 0  -191.40      33.72  -5.676  &lt; 0.001 ***
+## E - C == 0  -203.80      33.72  -6.044  &lt; 0.001 ***
+## E - D == 0   -12.40      33.72  -0.368  0.99556    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)</code></pre>
+<p>Resumo compacto com letras.</p>
+<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" title="1"><span class="kw">cld</span>(tu)</a></code></pre></div>
+<pre><code>##   A   B   C   D   E 
+## &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;a&quot; &quot;a&quot;</code></pre>
+<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb692-1" title="1"><span class="co">#cld(tu, decreasing=T)</span></a></code></pre></div>
+<p>Medias com intervalo de confiança</p>
+<div class="sourceCode" id="cb693"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb693-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">confint</span>(<span class="kw">glht</span>(m0, <span class="dt">linfct=</span> p0<span class="op">$</span>L)) </a>
+<a class="sourceLine" id="cb693-2" title="2"><span class="kw">str</span>(ci)</a></code></pre></div>
+<pre><code>## List of 9
+##  $ model      :List of 13
+##   ..$ coefficients : Named num [1:13] 546.8 70.8 -35.2 -5.6 0.6 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   ..$ residuals    : Named num [1:25] -35.56 -5.76 69.04 4.64 -32.36 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   ..$ effects      : Named num [1:25] -2352.6 -161.7 64.937 10.772 -0.949 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   ..$ rank         : int 13
+##   ..$ fitted.values: Named num [1:25] 468 730 420 489 547 ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   ..$ assign       : int [1:13] 0 1 1 1 1 2 2 2 2 3 ...
+##   ..$ qr           :List of 5
+##   .. ..$ qr   : num [1:25, 1:13] -5 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 0.2 ...
+##   .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. ..$ : chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. .. .. ..$ : chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   .. .. ..- attr(*, &quot;assign&quot;)= int [1:13] 0 1 1 1 1 2 2 2 2 3 ...
+##   .. .. ..- attr(*, &quot;contrasts&quot;)=List of 3
+##   .. .. .. ..$ linha : chr &quot;contr.treatment&quot;
+##   .. .. .. ..$ coluna: chr &quot;contr.treatment&quot;
+##   .. .. .. ..$ varied: chr &quot;contr.treatment&quot;
+##   .. ..$ qraux: num [1:13] 1.2 1.42 1.41 1.4 1.38 ...
+##   .. ..$ pivot: int [1:13] 1 2 3 4 5 6 7 8 9 10 ...
+##   .. ..$ tol  : num 1e-07
+##   .. ..$ rank : int 13
+##   .. ..- attr(*, &quot;class&quot;)= chr &quot;qr&quot;
+##   ..$ df.residual  : int 12
+##   ..$ contrasts    :List of 3
+##   .. ..$ linha : chr &quot;contr.treatment&quot;
+##   .. ..$ coluna: chr &quot;contr.treatment&quot;
+##   .. ..$ varied: chr &quot;contr.treatment&quot;
+##   ..$ xlevels      :List of 3
+##   .. ..$ linha : chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ coluna: chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ varied: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##   ..$ call         : language lm(formula = prod ~ linha + coluna + varied, data = pim)
+##   ..$ terms        :Classes &#39;terms&#39;, &#39;formula&#39;  language prod ~ linha + coluna + varied
+##   .. .. ..- attr(*, &quot;variables&quot;)= language list(prod, linha, coluna, varied)
+##   .. .. ..- attr(*, &quot;factors&quot;)= int [1:4, 1:3] 0 1 0 0 0 0 1 0 0 0 ...
+##   .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. .. ..$ : chr [1:4] &quot;prod&quot; &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. .. .. ..$ : chr [1:3] &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 1
+##   .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. .. ..- attr(*, &quot;predvars&quot;)= language list(prod, linha, coluna, varied)
+##   .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:4] &quot;numeric&quot; &quot;factor&quot; &quot;factor&quot; &quot;factor&quot;
+##   .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;prod&quot; &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   ..$ model        :&#39;data.frame&#39;:    25 obs. of  4 variables:
+##   .. ..$ prod  : int [1:25] 432 724 489 494 515 518 478 384 500 660 ...
+##   .. ..$ linha : Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 1 2 3 4 5 ...
+##   .. ..$ coluna: Factor w/ 5 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 2 2 2 2 2 ...
+##   .. ..$ varied: Factor w/ 5 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 4 3 5 2 1 1 5 2 4 3 ...
+##   .. ..- attr(*, &quot;terms&quot;)=Classes &#39;terms&#39;, &#39;formula&#39;  language prod ~ linha + coluna + varied
+##   .. .. .. ..- attr(*, &quot;variables&quot;)= language list(prod, linha, coluna, varied)
+##   .. .. .. ..- attr(*, &quot;factors&quot;)= int [1:4, 1:3] 0 1 0 0 0 0 1 0 0 0 ...
+##   .. .. .. .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. .. .. .. ..$ : chr [1:4] &quot;prod&quot; &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. .. .. .. ..$ : chr [1:3] &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. .. ..- attr(*, &quot;term.labels&quot;)= chr [1:3] &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   .. .. .. ..- attr(*, &quot;order&quot;)= int [1:3] 1 1 1
+##   .. .. .. ..- attr(*, &quot;intercept&quot;)= int 1
+##   .. .. .. ..- attr(*, &quot;response&quot;)= int 1
+##   .. .. .. ..- attr(*, &quot;.Environment&quot;)=&lt;environment: R_GlobalEnv&gt; 
+##   .. .. .. ..- attr(*, &quot;predvars&quot;)= language list(prod, linha, coluna, varied)
+##   .. .. .. ..- attr(*, &quot;dataClasses&quot;)= Named chr [1:4] &quot;numeric&quot; &quot;factor&quot; &quot;factor&quot; &quot;factor&quot;
+##   .. .. .. .. ..- attr(*, &quot;names&quot;)= chr [1:4] &quot;prod&quot; &quot;linha&quot; &quot;coluna&quot; &quot;varied&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;lm&quot;
+##  $ linfct     : &#39;linest_matrix_class&#39; num [1:5, 1:13] 1 1 1 1 1 0.2 0.2 0.2 0.2 0.2 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ : chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   ..- attr(*, &quot;grid&quot;)=&#39;data.frame&#39;:  5 obs. of  1 variable:
+##   .. ..$ varied: chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##  $ rhs        : num [1:5] 0 0 0 0 0
+##  $ coef       : Named num [1:13] 546.8 70.8 -35.2 -5.6 0.6 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##  $ vcov       : num [1:13, 1:13] 1478 -569 -569 -569 -569 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   .. ..$ : chr [1:13] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##  $ df         : int 12
+##  $ alternative: chr &quot;two.sided&quot;
+##  $ type       : NULL
+##  $ confint    : num [1:5, 1:3] 493 441 605 413 401 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:5] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. ..$ : chr [1:3] &quot;Estimate&quot; &quot;lwr&quot; &quot;upr&quot;
+##   ..- attr(*, &quot;conf.level&quot;)= num 0.95
+##   ..- attr(*, &quot;calpha&quot;)= num 3
+##  - attr(*, &quot;class&quot;)= chr [1:2] &quot;confint.glht&quot; &quot;glht&quot;
+##  - attr(*, &quot;type&quot;)= chr &quot;adjusted&quot;</code></pre>
+<p>Juntar com os nomes dos tratramentos com os intervalos</p>
+<div class="sourceCode" id="cb695"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb695-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">cbind</span>(p0<span class="op">$</span>grid, ci<span class="op">$</span>confint)</a></code></pre></div>
+<p>Colocar as letras. onde estão as letras?</p>
+<div class="sourceCode" id="cb696"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb696-1" title="1"><span class="kw">str</span>(<span class="kw">cld</span>(tu))</a></code></pre></div>
+<pre><code>## List of 10
+##  $ y        : int [1:25] 432 724 489 494 515 518 478 384 500 660 ...
+##  $ yname    : chr &quot;prod&quot;
+##  $ x        : Factor w/ 5 levels &quot;A&quot;,&quot;B&quot;,&quot;C&quot;,&quot;D&quot;,..: 4 3 5 2 1 1 5 2 4 3 ...
+##  $ xname    : chr &quot;varied&quot;
+##  $ weights  : NULL
+##  $ lp       : Named num [1:25] 468 730 420 489 547 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:25] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ covar    : logi TRUE
+##  $ comps    : chr [1:10, 1:2] &quot;B&quot; &quot;C&quot; &quot;D&quot; &quot;E&quot; ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:10] &quot;B - A&quot; &quot;C - A&quot; &quot;D - A&quot; &quot;E - A&quot; ...
+##   .. ..$ : NULL
+##  $ signif   : logi [1:10] FALSE TRUE FALSE FALSE TRUE FALSE ...
+##  $ mcletters:List of 5
+##   ..$ Letters          : Named chr [1:5] &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;a&quot; ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##   ..$ monospacedLetters: Named chr [1:5] &quot;a &quot; &quot;a &quot; &quot; b&quot; &quot;a &quot; ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##   ..$ LetterMatrix     : logi [1:5, 1:2] TRUE TRUE FALSE TRUE TRUE FALSE ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:5] &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##   .. .. ..$ : chr [1:2] &quot;a&quot; &quot;b&quot;
+##   ..$ aLetters         : chr [1:52] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...
+##   ..$ aseparator       : chr &quot;.&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;multcompLetters&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;cld&quot;</code></pre>
+<div class="sourceCode" id="cb698"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb698-1" title="1">ci<span class="op">$</span>cld &lt;-<span class="st"> </span><span class="kw">cld</span>(tu)<span class="op">$</span>mcletters<span class="op">$</span>Letters </a>
+<a class="sourceLine" id="cb698-2" title="2">ci<span class="op">$</span>cld</a></code></pre></div>
+<pre><code>## [1] &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;a&quot; &quot;a&quot;</code></pre>
+<div class="sourceCode" id="cb700"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb700-1" title="1"><span class="kw">str</span>(ci)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    5 obs. of  5 variables:
+##  $ varied  : chr  &quot;A&quot; &quot;B&quot; &quot;C&quot; &quot;D&quot; ...
+##  $ Estimate: num  493 441 605 413 401
+##  $ lwr     : num  421 369 533 342 329
+##  $ upr     : num  564 512 676 485 473
+##  $ cld     : chr  &quot;a&quot; &quot;a&quot; &quot;b&quot; &quot;a&quot; ...</code></pre>
+<div class="sourceCode" id="cb702"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb702-1" title="1">ci<span class="op">$</span>varied &lt;-<span class="st"> </span><span class="kw">factor</span>(ci<span class="op">$</span>varied)</a></code></pre></div>
+<p>Representação gráfica dos resultados</p>
+<div class="sourceCode" id="cb703"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb703-1" title="1"><span class="kw">require</span>(latticeExtra) </a>
+<a class="sourceLine" id="cb703-2" title="2"><span class="kw">segplot</span>(varied<span class="op">~</span>lwr<span class="op">+</span>upr, </a>
+<a class="sourceLine" id="cb703-3" title="3">        <span class="dt">centers=</span>Estimate, </a>
+<a class="sourceLine" id="cb703-4" title="4">        <span class="dt">data=</span>ci, </a>
+<a class="sourceLine" id="cb703-5" title="5">        <span class="dt">draw=</span>F, <span class="co">#desenhar segmentos </span></a>
+<a class="sourceLine" id="cb703-6" title="6">        <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="st">&quot;Tratamento&quot;</span>), </a>
+<a class="sourceLine" id="cb703-7" title="7">        <span class="dt">ylab =</span> <span class="st">&quot;Número de perfilhos&quot;</span>, </a>
+<a class="sourceLine" id="cb703-8" title="8">        <span class="dt">sub =</span> <span class="kw">list</span>(<span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%.&quot;</span>, </a>
+<a class="sourceLine" id="cb703-9" title="9">                   <span class="dt">font=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb703-10" title="10"><span class="kw">layer</span>(<span class="kw">panel.text</span>( <span class="dt">x =</span> centers, </a>
+<a class="sourceLine" id="cb703-11" title="11">                 <span class="dt">y =</span> z, </a>
+<a class="sourceLine" id="cb703-12" title="12">                 <span class="dt">labels =</span> <span class="kw">sprintf</span>(<span class="st">&quot;%0.2f %s&quot;</span>, centers, ci<span class="op">$</span>cld), </a>
+<a class="sourceLine" id="cb703-13" title="13">                 <span class="dt">pos =</span> <span class="dv">3</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-386-1.png" width="672" /></p>
+</div>
+<div id="exercicios" class="section level3">
+<h3><span class="header-section-number">8.3.2</span> Exercicios</h3>
+<div class="sourceCode" id="cb704"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb704-1" title="1"><span class="kw">require</span>(labestData)</a>
+<a class="sourceLine" id="cb704-2" title="2"></a>
+<a class="sourceLine" id="cb704-3" title="3">ZimmermannTb5<span class="fl">.15</span></a></code></pre></div>
+<pre><code>##    linha coluna trat perf
+## 1      1      1    1  155
+## 2      2      1    5  198
+## 3      3      1    4  187
+## 4      4      1    2  204
+## 5      5      1    6  209
+## 6      6      1    3  216
+## 7      1      2    5  191
+## 8      2      2    3  199
+## 9      3      2    2  213
+## 10     4      2    6  225
+## 11     5      2    4  218
+## 12     6      2    1  181
+## 13     1      3    6  203
+## 14     2      3    4  205
+## 15     3      3    3  195
+## 16     4      3    1  135
+## 17     5      3    5  196
+## 18     6      3    2  178
+## 19     1      4    3  187
+## 20     2      4    1  186
+## 21     3      4    6  177
+## 22     4      4    4  190
+## 23     5      4    2  209
+## 24     6      4    5  215
+## 25     1      5    2  162
+## 26     2      5    6  181
+## 27     3      5    5  188
+## 28     4      5    3  204
+## 29     5      5    1  175
+## 30     6      5    4  203
+## 31     1      6    4  167
+## 32     2      6    2  174
+## 33     3      6    1  161
+## 34     4      6    5  181
+## 35     5      6    3  210
+## 36     6      6    6  206</code></pre>
+<div class="sourceCode" id="cb706"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb706-1" title="1"><span class="kw">help</span>(ZimmermannTb5<span class="fl">.15</span>) </a>
+<a class="sourceLine" id="cb706-2" title="2"><span class="kw">str</span>(ZimmermannTb5<span class="fl">.15</span>)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    36 obs. of  4 variables:
+##  $ linha : Factor w/ 6 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 2 3 4 5 6 1 2 3 4 ...
+##  $ coluna: Factor w/ 6 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 1 1 1 1 1 2 2 2 2 ...
+##  $ trat  : Factor w/ 6 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 5 4 2 6 3 5 3 2 6 ...
+##  $ perf  : num  155 198 187 204 209 216 191 199 213 225 ...</code></pre>
+<p>atribuir um nome menor ao conjunto de dados</p>
+<div class="sourceCode" id="cb708"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb708-1" title="1">dados &lt;-<span class="st"> </span>ZimmermannTb5<span class="fl">.15</span></a></code></pre></div>
+<p>Gráfico do layout</p>
+<div class="sourceCode" id="cb709"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb709-1" title="1"><span class="kw">require</span>(latticeExtra) </a>
+<a class="sourceLine" id="cb709-2" title="2"></a>
+<a class="sourceLine" id="cb709-3" title="3"><span class="kw">levelplot</span>(perf<span class="op">~</span>linha<span class="op">+</span>coluna, </a>
+<a class="sourceLine" id="cb709-4" title="4">          <span class="dt">data=</span>dados, <span class="dt">aspect=</span><span class="st">&quot;iso&quot;</span>)<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb709-5" title="5"><span class="st">          </span><span class="kw">layer</span>(<span class="kw">with</span>(dados, </a>
+<a class="sourceLine" id="cb709-6" title="6">          <span class="kw">panel.text</span>(<span class="dt">x=</span>linha, <span class="dt">y=</span>coluna, </a>
+<a class="sourceLine" id="cb709-7" title="7">          <span class="dt">label=</span><span class="kw">paste</span>(trat, perf))))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-389-1.png" width="672" /></p>
+<div class="sourceCode" id="cb710"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb710-1" title="1"><span class="kw">require</span>(latticeExtra)</a></code></pre></div>
+<p>Gráfico do layout</p>
+<div class="sourceCode" id="cb711"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb711-1" title="1"><span class="kw">levelplot</span>(perf<span class="op">~</span>linha<span class="op">+</span>coluna, </a>
+<a class="sourceLine" id="cb711-2" title="2">          <span class="dt">data=</span>dados, <span class="dt">aspect=</span><span class="st">&quot;iso&quot;</span>)<span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb711-3" title="3"><span class="st">          </span><span class="kw">layer</span>(<span class="kw">with</span>(dados, </a>
+<a class="sourceLine" id="cb711-4" title="4">          <span class="kw">panel.text</span>(<span class="dt">x=</span>linha, <span class="dt">y=</span>coluna, </a>
+<a class="sourceLine" id="cb711-5" title="5">          <span class="dt">label=</span><span class="kw">paste</span>(trat, perf))))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-391-1.png" width="672" /></p>
+<p>ANOVA</p>
+<div class="sourceCode" id="cb712"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb712-1" title="1">m0 =<span class="st"> </span><span class="kw">lm</span> (perf<span class="op">~</span>linha <span class="op">+</span><span class="st"> </span>coluna <span class="op">+</span><span class="st"> </span>trat, <span class="dt">data =</span> dados)</a></code></pre></div>
+<p>Foram atendidos?</p>
+<div class="sourceCode" id="cb713"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb713-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) </a>
+<a class="sourceLine" id="cb713-2" title="2"><span class="kw">plot</span>(m0)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-393-1.png" width="672" /></p>
+<p>Teste de Bartllet para homocedasticidade</p>
+<div class="sourceCode" id="cb714"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb714-1" title="1"><span class="kw">bartlett.test</span>(m0<span class="op">$</span>res, dados<span class="op">$</span>trat)</a></code></pre></div>
+<pre><code>## 
+##  Bartlett test of homogeneity of variances
+## 
+## data:  m0$res and dados$trat
+## Bartlett&#39;s K-squared = 6.5685, df = 5, p-value = 0.2548</code></pre>
+<p>Teste de Shapiro-Wilk para Normalidade</p>
+<div class="sourceCode" id="cb716"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb716-1" title="1"><span class="kw">shapiro.test</span>(m0<span class="op">$</span>res)</a></code></pre></div>
+<pre><code>## 
+##  Shapiro-Wilk normality test
+## 
+## data:  m0$res
+## W = 0.98701, p-value = 0.9408</code></pre>
+<p>Quadro de análise de variância</p>
+<div class="sourceCode" id="cb718"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb718-1" title="1"><span class="kw">anova</span>(m0)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: perf
+##           Df Sum Sq Mean Sq F value  Pr(&gt;F)   
+## linha      5 2513.9  502.78  2.5039 0.06461 . 
+## coluna     5 1976.2  395.24  1.9684 0.12760   
+## trat       5 5298.2 1059.64  5.2773 0.00299 **
+## Residuals 20 4015.9  200.79                   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+<div class="sourceCode" id="cb720"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb720-1" title="1"><span class="kw">summary</span>(m0)</a></code></pre></div>
+<pre><code>## 
+## Call:
+## lm(formula = perf ~ linha + coluna + trat, data = dados)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -23.2222  -6.3889  -0.0556   5.9444  22.4444 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 155.3889     9.4468  16.449 4.34e-13 ***
+## linha2       13.0000     8.1812   1.589 0.127741    
+## linha3        9.3333     8.1812   1.141 0.267417    
+## linha4       12.3333     8.1812   1.508 0.147310    
+## linha5       25.3333     8.1812   3.097 0.005689 ** 
+## linha6       22.3333     8.1812   2.730 0.012905 *  
+## coluna2       9.6667     8.1812   1.182 0.251234    
+## coluna3      -9.5000     8.1812  -1.161 0.259231    
+## coluna4      -0.8333     8.1812  -0.102 0.919882    
+## coluna5      -9.3333     8.1812  -1.141 0.267417    
+## coluna6     -11.6667     8.1812  -1.426 0.169280    
+## trat2        24.5000     8.1812   2.995 0.007161 ** 
+## trat3        36.3333     8.1812   4.441 0.000251 ***
+## trat4        29.5000     8.1812   3.606 0.001764 ** 
+## trat5        29.3333     8.1812   3.585 0.001850 ** 
+## trat6        34.6667     8.1812   4.237 0.000404 ***
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 14.17 on 20 degrees of freedom
+## Multiple R-squared:  0.7091, Adjusted R-squared:  0.4909 
+## F-statistic:  3.25 on 15 and 20 DF,  p-value: 0.007591</code></pre>
+<p>Comparações múltiplas.</p>
+<div class="sourceCode" id="cb722"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb722-1" title="1"><span class="kw">library</span>(doBy) </a>
+<a class="sourceLine" id="cb722-2" title="2"><span class="kw">library</span>(multcomp) </a>
+<a class="sourceLine" id="cb722-3" title="3"></a>
+<a class="sourceLine" id="cb722-4" title="4">p0 =<span class="st"> </span><span class="kw">LSmeans</span>(m0, <span class="dt">effect =</span> <span class="st">&quot;trat&quot;</span>, <span class="dt">level =</span> <span class="fl">0.95</span>) </a>
+<a class="sourceLine" id="cb722-5" title="5"></a>
+<a class="sourceLine" id="cb722-6" title="6"><span class="kw">str</span>(p0)</a></code></pre></div>
+<pre><code>## List of 3
+##  $ coef:&#39;data.frame&#39;:    6 obs. of  5 variables:
+##   ..$ estimate : num [1:6] 165 190 202 195 195 ...
+##   ..$ std.error: num [1:6] 5.78 5.78 5.78 5.78 5.78 ...
+##   ..$ statistic: num [1:6] 28.6 32.8 34.9 33.7 33.7 ...
+##   ..$ df       : num [1:6] 20 20 20 20 20 20
+##   ..$ p.value  : num [1:6] 1.06e-17 7.10e-19 2.16e-19 4.26e-19 4.33e-19 ...
+##  $ grid:&#39;data.frame&#39;:    6 obs. of  1 variable:
+##   ..$ trat: chr [1:6] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ L   : &#39;linest_matrix_class&#39; num [1:6, 1:16] 1 1 1 1 1 ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : NULL
+##   .. ..$ : chr [1:16] &quot;(Intercept)&quot; &quot;linha2&quot; &quot;linha3&quot; &quot;linha4&quot; ...
+##   ..- attr(*, &quot;grid&quot;)=&#39;data.frame&#39;:  6 obs. of  1 variable:
+##   .. ..$ trat: chr [1:6] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  - attr(*, &quot;class&quot;)= chr &quot;linest_class&quot;</code></pre>
+<p>Criando a tabela com as estimativas</p>
+<div class="sourceCode" id="cb724"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb724-1" title="1"><span class="kw">library</span>(devtools) </a>
+<a class="sourceLine" id="cb724-2" title="2"><span class="co">#install_github(&quot;walmes/wzRfun&quot;, ref = &quot;master&quot;) </span></a>
+<a class="sourceLine" id="cb724-3" title="3"><span class="kw">require</span>(wzRfun)</a></code></pre></div>
+<p>Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.</p>
+<div class="sourceCode" id="cb725"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb725-1" title="1">tu &lt;-<span class="st"> </span><span class="kw">summary</span>(<span class="kw">glht</span>(m0, <span class="dt">linfct=</span><span class="kw">mcp</span>(<span class="dt">trat=</span><span class="st">&quot;Tukey&quot;</span>))) </a>
+<a class="sourceLine" id="cb725-2" title="2">tu</a></code></pre></div>
+<pre><code>## 
+##   Simultaneous Tests for General Linear Hypotheses
+## 
+## Multiple Comparisons of Means: Tukey Contrasts
+## 
+## 
+## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
+## 
+## Linear Hypotheses:
+##            Estimate Std. Error t value Pr(&gt;|t|)   
+## 2 - 1 == 0  24.5000     8.1812   2.995  0.06748 . 
+## 3 - 1 == 0  36.3333     8.1812   4.441  0.00296 **
+## 4 - 1 == 0  29.5000     8.1812   3.606  0.01886 * 
+## 5 - 1 == 0  29.3333     8.1812   3.585  0.01959 * 
+## 6 - 1 == 0  34.6667     8.1812   4.237  0.00467 **
+## 3 - 2 == 0  11.8333     8.1812   1.446  0.69976   
+## 4 - 2 == 0   5.0000     8.1812   0.611  0.98894   
+## 5 - 2 == 0   4.8333     8.1812   0.591  0.99051   
+## 6 - 2 == 0  10.1667     8.1812   1.243  0.81104   
+## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95719   
+## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95271   
+## 6 - 3 == 0  -1.6667     8.1812  -0.204  0.99994   
+## 5 - 4 == 0  -0.1667     8.1812  -0.020  1.00000   
+## 6 - 4 == 0   5.1667     8.1812   0.632  0.98718   
+## 6 - 5 == 0   5.3333     8.1812   0.652  0.98523   
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## (Adjusted p values reported -- single-step method)</code></pre>
+<p>Resumo compacto com letras.</p>
+<div class="sourceCode" id="cb727"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb727-1" title="1"><span class="kw">cld</span>(tu)</a></code></pre></div>
+<pre><code>##    1    2    3    4    5    6 
+##  &quot;a&quot; &quot;ab&quot;  &quot;b&quot;  &quot;b&quot;  &quot;b&quot;  &quot;b&quot;</code></pre>
+<div class="sourceCode" id="cb729"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb729-1" title="1"><span class="co">#cld(tu, decreasing=T)</span></a></code></pre></div>
+<p>Medias com intervalo de confiança</p>
+<div class="sourceCode" id="cb730"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb730-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">confint</span>(<span class="kw">glht</span>(m0, <span class="dt">linfct=</span> p0<span class="op">$</span>L)) </a>
+<a class="sourceLine" id="cb730-2" title="2">ci</a></code></pre></div>
+<pre><code>## 
+##   Simultaneous Confidence Intervals
+## 
+## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
+## 
+## Quantile = 2.8978
+## 95% family-wise confidence level
+##  
+## 
+## Linear Hypotheses:
+##        Estimate lwr      upr     
+## 1 == 0 165.5000 148.7365 182.2635
+## 2 == 0 190.0000 173.2365 206.7635
+## 3 == 0 201.8333 185.0699 218.5968
+## 4 == 0 195.0000 178.2365 211.7635
+## 5 == 0 194.8333 178.0699 211.5968
+## 6 == 0 200.1667 183.4032 216.9301</code></pre>
+<p>Juntar com os nomes dos tratramentos com os intervalos</p>
+<div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb732-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">cbind</span>(p0<span class="op">$</span>grid, ci<span class="op">$</span>confint) </a>
+<a class="sourceLine" id="cb732-2" title="2"></a>
+<a class="sourceLine" id="cb732-3" title="3">ci<span class="op">$</span>cld &lt;-<span class="st"> </span><span class="kw">cld</span>(tu)<span class="op">$</span>mcletters<span class="op">$</span>Letters </a>
+<a class="sourceLine" id="cb732-4" title="4"></a>
+<a class="sourceLine" id="cb732-5" title="5"><span class="kw">str</span>(<span class="kw">cld</span>(tu))</a></code></pre></div>
+<pre><code>## List of 10
+##  $ y        : num [1:36] 155 198 187 204 209 216 191 199 213 225 ...
+##  $ yname    : chr &quot;perf&quot;
+##  $ x        : Factor w/ 6 levels &quot;1&quot;,&quot;2&quot;,&quot;3&quot;,&quot;4&quot;,..: 1 5 4 2 6 3 5 3 2 6 ...
+##  $ xname    : chr &quot;trat&quot;
+##  $ weights  : NULL
+##  $ lp       : Named num [1:36] 155 198 194 192 215 ...
+##   ..- attr(*, &quot;names&quot;)= chr [1:36] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##  $ covar    : logi TRUE
+##  $ comps    : chr [1:15, 1:2] &quot;2&quot; &quot;3&quot; &quot;4&quot; &quot;5&quot; ...
+##   ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. ..$ : chr [1:15] &quot;2 - 1&quot; &quot;3 - 1&quot; &quot;4 - 1&quot; &quot;5 - 1&quot; ...
+##   .. ..$ : NULL
+##  $ signif   : logi [1:15] FALSE TRUE TRUE TRUE TRUE FALSE ...
+##  $ mcletters:List of 5
+##   ..$ Letters          : Named chr [1:6] &quot;a&quot; &quot;ab&quot; &quot;b&quot; &quot;b&quot; ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   ..$ monospacedLetters: Named chr [1:6] &quot;a &quot; &quot;ab&quot; &quot; b&quot; &quot; b&quot; ...
+##   .. ..- attr(*, &quot;names&quot;)= chr [1:6] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   ..$ LetterMatrix     : logi [1:6, 1:2] TRUE TRUE FALSE FALSE FALSE FALSE ...
+##   .. ..- attr(*, &quot;dimnames&quot;)=List of 2
+##   .. .. ..$ : chr [1:6] &quot;1&quot; &quot;2&quot; &quot;3&quot; &quot;4&quot; ...
+##   .. .. ..$ : chr [1:2] &quot;a&quot; &quot;b&quot;
+##   ..$ aLetters         : chr [1:52] &quot;a&quot; &quot;b&quot; &quot;c&quot; &quot;d&quot; ...
+##   ..$ aseparator       : chr &quot;.&quot;
+##   ..- attr(*, &quot;class&quot;)= chr &quot;multcompLetters&quot;
+##  - attr(*, &quot;class&quot;)= chr &quot;cld&quot;</code></pre>
+<p>Representação gráfica dos resultados.</p>
+<div class="sourceCode" id="cb734"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb734-1" title="1"><span class="kw">require</span>(latticeExtra) </a>
+<a class="sourceLine" id="cb734-2" title="2"></a>
+<a class="sourceLine" id="cb734-3" title="3"><span class="kw">segplot</span>(trat<span class="op">~</span>lwr<span class="op">+</span>upr, </a>
+<a class="sourceLine" id="cb734-4" title="4">        <span class="dt">centers=</span>Estimate, </a>
+<a class="sourceLine" id="cb734-5" title="5">        <span class="dt">data=</span>ci, </a>
+<a class="sourceLine" id="cb734-6" title="6">        <span class="dt">draw=</span>F,</a>
+<a class="sourceLine" id="cb734-7" title="7">        <span class="dt">xlab =</span> <span class="kw">expression</span>(<span class="st">&quot; &quot;</span>), <span class="dt">ylab =</span> <span class="st">&quot; &quot;</span>, </a>
+<a class="sourceLine" id="cb734-8" title="8">        <span class="dt">sub =</span> <span class="kw">list</span>(<span class="st">&quot;Médias seguidas de mesma letra indicam diferença nula à 5%.&quot;</span>,</a>
+<a class="sourceLine" id="cb734-9" title="9">        <span class="dt">font=</span><span class="dv">1</span>, <span class="dt">cex=</span><span class="fl">0.8</span>)) <span class="op">+</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb734-10" title="10"><span class="st">        </span><span class="kw">layer</span>(<span class="kw">panel.text</span>( <span class="dt">x =</span> centers, </a>
+<a class="sourceLine" id="cb734-11" title="11">        <span class="dt">y =</span> z, </a>
+<a class="sourceLine" id="cb734-12" title="12">        <span class="dt">labels =</span> <span class="kw">sprintf</span>(<span class="st">&quot;%0.2f %s&quot;</span>, centers, ci<span class="op">$</span>cld), </a>
+<a class="sourceLine" id="cb734-13" title="13">        <span class="dt">pos =</span> <span class="dv">3</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-403-1.png" width="672" /></p>
+</div>
+<div id="exercicio-para-entregar" class="section level3">
+<h3><span class="header-section-number">8.3.3</span> Exercicio para entregar</h3>
+<p>DiasEg9.4
+help(“DiasEg9.4”)</p>
+<p>BarbinPg104
+help(“BarbinPg104”)</p>
+<p>ZimmermannTb12.27
+help(ZimmermannTb12.27)</p>
+<p>ZimmermannTb12.26
+help(ZimmermannTb12.26)</p>
+<p>StorckEg2.3.5
+help(StorckEg2.3.5)</p>
+<p>ZimmermannTb16.10
+help(ZimmermannTb16.10)</p>
 
+</div>
 </div>
 <div id="regressão-linear-simples" class="section level2">
 <h2><span class="header-section-number">8.4</span> Regressão Linear simples</h2>

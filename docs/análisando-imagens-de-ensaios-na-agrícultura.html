@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-15" />
+<meta name="date" content="2020-04-16" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -259,7 +259,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.2.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-1"><i class="fa fa-check"></i><b>8.2.4</b> Exercicio 1</a></li>
 <li class="chapter" data-level="8.2.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-5"><i class="fa fa-check"></i><b>8.2.5</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#quadrado-latino"><i class="fa fa-check"></i><b>8.3</b> Quadrado Latino</a></li>
+<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#quadrado-latino"><i class="fa fa-check"></i><b>8.3</b> Quadrado Latino</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#banco-de-dados"><i class="fa fa-check"></i><b>8.3.1</b> Banco de dados</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicios"><i class="fa fa-check"></i><b>8.3.2</b> Exercicios</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-para-entregar"><i class="fa fa-check"></i><b>8.3.3</b> Exercicio para entregar</a></li>
+</ul></li>
 <li class="chapter" data-level="8.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-simples"><i class="fa fa-check"></i><b>8.4</b> Regressão Linear simples</a></li>
 <li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.5</b> Regressão não linear</a></li>
 <li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#resolução-do-livro-banzatto-kronka"><i class="fa fa-check"></i><b>8.6</b> Resolução do Livro Banzatto Kronka</a></li>
@@ -296,15 +300,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 13</span> Análisando imagens de ensaios na agrícultura</h1>
 <p>Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.</p>
 <p>É necessário instalar alguns pacotes necessários para aplicar esta tarefa:</p>
-<div class="sourceCode" id="cb644"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb644-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
-<a class="sourceLine" id="cb644-2" title="2"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb644-3" title="3"><span class="kw">install_github</span>(<span class="st">&quot;filipematias23/FIELDimageR&quot;</span>)</a>
-<a class="sourceLine" id="cb644-4" title="4"><span class="kw">install.packages</span>(<span class="st">&quot;sp&quot;</span>)</a>
-<a class="sourceLine" id="cb644-5" title="5"><span class="kw">install.packages</span>(<span class="st">&quot;raster&quot;</span>)</a>
-<a class="sourceLine" id="cb644-6" title="6"><span class="kw">install.packages</span>(<span class="st">&quot;rgdal&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb735-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;devtools&quot;</span>)</a>
+<a class="sourceLine" id="cb735-2" title="2"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb735-3" title="3"><span class="kw">install_github</span>(<span class="st">&quot;filipematias23/FIELDimageR&quot;</span>)</a>
+<a class="sourceLine" id="cb735-4" title="4"><span class="kw">install.packages</span>(<span class="st">&quot;sp&quot;</span>)</a>
+<a class="sourceLine" id="cb735-5" title="5"><span class="kw">install.packages</span>(<span class="st">&quot;raster&quot;</span>)</a>
+<a class="sourceLine" id="cb735-6" title="6"><span class="kw">install.packages</span>(<span class="st">&quot;rgdal&quot;</span>)</a></code></pre></div>
 <p>Carregar os pacote que foram baixados:</p>
-<div class="sourceCode" id="cb645"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb645-1" title="1"><span class="kw">library</span>(FIELDimageR)</a>
-<a class="sourceLine" id="cb645-2" title="2"><span class="kw">library</span>(raster)</a></code></pre></div>
+<div class="sourceCode" id="cb736"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb736-1" title="1"><span class="kw">library</span>(FIELDimageR)</a>
+<a class="sourceLine" id="cb736-2" title="2"><span class="kw">library</span>(raster)</a></code></pre></div>
 <pre><code>## Loading required package: sp</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;raster&#39;</code></pre>
@@ -315,30 +319,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     area, select</code></pre>
 <p>Baixar a imagem ortomosaicada:</p>
-<div class="sourceCode" id="cb650"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb650-1" title="1">EX1&lt;-<span class="kw">stack</span>(<span class="st">&quot;https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb741"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb741-1" title="1">EX1&lt;-<span class="kw">stack</span>(<span class="st">&quot;https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1&quot;</span>)</a></code></pre></div>
 <p>Plotar a imagem nas bandas RGB:</p>
-<div class="sourceCode" id="cb651"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb651-1" title="1"><span class="kw">plotRGB</span>(EX1, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">g =</span> <span class="dv">2</span>, <span class="dt">b =</span> <span class="dv">3</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-363-1.png" width="672" /></p>
+<div class="sourceCode" id="cb742"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb742-1" title="1"><span class="kw">plotRGB</span>(EX1, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">g =</span> <span class="dv">2</span>, <span class="dt">b =</span> <span class="dv">3</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-407-1.png" width="672" /></p>
 <p>Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB</p>
-<div class="sourceCode" id="cb652"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb652-1" title="1">EX1.RemSoil&lt;-<span class="st"> </span><span class="kw">fieldMask</span>(<span class="dt">mosaic =</span> EX1, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, <span class="dt">index =</span> <span class="st">&quot;HUE&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb743"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb743-1" title="1">EX1.RemSoil&lt;-<span class="st"> </span><span class="kw">fieldMask</span>(<span class="dt">mosaic =</span> EX1, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, <span class="dt">index =</span> <span class="st">&quot;HUE&quot;</span>)</a></code></pre></div>
 <pre><code>## [1] &quot;3 layers available&quot;</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-364-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-408-1.png" width="672" /></p>
 <p>Aplicado os índices de vegetação.
 Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo <code>myIndex</code> com a fórmula <code>Red-Blue/Green</code></p>
-<div class="sourceCode" id="cb654"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb654-1" title="1">EX1.Indices&lt;-<span class="st"> </span><span class="kw">indices</span>(<span class="dt">mosaic =</span> EX1.RemSoil<span class="op">$</span>newMosaic, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, </a>
-<a class="sourceLine" id="cb654-2" title="2">                      <span class="dt">index =</span> <span class="kw">c</span>(<span class="st">&quot;NGRDI&quot;</span>,<span class="st">&quot;BGI&quot;</span>), <span class="dt">myIndex =</span> <span class="kw">c</span>(<span class="st">&quot;(Red-Blue)/Green&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb745"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb745-1" title="1">EX1.Indices&lt;-<span class="st"> </span><span class="kw">indices</span>(<span class="dt">mosaic =</span> EX1.RemSoil<span class="op">$</span>newMosaic, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, </a>
+<a class="sourceLine" id="cb745-2" title="2">                      <span class="dt">index =</span> <span class="kw">c</span>(<span class="st">&quot;NGRDI&quot;</span>,<span class="st">&quot;BGI&quot;</span>), <span class="dt">myIndex =</span> <span class="kw">c</span>(<span class="st">&quot;(Red-Blue)/Green&quot;</span>))</a></code></pre></div>
 <pre><code>## [1] &quot;3 layers available&quot;</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-365-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-409-1.png" width="672" /></p>
 
 <div id="classificação-de-imagens-de-satélites" class="section level2">
 <h2><span class="header-section-number">13.1</span> Classificação de imagens de satélites</h2>
 <p>Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.</p>
 <p>Carregar pacotes necessários para trabalhar com os dados raster.
 Caso não tenha algum dos pacotes, realize a sua instalação.</p>
-<div class="sourceCode" id="cb656"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb656-1" title="1"><span class="kw">library</span>(raster)</a>
-<a class="sourceLine" id="cb656-2" title="2"><span class="kw">library</span>(knitr)</a>
-<a class="sourceLine" id="cb656-3" title="3"><span class="kw">library</span>(sp)</a>
-<a class="sourceLine" id="cb656-4" title="4"><span class="kw">library</span>(rgdal)</a></code></pre></div>
+<div class="sourceCode" id="cb747"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb747-1" title="1"><span class="kw">library</span>(raster)</a>
+<a class="sourceLine" id="cb747-2" title="2"><span class="kw">library</span>(knitr)</a>
+<a class="sourceLine" id="cb747-3" title="3"><span class="kw">library</span>(sp)</a>
+<a class="sourceLine" id="cb747-4" title="4"><span class="kw">library</span>(rgdal)</a></code></pre></div>
 <pre><code>## rgdal: version: 1.4-8, (SVN revision 845)
 ##  Geospatial Data Abstraction Library extensions to R successfully loaded
 ##  Loaded GDAL runtime: GDAL 2.2.3, released 2017/11/20
@@ -347,21 +351,15 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 ##  Loaded PROJ.4 runtime: Rel. 4.9.3, 15 August 2016, [PJ_VERSION: 493]
 ##  Path to PROJ.4 shared files: C:/Users/Jefferson/Documents/R/win-library/3.6/rgdal/proj
 ##  Linking to sp version: 1.4-1</code></pre>
-<div class="sourceCode" id="cb658"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb658-1" title="1"><span class="kw">library</span>(ggplot2)</a>
-<a class="sourceLine" id="cb658-2" title="2"><span class="kw">library</span>(viridis)</a></code></pre></div>
+<div class="sourceCode" id="cb749"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb749-1" title="1"><span class="kw">library</span>(ggplot2)</a>
+<a class="sourceLine" id="cb749-2" title="2"><span class="kw">library</span>(viridis)</a></code></pre></div>
 <pre><code>## Loading required package: viridisLite</code></pre>
-<div class="sourceCode" id="cb660"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb660-1" title="1"><span class="kw">library</span>(rasterVis)</a></code></pre></div>
-<pre><code>## Loading required package: latticeExtra</code></pre>
-<pre><code>## 
-## Attaching package: &#39;latticeExtra&#39;</code></pre>
-<pre><code>## The following object is masked from &#39;package:ggplot2&#39;:
-## 
-##     layer</code></pre>
-<div class="sourceCode" id="cb664"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb664-1" title="1"><span class="kw">library</span>(LSRS)</a></code></pre></div>
+<div class="sourceCode" id="cb751"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb751-1" title="1"><span class="kw">library</span>(rasterVis)</a>
+<a class="sourceLine" id="cb751-2" title="2"><span class="kw">library</span>(LSRS)</a></code></pre></div>
 <p>Baixar o arquivo . <a href="https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1">sentinel2.tif</a>.</p>
-<div class="sourceCode" id="cb665"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb665-1" title="1">imagesentinel=<span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb752"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb752-1" title="1">imagesentinel=<span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a></code></pre></div>
 <p>Visualizar os dados</p>
-<div class="sourceCode" id="cb666"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb666-1" title="1">imagesentinel</a></code></pre></div>
+<div class="sourceCode" id="cb753"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb753-1" title="1">imagesentinel</a></code></pre></div>
 <pre><code>## class      : RasterLayer 
 ## band       : 1  (of  12  bands)
 ## dimensions : 507, 848, 429936  (nrow, ncol, ncell)
@@ -371,85 +369,85 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 ## source     : D:/livro/TudodoRa/sentinel2.tif 
 ## names      : sentinel2</code></pre>
 <p>É necessário criar camadas individuais para cada uma das bandas espectrais:</p>
-<div class="sourceCode" id="cb668"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb668-1" title="1">b1 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb668-2" title="2">b2 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb668-3" title="3">b3 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">3</span>)</a>
-<a class="sourceLine" id="cb668-4" title="4">b4 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb668-5" title="5">b5 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">5</span>)</a>
-<a class="sourceLine" id="cb668-6" title="6">b6 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">6</span>)</a>
-<a class="sourceLine" id="cb668-7" title="7">b7 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">7</span>)</a>
-<a class="sourceLine" id="cb668-8" title="8">b8 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">8</span>)</a>
-<a class="sourceLine" id="cb668-9" title="9">b9 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">9</span>)</a>
-<a class="sourceLine" id="cb668-10" title="10">b10 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">10</span>)</a>
-<a class="sourceLine" id="cb668-11" title="11">b11 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">11</span>)</a>
-<a class="sourceLine" id="cb668-12" title="12">b12 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb755"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb755-1" title="1">b1 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb755-2" title="2">b2 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb755-3" title="3">b3 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">3</span>)</a>
+<a class="sourceLine" id="cb755-4" title="4">b4 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb755-5" title="5">b5 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">5</span>)</a>
+<a class="sourceLine" id="cb755-6" title="6">b6 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb755-7" title="7">b7 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">7</span>)</a>
+<a class="sourceLine" id="cb755-8" title="8">b8 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">8</span>)</a>
+<a class="sourceLine" id="cb755-9" title="9">b9 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">9</span>)</a>
+<a class="sourceLine" id="cb755-10" title="10">b10 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">10</span>)</a>
+<a class="sourceLine" id="cb755-11" title="11">b11 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">11</span>)</a>
+<a class="sourceLine" id="cb755-12" title="12">b12 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">12</span>)</a></code></pre></div>
 <p>Comparar duas bandas para ver se elas possuem a mesma extensão:</p>
-<div class="sourceCode" id="cb669"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb669-1" title="1"><span class="kw">compareRaster</span>(b2, b3)</a></code></pre></div>
+<div class="sourceCode" id="cb756"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb756-1" title="1"><span class="kw">compareRaster</span>(b2, b3)</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 <p>Plotar a banda 4 para pré-visualização:</p>
-<div class="sourceCode" id="cb671"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb671-1" title="1"><span class="kw">plot</span>(b4)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-372-1.png" width="672" /></p>
-<div class="sourceCode" id="cb672"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb672-1" title="1"><span class="kw">image</span>(b4)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-372-2.png" width="672" /></p>
+<div class="sourceCode" id="cb758"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb758-1" title="1"><span class="kw">plot</span>(b4)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-416-1.png" width="672" /></p>
+<div class="sourceCode" id="cb759"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb759-1" title="1"><span class="kw">image</span>(b4)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-416-2.png" width="672" /></p>
 <p>Visualizar a imagem nas bandas do RGB:</p>
-<div class="sourceCode" id="cb673"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb673-1" title="1">RGB &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="kw">list</span>(b4, b3, b2))              </a>
-<a class="sourceLine" id="cb673-2" title="2"><span class="kw">plotRGB</span>(RGB, <span class="dt">axes =</span> <span class="ot">TRUE</span>, <span class="dt">stretch =</span> <span class="st">&quot;lin&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Sentinel RGB colour composite&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-373-1.png" width="672" /></p>
+<div class="sourceCode" id="cb760"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb760-1" title="1">RGB &lt;-<span class="st"> </span><span class="kw">stack</span>(<span class="kw">list</span>(b4, b3, b2))              </a>
+<a class="sourceLine" id="cb760-2" title="2"><span class="kw">plotRGB</span>(RGB, <span class="dt">axes =</span> <span class="ot">TRUE</span>, <span class="dt">stretch =</span> <span class="st">&quot;lin&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Sentinel RGB colour composite&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-417-1.png" width="672" /></p>
 <p>Juntar todas as bandas num só arquivo:</p>
-<div class="sourceCode" id="cb674"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb674-1" title="1">t &lt;-<span class="st"> </span><span class="kw">stack</span>(b1,b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12)</a>
-<a class="sourceLine" id="cb674-2" title="2">st &lt;-<span class="st"> </span><span class="kw">brick</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a>
-<a class="sourceLine" id="cb674-3" title="3"><span class="kw">plot</span>(st)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-374-1.png" width="672" /></p>
+<div class="sourceCode" id="cb761"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb761-1" title="1">t &lt;-<span class="st"> </span><span class="kw">stack</span>(b1,b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12)</a>
+<a class="sourceLine" id="cb761-2" title="2">st &lt;-<span class="st"> </span><span class="kw">brick</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a>
+<a class="sourceLine" id="cb761-3" title="3"><span class="kw">plot</span>(st)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-418-1.png" width="672" /></p>
 <p>Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.</p>
 <p>Criar a VI (vegetation index) por meio de função</p>
-<div class="sourceCode" id="cb675"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb675-1" title="1">VI &lt;-<span class="st"> </span><span class="cf">function</span>(img, k, i) {</a>
-<a class="sourceLine" id="cb675-2" title="2">  bk &lt;-<span class="st"> </span>img[[k]]</a>
-<a class="sourceLine" id="cb675-3" title="3">  bi &lt;-<span class="st"> </span>img[[i]]</a>
-<a class="sourceLine" id="cb675-4" title="4">  vi &lt;-<span class="st"> </span>(bk <span class="op">-</span><span class="st"> </span>bi) <span class="op">/</span><span class="st"> </span>(bk <span class="op">+</span><span class="st"> </span>bi)</a>
-<a class="sourceLine" id="cb675-5" title="5">  <span class="kw">return</span>(vi)</a>
-<a class="sourceLine" id="cb675-6" title="6">}</a></code></pre></div>
+<div class="sourceCode" id="cb762"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb762-1" title="1">VI &lt;-<span class="st"> </span><span class="cf">function</span>(img, k, i) {</a>
+<a class="sourceLine" id="cb762-2" title="2">  bk &lt;-<span class="st"> </span>img[[k]]</a>
+<a class="sourceLine" id="cb762-3" title="3">  bi &lt;-<span class="st"> </span>img[[i]]</a>
+<a class="sourceLine" id="cb762-4" title="4">  vi &lt;-<span class="st"> </span>(bk <span class="op">-</span><span class="st"> </span>bi) <span class="op">/</span><span class="st"> </span>(bk <span class="op">+</span><span class="st"> </span>bi)</a>
+<a class="sourceLine" id="cb762-5" title="5">  <span class="kw">return</span>(vi)</a>
+<a class="sourceLine" id="cb762-6" title="6">}</a></code></pre></div>
 <p><em>NDVI:</em></p>
-<div class="sourceCode" id="cb676"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb676-1" title="1">ndvi &lt;-<span class="st"> </span><span class="kw">VI</span>(st, <span class="dv">8</span>, <span class="dv">4</span>)</a>
-<a class="sourceLine" id="cb676-2" title="2"><span class="kw">plot</span>(ndvi, <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main =</span> <span class="st">&quot;Sentinel2-NDVI&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-376-1.png" width="672" /></p>
+<div class="sourceCode" id="cb763"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb763-1" title="1">ndvi &lt;-<span class="st"> </span><span class="kw">VI</span>(st, <span class="dv">8</span>, <span class="dv">4</span>)</a>
+<a class="sourceLine" id="cb763-2" title="2"><span class="kw">plot</span>(ndvi, <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main =</span> <span class="st">&quot;Sentinel2-NDVI&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-420-1.png" width="672" /></p>
 <p><strong>Outras fórmula de aplicar o NDVI</strong></p>
-<div class="sourceCode" id="cb677"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb677-1" title="1">vi2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
-<a class="sourceLine" id="cb677-2" title="2">  (x <span class="op">-</span><span class="st"> </span>y) <span class="op">/</span><span class="st"> </span>(x <span class="op">+</span><span class="st"> </span>y)</a>
-<a class="sourceLine" id="cb677-3" title="3">}</a>
-<a class="sourceLine" id="cb677-4" title="4">ndvi2 &lt;-<span class="st"> </span><span class="kw">overlay</span>(st[[<span class="dv">8</span>]], st[[<span class="dv">4</span>]], <span class="dt">fun=</span>vi2)</a>
-<a class="sourceLine" id="cb677-5" title="5"><span class="kw">plot</span>(ndvi2, <span class="dt">col=</span><span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main=</span><span class="st">&quot;Sentinel2-NDVI&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-377-1.png" width="672" /></p>
+<div class="sourceCode" id="cb764"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb764-1" title="1">vi2 &lt;-<span class="st"> </span><span class="cf">function</span>(x, y) {</a>
+<a class="sourceLine" id="cb764-2" title="2">  (x <span class="op">-</span><span class="st"> </span>y) <span class="op">/</span><span class="st"> </span>(x <span class="op">+</span><span class="st"> </span>y)</a>
+<a class="sourceLine" id="cb764-3" title="3">}</a>
+<a class="sourceLine" id="cb764-4" title="4">ndvi2 &lt;-<span class="st"> </span><span class="kw">overlay</span>(st[[<span class="dv">8</span>]], st[[<span class="dv">4</span>]], <span class="dt">fun=</span>vi2)</a>
+<a class="sourceLine" id="cb764-5" title="5"><span class="kw">plot</span>(ndvi2, <span class="dt">col=</span><span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main=</span><span class="st">&quot;Sentinel2-NDVI&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-421-1.png" width="672" /></p>
 <p><strong>Visualizar o NDVI em histograma</strong></p>
-<div class="sourceCode" id="cb678"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb678-1" title="1"><span class="kw">hist</span>(ndvi,</a>
-<a class="sourceLine" id="cb678-2" title="2">     <span class="dt">main =</span> <span class="st">&quot;Distribuição dos valores de NDVI&quot;</span>,</a>
-<a class="sourceLine" id="cb678-3" title="3">     <span class="dt">xlab =</span> <span class="st">&quot;NDVI&quot;</span>,</a>
-<a class="sourceLine" id="cb678-4" title="4">     <span class="dt">ylab=</span> <span class="st">&quot;Frequência&quot;,</span></a>
-<a class="sourceLine" id="cb678-5" title="5"><span class="st">     col = &quot;</span>wheat<span class="st">&quot;,</span></a>
-<a class="sourceLine" id="cb678-6" title="6"><span class="st">     xlim = c(-0.5, 1),</span></a>
-<a class="sourceLine" id="cb678-7" title="7"><span class="st">     breaks = 30,</span></a>
-<a class="sourceLine" id="cb678-8" title="8"><span class="st">     xaxt = &#39;n&#39;)</span></a>
-<a class="sourceLine" id="cb678-9" title="9"><span class="st">axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-378-1.png" width="672" /></p>
+<div class="sourceCode" id="cb765"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb765-1" title="1"><span class="kw">hist</span>(ndvi,</a>
+<a class="sourceLine" id="cb765-2" title="2">     <span class="dt">main =</span> <span class="st">&quot;Distribuição dos valores de NDVI&quot;</span>,</a>
+<a class="sourceLine" id="cb765-3" title="3">     <span class="dt">xlab =</span> <span class="st">&quot;NDVI&quot;</span>,</a>
+<a class="sourceLine" id="cb765-4" title="4">     <span class="dt">ylab=</span> <span class="st">&quot;Frequência&quot;,</span></a>
+<a class="sourceLine" id="cb765-5" title="5"><span class="st">     col = &quot;</span>wheat<span class="st">&quot;,</span></a>
+<a class="sourceLine" id="cb765-6" title="6"><span class="st">     xlim = c(-0.5, 1),</span></a>
+<a class="sourceLine" id="cb765-7" title="7"><span class="st">     breaks = 30,</span></a>
+<a class="sourceLine" id="cb765-8" title="8"><span class="st">     xaxt = &#39;n&#39;)</span></a>
+<a class="sourceLine" id="cb765-9" title="9"><span class="st">axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-422-1.png" width="672" /></p>
 <p>Visualizar apenas a vegetação com NDVI acima de 0.4:</p>
-<div class="sourceCode" id="cb679"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb679-1" title="1">veg &lt;-<span class="st"> </span><span class="kw">reclassify</span>(ndvi, <span class="kw">cbind</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="fl">0.4</span>, <span class="ot">NA</span>))</a>
-<a class="sourceLine" id="cb679-2" title="2"><span class="kw">plot</span>(veg, <span class="dt">main=</span><span class="st">&#39;Vegetação&#39;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-379-1.png" width="672" /></p>
+<div class="sourceCode" id="cb766"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb766-1" title="1">veg &lt;-<span class="st"> </span><span class="kw">reclassify</span>(ndvi, <span class="kw">cbind</span>(<span class="op">-</span><span class="ot">Inf</span>, <span class="fl">0.4</span>, <span class="ot">NA</span>))</a>
+<a class="sourceLine" id="cb766-2" title="2"><span class="kw">plot</span>(veg, <span class="dt">main=</span><span class="st">&#39;Vegetação&#39;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-423-1.png" width="672" /></p>
 <p>Reclassificar o NDVI e difini-lo por classes numéricas:</p>
-<div class="sourceCode" id="cb680"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb680-1" title="1">vegc &lt;-<span class="st"> </span><span class="kw">reclassify</span>(ndvi, <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="fl">0.25</span>,<span class="dv">1</span>, <span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="dv">2</span>, <span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="dv">3</span>, <span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="dv">4</span>, <span class="fl">0.5</span>,<span class="ot">Inf</span>, <span class="dv">5</span>))</a>
-<a class="sourceLine" id="cb680-2" title="2"><span class="kw">plot</span>(vegc,<span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">4</span>)), <span class="dt">main =</span> <span class="st">&#39;NDVI reclassificado&#39;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-380-1.png" width="672" /></p>
+<div class="sourceCode" id="cb767"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb767-1" title="1">vegc &lt;-<span class="st"> </span><span class="kw">reclassify</span>(ndvi, <span class="kw">c</span>(<span class="op">-</span><span class="ot">Inf</span>,<span class="fl">0.25</span>,<span class="dv">1</span>, <span class="fl">0.25</span>,<span class="fl">0.3</span>,<span class="dv">2</span>, <span class="fl">0.3</span>,<span class="fl">0.4</span>,<span class="dv">3</span>, <span class="fl">0.4</span>,<span class="fl">0.5</span>,<span class="dv">4</span>, <span class="fl">0.5</span>,<span class="ot">Inf</span>, <span class="dv">5</span>))</a>
+<a class="sourceLine" id="cb767-2" title="2"><span class="kw">plot</span>(vegc,<span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">4</span>)), <span class="dt">main =</span> <span class="st">&#39;NDVI reclassificado&#39;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-424-1.png" width="672" /></p>
 <p><strong>Criar uma classificação não supervisionada a partir do NDVI:</strong></p>
 <p>Converter o raster (NDVI) a um vetor/matriz:</p>
-<div class="sourceCode" id="cb681"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb681-1" title="1">nr &lt;-<span class="kw">getValues</span>(ndvi)</a>
-<a class="sourceLine" id="cb681-2" title="2"><span class="kw">str</span>(nr)</a></code></pre></div>
+<div class="sourceCode" id="cb768"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb768-1" title="1">nr &lt;-<span class="kw">getValues</span>(ndvi)</a>
+<a class="sourceLine" id="cb768-2" title="2"><span class="kw">str</span>(nr)</a></code></pre></div>
 <pre><code>##  num [1:429936] 0.791 0.791 0.785 0.783 0.783 ...</code></pre>
 <p>É importante definir o gerador de pontos, porque o <em>“kmeans”</em> inicia os centros em locais aleatórios:</p>
-<div class="sourceCode" id="cb683"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb683-1" title="1"><span class="kw">set.seed</span>(<span class="dv">99</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb770"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb770-1" title="1"><span class="kw">set.seed</span>(<span class="dv">99</span>)</a></code></pre></div>
 <p>Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método <code>Lloyd</code></p>
-<div class="sourceCode" id="cb684"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb684-1" title="1">kmncluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="kw">na.omit</span>(nr), <span class="dt">centers =</span> <span class="dv">10</span>, <span class="dt">iter.max =</span> <span class="dv">500</span>,</a>
-<a class="sourceLine" id="cb684-2" title="2">                     <span class="dt">nstart =</span> <span class="dv">5</span>, <span class="dt">algorithm =</span> <span class="st">&quot;Lloyd&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb771"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb771-1" title="1">kmncluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="kw">na.omit</span>(nr), <span class="dt">centers =</span> <span class="dv">10</span>, <span class="dt">iter.max =</span> <span class="dv">500</span>,</a>
+<a class="sourceLine" id="cb771-2" title="2">                     <span class="dt">nstart =</span> <span class="dv">5</span>, <span class="dt">algorithm =</span> <span class="st">&quot;Lloyd&quot;</span>)</a></code></pre></div>
 <p>Ver o vetor/matriz:</p>
-<div class="sourceCode" id="cb685"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb685-1" title="1"><span class="kw">str</span>(kmncluster)</a></code></pre></div>
+<div class="sourceCode" id="cb772"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb772-1" title="1"><span class="kw">str</span>(kmncluster)</a></code></pre></div>
 <pre><code>## List of 9
 ##  $ cluster     : int [1:429936] 7 7 7 7 7 7 7 4 4 7 ...
 ##  $ centers     : num [1:10, 1] -0.525 0.421 0.846 0.696 0.233 ...
@@ -465,34 +463,34 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 ##  $ ifault      : NULL
 ##  - attr(*, &quot;class&quot;)= chr &quot;kmeans&quot;</code></pre>
 <p>Crie uma cópia do NDVI para não perder os dados:</p>
-<div class="sourceCode" id="cb687"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb687-1" title="1">knr &lt;-<span class="st"> </span>ndvi</a></code></pre></div>
+<div class="sourceCode" id="cb774"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb774-1" title="1">knr &lt;-<span class="st"> </span>ndvi</a></code></pre></div>
 <p>Agora substitua os valores das células de varredura pelo <code>kmncluster$cluster</code>:</p>
-<div class="sourceCode" id="cb688"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb688-1" title="1">knr[] &lt;-<span class="st"> </span>kmncluster<span class="op">$</span>cluster</a></code></pre></div>
+<div class="sourceCode" id="cb775"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb775-1" title="1">knr[] &lt;-<span class="st"> </span>kmncluster<span class="op">$</span>cluster</a></code></pre></div>
 <p>Realize o plot do NDVI e do kmeans:</p>
-<div class="sourceCode" id="cb689"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb689-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb689-2" title="2"><span class="kw">plot</span>(ndvi, <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main =</span> <span class="st">&quot;NDVI&quot;</span>)</a>
-<a class="sourceLine" id="cb689-3" title="3"><span class="kw">plot</span>(knr, <span class="dt">main =</span> <span class="st">&quot;Kmeans&quot;</span>, <span class="dt">col =</span> <span class="kw">viridis_pal</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)(<span class="dv">10</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-387-1.png" width="672" /></p>
+<div class="sourceCode" id="cb776"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb776-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb776-2" title="2"><span class="kw">plot</span>(ndvi, <span class="dt">col =</span> <span class="kw">rev</span>(<span class="kw">terrain.colors</span>(<span class="dv">10</span>)), <span class="dt">main =</span> <span class="st">&quot;NDVI&quot;</span>)</a>
+<a class="sourceLine" id="cb776-3" title="3"><span class="kw">plot</span>(knr, <span class="dt">main =</span> <span class="st">&quot;Kmeans&quot;</span>, <span class="dt">col =</span> <span class="kw">viridis_pal</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)(<span class="dv">10</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-431-1.png" width="672" /></p>
 <p>Se quiser traçar a classificação kmeans ao lado da renderização do RGB para verificar a qualidade da classificação e identificação das classes:</p>
-<div class="sourceCode" id="cb690"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb690-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb690-2" title="2"><span class="kw">plotRGB</span>(RGB, <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">stretch =</span> <span class="st">&quot;lin&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;RGB&quot;</span>)</a>
-<a class="sourceLine" id="cb690-3" title="3"><span class="kw">plot</span>(knr, <span class="dt">main =</span> <span class="st">&quot;Kmeans&quot;</span>, <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">col =</span> <span class="kw">viridis_pal</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)(<span class="dv">10</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-388-1.png" width="672" /></p>
+<div class="sourceCode" id="cb777"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb777-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">1</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb777-2" title="2"><span class="kw">plotRGB</span>(RGB, <span class="dt">axes =</span> <span class="ot">FALSE</span>, <span class="dt">stretch =</span> <span class="st">&quot;lin&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;RGB&quot;</span>)</a>
+<a class="sourceLine" id="cb777-3" title="3"><span class="kw">plot</span>(knr, <span class="dt">main =</span> <span class="st">&quot;Kmeans&quot;</span>, <span class="dt">yaxt =</span> <span class="st">&#39;n&#39;</span>, <span class="dt">col =</span> <span class="kw">viridis_pal</span>(<span class="dt">option =</span> <span class="st">&quot;D&quot;</span>)(<span class="dv">10</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-432-1.png" width="672" /></p>
 <p>Aplicar outros índices de vegetação com o <code>pacote LSRS</code>:</p>
-<div class="sourceCode" id="cb691"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb691-1" title="1">NDVI=<span class="kw">NDVI</span>(b8,b4)</a>
-<a class="sourceLine" id="cb691-2" title="2">SAVI=<span class="kw">SAVI</span>(b8,b4)</a>
-<a class="sourceLine" id="cb691-3" title="3">TGSI=<span class="kw">TGSI</span>(b4,b2,b3)</a>
-<a class="sourceLine" id="cb691-4" title="4">MSAVI=<span class="kw">MSAVI</span>(b8,b4, <span class="dt">Pixel.Depth=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb691-5" title="5">EVI=<span class="kw">EVI</span>(b8,b4,b2,<span class="dt">Pixel.Depth=</span><span class="dv">1</span>)</a>
-<a class="sourceLine" id="cb691-6" title="6">NBR=<span class="kw">NBR</span>(b8,b11)</a></code></pre></div>
-<div class="sourceCode" id="cb692"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb692-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb692-2" title="2"><span class="kw">plot</span>(NDVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;NDVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
-<a class="sourceLine" id="cb692-3" title="3"><span class="kw">plot</span>(SAVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;SAVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
-<a class="sourceLine" id="cb692-4" title="4"><span class="kw">plot</span>(TGSI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;TGSI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
-<a class="sourceLine" id="cb692-5" title="5"><span class="kw">plot</span>(MSAVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;MSAVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
-<a class="sourceLine" id="cb692-6" title="6"><span class="kw">plot</span>(EVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;EVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
-<a class="sourceLine" id="cb692-7" title="7"><span class="kw">plot</span>(NBR,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;NBR&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-390-1.png" width="672" /></p>
+<div class="sourceCode" id="cb778"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb778-1" title="1">NDVI=<span class="kw">NDVI</span>(b8,b4)</a>
+<a class="sourceLine" id="cb778-2" title="2">SAVI=<span class="kw">SAVI</span>(b8,b4)</a>
+<a class="sourceLine" id="cb778-3" title="3">TGSI=<span class="kw">TGSI</span>(b4,b2,b3)</a>
+<a class="sourceLine" id="cb778-4" title="4">MSAVI=<span class="kw">MSAVI</span>(b8,b4, <span class="dt">Pixel.Depth=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb778-5" title="5">EVI=<span class="kw">EVI</span>(b8,b4,b2,<span class="dt">Pixel.Depth=</span><span class="dv">1</span>)</a>
+<a class="sourceLine" id="cb778-6" title="6">NBR=<span class="kw">NBR</span>(b8,b11)</a></code></pre></div>
+<div class="sourceCode" id="cb779"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb779-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">3</span>, <span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb779-2" title="2"><span class="kw">plot</span>(NDVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;NDVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
+<a class="sourceLine" id="cb779-3" title="3"><span class="kw">plot</span>(SAVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;SAVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
+<a class="sourceLine" id="cb779-4" title="4"><span class="kw">plot</span>(TGSI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;TGSI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
+<a class="sourceLine" id="cb779-5" title="5"><span class="kw">plot</span>(MSAVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;MSAVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
+<a class="sourceLine" id="cb779-6" title="6"><span class="kw">plot</span>(EVI,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;EVI&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a>
+<a class="sourceLine" id="cb779-7" title="7"><span class="kw">plot</span>(NBR,<span class="dt">lwd=</span><span class="dv">4</span>,<span class="dt">main=</span><span class="st">&quot;NBR&quot;</span>,<span class="dt">xlab=</span><span class="st">&quot;easting&quot;</span>, <span class="dt">ylab=</span><span class="st">&quot;northing&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-434-1.png" width="672" /></p>
 
 </div>
 </div>
