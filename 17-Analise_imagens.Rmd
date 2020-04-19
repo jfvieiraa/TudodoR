@@ -1,4 +1,6 @@
-# Análisando imagens de ensaios na agrícultura
+# Sensoriamento remoto
+
+## Imagens de RPAs
 
  Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
 

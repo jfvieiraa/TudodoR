@@ -1,10 +1,5 @@
----
-output:
-  pdf_document: default
-  html_document: default
-  word_document: default
----
-## Classificação de imagens de satélites
+
+## Imagens de satélites
 
 Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.
 
@@ -223,4 +218,135 @@ plot(MSAVI,lwd=4,main="MSAVI",xlab="easting", ylab="northing")
 plot(EVI,lwd=4,main="EVI",xlab="easting", ylab="northing")
 plot(NBR,lwd=4,main="NBR",xlab="easting", ylab="northing")
 ```
+
+
+## Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação
+
+Primeiro carregar os pacotes necessários
+```{r}
+library(raster)
+library(plot3D)
+```
+
+Carregar o dado raster do pacote Raster (Volcano) para ser usado como exemplo:
+
+```{r}
+filled.contour(volcano, color.palette = terrain.colors)
+```
+
+Criar as curvas de nível:
+
+```{r}
+cont <- contourLines(volcano)
+fun <- function(x) x$level
+LEVS <- sort(unique(unlist(lapply(cont, fun))))
+COLS <- terrain.colors(length(LEVS))
+```
+
+Plotar somente as curvas de nível:
+
+```{r}
+contour(volcano)
+```
+
+
+Plotar o modelo 3D com curvas de nível:
+```{r}
+x <- seq(1, nrow(volcano), by = 3)
+y <- seq(1, ncol(volcano), by = 3) 
+Volcano <- volcano [x, y]
+```
+
+
+Exemplo 1:
+
+```{r}
+ribbon3D(z = Volcano, contour = TRUE, zlim= c(-100, 200),image = TRUE)
+
+```
+
+
+Exemplo 2:
+```{r}
+persp3D(z = Volcano, contour = TRUE, zlim= c(-200, 200), image = FALSE)
+
+```
+
+
+Exemplo 3:
+
+```{r}
+persp3D(z = Volcano, x = x, y = y, scale = FALSE,contour = list(nlevels = 20, col = "red"),zlim = c(-200, 200), expand = 0.2,image = list(col = grey (seq(0, 1, length.out = 100))))
+```
+
+Exemplo 4:
+
+```{r}
+persp3D(z = Volcano, contour = list(side = c("zmin", "z", "350")), zlim = c(-100, 400), phi = 20, image = list(side = 350))
+```
+
+
+Exemplo 5:
+
+```{r}
+persp3D(z = volcano, shade = 0.3, col = gg.col(100))
+```
+
+## Modelo de altura do dossel (CHM) com o MDT e MDE
+
+O modelo de altura da copa (CHM) representa a altura das árvores. Este não é um valor de elevação, é a altura ou a distância entre o chão e o topo das árvores. Alguns modelos de altura da copa também incluem edifícios, portanto, é necessário olhar atentamente para seus dados para garantir que eles foram limpos corretamente antes de assumir que representam todas as árvores
+
+Carregar os pacotes:
+
+```{r}
+library(raster)
+library(rgdal)
+```
+
+Carregar o dado MDE:
+
+```{r}
+MDE <- raster("https://www.dropbox.com/s/kifc93rdhz2xykm/DSM.tif?dl=1")
+plot(MDE, main = "Modelo Digital de Elevação (DEM)")
+```
+
+Carregar o dado MDT:
+
+```{r}
+MDT <- raster("https://www.dropbox.com/s/sfbr3blydvxg75v/DTM.tif?dl=1")
+plot(MDT, main = "Modelo Digital do Terreno (MDT)")
+```
+
+Existem diferentes maneiras de calcular um CHM. Uma maneira fácil é subtrair o MDE do MDT.
+
+Criar o Modelo de Altura do Dossel (CHM):
+```{r}
+CHM <- MDE - MDT
+plot(CHM,main = "Modelo de Altura do Dossel (CHM)")
+```
+
+Às vezes, um gradiente de cores é útil para representar uma variável contínua. Outras vezes, porém, é útil aplicar cores a intervalos específicos de valores em uma varredura. Esses intervalos podem ser gerados estatisticamente ou simplesmente visuais.
+
+Criar intervalos (alturas) no CHM:
+
+```{r}
+plot(CHM,
+     breaks = c(0, 2, 10, 20, 30),
+     main = "Modelo de Altura do Dossel",
+     col = c("white", "brown", "springgreen", "darkgreen"))
+```
+
+É possível salvar o CHM para ser usado em outras plataformas:
+
+```{r}
+writeRaster(CHM, "CHM.tiff",
+            format = "GTiff",
+            overwrite = TRUE)
+```
+
+
+
+
+
+
 
