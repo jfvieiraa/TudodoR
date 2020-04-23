@@ -268,7 +268,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-multipla"><i class="fa fa-check"></i><b>8.5</b> Regressão Linear Multipla</a><ul>
 <li class="chapter" data-level="8.5.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-6"><i class="fa fa-check"></i><b>8.5.1</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a></li>
+<li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#curva-de-retenção-de-água-no-solo"><i class="fa fa-check"></i><b>8.6.1</b> Curva de retenção de água no solo</a></li>
+</ul></li>
 <li class="chapter" data-level="8.7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#resolução-do-livro-banzatto-kronka"><i class="fa fa-check"></i><b>8.7</b> Resolução do Livro Banzatto Kronka</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html"><i class="fa fa-check"></i><b>9</b> Acesso a bancos de dados climáticos</a><ul>
@@ -318,9 +320,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.1</span> Precipitação com o pacote hydroTSM</h2>
 <p>Tutorial do HydroTSM - <a href="http://goo.gl/9u1PO" class="uri">http://goo.gl/9u1PO</a></p>
 <p>Instalação</p>
-<div class="sourceCode" id="cb806"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb806-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;hydroTSM&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb820-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;hydroTSM&quot;</span>)</a></code></pre></div>
 <p>Carregar o pacote</p>
-<div class="sourceCode" id="cb807"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb807-1" title="1"><span class="kw">library</span>(hydroTSM)</a></code></pre></div>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb821-1" title="1"><span class="kw">library</span>(hydroTSM)</a></code></pre></div>
 <pre><code>## Loading required package: xts</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;xts&#39;</code></pre>
@@ -333,11 +335,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     extract</code></pre>
 <p>Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013</p>
-<div class="sourceCode" id="cb813"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb813-1" title="1">roo&lt;-<span class="kw">read.zoo</span>(<span class="st">&quot;https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>, <span class="dt">head=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb827-1" title="1">roo&lt;-<span class="kw">read.zoo</span>(<span class="st">&quot;https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>, <span class="dt">head=</span>T)</a></code></pre></div>
 <p>Selecionar somente 5 anos da serie</p>
-<div class="sourceCode" id="cb814"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb814-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;2009-01-01&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb828"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb828-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;2009-01-01&quot;</span>))</a></code></pre></div>
 <p>Valores de Precipitação mensal</p>
-<div class="sourceCode" id="cb815"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb815-1" title="1">( m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb829-1" title="1">( m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>## 2009-01-01 2009-02-01 2009-03-01 2009-04-01 2009-05-01 2009-06-01 2009-07-01 
 ##     200.17     340.88     312.69     161.13      32.76      66.03      19.83 
 ## 2009-08-01 2009-09-01 2009-10-01 2009-11-01 2009-12-01 2010-01-01 2010-02-01 
@@ -357,13 +359,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2013-09-01 2013-10-01 2013-11-01 2013-12-01 
 ##      61.70      82.57     151.95     222.90</code></pre>
 <p>Datas dos valores diários de “x”</p>
-<div class="sourceCode" id="cb817"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb817-1" title="1">dates &lt;-<span class="st"> </span><span class="kw">time</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb831-1" title="1">dates &lt;-<span class="st"> </span><span class="kw">time</span>(x)</a></code></pre></div>
 <p>Quantidade de anos em ‘x’ (necessário para cálculos)</p>
-<div class="sourceCode" id="cb818"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb818-1" title="1">( nyears &lt;-<span class="st"> </span><span class="kw">yip</span>(<span class="dt">from=</span><span class="kw">start</span>(x), <span class="dt">to=</span><span class="kw">end</span>(x), <span class="dt">out.type=</span><span class="st">&quot;nmbr&quot;</span> ) )</a></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb832-1" title="1">( nyears &lt;-<span class="st"> </span><span class="kw">yip</span>(<span class="dt">from=</span><span class="kw">start</span>(x), <span class="dt">to=</span><span class="kw">end</span>(x), <span class="dt">out.type=</span><span class="st">&quot;nmbr&quot;</span> ) )</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Análise exploratórios do dados</p>
 <p>Resumo estatástico</p>
-<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb820-1" title="1"><span class="kw">smry</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb834-1" title="1"><span class="kw">smry</span>(x)</a></code></pre></div>
 <pre><code>##               Index         x
 ## Min.     2009-01-01    0.0000
 ## 1st Qu.  2010-04-02    0.0000
@@ -379,15 +381,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## NA&#39;s           &lt;NA&gt;    0.0000
 ## n              &lt;NA&gt; 1826.0000</code></pre>
 <p>Usando a função <code>hydroplot</code>, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo “x”. Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 01 de janeiro de 2009 são plotados.</p>
-<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb822-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">var.type=</span><span class="st">&quot;Precipitation&quot;</span>, <span class="dt">main=</span><span class="st">&quot;em Rondonopolis&quot;</span>,</a>
-<a class="sourceLine" id="cb822-2" title="2">          <span class="dt">pfreq =</span> <span class="st">&quot;dma&quot;</span>, <span class="dt">from=</span><span class="st">&quot;2009-01-01&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-437-1.png" width="672" /></p>
+<div class="sourceCode" id="cb836"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb836-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">var.type=</span><span class="st">&quot;Precipitation&quot;</span>, <span class="dt">main=</span><span class="st">&quot;em Rondonopolis&quot;</span>,</a>
+<a class="sourceLine" id="cb836-2" title="2">          <span class="dt">pfreq =</span> <span class="st">&quot;dma&quot;</span>, <span class="dt">from=</span><span class="st">&quot;2009-01-01&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-446-1.png" width="672" /></p>
 <p>Quantidade de dias com informação (não NA) por ano</p>
-<div class="sourceCode" id="cb823"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb823-1" title="1"><span class="kw">dwi</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb837-1" title="1"><span class="kw">dwi</span>(x)</a></code></pre></div>
 <pre><code>## 2009 2010 2011 2012 2013 
 ##  365  365  365  366  365</code></pre>
 <p>Quantidade de dias com informação (não NA) por mês por ano</p>
-<div class="sourceCode" id="cb825"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb825-1" title="1"><span class="kw">dwi</span>(x, <span class="dt">out.unit=</span><span class="st">&quot;mpy&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb839-1" title="1"><span class="kw">dwi</span>(x, <span class="dt">out.unit=</span><span class="st">&quot;mpy&quot;</span>)</a></code></pre></div>
 <pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ## 2009  31  28  31  30  31  30  31  31  30  31  30  31
 ## 2010  31  28  31  30  31  30  31  31  30  31  30  31
@@ -395,27 +397,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2012  31  29  31  30  31  30  31  31  30  31  30  31
 ## 2013  31  28  31  30  31  30  31  31  30  31  30  31</code></pre>
 <p>Plotar os valores mensais de Precipitação para cada ano, para identificar meses secos / umidos.</p>
-<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb827-1" title="1"><span class="co"># Daily zoo to monthly zoo</span></a>
-<a class="sourceLine" id="cb827-2" title="2">m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb827-3" title="3"></a>
-<a class="sourceLine" id="cb827-4" title="4"><span class="co"># Creating a matrix with monthly values per year in each column</span></a>
-<a class="sourceLine" id="cb827-5" title="5">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(m, <span class="dt">ncol=</span><span class="dv">12</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb827-6" title="6"><span class="kw">colnames</span>(M) &lt;-<span class="st"> </span>month.abb</a>
-<a class="sourceLine" id="cb827-7" title="7"><span class="kw">rownames</span>(M) &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%Y&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb828"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb828-1" title="1"><span class="co"># Plotting the monthly precipitation values</span></a>
-<a class="sourceLine" id="cb828-2" title="2"><span class="kw">require</span>(lattice)</a>
-<a class="sourceLine" id="cb828-3" title="3"><span class="co">## Loading required package: lattice</span></a>
-<a class="sourceLine" id="cb828-4" title="4"><span class="kw">print</span>(<span class="kw">matrixplot</span>(M, <span class="dt">ColorRamp=</span><span class="st">&quot;Precipitation&quot;</span>,</a>
-<a class="sourceLine" id="cb828-5" title="5"><span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonópolis-MT (mm/mês)&quot;</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-441-1.png" width="672" /></p>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb841-1" title="1"><span class="co"># Daily zoo to monthly zoo</span></a>
+<a class="sourceLine" id="cb841-2" title="2">m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb841-3" title="3"></a>
+<a class="sourceLine" id="cb841-4" title="4"><span class="co"># Creating a matrix with monthly values per year in each column</span></a>
+<a class="sourceLine" id="cb841-5" title="5">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(m, <span class="dt">ncol=</span><span class="dv">12</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb841-6" title="6"><span class="kw">colnames</span>(M) &lt;-<span class="st"> </span>month.abb</a>
+<a class="sourceLine" id="cb841-7" title="7"><span class="kw">rownames</span>(M) &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%Y&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb842-1" title="1"><span class="co"># Plotting the monthly precipitation values</span></a>
+<a class="sourceLine" id="cb842-2" title="2"><span class="kw">require</span>(lattice)</a>
+<a class="sourceLine" id="cb842-3" title="3"><span class="co">## Loading required package: lattice</span></a>
+<a class="sourceLine" id="cb842-4" title="4"><span class="kw">print</span>(<span class="kw">matrixplot</span>(M, <span class="dt">ColorRamp=</span><span class="st">&quot;Precipitation&quot;</span>,</a>
+<a class="sourceLine" id="cb842-5" title="5"><span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonópolis-MT (mm/mês)&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-450-1.png" width="672" /></p>
 <div id="análise-anual-dos-dados" class="section level3">
 <h3><span class="header-section-number">9.1.1</span> Análise anual dos dados</h3>
 <p>Valores anuais de Precipitação</p>
-<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb829-1" title="1"><span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb843-1" title="1"><span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 2009-01-01 2010-01-01 2011-01-01 2012-01-01 2013-01-01 
 ##    2073.00    1628.54    2223.60    2009.02    1718.36</code></pre>
 <p>Precipitação Média anual</p>
-<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb831-1" title="1"><span class="kw">mean</span>( <span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb845-1" title="1"><span class="kw">mean</span>( <span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) )</a></code></pre></div>
 <pre><code>## [1] 1930.504</code></pre>
 <p>Outra forma (mais útil para ‘streamflows’, onde FUN = <em>mean</em>): A função anual aplica FUN duas vezes sobre x:</p>
 <ul>
@@ -426,82 +428,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>em segundo lugar, acima de todos os valores anuais de x obtidos anteriormente, a fim de obter um único valor anual.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb833"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb833-1" title="1"><span class="kw">annualfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb847-1" title="1"><span class="kw">annualfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
 <pre><code>##    value 
 ## 1930.504</code></pre>
 </div>
 <div id="análise-mensal-dos-dados---boxplot" class="section level3">
 <h3><span class="header-section-number">9.1.2</span> Análise mensal dos dados - BOXPLOT</h3>
 <p>Mediana dos valores mensais na estação de Rondonópolis-MT.</p>
-<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb835-1" title="1"><span class="kw">monthlyfunction</span>(m, <span class="dt">FUN=</span>median, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb849-1" title="1"><span class="kw">monthlyfunction</span>(m, <span class="dt">FUN=</span>median, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##    Jan    Feb    Mar    Apr    May    Jun    Jul    Aug    Sep    Oct    Nov 
 ## 349.01 340.88 287.80 146.77  32.76  37.29   0.49   0.00  61.70 127.09 181.52 
 ##    Dec 
 ## 222.90</code></pre>
 <p>Vetor com as abreviaturas de três letras para os nomes dos meses</p>
-<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb837-1" title="1">cmonth &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%b&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb851-1" title="1">cmonth &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%b&quot;</span>)</a></code></pre></div>
 <p>Criando fatores mensais ordenados</p>
-<div class="sourceCode" id="cb838"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb838-1" title="1">months &lt;-<span class="st"> </span><span class="kw">factor</span>(cmonth, <span class="dt">levels=</span><span class="kw">unique</span>(cmonth), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb852"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb852-1" title="1">months &lt;-<span class="st"> </span><span class="kw">factor</span>(cmonth, <span class="dt">levels=</span><span class="kw">unique</span>(cmonth), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Boxplot dos valores mensais</p>
-<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb839-1" title="1"><span class="kw">boxplot</span>( <span class="kw">coredata</span>(m) <span class="op">~</span><span class="st"> </span>months, </a>
-<a class="sourceLine" id="cb839-2" title="2">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, </a>
-<a class="sourceLine" id="cb839-3" title="3">         <span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonpolis,MT&quot;</span>,</a>
-<a class="sourceLine" id="cb839-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Precipitação (mm)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Mensal&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-448-1.png" width="672" /></p>
+<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb853-1" title="1"><span class="kw">boxplot</span>( <span class="kw">coredata</span>(m) <span class="op">~</span><span class="st"> </span>months, </a>
+<a class="sourceLine" id="cb853-2" title="2">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, </a>
+<a class="sourceLine" id="cb853-3" title="3">         <span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonpolis,MT&quot;</span>,</a>
+<a class="sourceLine" id="cb853-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Precipitação (mm)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Mensal&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-457-1.png" width="672" /></p>
 </div>
 <div id="análise-sazonal" class="section level3">
 <h3><span class="header-section-number">9.1.3</span> Análise sazonal</h3>
 <p>Valores sazonais médios de Precipitação</p>
-<div class="sourceCode" id="cb840"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb840-1" title="1"><span class="kw">seasonalfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
+<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb854-1" title="1"><span class="kw">seasonalfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
 <pre><code>##     DJF     MAM     JJA     SON 
 ## 946.764 519.010  74.016 390.714</code></pre>
 <p>Extraindo os valores sazonais para cada ano</p>
 <p>Dezembro, Janeiro e Fevereiro</p>
-<div class="sourceCode" id="cb842"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb842-1" title="1">( DJF &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(x, <span class="dt">season=</span><span class="st">&quot;DJF&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb856-1" title="1">( DJF &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(x, <span class="dt">season=</span><span class="st">&quot;DJF&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##    2009    2010    2011    2012    2013 
 ##  541.05 1049.04 1044.83 1042.54  833.46</code></pre>
 <p>Março, Abril e Maio</p>
-<div class="sourceCode" id="cb844"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb844-1" title="1">( MAM &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;MAM&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb858-1" title="1">( MAM &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;MAM&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 506.58 391.67 694.74 533.91 468.15</code></pre>
 <p>Junho, Julho e Agosto</p>
-<div class="sourceCode" id="cb846"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb846-1" title="1">( JJA &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;JJA&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb860-1" title="1">( JJA &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;JJA&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 163.85   0.71  13.23 135.89  56.40</code></pre>
 <p>Setembro, Outubro e Novembro</p>
-<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb848-1" title="1">( SON &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;SON&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb862-1" title="1">( SON &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;SON&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 516.71 325.38 328.48 486.78 296.22</code></pre>
 <p>Plotar a evolução temporal dos valores da Precipitação sazonal</p>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb850-1" title="1"><span class="kw">X11</span>()</a>
-<a class="sourceLine" id="cb850-2" title="2"><span class="kw">hydroplot</span>(x, <span class="dt">pfreq=</span><span class="st">&quot;seasonal&quot;</span>, <span class="dt">FUN=</span>sum, <span class="dt">stype=</span><span class="st">&quot;default&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb864-1" title="1"><span class="kw">X11</span>()</a>
+<a class="sourceLine" id="cb864-2" title="2"><span class="kw">hydroplot</span>(x, <span class="dt">pfreq=</span><span class="st">&quot;seasonal&quot;</span>, <span class="dt">FUN=</span>sum, <span class="dt">stype=</span><span class="st">&quot;default&quot;</span>)</a></code></pre></div>
 </div>
 <div id="alguns-índices-extremos" class="section level3">
 <h3><span class="header-section-number">9.1.4</span> Alguns índices extremos</h3>
 <p>Etapas comuns para a análise desta serie:</p>
 <p>Carregando dados diários de Precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013.</p>
-<div class="sourceCode" id="cb851"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb851-1" title="1"><span class="kw">data</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb865-1" title="1"><span class="kw">data</span>(roo)</a></code></pre></div>
 <pre><code>## Warning in data(roo): data set &#39;roo&#39; not found</code></pre>
 <p>Selecionar a data inicial</p>
-<div class="sourceCode" id="cb853"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb853-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;1980-01-01&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb867-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;1980-01-01&quot;</span>))</a></code></pre></div>
 <p>Plotar a série temporal selecionada</p>
-<div class="sourceCode" id="cb854"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb854-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">ptype=</span><span class="st">&quot;ts&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-457-1.png" width="672" /></p>
+<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb868-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">ptype=</span><span class="st">&quot;ts&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-466-1.png" width="672" /></p>
 <p>Contagem e plotagem do número de dias no período em que a Precipitação foi maior que 80 mm.</p>
-<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb855-1" title="1">( R10mm &lt;-<span class="st"> </span><span class="kw">length</span>( x[x<span class="op">&gt;</span><span class="dv">80</span>] ) )</a></code></pre></div>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb869-1" title="1">( R10mm &lt;-<span class="st"> </span><span class="kw">length</span>( x[x<span class="op">&gt;</span><span class="dv">80</span>] ) )</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
 <div id="precipitaçao-total-chuva" class="section level3">
 <h3><span class="header-section-number">9.1.5</span> Precipitaçao total chuva</h3>
 <p>Calculando a Precipitação total (acumulada) de 5 dias</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb857-1" title="1">x<span class="fl">.5</span>max &lt;-<span class="st"> </span><span class="kw">rollapply</span>(<span class="dt">data=</span>x, <span class="dt">width=</span><span class="dv">5</span>, <span class="dt">FUN=</span>sum, <span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">partial=</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb857-2" title="2"><span class="dt">align=</span><span class="st">&quot;center&quot;</span>)</a>
-<a class="sourceLine" id="cb857-3" title="3"></a>
-<a class="sourceLine" id="cb857-4" title="4"><span class="kw">hydroplot</span>(x<span class="fl">.5</span>max, <span class="dt">ptype=</span><span class="st">&quot;ts+boxplot&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb871-1" title="1">x<span class="fl">.5</span>max &lt;-<span class="st"> </span><span class="kw">rollapply</span>(<span class="dt">data=</span>x, <span class="dt">width=</span><span class="dv">5</span>, <span class="dt">FUN=</span>sum, <span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">partial=</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb871-2" title="2"><span class="dt">align=</span><span class="st">&quot;center&quot;</span>)</a>
+<a class="sourceLine" id="cb871-3" title="3"></a>
+<a class="sourceLine" id="cb871-4" title="4"><span class="kw">hydroplot</span>(x<span class="fl">.5</span>max, <span class="dt">ptype=</span><span class="st">&quot;ts+boxplot&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
 <pre><code>## [Note: pfreq=&#39;o&#39; =&gt; ptype has been changed to &#39;ts&#39;]</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-459-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-468-1.png" width="672" /></p>
 <p>Valor anual máximo de Precipitação total em 5 dias</p>
-<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb859-1" title="1">(x<span class="fl">.5</span>max.annual &lt;-<span class="st"> </span><span class="kw">daily2annual</span>(x<span class="fl">.5</span>max, <span class="dt">FUN=</span>max, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb873-1" title="1">(x<span class="fl">.5</span>max.annual &lt;-<span class="st"> </span><span class="kw">daily2annual</span>(x<span class="fl">.5</span>max, <span class="dt">FUN=</span>max, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## 1980-01-01 1981-01-01 1982-01-01 1983-01-01 1984-01-01 1985-01-01 1986-01-01 
 ##     160.54      90.51      85.49     132.81     120.78     141.33      99.98 
 ## 1987-01-01 1988-01-01 1989-01-01 1990-01-01 1991-01-01 1992-01-01 1993-01-01 
