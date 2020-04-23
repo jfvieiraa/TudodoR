@@ -345,6 +345,143 @@ writeRaster(CHM, "CHM.tiff",
 ```
 
 
+Carregar os seguintes pacotes:
+```{r eval=T, include=T}
+library(installr)
+library(ForestTools)
+library(raster)
+library(rgeos)
+```
+
+Carregar dado de área florestal a ser analisada:
+```{r}
+data("kootenayCHM")
+```
+
+Plotar o CHM (CHM, modelo de altura do dossel):
+```{r}
+plot(kootenayCHM)
+```
+
+Identificar copas de árvore dominantes. Esta função implementa o algoritmo de filtro de janela variável desenvolvido por Popescu e Wynne (2004):
+
+```{r}
+lin <- function(x){x * 0.05 + 0.6}
+ttops <- vwf(CHM = kootenayCHM, winFun = lin, minHeight = 2)
+```
+
+Plotar o CHM:
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Adicionar as copas das árvores dominantes identificadas a partir do algoritimo no plot CHM:
+```{r eval=FALSE, include=T}
+plot(ttops, col = "blue", pch = 20, cex = 0.5, add = TRUE)
+```
+
+Ver a altura média das copas calculadas:
+```{r}
+mean(ttops$height)
+```
+
+Os modelos de altura do dossel geralmente representam florestas densas e contínuas, onde as copas das árvores se encostam umas nas outras. O esboço de formas discretas de coroas a partir desse tipo de floresta costuma ser chamado de segmentação de copa, onde cada contorno de coroa é representado por um segmento. Depois que um conjunto de copas das árvores é detectado a partir de um modelo de altura do dossel, a função `mcws` pode ser usada para essa finalidade.
+
+Criar mapa de coroas com a função `mcws`:
+```{r}
+crowns <- mcws(treetops = ttops, CHM = kootenayCHM, minHeight = 1.5, verbose = FALSE)
+
+```
+
+Plotar as coroas:
+```{r}
+plot(crowns, col = sample(rainbow(50), length(unique(crowns[])), replace = TRUE), legend = FALSE, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Por padrão, mcws retorna uma varredura, na qual cada coroa recebe um valor único de célula. Dependendo da finalidade do mapa da coroa, pode ser preferível armazenar esses contornos como polígonos. Definir o argumento de formato como "polígonos" converterá o mapa de coroa rasterizado em um conjunto de polígonos. Como um benefício adicional, esses polígonos herdarão os atributos das copas das árvores a partir das quais foram gerados, como a altura. Além disso, um atributo extra, `crownArea`, será calculado para cada polígono.
+
+Criar mapa de poligonos a partir das coroas:
+```{r}
+crownsPoly <- mcws(treetops = ttops, CHM = kootenayCHM, format = "polygons", minHeight = 1.5, verbose = FALSE)
+```
+
+Plotar o CHM
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Adicionar os poligonos das coroas no CHM:
+```{r}
+plot(crownsPoly, border = "blue", lwd = 0.5, add = TRUE)
+
+```
+
+A função `sp_summarise` pode ser usada para contar árvores em um conjunto de unidades espaciais, bem como calcular estatísticas dos atributos das árvores.
+
+Calcular o número de árvores:
+```{r}
+sp_summarise(ttops)
+```
+
+As copas das árvores também podem ser usadas como entrada. Ao definir o argumento das variáveis, `sp_summarise` gerará estatísticas resumidas dos atributos das árvores. Por padrão, a média, mediana, desvio padrão, mínimo e máximo são calculados, mas funções personalizadas também podem ser usadas.
+
+Visualizar atributos estatísticos das árvores:
+```{r}
+sp_summarise(crownsPoly, variables = c("crownArea", "height"))
+```
+
+
+O pacote `Forest Tools` inclui os limites de três blocos de corte que podem ser sobrepostos no `kootenayCHM`. As contagens de árvores e estatísticas de altura podem ser resumidas dentro desses limites usando o argumento de áreas.
+
+Carregados dados:
+```{r}
+data("kootenayBlocks")
+```
+
+Computar estatísticas de contagem da altura das árvores para blocos de corte:
+```{r}
+blockStats <- sp_summarise(ttops, areas = kootenayBlocks, variables = "height")
+```
+
+Plotar o CHM:
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+
+```
+
+Adicionar os blocos no plot: 
+```{r}
+plot(kootenayBlocks, add = TRUE, border =  "darkmagenta", lwd = 2)
+```
+
+Adicionar a contagem de números de árvores para cada bloco (área definida):
+```{r}
+text(gCentroid(kootenayBlocks, byid = TRUE), blockStats[["TreeCount"]], col = "darkmagenta", font = 2)
+```
+
+Ver dados estatísticos:
+```{r}
+blockStats@data
+```
+
+Gerar a altura média das árvores dentro da grade de células de 10 m x 10 m em um arquivo raster:
+
+```{r}
+gridStats <- sp_summarise(trees = ttops, grid = 10, variables = "height")
+```
+
+Ver o nome das layers:
+```{r}
+names(gridStats)
+```
+
+Plotar o grid:
+```{r}
+plot(gridStats[["heightMean"]], col = heat.colors(255), xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+
+
 
 
 

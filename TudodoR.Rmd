@@ -1,0 +1,772 @@
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+
+# Pré requisitos
+
+Material em construção.
+
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R.  Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina. 
+O material consultado encontra-se referenciado no final de cada capitulo.
+
+<!--chapter:end:index.Rmd-->
+
+
+# R Básico {#intro}
+
+Placeholder
+
+
+## Expressões
+## Valores Booleanos
+## Variáveis
+## Funções
+## Ajuda
+## Referência
+
+<!--chapter:end:01-R_basico.Rmd-->
+
+
+# Estruturas de Dados
+
+Placeholder
+
+
+## Vetor
+### Vetores de Sequência
+### Nomes de vetores
+### Plotando um vetor
+### Operações matemáticas
+### Parcelas de dispersão
+### Valores Faltantes
+## Matrizes 
+### Outras formas
+### Acesso a Matriz
+### Visualizações em dados matriciais
+### Mais informações sobre construções de Matrizes
+## Fatores
+## Array
+## Data.frame
+### Índice dos Data.frames
+### Manipulando um Data.frame
+### Separando um data.frame por grupos
+## Lista
+### Alguns comandos que retornam listas
+## Referência
+
+<!--chapter:end:02-Estrutura_basica.Rmd-->
+
+
+# Entrada de dados 
+
+Placeholder
+
+
+## Onde os dados devem estar? 
+## Entrando com dados
+### Vetores
+### Usando a função 'scan'
+### Copiar e colar usando scan()
+### Lendo dados através da área de transferência
+### Usando a função edit
+#### Exemplo 1
+#### Exemplo 2
+### Lendo dados de um arquivo texto
+#### Exemplo 1 
+#### Exemplo 2 
+### Dados do tipo CSV
+### A seguir listamos algumas  destas funções:
+### Lendo dados disponíveis na web
+### Lendo dados de uma planilha eletrônica
+### Exercícios
+## Salvar objetos de dados
+### Outras funções
+## Referência
+
+<!--chapter:end:03-Entrada_dados.Rmd-->
+
+
+# Criando Gráficos com o R
+
+Placeholder
+
+
+## Exemplos de gráficos com o R
+## Entrada de dados
+## Usando a função `plot()`
+### Mudando o padrão dos pontos `pch=`
+### Mudando as linhas (`lwd e lty`)
+### Adicionando  linhas a um grafico de pontos
+### Definindo o intervalo dos eixos
+### Personalizando os gráficos
+## Histogramas
+### Personalizando gráficos
+## Gráficos de Barras
+## Boxplots
+### Boxplot com fatorial
+## Cores
+## Interagindo com a Janela gráfica
+## Texto e tamanho do símbolo
+## Visualizar vários gráficos
+### Varios gráficos na mesma janela gráfica
+## Salvando gráficos
+
+<!--chapter:end:04-Criando_graficos.Rmd-->
+
+
+# Gráficos com ggplot2
+
+Placeholder
+
+
+## Personalizando os gráficos
+### Cores
+### Eixos
+### Legenda
+### Título
+### Facets
+## Exemplos
+### Regressão
+### Delineamento em blocos casualizados- DBC
+### Dados Climáticos
+## Referência
+
+<!--chapter:end:05-Criando_graficos_2.Rmd-->
+
+
+# Testes Estatísticos
+
+Placeholder
+
+
+## Teste t de Student
+### Para uma média
+### Para duas médias independentes
+### Para duas médias dependentes
+## Teste de variância
+### Usando o teste de F
+## Teste para a normalidade - `shapiro.test()` 
+## Teste U de Mann-Whitney
+## Covariância e Correlação
+## Outros testes
+### hydroGOF
+
+<!--chapter:end:06-Teste_T_corre.Rmd-->
+
+
+# Analise de variância (ANOVA)
+
+Placeholder
+
+
+## Delineamento inteiramente casualizado  
+### Análise de experimento  em DIC  
+### Análise de variância
+### Transformação de dados
+#### Transformação de dados BOX-COX
+#### Análise de variância - Ajuste com a variável transformada.
+### Aplicando teste de Tukey para comparar médias
+### Aplicando teste para agrupar médias
+### Referência
+
+<!--chapter:end:07-Anova_dic.Rmd-->
+
+
+
+## Delineamento em bloco casualizado 
+### Análise de experimento DBC  
+#### Análise de variância
+##### Teste das pressuposições da análise de variância
+####### Teste de Bartllet para homocedasticidade
+####### Teste de Shapiro-Wilk para Normalidade
+#### Transformação de dados
+##### Transformação de dados com o BOX-COX
+##### Análise de variância - Ajuste com a variável transformada.
+### Pacote para analise de experimentos 
+### Teste não parametrico
+### Exercicio  1
+### Referência
+
+<!--chapter:end:08-Anova_DBC.Rmd-->
+
+
+
+## Quadrado Latino
+### Banco de dados
+### Exercicios
+### Exercicio para entregar
+
+<!--chapter:end:09-Anova_QL.Rmd-->
+
+
+
+## Regressão Linear simples
+## Regressão Linear Multipla
+### Referência
+
+<!--chapter:end:10-Regressao_L_M.Rmd-->
+
+## Regressão não linear
+
+<!--chapter:end:11-Regressao_N_linear.Rmd-->
+
+## Resolução do Livro Banzatto Kronka
+
+<!--chapter:end:12-Resolucao_Livro.Rmd-->
+
+
+# Acesso a bancos de dados climáticos
+
+Placeholder
+
+
+## Precipitação com o pacote hydroTSM
+### Análise anual dos dados
+### Análise mensal dos dados - BOXPLOT
+### Análise sazonal
+### Alguns índices extremos
+### Precipitaçao total chuva
+## Referência
+
+<!--chapter:end:13-Dados_clima.Rmd-->
+
+# Trabalhando com dados temporais no R
+
+<!--chapter:end:14-Dados_tempor.Rmd-->
+
+# Extrair dados da estação automática do INMET
+
+<!--chapter:end:15-Extrair_dados.Rmd-->
+
+# Teste Mann-Kendall para Tendência
+
+<!--chapter:end:16-Tendencia_tempora.Rmd-->
+
+
+# Sensoriamento remoto
+
+Placeholder
+
+
+## Imagens de RPAs
+
+<!--chapter:end:17-Analise_imagens.Rmd-->
+
+
+## Imagens de satélites
+
+Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.
+
+
+Carregar pacotes necessários para trabalhar com os dados raster.
+Caso não tenha algum dos pacotes, realize a sua instalação.
+```{r eval=T, include=T}
+library(raster)
+library(knitr)
+library(sp)
+library(rgdal)
+library(ggplot2)
+library(viridis)
+library(rasterVis)
+library(LSRS)
+```
+
+Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
+
+
+```{r eval=T, include=T}
+imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
+```
+
+```{r eval=T, include=T}
+imagesentinel=raster('sentinel2.tif')
+```
+
+Visualizar os dados
+```{r}
+imagesentinel
+```
+
+
+É necessário criar camadas individuais para cada uma das bandas espectrais:
+```{r}
+b1 <- raster('sentinel2.tif', band=1)
+b2 <- raster('sentinel2.tif', band=2)
+b3 <- raster('sentinel2.tif', band=3)
+b4 <- raster('sentinel2.tif', band=4)
+b5 <- raster('sentinel2.tif', band=5)
+b6 <- raster('sentinel2.tif', band=6)
+b7 <- raster('sentinel2.tif', band=7)
+b8 <- raster('sentinel2.tif', band=8)
+b9 <- raster('sentinel2.tif', band=9)
+b10 <- raster('sentinel2.tif', band=10)
+b11 <- raster('sentinel2.tif', band=11)
+b12 <- raster('sentinel2.tif', band=12)
+```
+
+Comparar duas bandas para ver se elas possuem a mesma extensão:
+```{r}
+compareRaster(b2, b3)
+
+```
+
+
+Plotar a banda 4 para pré-visualização:
+```{r}
+plot(b4)
+
+image(b4)
+```
+
+
+
+Visualizar a imagem nas bandas do RGB:
+```{r}
+RGB <- stack(list(b4, b3, b2))              
+plotRGB(RGB, axes = TRUE, stretch = "lin", main = "Sentinel RGB colour composite")
+```
+
+Juntar todas as bandas num só arquivo:
+```{r}
+t <- stack(b1,b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12)
+st <- brick('sentinel2.tif')
+plot(st)
+```
+
+Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.
+
+Criar a VI (vegetation index) por meio de função
+
+```{r}
+VI <- function(img, k, i) {
+  bk <- img[[k]]
+  bi <- img[[i]]
+  vi <- (bk - bi) / (bk + bi)
+  return(vi)
+}
+```
+
+*NDVI:*
+
+```{r}
+ndvi <- VI(st, 8, 4)
+plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
+```
+
+
+**Outras fórmula de aplicar o NDVI**
+
+```{r}
+vi2 <- function(x, y) {
+  (x - y) / (x + y)
+}
+ndvi2 <- overlay(st[[8]], st[[4]], fun=vi2)
+plot(ndvi2, col=rev(terrain.colors(10)), main="Sentinel2-NDVI")
+```
+
+
+**Visualizar o NDVI em histograma**
+
+```{r}
+hist(ndvi,
+     main = "Distribuição dos valores de NDVI",
+     xlab = "NDVI",
+     ylab= "Frequência",
+     col = "wheat",
+     xlim = c(-0.5, 1),
+     breaks = 30,
+     xaxt = 'n')
+axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))
+```
+
+Visualizar apenas a vegetação  com NDVI acima de 0.4:
+
+```{r}
+veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
+plot(veg, main='Vegetação')
+```
+
+
+Reclassificar o NDVI e difini-lo por classes numéricas:
+
+```{r}
+vegc <- reclassify(ndvi, c(-Inf,0.25,1, 0.25,0.3,2, 0.3,0.4,3, 0.4,0.5,4, 0.5,Inf, 5))
+plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
+```
+
+
+
+**Criar uma classificação não supervisionada a partir do NDVI:**
+
+Converter o raster (NDVI) a um vetor/matriz:
+
+```{r}
+nr <-getValues(ndvi)
+str(nr)
+```
+
+É importante definir o gerador de pontos, porque o *"kmeans"* inicia os centros em locais aleatórios: 
+
+```{r}
+set.seed(99)
+```
+
+Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método `Lloyd`
+```{r}
+kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500,
+                     nstart = 5, algorithm = "Lloyd")
+```
+
+Ver o vetor/matriz:
+
+```{r}
+str(kmncluster)
+```
+
+Crie uma cópia do NDVI para não perder os dados:
+
+```{r}
+knr <- ndvi
+```
+
+Agora substitua os valores das células de varredura pelo `kmncluster$cluster`:
+
+```{r}
+knr[] <- kmncluster$cluster
+```
+
+Realize o plot do NDVI e do kmeans:
+
+```{r}
+par(mfrow = c(1, 2))
+plot(ndvi, col = rev(terrain.colors(10)), main = "NDVI")
+plot(knr, main = "Kmeans", col = viridis_pal(option = "D")(10))
+```
+
+
+Se quiser traçar a classificação kmeans ao lado da renderização  do RGB para verificar a qualidade da classificação e identificação das classes:
+
+```{r}
+par(mfrow = c(1, 2))
+plotRGB(RGB, axes = FALSE, stretch = "lin", main = "RGB")
+plot(knr, main = "Kmeans", yaxt = 'n', col = viridis_pal(option = "D")(10))
+```
+
+Aplicar outros índices de vegetação com o `pacote LSRS`:
+
+```{r}
+NDVI=NDVI(b8,b4)
+SAVI=SAVI(b8,b4)
+TGSI=TGSI(b4,b2,b3)
+MSAVI=MSAVI(b8,b4, Pixel.Depth=1)
+EVI=EVI(b8,b4,b2,Pixel.Depth=1)
+NBR=NBR(b8,b11)
+```
+
+```{r}
+par(mfrow = c(3, 2))
+plot(NDVI,lwd=4,main="NDVI",xlab="easting", ylab="northing")
+plot(SAVI,lwd=4,main="SAVI",xlab="easting", ylab="northing")
+plot(TGSI,lwd=4,main="TGSI",xlab="easting", ylab="northing")
+plot(MSAVI,lwd=4,main="MSAVI",xlab="easting", ylab="northing")
+plot(EVI,lwd=4,main="EVI",xlab="easting", ylab="northing")
+plot(NBR,lwd=4,main="NBR",xlab="easting", ylab="northing")
+```
+
+
+## Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação
+
+Primeiro carregar os pacotes necessários
+```{r}
+library(raster)
+library(plot3D)
+```
+
+Carregar o dado raster do pacote Raster (Volcano) para ser usado como exemplo:
+
+```{r}
+filled.contour(volcano, color.palette = terrain.colors)
+```
+
+Criar as curvas de nível:
+
+```{r}
+cont <- contourLines(volcano)
+fun <- function(x) x$level
+LEVS <- sort(unique(unlist(lapply(cont, fun))))
+COLS <- terrain.colors(length(LEVS))
+```
+
+Plotar somente as curvas de nível:
+
+```{r}
+contour(volcano)
+```
+
+
+Plotar o modelo 3D com curvas de nível:
+```{r}
+x <- seq(1, nrow(volcano), by = 3)
+y <- seq(1, ncol(volcano), by = 3) 
+Volcano <- volcano [x, y]
+```
+
+
+Exemplo 1:
+
+```{r}
+ribbon3D(z = Volcano, contour = TRUE, zlim= c(-100, 200),image = TRUE)
+
+```
+
+
+Exemplo 2:
+```{r}
+persp3D(z = Volcano, contour = TRUE, zlim= c(-200, 200), image = FALSE)
+
+```
+
+
+Exemplo 3:
+
+```{r}
+persp3D(z = Volcano, x = x, y = y, scale = FALSE,contour = list(nlevels = 20, col = "red"),zlim = c(-200, 200), expand = 0.2,image = list(col = grey (seq(0, 1, length.out = 100))))
+```
+
+Exemplo 4:
+
+```{r}
+persp3D(z = Volcano, contour = list(side = c("zmin", "z", "350")), zlim = c(-100, 400), phi = 20, image = list(side = 350))
+```
+
+
+Exemplo 5:
+
+```{r}
+persp3D(z = volcano, shade = 0.3, col = gg.col(100))
+```
+
+## Modelo de altura do dossel (CHM) com o MDT e MDE
+
+O modelo de altura da copa (CHM) representa a altura das árvores. Este não é um valor de elevação, é a altura ou a distância entre o chão e o topo das árvores. Alguns modelos de altura da copa também incluem edifícios, portanto, é necessário olhar atentamente para seus dados para garantir que eles foram limpos corretamente antes de assumir que representam todas as árvores
+
+Carregar os pacotes:
+
+```{r}
+library(raster)
+library(rgdal)
+```
+
+Carregar o dado MDE:
+
+```{r}
+MDE <- raster("https://www.dropbox.com/s/kifc93rdhz2xykm/DSM.tif?dl=1")
+plot(MDE, main = "Modelo Digital de Elevação (DEM)")
+```
+
+Carregar o dado MDT:
+
+```{r}
+MDT <- raster("https://www.dropbox.com/s/sfbr3blydvxg75v/DTM.tif?dl=1")
+plot(MDT, main = "Modelo Digital do Terreno (MDT)")
+```
+
+Existem diferentes maneiras de calcular um CHM. Uma maneira fácil é subtrair o MDE do MDT.
+
+Criar o Modelo de Altura do Dossel (CHM):
+```{r}
+CHM <- MDE - MDT
+plot(CHM,main = "Modelo de Altura do Dossel (CHM)")
+```
+
+Às vezes, um gradiente de cores é útil para representar uma variável contínua. Outras vezes, porém, é útil aplicar cores a intervalos específicos de valores em uma varredura. Esses intervalos podem ser gerados estatisticamente ou simplesmente visuais.
+
+Criar intervalos (alturas) no CHM:
+
+```{r}
+plot(CHM,
+     breaks = c(0, 2, 10, 20, 30),
+     main = "Modelo de Altura do Dossel",
+     col = c("white", "brown", "springgreen", "darkgreen"))
+```
+
+É possível salvar o CHM para ser usado em outras plataformas:
+
+```{r}
+writeRaster(CHM, "CHM.tiff",
+            format = "GTiff",
+            overwrite = TRUE)
+```
+
+
+Carregar os seguintes pacotes:
+```{r eval=T, include=T}
+library(installr)
+library(ForestTools)
+library(raster)
+library(rgeos)
+```
+
+Carregar dado de área florestal a ser analisada:
+```{r}
+data("kootenayCHM")
+```
+
+Plotar o CHM (CHM, modelo de altura do dossel):
+```{r}
+plot(kootenayCHM)
+```
+
+Identificar copas de árvore dominantes. Esta função implementa o algoritmo de filtro de janela variável desenvolvido por Popescu e Wynne (2004):
+
+```{r}
+lin <- function(x){x * 0.05 + 0.6}
+ttops <- vwf(CHM = kootenayCHM, winFun = lin, minHeight = 2)
+```
+
+Plotar o CHM:
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Adicionar as copas das árvores dominantes identificadas a partir do algoritimo no plot CHM:
+```{r eval=FALSE, include=T}
+plot(ttops, col = "blue", pch = 20, cex = 0.5, add = TRUE)
+```
+
+Ver a altura média das copas calculadas:
+```{r}
+mean(ttops$height)
+```
+
+Os modelos de altura do dossel geralmente representam florestas densas e contínuas, onde as copas das árvores se encostam umas nas outras. O esboço de formas discretas de coroas a partir desse tipo de floresta costuma ser chamado de segmentação de copa, onde cada contorno de coroa é representado por um segmento. Depois que um conjunto de copas das árvores é detectado a partir de um modelo de altura do dossel, a função `mcws` pode ser usada para essa finalidade.
+
+Criar mapa de coroas com a função `mcws`:
+```{r}
+crowns <- mcws(treetops = ttops, CHM = kootenayCHM, minHeight = 1.5, verbose = FALSE)
+
+```
+
+Plotar as coroas:
+```{r}
+plot(crowns, col = sample(rainbow(50), length(unique(crowns[])), replace = TRUE), legend = FALSE, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Por padrão, mcws retorna uma varredura, na qual cada coroa recebe um valor único de célula. Dependendo da finalidade do mapa da coroa, pode ser preferível armazenar esses contornos como polígonos. Definir o argumento de formato como "polígonos" converterá o mapa de coroa rasterizado em um conjunto de polígonos. Como um benefício adicional, esses polígonos herdarão os atributos das copas das árvores a partir das quais foram gerados, como a altura. Além disso, um atributo extra, `crownArea`, será calculado para cada polígono.
+
+Criar mapa de poligonos a partir das coroas:
+```{r}
+crownsPoly <- mcws(treetops = ttops, CHM = kootenayCHM, format = "polygons", minHeight = 1.5, verbose = FALSE)
+```
+
+Plotar o CHM
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+Adicionar os poligonos das coroas no CHM:
+```{r}
+plot(crownsPoly, border = "blue", lwd = 0.5, add = TRUE)
+
+```
+
+A função `sp_summarise` pode ser usada para contar árvores em um conjunto de unidades espaciais, bem como calcular estatísticas dos atributos das árvores.
+
+Calcular o número de árvores:
+```{r}
+sp_summarise(ttops)
+```
+
+As copas das árvores também podem ser usadas como entrada. Ao definir o argumento das variáveis, `sp_summarise` gerará estatísticas resumidas dos atributos das árvores. Por padrão, a média, mediana, desvio padrão, mínimo e máximo são calculados, mas funções personalizadas também podem ser usadas.
+
+Visualizar atributos estatísticos das árvores:
+```{r}
+sp_summarise(crownsPoly, variables = c("crownArea", "height"))
+```
+
+
+O pacote `Forest Tools` inclui os limites de três blocos de corte que podem ser sobrepostos no `kootenayCHM`. As contagens de árvores e estatísticas de altura podem ser resumidas dentro desses limites usando o argumento de áreas.
+
+Carregados dados:
+```{r}
+data("kootenayBlocks")
+```
+
+Computar estatísticas de contagem da altura das árvores para blocos de corte:
+```{r}
+blockStats <- sp_summarise(ttops, areas = kootenayBlocks, variables = "height")
+```
+
+Plotar o CHM:
+```{r}
+plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+
+```
+
+Adicionar os blocos no plot: 
+```{r}
+plot(kootenayBlocks, add = TRUE, border =  "darkmagenta", lwd = 2)
+```
+
+Adicionar a contagem de números de árvores para cada bloco (área definida):
+```{r}
+text(gCentroid(kootenayBlocks, byid = TRUE), blockStats[["TreeCount"]], col = "darkmagenta", font = 2)
+```
+
+Ver dados estatísticos:
+```{r}
+blockStats@data
+```
+
+Gerar a altura média das árvores dentro da grade de células de 10 m x 10 m em um arquivo raster:
+
+```{r}
+gridStats <- sp_summarise(trees = ttops, grid = 10, variables = "height")
+```
+
+Ver o nome das layers:
+```{r}
+names(gridStats)
+```
+
+Plotar o grid:
+```{r}
+plot(gridStats[["heightMean"]], col = heat.colors(255), xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+
+
+
+
+
+
+
+
+<!--chapter:end:18-Analise_imagens_sentinel.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:19-Referencia.Rmd-->
+
