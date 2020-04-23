@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,7 +288,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-rpas"><i class="fa fa-check"></i><b>13.1</b> Imagens de RPAs</a></li>
 <li class="chapter" data-level="13.2" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-satélites"><i class="fa fa-check"></i><b>13.2</b> Imagens de satélites</a></li>
 <li class="chapter" data-level="13.3" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação"><i class="fa fa-check"></i><b>13.3</b> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</a></li>
-<li class="chapter" data-level="13.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#modelo-de-altura-do-dossel-chm-com-o-mdt-e-mde"><i class="fa fa-check"></i><b>13.4</b> Modelo de altura do dossel (CHM) com o MDT e MDE</a></li>
+<li class="chapter" data-level="13.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#lidar"><i class="fa fa-check"></i><b>13.4</b> LIDAR</a></li>
+<li class="chapter" data-level="13.5" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#informações-topográficas-a-partir-do-modelo-digital-de-elevação-mde"><i class="fa fa-check"></i><b>13.5</b> Informações topográficas a partir do Modelo Digital de Elevação MDE</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -389,11 +390,11 @@ Tente atribuir “Engenharia Agrícola”em x.</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -2.9096754 -0.4678808  0.1436820  0.7514911  1.3500000
+## [1] -2.76722817 -0.53644725 -0.07830961  0.56285750  1.35000000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.9096754 -0.4678808  0.1436820  0.7514911  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.76722817 -0.53644725 -0.07830961  0.56285750  1.35000000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>

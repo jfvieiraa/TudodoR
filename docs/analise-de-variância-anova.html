@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-22" />
+<meta name="date" content="2020-04-23" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -288,7 +288,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="13.1" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-rpas"><i class="fa fa-check"></i><b>13.1</b> Imagens de RPAs</a></li>
 <li class="chapter" data-level="13.2" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-satélites"><i class="fa fa-check"></i><b>13.2</b> Imagens de satélites</a></li>
 <li class="chapter" data-level="13.3" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação"><i class="fa fa-check"></i><b>13.3</b> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</a></li>
-<li class="chapter" data-level="13.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#modelo-de-altura-do-dossel-chm-com-o-mdt-e-mde"><i class="fa fa-check"></i><b>13.4</b> Modelo de altura do dossel (CHM) com o MDT e MDE</a></li>
+<li class="chapter" data-level="13.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#lidar"><i class="fa fa-check"></i><b>13.4</b> LIDAR</a></li>
+<li class="chapter" data-level="13.5" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#informações-topográficas-a-partir-do-modelo-digital-de-elevação-mde"><i class="fa fa-check"></i><b>13.5</b> Informações topográficas a partir do Modelo Digital de Elevação MDE</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -1462,13 +1463,13 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(&gt;|t|)    
-## B - A == 0   -51.80      33.72  -1.536  0.56052    
-## C - A == 0   112.20      33.72   3.327  0.03934 *  
-## D - A == 0   -79.20      33.72  -2.349  0.19543    
-## E - A == 0   -91.60      33.72  -2.716  0.10971    
-## C - B == 0   164.00      33.72   4.863  0.00292 ** 
-## D - B == 0   -27.40      33.72  -0.813  0.92177    
-## E - B == 0   -39.80      33.72  -1.180  0.76212    
+## B - A == 0   -51.80      33.72  -1.536  0.56051    
+## C - A == 0   112.20      33.72   3.327  0.03940 *  
+## D - A == 0   -79.20      33.72  -2.349  0.19545    
+## E - A == 0   -91.60      33.72  -2.716  0.10961    
+## C - B == 0   164.00      33.72   4.863  0.00291 ** 
+## D - B == 0   -27.40      33.72  -0.813  0.92175    
+## E - B == 0   -39.80      33.72  -1.180  0.76214    
 ## D - C == 0  -191.40      33.72  -5.676  &lt; 0.001 ***
 ## E - C == 0  -203.80      33.72  -6.044  &lt; 0.001 ***
 ## E - D == 0   -12.40      33.72  -0.368  0.99555    
@@ -1809,21 +1810,21 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(&gt;|t|)   
-## 2 - 1 == 0  24.5000     8.1812   2.995  0.06738 . 
-## 3 - 1 == 0  36.3333     8.1812   4.441  0.00296 **
-## 4 - 1 == 0  29.5000     8.1812   3.606  0.01874 * 
-## 5 - 1 == 0  29.3333     8.1812   3.585  0.01964 * 
-## 6 - 1 == 0  34.6667     8.1812   4.237  0.00465 **
+## 2 - 1 == 0  24.5000     8.1812   2.995  0.06749 . 
+## 3 - 1 == 0  36.3333     8.1812   4.441  0.00305 **
+## 4 - 1 == 0  29.5000     8.1812   3.606  0.01872 * 
+## 5 - 1 == 0  29.3333     8.1812   3.585  0.01979 * 
+## 6 - 1 == 0  34.6667     8.1812   4.237  0.00476 **
 ## 3 - 2 == 0  11.8333     8.1812   1.446  0.69983   
-## 4 - 2 == 0   5.0000     8.1812   0.611  0.98895   
+## 4 - 2 == 0   5.0000     8.1812   0.611  0.98894   
 ## 5 - 2 == 0   4.8333     8.1812   0.591  0.99051   
-## 6 - 2 == 0  10.1667     8.1812   1.243  0.81101   
+## 6 - 2 == 0  10.1667     8.1812   1.243  0.81104   
 ## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95718   
 ## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95272   
 ## 6 - 3 == 0  -1.6667     8.1812  -0.204  0.99994   
 ## 5 - 4 == 0  -0.1667     8.1812  -0.020  1.00000   
 ## 6 - 4 == 0   5.1667     8.1812   0.632  0.98718   
-## 6 - 5 == 0   5.3333     8.1812   0.652  0.98524   
+## 6 - 5 == 0   5.3333     8.1812   0.652  0.98523   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -1840,18 +1841,18 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
 ## 
-## Quantile = 2.8972
+## Quantile = 2.8973
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##        Estimate lwr      upr     
-## 1 == 0 165.5000 148.7396 182.2604
-## 2 == 0 190.0000 173.2396 206.7604
-## 3 == 0 201.8333 185.0730 218.5937
-## 4 == 0 195.0000 178.2396 211.7604
-## 5 == 0 194.8333 178.0730 211.5937
-## 6 == 0 200.1667 183.4063 216.9270</code></pre>
+## 1 == 0 165.5000 148.7391 182.2609
+## 2 == 0 190.0000 173.2391 206.7609
+## 3 == 0 201.8333 185.0724 218.5942
+## 4 == 0 195.0000 178.2391 211.7609
+## 5 == 0 194.8333 178.0724 211.5942
+## 6 == 0 200.1667 183.4058 216.9276</code></pre>
 <p>Juntar com os nomes dos tratramentos com os intervalos</p>
 <div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb732-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">cbind</span>(p0<span class="op">$</span>grid, ci<span class="op">$</span>confint) </a>
 <a class="sourceLine" id="cb732-2" title="2"></a>
