@@ -6,7 +6,7 @@ Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm 
 
 Carregar pacotes necessários para trabalhar com os dados raster.
 Caso não tenha algum dos pacotes, realize a sua instalação.
-```{r eval=T, include=T}
+```{r eval=T, message=FALSE, include=T}
 library(raster)
 library(knitr)
 library(sp)
@@ -20,7 +20,7 @@ library(LSRS)
 Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
 
 
-```{r eval=T, include=T}
+```{r echo=FALSE}
 imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 ```
 
@@ -298,7 +298,7 @@ O modelo de altura da copa (CHM) representa a altura das árvores. Este não é 
 
 Carregar os pacotes:
 
-```{r}
+```{r message=FALSE}
 library(raster)
 library(rgdal)
 ```
@@ -338,15 +338,14 @@ plot(CHM,
 
 É possível salvar o CHM para ser usado em outras plataformas:
 
-```{r}
+```{r eval=F, message=FALSE}
 writeRaster(CHM, "CHM.tiff",
             format = "GTiff",
             overwrite = TRUE)
 ```
 
-
 Carregar os seguintes pacotes:
-```{r eval=T, include=T}
+```{message=FALSE, include=T}
 library(installr)
 library(ForestTools)
 library(raster)
@@ -359,24 +358,24 @@ data("kootenayCHM")
 ```
 
 Plotar o CHM (CHM, modelo de altura do dossel):
-```{r}
+```{r eval=FALSE }
 plot(kootenayCHM)
 ```
 
 Identificar copas de árvore dominantes. Esta função implementa o algoritmo de filtro de janela variável desenvolvido por Popescu e Wynne (2004):
 
-```{r}
+```{r eval= False}
 lin <- function(x){x * 0.05 + 0.6}
 ttops <- vwf(CHM = kootenayCHM, winFun = lin, minHeight = 2)
 ```
 
 Plotar o CHM:
-```{r}
+```{r eval=FALSE}
 plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar as copas das árvores dominantes identificadas a partir do algoritimo no plot CHM:
-```{r eval=FALSE, include=T}
+```{r eval=FALSE}
 plot(ttops, col = "blue", pch = 20, cex = 0.5, add = TRUE)
 ```
 
@@ -411,7 +410,7 @@ plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar os poligonos das coroas no CHM:
-```{r}
+```{r eval=FALSE}
 plot(crownsPoly, border = "blue", lwd = 0.5, add = TRUE)
 
 ```
@@ -450,7 +449,7 @@ plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar os blocos no plot: 
-```{r}
+```{r eval=FALSE}
 plot(kootenayBlocks, add = TRUE, border =  "darkmagenta", lwd = 2)
 ```
 
@@ -478,6 +477,141 @@ names(gridStats)
 Plotar o grid:
 ```{r}
 plot(gridStats[["heightMean"]], col = heat.colors(255), xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+## LIDAR
+O exemplo a seguir é um processamento de imagens LIDAR, por meio da qual será segmentado árvores individuais e métricas.
+
+Carregar pacote:
+```{r message=FALSE}
+library(lidR)
+library(raster)
+```
+
+Baixar dados
+[Example.las]('https://www.dropbox.com/s/e7mlo11k5qeao2i/Example.las?dl=1')
+
+Carregar uma área florestal de exemplo a partir de imagens LIDAR que será trabalhada:
+```{r}
+las = readLAS('C:/Users/Jefferson/Dropbox/Livro/Example.las')
+plot(las)
+```
+
+
+O lasground fornece vários algoritmos para classificar os pontos de referência. Essa função é conveniente para gráficos de pequeno a médio porte, como o que estamos processando.
+
+Classificar pontos do solo (pontos de referência):
+```{r}
+las = lasground(las, csf())
+plot(las, color = "Classification")
+```
+
+
+É necessário  definir o terreno em 0 metros. Deve-se subtrair o MDT para obter pontos de aterramento em 0, mas aqui não será usado um MDT, mas vamos interpolar exatamente cada ponto.
+
+Definir altura normalizada:
+```{r}
+las = lasnormalize(las, tin())
+plot(las)
+```
+
+
+Na próxima etapa, será usado um algoritmo que requer um modelo de altura da copa a partir da nuvem de pontos.
+
+Calcular um modelo de altura das copas:
+
+```{r}
+algo = pitfree(thresholds = c(0,10,20,30,40,50), subcircle = 0.2)
+chm  = grid_canopy(las, 0.5, algo)
+```
+
+Plotar o CHM:
+```{r}
+plot(chm, col = height.colors(50))
+```
+
+A segmentação pode ser alcançada com `lastrees`. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
+
+Realizar a segmentação das árvores:
+```{r}
+algo = watershed(chm, th = 4)
+las  = lastrees(las, algo)
+```
+
+remove points that are not assigned to a tree
+```{r}
+trees = lasfilter(las, !is.na(treeID))
+```
+
+Plotar a segmentação:
+```{r}
+plot(trees, color = "treeID", colorPalette = pastel.colors(100))
+
+```
+
+Calcular algumas métricas:
+```{r}
+hulls  = tree_hulls(las, func = .stdmetrics)
+spplot(hulls, "zmax")
+```
+
+No exemplo anterior, mesmo se a segmentação for feita usando um modelo de altura do dossel, a classificação foi feita na nuvem de pontos. Isso ocorre porque `lidR` é uma biblioteca orientada à nuvem de pontos. Mas pode-se querer que o raster trabalhe com rasters. Nesse caso, a função divisor de águas pode ser usada de forma independente:
+
+```{r}
+crowns = watershed(chm, th = 4)()
+plot(crowns, col = pastel.colors(100))
+```
+
+Criar poligonos de contornos a partir da copa: 
+```{r}
+contour = rasterToPolygons(crowns, dissolve = TRUE)
+```
+
+Plotar o CHM e contornos:
+```{r}
+plot(chm, col = height.colors(50))
+plot(contour, add = T)
+```
+
+
+## Informações topográficas a partir do Modelo Digital de Elevação MDE##
+
+Carregar pacotes:
+```{r message=FALSE}
+library(raster)
+```
+
+Carregar dados e plotar :
+```{r}
+MDE=raster("https://www.dropbox.com/s/b2rzimq500rmj5o/MDE.tif?dl=1")
+plot(MDE)
+```
+
+Usar a função `terrain()` para calcular/extrair algumas informações topográficas:
+```{r}
+Declividade <- terrain(MDE, "slope")
+Aspecto <- terrain(MDE, "aspect")
+TPI <- terrain(MDE, "TPI") # Topographic Position Index (Índice de posição topográfica)
+TRI <- terrain(MDE, "TRI") # Terrain Ruggedness Index (Índice de robustez do terreno)
+Rugosidade <- terrain(MDE, "roughness")
+Escoamento <- terrain(MDE, "flowdir")
+Hillshade <- hillShade(Declividade, Aspecto, angle=45, direction=0, filename='', normalize=FALSE)
+```
+
+Juntar todos os dados com a função `stack()`:
+```{r}
+topo <- stack(MDE, Declividade, Aspecto, TPI, TRI, Rugosidade, Escoamento, Hillshade)
+
+```
+
+Renomear os dados para aparecerem no `plot`:
+```{r}
+names(topo) <- c("MDE", "Declividade","Aspecto", "TPI", "TRI", "Rugosidade", "Escoamento", "Hillshade")
+```
+
+Plotar os dados:
+```{r}
+plot(topo)
 ```
 
 

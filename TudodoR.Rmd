@@ -9,17 +9,6 @@ biblio-style: apalike
 link-citations: yes
 description: "Notas de aulas de práticas estatística com o uso do sistema R."
 ---
---- 
-title: "Uso do sistema R para análise de dados"
-author: " "
-date: "`r Sys.Date()`"
-site: bookdown::bookdown_site
-documentclass: book
-bibliography: [book.bib, packages.bib]
-biblio-style: apalike
-link-citations: yes
-description: "Notas de aulas de práticas estatística com o uso do sistema R."
----
 
 # Pré requisitos
 
@@ -31,198 +20,3742 @@ O material consultado encontra-se referenciado no final de cada capitulo.
 
 <!--chapter:end:index.Rmd-->
 
-
 # R Básico {#intro}
 
-Placeholder
+Este primeio capitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+Iremos abordar as expressões básicas do R. 
+Começaremos simples, com **números**, **strings** e valores **true/false**. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
 
 ## Expressões
+
+Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
+
+```{r matematica}
+2+8
+```
+
+Note que é impresso o resultado, 10.
+
+Digite a frase "Engenharia Agrícola"
+```{r}
+"Engenharia Agrícola"
+```
+
+Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
+```{r}
+6*5
+```
+
 ## Valores Booleanos
+
+Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
+Vamos tentar digitar uma expressões que nos dá um valor lógico:
+```{r}
+7<12
+```
+
+E outro valor lógico (sinal duplo de igualdade)
+```{r}
+6+5==10
+```
+
+**T** e **F** são taquigrafia para TRUE e FALSE. Tente isso:
+```{r}
+F==FALSE
+```
+
 ## Variáveis
+
+Você pode armazenar valores em uma variável para usar mais tarde. 
+Digite **x <- 28** para armazenar um valor em **x**.
+```{r}
+x<-28
+```
+
+Tende dividr **x** por **4**( **/** é o operador da divisão).
+```{r}
+x/4
+```
+
+Você pode retribuir qualquer valor a uma variável a qualquer momento. 
+Tente atribuir "Engenharia Agrícola"em x.
+```{r}
+x <- "Engenharia Agrícola"
+```
+
+Tente imprimir o valor atual de x.
+```{r}
+x
+```
+
 ## Funções
+
+Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
+
+Vamos tentar usar a  função `sum()`, para adicionar alguns números. Entrar:
+
+```{r}
+sum (2, 4, 6)
+```
+
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função `rep` e forneceria seu argumento **times**:
+
+```{r}
+rep("Engenharia Agrícola", times=3)
+```
+
+
+Tente chamar a função `sqrt`  para obter a raiz quadrada 16.
+```{r}
+sqrt(16)
+```
+
 ## Ajuda
+A função `help ()` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
+```{r message=TRUE}
+help (mean)
+```
+
+A função `example ()` traz exemplos de usos. Tente exibir exemplos para a função `min`:
+
+```{r}
+example(min)
+```
+
 ## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
 
 <!--chapter:end:01-R_basico.Rmd-->
 
-
 # Estruturas de Dados
 
-Placeholder
-
+Este segundo Capitulo foi baseado no curso on-line _Code School Try R_ e no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
 ## Vetor
+
+Um vetor é simplesmente uma lista de valores.
+A maneira mais simples de usar um vetor é usando o comando `c()`, que concatena elementos num mesmo objeto.
+Exemplo
+```{r}
+x<- c(2,3,5,7,11) 
+x
+```
+
+Os argumentos de `c()` podem ser tanto elementos únicos quanto outros objetos. Adicione três números no **vetor x**
+
+```{r}
+y<- c(x,13,17,19)
+y
+```
+
 ### Vetores de Sequência
+Se você precisa de um vetor com uma sequência de números, você pode cria-lo com a notação _start:end_. Vamos fazer um vetor com valores de 1 a 7:
+```{r}
+1:7
+```
+Uma maneira mais versátil de fazer sequências é chamar a função `seq`. Vamos fazer o mesmo com `seq ()` :
+```{r}
+seq(1:7)
+```
+
+A função `seq` também permite que você use incrementos diferentes de 1. Experimente com etapas de 0.5.
+```{r}
+seq(1,7,0.5)
+seq(7,1,-0.5) 
+```
+
+Todo objeto possui atributos intrínsecos: tipo e tamanho. Com relação ao tipo ele pode ser: **numérico**, **caractere**, **complexo** e **lógico**. Existem outros tipos, como por exemplo, funções ou expressões, porém esses não representam dados.
+As funções `mode()` e `length()` mostram o tipo e tamanho de um objeto, respectivamente.
+
+```{r}
+z<-c(1,3,5,7,11) 
+mode (z)
+length(z)
+
+a <- "Angela"
+b<-TRUE; 
+c<-8i #objetos com tipos diferentes
+mode(a); 
+mode(b); 
+mode(c) #exibe os atributos "tipo" dos objetos 
+```
+
+Se o vetor é muito longo e não "cabe" em uma linha o R vai usar as linhas seguintes para continuar imprimindo o vetor. 
+
+```{r}
+longo<-100:50 #sequência decrescente de 100 a 50
+longo #exibe o conteúdo do objeto 
+```
+Os números entre colchetes não fazem parte do objeto e indica a posição do vetor naquele ponto. Pode-se ver que [1] indica que o primeiro elemento do vetor estão naquela linha, [17] indica que a linha seguinte começa pelo décimo setimo elemento do vetor e
+assim por diante. 
+
+Você pode recuperar um valor individual dentro de um vetor fornecendo seu índice numérico entre colchetes. Tente obter o valor 18:
+```{r}
+longo[18]
+```
+
+Muitas línguagem de programação iniciam índices de matriz em 0, mas os índices vetoriais de R começam em 1. Obtenha o primeiro valor digitando:
+```{r}
+longo[1]
+```
+Você pode atribuir novos valores dentro de um vetor existente. Tente mudar o terceiro valor **28**:
+```{r}
+longo [3] <- 28
+```
+Se você adicionar novos valores ao final, o vetor aumentará para acomodá-los. Vamos adicionar um valor no final
+```{r}
+longo[101] <- 83
+```
+Você pode usar um vetor entre os colchetes para acessar vários valores. Tente obter a primeira e a terceira palavras
+```{r}
+longo[c(1,3)]
+
+```
+
+Isso significa que você pode recuperar intervalos de valores. Obter a segunda a quarta palavras:
+```{r}
+longo[2:4]
+```
+
+Você também pode definir intervalos de valores; apenas forneça os valores em um vetor. Adicione valores 5 a 7:
+```{r}
+longo[5:7] <- c(42,52,75)
+```
+Agora tente acessar o oitavo valor do vetor:
+```{r}
+longo[8]
+```
+
 ### Nomes de vetores
+Para esse desafio, criaremos um vetor de 3 itens e armazená-lo na variável solo.
+Você pode atribuir nomes aos elementos de um vetor passando um segundo vetor preenchido com os nomes com a função `names ()`, assim:
+
+```{r}
+solo <- 1:3
+names(solo) <- c("Argila", "Areia","Silte" )
+solo
+```
+
+Agora, defina o valor atual para o _silte_  para um valor diferente usando o nome em vez da posição.
+```{r}
+solo["Silte"]<-20
+```
+
 ### Plotando um vetor
+A função `barplot ()` desenha um gráfico de barras com os valores de um vetor. Vamos criar um novo vetor para você e armazená-lo na variável chuva.
+
+Agora, tente passar o vetor para a função `barplot`:
+```{r}
+chuva <- c(20,50,85)
+barplot(chuva)
+```
+
+Se você atribuir nomes aos valores do vetor, o R usará esses nomes como rótulos no gráfico da barra. Vamos usar a função `names ()` novamente:
+```{r}
+names(chuva)<- c("Rondonópolis", "Maringá", "Cruzeiro do Sul")
+```
+
+Agora, se você digitar `barplot (chuva)` com o vetor novamente, você verá os rótulos:
+```{r}
+barplot(chuva)
+```
+
+Agora, tente chamar `barplot` em um vetor de números inteiros que variam de 1 a 100:
+```{r}
+barplot(1:100)
+```
+
 ### Operações matemáticas
+
+A maioria das operações aritméticas funcionam tão bem em vetores quanto em valores únicos. Vamos fazer outro vetor de exemplo para você trabalhar e armazená-lo a variável **a**
+
+Se você adicionar um escalar (um único valor) a um vetor, o escalar será adicionado a cada valor no vetor, retornando um novo vetor com os resultados. Tente adicionar 1 a cada elemento em nosso vetor:
+
+```{r}
+a <- c(1, 2, 3)
+a + 1
+```
+
+O mesmo se aplica na divisão, multiplicação ou qualquer outra aritmética básica. Tente dividir nosso vetor por 2:
+```{r}
+a / 2
+```
+
+Agora, tente multiplicar nosso vetor por 2:
+```{r}
+a*2
+```
+
+Se você adicionar dois vetores, R irá tirar cada valor de cada vetor e adicioná-los. Vamos fazer um segundo vetor para você experimentar e armazená-lo na variável **b**
+
+Tente adicioná-lo ao vetor **a**:
+
+```{r}
+b <- c(4,5,6)
+a+b
+```
+
+Agora tente subtrair b de a:
+```{r}
+a-b
+```
+
+Você também pode tirar dois vetores e comparar cada item. Veja quais valores nos vetores são iguais aos de um segundo vetor
+```{r}
+a == c(1, 99, 3)
+```
+
+Observe que R não testou se os vetores inteiros eram iguais; verificou cada valor no vetor a contra o valor no mesmo índice no nosso novo vetor.
+
+Verifique se cada valor nos vetores são menores que o valor correspondente em outro vetor:
+
+```{r}
+a < c(1, 99, 3)
+```
+
+Funções que normalmente funcionam com escalares também podem operar em cada elemento de um vetor. Tente obter o seno de cada valor em nosso vetor:
+```{r}
+sin(a)
+```
+
+Agora tente obter as raízes quadradas com a função `sqrt`:
+```{r}
+sqrt(a)
+```
+
 ### Parcelas de dispersão
+
+A função `plot` leva dois vetores, um para valores X e um para valores Y, e desenha um gráfico deles.
+
+Vamos desenhar um gráfico que mostra a relação de números e seus senos.
+
+Primeiro, precisaremos de alguns dados de amostra. Criaremos um vetor  com alguns valores fracionários entre 0 e 20, e armazenó-lo na variável x. E na variável y um segundo vetor com os senos de x:
+```{r}
+x <- seq(1, 20, 0.1)
+y<-sin(x)
+```
+
+Em seguida, basta chamar a função `plot` com seus dois vetores:
+
+```{r}
+plot(x, y)
+```
+
+Observa=se sobre o gráfico que os valores do primeiro argumento **(x)** são usados para o eixo horizontal, e os valores do segundo **(y)** para o vertical.
+
+Vamos criar um vetor com alguns valores negativos e positivos para você e armazenó-lo na variável **valores**.
+
+Também criaremos um segundo vetor com os valores absolutos do primeiro e armazenó-lo na variável **absoluto**.
+
+Tente traçar os vetores, com os **valores** no eixo horizontal e no eixo vertical os absoluto.
+
+```{r}
+valores <- -10:10
+absoluto<- abs(valores)
+plot(valores, absoluto)
+```
+
 ### Valores Faltantes
+
+As vezes, ao trabalhar com dados de amostra, um determinado valor não está disponível. Mas não é uma boa idéia apenas tirar esses valores. R tem um valor que indica explicitamente uma amostra não estava disponível: **NA**. Muitas funções que funcionam com vetores tratam esse valor especialmente.
+
+Vamos criar um vetor para você com uma amostra ausente e armazenó-lo na variével **a**.
+
+Tente obter a soma de seus valores e veja qual é o resultado:
+```{r}
+a <- c(1, 3, NA, 7, 9)
+sum(a)
+```
+
+A soma é considerada _"não disponível"_ por padrão porque um dos valores do vetor foi **NA**. 
+
+Lembre-se desse comando para mostrar ajuda para uma função. Apresente a ajuda para a função `sum`:
+```{r}
+help(sum)
+```
+
+Como você vê na documentação, `sum` pode tomar um argumento opcional **na.rm**,. ? configurado **FALSE** por padrão, mas se você configurá-lo com **TRUE**, todos os argumentos **NA** serão removidos do vetor antes do cálculo ser executado.
+
+Tente rondar `sum` novamente, com o **na.rm** conjunto para **TRUE**:
+```{r}
+sum(a, na.rm = T)
+```
+
 ## Matrizes 
+
+Há varias formas de criar uma matriz. O comando `matriz()` recebe um vetor como argumento e o transfoma em uma matrix de acordo com as dimensões.
+Vamos fazer uma matriz de 3 linhas de altura por 4 colunas de largura, com todos os seus campos definidos 0.
+
+```{r}
+matrix(0,3,4)
+```
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz de 3x4, você precisará de um vetor de 12 itens. 
+
+```{r}
+a <- (1:12)
+
+print (a)
+```
+
+Agora chame matrix com o vetor, o número de linhas e o número de colunas:
+
+```{r}
+matrix (a,# chama o vetor
+        3,# linha
+        4) #coluna
+```
+
+Você também pode usar um vetor para inicializar o valor de uma matriz. Para preencher uma matriz 3x4, você precisará de um vetor de 12 itens. Nós vamos fazer isso para você agora:
+```{r}
+a <-1:12
+a
+```
+
+Agora chame **matrix** com o vetor, o número de linhas e o número de colunas:
+```{r}
+matrix (a,3,4)
+```
+
 ### Outras formas
+```{r}
+matrix (a, 3)
+```
+
+Note  que as matrizes são preenchidas ao longo das colunas. Para que a matriz seja preenchida por linhas deve-se alterar o argumento **byrow**, que, por padrão, está definido como **FALSE**, passe para **TRUE**
+```{r}
+matrix(a,3, byrow=T)
+```
+
+Os valores do vetor são copiados para a nova matriz, um por um. Você também pode reformular o próprio **vetor** em uma **matriz**. Crie um vetor de 8 itens:
+```{r}
+foliar <- 1:8
+```
+
+A função `dim` define as **dim**ensões para uma matriz. Ele aceita um vetor com o número de linhas e o n?mero de colunas a serem atribu?das.
+Atribua novas dimens?es para **foliar** passando um vetor especificando 2 linhas e 4 colunas ( c(2, 4)):
+```{r}
+dim(foliar) <- c(2,4)
+```
+
+O vetor não é mais unidimensional. Foi convertido, no local, para uma matriz.
+Agora, use a função **matrix** para criar uma matriz **5x5**, com seus campos inicializados para qualquer valor que você desejar.
+```{r}
+matrix (2,5,5)
+```
+
 ### Acesso a Matriz
+
+Obter valores de matrizes não é diferente de vetores; você só precisa fornecer dois índices em vez de um. Abra a  matriz foliar:
+
+```{r}
+print (foliar)
+```
+
+Tente obter o valor da segunda linha na terceira coluna da matriz foliar;
+```{r}
+foliar[2,3]
+```
+
+O valor da primeira linha da quarta coluna
+```{r}
+foliar[1,4]
+```
+
+Você pode obter uma linha inteira da matriz omitindo o índice da coluna (mas mantenha a virgula). Tente recuperar a segunda linha:
+```{r}
+foliar[2,]
+```
+
+Para obter uma coluna inteira, omita o índice da linha. Recupere a quarta coluna:
+```{r}
+foliar[,4]
+```
+
+Você pode ler várias linhas ou colunas, fornecendo um vetor ou sequência com seus índices. Tente recuperar as colunas de 2 a 4:
+```{r}
+foliar[,2:4]
+```
+
+O comando `summary` pode ser usado para obter informações da matriz
+```{r}
+summary(foliar)
+```
+
+Se desejar um resumo de todos os elementos da matriz, basta transformá-la em um vetor
+```{r}
+summary(as.vector(foliar))
+```
+
+
 ### Visualizações em dados matriciais
+
+Com um mapa de elevação. Tudo fica a 1 metro acima do nível do mar. Vamos criar uma matriz de 10 por 10 com todos os seus valores inicializados para 1 para você:
+```{r}
+elevacao <- matrix (1,10,10)
+```
+
+Na quarta linha, sexta coluna, defina a elevação para 0:
+ 
+```{r}
+elevacao [4, 6] <- 0
+```
+ 
+Mapa de contorno dos valores passando a matriz para a  função `contour`
+```{r}
+contour(elevacao)
+```
+
+Criar um gráfico em perspectiva 3D com a função `persp`:
+```{r}
+persp (elevacao)
+```
+
+Podemos consertar isso especificando nosso próprio valor para o parâmetro **expand**.
+```{r}
+persp (elevacao, expand =0.2)
+```
+
+R inclui alguns conjuntos de dados de amostra. Um deles é o  _volcanoum_ mapa 3D de um vulcão adormecido da Nova Zelândia.
+
+É simplesmente uma matriz de 87x61 com valores de elevão, mas mostra o poder das visualizações de matriz do R. Criar um mapa de calor:
+
+```{r}
+contour(volcano)
+```
+
+Gráfico em perspectiva:
+```{r}
+persp(volcano, expand=0.2)
+```
+
+A função `image` criar um mapa de calor:
+```{r}
+image(volcano)
+```
+
 ### Mais informações sobre construções de Matrizes
+
+Há outros comandos que podem ser usados para construir matrizes como `cbind()` e `rbind ()`. Esses comandos concatenam colunas ou linhas, respectivamente, na matriz (ou vetor).
+
+```{r}
+a <- matrix (10:1,ncol=2) #construir uma matriz qualquer
+a
+```
+
+```{r}
+b <- cbind (a,1:5) #adicionar uma terceira coluna
+b
+```
+
+```{r}
+c<- rbind(b,c(28,28,28))
+c
+```
+
+
+Opcionalmente matrizes podem ter nomes associados ás linhas e colunas ("rownames"e "colnames"). Cada um destes componentes da matrix é um vetor de nomes.
+
+```{r}
+m1 <- matrix(1:12, ncol = 3) 
+
+dimnames(m1) <- list(c("L1", "L2", "L3", "L4"), c("C1", "C2", "C3")) 
+dimnames(m1)
+```
+
+Matrizes são muitas vezes utilizadas para armazenar frequências de cruzamentos entre variáveis. Desta forma é comum surgir a necessidade de obter os totais marginais, isto é a soma dos elementos das linhas e/ou colunas das matrizes, o que pode ser diretamente obtido com `margin.table( )`. 
+
+```{r}
+ margin.table(m1, margin = 1)
+ margin.table(m1, margin = 2)
+ apply(m1, 2, median)
+ 
+```
+
+
 ## Fatores
+
+Os fatores são vetores em que os elementos pertencem a uma ou mais categorias temáticas. Por exemplo: ao criar um vetor de indicadores de **"tratamentos"** em uma análise de experimentos devemos declarar este vetor como um **"fator"**. 
+Pode criar um fator usando o comando **factor()**, ou o comando **gl**.
+```{r}
+factor(rep(paste("T", 1:3, sep = ""), c(4, 4, 3)))
+```
+
+```{r}
+peso  <- c(134.8, 139.7, 147.6, 132.3, 161.7, 157.7, 150.3, 144.7,
+           160.7, 172.7, 163.4, 161.3, 169.8, 168.2, 160.7, 161.0,
+           165.7, 160.0, 158.2, 151.0, 171.8, 157.3, 150.4, 160.4,
+           154.5, 160.4, 148.8, 154.0)
+trat  <- rep(seq(0,300,50), each=4)  #?each
+dados <-  data.frame(peso, trat=as.factor(trat))
+```
+
 ## Array
+
+  O conceito de array generaliza a idéia de matrix. Enquanto em uma matrix os elementos são organizados em duas dimensões (linhas e colunas), em um array os elementos podem ser organizados em um número arbitrário de dimensões.
+No R um array é definido utilizando a função `array()`. 
+```{r}
+ar1 <- array(1:24, dim = c(3, 4, 2)) 
+ar1
+```
+
+Veja agora um exemplo de dados já incluído no R no formato de array. Para "carregar" e visualizar os dados digite:
+```{r}
+data(Titanic) 
+Titanic
+```
+
+Para obter maiores informações sobre estes dados digite:  `help(Titanic)`
+
+Agora vamos responder ás seguintes perguntas, mostrando os comandos do R utilizados sobre o array de dados.
+
+1. Quantas pessoas havia no total?
+```{r}
+sum(Titanic)
+```
+
+2. Quantas pessoas havia na tripulação (crew)?
+
+```{r}
+sum(Titanic[4, , , ])
+```
+
+3. Quantas pessoas sobreviveram e quantas morreram?
+
+```{r}
+apply(Titanic, 4, sum)
+```
+
+4. Quais as proporções de sobreviventes entre homens e mulheres?
+
+```{r}
+margin.table(Titanic, margin = 1)
+```
+
+```{r}
+margin.table(Titanic, margin = 2)
+```
+
+```{r}
+margin.table(Titanic, margin = 3)
+```
+
+```{r}
+margin.table(Titanic, margin = 4)
+```
+
+Esta função admite ainda índices múltiplos que permitem outros resumos da tabela de dados. Por exemplo mostramos a seguir como obter o total de sobreviventes e não sobreviventes, separados por sexo e depois as porcentagens de sobreviventes para cada sexo.
+
+```{r}
+margin.table(Titanic, margin = c(2, 4))
+prop.table(margin.table(Titanic, margin = c(2, 4)), margin = 1)
+prop.table(margin.table(Titanic, margin = c(2, 1)), margin = 1)
+```
+
 ## Data.frame
+
+Os datas.frames são muitos semelhantes ás matrizes, pois têm linhas e colunas e, portanto, duas dimensões. Entretando, diferentemente das matrizes, colunas diferentes podem armazenar elementos de tipos diferentes. Por exemplo, a primeira coluna pode ser numérica, enquanto a segunda, constituida de caracteres. Cada coluna precisa ter o mesmo tamanho.
+Criar o vetor nomes
+```{r}
+nome <- c("Melissa José",
+          "Jennifer Linhares",
+          "Gedilene Ponciano",
+          "Edinar da Silva",
+          "Osmar Emidio",
+          "Jeeziel Vieira")
+```
+
+Criar vetor idade
+```{r}
+idade <- c(17,18,16,15,15,18)
+```
+   
+Criar vetor sexo (categoria=fator)
+```{r}
+sexo <- factor(c("F","F","F","F","M","M"))
+```
+
+Criar vetor altura
+```{r}
+alt <- c(180,170,160,150,140,168)
+```
+
+Reunir tudo em um data.frame
+```{r}
+dados <- data.frame(nome, idade, sexo, alt)
+```
+
+Ver atributos da tabela
+```{r}
+str(dados)
+```
+
+Adicionar nome as linhas com o comando `row.names()`
+```{r}
+row.names(dados) <- c(1,2,3,4,5,6)
+dados
+```
+```{r}
+names(dados) <- c("Nome", "Idade", "Sexo", "altura")
+dados
+```
+
 ### Índice dos Data.frames
+Buscar elementos 
+```{r}
+dados[2,1] #elemento da  linha  2, coluna 1
+dados[2,] #toda linha dois
+
+```
+
+Repare que apesar de "Nomes" ter sido criado como vetor de caracterer o R passou a entender como um fator dentro do data.frame.
+```{r}
+dados[,1]
+```
+
+Transformar para caracterer
+```{r}
+dados[,1] <- as.character(dados[,1])
+dados[,1]
+```
+
+Acessando aos dados
+```{r}
+dados$Nome
+dados$Nome[3]
+dados$Nome [1:3]
+```
+```{r}
+str(dados)
+```
+
 ### Manipulando um Data.frame
+Você pode manipular um data.frame add ou eliminando colunas ou linhas, assim como em matrizes. Podem-se usar os comandos `cbind()` e `rbind ()` para adcionar colunas e linhas rescpectivamente, a um data.frame.
+
+```{r}
+dados <- cbind (dados, #adicionar uma coluna
+               Conceito=c("A","A","A","C","A","B"))
+```
+
+```{r}
+dados <- rbind (dados, #adicionar uma linha
+                "7"= c("Caio Pinto", 21, "M", 172, "C"))
+dados
+```
+
+Assim como para vetores e matrizes voce pode selecinar um subgrupo de um data.frame e armazena-lo em um outro objeto ou utilizar índices como o sinal negativo para eliminar linhas ou colunas de um data.frame.
+
+```{r}
+dados<- dados [1:6,] #selecionar linha de 1 a 6
+dados<- dados [,-5] #excluir a quinta coluna
+dados
+```
+```{r}
+dados[dados$Sexo=="F",] #exibir só masculinos
+```
+
+A ordenação das linhas de um **data.frame** segundo os dados contidos em determinadas coluna também é extremamente útil
+```{r}
+dados [order(dados$altura),]
+```
+
+```{r}
+dados [rev(order(dados$altura)),]
+```
+
 ### Separando um data.frame por grupos
+
+```{r}
+split (dados, sexo)
+```
+
 ## Lista
+
+Lista são objetos muito úteis, pois são usados para combinar diferente estruturas de dados em um mesmo objeto, ou seja, vetores, matrizes, arrays, data.frames e ate mesmo outras listas.
+
+
+```{r echo=TRUE}
+pes <- list (idade=32, nome="Maria", notas=c(98,95,78), B=matrix(1:4,2,2))
+pes
+```
+
+Lista são construidas com o comando `list ()`. Quando você exibe um objeto que é uma lista, cada componente é mostrado com seu nome **$** ou **[ ]**
+
+```{r include=FALSE}
+pes$nome
+pes$notas
+
+pes[1]
+pes[3]
+```
+
 ### Alguns comandos que retornam listas
+
+Muitos comando do R retornam seu resultado na forma de listas. Um exemplo pode ser mostrado com o uso do comando `t.tes()`, que retorna um objeto que é uma lista.
+
+```{r}
+x <- c(1,3,2,3,4)
+y <- c(4,5,5,4,4)
+tt <- t.test (x,y, var.equal=T)
+tt
+```
+
+Comprovar que é uma lista
+```{r}
+is.list(tt)
+mode (tt)
+```
+
+Exibir o componentes da lista
+```{r}
+names(tt)
+```
+
+```{r}
+tt$conf.int #intervalo de confianca 
+```
+
 ## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
 
 <!--chapter:end:02-Estrutura_basica.Rmd-->
 
-
 # Entrada de dados 
 
-Placeholder
+  Este terceiro Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/) modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
 
+  O diretorio  de trabalho é aquele usado pelo R para gravar, ler, importar e exportar arquivos quando nenhum outro caminho é explicitado.
 
 ## Onde os dados devem estar? 
+ 
+Para saber onde os diretorios estão basta digitar o comando `getwd()`
+```{r}
+ getwd() #para verificar  diretório de trabalho
+```
+
+Caso queira alterar o diretorio de trabalho para um outro qualquer digite o comando `setwd()`
+
+```{r eval=FALSE, include=T}
+setwd("C:/R_Curso") #para  altear o diretório de trabalho
+```
+ 
+ Outra forma de mudar o caminho é com o comando: 
+```{r eval=FALSE, include=T}
+caminho<-file.choose() # ou usando as teclhas shift + Crtl + H
+```
+ 
+Este comando irá abrir uma tela para que o usuário navegue nas pastas e escolha o arquivo a ser aberto. 
+ 
+Você pode exibir o conteudo do diretório com o comando `dir()`
+```{r}
+dir()
+```
+
+ 
 ## Entrando com dados
+
+O formato mais adequado vai depender do tamanho do conjunto de dados, e se os dados já existem em outro formato para serem importados ou se serão digitados diretamente no R.
+
+A seguir são descritas formas de entrada de dados com indicão de quando cada uma das formas deve ser usada. 
+
 ### Vetores
+
+Podemos entrar com dados definindo vetores com o comando `c()`, conforme visto no capítulo 3.
+
+```{r}
+vetor <- c(2,5,7)
+```
+
+Esta forma de entrada de dados é conveniente quando se tem um pequeno número de dados. Quando os dados tem algum elementos repetidos, números sequenciais pode-se usar mecanismos do R para facilitar a entrada dos dados como vetores.
+
+```{r}
+vetor <- rep(c(2,5), 5)  # cria vetor repetindo 5 vezes 2 e 5 alternadamente
+vetor
+
+vetor <- rep(c(5,8), each=3)  # cria vetor repetindo 3 vezes 5 e depois 8
+vetor
+```
+
 ### Usando a função 'scan'
+
+Esta função coloca o modo prompt onde o usuário deve digitar cada dado seguido da tecla <ENTER>. Para encerrar a entrada de dados basta digitar <ENTER> duas vezes consecutivas. Veja o seguinte resultado:
+
+```{r}
+y <- scan()
+
+#1: 11
+#2: 24
+#3: 35
+#4: 29
+#5: 39
+#6: 47
+#7:
+#Read 6 items
+
+y
+#[1] 11 24 35 29 39 47
+```
+
+Este formato é mais ágil que o anterior e mais conveniente para digitar vetores longos.
+
 ### Copiar e colar usando scan()
+
+Pode usar o recurso "copiar e colar" com o comando `scan`.
+Após copiar os dados (crtl+C), digite no **prompt**/**console** o comando `scan()`, aperte >ENTER<, depois cole o texto e, aperte >ENTER< novamente.
+
 ### Lendo dados através da área de transferência
+Funções como `scan()`, `read.table()` e outras podem usadas para ler os dados diretamente da área de transferência passando-se ao *"clipboard"* ao primeiro argumento.
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("clipboard", header=TRUE, dec=",")
+```
+
+
 ### Usando a função edit
+
+O comando `edit(data.frame())` abre uma planilha para digitação de dados que são armazanados como data-frames. 
+
+```{r}
+dados <- edit(data.frame())
+
+```
+
+![data-frame](https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1)
+
+Se voce precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados use o comando `fix`. 
+
+```{r}
+
+fix(dados)
+head(dados)
+```
+
 #### Exemplo 1
+```{r}
+teste <- c(10,20,30,40,50)
+teste
+```
+Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisar criar novamente um objeto, use o comando `edit()`
+
+```{r}
+teste2 <- edit(teste)
+```
+![edit](https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1)
+
+
 #### Exemplo 2
+
+Com uma planilha com  três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo ora descrito com o uso do comando `scan()`. Abra o arquivo . [EVI-prec.xlsx](https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1).
+
+```{r eval=FALSE, include=FALSE}
+ano <- scan()
+chuva <- scan()
+evi <- scan ()
+```
+
+Uma matrix com os dados poderá ser obtida com o comando `cbind`
+
+```{r eval=FALSE, include=T}
+dados <- cbind(ano, chuva, evi)
+```
+
+Os objeto dados é um **data.frame**
+```{r eval=FALSE, include=T}
+is.data.frame(dados)
+```
+
+Transforme para um data.frame com o comando **as.data.frame**
+```{r eval=FALSE, include=T}
+dados_m <- as.data.frame(dados)
+```
+
+Poderia usar o comando data.frame direto
+```{r eval=FALSE, include=T}
+dados=data.frame (ano, chuva, evi)
+```
+
 ### Lendo dados de um arquivo texto
+ 
+ É muito importante ter os dados tabulados em um arquivo-texto ou em outros formatos que permitem a conversão para dados texto. O comando `read.table ()` é extremamente útil por ler dados de um arquivo-texto no formato de um **data.frame**
+ 
+Usando o Comando `read.table ()`
+
 #### Exemplo 1 
+
+Como primeiro exemplo considere importar para o R os dados do arquivo texto [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1).
+
+```{r eval=FALSE, include=T}
+ex01 <- read.table("exemplo1.txt") 
+
+#Use os comandos
+  ex01
+  class(ex01)
+  names(ex01)
+  dim(ex01)
+  str(ex01)
+  head(ex01)
+ 
+```
+
 #### Exemplo 2 
+Como primeiro exemplo considere importar para o R os dados  do arquivo de texto [exemplo2.txt](https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1).
+
+```{r eval=FALSE, include=T}
+ex02 <- read.table("exemplo2.txt") 
+ex02
+```
+
+Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente temos que informá-lo disto com o argumento _head=T_. Portanto para importar este arquivo usamos:
+
+```{r eval=FALSE, include=T}
+ex02 <- read.table("exemplo02.txt", head=T) 
+ex02
+```
+
 ### Dados do tipo CSV
+
+[Exemplo3.csv](https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1): Vamos utilizar um arquivo de tipo **CSV**.
+
+```{r eval=FALSE, include=T}
+ex03 <- read.table("exemplo3.csv.", head=T, sep=":", dec=",") 
+ex03
+```
+
+Note que este arquivo difere do primeiro em outros aspectos.
+*read.table.*
+
+```{r eval=FALSE, include=T}
+ex03 <- read.table(       # lê dados de um arquivo texto
+  "exemplo3.csv",         # nome do arquivo ou o caminho c:/R.exemplo3.csv
+  head=T,                 # primeira linha ? cabe?alho
+  sep=":",                # separador de coluna 
+  dec=",")                # virgula como separador
+ex03                      # exibe o objeto
+
+```
+                     
+1.**sep**: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)
+
+1.**dec**: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).
+
+1.**header**: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. 'FALSE', assume que os dados se iniciam na primeira linha.
+
+
 ### A seguir listamos algumas  destas funções:
+
+1. *read.dbf()* para arquivos DBASE
+1. *read.epiinfo()* para arquivos .REC do Epi-Info
+1. *read.mtp()* para arquivos "Minitab Portable Worksheet"
+1. *read.S()* para arquivos do S-PLUS, e restore.data() para "dumps" do S-PLUS
+1. *read.spss()* para dados do SPSS
+1. *read.systat()* para dados do SYSTAT
+1. *read.dta()* para dados do STATA
+1. *read.octave()* para dados do OCTAVE (um clone do MATLAB)
+1. *read.csv*(file, header = TRUE, sep=",", dec=".")
+1. *read.csv2*(file, header = TRUE, sep=";", dec=",")
+1. *read.delim*(file, header = TRUE, sep="\t", dec=".")
+1. *read.delim2*(file, header = TRUE, sep="\t", dec=",")
+
 ### Lendo dados disponíveis na web
+
+**Exemplo 4**: As funções permitem ler ainda dados diretamente disponíveis na web. Por exemplo os dados do [exemplo1.txt](https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1) poderiam ser lidos diretamente com o comando a seguir
+
+```{r eval=FALSE, include=FALSE}
+dados <- read.table("https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1")
+```
+
 ### Lendo dados de uma planilha eletrônica
+
+Com o **pacote xlsx** é possivel ler os dados diretamente da planilha eletrônica do Excel.
+
+```{r eval=FALSE, include=T}
+install.packages("")
+require("xlsx")
+```
+
+
+O comando *read.xlsx()*, do **pacote xlsx**, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um *data.frame*.
+
+```{r eval=FALSE, include=T}
+dados <- read.xlsx(
+                    file="C:/R/EVI_Prec.xlsx",     #comando que lê planilhas
+                    sheetName = "Conbea",          #nome da planilha
+                    h=T)                           #sem cabeçalho  
+```
+
 ### Exercícios
+
+1. Baixe os seguintes arquivos:
+   - [BanzattoQd1.2.3.txt](https://www.dropbox.com/s/uq1n2sv8an2eoan/BanzattoQd1.2.3.txt?dl=1)
+   - [BanzattoQd3.2.1.txt](https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1)
+   - [BanzattoQd3.4.1.txt](https://www.dropbox.com/s/yv5clm6qljurzbw/BanzattoQd3.4.1.txt?dl=1)
+
+Coloque os arquivos em um local apropriado (de preferncia no mesmo diretorio de trabalho que voce definiu no início da sessão), faça a importação usando a função  de sua escolha, e confira a estrutura dos dados com ´str()´.
+
 ## Salvar objetos de dados
+
+Salvar objetos de dados nos formatos **.txt** ou **.csv**
+função: **write.table**
+sintaxe da função:
+  *write.table*(x, file, sep="", dec="", rownames = T, col.names = T)
+  
+Principais argumentos:
+1. x - matriz ou data frame
+1. file - nome do arquivo ou caminho do arquivo
+1. sep - separador da coluna
+1. dec - separador deciminal
+
 ### Outras funções
+
+`write.csv()`
+`write.csv2()`
+`write.xlsx ()`
+
+**Exemplo:**
+write.xlsx(dados,"tabela salva.xlsx")
+
+
 ## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+
 
 <!--chapter:end:03-Entrada_dados.Rmd-->
 
-
 # Criando Gráficos com o R
+  
+  Este capitulo foi baseado nos livros
+  
+   - [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294)
+   
+   - AQUINO, J. A. **R para cientistas sociais**. - Ilhéus, BA: EDITUS, 2014. 157. 
+  
+   - ANJOS, A. **Análise gráfica com uso do R**. Apostila. Dep. de Estatistica da UFPR, 2016. 127p. 
+   
+   Sites
+   
+   - https://www.statmethods.net/index.html 
 
-Placeholder
+   - http://curso-r.github.io/index.html PET Estatística UFPR (2016). **labestData: Biblioteca de Dados para Aprendizado de Estatística**. R package version x.y-z.w.
+   - https://www.statmethods.net/index.html
+  
+  Modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo. 
 
+  
+O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o *graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como
+*lattice*, *ggplot2*, *ggobi* e *rgl*.
+
+O R possui diferentes funções geradoras de gráficos, e essas são classificados como:
+
+   - *Funções gráficas de alto nível*: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: *plot, hist, image, contour, persp etc*.
+
+   - *Funções gráficas de baixo nível*: permitem adicionar novas informações em gráficos já criados, como novos dados, linhas etc. Exemplos: *points, lines, abline,* *polygon, legend etc*.
+
+   - *Funções gráficas iterativas*: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: *locator e identify*.
 
 ## Exemplos de gráficos com o R
+Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:
+
+```{r}
+demo(image)
+
+```
+
+```{r}
+demo(persp)
+```
+
+```{r include=T}
+demo(graphics)
+```
+
 ## Entrada de dados
+Nesse tópico utlizaremos o arquivo de dados [dadosfisio.csv](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1). 
+
+Dados fisico hidrico de 3 solos com textutas diferentes. 
+
+Cod. | Solo    | Areia | Silte | Argila
+-----|---------|-------|-------|-------
+Z1   |NITOSSOLO|  122  |  121  |  757 
+Z2   |LATOSSOLO|  710  |  80   |  210
+Z3   |LATOSSOLO|  892  |  10   |  98 
+
+Ler dados via web.
+```{r}
+solo <- read.table("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1", sep = ";", header = T, dec = ",")
+```
+
+Verificar a estrutura de dados.
+```{r}
+str(solo)
+
+```
+
+Resumo estatástico da coluna 5 a coluna 8 de todos os solos
+```{r}
+summary(solo[5:8])
+```
+
+Neste exemplo vamos analisar cada solo separadamente usando o comando `subset()`
+```{r}
+solo1 <- subset(solo, z==1)
+solo2 <- subset(solo, z==2)
+solo3 <- subset(solo, z==3)
+
+```
+
+
+
 ## Usando a função `plot()`
+
+A função `plot()` inicia um novo gráfico. Em sua forma mais simples a função
+recebe valores de coordenadas *ds* (densidade do solo) e *ptotal* (porosidade total do solo) do solo z1.
+
+```{r}
+plot(solo1$ds,solo1$ptotal)
+```
+
+
+Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type="l" na função `plot()` 
+
+```{r}
+plot(solo1$ds,solo1$ptotal, type = "l")
+
+```
+
+Verifique outras opcões para os gráfico
+
+   - *type = "p"* especifica o tipo de plotagem
+   - *"p"*: pontos,
+   - *"l"*: linhas,
+   - *"b"*: pontos conectados por linhas,
+   - *"o"*: id. mas as linhas estão acima dos pontos,
+   - *"h"*: linhas verticais,
+   - *"s"*: passos, os dados são representados pelo topo das linhas verticais,
+   - *"S"*: id. mas os dados são representados pela parte inferior das linhas verticais
+
+```{r}
+x <- 0:12
+y <- sin(pi/5 * x)
+op <- par(mfrow = c(3,3), mar = .1+ c(2,2,3,1))
+for (tp in c("p","l","b",  "c","o","h",  "s","S","n")) {
+  plot(y ~ x, type = tp, main = paste0("plot(*, type = \"", tp, "\")"))
+  if(tp == "S") {
+    lines(x, y, type = "s", col = "red", lty = 2)
+    mtext("lines(*, type = \"s\", ...)", col = "red", cex = 0.8)
+  }
+}
+par(op)
+```
+
 ### Mudando o padrão dos pontos `pch=`
+
+Pode-se usar diferentes padrões para os pontos usando o argumento `pch=`.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
+Use a opção `pch =` para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda `(col =)`.
+
+```{r}
+plot(solo1$ds,solo1$ptotal, pch=21, ylim = c(0,0.6), xlim = c(1,2))
+
+
+plot(solo2$ds,solo2$ptotal,pch=2, col="blue") 
+
+plot(solo3$ds,solo3$ptotal,pch="%")
+```
+
+Neste exemplo acima note, que foi adicionado o argumento `ylim` e `xlim` eles limitam os valores minimos e maximos: 
+```{r eval=FALSE, include=T}
+
+xlim=c(xmin, xmax) ylim=c(ymin, ymax))
+```
+
+
+Veja um exemplo do padrão dos pontos.
+```{r}
+plot (0:20,                         #coord. eixo X
+      rep (0,21),                   #coord. eixo y
+      pch = 0:20,                   #padrão dos pontos variando
+      cex = 2,                      #tamanho dos pontos
+      main = "Padrão dos pontos", #Titulo (note o \n)
+      xlab = "pch = ",              #texto do eixo de x
+      ylab = "")                    #texto do eixo de y
+      
+```
+
+
 ### Mudando as linhas (`lwd e lty`)
+
+Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento `lwd=`, enquanto os estilos das linhas podem ser modificados com o argumento `lty=`.
+
+
+```{r}
+plot(solo3$ds,solo3$ptotal, lwd=2) # linha grossa
+plot(solo2$ds,solo2$ptotal, lty=2) #linha interrompida
+```
+
+```{r}
+x <- 1:9
+y <- 1:9
+  plot(x, y, type = "n")
+    lines(c(2, 8), c(8, 8), lwd = 2)
+    lines(c(2, 8), c(7, 7), lty = 2, lwd = 2)
+    lines(c(2, 8), c(6, 6), lty = 3, lwd = 2)
+    lines(c(2, 8), c(5, 5), lty = 4, lwd = 2)
+    lines(c(2, 8), c(4, 4), lty = 5, lwd = 2)
+    lines(c(2, 8), c(3, 3), lty = 6, lwd = 2)
+```
+
+
+
 ### Adicionando  linhas a um grafico de pontos
+
+A função utilizada para inserir linhas é `abline()`.
+Vamos usar a função `abline` para inserir uma linha que mostra a média dos dados do eixo Y.
+o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.
+
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal))) 
+```
+
+
+Para passar uma linha que passa pela média de x
+```{r}
+plot(solo3$ds,solo3$ptotal)
+
+```
+
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(v=mean(solo3$ds))) ## o v é de vertical
+```
+
+Também é possível inserir as duas linhas ao mesmo tempo.
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col="red"))
+```
+
+Com cores diferentes
+```{r}
+plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col=c(2,4)))
+```
+
+
 ### Definindo o intervalo dos eixos
+
+Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem diferentes amplitudes como nosso exemplo do solos, deve usar o argumento `type=n`. Com este argumento um gráfico em branco é criado.
+
+```{r}
+plot(c(1.55,2),c(0,0.6),type='n')
+points(solo3$ds,solo3$ptotal, pch=2)
+points(solo2$ds,solo2$ptotal)
+
+```
+
+
 ### Personalizando os gráficos
+
+Alguns parâmetros podem ser usados no intuito de personalizar um gráfico no R. 
+
+Exemplo:
+```{r}
+
+plot(solo1$ptotal,solo1$ds)
+
+plot(solo1$ptotal,solo1$ds,          #plota ds e ptotal
+xlab="Macroporosdiade (%)",          #nomeia o eixo x
+ylab=expression(Ds~(mg~Kg^{-1})),    #nomeia o eixo y
+main="Como personalizar um gráfico", #referente ao título
+xlim=c(0.48,0.64),                   #limites do eixo x
+ylim=c(0,2), col="red",              #limites do eixo y
+pch=22,                              #padrão dos pontos
+bg="yellow",                         #cor de preenchimento
+tcl=0.4,                             #tamanho dos traços dos eixos
+las=1,                               #orientação do texto em y
+cex=1.5,                             #tamanho do objeto do ponto
+bty="l",                             #altera as bordas
+abline(lm(solo1$ds~solo1$ptotal)))   #regressao dos pontos
+```
+
+Veja o `demo(plotmath)` para saber mais sobre anotações em gráficos.
+
 ## Histogramas
+
+A função `hist()` produz um histograma dos dados informados em seu argumento enquanto a função `barplot()` produz um gráfico de barras.
+
+```{r}
+hist(solo1$ds)
+rug(solo1$ds)
+```
+
 ### Personalizando gráficos
+Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
+default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
+informações detalhadas desses parâmetros se usar os recursos de ajuda do R. 
+
+```{r}
+hist(solo1$ds, #histograma de ds
+     main="Histograma Personalizado\ndensidade do solo",#título
+     xlab=expression(Ds~(mg~Kg^{-1})), #texto do eixo das abscissas
+     ylab="Probabilidades", #texto do eixo das ordenadas
+     xlim=c(1,2), #limites do eixo de x
+     ylim=c(0,10), #limites do eixo y
+     col="lightblue", #cor das colunas
+     border="white", #cor das bordas das colunas
+     adj=0, #alinhamento dos textos 0, 0.5 e 1
+     col.axis="red") #cor do texto nos eixos
+```
+
 ## Gráficos de Barras
+  Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos
+
+```{r}
+barplot(solo$ptotal,names.arg=solo$z, horiz = T)
+        
+```
+
 ## Boxplots
+
+Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em *delineamento inteiramente casualizado* com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
+
+```{r}
+dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1")
+str(dados)
+```
+
+*trat* 
+Fator de níveis nominais. Tratamento aplicado para controle do pulgão.
+
+*rept*
+Número inteiro que identifica as repetições de cada tratamento.
+
+*pulgões*
+Número de pulgões coletados 36 horas após a pulverização dos tratamentos.
+
+
+Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é `boxplot` `( x , data =)` , em que `x` é uma fórmula e `data =` denota o quadro de dados que fornece os dados. 
+
+Um exemplo de uma fórmula é `y ~ group` onde um boxplot separado para a variável numérica é gerado para cada valor de group. 
+
+```{r}
+x11()
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #título
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3)                     #cor verde  
+                          
+```
+
+Adicione `horizontal = TRUE` para inverter a orientação do eixo.
+
+```{r}
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #t?tulo
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3, horizontal = T,     #cor verde  
+        notch=T)                   #teste para mediana
+```
+
 ### Boxplot com fatorial
+
+Boxplot com 2 fatores, com caixas coloridas para facilitar a interpretação.
+
+**Efeito de Recipientes para duas Espécies de Eucalipto**
+
+Experimento em esquema fatorial 3x2 para estudar o efeito de 3 tipos de recipientes para a produção de mudas de duas espécies de Eucalipto. O experimento foi instalado em delineamento inteiramente casualizado.
+
+*recipie*
+São os níveis de recipiente estudados: 
+   - SPP - saco plástico pequeno;
+   - SPG - saco plástico grande; e
+   - Lam - laminado.
+
+*especie*
+São as espécies de Eucalipto: *Eucalyptus citriodora* e *Eucalyptus grandis*
+
+*rept*
+Identifica as repetições de cada combinação dos fatores recipiente e espécie.
+
+*alt*
+Altura das mudas aos 80 dias de idade (cm).
+
+Baixar dados via web.
+
+```{r}
+fat <- read.table("https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1")
+str(fat)
+```
+
+Gerar o gráfico boxpolt com o comando abaixo.
+
+```{r}
+boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
+        col=(c("gold","darkgreen","brown")),
+        main="Fatorial", xlab="Recipiente e Espécies",
+        ylab="Altura de plantas (cm)")
+```
+
+
 ## Cores
+
+  Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando `col="red"` (escrevendo o nome da cor) ou `col=2` (usando números).
+O comando abaixo mostra os números que especificam algumas cores.
+
+```{r}
+pie(rep(1,30),col=rainbow(30))
+```
+
+Veja sua tabela de cores executando o script [paletedecores.R](https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1).
+
+Podemos também criar cores personalizadas usando a função do `rgb()`, que recebe como argumentos as quantidades de vermelho *(red)*, verde *(green)* e azul *(blue)* e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1. 
+
+Exemplos:
+
+```{r}
+goiaba <- rgb(0.94, 0.41, 0.40)
+goiaba.semitrans <- rgb(0.94, 0.41, 0.40, alpha = 0.5)
+vitamina <- rgb(red = c(0.87, 0.70), green = c(0.83, 0.77),
+blue = c(0.71, 0.30), names = c("leite", "abacate"))
+```
+
+
 ## Interagindo com a Janela gráfica
+
+Poderemos com o mouse marcar o ponte desejado usando a função `identify ()`
+
+```{r}
+plot(solo1$ds~solo1$ptotal)
+identify(solo1$ds,n=1)
+```
+
+
 ## Texto e tamanho do símbolo
+
+As seguintes opções podem ser usadas para controlar o tamanho do texto e do símbolo em gráficos.
+
+`cex`	número que indica o valor pelo qual o texto e os símbolos de plotagem devem ser dimensionados em relação ao padrão. 
+*1 = padrão, 1,5 é 50% maior, 0,5 é 50% menor, etc.*
+
+```{r eval=FALSE, include=FALSE}
+boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
+        col=(c("gold","aquamarine","aliceblue")),
+          main="Fatorial", 
+          xlab="Recipiente e Espécies",
+          ylab="Altura de plantas (cm)",
+            cex.axis=1,               #ampliação da anotação do eixo em relação ao cex
+            cex.lab=1.5,              #ampliação dos rótulos x e y em relação ao cex
+            cex.main=1.5)             #ampliação de títulos em relação ao cex
+              
+```
+
+
 ## Visualizar vários gráficos
+
+```{r}
+x11()
+boxplot(pulgoes~trat,              #formula do boxplot
+        data = dados,              #conjunto de dados
+        main="boxplot",            #título
+        xlab="Controle do pulgão", #texto do eixo x 
+        ylab="Numero de plugões",  #texto do eixo y
+        col=3,                     #cor verde  
+        notch=F)                   #teste para mediana
+
+```
+
+
 ### Varios gráficos na mesma janela gráfica
+
+Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função `par()`.
+
+**Exemplo 1**
+
+```{r}
+par(mfrow = c(2,2)) #2 linhas e 2 colunas
+plot(solo1$ptotal,solo1$ds)
+boxplot(solo1$ds,solo2$ds, solo3$ds)
+hist(solo$ptotal)
+plot(solo$ptotal,solo$ds)
+```
+
+**Exemplo 2**
+
+```{r}
+par(mfrow = c(2,3))
+pairs(solo)
+hist(solo$ds)
+plot(solo$ds, col=solo$z)
+plot(density(solo$ds))
+```
+
+
 ## Salvando gráficos
+
+Você pode salvar o gráfico em vários formatos no menu 
+*Arquivo -> Salvar como*.
+
+Você também pode salvar o gráfico via código usando uma das seguintes funções.
+
+
+`pdf (file = "meugráfico.pdf")	`          #ficheiro PDF
+
+`win.metafile ("meu grafico.wmf")`	      #metarquivo do windows
+
+`png ("meu grafico.png") `        	      #arquivo png
+
+`jpeg ("meu grafico.jpg")`	              #arquivo jpeg
+
+`bmp ("meu grafico.bmp")`	                #arquivo bmp
+
+`postscript ("meu grafico.ps")	`          #arquivo postscript
+
 
 <!--chapter:end:04-Criando_graficos.Rmd-->
 
-
 # Gráficos com ggplot2
 
-Placeholder
+Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na *Grammar of Graphics* (Gramática dos Gráficos) para descrever os gráficos de dados.
+
+Utilize o codigo abaixo para instalar o pacote ggplot2
+
+```{r eval=F, include=T}
+install.packages("ggplot2")
+```
+
+Sempre carregue o pacote antes de utilizá-lo.
+
+```{r}
+library(ggplot2)
+```
+
+Utilizaremos o banco de dados:
+[dadosfisio](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1) 
+
+Baixar os dados
+```{r}
+fisio <- read.csv2("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1")
+```
+
+Veja as primeiras linhas. 
+
+```{r}
+head(fisio)
+```
+
+O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa  a densidade do solo  e ao eixo x a variavel  capacidade de campo.
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc)) +
+  geom_point()
+```
+
+Aqui, essas formas geomótricas são pontos, selecionados pela função `geom_point()`, gerando, assim, um gráfico de dispersão.
+
+A função `aes()` vem da palavra *Aesthetics* define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função `colour`.
+
+Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
+  geom_point()
+```
+
+Agora, a variável *z* (classe de solo) foi mapeada a cor dos pontos, sendo que pontos vermelhos correspondem ao Nitossolo (valor 1) e pontos azuis  e verdes os Latossolos. Observe que inserimos a variável *z* como um fator, pois temos interesse apenas nos valores "1",  "2" e "3". No entanto, tambem podemos mapear uma variável contínua a cor dos pontos:
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc, colour = ptotal)) +
+  geom_point()
+```
+
+A porosidade do solo (ptotal), é representado pela tonalidade da cor azul.
+
+Também podemos mapear o tamanho dos pontos a uma variável de interesse.
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc, colour = ptotal, size = ma)) +
+  geom_point()
+```
+
+Outros `geoms` bastante utilizados:
+
+  - geom_line: para retas definidas por pares (x,y)
+  - geom_abline: para retas definidas por um intercepto e uma inclinação
+  - geom_hline: para retas horizontais
+  - geom_boxplot: para boxplots
+  - geom_histogram: para histogramas
+  - geom_density: para densidades
+  - geom_area: para áreas
+  - geom_bar: para barras
+
+Veja a seguir como é fácil gerar diversos Gráficos diferentes utilizando a mesma estrutura do gráfico de dispersão acima:
+
+```{r}
+ggplot(data = fisio, aes(x = factor(z), y = ds)) +
+  geom_boxplot()
+```
+
+```{r}
+gra <- ggplot(data = fisio, aes(x = ds)) 
+ 
+```
+
+```{r}
+gra +  geom_histogram()
+```
+
+```{r}
+gra +  geom_histogram(binwidth=.05, colour="black", fill="white")
+```
+
+
+```{r}
+gra + geom_density() + 
+  geom_histogram (aes(y=..density..),              binwidth=.05,
+    colour="black", fill="white") +
+    geom_density(alpha=.2, fill="#FF6666")
+
+```
+
+**Exemplo**
+Baixar dados via web.
+```{r}
+dados <- read.table("https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1")
+```
+
+Criar gráficos.
+```{r}
+bar <- ggplot(data = dados, aes(y = peso, x = promalin, fill = factor(promalin)))
+```
+
+Nestes exemplos, a altura da barra representará o valor em uma coluna do quadro de dados. Isso é feito usando `stat="identity"` em vez do padrão `stat="bin"`.
+
+```{r}
+bar +  geom_bar(stat="identity")
+```
+
+Gráfico de barras agrupados
+
+```{r}
+bar +   geom_bar(stat="identity", position=position_dodge())
+```
+
+Empilhado 
+```{r}
+bar +   geom_bar(stat="identity", colour ="black")
+```
 
 
 ## Personalizando os gráficos
+
 ### Cores
+
+O aspecto `colour` do boxplot, muda a cor do contorno. Para mudar o preenchimento, basta usar o `fill`.
+
+Usando `colour`
+```{r}
+ggplot(data = fisio, aes(x = factor(z), y = ds, colour = factor(z))) +
+  geom_boxplot()
+```
+
+Usando `fill`
+```{r}
+ggplot(data = fisio, aes(x = factor(z), y = ds, fill = factor(z))) +
+  geom_boxplot()
+```
+
+Mude a cor dos objetos sem atribuir a uma variavel. Para isso, observe que os aspectos `colour` e `fill` são especificados fora do `aes()`.
+
+```{r}
+ggplot(data = fisio, aes(x = factor(z), y = ds)) +
+  geom_boxplot(colour = "darkblue", fill= "blue")
+```
+
 ### Eixos
+
+Para alterar os rotulos dos eixos acrescentamos as funções `xlab()` ou `ylab()`.
+
+```{r}
+box <- ggplot(data = fisio, aes(x = factor(z), y = ds, fill = factor(z))) +
+  geom_boxplot()+
+  xlab("Classes de solo") +
+  ylab(expression(paste(Densidade~do~solo," g cm "^{-3} )))
+  
+```
+
+
+Alterar os limites dos Gráficos usamos as funções `xlim()` e `ylim()`.
+```{r}
+  box + ylim (c(1.0,2.0))
+```
+
+Especifique marcas de escala diretamente
+```{r}
+box + coord_cartesian(ylim=c(1, 2)) + 
+    scale_y_continuous(breaks=seq(0, 2, 0.20))  
+```
+
+
+Troque os eixos x e y
+```{r}
+box +
+  coord_flip()
+
+```
+
+Definir rótulos de marca de escala
+```{r}
+box2 <- box +
+          scale_x_discrete(breaks=c("1", "2", "3"),
+            labels=c("Nitossolo","Latossolo", "Latossolo"))
+```
+
+
 ### Legenda
+
+
+Remover legenda para uma estética específica `(fill)`
+
+```{r}
+box2 + guides(fill=FALSE)
+```
+
+Também pode ser feito ao especificar a `scale`
+
+```{r}
+box2 + scale_fill_discrete(guide=FALSE)
+```
+
+Isso remove todas as legendas
+```{r}
+box2 + theme(legend.position="none")
+```
+
+Alterando a ordem dos itens na legenda
+```{r}
+box2 + scale_fill_discrete(breaks=c("2","3","1"))
+```
+
+Modificando o texto de legenda de tétulos e rótulos
+
+```{r}
+box3 <- box2 +
+        scale_fill_discrete(name="Classes\nde solo",
+                          breaks=c("1", "2", "3"),
+                          labels=c("CTI", "FEI", "IAPAR"))
+       
+ 
+```
+
+Modificando a aparência do título e dos rótulos da legenda
+
+```{r}
+# Título
+box3 + theme(legend.title = element_text(colour="black", size=13, face="bold"))
+
+# Níveis
+box3 + theme(legend.text = element_text(colour="black", size = 12, face = "bold"))
+```
+
+Modificando a caixa de legenda
+
+```{r}
+box3 + theme(legend.background = element_rect())
+box3 + theme(legend.background = element_rect(fill="gray90"))
+```
+
+Mudando a posição da legenda
+
+```{r}
+box3 + theme(legend.position="top")
+```
+
+Posicione a legenda no gráfico, em que x, y é 0,0 (canto inferior esquerdo) a 1,1 (canto superior direito)
+
+```{r}
+box3 + theme(legend.position=c(.5, .5))
+```
+
+Defina o "ponto de ancoragem" da legenda (o canto inferior esquerdo é 0,0; o canto superior direito é 1,1)
+```{r}
+box3 + theme(legend.justification=c(0,0), legend.position=c(0,0))
+```
+
+Coloque o canto inferior direito da caixa de legenda no canto inferior direito do gráfico
+```{r}
+box3 + theme(legend.justification=c(1,0), legend.position=c(1,0))
+```
+
 ### Título
+
+```{r}
+box3 + ggtitle("Variabilidade da densidade do solo\n em diferentes solos")
+
+
+box3 + labs(title="Variabilidade da densidade do solo\n em diferentes solos")
+
+```
+
 ### Facets
+
+Outra funcionalidade muito importante do **ggplot2** é o uso de `facets`.
+Você quer dividir seus dados por uma ou mais variáveis e plotar os subconjuntos de dados juntos.
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
+  geom_point() +
+  facet_grid(z~.)
+```
+
+Podemos colocar os graficos lado a lado também.
+
+```{r}
+ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
+  geom_point() +
+  facet_grid(.~z)
+```
+
+
 ## Exemplos
+
 ### Regressão
+
+**Efeito do Gesso no Peso de grãos de feijão**
+Estudo sobre o efeito do gesso no peso de grãos de feijo (*Phaseolus vulgaris* L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 n?veis de gesso, de 0 a 300, igualmente espaados em 50 kg ha-1.
+
+Baixar dados 
+
+```{r}
+dados <- read.table("https://www.dropbox.com/s/r6jz7mrktbgnbnx/BanzattoQd7.2.1.txt?dl=1")
+```
+
+Verificar a estrutura dos dados 
+```{r}
+str(dados)
+```
+
+Analise de regressão 
+```{r}
+model <- lm(  gesso ~ peso, dados)
+
+summary(model)
+```
+
+Extrair a equação do modelo
+```{r}
+eqn <- as.character(as.expression(substitute(italic(y) == a + b * italic(x) * "," ~~ italic(r)^2 ~ "=" ~ r2,list(a = format(coef(model)[1], digits=3),b = format(coef(model)[2], digits=3), r2 = format(summary(model)$r.squared, digits=3)))))
+```
+
+
+Criando o gráfico
+```{r}
+ggplot(dados,aes(x=gesso,y=peso,color=peso))  + 
+  geom_point(size=2.9,shape=19, colour="grey10") + 
+    theme_bw(base_size = 10) + 
+        ylab(expression(paste(  "Peso (g)" )))  + 
+        xlab(expression(paste(Gesso," kg ha"^{-1} )))  + 
+        annotate("text", label=eqn, parse=TRUE, x=Inf, y=-Inf,
+             hjust=1., vjust=-.5, size = 5)  +    
+        stat_smooth(method = lm, se = T, colour="red", size=.85)
+```
+
+
 ### Delineamento em blocos casualizados- DBC
+
+**Efeito do Promalin sobre Furtos de Macieira**
+
+Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espaçadas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
+
+Baixar dados 
+```{r}
+dados <- read.table("https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1")
+```
+
+Verificar Estrutura dos dados
+```{r}
+str(dados)
+```
+
+Transformação categorica
+```{r}
+dados$promalin = as.factor(dados$promalin)
+dados$bloco= as.factor(dados$bloco)
+```
+
+Estatistísca descritiva
+```{r}
+summary(dados)
+```
+
+Ativar o pacote ggplot
+```{r}
+library(ggplot2)
+```
+
+
+Fazer o gráfico
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+      geom_boxplot(size=0.55,shape=19, colour="black") + 
+      theme(legend.position="top") 
+```
+
+Analisando os blocos 
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+       geom_point() + 
+       theme(legend.position="top") + 
+       facet_wrap(~bloco,ncol=4)
+```
+
+Inserindo medias 
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+  geom_boxplot(size=0.55,shape=19, colour="black") + 
+  theme(legend.position="top") + 
+  facet_wrap(~bloco,ncol=4) 
+ 
+```
+
+Inserindo legenda nos eixos
+```{r}
+ggplot(dados,aes(x=promalin,y=peso, fill=promalin)) + 
+       geom_boxplot(size=0.55,shape=19, colour="black") + 
+       theme(legend.position="top") + 
+       xlab("Tratamentos") +  
+       ylab("Peso médio dos frutos (g)") 
+```
+
+Inserindo legenda nos eixos
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+      geom_boxplot(size=0.55,shape=19, colour="black") + 
+      theme(legend.position="top") + 
+      stat_summary(fun.y=mean, geom="point",shape=1,size=2) + 
+      xlab("Tratamentos") +  
+      ylab("Peso médio dos frutos (g)")  +
+      theme(panel.grid.minor = element_line(colour = "red", linetype = "dotted")) 
+```
+
+Inserindo `tema_bw` preto e branco 
+
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+      geom_boxplot(size=0.55,shape=19, colour="black") + 
+      theme(legend.position="top") + 
+      stat_summary(fun.y=mean, geom="point",shape=1,size=2) + 
+      xlab("Tratamentos") +  
+      ylab("Peso médio dos frutos (g)")  +
+      theme_bw() 
+```
+
+Inserindo legenda no topo
+
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+      geom_boxplot(size=0.55,shape=19, colour="black") + 
+      theme(legend.position="top") + 
+      stat_summary(fun.y=mean, geom="point",shape=1,size=2) + 
+      xlab("Tratamentos") +  
+      ylab("Peso médio dos frutos (g)")  +
+      theme_bw() +
+      theme(legend.position="top") 
+```
+
+
+Mudando escala do eixo y
+
+```{r}
+ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
+      geom_boxplot(size=0.55,shape=19, colour="black") + 
+      theme(legend.position="top") + 
+      stat_summary(fun.y=mean, geom="point",shape=1,size=2) + 
+      xlab("Tratamentos") +  
+      ylab("Peso médio dos frutos (g)")  +
+      theme_bw() +
+      theme(legend.position="top") +
+      scale_y_continuous(breaks=seq(0, 180, 5)) +
+      theme( axis.text.x  = element_text(angle=90, vjust=0, size=10))
+```
+
+
 ### Dados Climáticos
+
+Dados climáticos de Rondonópolis - MT
+
+Baixar dados no banco de dados o arquivo [roo.xlsx](https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1)
+```{r}
+roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
+View(roo)
+
+str(roo)
+```
+
+Boxplot para tempearatura minima 
+```{r}
+ggplot(data = roo, aes(x = factor(mm),y = (Tmin)))+
+  geom_boxplot() +
+  scale_x_discrete(breaks=c("1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11","12"),
+            labels=c("Jan","Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"))
+```
+
+Grafico de distruição de temperatura minima total
+
+```{r}
+ggplot(data = roo, aes(x = (Tmin)))+
+  geom_density()
+```
+
+
+
+Grafico de distribuição de temperatura minima para cada mês
+
+```{r}
+ggplot(data = roo, aes(x = (Tmin), fill=factor(mm)))+
+  geom_density() 
+  
+```
+
+
+
 ## Referência
+
+GROLEMUND, G. WICKHAM, H. R for Data Science  Site: http://r4ds.had.co.nz/
+
+SITE: https://www.statmethods.net/index.html
+
+CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p. Site: http://shop.oreilly.com/pesouct/0636920023135.do
+
+
+
+
+
+
+
+
+
 
 <!--chapter:end:05-Criando_graficos_2.Rmd-->
 
+Este  Capitulo foi baseado no livro [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294), e na página do [**Prof. Paulo Justiniando Ribeiro**](http://www.leg.ufpr.br/~paulojus/)
 
 # Testes Estatísticos
 
-Placeholder
-
+O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.
 
 ## Teste t de Student
+
+O teste t é bastante usado em várias situações do cotidiano quando se deseja fazer comparações entre *uma ou mais médias*, sejam elas dependentes ou não.
+Abaixo estão exemplos de vários modos de realizarmos o teste t. 
+
+Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo.
+```{r}
+pira_tem <- read.csv2 ("https://www.dropbox.com/s/zvp5iftcpb6bdpe/pira_tem.csv?dl=1",
+  dec=".")
+str(pira_tem)
+```
+Apresentação dos dados em forma de gráfico
+```{r}
+library(ggplot2)
+ggplot(data= pira_tem, aes (x = hora, y = temp, colour =periodo)) +
+  geom_point(size=2,shape=19) +
+  geom_line() +
+  facet_grid(.~local) +
+  xlab("Horas") +
+  ylab("Temperatura ºC") + 
+             ggtitle("Variação da temperatura mediana\n nas quatro efemêrides") +
+             theme(plot.title=element_text(face="bold", size=12, hjust = 0.5))  +
+  theme_bw()
+```
+
+`t.test()`
+Realiza o teste t-Student para uma ou duas amostras.
+
+sintaxe:
+`t.test(amostra1, amostra2, opções)`
+
+**Parâmetros**
+
+*amostra1:* Vetor contendo a amostra da qual se quer testar a média populacional, ou comparar a média populacional com a média populacional da amostra 2.
+
+*amostra2:* Vetor contendo a amostra 2 para comparação da média populacional com a  média populacional da amostra 1.
+
+**Opções**
+
+*alternative:* string indicando a hipótese alternativa desejada.
+ Valores possíveis: *"two-sided", "less" ou "greater"*.
+ 
+*mu:* valor indicando o verdadeiro valor da média populacional para o caso de uma  amostra, ou a diferença entre as mêdias para o caso de duas amostras.
+
+*paired:* 
+   - TRUE - realiza o teste t pareado. 
+   - FALSE - realiza o teste t não pareado.
+   
+*var.equal*:
+   - TRUE - indica que a variância populacional é  igual nas duas amostras.
+   - FALSE - indica que a variância populacional de cada amostra é diferente.
+   
+*conf.level*: coeficiente de confiança do intervalo.
+
 ### Para uma média
+
+Vamos testar se a temperatura  horaria do solsticio de verão no campo tem média igual ou maior que **21 ºC** na cidade de Piracicaba-SP.
+
+*H0: mu >= 21*
+
+*IC 95 para mu*
+
+1.0 Passo filtrar os dados pelo fator "periodo" com o nivel sol_verao (solsticio de verão).
+
+```{r}
+ #Dividir os dados - subset()
+    sol_verao_amb <- subset(pira_tem, periodo == "sol_verao")
+```
+
+2.0 Passo filtrar os dados pelo fator "local" com o nivel campo.
+
+```{r}
+ sol_verao_camp <- subset(sol_verao_amb, local == "campo")
+```
+
+3.0 Verificar dados graficamente
+```{r}
+attach(pira_tem)
+boxplot(temp)
+```
+
+4.0 Usar o teste T
+
+```{r}
+t.test(sol_verao_camp$temp,                     #amostra a ser testada
+mu=21,                                          #hipótese de nulidade
+alternative="greater",                         #teste unilateral pela direita
+conf.level = 0.95 )                         #Intervalo de confiancia de 95%  
+
+```
+
+Agora basta fazer a interpretação correta da saída do R.
+Para saber qual hipótese foi aceita, basta verificar o valor do *p-value* e estipular um nível de significância. Se neste exemplo o nível de significância fosse de 5% a hipótese alternativa seria aceita uma vez que o *p-value* foi menor ou igual a 0,05. Caso o *p-value* tivesse sido maior que 5% então aceitaríamos a hipótese de nulidade.
+Como a hipótese alternativa foi a aceita isso implica que a  temperatura do ar no solsticio de verão possui média estatisticamente diferente do valor 21ºC a um nível de significância de 5%.
+
+**Exercicio 1**
+
+Vamos testar se X tem média estatiscamente igual a 35 ou maior
+H0: mu =>35
+
+```{r}
+x <-c (30.5,35.3,33.2,40.8,42.3,41.5,36.3,43.2,34.6,38.5)
+
+boxplot(x)
+```
+
+Teste t.
+```{r}
+t.test(x,
+       mu=35,
+       alternative = "greater")
+
+```
+
+Com foi significativo admitimos que a amostra *x* é oriunda de um população com média maior que o valor de 35, com nivel de 5% de significância.
+
+**Exercicio 2**
+
+Um pesquisador afirmou que a temperatura  média de solsticio de verão medido na casa de vegetação em Piracicaba-SP tem média **22,2 ºC**.
+Desconfiando desse resultado um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:
+
+*H0: mu = 22,2*
+
+```{r}
+  sol_verao_amb <- subset(pira_tem, periodo == "sol_verao")
+```
+
+```{r}
+  sol_verao_est <- subset(sol_verao_amb, local == "estufa")
+  boxplot(sol_verao_est$temp)
+```
+
+Essa afirmação é verdadeira?
+
+```{r}
+t.test(sol_verao_est$temp,            #amostra a ser testada
+mu=22.2,                              #hipótese de nulidade
+alternative="two.sided",              #teste bilateral não considera se é maior ou menor
+conf.level = 0.99)                    #significância de 1%        
+```
+
 ### Para duas médias independentes
+
+Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
+alem de seguirem distribuição normal. 
+
+Vamos a um exemplo:
+
+Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5% de significância.
+*H0: mu da temp da casa de vegetação = mu da temp do campo*
+
+```{r}
+boxplot(sol_verao_camp$temp, sol_verao_est$temp)
+
+t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      alternative = "greater",                  #unilateral a direita 
+      var.equal = T )                            #variância homogênea
+```
+
+Uma vez que o *p-value* foi maior que 0,05, podemos concluir que as médias de temperatura dos dois ambientes não são diferentes, estatisticamente, a 5% de significância.
+Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.
+
 ### Para duas médias dependentes
+
+Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
+As hipóteses se mantêm. Agora basta adicionar o argumento `paired=T`, informando que as amostras são dependentes.
+
+```{r}
+t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      conf.level=0.99,                          #nível de confiança
+      paired=T,                                 #indica dependência entre as amostras
+      var.equal = T )                           #variância homogênea      
+```
+
+Note que a estatística do teste-t pareado não é baseada na média dos tratamentos, e sim na diferença entre os pares de tratamentos.
+
+
 ## Teste de variância
+
 ### Usando o teste de F
+
+*H0: a variancias das amostras são homogeneas *
+
+```{r}
+var.test (sol_verao_camp$temp, sol_verao_est$temp)
+```
+
+As variâncias não são homogeneas.
+
+Vamos resolver novamente o exercicio anterior, modificando o argumento `var.equal`
+ 
+```{r}
+ 
+ t.test(sol_verao_camp$temp, sol_verao_est$temp, #amostras a serem testadas
+      conf.level=0.99,                          #nível de confiança
+      paired=T,                                 #indica dependência entre as amostras
+      var.equal = F )                           #variância homogênea 
+```
+ 
+
 ## Teste para a normalidade - `shapiro.test()` 
+
+Por vezes temos necessidade de identificar com certa confiança se uma amostra ou conjunto de dados segue a distribuição normal. Isso e possível, no R, com o uso do comando `shapiro.test()`
+
+Verifique normalidade dos dados
+
+```{r}
+shapiro.test(sol_verao_camp$temp)
+shapiro.test(sol_verao_est$temp)
+```
+
+O comando `qqnorm()`nos fornece diretamente um gráfico da distribuição de percentagens
+acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal.
+
+```{r}
+qqnorm(sol_verao_camp$temp) #obtendo o normal probability plot só para comparação
+qqnorm(sol_verao_est$temp)
+
+```
+
 ## Teste U de Mann-Whitney
+
+*H0: mu da temp da casa de vegetação = mu da temp do campo*
+```{r}
+wilcox.test(sol_verao_camp$temp,sol_verao_est$temp,
+  alternative = "two.side")
+```
+
+
 ## Covariância e Correlação
+
+A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos `cov(x,y)` e `cor(x,y)`, respectivamente. 
+São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.
+
+A correlação  de **Pearson** é uma medida paramétrica de associação linear entre duas variaveis.
+
+A correlação de ordem de **Sperman** é uma medidad não paramétrica de associação entre duas variáveis
+
+A correlação de ordem de **Kendall** é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y
+
+```{r}
+help ("cor.test")
+```
+
+Plote os valores
+```{r}
+plot(sol_verao_camp$temp,sol_verao_est$temp, las=2)
+
+```
+
+Teste de correlação de Pearson
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "pearson"
+    )
+```
+
+Teste de correlação de Pearson (the default)
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp)
+```
+
+Teste de correlação de Pearson trocando o X e Y
+```{r}
+cor(sol_verao_est$temp, sol_verao_camp$temp)
+```
+
+Teste de correlação de Spearman 
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman")
+```
+
+Teste de correlação de Kendall
+```{r}
+cor(sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "kendall")
+```
+
+Teste de correlação de Pearson
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "pearson"
+    )
+```
+
+
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman"
+    )
+```
+
+```{r}
+cor.test (sol_verao_camp$temp,sol_verao_est$temp, 
+    method = "spearman", exact = F
+    )
+```
+
+
+```{r}
+cov (sol_verao_camp$temp,sol_verao_est$temp)
+```
+
 ## Outros testes
+
+Utilizaremos o banco de dados [dadosfisio](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0) 
+
+```{r}
+fisio <- read.csv2("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1")
+attach(fisio)
+```
+
+
+```{r}
+pairs(fisio[,4:10])
+```
+
+Teste de Spearman
+```{r}
+cor(fisio[,3:8],method = "spearman")
+```
+
 ### hydroGOF
+
+Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.
+
+```{r}
+library(hydroGOF)
+
+
+```
+
+Cálculo das medidas numéricas de qualidade do ajuste para o “melhor” caso (inatingível)
+```{r}
+gof(sim = fisio$ds, obs= fisio$cc)
+```
 
 <!--chapter:end:06-Teste_T_corre.Rmd-->
 
-
 # Analise de variância (ANOVA)
 
-Placeholder
+Estudos estatísticos contemporâneos contemplam a análise de variância tendo em vista que este procedimento permite identificar e quantificar as variações ocorridas em um experimento, discriminando a parte da variação associada ao modelo pelo qual o experimento foi procedido da variação que se dá devido ao acaso.
+No R encontram-se diversos procedimentos para se executar a ANOVA. A tabela abaixo mostra alguns modelos e suas usuais formulações:
+
+
+Modelo                  |Fórmula| Comentário
+------------------------|-------|----------------               |
+DIC                     |y~t    | t é um fator
+DBC                     |y~t+b  | t e b são fatores
+DQL                     |y~t+l+c| t, l e c são fatores    
+Fatorial/ DIC           |y~N*P  | igual a N + P + N:P
+Fatorial/ DBC           |y~b+N*P| igual a b+N+P+N:P
+Regressão linear simples|y~x    | x é uma variável exploratória
+Regressão quadrática    |y~x+x2 | x2 é um objeto x2<-x^2
+
+
+Os modelos de análise de variância simples podem ser trabalhados também a partir da função `lm()` simplesmente indicando um fator como variável independente. No entanto, existem outras funções que também realizam análises de variância para casos específicos (como a `aov()` para amostras balanceadas) ou modelos lineares mais complexos como análise de modelos mistos ou hierarquicas função `lme()` do pacote nlme e modelos não lineares `nls()` e `glm()` para ANOVA, com estrutura de erros especificada.
 
 
 ## Delineamento inteiramente casualizado  
+
+O delineamento inteiramente casualizado é o  mais simples de todos os delineamentos experimentais.
+
+Este delineamento apresenta as seguintes caracterítiscas:
+
+   - Utiliza apenas os princópios da *repetição* e da *casualização*, deixando de lado o principio do *controle local*, e, portanto, as repetições não são organizadas em blocos;
+  
+   - Os tratamentos são designados às parcelas de forma inteiramente  casual, com números iguais ou diferentes repetições por tratamento.
+  
+**Vantagens em relações a outros delineamentos**
+
+   - é um delineamento bastante flexível, visto que o número de tratamentos e de repetições depende apenas do número de parcelas disponíveis;
+   - o número de repetições pode ser diferente de um tratamento para outro;
+   - a análise estatística é simples, mesmo quando o número de repetições por tratamento é variável;
+  - o número de grau de liberdade para o resíduo é o maior possível;
+  
+**Desvantagens em relações a outros delineamentos**
+
+   - exige homogeneidade total das condições experimentais;
+   - pode conduzir a uma estimativa de variância residual bastante alta, uma vez que, não se aplica o controle local;
+  
+Este delineamento é mais utilizado em experimentos de laboratório e nos ensaios com vasos, realizados dentro de casas de vegetação, nos quais as condições experimentais podem ser controladas. Nos experimentos realizados com vasos, estes devem ser cte mudados de posição, de forma interamente casual.
+  
 ### Análise de experimento  em DIC  
+
+Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em delineamento inteiramente casualizado com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
+O primeiro passo é ler os dados.
+
+Importando dados
+```{r}
+dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1") 
+```
+
+
+Conferir se temos fatores para fazer a análise de variância
+```{r}
+str(dados)
+```
+
+Lembramos que pulgoes deve ter conteudo numerico e trat deve ser fator
+```{r}
+dados$trat<-as.factor(dados$trat)
+dados$pulgoes<-as.numeric(dados$pulgoes)
+```
+
+Verificação gráfica**
+É importante notar que as barras simplesmente refletem a variância dos dados dentro da cada tratamento e não são adequadas para detectar diferenças entre tratamentos.
+```{r}
+plot(dados$trat, dados$pulgoes)
+```
+
+
 ### Análise de variância
+
+Fazendo a análise de variância
+```{r}
+m0 <- lm (dados$pulgoes ~ dados$trat)
+```
+
+```{r}
+anova(m0)
+```
+
+Extraindo o coeficiente de variação
+```{r}
+
+require(agricolae)
+cv.model(m0)
+```
+
+Análise gráfica dos resíduos
+```{r}
+par(mfrow = c(2,2))
+plot(m0)
+```
+
+Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade.  A variabilidade dos erros apresentam um forma de cone.
+
+Teste das pressuposições da análise de variância**
+```{r}
+# Teste de Bartllet para homocedasticidade
+bartlett.test(m0$res, dados$trat)
+```
+
+Como observamos uma significancia estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
 ### Transformação de dados
+
+Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+
+Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catalogos de transformação:
+
+   - Transformação de raiz quadrada: frequentemente utilizada para dados de contagens, que geralmente seguem a distribuição de Poison, na qual a média é igual a variância. Quando ocorrem zeros ou valores baixos (menores que 10 ou 15), as transformação recomendadas são raiz quadrada + 0,5 ou 1,0.
+
+   - Transformação angular: recomendavel para dados expressos em porcentagens, que geralmente segue distribuição binomial.
+
+   - Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos.
+
+```{r}
+m1 <- lm (log(dados$pulgoes) ~ dados$trat)
+```
+
 #### Transformação de dados BOX-COX
+
+Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
+
+A função `boxcox(`) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse
+
+```{r}
+require(MASS) 
+  boxcox(m0)
+  #Com zoom
+  boxcox(m0, lam = seq(-1, 1, 1/10))
+```
+
+```{r}
+
+  boxcox(m0)
+  abline(v=0.2)
+  locator()
+```
+
+
 #### Análise de variância - Ajuste com a variável transformada.
+
+```{r}
+m1 <- lm (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+**análise gráfica dos resíduos**
+```{r}
+par(mfrow = c(2,2))
+plot(m1)
+```
+
+Os pressupostos foram atendindos 
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+
+shapiro.test(m1$res)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+
+bartlett.test(m1$res, dados$trat)
+```
+
+Resumo do modelo ajustado - Contraste 
+```{r}
+summary(m1)
+```
+
+Resumo do modelo ajustado - Contraste em relação a testemunha
+
+```{r}
+dados$trat <- relevel(dados$trat, "Testemunha")
+```
+
+```{r}
+m1 <- lm (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+
+```{r}
+summary(m1)
+```
+
 ### Aplicando teste de Tukey para comparar médias
+
+No R, o teste de Tukey é apresentado através de intervalos de confiança. A interpretação é: se o intervalo de confiança para a diferença entre duas médias não incluir o valor zero, significa que se rejeita a hipótese nula, caso contrário, não se rejeita. O resultado pode ser visto através de uma tabela e/ou graficamente:
+
+
+```{r}
+m1 <- aov (dados$pulgoes^0.2 ~ dados$trat, data = dados)
+```
+
+```{r}
+dados.tu <- TukeyHSD (m1)
+```
+
+```{r}
+print(dados.tu)
+```
+
+```{r}
+plot(dados.tu)
+```
+
+
+**Teste Tukey com pacote Agricolae**
+
+```{r}
+library(agricolae)
+```
+
+```{r}
+summary(m1)
+```
+
+
+```{r}
+tu <- HSD.test(y = dados$pulgoes^0.2,
+         trt = dados$trat,
+         MSerror = deviance(m1)/df.residual(m1), #quadrado médio do residuo
+         DFerror = df.residual(m1),
+         console = T)
+```
+
+```{r}
+str(tu)
+```
+
+
+```{r}
+tu$groups
+```
+
+```{r}
+write.table(tu$groups,
+            "tab.xls",
+            sep = "\t",
+            quote = F,
+            row.names = F)
+```
+
+
 ### Aplicando teste para agrupar médias
+
+**carregando a biblioteca necessária**
+```{r}
+#install.packages("laercio")
+require(laercio)
+```
+
+Teste de Duncan
+
+```{r}
+LDuncan (m1, "dados$trat")
+```
+
+```{r}
+LTukey (m1, "dados$trat")
+```
+
+
+Pacote para analise de experimentos 
+
+```{r}
+library(ExpDes.pt)
+```
+
+
+**Recursos adicionais para comparações múltiplas**
+
+Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção `dependencies=TRUE` para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes.
+
+```{r}
+#install.packages("multcompView", dep = TRUE) 
+require(multcomp) 
+require(multcompView)
+```
+```{r}
+multcompBoxplot(pulgoes ~ trat, data = dados, compFn = "TukeyHSD", decreasing = FALSE)
+```
+
+
 ### Referência
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.
+
+ZEVIANI, W. M. estatística Básica e Experimentação no R. 45p.
+
+http://www.leg.ufpr.br/~paulojus/
 
 <!--chapter:end:07-Anova_dic.Rmd-->
 
-
-
 ## Delineamento em bloco casualizado 
+
+O delineamento em blocos casualizados (DBC) tem três princípios basicos de experimentação:
+
+   - repetição
+
+   - casualização
+
+   - controle local
+
+É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como *Two Way ANOVA*.
+
 ### Análise de experimento DBC  
+
+Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
+
+Importando dados
+```{r}
+dados <- read.table("https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1") 
+```
+
+
+conferir se temos fatores para fazer a análise de variância
+```{r}
+str(dados)
+```
+
+Lembramos que o *peso* deve ter conteudo numerico e o *promalin* e *bloco* deve ser fator.
+
+```{r}
+dados$promalin<-as.factor(dados$promalin)
+dados$bloco<-as.numeric(dados$bloco)
+```
+
+Verificação gráfica**
+```{r}
+require(lattice)
+xyplot(peso ~ promalin, 
+        groups = bloco, 
+        data= dados)
+```
+
+O efeito do bloco é aditivo?
+
+Ligar as observações com o mesmo bloco com  a função `type ="o"`
+```{r}
+xyplot(peso ~ reorder(promalin, peso), 
+        groups = bloco, 
+        data= dados,
+        type = "o")
+```
+
+Reordenar os tratamentos
+```{r}
+require(plyr)
+dados$promalin <- with(dados, reorder(promalin, peso))
+dados <- arrange(dados, promalin, bloco)
+```
+
+Graficos reordenados da menor média a maior média por tratamento
+```{r}
+xyplot(peso ~ reorder(promalin, peso), 
+        groups = bloco, 
+        data= dados,
+        type = "o")
+```
+
 #### Análise de variância
+
+Fazendo a análise de variância
+
+```{r}
+m0 <- lm (dados$peso ~ dados$bloco + dados$promalin, data = dados)
+```
+
+```{r}
+anova(m0)
+```
+
+Extraindo o coeficiente de variação
+```{r}
+require(agricolae)
+cv.model(m0)
+```
+
+Análise gráfica dos resíduos
+```{r}
+par(mfrow= c(2,2))
+plot(m0)
+```
+
+Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade. 
+
 ##### Teste das pressuposições da análise de variância
+
 ####### Teste de Bartllet para homocedasticidade
+```{r}
+
+bartlett.test(m0$res, dados$promalin)
+```
+
+Como observamos uma não significancia estatística neste resultado *(p-value = 0.7819)*, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+
 ####### Teste de Shapiro-Wilk para Normalidade
+
+```{r}
+
+shapiro.test(m0$res)
+```
+
+Como observamos uma significancia estatística neste resultado *(p-value = 0.006472)*, devemos rejeitar a hipótese nula de que os residuoes tedem a distruibuição normal.
+
 #### Transformação de dados
+
+Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+
 ##### Transformação de dados com o BOX-COX
+
+Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
+
+A função `boxcox()` do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse.
+
+```{r}
+require(MASS) 
+  boxcox(m0)
+  boxcox(m0, lam = seq(-8, 8, 1/10))
+```
+
+Localizando o ponto máximo.
+```{r include=FALSE}
+  boxcox(m0, lam = seq(-8, 8, 1/10))
+  abline(v=-2)
+  locator()
+```
+
 ##### Análise de variância - Ajuste com a variável transformada.
+
+```{r}
+m1 <- aov (log(dados$peso) ~ dados$promalin, data = dados)
+```
+
+Anáise gráfica dos resíduos
+```{r}
+par(mfrow = c(2,2))
+plot(m1)
+```
+
+Os pressupostos foram atendindos ?
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m1$res)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+
+bartlett.test(m1$res, dados$promalin)
+```
+
+```{r}
+anova(m1)
+```
+
+
 ### Pacote para analise de experimentos 
+
+```{r}
+library(ExpDes.pt)
+```
+
+Conhecer o pacote ExpDes.pt
+```{r}
+ls("package:ExpDes.pt")
+```
+
+Utilizando o exemplo anterior.
+```{r}
+x <- dbc(trat = dados$promalin,
+          bloco = dados$bloco,
+          resp = log(dados$peso),
+          quali = T,
+          mcomp = "tukey")
+```
+
+Carregar pacotes
+```{r}
+library(ggplot2)
+library(dplyr)
+```
+
+Calculo do erro
+```{r}
+erro = summarise(group_by(dados, promalin), 
+       avg = mean(peso), sd = sd(peso))
+
+```
+
+Gerando gráfico
+```{r}
+ggplot(erro, aes(promalin, avg, fill=promalin))+
+  geom_bar(stat="identity")+
+  geom_errorbar(aes(ymin=avg-sd, ymax =avg+sd), with=0.1, col="black") +
+    xlab("Tratamentos") + 
+    ylab("Peso médio dos frutos (g)") + 
+  theme_bw() + 
+  theme(legend.position="top") +
+      annotate("text", label="ab", x=1, y=100, size = 5)  +
+      annotate("text", label="b", x=2, y=100, size = 5) +
+      annotate("text", label="b", x=3, y=100, size = 5)  +
+      annotate("text", label="b", x=4, y=100, size = 5)  +
+      annotate("text", label="a", x=5, y=100, size = 5)  +
+  theme(legend.position="none") +
+  labs(caption = "Médias seguidas de mesma letra indicam diferença nula à 5%")
+  
+```
+
 ### Teste não parametrico
+
+As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: **kruskal**, **waerden.test**, **friedman**, **durbin.test** e **Conover (1999)**.
+Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).
+
+Carregar pacote
+```{r}
+library(agricolae)
+```
+
+A função `kruskal` é usada para N amostras (N> 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos).
+
+```{r}
+woutKruskal<-with(dados,kruskal(promalin, y = peso
+  ,p.adj="bon",group=T, console=T))
+print(woutKruskal$group)
+```
+
+Gráficos
+```{r}
+par(mfrow=c(2,2),mar=c(3,3,1,1),cex=0.8)
+bar.group(woutKruskal$group,ylim=c(0,100), xlab ="promalin")
+bar.group(woutKruskal$group,xlim=c(0,100),horiz = TRUE)
+plot(woutKruskal)
+plot(woutKruskal,variation="IQR",horiz = TRUE)
+
+```
+
+
+A função `friedman` é usada para análise de tratamentos do estudo randomizado
+de bloco completo, onde a resposta não pode ser tratada através da análise de variância.
+
+```{r}
+woutfriedman <- out<-with(dados,friedman(bloco,promalin, peso,alpha=0.05, group=T,
+  console=TRUE))
+```
+
+Grafico
+```{r}
+par(mfrow=c(2,2),mar=c(3,3,1,1),cex=0.8)
+bar.group(woutfriedman$group,ylim=c(0,100), xlab ="promalin")
+bar.group(woutfriedman$group,xlim=c(0,100),horiz = TRUE)
+plot(woutfriedman)
+plot(woutfriedman,variation="IQR",horiz = TRUE)
+```
+
+
 ### Exercicio  1
+
+Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.
+
+Comparação de métodos de Semeadura do Mamoeiro
+
+Estudo realizado em Jaboticabal - SP por Ruiz (1977) que comparou métodos de semeadura no mamoeiro. O experimento foi instalado em delineamento de blocos casualizados, com 4 repetições, avaliando 3 métodos de semeadura. Foram avaliadas duas unidades experimentais por método em cada bloco.
+
+Importando dados
+```{r}
+dados <- read.table("https://www.dropbox.com/s/40m95attfw2fdh2/BanzattoQd4.7.1.txt?dl=1") 
+```
+
+Conferir se temos fatores para fazer a análise de variância
+```{r}
+str(dados)
+```
+
+Gráficos
+```{r}
+addmargins(with(dados,
+  tapply(X = altura,
+    INDEX = list(semead, bloco),
+    FUN = sum)))
+```
+
+```{r}
+xyplot(altura ~ semead, data = dados,
+  groups = bloco, type = c("p", "a"),
+  xlab = "Método de semeadura de mamoeiro",
+  ylab = "Altura média de planta de mamoeiro aos 147 DAS (cm)",
+  auto.key = list(title = "Bloco", cex.title = 1, columns = 2))
+```
+
+Análise de Variância
+```{r}
+m0 <- aov(altura~bloco+semead, data=dados)
+class(m0)
+anova(m0)
+summary(m0)
+```
+
+Checagem gráfica
+```{r}
+par(mfrow=c(2,2))
+plot(m0)
+layout(1)
+```
+ 
+Teste das pressuposições de normalidade de homocedasticidade
+```{r}
+shapiro.test(residuals(m0))
+bartlett.test(residuals(m0)~dados$semead)
+```
+
+Teste de médias 
+
+**Teste de Tukey**
+
+```{r}
+require(agricolae)
+```
+
+```{r}
+tu <- with(dados, HSD.test(altura, semead,
+DFerror=df.residual(m0),
+MSerror=deviance(m0)/df.residual(m0)))
+```
+
+```{r}
+plot(tu)
+```
+
+```{r}
+print(tu)
+```
+
+```{r}
+require(dplyr)
+require(ggplot2)
+  erro = summarise(group_by(dados, semead), 
+    avg = mean(altura), sd = sd(altura))
+
+  
+  ggplot(erro, aes(semead, avg, fill=semead))+
+    geom_bar(stat="identity")+
+    geom_errorbar(aes(ymin=avg-sd, ymax =avg+sd), with=0.1, col="black") +
+    xlab("Tratamentos") + 
+    ylab("Altura média de planta de mamoeiro aos 147 DAS (cm)") + 
+    theme_bw() + 
+    theme(legend.position="top") +
+    annotate("text", label=tu$groups$groups[1], x=1, y=20, size = 5)  +
+    annotate("text", label=tu$groups$groups[2], x=2, y=20, size = 5)  +
+    annotate("text", label=tu$groups$groups[3], x=3, y=20, size = 5)  +
+    
+    theme(legend.position="none") +
+    labs(caption = "Médias seguidas de mesma letra indicam diferença nula à 5%")
+```
+
+**Teste de Scott-Knott**
+
+```{r}
+  library(ScottKnott)
+  sk <- SK(x=dados, y=dados$altura, model="altura~bloco+semead", which="semead")
+  summary(sk)
+```
+
+```{r}
+print(sk)
+```
+
 ### Referência
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+BANZATTO, D. A; KRONKA, S. N. Experimentação agrícola. Jaboticabal, SP: FUNEP, 2006, 237p.
+
+ZEVIANI, W. M. Estatística Básica e Experimentação no R. 45p.
+
+Site: http://www.leg.ufpr.br/~paulojus/
 
 <!--chapter:end:08-Anova_DBC.Rmd-->
 
-
-
 ## Quadrado Latino
+
+Essa material foi baseado nas aulas do [Prof. Walmes Zeviani](https://www.youtube.com/user/walmes).
+
 ### Banco de dados
+
+Iremos instalar o pacote com banco de dados.
+
+O [labestData](https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData#descrio) é um pacote para o software R de computação estatística que possui centenas de conjuntos de dados para o ensino e aprendizado de Estatística. O pacote é desenvolvido pelo PET Estatística UFPR e conta com a participação de professores e colaboradores. O nome
+labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as aulas práticas do Curso de Estatística na UFPR.
+
+```{r}
+library(devtools)
+```
+
+Instalação
+
+Do repositório de desenvolvimento no GitLab.
+
+```{r eval=FALSE, include=T}
+install_git(url = "https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData.git",
+            branch = "master", build_vignettes = TRUE)
+```
+
+Do repositório de divulgação no GitHub.
+
+```{r eval=FALSE, include=T}
+install_github(repo = "labestData",
+               username = "pet-estatistica",
+               ref = "master", build_vignettes = TRUE)
+```
+
+Instalação por Arquivos Compactados
+```{r eval=FALSE, include=T}
+
+install.packages("http://leg.ufpr.br/~walmes/pacotes/labestData_0.1.17.458.zip",
+  repos = NULL)
+```
+
+Lendo arquivos de dados
+```{r eval=T, include=F}
+require(labestData)
+```
+
+Escolhendo os dados
+
+```{r eval=FALSE, include=T}
+labestDataView()
+```
+
+###Escolher o banco de dados
+```{r}
+PimentelEg6.2
+```
+
+
+```{r}
+help("PimentelEg6.2")
+```
+
+Experimento de competição de variedades de cana-de-açúcar no qual foram usadas cinco variedades dispostas em um delineamento quadrado latino 5 times 5. Converte para nome de objeto mais simples.
+
+```{r}
+pim <- PimentelEg6.2 
+help(pim)
+```
+
+Verificar estrutura dos dados
+```{r}
+str(pim)
+```
+
+Vendo o quadrado no plano.
+```{r}
+require(reshape)
+```
+
+
+Pacote gráfico
+```{r}
+require(latticeExtra)
+```
+
+Gerar gráfico
+```{r}
+levelplot(prod~linha+coluna, data=pim, aspect="iso") + 
+  layer(with(pim, panel.text(x=linha, y=coluna, label=paste(varied, prod))))
+```
+
+ANOVA
+
+```{r}
+m0 = lm (prod ~linha + coluna + varied, data = pim)
+```
+
+pressuposto seja atendidos?
+```{r}
+par(mfrow = c(2,2)) 
+plot(m0)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+bartlett.test(m0$residuals ~ pim$varied)
+```
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
+Quadro de análise de variância.
+```{r}
+anova(m0)
+summary(m0)
+```
+
+Teste de média de comparações múltiplas
+```{r}
+library(doBy) # obter as médias ajustadas 
+library(multcomp)
+p0 = LSmeans(m0, effect = "varied", level = 0.95)
+```
+
+Verificar estrutura
+```{r}
+str(p0)
+p0
+
+```
+
+
+```{r}
+library(devtools) 
+install_github("walmes/wzRfun", ref = "master") 
+require(wzRfun)
+```
+
+Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.
+```{r}
+tu <- summary(glht(m0, linfct=mcp(varied="Tukey"))) 
+tu
+```
+
+Resumo compacto com letras.
+
+```{r}
+cld(tu)
+#cld(tu, decreasing=T)
+```
+
+Medias com intervalo de confiança
+
+```{r}
+ci <- confint(glht(m0, linfct= p0$L)) 
+str(ci)
+```
+
+Juntar com os nomes dos tratramentos com os intervalos
+
+```{r}
+ci <- cbind(p0$grid, ci$confint)
+```
+
+Colocar as letras. onde estão as letras?
+```{r}
+str(cld(tu))
+ci$cld <- cld(tu)$mcletters$Letters 
+ci$cld
+str(ci)
+ci$varied <- factor(ci$varied)
+```
+
+Representação gráfica dos resultados
+```{r}
+require(latticeExtra) 
+segplot(varied~lwr+upr, 
+        centers=Estimate, 
+        data=ci, 
+        draw=F, #desenhar segmentos 
+        xlab = expression("Tratamento"), 
+        ylab = "Número de perfilhos", 
+        sub = list("Médias seguidas de mesma letra indicam diferença nula à 5%.", 
+                   font=1, cex=0.8)) + 
+layer(panel.text( x = centers, 
+                 y = z, 
+                 labels = sprintf("%0.2f %s", centers, ci$cld), 
+                 pos = 3))
+```
+
 ### Exercicios
+```{r}
+require(labestData)
+
+ZimmermannTb5.15
+help(ZimmermannTb5.15) 
+str(ZimmermannTb5.15)
+```
+Atribuir um nome menor ao conjunto de dados
+```{r}
+dados <- ZimmermannTb5.15
+
+```
+
+
+
+Gráfico do layout
+```{r}
+require(latticeExtra) 
+
+levelplot(perf~linha+coluna, 
+          data=dados, aspect="iso")+ 
+          layer(with(dados, 
+          panel.text(x=linha, y=coluna, 
+          label=paste(trat, perf))))
+```
+
+```{r}
+require(latticeExtra)
+```
+
+Gráfico do layout
+
+```{r}
+levelplot(perf~linha+coluna, 
+          data=dados, aspect="iso")+ 
+          layer(with(dados, 
+          panel.text(x=linha, y=coluna, 
+          label=paste(trat, perf))))
+```
+
+ANOVA
+
+```{r}
+m0 = lm (perf~linha + coluna + trat, data = dados)
+```
+
+Foram atendidos?
+
+```{r}
+par(mfrow = c(2,2)) 
+plot(m0)
+```
+
+Teste de Bartllet para homocedasticidade
+```{r}
+bartlett.test(m0$res, dados$trat)
+```
+
+Teste de Shapiro-Wilk para Normalidade
+```{r}
+shapiro.test(m0$res)
+```
+
+Quadro de análise de variância
+```{r}
+anova(m0)
+summary(m0)
+```
+
+Comparações múltiplas.
+```{r}
+library(doBy) 
+library(multcomp) 
+
+p0 = LSmeans(m0, effect = "trat", level = 0.95) 
+
+str(p0)
+```
+
+Criando a tabela com as estimativas
+
+```{r}
+library(devtools) 
+#install_github("walmes/wzRfun", ref = "master") 
+require(wzRfun)
+```
+
+Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.
+
+```{r}
+tu <- summary(glht(m0, linfct=mcp(trat="Tukey"))) 
+tu
+```
+
+Resumo compacto com letras.
+
+```{r}
+cld(tu)
+#cld(tu, decreasing=T)
+```
+
+Medias com intervalo de confiança
+
+```{r}
+ci <- confint(glht(m0, linfct= p0$L)) 
+ci
+```
+
+Juntar com os nomes dos tratramentos com os intervalos
+
+```{r}
+ci <- cbind(p0$grid, ci$confint) 
+
+ci$cld <- cld(tu)$mcletters$Letters 
+
+str(cld(tu))
+
+```
+
+Representação gráfica dos resultados.
+```{r}
+require(latticeExtra) 
+
+segplot(trat~lwr+upr, 
+        centers=Estimate, 
+        data=ci, 
+        draw=F,
+        xlab = expression(" "), ylab = " ", 
+        sub = list("Médias seguidas de mesma letra indicam diferença nula à 5%.",
+        font=1, cex=0.8)) + 
+        layer(panel.text( x = centers, 
+        y = z, 
+        labels = sprintf("%0.2f %s", centers, ci$cld), 
+        pos = 3))
+```
+
 ### Exercicio para entregar
+DiasEg9.4
+help(“DiasEg9.4”)
+
+BarbinPg104
+help(“BarbinPg104”)
+
+ZimmermannTb12.27
+help(ZimmermannTb12.27)
+
+ZimmermannTb12.26
+help(ZimmermannTb12.26)
+
+StorckEg2.3.5
+help(StorckEg2.3.5)
+
+ZimmermannTb16.10 
+help(ZimmermannTb16.10)
 
 <!--chapter:end:09-Anova_QL.Rmd-->
 
-
-
 ## Regressão Linear simples
+
+Iremos utilizar o pacote tidyverse
+```{r}
+library(tidyverse)
+```
+
+
+Regressão linear é  uma equação para se estimar a condicional (valor esperado) de 
+uma variável y, dados os valores de algumas outras variáveis x.
+
+y= a+bx
+
+Vamos utilizar o exemplo do banco de dados do R
+
+```{r}
+View(Orange)
+```
+
+```{r}
+qplot(x=age,y=circumference,data=Orange)
+```
+
+```{r}
+cor.test(Orange$age,Orange$circumference)
+```
+
+```{r}
+rl<- lm(circumference ~ age , data = Orange)
+```
+
+Zerando o intercepto 
+```{r}
+rl0<- lm(circumference ~ 0+ age , data = Orange)
+```
+
+```{r}
+plot(rl) #plots diagnósticos
+```
+
+```{r}
+shapiro.test (residuals(rl))
+
+bartlett.test(rl$res, Orange$Tree, Orange$age)
+```
+
+Resultado da Regressãolinear
+```{r}
+summary(rl)
+```
+
+
+Rejeição da hipótese nula (variáveis não são relacionadas)
+*valor p <0.005*
+R-square explica o quanto o modelo explica da variação
+
+Gráfico
+```{r}
+ggplot(Orange,aes(x=age,y=circumference))+ geom_point(colour="steelblue",size=4)+
+  geom_smooth(method="lm",colour="black")+labs(title="Regressão linear de Orange")+
+  theme_minimal()  
+```
+
+
+Gerar graficos com o pacote ggpmisc
+```{r}
+library(ggpmisc)
+```
+
+Gráfico
+```{r}
+formula <- y ~ poly(x, 2, raw = TRUE)
+ggplot(Orange, aes(x=age, y=circumference)) +
+  geom_point() +
+  geom_smooth(method = "lm", formula = formula) +
+  stat_poly_eq(aes(label =  paste(..eq.label.., ..adj.rr.label.., sep = "~~~~")),
+    formula = formula, parse = TRUE)
+
+```
+
+
+Outras funções interessantes
+```{r}
+coefficients(rl) # coeficientes do modelo
+confint(rl, level=0.95) # intervalo de confiança
+fitted(rl) # valores previstos
+residuals(rl) # residuais
+anova(rl) # tabela ANOVA
+```
+
+
+Qualquer modelo de Regressão polinomial pode ser obtido com um comando
+simples: o `lm()` que vem do inglês "linear models".
+
+Veja o exemplo abaixo:
+```{r}
+fert<-c(10,20,30,40,50,60,70,80,90,100)
+prod<-c(42,61,81,94,98,96,83,79,59,43)
+plot(fert,prod)
+dados = data.frame(fert,prod)
+```
+
+Observe a necessidade do argumento `I()` para interações como x^2.
+
+```{r}
+reg <- lm ( #ajusta uma Regressão
+        prod ~ fert + I (fert^2)) #modelo de Regressão quadrática
+reg
+```
+
+Para "desenhar" a curva ajustada...
+
+```{r}
+#curve(15.51667+2.95720*x-0.02716*x*x,0,100,add=T,col=2)
+```
+
+Várias outras análises podem ser feitas como anteriormente na Regressão linear. Veja uma delas:
+
+```{r}
+ anova(reg)
+```
+
+```{r}
+ formula <- y ~ poly(x, 2, raw = TRUE)
+ ggplot(dados, aes(x=fert, y=prod)) +
+   geom_point() +
+   geom_smooth(method = "lm", formula = formula) +
+   stat_poly_eq(aes(label =  paste(..eq.label.., ..adj.rr.label.., 
+     sep = "~~italic(\"with\")~~")),
+     formula = formula, parse = TRUE)
+```
+
+
 ## Regressão Linear Multipla
+
+Os modelos múltiplos  são aqueles em que duas ou mais variáveis independentes influenciam na variação da variavel dependente. Eles podem ser de grau 1,2 ou maior. O exemplo a seguir aborda uma Regressão polinomial multipla  de 2º grau, com duas variáveis independentes.
+
+ y= a+ bx + b1x1 + b2x2 + b3x3...
+
+Exemplo:
+
+```{r}
+library(car)
+```
+
+```{r}
+data(iris)
+head(iris)
+```
+
+VIF - variation inflation factor / fator de inflação da vari?ncia
+
+```{r}
+fit1<-lm(Sepal.Length ~ Sepal.Width + Petal.Length, data=iris)
+```
+
+```{r}
+vif(fit1)# ok, valores <5
+summary(fit1)
+
+```
+
+```{r}
+fit2 <- lm (Sepal.Length ~ Sepal.Width + Petal.Length + Petal.Width, data=iris)
+vif(fit2) #problemático, valores>10
+summary(fit2)
+```
+
+```{r}
+fit3<-lm(Sepal.Length ~ Sepal.Width * Petal.Length, data=iris)
+vif(fit3)# muito problemático, valores muito altos
+summary(fit3)
+```
+
+Outras funções interessantes
+
+```{r}
+coefficients(fit1) # coeficientes
+confint(fit1, level=0.95) # Intervalos de confiança
+fitted(fit1) # valores previstos
+residuals(fit1) # residuais
+anova(fit1) # tabela anova
+
+vcov(fit1) # matriz de covariancia 
+```
+
+
 ### Referência
+
+MELO, M. P.; PETERNELI, L. A. Conhecendo o R: Um visão mais que estatística. Viçosa, MG: UFV, 2013. 222p. Cap. 1.
+
+ZEVIANI, W. M. Estatástica Básica e Experimentação no R. 45p.
+
+http://www.leg.ufpr.br/~paulojus/
+
+https://docs.r4photobiology.info/ggpmisc/articles/user-guide-1.html
+
+
+
+ 
+
+
 
 <!--chapter:end:10-Regressao_L_M.Rmd-->
 
@@ -234,19 +3767,244 @@ Placeholder
 
 <!--chapter:end:12-Resolucao_Livro.Rmd-->
 
-
 # Acesso a bancos de dados climáticos
 
-Placeholder
-
-
 ## Precipitação com o pacote hydroTSM
+
+Tutorial do HydroTSM - http://goo.gl/9u1PO
+
+Instalação
+
+```{r eval=FALSE, include=T}
+install.packages("hydroTSM")
+```
+
+Carregar o pacote
+
+```{r}
+library(hydroTSM)
+```
+
+Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013
+
+```{r}
+roo<-read.zoo("https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1",sep=";", dec=".", head=T)
+```
+
+Selecionar somente 5 anos da serie
+
+```{r}
+x <- window(roo, start=as.Date("2009-01-01"))
+```
+
+Valores de Precipitação mensal
+```{r}
+( m <- daily2monthly(x, FUN=sum) )
+```
+
+Datas dos valores diários de "x"
+
+```{r}
+dates <- time(x)
+```
+
+Quantidade de anos em 'x' (necessário para cálculos)
+```{r}
+( nyears <- yip(from=start(x), to=end(x), out.type="nmbr" ) )
+```
+
+Análise exploratórios do dados
+
+Resumo estatástico
+
+```{r}
+smry(x)
+```
+
+Usando a função  `hydroplot`, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo "x". Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 01 de janeiro de 2009 são plotados.
+
+```{r}
+hydroplot(x, var.type="Precipitation", main="em Rondonopolis",
+          pfreq = "dma", from="2009-01-01")
+```
+
+Quantidade de dias com informação (não NA) por ano
+
+```{r}
+dwi(x)
+```
+
+Quantidade de dias com informação (não NA) por mês por ano
+```{r}
+dwi(x, out.unit="mpy")
+```
+
+Plotar os valores mensais de Precipitação para cada ano, para identificar meses secos / umidos.
+
+```{r}
+# Daily zoo to monthly zoo
+m <- daily2monthly(x, FUN=sum, na.rm=TRUE)
+
+# Creating a matrix with monthly values per year in each column
+M <- matrix(m, ncol=12, byrow=TRUE)
+colnames(M) <- month.abb
+rownames(M) <- unique(format(time(m), "%Y"))
+
+```
+
+```{r}
+# Plotting the monthly precipitation values
+require(lattice)
+## Loading required package: lattice
+print(matrixplot(M, ColorRamp="Precipitation",
+main="Precipitação mensal de Rondonópolis-MT (mm/mês)"))
+```
+
 ### Análise anual dos dados
+
+Valores anuais de Precipitação
+```{r}
+daily2annual(x, FUN=sum, na.rm=TRUE)
+```
+
+Precipitação Média anual
+```{r}
+mean( daily2annual(x, FUN=sum, na.rm=TRUE) )
+```
+
+Outra forma (mais útil para 'streamflows', onde FUN = *mean*): A função anual aplica FUN duas vezes sobre x: 
+
+   - (i) primeiramente, sobre todos os elementos de x pertencentes ao mesmo ano, para obter os correspondentes valores anuais, e 
+   - (ii) em segundo lugar, acima de todos os valores anuais de x obtidos anteriormente, a fim de obter um único valor anual.
+
+```{r}
+annualfunction(x, FUN=sum, na.rm=TRUE) / nyears
+```
+
 ### Análise mensal dos dados - BOXPLOT
+
+Mediana dos valores mensais na estação de Rondonópolis-MT. 
+
+```{r}
+monthlyfunction(m, FUN=median, na.rm=TRUE)
+```
+
+Vetor com as abreviaturas de três letras para os nomes dos meses
+```{r}
+cmonth <- format(time(m), "%b")
+```
+
+Criando fatores mensais ordenados
+```{r}
+months <- factor(cmonth, levels=unique(cmonth), ordered=TRUE)
+```
+
+Boxplot dos valores mensais
+```{r}
+boxplot( coredata(m) ~ months, 
+         col="lightblue", 
+         main="Precipitação mensal de Rondonpolis,MT",
+        ylab="Precipitação (mm)", xlab="Mensal")
+
+```
+
 ### Análise sazonal
+
+Valores sazonais médios de Precipitação
+
+```{r}
+seasonalfunction(x, FUN=sum, na.rm=TRUE) / nyears
+```
+
+Extraindo os valores sazonais para cada ano
+
+Dezembro, Janeiro e Fevereiro
+```{r}
+( DJF <- dm2seasonal(x, season="DJF", FUN=sum) )
+```
+
+Março, Abril e Maio
+```{r}
+( MAM <- dm2seasonal(m, season="MAM", FUN=sum) )
+```
+
+Junho, Julho e Agosto
+```{r}
+( JJA <- dm2seasonal(m, season="JJA", FUN=sum) )
+```
+
+Setembro, Outubro e Novembro
+```{r}
+( SON <- dm2seasonal(m, season="SON", FUN=sum) )
+```
+
+Plotar a evolução temporal dos valores da Precipitação sazonal
+
+```{r eval=FALSE, include=T}
+X11()
+hydroplot(x, pfreq="seasonal", FUN=sum, stype="default")
+```
+
 ### Alguns índices extremos
+
+Etapas comuns para a análise desta serie:
+
+Carregando dados diários de Precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013.
+
+```{r}
+data(roo)
+```
+
+Selecionar a data inicial
+```{r}
+x <- window(roo, start=as.Date("1980-01-01"))
+```
+
+Plotar a série temporal selecionada
+```{r}
+hydroplot(x, ptype="ts", pfreq="o", var.unit="mm")
+```
+
+
+Contagem e plotagem do número de dias no período em que a Precipitação foi maior que 80 mm.
+
+```{r}
+( R10mm <- length( x[x>80] ) )
+```
+
 ### Precipitaçao total chuva
+
+Calculando a Precipitação total (acumulada) de 5 dias
+
+```{r}
+x.5max <- rollapply(data=x, width=5, FUN=sum, fill=NA, partial= TRUE,
+align="center")
+
+hydroplot(x.5max, ptype="ts+boxplot", pfreq="o", var.unit="mm")
+
+```
+
+Valor anual máximo de Precipitação total em 5 dias
+
+```{r}
+(x.5max.annual <- daily2annual(x.5max, FUN=max, na.rm=TRUE))
+```
+
+   - *Nota 1:* para este cálculo, é utilizada uma janela móvel centrada no dia atual. Se o usuário quiser Precipitação total de 5 dias acumulada nos 4 dias anteriores ao dia atual + a Precipitação no corrente dia, o usuário tem que modificar a janela móvel.
+
+   - *Nota 2:* Para os dois primeiros e os últimos dois valores, a largura da janela é adaptada para ignorar valores a série temporal
+
+
 ## Referência
+
+
+http://www.gis-blog.com/download-srtm-for-an-entire-country/
+
+http://www.gis-blog.com/r-raster-data-acquisition/
+
+https://cmerow.github.io/RDataScience/05_Raster.html#1_setup
+
+https://ropensci.org/blog/2017/03/07/hddtools/
 
 <!--chapter:end:13-Dados_clima.Rmd-->
 
@@ -262,13 +4020,58 @@ Placeholder
 
 <!--chapter:end:16-Tendencia_tempora.Rmd-->
 
-
 # Sensoriamento remoto
 
-Placeholder
-
-
 ## Imagens de RPAs
+
+ Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
+
+É necessário instalar alguns pacotes necessários para aplicar esta tarefa:
+```{r eval=FALSE, include=T}
+install.packages("devtools")
+library(devtools)
+install_github("filipematias23/FIELDimageR")
+install.packages("sp")
+install.packages("raster")
+install.packages("rgdal")
+```
+
+Carregar os pacote que foram baixados: 
+
+```{r}
+library(FIELDimageR)
+library(raster)
+```
+
+Baixar a imagem ortomosaicada:
+
+```{r}
+EX1<-stack("https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1")
+```
+
+Plotar a imagem nas bandas RGB: 
+```{r}
+plotRGB(EX1, r = 1, g = 2, b = 3)
+
+```
+
+
+Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB
+```{r}
+
+EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE")
+```
+
+
+Aplicado os índices de vegetação.
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green` 
+
+```{r}
+EX1.Indices<- indices(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
+                      index = c("NGRDI","BGI"), myIndex = c("(Red-Blue)/Green"))
+```
+
+
 
 <!--chapter:end:17-Analise_imagens.Rmd-->
 
@@ -280,7 +4083,7 @@ Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm 
 
 Carregar pacotes necessários para trabalhar com os dados raster.
 Caso não tenha algum dos pacotes, realize a sua instalação.
-```{r eval=T, include=T}
+```{r eval=T, message=FALSE, include=T}
 library(raster)
 library(knitr)
 library(sp)
@@ -294,7 +4097,7 @@ library(LSRS)
 Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
 
 
-```{r eval=T, include=T}
+```{r echo=FALSE}
 imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 ```
 
@@ -572,7 +4375,7 @@ O modelo de altura da copa (CHM) representa a altura das árvores. Este não é 
 
 Carregar os pacotes:
 
-```{r}
+```{r message=FALSE}
 library(raster)
 library(rgdal)
 ```
@@ -612,15 +4415,14 @@ plot(CHM,
 
 É possível salvar o CHM para ser usado em outras plataformas:
 
-```{r}
+```{r eval=F, message=FALSE}
 writeRaster(CHM, "CHM.tiff",
             format = "GTiff",
             overwrite = TRUE)
 ```
 
-
 Carregar os seguintes pacotes:
-```{r eval=T, include=T}
+```{message=FALSE, include=T}
 library(installr)
 library(ForestTools)
 library(raster)
@@ -633,24 +4435,24 @@ data("kootenayCHM")
 ```
 
 Plotar o CHM (CHM, modelo de altura do dossel):
-```{r}
+```{r eval=FALSE }
 plot(kootenayCHM)
 ```
 
 Identificar copas de árvore dominantes. Esta função implementa o algoritmo de filtro de janela variável desenvolvido por Popescu e Wynne (2004):
 
-```{r}
+```{r eval= False}
 lin <- function(x){x * 0.05 + 0.6}
 ttops <- vwf(CHM = kootenayCHM, winFun = lin, minHeight = 2)
 ```
 
 Plotar o CHM:
-```{r}
+```{r eval=FALSE}
 plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar as copas das árvores dominantes identificadas a partir do algoritimo no plot CHM:
-```{r eval=FALSE, include=T}
+```{r eval=FALSE}
 plot(ttops, col = "blue", pch = 20, cex = 0.5, add = TRUE)
 ```
 
@@ -685,7 +4487,7 @@ plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar os poligonos das coroas no CHM:
-```{r}
+```{r eval=FALSE}
 plot(crownsPoly, border = "blue", lwd = 0.5, add = TRUE)
 
 ```
@@ -724,7 +4526,7 @@ plot(kootenayCHM, xlab = "", ylab = "", xaxt='n', yaxt = 'n')
 ```
 
 Adicionar os blocos no plot: 
-```{r}
+```{r eval=FALSE}
 plot(kootenayBlocks, add = TRUE, border =  "darkmagenta", lwd = 2)
 ```
 
@@ -752,6 +4554,141 @@ names(gridStats)
 Plotar o grid:
 ```{r}
 plot(gridStats[["heightMean"]], col = heat.colors(255), xlab = "", ylab = "", xaxt='n', yaxt = 'n')
+```
+
+## LIDAR
+O exemplo a seguir é um processamento de imagens LIDAR, por meio da qual será segmentado árvores individuais e métricas.
+
+Carregar pacote:
+```{r message=FALSE}
+library(lidR)
+library(raster)
+```
+
+Baixar dados
+[Example.las]('https://www.dropbox.com/s/e7mlo11k5qeao2i/Example.las?dl=1')
+
+Carregar uma área florestal de exemplo a partir de imagens LIDAR que será trabalhada:
+```{r}
+las = readLAS('C:/Users/Jefferson/Dropbox/Livro/Example.las')
+plot(las)
+```
+
+
+O lasground fornece vários algoritmos para classificar os pontos de referência. Essa função é conveniente para gráficos de pequeno a médio porte, como o que estamos processando.
+
+Classificar pontos do solo (pontos de referência):
+```{r}
+las = lasground(las, csf())
+plot(las, color = "Classification")
+```
+
+
+É necessário  definir o terreno em 0 metros. Deve-se subtrair o MDT para obter pontos de aterramento em 0, mas aqui não será usado um MDT, mas vamos interpolar exatamente cada ponto.
+
+Definir altura normalizada:
+```{r}
+las = lasnormalize(las, tin())
+plot(las)
+```
+
+
+Na próxima etapa, será usado um algoritmo que requer um modelo de altura da copa a partir da nuvem de pontos.
+
+Calcular um modelo de altura das copas:
+
+```{r}
+algo = pitfree(thresholds = c(0,10,20,30,40,50), subcircle = 0.2)
+chm  = grid_canopy(las, 0.5, algo)
+```
+
+Plotar o CHM:
+```{r}
+plot(chm, col = height.colors(50))
+```
+
+A segmentação pode ser alcançada com `lastrees`. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
+
+Realizar a segmentação das árvores:
+```{r}
+algo = watershed(chm, th = 4)
+las  = lastrees(las, algo)
+```
+
+remove points that are not assigned to a tree
+```{r}
+trees = lasfilter(las, !is.na(treeID))
+```
+
+Plotar a segmentação:
+```{r}
+plot(trees, color = "treeID", colorPalette = pastel.colors(100))
+
+```
+
+Calcular algumas métricas:
+```{r}
+hulls  = tree_hulls(las, func = .stdmetrics)
+spplot(hulls, "zmax")
+```
+
+No exemplo anterior, mesmo se a segmentação for feita usando um modelo de altura do dossel, a classificação foi feita na nuvem de pontos. Isso ocorre porque `lidR` é uma biblioteca orientada à nuvem de pontos. Mas pode-se querer que o raster trabalhe com rasters. Nesse caso, a função divisor de águas pode ser usada de forma independente:
+
+```{r}
+crowns = watershed(chm, th = 4)()
+plot(crowns, col = pastel.colors(100))
+```
+
+Criar poligonos de contornos a partir da copa: 
+```{r}
+contour = rasterToPolygons(crowns, dissolve = TRUE)
+```
+
+Plotar o CHM e contornos:
+```{r}
+plot(chm, col = height.colors(50))
+plot(contour, add = T)
+```
+
+
+## Informações topográficas a partir do Modelo Digital de Elevação MDE##
+
+Carregar pacotes:
+```{r message=FALSE}
+library(raster)
+```
+
+Carregar dados e plotar :
+```{r}
+MDE=raster("https://www.dropbox.com/s/b2rzimq500rmj5o/MDE.tif?dl=1")
+plot(MDE)
+```
+
+Usar a função `terrain()` para calcular/extrair algumas informações topográficas:
+```{r}
+Declividade <- terrain(MDE, "slope")
+Aspecto <- terrain(MDE, "aspect")
+TPI <- terrain(MDE, "TPI") # Topographic Position Index (Índice de posição topográfica)
+TRI <- terrain(MDE, "TRI") # Terrain Ruggedness Index (Índice de robustez do terreno)
+Rugosidade <- terrain(MDE, "roughness")
+Escoamento <- terrain(MDE, "flowdir")
+Hillshade <- hillShade(Declividade, Aspecto, angle=45, direction=0, filename='', normalize=FALSE)
+```
+
+Juntar todos os dados com a função `stack()`:
+```{r}
+topo <- stack(MDE, Declividade, Aspecto, TPI, TRI, Rugosidade, Escoamento, Hillshade)
+
+```
+
+Renomear os dados para aparecerem no `plot`:
+```{r}
+names(topo) <- c("MDE", "Declividade","Aspecto", "TPI", "TRI", "Rugosidade", "Escoamento", "Hillshade")
+```
+
+Plotar os dados:
+```{r}
+plot(topo)
 ```
 
 
