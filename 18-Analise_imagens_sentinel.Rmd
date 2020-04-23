@@ -20,11 +20,11 @@ library(LSRS)
 Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
 
 
-```{r eval=T, include=FALSE}
+```{r eval=T, include=T}
 imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 ```
 
-```{r eval=FALSE, include=T}
+```{r eval=T, include=T}
 imagesentinel=raster('sentinel2.tif')
 ```
 

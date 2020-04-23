@@ -1,1 +1,1 @@
-# Realizando o Teste Mann-Kendall para Tendência em R
+# Teste Mann-Kendall para Tendência
