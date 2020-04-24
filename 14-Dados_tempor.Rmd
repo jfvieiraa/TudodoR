@@ -123,30 +123,32 @@ Explorar os dados e visualizar com pacote dply e ggplot2
 Vamos utilizar um novo banco de dados
 
 ```{r}
-trmm <- read.csv2(file ="https://www.dropbox.com/s/v16z0cq7i45q5u7/roo_trmm.csv?dl=1", sep = "," )
+trmm <- read.csv2(file ="https://www.dropbox.com/s/hf80ptt7lm6kbdb/roo_trmm.csv?dl=1", sep = "," )
 head(trmm)
 ```
 
 Com o pacote tidyr podemos reorganizar a tabela
-```{r}
+```{r message=FALSE}
 library(tidyr)
 ```
 
-Com a fun??o gather iremos unir todos valores  de chuva mensal em uma coluna separado pelo meses
+Com a função `gather` iremos unir todos valores  de chuva mensal em uma coluna separado pelo meses
 
 ```{r}
 dados = gather(trmm, TIME, ppt, MONTH_01:MONTH_12, na.rm = TRUE)
 head(dados)
 ```
 
-##1.3 Visualizar dados temporais no R
+Visualizar dados temporais no R
 
-*Vamos baixar os dados clim?ticos de Rondon?polis-MT*
+Vamos baixar os dados climáticos de Rondonpolis-MT
 ```{r}
-roo <- read.csv2("https://www.dropbox.com/s/bso8sh05meu5zxh/roo.csv?dl=1")
+roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
 head(roo)
 tail(roo)
 ```
+
+
 Os dados de Roo inicia de janeiro de 1998 a novembro de 2010.
 
 Vamos retirar as colunas das datas
@@ -162,6 +164,7 @@ Converter os dados em um objeto de serie temporal (ts)
 meuts = ts(roo2, start=c(1998, 1), end=c(2010, 11), frequency=12) 
 plot(meuts)
 ```
+
 Verificar os dados
 ```{r}
 start(meuts)
@@ -169,10 +172,9 @@ end(meuts)
 frequency(meuts)
 ```
 
-Apresenta??o gr?fica
+Apresentação gráfica
 ```{r}
 library(devtools)
-install_github('sinhrks/ggfortify')
 
 require(ggfortify) #will plot the ts objects as ggplot2
 
@@ -182,11 +184,11 @@ autoplot(meuts, facets = F) #time series of stocks on one plot
 
 ```
 
-## 1.4 Trabalhando com datas no R
+## Datas no R
 
-O Pacote Lubridate fornece ferramentas que facilitam a an?lise e manipula??o de datas. Essas ferramentas s?o agrupadas abaixo por um prop?sito comum. Mais informa??es sobre cada fun??o podem ser encontradas em sua documenta??o de ajuda.
+O Pacote `Lubridate` fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda.
 
-```{r}
+```{r message=FALSE}
 #install.packages("lubridate")
 library(lubridate)
 ```
@@ -208,7 +210,7 @@ Atribuir  data em um Objeto
 x="1983-10-28"
 ```
 
-YYYY-MM-DD: corresponde ao ano, m?s e dia.
+YYYY-MM-DD: corresponde ao ano, mês e dia.
 
 Qual a estrutura desse objeto ? 
 
@@ -216,7 +218,7 @@ Qual a estrutura desse objeto ?
 str(x)
 ```
 
-O objeto *x* ? um caracter, precisamos transformar para data com a fun?ao **as.Date()**
+O objeto *x* é um caracter, precisamos transformar para data com a função `as.Date()`
 
 ```{r}
 dia1 <- as.Date(x)
@@ -224,7 +226,7 @@ str(dia1)
 ```
 
 
-convertendo datas n?o padronizadas para padr?o
+convertendo datas não padronizadas para padrão
 
 ```{r}
 dia2 = as.Date("12/27/2015", format = "%m/%d/%Y")
