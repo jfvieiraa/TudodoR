@@ -16,10 +16,14 @@ install.packages("rgdal")
 
 Carregar os pacote que foram baixados: 
 
-```{r}
+```{r eval=FALSE}
 library(FIELDimageR)
+
+```
+```{r}
 library(raster)
 ```
+
 
 Baixar a imagem ortomosaicada:
 

@@ -1,1 +1,156 @@
-# Teste Mann-Kendall para Tendência
+## Teste Mann-Kendall para Tendência
+
+O teste de tendência Mann Kendall é usado para analisar dados coletados ao longo do tempo para aumentar ou diminuir consistentemente tendências (“tendências monotônicas”) em valores de Y.
+
+É um teste não paramétrico, o que significa que funciona para todas as distribuições (ou seja, seus dados não precisam atender à suposição de normalidade ), mas seus dados não devem ter correlação serial . Se seus dados seguem uma distribuição normal , você pode executar uma regressão linear simples.
+
+Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote Kendall ou trend.
+
+Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote `Kendall` ou `trend`.
+
+```{r message=FALSE}
+library(Kendall)
+require(trend)
+
+```
+
+O pacote Kendall tem uma função chamada` MannKendall ()` que implementa o teste não paramétrico para detecção de tendência monotônica, conhecido como teste de Mann-Kendall. (Uma tendência monótona pode ser uma tendência ascendente ou uma tendência descendente). 
+
+No pacote trend a função é chamada de `mk.test ()`Para ilustrar as funções dos pacotes em R, usaremos os conjuntos de dados climáticos de Rondonópolis-MT (roo.csv).
+
+```{r}
+roo <- read.csv2 ("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
+
+head (roo)
+
+tail(roo)
+
+str (roo)
+```
+
+A saída produzida por `str ()` indica que R não visualiza esse conjunto de dados como um objeto de série temporal. Precisamos transforma para uma serie temporal.
+Vamos converter os dados para uma serie temporal fixando apenas a temperatura do ar máxima. A função `ts` significa série temporal.
+
+```{r}
+roots=ts(roo$Tmax,c(1998,1),c(2010,11),12)
+```
+
+Antes de implementar o teste Mann-Kendall de tendência para a série temporal da Temperatura do ar máxima, devemos visualizar esta série usando o comando R abaixo:
+```{r}
+plot(roots)
+```
+
+O gráfico de séries temporais produzido por R revela a presença de uma tendência ascendente nos níveis de temperatura do ar máxima diaria para Rondonópolis ao longo do período de interesse. Para ver melhor essa tendência, vamos ajustar uma curva não paramétrica aos dados usando a função `lowess()` em R:
+
+```{r}
+{plot(roots)
+lines(lowess(time(roots),roots),lwd=3, col=2)}
+
+```
+
+Iremos aplicar o teste de Mann-Kendall “como está” (ou seja, sem quaisquer correções para autocorrelação) usando o comando R:
+```{r}
+res <- MannKendall(roots)
+summary(res)
+```
+
+```{r}
+mk.test(roots)
+```
+
+A saída deste teste produzido por R é concisa e relata apenas o valor de tau (ie, estatística tau de Kandall) e o valor p para testar as hipóteses
+“Ho: sem tendência” versus “Ha: tendência monotônica (para cima ou para baixo)”:
+Para o nosso exemplo, o valor de p associado ao teste de Mann-Kendall é estatisticamente significativo, sugerindo a presença de uma tendência ascendente estatisticamente significativa na série temporal de temperatura máxima diaria.
+Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e intercepta de acordo com o método de Sen.
+
+```{r}
+sens.slope(roots)
+```
+
+Podemos plotar a composição da série de dados
+
+```{r}
+library(ggfortify)
+```
+
+```{r}
+autoplot(decompose(roots))
+```
+
+Organizar os dados com o ano e a temperatura do ar maxima
+
+```{r}
+library(forecast)
+library(dplyr)
+```
+
+```{r}
+s=select(roo, ano, Tmax)
+head(s)
+```
+
+Converte os dados em série temporal
+
+```{r}
+roots=ts(s,c(1998,1),c(2010,11),12)
+```
+
+Flutação da Temperatura Máxima
+
+```{r}
+plot.ts(roots[,2], main = "Flutação da Temperatura Máxima", xlab = "Ano", ylab = "Tmax")
+```
+
+Variação mensal da Temperatura Maxíma
+
+```{r}
+seasonplot(roots[,2], year.labels = TRUE, year.labels.left=TRUE, col=1:40, pch=19, main = "Variação mensal da Temperatura Maxíma", xlab = "Mês", ylab = "Tmax")
+```
+
+
+Variação mensal da temperatura máxima de Rondonópolis – boxplot
+
+```{r}
+boxplot(roots[,2] ~ cycle(roots[,2]), xlab = "Mensal", ylab = "Tmax", main = "Variação mensal da temperatura máxima de Rondonópolis")
+```
+
+Movendo suavização média para ver a tendência
+```{r}
+{plot(roots[,2], col="gray", main = "1 Year Moving Average Smoothing")
+lines(ma(roots[,2], order = 12), col = "red", lwd=3)}
+```
+
+```{r}
+{plot(roots[,2], col="gray", main = "3 Year Moving Average Smoothing")
+lines(ma(roots[,2], order = 36), col = "red", lwd=3)}
+```
+
+```{r}
+{plot(roots[,2], col="gray", main = "10 Year Moving Average Smoothing")
+lines(ma(roots[,2], order = 120), col = "red", lwd=3)}
+
+```
+
+Previsão de dados
+```{r}
+mediamovel = ma(roots[,2], order = 2)
+print(mediamovel)
+previsao = forecast(mediamovel, h=12)
+plot(previsao)
+```
+
+Previsão ARRIMA
+```{r}
+arima = auto.arima(roots[,2])
+previsao = forecast(arima, h=12)
+plot(previsao)
+
+```
+
+
+### Referência 
+
+http://www.ghement.ca/Mann-Kendall%20Trend%20Test%20in%20R.doc
+
+https://cran.r-project.org/web/packages/trend/trend.pdf
+
