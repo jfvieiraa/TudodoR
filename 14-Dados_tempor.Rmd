@@ -6,7 +6,7 @@ Vamos baixar os dados climáticos de Rondonópolis-MT
 roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
 ```
 
-Podemos verificar o cabe?ario do conjunto de dados
+Podemos verificar o cabeçario do conjunto de dados
 ```{r}
 head(roo)
 ```
