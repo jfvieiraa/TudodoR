@@ -1,6 +1,6 @@
 # Acesso a bancos de dados climáticos
 
-## Precipitação com o pacote hydroTSM
+## Precipitação pluvial
 
 Tutorial do HydroTSM - http://goo.gl/9u1PO
 
@@ -226,8 +226,506 @@ Valor anual máximo de Precipitação total em 5 dias
    - *Nota 2:* Para os dois primeiros e os últimos dois valores, a largura da janela é adaptada para ignorar valores a série temporal
 
 
-## Referência
+## Evapotranspiração
 
+A evapotranspiração é a forma pela qual a água da superfície terrestre passa para a atmosfera no estado de vapor, tendo papel importante no Ciclo Hidrológico. Esse processo envolve a evaporação da água de superfícies de água livre (rios, lagos, represas, oceano, etc), dos solos e da vegetação úmida (que foi interceptada durante uma chuva) e a transpiração dos vegetais
+
+Apagar objetos antigos
+
+```{r}
+ rm(list = ls())
+```
+
+Baixar dados
+
+[a.txt] (https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=0)
+
+```{r}
+ a = read.table("https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1", sep=";", head=T)
+  
+head(a)
+```
+
+Transformar em Data e Dia Juliano
+```{r}
+a$Data = as.Date(a$Data)
+```
+
+  
+Dia Juliano: calendário de dias corridos, trata-se de uma sequência de números inteiros uma para cada dia.  
+```{r}
+ a$DiaJuliano = as.numeric(format(a$Data, trim = T, '%j'))
+```
+
+Verificar
+```{r}
+head(a)
+```
+
+  
+**Constantes utilizadas no calculo da ET.**
+
+Altura acima do nível do mar (m)
+
+```{r}
+altitude = 259.38 
+```
+
+Pressão atmosférica local, calculada com base na altitude (kPa)
+```{r}
+Patm = 101.3*((293-0.0065*altitude)/293)**5.26 
+```
+
+Coeficiente psicrométrico (kPa/ºC)
+
+```{r}
+gama = 0.665*(10**-3)*Patm 
+```
+
+Latitude
+```{r}
+lat = -7.53  
+```
+
+Transformar em radianos 
+```{r}
+corr = pi/180 
+```
+
+Declinação solar (rad)
+```{r}
+ decl = 23.45*sin(corr*((a$DiaJuliano-80)*360/365)) 
+```
+
+ 
+Ângulo horário do nascer ao por do sol em (rad)
+```{r}
+hn = 1/corr*acos(-tan(corr*lat)*tan(corr*decl)) 
+```
+
+Número máximo de horas de luz solar em um dia (h)
+
+```{r}
+a$N = 2*hn/15
+```
+
+Distância relativa da terra ao sol 
+```{r}
+s = (1+0.033*cos(a$DiaJuliano*360/365)) 
+```
+
+Angulo de horário(Angulo da radiação do sol)
+```{r}
+t = corr*hn*sin(corr*lat)*sin(corr*decl) 
+u = cos(corr*lat)*cos(corr*decl)*sin(corr*hn)
+```
+
+Radiação Solar Extraterrestre diária (mm/dia)
+```{r}
+ a$Qo = 37.6*s*(t+u) 
+```
+
+Verificar dados
+
+```{r}
+head(a)
+```
+
+coeficientes para climas médios
+```{r}
+x = 0.25
+```
+
+coeficientes para climas médios
+```{r}
+ b = 0.50
+```
+  
+Insolação (h)  
+
+```{r}
+ n.est = (a$Rs/a$Qo-x)*a$N/b;  
+ n.est
+```
+
+Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma  
+```{r}
+a$n<- ifelse((n.est)<0,1, n.est);
+head(a)
+
+```
+ 
+Nebulosidade ou fração de luz (h)    
+
+```{r}
+  a$n.N = a$n/a$N;   
+  head(a) 
+  
+```
+
+Albedo, para solo gramado=0,23
+```{r}
+ r = 0.23 
+```
+
+Temperatura média do ar a 2 metros acima da superfície do solo (ºC)
+```{r}
+ a$Tmed = (a$Tmax+a$Tmin)/2
+ head(a)
+```
+
+Pressão de saturação de vapor máxima (kPa)
+
+```{r}
+a$esMax = 0.6100*exp((17.3*a$Tmax)/(237.3+a$Tmax))
+```
+
+Pressão de saturação de vapor mínima (kPa)
+```{r}
+a$esMin = 0.6100*exp((17.3*a$Tmin)/(237.3+a$Tmin))
+                     
+```
+
+Pressão de saturação de vapor média (kPa)
+```{r}
+a$esMed = (a$esMax+a$esMin)/2
+```
+ 
+Pressão atual de vapor (kPa) 
+```{r}
+a$ea = (a$esMed*a$RHmax)/100
+```
+
+Déficit de vapor de pressão de saturação
+```{r}
+a$DPV = a$esMed-a$ea
+```
+
+É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC)
+```{r}
+a$Delta = (4098*a$esMed)/(a$Tmed+237.3)**2
+```
+ 
+Balanço de ondas curtas 
+```{r}
+a$BOC = a$Rs*(1-r)
+```
+
+Balanço de ondas longas    
+```{r}
+ a$BOL = -(0.903*(10**-9)*((a$Tmed+273)**4)*(0.34-0.14*(sqrt(a$ea)))*(0.1+(0.9*a$n.N))) 
+```
+
+Saldo de radiação é superfície da cultura 
+```{r}
+ a$Rn = (a$BOC+a$BOL)
+```
+
+**Estimativa de ETo pelo método de Penman-Monteith-FAO**
+```{r}
+a$ETP.Penman = ((0.408*a$Delta*a$Rn)+(gama*(900/(a$Tmed+273))*a$u2*a$DPV))/(a$Delta+(gama*(1+0.34*a$u2)))
+
+head(a)
+```
+
+  
+Este método, além de procurar representar, de maneira consistente, o fenômeno biofísico da evapotranspiração, é alimentado por quase todos os elementos meteorológicos observados em estações meteorológicas de superfície. 
+  
+  
+**Método de Priestley-Taylor**
+  
+  O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados.
+  
+```{r}
+a$W = ifelse(a$Tmed<16,(0.407+0.0145*a$Tmed),(0.483+0.01*a$Tmed))
+```
+  
+  
+```{r}
+a$ETP.Priestley = (1.26*a$W*a$Rn)/2.45
+
+```
+  
+```{r}
+head (a)
+```
+
+Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor
+
+```{r}
+plot(a$ETP.Penman,a$ETP.Priestley, 
+       xlim=c(1,8),
+       ylim=c(1,8),
+       abline(lm(a$ETP.Priestley~a$ETP.Penman),col="red"))
+  lines(c(0, 8), c(0, 8), col = "black")
+```
+
+  Salvar os dados
+```{r}
+write.table(a, "ETP.txt") 
+```
+  
+**Método Hargreaves-Samani (1985)**
+
+```{r}
+  a$ET_HS = (0.408*(0.0023*a$Qo*((a$Tmax-a$Tmin)**0.5)*a$Qo))
+
+```
+
+```{r}
+plot(a$ETP.Penman,a$ET_HS)
+```
+
+**Método Carmago**
+```{r}
+  a$ET_Ca = 0.01*(a$Qo/2.45)*((1.08*a$Tmax-(0.36*a$Tmin)))*1
+
+```
+
+```{r}
+plot(a$ETP.Penman,a$ET_Ca)
+
+```
+
+
+Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor
+
+```{r}
+par(mfrow=c(1,3))
+{plot(a$ETP.Penman,a$ET_Ca,
+      xlim=c(2,8),
+      ylim=c(2,8))
+  plot(a$ETP.Penman,a$ET_HS,
+       xlim=c(2,8),
+       ylim=c(2,8))
+  plot(a$ETP.Penman,a$ETP.Priestley,
+       xlim=c(2,8),
+       ylim=c(2,8))}
+dev.off() #Encerra todos os dispositivos gráficos abertos
+```
+
+
+
+comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica.
+
+```{r}
+hydroGOF::br2(sim=a$ETP.Penman, obs=a$ETP.Priestley)
+
+```
+
+Comparação gráfica entre dois vetores
+```{r}
+hydroGOF::ggof(sim=a$ETP.Penman, obs=a$ETP.Priestley)
+
+```
+
+### Pacote Evapotranspiration
+
+Apagar objetos antigos
+```{r}
+rm(list=ls())
+```
+
+Baixar Pacote Evapotranspiration
+```{r}
+require(Evapotranspiration)
+
+```
+
+baixar dados
+```{r}
+df <- read.table("https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1",header = T,sep = ";")
+```
+
+Transformar em Data
+```{r}
+df$Data <- as.Date(df$Data)
+climate <- lapply(as.list(df)[2:7], zoo, df$Data) 
+J       <- as.numeric(format(df$Data, "%j"))
+data    <- c(list(Date.daily=df$Data, J=J), climate)
+```
+
+Atribuindo nomes
+```{r}
+names(data)
+
+```
+
+Ver a estrutura do objeto com todas as variáveis da tabela de dados
+
+```{r}
+str(data)
+```
+
+Converter latitude para radianos
+```{r}
+pi/180*-23.45 # [1] -0.4092797
+```
+
+Editar adequadamente as constantes a serem utilizadas. As constantes a serem utilizadas variam com o modelo escolhido, Ex:ET.PenmanMonteith e ET.PristleyTaylor. 
+
+**Constantes dos modelos**
+
+Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração.
+
+```{r}
+myConst <- list(lambda = 2.45, sigma = 4.903e-09, Gsc = 0.082, 
+                lat = -23.45, lat_rad = -0.40928, as = 0.25, 
+                bs = 0.55, Elev = 480, z = 2, Roua = 1.2, 
+                Ca = 0.001013, G = 0, 
+                alphaA = 0.14, alphaPT = 1.26, 
+                ap = 2.4, fz = 28, b0 = 1, 
+                a_0 = 11.9, b_0 = -0.15, 
+                c_0 = -0.25, d_0 = -0.0107, 
+                e0 = 0.81917,  
+                e1 = -0.0040922, e2 = 1.0705, e3 = 0.065649, 
+                e4 = -0.0059684, 
+                e5 = -0.0005967, gammaps = 0.66, 
+                epsilonMo = 0.92, PA = 285.8, 
+                alphaMo = 17.27, betaMo = 237.3, 
+                sigmaMo = 5.67e-08, lambdaMo = 28.5, 
+                b1 = 14, b2 = 1.2)
+```
+
+**Métodos de estimativa de ETO**
+
+O método Penman-Monteith (FAO) é considerado, internacionalmente, o mais apropriado para a estimativa da ETo.
+
+Penman-Monteith
+```{r}
+res1 <- ET.PenmanMonteith(data,  myConst, ts="daily", solar="data", wind="yes", crop = "short")
+```
+
+Constantes: Altitude, lambda-calor latente da vaporização, latitude em radianos, Gsc-constante solar, sigma-constante de Stefan-Boltzmann, fluxo de calor no solo.
+
+   - ts: Dados diários
+   - solar: data, indica que os dados da radiação solar devem ser utilizados diretamente para calcular a evapotranspiração
+   - wind: yes, indica que o cálculo utilizará dados reais da velocidade do vento
+   - crop: short, indica que o método para grama curta hipotética FAO-56 será aplicado
+
+Priestley Taylor
+```{r}
+res2 <- ET.PriestleyTaylor(data, myConst, ts="daily", solar="data", alpha=.23)
+```
+
+```{r}
+res3 <- ET.Romanenko(data, myConst= NULL, ts="daily")
+```
+
+
+```{r}
+res4 <- ET.HargreavesSamani(data, myConst, ts="daily")
+```
+
+
+```{r}
+res5 <- ET.Abtew(data, myConst,ts="daily", solar="data")
+```
+
+```{r}
+res6 <- ET.BrutsaertStrickler(data, myConst, ts="daily", solar="data", alpha=0.23)
+```
+ 
+```{r}
+res7 <- ET.ChapmanAustralian(data, myConst, ts="daily", PenPan= T, 
+                             solar="data", alpha=0.23)
+```
+
+```{r}
+res8 <- ET.GrangerGray(data, myConst, ts="daily", 
+                       solar="data", windfunction_ver=1948, alpha=0.23)
+```
+
+```{r}
+res9 <- ET.JensenHaise(data, myConst, ts="daily", solar="data")
+```
+
+```{r}
+res10 <- ET.Makkink(data, myConst, ts="daily", solar="data")
+```
+
+```{r}
+res11 <- ET.MattShuttleworth(data, myConst, ts="daily",
+                             solar="data", alpha=0.23, r_s=70, CH=0.12)
+```
+
+```{r}
+res12 <- ET.McGuinnessBordne(data, myConst, ts="daily")
+```
+
+
+```{r}
+res13 <- ET.PenPan(data, myConst, ts="daily", 
+                   solar="data", alpha=0.23,
+                   est="potential ET", pan_coeff=0.71, overest= FALSE)
+```
+
+
+```{r}
+res14 <- ET.Penman(data, myConst, ts="daily", 
+                   solar="data", wind="yes", 
+                   windfunction_ver = "1948", alpha = 0.08, z0 = 0.001)
+```
+
+```{r}
+res16 <- ET.Turc(data, myConst, ts="daily", solar="data", humid= FALSE)
+
+```
+
+**Tabela de Resultados**
+
+```{r}
+res <- cbind(PM=res1$ET.Daily, 
+             PT=res2$ET.Daily, RM=res3$ET.Daily, HS=res4$ET.Daily,
+             AB=res5$ET.Daily, BS=res6$ET.Daily, CA=res7$ET.Daily, GG=res8$ET.Daily,
+             JH=res9$ET.Daily, MK=res10$ET.Daily, MS=res11$ET.Daily, MG=res12$ET.Daily,
+             PP=res13$ET.Daily, PN=res14$ET.Daily, Tu=res16$ET.Daily)
+```
+
+```{r}
+head(res)
+```
+
+Salvar Tabela com Evapotranspiração a partir de todos os métodos
+```{r eval=F}
+write.table(res,"ETo5.csv",sep=";",dec=".")
+
+```
+
+Plotar a evapotranspiração estimada com variáveis climáticas
+```{r eval=F}
+ETForcings(data, res1, forcing = "RHmin")
+```
+
+
+lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância 
+```{r}
+fit <- lm(res$PM~res$PT-1)
+```
+
+```{r}
+summary(fit)
+
+```
+
+Apresenta Similaridade entre os métodos, análise significativa.
+```{r}
+plot(res$PM~res$PT); 
+abline(fit, col=2); 
+abline(a=0, b=1, col=3, lty=2) 
+
+```
+
+
+Comparar a evapotranspiração estimada entre vários conjuntos de resultados
+
+```{r}
+ETComparison(res1, res2, type = "Monthly", ylim=c(0,800),
+             labs=c("Penman","PenmanMonteith"))
+```
+
+
+### Referência
 
 http://www.gis-blog.com/download-srtm-for-an-entire-country/
 
