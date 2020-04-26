@@ -6,7 +6,7 @@ Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm 
 
 Carregar pacotes necessários para trabalhar com os dados raster.
 Caso não tenha algum dos pacotes, realize a sua instalação.
-```{r eval=T, message=FALSE, include=T}
+```{r eval=F, message=FALSE, include=T}
 library(raster)
 library(knitr)
 library(sp)
@@ -20,22 +20,22 @@ library(LSRS)
 Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
 
 
-```{r echo=FALSE}
+```{r eval=F}
 imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 ```
 
-```{r eval=T, include=T}
+```{r eval=F}
 imagesentinel=raster('sentinel2.tif')
 ```
 
 Visualizar os dados
-```{r}
+```{r eval=F}
 imagesentinel
 ```
 
 
 É necessário criar camadas individuais para cada uma das bandas espectrais:
-```{r}
+```{r eval=F}
 b1 <- raster('sentinel2.tif', band=1)
 b2 <- raster('sentinel2.tif', band=2)
 b3 <- raster('sentinel2.tif', band=3)
@@ -51,14 +51,14 @@ b12 <- raster('sentinel2.tif', band=12)
 ```
 
 Comparar duas bandas para ver se elas possuem a mesma extensão:
-```{r}
+```{r eval=F}
 compareRaster(b2, b3)
 
 ```
 
 
 Plotar a banda 4 para pré-visualização:
-```{r}
+```{r eval=F}
 plot(b4)
 
 image(b4)
@@ -67,13 +67,13 @@ image(b4)
 
 
 Visualizar a imagem nas bandas do RGB:
-```{r}
+```{r eval=F}
 RGB <- stack(list(b4, b3, b2))              
 plotRGB(RGB, axes = TRUE, stretch = "lin", main = "Sentinel RGB colour composite")
 ```
 
 Juntar todas as bandas num só arquivo:
-```{r}
+```{r eval=F}
 t <- stack(b1,b2, b3, b4, b5, b6, b7, b8, b9, b10, b11, b12)
 st <- brick('sentinel2.tif')
 plot(st)
@@ -83,7 +83,7 @@ Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.
 
 Criar a VI (vegetation index) por meio de função
 
-```{r}
+```{r eval=F}
 VI <- function(img, k, i) {
   bk <- img[[k]]
   bi <- img[[i]]
@@ -94,7 +94,7 @@ VI <- function(img, k, i) {
 
 *NDVI:*
 
-```{r}
+```{r eval=F}
 ndvi <- VI(st, 8, 4)
 plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
 ```
@@ -102,7 +102,7 @@ plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
 
 **Outras fórmula de aplicar o NDVI**
 
-```{r}
+```{r eval=F}
 vi2 <- function(x, y) {
   (x - y) / (x + y)
 }
@@ -113,7 +113,7 @@ plot(ndvi2, col=rev(terrain.colors(10)), main="Sentinel2-NDVI")
 
 **Visualizar o NDVI em histograma**
 
-```{r}
+```{r eval=F}
 hist(ndvi,
      main = "Distribuição dos valores de NDVI",
      xlab = "NDVI",
@@ -127,7 +127,7 @@ axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))
 
 Visualizar apenas a vegetação  com NDVI acima de 0.4:
 
-```{r}
+```{r eval=F}
 veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
 plot(veg, main='Vegetação')
 ```
@@ -135,7 +135,7 @@ plot(veg, main='Vegetação')
 
 Reclassificar o NDVI e difini-lo por classes numéricas:
 
-```{r}
+```{r eval=F}
 vegc <- reclassify(ndvi, c(-Inf,0.25,1, 0.25,0.3,2, 0.3,0.4,3, 0.4,0.5,4, 0.5,Inf, 5))
 plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
 ```
@@ -146,44 +146,44 @@ plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
 
 Converter o raster (NDVI) a um vetor/matriz:
 
-```{r}
+```{r eval=F}
 nr <-getValues(ndvi)
 str(nr)
 ```
 
 É importante definir o gerador de pontos, porque o *"kmeans"* inicia os centros em locais aleatórios: 
 
-```{r}
+```{r eval=F}
 set.seed(99)
 ```
 
 Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método `Lloyd`
-```{r}
+```{r eval=F}
 kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500,
                      nstart = 5, algorithm = "Lloyd")
 ```
 
 Ver o vetor/matriz:
 
-```{r}
+```{r eval=F}
 str(kmncluster)
 ```
 
 Crie uma cópia do NDVI para não perder os dados:
 
-```{r}
+```{r eval=F}
 knr <- ndvi
 ```
 
 Agora substitua os valores das células de varredura pelo `kmncluster$cluster`:
 
-```{r}
+```{r eval=F}
 knr[] <- kmncluster$cluster
 ```
 
 Realize o plot do NDVI e do kmeans:
 
-```{r}
+```{r eval=F}
 par(mfrow = c(1, 2))
 plot(ndvi, col = rev(terrain.colors(10)), main = "NDVI")
 plot(knr, main = "Kmeans", col = viridis_pal(option = "D")(10))
@@ -192,7 +192,7 @@ plot(knr, main = "Kmeans", col = viridis_pal(option = "D")(10))
 
 Se quiser traçar a classificação kmeans ao lado da renderização  do RGB para verificar a qualidade da classificação e identificação das classes:
 
-```{r}
+```{r eval=F}
 par(mfrow = c(1, 2))
 plotRGB(RGB, axes = FALSE, stretch = "lin", main = "RGB")
 plot(knr, main = "Kmeans", yaxt = 'n', col = viridis_pal(option = "D")(10))
@@ -200,7 +200,7 @@ plot(knr, main = "Kmeans", yaxt = 'n', col = viridis_pal(option = "D")(10))
 
 Aplicar outros índices de vegetação com o `pacote LSRS`:
 
-```{r}
+```{r eval=F}
 NDVI=NDVI(b8,b4)
 SAVI=SAVI(b8,b4)
 TGSI=TGSI(b4,b2,b3)
@@ -209,7 +209,7 @@ EVI=EVI(b8,b4,b2,Pixel.Depth=1)
 NBR=NBR(b8,b11)
 ```
 
-```{r}
+```{r eval=F}
 par(mfrow = c(3, 2))
 plot(NDVI,lwd=4,main="NDVI",xlab="easting", ylab="northing")
 plot(SAVI,lwd=4,main="SAVI",xlab="easting", ylab="northing")
@@ -223,20 +223,20 @@ plot(NBR,lwd=4,main="NBR",xlab="easting", ylab="northing")
 ## Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação
 
 Primeiro carregar os pacotes necessários
-```{r}
+```{r eval=F }
 library(raster)
 library(plot3D)
 ```
 
 Carregar o dado raster do pacote Raster (Volcano) para ser usado como exemplo:
 
-```{r}
+```{r eval=F}
 filled.contour(volcano, color.palette = terrain.colors)
 ```
 
 Criar as curvas de nível:
 
-```{r}
+```{r eval=F}
 cont <- contourLines(volcano)
 fun <- function(x) x$level
 LEVS <- sort(unique(unlist(lapply(cont, fun))))
@@ -245,13 +245,13 @@ COLS <- terrain.colors(length(LEVS))
 
 Plotar somente as curvas de nível:
 
-```{r}
+```{r eval=F}
 contour(volcano)
 ```
 
 
 Plotar o modelo 3D com curvas de nível:
-```{r}
+```{r eval=F}
 x <- seq(1, nrow(volcano), by = 3)
 y <- seq(1, ncol(volcano), by = 3) 
 Volcano <- volcano [x, y]
@@ -260,14 +260,14 @@ Volcano <- volcano [x, y]
 
 Exemplo 1:
 
-```{r}
+```{r eval=F}
 ribbon3D(z = Volcano, contour = TRUE, zlim= c(-100, 200),image = TRUE)
 
 ```
 
 
 Exemplo 2:
-```{r}
+```{r eval=F}
 persp3D(z = Volcano, contour = TRUE, zlim= c(-200, 200), image = FALSE)
 
 ```
@@ -275,20 +275,20 @@ persp3D(z = Volcano, contour = TRUE, zlim= c(-200, 200), image = FALSE)
 
 Exemplo 3:
 
-```{r}
+```{r eval=F}
 persp3D(z = Volcano, x = x, y = y, scale = FALSE,contour = list(nlevels = 20, col = "red"),zlim = c(-200, 200), expand = 0.2,image = list(col = grey (seq(0, 1, length.out = 100))))
 ```
 
 Exemplo 4:
 
-```{r}
+```{r eval=F}
 persp3D(z = Volcano, contour = list(side = c("zmin", "z", "350")), zlim = c(-100, 400), phi = 20, image = list(side = 350))
 ```
 
 
 Exemplo 5:
 
-```{r}
+```{r eval=F}
 persp3D(z = volcano, shade = 0.3, col = gg.col(100))
 ```
 
@@ -296,7 +296,7 @@ persp3D(z = volcano, shade = 0.3, col = gg.col(100))
 O exemplo a seguir é um processamento de imagens LIDAR, por meio da qual será segmentado árvores individuais e métricas.
 
 Carregar pacote:
-```{r message=FALSE}
+```{r eval=F, message=FALSE}
 library(lidR)
 library(raster)
 ```
@@ -305,7 +305,7 @@ Baixar dados
 [Example.las]('https://www.dropbox.com/s/e7mlo11k5qeao2i/Example.las?dl=1')
 
 Carregar uma área florestal de exemplo a partir de imagens LIDAR que será trabalhada:
-```{r}
+```{r eval=F}
 las = readLAS('C:/Users/Jefferson/Dropbox/Livro/Example.las')
 plot(las)
 ```
@@ -314,7 +314,7 @@ plot(las)
 O lasground fornece vários algoritmos para classificar os pontos de referência. Essa função é conveniente para gráficos de pequeno a médio porte, como o que estamos processando.
 
 Classificar pontos do solo (pontos de referência):
-```{r}
+```{r eval=F}
 las = lasground(las, csf())
 plot(las, color = "Classification")
 ```
@@ -323,7 +323,7 @@ plot(las, color = "Classification")
 É necessário  definir o terreno em 0 metros. Deve-se subtrair o MDT para obter pontos de aterramento em 0, mas aqui não será usado um MDT, mas vamos interpolar exatamente cada ponto.
 
 Definir altura normalizada:
-```{r}
+```{r eval=F}
 las = lasnormalize(las, tin())
 plot(las)
 ```
@@ -333,75 +333,75 @@ Na próxima etapa, será usado um algoritmo que requer um modelo de altura da co
 
 Calcular um modelo de altura das copas:
 
-```{r}
+```{r eval=F}
 algo = pitfree(thresholds = c(0,10,20,30,40,50), subcircle = 0.2)
 chm  = grid_canopy(las, 0.5, algo)
 ```
 
 Plotar o CHM:
-```{r}
+```{r eval=F}
 plot(chm, col = height.colors(50))
 ```
 
 A segmentação pode ser alcançada com `lastrees`. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
 
 Realizar a segmentação das árvores:
-```{r}
+```{r eval=F}
 algo = watershed(chm, th = 4)
 las  = lastrees(las, algo)
 ```
 
 remove points that are not assigned to a tree
-```{r}
+```{r eval=F}
 trees = lasfilter(las, !is.na(treeID))
 ```
 
 Plotar a segmentação:
-```{r}
+```{r eval=F}
 plot(trees, color = "treeID", colorPalette = pastel.colors(100))
 
 ```
 
 Calcular algumas métricas:
-```{r}
+```{r eval=F}
 hulls  = tree_hulls(las, func = .stdmetrics)
 spplot(hulls, "zmax")
 ```
 
 No exemplo anterior, mesmo se a segmentação for feita usando um modelo de altura do dossel, a classificação foi feita na nuvem de pontos. Isso ocorre porque `lidR` é uma biblioteca orientada à nuvem de pontos. Mas pode-se querer que o raster trabalhe com rasters. Nesse caso, a função divisor de águas pode ser usada de forma independente:
 
-```{r}
+```{r eval=F}
 crowns = watershed(chm, th = 4)()
 plot(crowns, col = pastel.colors(100))
 ```
 
 Criar poligonos de contornos a partir da copa: 
-```{r}
+```{r eval=F}
 contour = rasterToPolygons(crowns, dissolve = TRUE)
 ```
 
 Plotar o CHM e contornos:
-```{r}
+```{r eval=F}
 plot(chm, col = height.colors(50))
 plot(contour, add = T)
 ```
 
 
-## Informações topográficas a partir do Modelo Digital de Elevação MDE##
+## Modelo Digital de Elevação MDE##
 
 Carregar pacotes:
-```{r message=FALSE}
+```{r eval=F, message=FALSE}
 library(raster)
 ```
 
 Carregar dados e plotar :
-```{r}
+```{r eval=F}
 MDE=raster("https://www.dropbox.com/s/b2rzimq500rmj5o/MDE.tif?dl=1")
 plot(MDE)
 ```
 
 Usar a função `terrain()` para calcular/extrair algumas informações topográficas:
-```{r}
+```{r eval=F}
 Declividade <- terrain(MDE, "slope")
 Aspecto <- terrain(MDE, "aspect")
 TPI <- terrain(MDE, "TPI") # Topographic Position Index (Índice de posição topográfica)
@@ -412,25 +412,17 @@ Hillshade <- hillShade(Declividade, Aspecto, angle=45, direction=0, filename='',
 ```
 
 Juntar todos os dados com a função `stack()`:
-```{r}
+```{r eval=F}
 topo <- stack(MDE, Declividade, Aspecto, TPI, TRI, Rugosidade, Escoamento, Hillshade)
 
 ```
 
 Renomear os dados para aparecerem no `plot`:
-```{r}
+```{r eval=F}
 names(topo) <- c("MDE", "Declividade","Aspecto", "TPI", "TRI", "Rugosidade", "Escoamento", "Hillshade")
 ```
 
 Plotar os dados:
-```{r}
+```{r eval=F}
 plot(topo)
 ```
-
-
-
-
-
-
-
-

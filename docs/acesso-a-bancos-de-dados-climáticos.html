@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-23" />
+<meta name="date" content="2020-04-25" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 <link rel="prev" href="analise-de-variância-anova.html"/>
-<link rel="next" href="teste-mann-kendall-para-tendência.html"/>
+<link rel="next" href="sensoriamento-remoto.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -283,14 +283,16 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="9.2" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html#referência-7"><i class="fa fa-check"></i><b>9.2</b> Referência</a></li>
 <li class="chapter" data-level="9.3" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html#dados-temporais-no-r"><i class="fa fa-check"></i><b>9.3</b> Dados temporais no R</a></li>
 <li class="chapter" data-level="9.4" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html#datas-no-r"><i class="fa fa-check"></i><b>9.4</b> Datas no R</a></li>
+<li class="chapter" data-level="9.5" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html#teste-mann-kendall-para-tendência"><i class="fa fa-check"></i><b>9.5</b> Teste Mann-Kendall para Tendência</a><ul>
+<li class="chapter" data-level="9.5.1" data-path="acesso-a-bancos-de-dados-climáticos.html"><a href="acesso-a-bancos-de-dados-climáticos.html#referência-8"><i class="fa fa-check"></i><b>9.5.1</b> Referência</a></li>
 </ul></li>
-<li class="chapter" data-level="10" data-path="teste-mann-kendall-para-tendência.html"><a href="teste-mann-kendall-para-tendência.html"><i class="fa fa-check"></i><b>10</b> Teste Mann-Kendall para Tendência</a></li>
-<li class="chapter" data-level="11" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html"><i class="fa fa-check"></i><b>11</b> Sensoriamento remoto</a><ul>
-<li class="chapter" data-level="11.1" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-rpas"><i class="fa fa-check"></i><b>11.1</b> Imagens de RPAs</a></li>
-<li class="chapter" data-level="11.2" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-satélites"><i class="fa fa-check"></i><b>11.2</b> Imagens de satélites</a></li>
-<li class="chapter" data-level="11.3" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação"><i class="fa fa-check"></i><b>11.3</b> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</a></li>
-<li class="chapter" data-level="11.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#lidar"><i class="fa fa-check"></i><b>11.4</b> LIDAR</a></li>
-<li class="chapter" data-level="11.5" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#informações-topográficas-a-partir-do-modelo-digital-de-elevação-mde"><i class="fa fa-check"></i><b>11.5</b> Informações topográficas a partir do Modelo Digital de Elevação MDE</a></li>
+</ul></li>
+<li class="chapter" data-level="10" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html"><i class="fa fa-check"></i><b>10</b> Sensoriamento remoto</a><ul>
+<li class="chapter" data-level="10.1" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-rpas"><i class="fa fa-check"></i><b>10.1</b> Imagens de RPAs</a></li>
+<li class="chapter" data-level="10.2" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-satélites"><i class="fa fa-check"></i><b>10.2</b> Imagens de satélites</a></li>
+<li class="chapter" data-level="10.3" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação"><i class="fa fa-check"></i><b>10.3</b> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</a></li>
+<li class="chapter" data-level="10.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#lidar"><i class="fa fa-check"></i><b>10.4</b> LIDAR</a></li>
+<li class="chapter" data-level="10.5" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#modelo-digital-de-elevação-mde"><i class="fa fa-check"></i><b>10.5</b> Modelo Digital de Elevação MDE</a></li>
 </ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
@@ -531,7 +533,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">9.3</span> Dados temporais no R</h2>
 <p>Vamos baixar os dados climáticos de Rondonópolis-MT</p>
 <div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb875-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a></code></pre></div>
-<p>Podemos verificar o cabe?ario do conjunto de dados</p>
+<p>Podemos verificar o cabeçario do conjunto de dados</p>
 <div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb876-1" title="1"><span class="kw">head</span>(roo)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA
@@ -2447,10 +2449,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <a class="sourceLine" id="cb930-2" title="2"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 <p>Qual o dia de hoje?</p>
 <div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb931-1" title="1"><span class="kw">today</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;2020-04-23&quot;</code></pre>
+<pre><code>## [1] &quot;2020-04-25&quot;</code></pre>
 <p>Qual o dia e horario ?</p>
 <div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb933-1" title="1"><span class="kw">now</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;2020-04-23 19:57:29 -05&quot;</code></pre>
+<pre><code>## [1] &quot;2020-04-25 20:02:18 -05&quot;</code></pre>
 <p>Atribuir data em um Objeto</p>
 <div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb935-1" title="1">x=<span class="st">&quot;1983-10-28&quot;</span></a></code></pre></div>
 <p>YYYY-MM-DD: corresponde ao ano, mês e dia.</p>
@@ -2475,6 +2477,186 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## [1] TRUE</code></pre>
 
 </div>
+<div id="teste-mann-kendall-para-tendência" class="section level2">
+<h2><span class="header-section-number">9.5</span> Teste Mann-Kendall para Tendência</h2>
+<p>O teste de tendência Mann Kendall é usado para analisar dados coletados ao longo do tempo para aumentar ou diminuir consistentemente tendências (“tendências monotônicas”) em valores de Y.</p>
+<p>É um teste não paramétrico, o que significa que funciona para todas as distribuições (ou seja, seus dados não precisam atender à suposição de normalidade ), mas seus dados não devem ter correlação serial . Se seus dados seguem uma distribuição normal , você pode executar uma regressão linear simples.</p>
+<p>Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote Kendall ou trend.</p>
+<p>Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote <code>Kendall</code> ou <code>trend</code>.</p>
+<div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb948-1" title="1"><span class="kw">library</span>(Kendall)</a>
+<a class="sourceLine" id="cb948-2" title="2"><span class="kw">require</span>(trend)</a></code></pre></div>
+<p>O pacote Kendall tem uma função chamada<code>MannKendall ()</code> que implementa o teste não paramétrico para detecção de tendência monotônica, conhecido como teste de Mann-Kendall. (Uma tendência monótona pode ser uma tendência ascendente ou uma tendência descendente).</p>
+<p>No pacote trend a função é chamada de <code>mk.test ()</code>Para ilustrar as funções dos pacotes em R, usaremos os conjuntos de dados climáticos de Rondonópolis-MT (roo.csv).</p>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb949-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb949-2" title="2"></a>
+<a class="sourceLine" id="cb949-3" title="3"><span class="kw">head</span> (roo)</a></code></pre></div>
+<pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
+## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA
+## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA    NA     NA
+## 3  2  2 1998 51.0 31.8 21.8 NA 25.075 23.85 89.75  0.125
+## 4  3  2 1998  0.6 35.4 21.5 NA 24.975 23.00 86.50  0.125
+## 5  4  2 1998  0.0 35.6 22.1 NA 26.650 23.90 80.00  0.275
+## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325</code></pre>
+<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb951-1" title="1"><span class="kw">tail</span>(roo)</a></code></pre></div>
+<pre><code>##      dd mm  ano Prec Tmax Tmin  n Tbs Tbu UR Vvento
+## 4332 29 10 2010  0.0 36.8 18.9 NA  NA  NA NA     NA
+## 4333 30 10 2010  0.0 36.4 24.8 NA  NA  NA NA     NA
+## 4334 31 10 2010 49.0 33.6 22.5 NA  NA  NA NA     NA
+## 4335  1 11 2010 21.6 30.7 21.5 NA  NA  NA NA     NA
+## 4336  2 11 2010  0.4 32.6 19.9 NA  NA  NA NA     NA
+## 4337  3 11 2010  0.0   NA 17.3 NA  NA  NA NA     NA</code></pre>
+<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb953-1" title="1"><span class="kw">str</span> (roo)</a></code></pre></div>
+<pre><code>## &#39;data.frame&#39;:    4337 obs. of  11 variables:
+##  $ dd    : int  1 1 2 3 4 5 6 7 8 9 ...
+##  $ mm    : int  1 2 2 2 2 2 2 2 2 2 ...
+##  $ ano   : int  1998 1998 1998 1998 1998 1998 1998 1998 1998 1998 ...
+##  $ Prec  : num  NA 8.2 51 0.6 0 0 0 2.4 NA 0.8 ...
+##  $ Tmax  : num  30 35.6 31.8 35.4 35.6 36.4 36.8 36.8 36.6 35.2 ...
+##  $ Tmin  : num  21.7 21.8 21.8 21.5 22.1 22.5 23.5 23.5 24.3 22.9 ...
+##  $ n     : num  NA NA NA NA NA NA NA NA NA NA ...
+##  $ Tbs   : num  NA NA 25.1 25 26.6 ...
+##  $ Tbu   : num  NA NA 23.9 23 23.9 ...
+##  $ UR    : num  NA NA 89.8 86.5 80 ...
+##  $ Vvento: num  NA NA 0.125 0.125 0.275 0.325 0.2 0.175 0.15 0.25 ...</code></pre>
+<p>A saída produzida por <code>str ()</code> indica que R não visualiza esse conjunto de dados como um objeto de série temporal. Precisamos transforma para uma serie temporal.
+Vamos converter os dados para uma serie temporal fixando apenas a temperatura do ar máxima. A função <code>ts</code> significa série temporal.</p>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb955-1" title="1">roots=<span class="kw">ts</span>(roo<span class="op">$</span>Tmax,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
+<p>Antes de implementar o teste Mann-Kendall de tendência para a série temporal da Temperatura do ar máxima, devemos visualizar esta série usando o comando R abaixo:</p>
+<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb956-1" title="1"><span class="kw">plot</span>(roots)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-507-1.png" width="672" /></p>
+<p>O gráfico de séries temporais produzido por R revela a presença de uma tendência ascendente nos níveis de temperatura do ar máxima diaria para Rondonópolis ao longo do período de interesse. Para ver melhor essa tendência, vamos ajustar uma curva não paramétrica aos dados usando a função <code>lowess()</code> em R:</p>
+<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb957-1" title="1">{<span class="kw">plot</span>(roots)</a>
+<a class="sourceLine" id="cb957-2" title="2"><span class="kw">lines</span>(<span class="kw">lowess</span>(<span class="kw">time</span>(roots),roots),<span class="dt">lwd=</span><span class="dv">3</span>, <span class="dt">col=</span><span class="dv">2</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-508-1.png" width="672" /></p>
+<p>Iremos aplicar o teste de Mann-Kendall “como está” (ou seja, sem quaisquer correções para autocorrelação) usando o comando R:</p>
+<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb958-1" title="1">res &lt;-<span class="st"> </span><span class="kw">MannKendall</span>(roots)</a>
+<a class="sourceLine" id="cb958-2" title="2"><span class="kw">summary</span>(res)</a></code></pre></div>
+<pre><code>## Score =  3821 , Var(Score) = 417409.7
+## denominator =  11838.61
+## tau = 0.323, 2-sided pvalue =&lt; 2.22e-16</code></pre>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb960-1" title="1"><span class="kw">mk.test</span>(roots)</a></code></pre></div>
+<pre><code>## 
+##  Mann-Kendall trend test
+## 
+## data:  roots
+## z = 5.9126, n = 155, p-value = 3.366e-09
+## alternative hypothesis: true S is not equal to 0
+## sample estimates:
+##            S         varS          tau 
+## 3.821000e+03 4.174097e+05 3.227575e-01</code></pre>
+<p>A saída deste teste produzido por R é concisa e relata apenas o valor de tau (ie, estatística tau de Kandall) e o valor p para testar as hipóteses
+“Ho: sem tendência” versus “Ha: tendência monotônica (para cima ou para baixo)”:
+Para o nosso exemplo, o valor de p associado ao teste de Mann-Kendall é estatisticamente significativo, sugerindo a presença de uma tendência ascendente estatisticamente significativa na série temporal de temperatura máxima diaria.
+Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e intercepta de acordo com o método de Sen.</p>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb962-1" title="1"><span class="kw">sens.slope</span>(roots)</a></code></pre></div>
+<pre><code>## 
+##  Sen&#39;s slope
+## 
+## data:  roots
+## z = 5.9126, n = 155, p-value = 3.366e-09
+## alternative hypothesis: true z is not equal to 0
+## 95 percent confidence interval:
+##  0.02714286 0.04883721
+## sample estimates:
+## Sen&#39;s slope 
+##  0.03870968</code></pre>
+<p>Podemos plotar a composição da série de dados</p>
+<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb964-1" title="1"><span class="kw">library</span>(ggfortify)</a></code></pre></div>
+<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb965-1" title="1"><span class="kw">autoplot</span>(<span class="kw">decompose</span>(roots))</a></code></pre></div>
+<pre><code>## Warning: attributes are not identical across measure variables;
+## they will be dropped</code></pre>
+<pre><code>## Warning: Removed 24 row(s) containing missing values (geom_path).</code></pre>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-513-1.png" width="672" /></p>
+<p>Organizar os dados com o ano e a temperatura do ar maxima</p>
+<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb968-1" title="1"><span class="kw">library</span>(forecast)</a></code></pre></div>
+<pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
+##   method            from
+##   as.zoo.data.frame zoo</code></pre>
+<pre><code>## Registered S3 methods overwritten by &#39;forecast&#39;:
+##   method                 from     
+##   autoplot.Arima         ggfortify
+##   autoplot.acf           ggfortify
+##   autoplot.ar            ggfortify
+##   autoplot.bats          ggfortify
+##   autoplot.decomposed.ts ggfortify
+##   autoplot.ets           ggfortify
+##   autoplot.forecast      ggfortify
+##   autoplot.stl           ggfortify
+##   autoplot.ts            ggfortify
+##   fitted.ar              ggfortify
+##   fortify.ts             ggfortify
+##   residuals.ar           ggfortify</code></pre>
+<pre><code>## 
+## Attaching package: &#39;forecast&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:hydroTSM&#39;:
+## 
+##     ma</code></pre>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb973-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb974-1" title="1">s=<span class="kw">select</span>(roo, ano, Tmax)</a>
+<a class="sourceLine" id="cb974-2" title="2"><span class="kw">head</span>(s)</a></code></pre></div>
+<pre><code>##    ano Tmax
+## 1 1998 30.0
+## 2 1998 35.6
+## 3 1998 31.8
+## 4 1998 35.4
+## 5 1998 35.6
+## 6 1998 36.4</code></pre>
+<p>Converte os dados em série temporal</p>
+<div class="sourceCode" id="cb976"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb976-1" title="1">roots=<span class="kw">ts</span>(s,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
+<p>Flutação da Temperatura Máxima</p>
+<div class="sourceCode" id="cb977"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb977-1" title="1"><span class="kw">plot.ts</span>(roots[,<span class="dv">2</span>], <span class="dt">main =</span> <span class="st">&quot;Flutação da Temperatura Máxima&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Ano&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-517-1.png" width="672" /></p>
+<p>Variação mensal da Temperatura Maxíma</p>
+<div class="sourceCode" id="cb978"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb978-1" title="1"><span class="kw">seasonplot</span>(roots[,<span class="dv">2</span>], <span class="dt">year.labels =</span> <span class="ot">TRUE</span>, <span class="dt">year.labels.left=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">40</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da Temperatura Maxíma&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mês&quot;, ylab = &quot;</span>Tmax<span class="st">&quot;)</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-518-1.png" width="672" /></p>
+<p>Variação mensal da temperatura máxima de Rondonópolis – boxplot</p>
+<div class="sourceCode" id="cb979"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb979-1" title="1"><span class="kw">boxplot</span>(roots[,<span class="dv">2</span>] <span class="op">~</span><span class="st"> </span><span class="kw">cycle</span>(roots[,<span class="dv">2</span>]), <span class="dt">xlab =</span> <span class="st">&quot;Mensal&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da temperatura máxima de Rondonópolis&quot;)</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-519-1.png" width="672" /></p>
+<p>Movendo suavização média para ver a tendência</p>
+<div class="sourceCode" id="cb980"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb980-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb980-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">12</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-520-1.png" width="672" /></p>
+<div class="sourceCode" id="cb981"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb981-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;3 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb981-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">36</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-521-1.png" width="672" /></p>
+<div class="sourceCode" id="cb982"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb982-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;10 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb982-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">120</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-522-1.png" width="672" /></p>
+<p>Previsão de dados</p>
+<div class="sourceCode" id="cb983"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb983-1" title="1">mediamovel =<span class="st"> </span><span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb983-2" title="2"><span class="kw">print</span>(mediamovel)</a></code></pre></div>
+<pre><code>##        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec
+## 1998    NA 33.25 33.65 34.55 35.75 36.30 36.70 36.75 36.30 34.85 32.85 31.70
+## 1999 31.75 32.45 32.95 32.55 32.45 33.50 33.35 30.50 29.55 31.60 31.15 29.75
+## 2000 30.65 31.60 32.10 33.20 33.20 32.15 32.20 30.50 26.90 26.95 29.45 30.85
+## 2001 32.25 33.75 34.05 33.70 33.65 34.00 32.75 28.30 24.65 24.80 27.40 30.35
+## 2002 32.30 33.60 34.30 34.40 34.50 34.45 33.50 32.65 32.25 29.30 25.15 23.75
+## 2003 26.75 32.45 35.15 35.10 35.45 35.75 35.70 35.65 34.30 31.35 30.10 31.40
+## 2004 33.40 33.80 32.95 33.80 35.30 35.90 35.15 34.25 35.70 37.15 37.15 36.90
+## 2005 36.50 35.60 34.65 34.95 35.75 36.20 36.50 36.65 35.75 34.75 36.10 35.25
+## 2006 30.40 29.30 32.95 35.65 35.75 35.50 36.05 36.55 36.05 35.25 36.35 38.30
+## 2007 38.65 38.30 38.55 38.85 38.60 37.85 37.50 37.55 34.85 29.45 28.50 32.20
+## 2008 34.45 35.85 37.65 38.45 38.50 38.20 37.00 35.60 35.30 35.75 35.00 33.15
+## 2009 34.20 37.85 39.70 39.95 40.10 39.95 39.65 39.50 37.05 29.40 23.10 25.90
+## 2010 33.05 37.35 38.35 37.90 36.90 33.85 29.55 28.15 30.65 34.75    NA</code></pre>
+<div class="sourceCode" id="cb985"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb985-1" title="1">previsao =<span class="st"> </span><span class="kw">forecast</span>(mediamovel, <span class="dt">h=</span><span class="dv">12</span>)</a></code></pre></div>
+<pre><code>## Warning in ets(object, lambda = lambda, biasadj = biasadj,
+## allow.multiplicative.trend = allow.multiplicative.trend, : Missing values
+## encountered. Using longest contiguous portion of time series</code></pre>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb987-1" title="1"><span class="kw">plot</span>(previsao)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-523-1.png" width="672" /></p>
+<p>Previsão ARRIMA</p>
+<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb988-1" title="1">arima =<span class="st"> </span><span class="kw">auto.arima</span>(roots[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb988-2" title="2">previsao =<span class="st"> </span><span class="kw">forecast</span>(arima, <span class="dt">h=</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb988-3" title="3"><span class="kw">plot</span>(previsao)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-524-1.png" width="672" /></p>
+<div id="referência-8" class="section level3">
+<h3><span class="header-section-number">9.5.1</span> Referência</h3>
+<p><a href="http://www.ghement.ca/Mann-Kendall%20Trend%20Test%20in%20R.doc" class="uri">http://www.ghement.ca/Mann-Kendall%20Trend%20Test%20in%20R.doc</a></p>
+<p><a href="https://cran.r-project.org/web/packages/trend/trend.pdf" class="uri">https://cran.r-project.org/web/packages/trend/trend.pdf</a></p>
+
+</div>
+</div>
 </div>
             </section>
 
@@ -2482,7 +2664,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
         </div>
       </div>
 <a href="analise-de-variância-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-<a href="teste-mann-kendall-para-tendência.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="sensoriamento-remoto.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
