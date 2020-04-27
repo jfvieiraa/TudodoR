@@ -1,0 +1,402 @@
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+output: bookdown::pdf_document2
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+--- 
+title: "Uso do sistema R para análise de dados"
+author: " "
+date: "`r Sys.Date()`"
+site: bookdown::bookdown_site
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+output: bookdown::pdf_document2
+description: "Notas de aulas de práticas estatística com o uso do sistema R."
+---
+
+# Pré requisitos
+
+Material em construção.
+
+Este material, em forma de notas de aula, foi escrito para a disciplina do Mestrado em Engenharia Agrícola, intitulado Uso do sistema R para análise de dados, no primeiro semestre de 2018.
+Estas notas de aulas é uma coletânea de apostilas, livros, sites, forum e cursos voltando ao sistema R.  Foi utilizado desses materiais sua estrutura didática e rotinas que foram adaptados para o perfil da disciplina. 
+O material consultado encontra-se referenciado no final de cada capitulo.
+
+<!--chapter:end:index.Rmd-->
+
+# R Básico {#intro}
+
+Este primeio capitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      message= F,
+                      fig.path = Figures/)
+```
+
+Iremos abordar as expressões básicas do R. 
+Começaremos simples, com **números**, **strings** e valores **true/false**. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
+
+## Expressões
+
+Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
+
+```{r matematica}
+2+8
+```
+
+Note que é impresso o resultado, 10.
+
+Digite a frase "Engenharia Agrícola"
+```{r}
+"Engenharia Agrícola"
+```
+
+Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
+```{r}
+6*5
+```
+
+## Valores Booleanos
+
+Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
+Vamos tentar digitar uma expressões que nos dá um valor lógico:
+```{r}
+7<12
+```
+
+E outro valor lógico (sinal duplo de igualdade)
+```{r}
+6+5==10
+```
+
+**T** e **F** são taquigrafia para TRUE e FALSE. Tente isso:
+```{r}
+F==FALSE
+```
+
+## Variáveis
+
+Você pode armazenar valores em uma variável para usar mais tarde. 
+Digite **x <- 28** para armazenar um valor em **x**.
+```{r}
+x<-28
+```
+
+Tende dividr **x** por **4**( **/** é o operador da divisão).
+```{r}
+x/4
+```
+
+Você pode retribuir qualquer valor a uma variável a qualquer momento. 
+Tente atribuir "Engenharia Agrícola"em x.
+```{r}
+x <- "Engenharia Agrícola"
+```
+
+Tente imprimir o valor atual de x.
+```{r}
+x
+```
+
+## Funções
+
+Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
+
+Vamos tentar usar a  função `sum()`, para adicionar alguns números. Entrar:
+
+```{r}
+sum (2, 4, 6)
+```
+
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função `rep` e forneceria seu argumento **times**:
+
+```{r}
+rep("Engenharia Agrícola", times=3)
+```
+
+
+Tente chamar a função `sqrt`  para obter a raiz quadrada 16.
+```{r}
+sqrt(16)
+```
+
+## Ajuda
+A função `help ()` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
+```{r message=TRUE}
+help (mean)
+```
+
+A função `example ()` traz exemplos de usos. Tente exibir exemplos para a função `min`:
+
+```{r}
+example(min)
+```
+
+## Referência
+
+MELO, M. P.; PETERNELI, L. A. **Conhecendo o R: Um visão mais que estatística**. Viçosa, MG: UFV, 2013. 222p.
+
+**Prof. Paulo Justiniando Ribeiro** >http://www.leg.ufpr.br/~paulojus/<
+
+**Prof. Adriano Azevedo Filho** >http://rpubs.com/adriano/esalq2012inicial<
+
+**Prof. Fernando de Pol Mayer** >https://fernandomayer.github.io/ce083-2016-2/<
+
+**Site Interativo Datacamp** >https://www.datacamp.com/<
+
+<!--chapter:end:01-R_basico.Rmd-->
+
+
+# Estruturas de Dados
+
+Placeholder
+
+
+## Vetor
+### Vetores de Sequência
+### Nomes de vetores
+### Plotando um vetor
+### Operações matemáticas
+### Parcelas de dispersão
+### Valores Faltantes
+## Matrizes 
+### Outras formas
+### Acesso a Matriz
+### Visualizações em dados matriciais
+### Mais informações sobre construções de Matrizes
+## Fatores
+## Array
+## Data.frame
+### Índice dos Data.frames
+### Manipulando um Data.frame
+### Separando um data.frame por grupos
+## Lista
+### Alguns comandos que retornam listas
+## Referência
+
+<!--chapter:end:02-Estrutura_basica.Rmd-->
+
+
+# Entrada de dados 
+
+Placeholder
+
+
+## Onde os dados devem estar? 
+## Entrando com dados
+### Vetores
+### Usando a função 'scan'
+### Copiar e colar usando scan()
+### Lendo dados através da área de transferência
+### Usando a função edit
+#### Exemplo 1
+#### Exemplo 2
+### Lendo dados de um arquivo texto
+#### Exemplo 1 
+#### Exemplo 2 
+### Dados do tipo CSV
+### A seguir listamos algumas  destas funções:
+### Lendo dados disponíveis na web
+### Lendo dados de uma planilha eletrônica
+### Exercícios
+## Salvar objetos de dados
+### Outras funções
+## Referência
+
+<!--chapter:end:03-Entrada_dados.Rmd-->
+
+
+# Criando Gráficos com o R
+
+Placeholder
+
+
+## Exemplos de gráficos com o R
+## Entrada de dados
+## Usando a função `plot()`
+### Mudando o padrão dos pontos `pch=`
+### Mudando as linhas (`lwd e lty`)
+### Adicionando  linhas a um grafico de pontos
+### Definindo o intervalo dos eixos
+### Personalizando os gráficos
+## Histogramas
+### Personalizando gráficos
+## Gráficos de Barras
+## Boxplots
+### Boxplot com fatorial
+## Cores
+## Interagindo com a Janela gráfica
+## Texto e tamanho do símbolo
+## Visualizar vários gráficos
+### Varios gráficos na mesma janela gráfica
+## Salvando gráficos
+
+<!--chapter:end:04-Criando_graficos.Rmd-->
+
+
+# Gráficos com ggplot2
+
+Placeholder
+
+
+## Personalizando os gráficos
+### Cores
+### Eixos
+### Legenda
+### Título
+### Facets
+## Exemplos
+### Regressão
+### Delineamento em blocos casualizados- DBC
+### Dados Climáticos
+## Referência
+
+<!--chapter:end:05-Criando_graficos_2.Rmd-->
+
+
+# Testes Estatísticos
+
+Placeholder
+
+
+## Teste t de Student
+### Para uma média
+### Para duas médias independentes
+### Para duas médias dependentes
+## Teste de variância
+### Usando o teste de F
+## Teste para a normalidade - `shapiro.test()` 
+## Teste U de Mann-Whitney
+## Covariância e Correlação
+## Outros testes
+### hydroGOF
+
+<!--chapter:end:06-Teste_T_corre.Rmd-->
+
+
+# Analise de variância (ANOVA)
+
+Placeholder
+
+
+## Delineamento inteiramente casualizado  
+### Análise de experimento  em DIC  
+### Análise de variância
+### Transformação de dados
+#### Transformação de dados BOX-COX
+#### Análise de variância - Ajuste com a variável transformada.
+### Aplicando teste de Tukey para comparar médias
+### Aplicando teste para agrupar médias
+### Referência
+
+<!--chapter:end:07-Anova_dic.Rmd-->
+
+
+
+## Delineamento em bloco casualizado 
+### Análise de experimento DBC  
+#### Análise de variância
+##### Teste das pressuposições da análise de variância
+####### Teste de Bartllet para homocedasticidade
+####### Teste de Shapiro-Wilk para Normalidade
+#### Transformação de dados
+##### Transformação de dados com o BOX-COX
+##### Análise de variância - Ajuste com a variável transformada.
+### Pacote para analise de experimentos 
+### Teste não parametrico
+### Exercicio  1
+### Referência
+
+<!--chapter:end:08-Anova_DBC.Rmd-->
+
+
+
+## Quadrado Latino
+### Banco de dados
+### Exercicios
+### Exercicio para entregar
+
+<!--chapter:end:09-Anova_QL.Rmd-->
+
+
+
+## Regressão Linear simples
+## Regressão Linear Multipla
+### Referência
+
+<!--chapter:end:10-Regressao_L_M.Rmd-->
+
+
+
+## Regressão não linear
+### Curva de retenção de água no solo
+
+<!--chapter:end:11-Regressao_N_linear.Rmd-->
+
+
+# Dados climáticos
+
+Placeholder
+
+
+## Precipitação pluvial
+### Análise anual dos dados
+### Análise mensal dos dados - BOXPLOT
+### Análise sazonal
+### Alguns índices extremos
+### Precipitaçao total chuva
+## Evapotranspiração
+### Pacote Evapotranspiration
+### Referência
+
+<!--chapter:end:13-Dados_clima.Rmd-->
+
+
+
+## Dados temporais no R
+## Datas no R
+
+<!--chapter:end:14-Dados_tempor.Rmd-->
+
+
+
+## Teste Mann-Kendall para Tendência
+### Referência 
+
+<!--chapter:end:16-Tendencia_tempora.Rmd-->
+
+
+# Sensoriamento remoto
+
+Placeholder
+
+
+## Imagens de RPAs
+
+<!--chapter:end:17-Analise_imagens.Rmd-->
+
+
+
+## Imagens de satélites
+## Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação
+## LIDAR
+## Modelo Digital de Elevação MDE##
+
+<!--chapter:end:18-Analise_imagens_sentinel.Rmd-->
+
+`r if (knitr::is_html_output()) '
+# References {-}
+'`
+
+<!--chapter:end:19-Referencia.Rmd-->
+
