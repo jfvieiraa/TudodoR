@@ -1,6 +1,6 @@
 # R Básico {#intro}
 
-Este primeio capitulo foi baseado no curso on-line _Code School Try R_ e _Datacamp_, modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.
+Este primeio capítulo foi baseado no curso on-line denominada "_Code School Try R_ e _Datacamp_". Foram realizadas modificações utilizando-se de outros materiais que se encontram referenciado no final desse capítulo.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
