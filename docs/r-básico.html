@@ -271,6 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a><ul>
 <li class="chapter" data-level="8.6.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#curva-de-retenção-de-água-no-solo"><i class="fa fa-check"></i><b>8.6.1</b> Curva de retenção de água no solo</a></li>
 </ul></li>
+<li class="chapter" data-level="8.7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#multivariada"><i class="fa fa-check"></i><b>8.7</b> Multivariada</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html"><i class="fa fa-check"></i><b>9</b> Dados climáticos</a><ul>
 <li class="chapter" data-level="9.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#precipitação-pluvial"><i class="fa fa-check"></i><b>9.1</b> Precipitação pluvial</a><ul>
@@ -396,11 +397,11 @@ Tente atribuir “Engenharia Agrícola”em x:</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -2.5531518 -0.7268934  0.1431538  0.7819958  1.3500000
+## [1] -2.24128950 -0.65434639 -0.07319109  0.56294790  1.35000000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.5531518 -0.7268934  0.1431538  0.7819958  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.24128950 -0.65434639 -0.07319109  0.56294790  1.35000000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>

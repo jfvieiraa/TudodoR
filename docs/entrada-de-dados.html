@@ -271,6 +271,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a><ul>
 <li class="chapter" data-level="8.6.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#curva-de-retenção-de-água-no-solo"><i class="fa fa-check"></i><b>8.6.1</b> Curva de retenção de água no solo</a></li>
 </ul></li>
+<li class="chapter" data-level="8.7" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#multivariada"><i class="fa fa-check"></i><b>8.7</b> Multivariada</a></li>
 </ul></li>
 <li class="chapter" data-level="9" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html"><i class="fa fa-check"></i><b>9</b> Dados climáticos</a><ul>
 <li class="chapter" data-level="9.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#precipitação-pluvial"><i class="fa fa-check"></i><b>9.1</b> Precipitação pluvial</a><ul>
@@ -341,26 +342,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  [9] &quot;05-Criando_graficos_2.Rmd&quot;       &quot;06-Teste_T_corre.Rmd&quot;           
 ## [11] &quot;07-Anova_dic.Rmd&quot;                &quot;08-Anova_DBC.Rmd&quot;               
 ## [13] &quot;09-Anova_QL.Rmd&quot;                 &quot;10-Regressao_L_M.Rmd&quot;           
-## [15] &quot;11-Regressao_N_linear.Rmd&quot;       &quot;13-Dados_clima.Rmd&quot;             
-## [17] &quot;14-Dados_tempor.Rmd&quot;             &quot;16-Tendencia_tempora.Rmd&quot;       
-## [19] &quot;17-Analise_imagens.Rmd&quot;          &quot;18-Analise_imagens_sentinel.Rmd&quot;
-## [21] &quot;19-Referencia.Rmd&quot;               &quot;book.bib&quot;                       
-## [23] &quot;CHM.tif&quot;                         &quot;docs&quot;                           
-## [25] &quot;ET_Abtew.csv&quot;                    &quot;ET_BrutsaertStrickler.csv&quot;      
-## [27] &quot;ET_ChapmanAustralian.csv&quot;        &quot;ET_GrangerGray.csv&quot;             
-## [29] &quot;ET_HargreavesSamani.csv&quot;         &quot;ET_JensenHaise.csv&quot;             
-## [31] &quot;ET_Makkink.csv&quot;                  &quot;ET_MattShuttleworth.csv&quot;        
-## [33] &quot;ET_McGuinnessBordne.csv&quot;         &quot;ET_Penman.csv&quot;                  
-## [35] &quot;ET_PenmanMonteith.csv&quot;           &quot;ET_PenPan.csv&quot;                  
-## [37] &quot;ET_PriestleyTaylor.csv&quot;          &quot;ET_Romanenko.csv&quot;               
-## [39] &quot;ET_Turc.csv&quot;                     &quot;ETP.txt&quot;                        
-## [41] &quot;index.Rmd&quot;                       &quot;LICENSE&quot;                        
-## [43] &quot;packages.bib&quot;                    &quot;preamble.tex&quot;                   
-## [45] &quot;README.md&quot;                       &quot;search_index.json&quot;              
-## [47] &quot;sentinel2.tif&quot;                   &quot;style.css&quot;                      
-## [49] &quot;tab.xls&quot;                         &quot;TudodoR.log&quot;                    
-## [51] &quot;TudodoR.Rmd&quot;                     &quot;TudodoR.Rproj&quot;                  
-## [53] &quot;TudodoR.tex&quot;                     &quot;TudodoR_files&quot;</code></pre>
+## [15] &quot;11-Regressao_N_linear.Rmd&quot;       &quot;12-Multivariada.Rmd&quot;            
+## [17] &quot;13-Dados_clima.Rmd&quot;              &quot;14-Dados_tempor.Rmd&quot;            
+## [19] &quot;16-Tendencia_tempora.Rmd&quot;        &quot;17-Analise_imagens.Rmd&quot;         
+## [21] &quot;18-Analise_imagens_sentinel.Rmd&quot; &quot;19-Referencia.Rmd&quot;              
+## [23] &quot;book.bib&quot;                        &quot;CHM.tif&quot;                        
+## [25] &quot;docs&quot;                            &quot;ET_Abtew.csv&quot;                   
+## [27] &quot;ET_BrutsaertStrickler.csv&quot;       &quot;ET_ChapmanAustralian.csv&quot;       
+## [29] &quot;ET_GrangerGray.csv&quot;              &quot;ET_HargreavesSamani.csv&quot;        
+## [31] &quot;ET_JensenHaise.csv&quot;              &quot;ET_Makkink.csv&quot;                 
+## [33] &quot;ET_MattShuttleworth.csv&quot;         &quot;ET_McGuinnessBordne.csv&quot;        
+## [35] &quot;ET_Penman.csv&quot;                   &quot;ET_PenmanMonteith.csv&quot;          
+## [37] &quot;ET_PenPan.csv&quot;                   &quot;ET_PriestleyTaylor.csv&quot;         
+## [39] &quot;ET_Romanenko.csv&quot;                &quot;ET_Turc.csv&quot;                    
+## [41] &quot;ETP.txt&quot;                         &quot;index.Rmd&quot;                      
+## [43] &quot;LICENSE&quot;                         &quot;packages.bib&quot;                   
+## [45] &quot;preamble.tex&quot;                    &quot;README.md&quot;                      
+## [47] &quot;search_index.json&quot;               &quot;sentinel2.tif&quot;                  
+## [49] &quot;style.css&quot;                       &quot;tab.xls&quot;                        
+## [51] &quot;TudodoR.log&quot;                     &quot;TudodoR.Rmd&quot;                    
+## [53] &quot;TudodoR.Rproj&quot;                   &quot;TudodoR.tex&quot;                    
+## [55] &quot;TudodoR_files&quot;</code></pre>
 </div>
 <div id="entrando-com-dados" class="section level2">
 <h2><span class="header-section-number">4.2</span> Entrando com dados</h2>
