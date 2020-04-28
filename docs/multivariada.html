@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title> 9 Multivariada | Uso do sistema R para análise de dados</title>
+  <meta name="description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  <meta name="generator" content="bookdown 0.18 and GitBook 2.6.7" />
+
+  <meta property="og:title" content=" 9 Multivariada | Uso do sistema R para análise de dados" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content=" 9 Multivariada | Uso do sistema R para análise de dados" />
+  
+  <meta name="twitter:description" content="Notas de aulas de práticas estatística com o uso do sistema R." />
+  
+
+<meta name="author" content="" />
+
+
+<meta name="date" content="2020-04-28" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="analise-de-variância-anova.html"/>
+<link rel="next" href="dados-climáticos-1.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">Uso do sistema R para análise de dados</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
+<li class="chapter" data-level="2" data-path="r-básico.html"><a href="r-básico.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-básico.html"><a href="r-básico.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="r-básico.html"><a href="r-básico.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
+<li class="chapter" data-level="2.3" data-path="r-básico.html"><a href="r-básico.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="r-básico.html"><a href="r-básico.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="r-básico.html"><a href="r-básico.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="r-básico.html"><a href="r-básico.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
+<li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
+<li class="chapter" data-level="3.1.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetores-de-sequência"><i class="fa fa-check"></i><b>3.1.1</b> Vetores de Sequência</a></li>
+<li class="chapter" data-level="3.1.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#nomes-de-vetores"><i class="fa fa-check"></i><b>3.1.2</b> Nomes de vetores</a></li>
+<li class="chapter" data-level="3.1.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#plotando-um-vetor"><i class="fa fa-check"></i><b>3.1.3</b> Plotando um vetor</a></li>
+<li class="chapter" data-level="3.1.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#operações-matemáticas"><i class="fa fa-check"></i><b>3.1.4</b> Operações matemáticas</a></li>
+<li class="chapter" data-level="3.1.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#parcelas-de-dispersão"><i class="fa fa-check"></i><b>3.1.5</b> Parcelas de dispersão</a></li>
+<li class="chapter" data-level="3.1.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#valores-faltantes"><i class="fa fa-check"></i><b>3.1.6</b> Valores Faltantes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#matrizes"><i class="fa fa-check"></i><b>3.2</b> Matrizes</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#outras-formas"><i class="fa fa-check"></i><b>3.2.1</b> Outras formas</a></li>
+<li class="chapter" data-level="3.2.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#acesso-a-matriz"><i class="fa fa-check"></i><b>3.2.2</b> Acesso a Matriz</a></li>
+<li class="chapter" data-level="3.2.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#visualizações-em-dados-matriciais"><i class="fa fa-check"></i><b>3.2.3</b> Visualizações em dados matriciais</a></li>
+<li class="chapter" data-level="3.2.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#mais-informações-sobre-construções-de-matrizes"><i class="fa fa-check"></i><b>3.2.4</b> Mais informações sobre construções de Matrizes</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#fatores"><i class="fa fa-check"></i><b>3.3</b> Fatores</a></li>
+<li class="chapter" data-level="3.4" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#array"><i class="fa fa-check"></i><b>3.4</b> Array</a></li>
+<li class="chapter" data-level="3.5" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#data.frame"><i class="fa fa-check"></i><b>3.5</b> Data.frame</a><ul>
+<li class="chapter" data-level="3.5.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#índice-dos-data.frames"><i class="fa fa-check"></i><b>3.5.1</b> Índice dos Data.frames</a></li>
+<li class="chapter" data-level="3.5.2" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#manipulando-um-data.frame"><i class="fa fa-check"></i><b>3.5.2</b> Manipulando um Data.frame</a></li>
+<li class="chapter" data-level="3.5.3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#separando-um-data.frame-por-grupos"><i class="fa fa-check"></i><b>3.5.3</b> Separando um data.frame por grupos</a></li>
+</ul></li>
+<li class="chapter" data-level="3.6" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#lista"><i class="fa fa-check"></i><b>3.6</b> Lista</a><ul>
+<li class="chapter" data-level="3.6.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#alguns-comandos-que-retornam-listas"><i class="fa fa-check"></i><b>3.6.1</b> Alguns comandos que retornam listas</a></li>
+</ul></li>
+<li class="chapter" data-level="3.7" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#referência-1"><i class="fa fa-check"></i><b>3.7</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html"><i class="fa fa-check"></i><b>4</b> Entrada de dados</a><ul>
+<li class="chapter" data-level="4.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#onde-os-dados-devem-estar"><i class="fa fa-check"></i><b>4.1</b> Onde os dados devem estar?</a></li>
+<li class="chapter" data-level="4.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#entrando-com-dados"><i class="fa fa-check"></i><b>4.2</b> Entrando com dados</a><ul>
+<li class="chapter" data-level="4.2.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#vetores"><i class="fa fa-check"></i><b>4.2.1</b> Vetores</a></li>
+<li class="chapter" data-level="4.2.2" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-scan"><i class="fa fa-check"></i><b>4.2.2</b> Usando a função ‘scan’</a></li>
+<li class="chapter" data-level="4.2.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#copiar-e-colar-usando-scan"><i class="fa fa-check"></i><b>4.2.3</b> Copiar e colar usando scan()</a></li>
+<li class="chapter" data-level="4.2.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-através-da-área-de-transferência"><i class="fa fa-check"></i><b>4.2.4</b> Lendo dados através da área de transferência</a></li>
+<li class="chapter" data-level="4.2.5" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#usando-a-função-edit"><i class="fa fa-check"></i><b>4.2.5</b> Usando a função edit</a></li>
+<li class="chapter" data-level="4.2.6" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-um-arquivo-texto"><i class="fa fa-check"></i><b>4.2.6</b> Lendo dados de um arquivo texto</a></li>
+<li class="chapter" data-level="4.2.7" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#dados-do-tipo-csv"><i class="fa fa-check"></i><b>4.2.7</b> Dados do tipo CSV</a></li>
+<li class="chapter" data-level="4.2.8" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#a-seguir-listamos-algumas-destas-funções"><i class="fa fa-check"></i><b>4.2.8</b> A seguir listamos algumas destas funções:</a></li>
+<li class="chapter" data-level="4.2.9" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-disponíveis-na-web"><i class="fa fa-check"></i><b>4.2.9</b> Lendo dados disponíveis na web</a></li>
+<li class="chapter" data-level="4.2.10" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#lendo-dados-de-uma-planilha-eletrônica"><i class="fa fa-check"></i><b>4.2.10</b> Lendo dados de uma planilha eletrônica</a></li>
+<li class="chapter" data-level="4.2.11" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#exercícios"><i class="fa fa-check"></i><b>4.2.11</b> Exercícios</a></li>
+</ul></li>
+<li class="chapter" data-level="4.3" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#salvar-objetos-de-dados"><i class="fa fa-check"></i><b>4.3</b> Salvar objetos de dados</a><ul>
+<li class="chapter" data-level="4.3.1" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#outras-funções"><i class="fa fa-check"></i><b>4.3.1</b> Outras funções</a></li>
+</ul></li>
+<li class="chapter" data-level="4.4" data-path="entrada-de-dados.html"><a href="entrada-de-dados.html#referência-2"><i class="fa fa-check"></i><b>4.4</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html"><i class="fa fa-check"></i><b>5</b> Criando Gráficos com o R</a><ul>
+<li class="chapter" data-level="5.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#exemplos-de-gráficos-com-o-r"><i class="fa fa-check"></i><b>5.1</b> Exemplos de gráficos com o R</a></li>
+<li class="chapter" data-level="5.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#entrada-de-dados-1"><i class="fa fa-check"></i><b>5.2</b> Entrada de dados</a></li>
+<li class="chapter" data-level="5.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#usando-a-função-plot"><i class="fa fa-check"></i><b>5.3</b> Usando a função <code>plot()</code></a><ul>
+<li class="chapter" data-level="5.3.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-o-padrão-dos-pontos-pch"><i class="fa fa-check"></i><b>5.3.1</b> Mudando o padrão dos pontos <code>pch=</code></a></li>
+<li class="chapter" data-level="5.3.2" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#mudando-as-linhas-lwd-e-lty"><i class="fa fa-check"></i><b>5.3.2</b> Mudando as linhas (<code>lwd e lty</code>)</a></li>
+<li class="chapter" data-level="5.3.3" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#adicionando-linhas-a-um-grafico-de-pontos"><i class="fa fa-check"></i><b>5.3.3</b> Adicionando linhas a um grafico de pontos</a></li>
+<li class="chapter" data-level="5.3.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#definindo-o-intervalo-dos-eixos"><i class="fa fa-check"></i><b>5.3.4</b> Definindo o intervalo dos eixos</a></li>
+<li class="chapter" data-level="5.3.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-os-gráficos"><i class="fa fa-check"></i><b>5.3.5</b> Personalizando os gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.4" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#histogramas"><i class="fa fa-check"></i><b>5.4</b> Histogramas</a><ul>
+<li class="chapter" data-level="5.4.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#personalizando-gráficos"><i class="fa fa-check"></i><b>5.4.1</b> Personalizando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="5.5" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#gráficos-de-barras"><i class="fa fa-check"></i><b>5.5</b> Gráficos de Barras</a></li>
+<li class="chapter" data-level="5.6" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplots"><i class="fa fa-check"></i><b>5.6</b> Boxplots</a><ul>
+<li class="chapter" data-level="5.6.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#boxplot-com-fatorial"><i class="fa fa-check"></i><b>5.6.1</b> Boxplot com fatorial</a></li>
+</ul></li>
+<li class="chapter" data-level="5.7" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#cores"><i class="fa fa-check"></i><b>5.7</b> Cores</a></li>
+<li class="chapter" data-level="5.8" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#interagindo-com-a-janela-gráfica"><i class="fa fa-check"></i><b>5.8</b> Interagindo com a Janela gráfica</a></li>
+<li class="chapter" data-level="5.9" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#texto-e-tamanho-do-símbolo"><i class="fa fa-check"></i><b>5.9</b> Texto e tamanho do símbolo</a></li>
+<li class="chapter" data-level="5.10" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#visualizar-vários-gráficos"><i class="fa fa-check"></i><b>5.10</b> Visualizar vários gráficos</a><ul>
+<li class="chapter" data-level="5.10.1" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#varios-gráficos-na-mesma-janela-gráfica"><i class="fa fa-check"></i><b>5.10.1</b> Varios gráficos na mesma janela gráfica</a></li>
+</ul></li>
+<li class="chapter" data-level="5.11" data-path="criando-gráficos-com-o-r.html"><a href="criando-gráficos-com-o-r.html#salvando-gráficos"><i class="fa fa-check"></i><b>5.11</b> Salvando gráficos</a></li>
+</ul></li>
+<li class="chapter" data-level="6" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html"><i class="fa fa-check"></i><b>6</b> Gráficos com ggplot2</a><ul>
+<li class="chapter" data-level="6.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#personalizando-os-gráficos-1"><i class="fa fa-check"></i><b>6.1</b> Personalizando os gráficos</a><ul>
+<li class="chapter" data-level="6.1.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#cores-1"><i class="fa fa-check"></i><b>6.1.1</b> Cores</a></li>
+<li class="chapter" data-level="6.1.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#eixos"><i class="fa fa-check"></i><b>6.1.2</b> Eixos</a></li>
+<li class="chapter" data-level="6.1.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#legenda"><i class="fa fa-check"></i><b>6.1.3</b> Legenda</a></li>
+<li class="chapter" data-level="6.1.4" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#título"><i class="fa fa-check"></i><b>6.1.4</b> Título</a></li>
+<li class="chapter" data-level="6.1.5" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#facets"><i class="fa fa-check"></i><b>6.1.5</b> Facets</a></li>
+</ul></li>
+<li class="chapter" data-level="6.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#exemplos"><i class="fa fa-check"></i><b>6.2</b> Exemplos</a><ul>
+<li class="chapter" data-level="6.2.1" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#regressão"><i class="fa fa-check"></i><b>6.2.1</b> Regressão</a></li>
+<li class="chapter" data-level="6.2.2" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#delineamento-em-blocos-casualizados--dbc"><i class="fa fa-check"></i><b>6.2.2</b> Delineamento em blocos casualizados- DBC</a></li>
+<li class="chapter" data-level="6.2.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#dados-climáticos"><i class="fa fa-check"></i><b>6.2.3</b> Dados Climáticos</a></li>
+</ul></li>
+<li class="chapter" data-level="6.3" data-path="gráficos-com-ggplot2.html"><a href="gráficos-com-ggplot2.html#referência-3"><i class="fa fa-check"></i><b>6.3</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="7" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html"><i class="fa fa-check"></i><b>7</b> Testes Estatísticos</a><ul>
+<li class="chapter" data-level="7.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-t-de-student"><i class="fa fa-check"></i><b>7.1</b> Teste t de Student</a><ul>
+<li class="chapter" data-level="7.1.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-uma-média"><i class="fa fa-check"></i><b>7.1.1</b> Para uma média</a></li>
+<li class="chapter" data-level="7.1.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-independentes"><i class="fa fa-check"></i><b>7.1.2</b> Para duas médias independentes</a></li>
+<li class="chapter" data-level="7.1.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#para-duas-médias-dependentes"><i class="fa fa-check"></i><b>7.1.3</b> Para duas médias dependentes</a></li>
+</ul></li>
+<li class="chapter" data-level="7.2" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-de-variância"><i class="fa fa-check"></i><b>7.2</b> Teste de variância</a><ul>
+<li class="chapter" data-level="7.2.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#usando-o-teste-de-f"><i class="fa fa-check"></i><b>7.2.1</b> Usando o teste de F</a></li>
+</ul></li>
+<li class="chapter" data-level="7.3" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-para-a-normalidade---shapiro.test"><i class="fa fa-check"></i><b>7.3</b> Teste para a normalidade - <code>shapiro.test()</code></a></li>
+<li class="chapter" data-level="7.4" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#teste-u-de-mann-whitney"><i class="fa fa-check"></i><b>7.4</b> Teste U de Mann-Whitney</a></li>
+<li class="chapter" data-level="7.5" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#covariância-e-correlação"><i class="fa fa-check"></i><b>7.5</b> Covariância e Correlação</a></li>
+<li class="chapter" data-level="7.6" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#outros-testes"><i class="fa fa-check"></i><b>7.6</b> Outros testes</a><ul>
+<li class="chapter" data-level="7.6.1" data-path="testes-estatísticos.html"><a href="testes-estatísticos.html#hydrogof"><i class="fa fa-check"></i><b>7.6.1</b> hydroGOF</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="8" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html"><i class="fa fa-check"></i><b>8</b> Analise de variância (ANOVA)</a><ul>
+<li class="chapter" data-level="8.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-inteiramente-casualizado"><i class="fa fa-check"></i><b>8.1</b> Delineamento inteiramente casualizado</a><ul>
+<li class="chapter" data-level="8.1.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-em-dic"><i class="fa fa-check"></i><b>8.1.1</b> Análise de experimento em DIC</a></li>
+<li class="chapter" data-level="8.1.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-variância"><i class="fa fa-check"></i><b>8.1.2</b> Análise de variância</a></li>
+<li class="chapter" data-level="8.1.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#transformação-de-dados"><i class="fa fa-check"></i><b>8.1.3</b> Transformação de dados</a></li>
+<li class="chapter" data-level="8.1.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-de-tukey-para-comparar-médias"><i class="fa fa-check"></i><b>8.1.4</b> Aplicando teste de Tukey para comparar médias</a></li>
+<li class="chapter" data-level="8.1.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#aplicando-teste-para-agrupar-médias"><i class="fa fa-check"></i><b>8.1.5</b> Aplicando teste para agrupar médias</a></li>
+<li class="chapter" data-level="8.1.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-4"><i class="fa fa-check"></i><b>8.1.6</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="8.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#delineamento-em-bloco-casualizado"><i class="fa fa-check"></i><b>8.2</b> Delineamento em bloco casualizado</a><ul>
+<li class="chapter" data-level="8.2.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#análise-de-experimento-dbc"><i class="fa fa-check"></i><b>8.2.1</b> Análise de experimento DBC</a></li>
+<li class="chapter" data-level="8.2.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#pacote-para-analise-de-experimentos"><i class="fa fa-check"></i><b>8.2.2</b> Pacote para analise de experimentos</a></li>
+<li class="chapter" data-level="8.2.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#teste-não-parametrico"><i class="fa fa-check"></i><b>8.2.3</b> Teste não parametrico</a></li>
+<li class="chapter" data-level="8.2.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-1"><i class="fa fa-check"></i><b>8.2.4</b> Exercicio 1</a></li>
+<li class="chapter" data-level="8.2.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-5"><i class="fa fa-check"></i><b>8.2.5</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="8.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#quadrado-latino"><i class="fa fa-check"></i><b>8.3</b> Quadrado Latino</a><ul>
+<li class="chapter" data-level="8.3.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#banco-de-dados"><i class="fa fa-check"></i><b>8.3.1</b> Banco de dados</a></li>
+<li class="chapter" data-level="8.3.2" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicios"><i class="fa fa-check"></i><b>8.3.2</b> Exercicios</a></li>
+<li class="chapter" data-level="8.3.3" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#exercicio-para-entregar"><i class="fa fa-check"></i><b>8.3.3</b> Exercicio para entregar</a></li>
+</ul></li>
+<li class="chapter" data-level="8.4" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-simples"><i class="fa fa-check"></i><b>8.4</b> Regressão Linear simples</a></li>
+<li class="chapter" data-level="8.5" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-linear-multipla"><i class="fa fa-check"></i><b>8.5</b> Regressão Linear Multipla</a><ul>
+<li class="chapter" data-level="8.5.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#referência-6"><i class="fa fa-check"></i><b>8.5.1</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="8.6" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#regressão-não-linear"><i class="fa fa-check"></i><b>8.6</b> Regressão não linear</a><ul>
+<li class="chapter" data-level="8.6.1" data-path="analise-de-variância-anova.html"><a href="analise-de-variância-anova.html#curva-de-retenção-de-água-no-solo"><i class="fa fa-check"></i><b>8.6.1</b> Curva de retenção de água no solo</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="9" data-path="multivariada.html"><a href="multivariada.html"><i class="fa fa-check"></i><b>9</b> Multivariada</a></li>
+<li class="chapter" data-level="10" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html"><i class="fa fa-check"></i><b>10</b> Dados climáticos</a><ul>
+<li class="chapter" data-level="10.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#precipitação-pluvial"><i class="fa fa-check"></i><b>10.1</b> Precipitação pluvial</a><ul>
+<li class="chapter" data-level="10.1.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#análise-anual-dos-dados"><i class="fa fa-check"></i><b>10.1.1</b> Análise anual dos dados</a></li>
+<li class="chapter" data-level="10.1.2" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#análise-mensal-dos-dados---boxplot"><i class="fa fa-check"></i><b>10.1.2</b> Análise mensal dos dados - BOXPLOT</a></li>
+<li class="chapter" data-level="10.1.3" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#análise-sazonal"><i class="fa fa-check"></i><b>10.1.3</b> Análise sazonal</a></li>
+<li class="chapter" data-level="10.1.4" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#alguns-índices-extremos"><i class="fa fa-check"></i><b>10.1.4</b> Alguns índices extremos</a></li>
+<li class="chapter" data-level="10.1.5" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#precipitaçao-total-chuva"><i class="fa fa-check"></i><b>10.1.5</b> Precipitaçao total chuva</a></li>
+</ul></li>
+<li class="chapter" data-level="10.2" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#evapotranspiração"><i class="fa fa-check"></i><b>10.2</b> Evapotranspiração</a><ul>
+<li class="chapter" data-level="10.2.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#pacote-evapotranspiration"><i class="fa fa-check"></i><b>10.2.1</b> Pacote Evapotranspiration</a></li>
+<li class="chapter" data-level="10.2.2" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#referência-7"><i class="fa fa-check"></i><b>10.2.2</b> Referência</a></li>
+</ul></li>
+<li class="chapter" data-level="10.3" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#dados-temporais-no-r"><i class="fa fa-check"></i><b>10.3</b> Dados temporais no R</a></li>
+<li class="chapter" data-level="10.4" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#datas-no-r"><i class="fa fa-check"></i><b>10.4</b> Datas no R</a></li>
+<li class="chapter" data-level="10.5" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#teste-mann-kendall-para-tendência"><i class="fa fa-check"></i><b>10.5</b> Teste Mann-Kendall para Tendência</a><ul>
+<li class="chapter" data-level="10.5.1" data-path="dados-climáticos-1.html"><a href="dados-climáticos-1.html#referência-8"><i class="fa fa-check"></i><b>10.5.1</b> Referência</a></li>
+</ul></li>
+</ul></li>
+<li class="chapter" data-level="11" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html"><i class="fa fa-check"></i><b>11</b> Sensoriamento remoto</a><ul>
+<li class="chapter" data-level="11.1" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-rpas"><i class="fa fa-check"></i><b>11.1</b> Imagens de RPAs</a></li>
+<li class="chapter" data-level="11.2" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#imagens-de-satélites"><i class="fa fa-check"></i><b>11.2</b> Imagens de satélites</a></li>
+<li class="chapter" data-level="11.3" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação"><i class="fa fa-check"></i><b>11.3</b> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</a></li>
+<li class="chapter" data-level="11.4" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#lidar"><i class="fa fa-check"></i><b>11.4</b> LIDAR</a></li>
+<li class="chapter" data-level="11.5" data-path="sensoriamento-remoto.html"><a href="sensoriamento-remoto.html#modelo-digital-de-elevação-mde"><i class="fa fa-check"></i><b>11.5</b> Modelo Digital de Elevação MDE</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">Uso do sistema R para análise de dados</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="multivariada" class="section level1">
+<h1><span class="header-section-number"> 9</span> Multivariada</h1>
+<p>Entrada dos dados</p>
+<p>Dados entre parênteses são os valores observados das respectivas variáveis, X1, X2, X3, X4 e X5.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">X1&lt;-<span class="kw">c</span>(<span class="fl">0.0475</span>,<span class="fl">0.04715</span>,<span class="fl">0.0471</span>,<span class="fl">0.0469</span>,<span class="fl">0.0469</span>,<span class="fl">0.04635</span>)</a>
+<a class="sourceLine" id="cb1-2" title="2">X2&lt;-<span class="kw">c</span>(<span class="fl">0.366</span>,<span class="fl">0.359</span>,<span class="fl">0.341</span>,<span class="fl">0.348</span>,<span class="fl">0.351</span>,<span class="fl">0.350</span>)</a>
+<a class="sourceLine" id="cb1-3" title="3">X3&lt;-<span class="kw">c</span>(<span class="fl">0.388</span>,<span class="fl">0.345</span>,<span class="fl">0.367</span>,<span class="fl">0.353</span>,<span class="fl">0.355</span>,<span class="fl">0.426</span>)</a>
+<a class="sourceLine" id="cb1-4" title="4">X4&lt;-<span class="kw">c</span>(<span class="fl">0.302</span>,<span class="fl">0.296</span>,<span class="fl">0.279</span>,<span class="fl">0.286</span>,<span class="fl">0.285</span>,<span class="fl">0.279</span>)</a>
+<a class="sourceLine" id="cb1-5" title="5">X5&lt;-<span class="kw">c</span>(<span class="fl">1.29</span>,<span class="fl">1.16</span>,<span class="fl">1.31</span>,<span class="fl">1.23</span>,<span class="fl">1.24</span>,<span class="fl">1.52</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">Y&lt;-<span class="kw">cbind</span>(X1,X2,X3,X4,X5)</a></code></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb3-2" title="2">S</a></code></pre></div>
+<pre><code>##               X1        X2            X3            X4            X5
+## X1  1.446667e-07  1.76e-06 -5.603333e-06  2.726667e-06 -3.116667e-05
+## X2  1.760000e-06  7.71e-05  1.480000e-05  7.610000e-05 -2.610000e-04
+## X3 -5.603333e-06  1.48e-05  9.150667e-04 -6.873333e-05  3.563333e-03
+## X4  2.726667e-06  7.61e-05 -6.873333e-05  8.696667e-05 -6.036667e-04
+## X5 -3.116667e-05 -2.61e-04  3.563333e-03 -6.036667e-04  1.525667e-02</code></pre>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
+<a class="sourceLine" id="cb5-2" title="2">autoS</a></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.612000e-02 2.134340e-04 2.489500e-06 1.859592e-08 1.729972e-09
+## 
+## $vectors
+##              [,1]       [,2]        [,3]        [,4]        [,5]
+## [1,] -0.001968185 -0.0120528 -0.11495526  0.99242360 -0.04161186
+## [2,] -0.015794397 -0.5786029  0.80786827  0.08928368  0.06592820
+## [3,]  0.228128328 -0.5960180 -0.35869625 -0.07671633 -0.67688376
+## [4,] -0.037679522 -0.5458098 -0.44622410 -0.02872057  0.70762359
+## [5,]  0.972771496  0.1092141  0.07971945  0.02033617  0.18713406</code></pre>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb8-2" title="2">S</a></code></pre></div>
+<pre><code>##               X1        X2            X3            X4            X5
+## X1  1.446667e-07  1.76e-06 -5.603333e-06  2.726667e-06 -3.116667e-05
+## X2  1.760000e-06  7.71e-05  1.480000e-05  7.610000e-05 -2.610000e-04
+## X3 -5.603333e-06  1.48e-05  9.150667e-04 -6.873333e-05  3.563333e-03
+## X4  2.726667e-06  7.61e-05 -6.873333e-05  8.696667e-05 -6.036667e-04
+## X5 -3.116667e-05 -2.61e-04  3.563333e-03 -6.036667e-04  1.525667e-02</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
+<a class="sourceLine" id="cb10-2" title="2">autoS</a></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 1.612000e-02 2.134340e-04 2.489500e-06 1.859592e-08 1.729972e-09
+## 
+## $vectors
+##              [,1]       [,2]        [,3]        [,4]        [,5]
+## [1,] -0.001968185 -0.0120528 -0.11495526  0.99242360 -0.04161186
+## [2,] -0.015794397 -0.5786029  0.80786827  0.08928368  0.06592820
+## [3,]  0.228128328 -0.5960180 -0.35869625 -0.07671633 -0.67688376
+## [4,] -0.037679522 -0.5458098 -0.44622410 -0.02872057  0.70762359
+## [5,]  0.972771496  0.1092141  0.07971945  0.02033617  0.18713406</code></pre>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">S.cov&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">summary</span>(S.cov)</a></code></pre></div>
+<pre><code>## Importance of components:
+##                           PC1     PC2      PC3       PC4       PC5
+## Standard deviation     0.1270 0.01461 0.001578 0.0001364 4.159e-05
+## Proportion of Variance 0.9868 0.01307 0.000150 0.0000000 0.000e+00
+## Cumulative Proportion  0.9868 0.99985 1.000000 1.0000000 1.000e+00</code></pre>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">screeplot</span>(S.cov,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<p>Resultados a partir da matriz de covariância</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">R&lt;-<span class="kw">cor</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb16-2" title="2">R</a></code></pre></div>
+<pre><code>##            X1          X2          X3         X4         X5
+## X1  1.0000000  0.52698863 -0.48700773  0.7687257 -0.6634013
+## X2  0.5269886  1.00000000  0.05571962  0.9293537 -0.2406487
+## X3 -0.4870077  0.05571962  1.00000000 -0.2436490  0.9536747
+## X4  0.7687257  0.92935375 -0.24364900  1.0000000 -0.5240720
+## X5 -0.6634013 -0.24064868  0.95367468 -0.5240720  1.0000000</code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">autoR&lt;-<span class="kw">eigen</span>(R);</a>
+<a class="sourceLine" id="cb18-2" title="2">autoR</a></code></pre></div>
+<pre><code>## eigen() decomposition
+## $values
+## [1] 3.163658e+00 1.525782e+00 3.025159e-01 8.042938e-03 1.732466e-06
+## 
+## $vectors
+##            [,1]       [,2]       [,3]        [,4]          [,5]
+## [1,] -0.4975623 0.03740992  0.8416617  0.20648920 -0.0003848684
+## [2,] -0.3778884 0.57085303 -0.3984395  0.61010372  0.0186158858
+## [3,]  0.3684580 0.60263117  0.2311883 -0.16487762 -0.6484147684
+## [4,] -0.4961633 0.37260806 -0.1269516 -0.74522471  0.2085872370
+## [5,]  0.4771716 0.41319029  0.2515689  0.05090347  0.7319173132</code></pre>
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">SR&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5), <span class="dt">cor=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<pre><code>## Warning: In prcomp.default(cbind(X1, X2, X3, X4, X5), cor = TRUE, scale = TRUE) :
+##  extra argument &#39;cor&#39; will be disregarded</code></pre>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">SR</a></code></pre></div>
+<pre><code>## Standard deviations (1, .., p=5):
+## [1] 1.778667446 1.235225294 0.550014473 0.089682431 0.001316232
+## 
+## Rotation (n x k) = (5 x 5):
+##           PC1        PC2        PC3         PC4           PC5
+## X1 -0.4975623 0.03740992 -0.8416617  0.20648920 -0.0003848684
+## X2 -0.3778884 0.57085303  0.3984395  0.61010372  0.0186158858
+## X3  0.3684580 0.60263117 -0.2311883 -0.16487762 -0.6484147684
+## X4 -0.4961633 0.37260806  0.1269516 -0.74522471  0.2085872370
+## X5  0.4771716 0.41319029 -0.2515689  0.05090347  0.7319173132</code></pre>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">summary</span>(SR)</a></code></pre></div>
+<pre><code>## Importance of components:
+##                           PC1    PC2    PC3     PC4      PC5
+## Standard deviation     1.7787 1.2352 0.5500 0.08968 0.001316
+## Proportion of Variance 0.6327 0.3052 0.0605 0.00161 0.000000
+## Cumulative Proportion  0.6327 0.9379 0.9984 1.00000 1.000000</code></pre>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">scores&lt;-SR<span class="op">$</span>x;</a>
+<a class="sourceLine" id="cb26-2" title="2">scores</a></code></pre></div>
+<pre><code>##              PC1        PC2        PC3           PC4           PC5
+## [1,] -1.82622087  1.8010525 -0.4542054  0.0003485361 -0.0007263451
+## [2,] -1.77385089 -0.2196976  0.5143779 -0.0157753617  0.0019677049
+## [3,]  0.81813538 -1.1340293 -0.8968309  0.0067988051  0.0008807578
+## [4,] -0.07349764 -0.9654427  0.2286037 -0.1314456477 -0.0014616145
+## [5,] -0.08640991 -0.7370654  0.3154692  0.1501343080 -0.0010828159
+## [6,]  2.94184393  1.2551825  0.2925855 -0.0100606398  0.0004223128</code></pre>
+<p>Resultados a partir da matriz de correlação R</p>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">screeplot</span>(SR,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<p>Dispersão gráfica</p>
+<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">biplot</span>(SR)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="analise-de-variância-anova.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="dados-climáticos-1.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["TudodoR.pdf", "TudodoR.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+</body>
+
+</html>
