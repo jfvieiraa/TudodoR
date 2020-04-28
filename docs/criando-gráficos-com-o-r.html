@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-27" />
+<meta name="date" content="2020-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,13 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+<li class="chapter" data-level="2" data-path="r-básico.html"><a href="r-básico.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-básico.html"><a href="r-básico.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="r-básico.html"><a href="r-básico.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
+<li class="chapter" data-level="2.3" data-path="r-básico.html"><a href="r-básico.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="r-básico.html"><a href="r-básico.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="r-básico.html"><a href="r-básico.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="r-básico.html"><a href="r-básico.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
 <li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
@@ -320,21 +320,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
             <section class="normal" id="section-">
 <div id="criando-gráficos-com-o-r" class="section level1">
 <h1><span class="header-section-number"> 5</span> Criando Gráficos com o R</h1>
-<p>Este capitulo foi baseado nos livros</p>
-<ul>
-<li><p><a href="https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294"><strong>Conhecendo o R: Um visão mais que estatística</strong></a></p></li>
-<li><p>AQUINO, J. A. <strong>R para cientistas sociais</strong>. - Ilhéus, BA: EDITUS, 2014. 157.</p></li>
-<li><p>ANJOS, A. <strong>Análise gráfica com uso do R</strong>. Apostila. Dep. de Estatistica da UFPR, 2016. 127p.</p></li>
-</ul>
-<p>Sites</p>
-<ul>
-<li><p><a href="https://www.statmethods.net/index.html" class="uri">https://www.statmethods.net/index.html</a></p></li>
-<li><p><a href="http://curso-r.github.io/index.html" class="uri">http://curso-r.github.io/index.html</a> PET Estatística UFPR (2016). <strong>labestData: Biblioteca de Dados para Aprendizado de Estatística</strong>. R package version x.y-z.w.</p></li>
-<li><p><a href="https://www.statmethods.net/index.html" class="uri">https://www.statmethods.net/index.html</a></p></li>
-</ul>
-<p>Modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo.</p>
-<p>O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o <em>graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como
-</em>lattice<em>, </em>ggplot2<em>, </em>ggobi* e <em>rgl</em>.</p>
+<p>Este capítulo foi baseado nos livros <a href="https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294"><strong>Conhecendo o R: Um visão mais que estatística</strong></a>.</p>
+<p>AQUINO, J. A. <strong>R para cientistas sociais</strong>. - Ilhéus, BA: EDITUS, 2014. 157.</p>
+<p>ANJOS, A. <strong>Análise gráfica com uso do R</strong>. Apostila. Dep. de Estatistica da UFPR, 2016. 127p.</p>
+<p>Sites:</p>
+<p><a href="https://www.statmethods.net/index.html" class="uri">https://www.statmethods.net/index.html</a>
+<a href="http://curso-r.github.io/index.html" class="uri">http://curso-r.github.io/index.html</a> PET Estatística UFPR (2016). <strong>labestData: Biblioteca de Dados para Aprendizado de Estatística</strong>. R package version x.y-z.w.
+<a href="https://www.statmethods.net/index.html" class="uri">https://www.statmethods.net/index.html</a></p>
+<p>O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o “graphics”. Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como <em>lattice</em>, <em>ggplot2</em>, <em>ggobi</em> e <em>rgl</em>.</p>
 <p>O R possui diferentes funções geradoras de gráficos, e essas são classificados como:</p>
 <ul>
 <li><p><em>Funções gráficas de alto nível</em>: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: <em>plot, hist, image, contour, persp etc</em>.</p></li>
@@ -789,8 +782,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </div>
 <div id="entrada-de-dados-1" class="section level2">
 <h2><span class="header-section-number">5.2</span> Entrada de dados</h2>
-<p>Nesse tópico utlizaremos o arquivo de dados <a href="https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1">dadosfisio.csv</a>.</p>
-<p>Dados fisico hidrico de 3 solos com textutas diferentes.</p>
+<p>Nesse tópico utlizaremos o arquivo de dados: <a href="https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1">dadosfisio.csv</a>.</p>
+<p>Dados físico hídrico de 3 solos com textutas diferentes:</p>
 <table>
 <thead>
 <tr class="header">
@@ -825,9 +818,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </tr>
 </tbody>
 </table>
-<p>Ler dados via web.</p>
+<p>Ler dados via web:</p>
 <div class="sourceCode" id="cb299"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb299-1" title="1">solo &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>, <span class="dt">header =</span> T, <span class="dt">dec =</span> <span class="st">&quot;,&quot;</span>)</a></code></pre></div>
-<p>Verificar a estrutura de dados.</p>
+<p>Verificar a estrutura de dados:</p>
 <div class="sourceCode" id="cb300"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb300-1" title="1"><span class="kw">str</span>(solo)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    108 obs. of  16 variables:
 ##  $ z     : int  1 1 1 1 1 1 1 1 1 1 ...
@@ -846,7 +839,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ X60   : num  153.2 92.7 176.5 335.4 69.9 ...
 ##  $ X90   : num  106.2 69.4 161.2 258.4 59.8 ...
 ##  $ X120  : num  73.6 52 147.2 199 51.1 ...</code></pre>
-<p>Resumo estatástico da coluna 5 a coluna 8 de todos os solos</p>
+<p>Resumo estatástico da coluna 5 a coluna 8 de todos os solos:</p>
 <div class="sourceCode" id="cb302"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb302-1" title="1"><span class="kw">summary</span>(solo[<span class="dv">5</span><span class="op">:</span><span class="dv">8</span>])</a></code></pre></div>
 <pre><code>##        ds              cc               ma               ptotal      
 ##  Min.   :1.263   Min.   :0.1501   Min.   :0.004834   Min.   :0.2257  
@@ -855,7 +848,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  Mean   :1.660   Mean   :0.2998   Mean   :0.090675   Mean   :0.3905  
 ##  3rd Qu.:1.787   3rd Qu.:0.3579   3rd Qu.:0.129955   3rd Qu.:0.5269  
 ##  Max.   :1.960   Max.   :0.4997   Max.   :0.238551   Max.   :0.6015</code></pre>
-<p>Neste exemplo vamos analisar cada solo separadamente usando o comando <code>subset()</code></p>
+<p>Neste exemplo vamos analisar cada solo separadamente usando o comando <code>subset()</code>:</p>
 <div class="sourceCode" id="cb304"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb304-1" title="1">solo1 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">1</span>)</a>
 <a class="sourceLine" id="cb304-2" title="2">solo2 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">2</span>)</a>
 <a class="sourceLine" id="cb304-3" title="3">solo3 &lt;-<span class="st"> </span><span class="kw">subset</span>(solo, z<span class="op">==</span><span class="dv">3</span>)</a></code></pre></div>
@@ -863,13 +856,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="usando-a-função-plot" class="section level2">
 <h2><span class="header-section-number">5.3</span> Usando a função <code>plot()</code></h2>
 <p>A função <code>plot()</code> inicia um novo gráfico. Em sua forma mais simples a função
-recebe valores de coordenadas <em>ds</em> (densidade do solo) e <em>ptotal</em> (porosidade total do solo) do solo z1.</p>
+recebe valores de coordenadas <em>ds</em> (densidade do solo) e <em>ptotal</em> (porosidade total do solo) do solo z1:</p>
 <div class="sourceCode" id="cb305"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb305-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-152-1.png" width="672" /></p>
-<p>Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type=“l” na função <code>plot()</code></p>
+<p>Vamos inserir no gráfico linhas ligando os pontos. Use o argumento *type=“l” na função <code>plot()</code>:</p>
 <div class="sourceCode" id="cb306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb306-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">type =</span> <span class="st">&quot;l&quot;</span>)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-153-1.png" width="672" /></p>
-<p>Verifique outras opcões para os gráfico</p>
+<p>Verifique outras opcões para os gráfico:</p>
 <ul>
 <li><em>type = “p”</em> especifica o tipo de plotagem</li>
 <li><em>“p”</em>: pontos,</li>
@@ -894,17 +887,17 @@ recebe valores de coordenadas <em>ds</em> (densidade do solo) e <em>ptotal</em> 
 <div class="sourceCode" id="cb308"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb308-1" title="1"><span class="kw">par</span>(op)</a></code></pre></div>
 <div id="mudando-o-padrão-dos-pontos-pch" class="section level3">
 <h3><span class="header-section-number">5.3.1</span> Mudando o padrão dos pontos <code>pch=</code></h3>
-<p>Pode-se usar diferentes padrões para os pontos usando o argumento <code>pch=</code>.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
-Use a opção <code>pch =</code> para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda <code>(col =)</code>.</p>
+<p>Pode-se usar diferentes padrões para os pontos usando o argumento <code>pch=</code>. Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o símbolo desejado.
+Use a opção <code>pch =</code> para especificar símbolos a serem usados ao traçar pontos. Para os símbolos de 21 a 25, especifique a cor da borda <code>(col =)</code>:</p>
 <div class="sourceCode" id="cb309"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb309-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds,solo1<span class="op">$</span>ptotal, <span class="dt">pch=</span><span class="dv">21</span>, <span class="dt">ylim =</span> <span class="kw">c</span>(<span class="dv">0</span>,<span class="fl">0.6</span>), <span class="dt">xlim =</span> <span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-155-1.png" width="672" /></p>
 <div class="sourceCode" id="cb310"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb310-1" title="1"><span class="kw">plot</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="dv">2</span>, <span class="dt">col=</span><span class="st">&quot;blue&quot;</span>) </a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-155-2.png" width="672" /></p>
 <div class="sourceCode" id="cb311"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb311-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal,<span class="dt">pch=</span><span class="st">&quot;%&quot;</span>)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-155-3.png" width="672" /></p>
-<p>Neste exemplo acima note, que foi adicionado o argumento <code>ylim</code> e <code>xlim</code> eles limitam os valores minimos e maximos:</p>
+<p>Neste exemplo acima note que foi adicionado o argumento <code>ylim</code> e <code>xlim</code> eles limitam os valores mínimos e máximos:</p>
 <div class="sourceCode" id="cb312"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb312-1" title="1">xlim=<span class="kw">c</span>(xmin, xmax) ylim=<span class="kw">c</span>(ymin, ymax)<span class="er">)</span></a></code></pre></div>
-<p>Veja um exemplo do padrão dos pontos.</p>
+<p>Veja um exemplo do padrão dos pontos:</p>
 <div class="sourceCode" id="cb313"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb313-1" title="1"><span class="kw">plot</span> (<span class="dv">0</span><span class="op">:</span><span class="dv">20</span>,                         <span class="co">#coord. eixo X</span></a>
 <a class="sourceLine" id="cb313-2" title="2">      <span class="kw">rep</span> (<span class="dv">0</span>,<span class="dv">21</span>),                   <span class="co">#coord. eixo y</span></a>
 <a class="sourceLine" id="cb313-3" title="3">      <span class="dt">pch =</span> <span class="dv">0</span><span class="op">:</span><span class="dv">20</span>,                   <span class="co">#padrão dos pontos variando</span></a>
@@ -916,7 +909,7 @@ Use a opção <code>pch =</code> para especificar simbolos a serem usados ao tra
 </div>
 <div id="mudando-as-linhas-lwd-e-lty" class="section level3">
 <h3><span class="header-section-number">5.3.2</span> Mudando as linhas (<code>lwd e lty</code>)</h3>
-<p>Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento <code>lwd=</code>, enquanto os estilos das linhas podem ser modificados com o argumento <code>lty=</code>.</p>
+<p>Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento <code>lwd=</code>, enquanto os estilos das linhas podem ser modificados com o argumento <code>lty=</code>:</p>
 <div class="sourceCode" id="cb314"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb314-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="dt">lwd=</span><span class="dv">2</span>) <span class="co"># linha grossa</span></a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-158-1.png" width="672" /></p>
 <div class="sourceCode" id="cb315"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb315-1" title="1"><span class="kw">plot</span>(solo2<span class="op">$</span>ds,solo2<span class="op">$</span>ptotal, <span class="dt">lty=</span><span class="dv">2</span>) <span class="co">#linha interrompida</span></a></code></pre></div>
@@ -939,15 +932,15 @@ Vamos usar a função <code>abline</code> para inserir uma linha que mostra a m�
 o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.</p>
 <div class="sourceCode" id="cb317"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb317-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal))) </a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-160-1.png" width="672" /></p>
-<p>Para passar uma linha que passa pela média de x</p>
+<p>Para passar uma linha que passa pela média de x:</p>
 <div class="sourceCode" id="cb318"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb318-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-161-1.png" width="672" /></p>
 <div class="sourceCode" id="cb319"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb319-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds))) <span class="co">## o v é de vertical</span></a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-162-1.png" width="672" /></p>
-<p>Também é possível inserir as duas linhas ao mesmo tempo.</p>
+<p>Também é possível inserir as duas linhas ao mesmo tempo:</p>
 <div class="sourceCode" id="cb320"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb320-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>))</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-163-1.png" width="672" /></p>
-<p>Com cores diferentes</p>
+<p>Com cores diferentes:</p>
 <div class="sourceCode" id="cb321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb321-1" title="1"><span class="kw">plot</span>(solo3<span class="op">$</span>ds,solo3<span class="op">$</span>ptotal, <span class="kw">abline</span>(<span class="dt">h=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ptotal), <span class="dt">v=</span><span class="kw">mean</span>(solo3<span class="op">$</span>ds),<span class="dt">col=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">4</span>)))</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-164-1.png" width="672" /></p>
 </div>
@@ -984,15 +977,14 @@ o h é de linha horizontal. Fará uma linha na horizontal que passa pela média 
 </div>
 <div id="histogramas" class="section level2">
 <h2><span class="header-section-number">5.4</span> Histogramas</h2>
-<p>A função <code>hist()</code> produz um histograma dos dados informados em seu argumento enquanto a função <code>barplot()</code> produz um gráfico de barras.</p>
+<p>A função <code>hist()</code> produz um histograma dos dados informados em seu argumento enquanto a função <code>barplot()</code> produz um gráfico de barras:</p>
 <div class="sourceCode" id="cb325"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb325-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds)</a>
 <a class="sourceLine" id="cb325-2" title="2"><span class="kw">rug</span>(solo1<span class="op">$</span>ds)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-167-1.png" width="672" /></p>
 <div id="personalizando-gráficos" class="section level3">
 <h3><span class="header-section-number">5.4.1</span> Personalizando gráficos</h3>
 <p>Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
-default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
-informações detalhadas desses parâmetros se usar os recursos de ajuda do R.</p>
+default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter informações detalhadas desses parâmetros se usar os recursos de ajuda do R:</p>
 <div class="sourceCode" id="cb326"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb326-1" title="1"><span class="kw">hist</span>(solo1<span class="op">$</span>ds, <span class="co">#histograma de ds</span></a>
 <a class="sourceLine" id="cb326-2" title="2">     <span class="dt">main=</span><span class="st">&quot;Histograma Personalizado</span><span class="ch">\n</span><span class="st">densidade do solo&quot;</span>,<span class="co">#título</span></a>
 <a class="sourceLine" id="cb326-3" title="3">     <span class="dt">xlab=</span><span class="kw">expression</span>(Ds<span class="op">~</span>(mg<span class="op">~</span>Kg<span class="op">^</span>{<span class="op">-</span><span class="dv">1</span>})), <span class="co">#texto do eixo das abscissas</span></a>
@@ -1008,7 +1000,7 @@ informações detalhadas desses parâmetros se usar os recursos de ajuda do R.</
 </div>
 <div id="gráficos-de-barras" class="section level2">
 <h2><span class="header-section-number">5.5</span> Gráficos de Barras</h2>
-<p>Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos</p>
+<p>Assemelha-se ao histograma, porém nesse caso os dados referem-se a categoria ou aos tratamentos:</p>
 <div class="sourceCode" id="cb327"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb327-1" title="1"><span class="kw">barplot</span>(solo<span class="op">$</span>ptotal,<span class="dt">names.arg=</span>solo<span class="op">$</span>z, <span class="dt">horiz =</span> T)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-169-1.png" width="672" /></p>
 </div>
@@ -1028,7 +1020,7 @@ Número inteiro que identifica as repetições de cada tratamento.</p>
 <p><em>pulgões</em>
 Número de pulgões coletados 36 horas após a pulverização dos tratamentos.</p>
 <p>Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é <code>boxplot</code> <code>( x , data =)</code> , em que <code>x</code> é uma fórmula e <code>data =</code> denota o quadro de dados que fornece os dados.</p>
-<p>Um exemplo de uma fórmula é <code>y ~ group</code> onde um boxplot separado para a variável numérica é gerado para cada valor de group.</p>
+<p>Um exemplo de uma fórmula é <code>y ~ group</code> onde um boxplot separado para a variável numérica é gerado para cada valor de group:</p>
 <div class="sourceCode" id="cb330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb330-1" title="1"><span class="kw">x11</span>()</a>
 <a class="sourceLine" id="cb330-2" title="2"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
 <a class="sourceLine" id="cb330-3" title="3">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
@@ -1037,7 +1029,7 @@ Número de pulgões coletados 36 horas após a pulverização dos tratamentos.</
 <a class="sourceLine" id="cb330-6" title="6">        <span class="dt">ylab=</span><span class="st">&quot;Numero de plugões&quot;,  #texto do eixo y</span></a>
 <a class="sourceLine" id="cb330-7" title="7"><span class="st">        col=3)                     #cor verde  </span></a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-171-1.png" width="672" /></p>
-<p>Adicione <code>horizontal = TRUE</code> para inverter a orientação do eixo.</p>
+<p>Adicione <code>horizontal = TRUE</code> para inverter a orientação do eixo:</p>
 <div class="sourceCode" id="cb331"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb331-1" title="1"><span class="kw">boxplot</span>(pulgoes<span class="op">~</span>trat,              <span class="co">#formula do boxplot</span></a>
 <a class="sourceLine" id="cb331-2" title="2">        <span class="dt">data =</span> dados,              <span class="co">#conjunto de dados</span></a>
 <a class="sourceLine" id="cb331-3" title="3">        <span class="dt">main=</span><span class="st">&quot;boxplot&quot;</span>,            <span class="co">#t?tulo</span></a>
@@ -1064,7 +1056,7 @@ São as espécies de Eucalipto: <em>Eucalyptus citriodora</em> e <em>Eucalyptus 
 Identifica as repetições de cada combinação dos fatores recipiente e espécie.</p>
 <p><em>alt</em>
 Altura das mudas aos 80 dias de idade (cm).</p>
-<p>Baixar dados via web.</p>
+<p>Baixar dados via web:</p>
 <div class="sourceCode" id="cb333"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb333-1" title="1">fat &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1&quot;</span>)</a>
 <a class="sourceLine" id="cb333-2" title="2"><span class="kw">str</span>(fat)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    24 obs. of  4 variables:
@@ -1072,7 +1064,7 @@ Altura das mudas aos 80 dias de idade (cm).</p>
 ##  $ especie: Factor w/ 2 levels &quot;E. citriodora&quot;,..: 1 2 1 2 1 2 1 2 1 2 ...
 ##  $ rept   : int  1 1 1 1 1 1 2 2 2 2 ...
 ##  $ alt    : num  26.2 24.8 25.7 19.6 22.8 19.8 26 24.6 26.3 21.1 ...</code></pre>
-<p>Gerar o gráfico boxpolt com o comando abaixo.</p>
+<p>Gerar o gráfico boxpolt com o comando abaixo:</p>
 <div class="sourceCode" id="cb335"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb335-1" title="1"><span class="kw">boxplot</span>(fat<span class="op">$</span>alt<span class="op">~</span>fat<span class="op">$</span>recipie<span class="op">*</span>especie, <span class="dt">data=</span>fat, <span class="dt">notch=</span>F, </a>
 <a class="sourceLine" id="cb335-2" title="2">        <span class="dt">col=</span>(<span class="kw">c</span>(<span class="st">&quot;gold&quot;</span>,<span class="st">&quot;darkgreen&quot;</span>,<span class="st">&quot;brown&quot;</span>)),</a>
 <a class="sourceLine" id="cb335-3" title="3">        <span class="dt">main=</span><span class="st">&quot;Fatorial&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Recipiente e Espécies&quot;</span>,</a>
@@ -1083,10 +1075,10 @@ Altura das mudas aos 80 dias de idade (cm).</p>
 <div id="cores" class="section level2">
 <h2><span class="header-section-number">5.7</span> Cores</h2>
 <p>Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando <code>col="red"</code> (escrevendo o nome da cor) ou <code>col=2</code> (usando números).
-O comando abaixo mostra os números que especificam algumas cores.</p>
+O comando abaixo mostra os números que especificam algumas cores:</p>
 <div class="sourceCode" id="cb336"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb336-1" title="1"><span class="kw">pie</span>(<span class="kw">rep</span>(<span class="dv">1</span>,<span class="dv">30</span>),<span class="dt">col=</span><span class="kw">rainbow</span>(<span class="dv">30</span>))</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-175-1.png" width="672" /></p>
-<p>Veja sua tabela de cores executando o script <a href="https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1">paletedecores.R</a>.</p>
+<p>Veja sua tabela de cores executando o script: <a href="https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1">paletedecores.R</a>.</p>
 <p>Podemos também criar cores personalizadas usando a função do <code>rgb()</code>, que recebe como argumentos as quantidades de vermelho <em>(red)</em>, verde <em>(green)</em> e azul <em>(blue)</em> e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1.</p>
 <p>Exemplos:</p>
 <div class="sourceCode" id="cb337"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb337-1" title="1">goiaba &lt;-<span class="st"> </span><span class="kw">rgb</span>(<span class="fl">0.94</span>, <span class="fl">0.41</span>, <span class="fl">0.40</span>)</a>
@@ -1096,7 +1088,7 @@ O comando abaixo mostra os números que especificam algumas cores.</p>
 </div>
 <div id="interagindo-com-a-janela-gráfica" class="section level2">
 <h2><span class="header-section-number">5.8</span> Interagindo com a Janela gráfica</h2>
-<p>Poderemos com o mouse marcar o ponte desejado usando a função <code>identify ()</code></p>
+<p>Poderemos com o mouse marcar a ponte desejada usando a função <code>identify ()</code>:</p>
 <div class="sourceCode" id="cb338"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb338-1" title="1"><span class="kw">plot</span>(solo1<span class="op">$</span>ds<span class="op">~</span>solo1<span class="op">$</span>ptotal)</a>
 <a class="sourceLine" id="cb338-2" title="2"><span class="kw">identify</span>(solo1<span class="op">$</span>ds,<span class="dt">n=</span><span class="dv">1</span>)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-177-1.png" width="672" /></p>
@@ -1121,7 +1113,7 @@ O comando abaixo mostra os números que especificam algumas cores.</p>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-179-1.png" width="672" /></p>
 <div id="varios-gráficos-na-mesma-janela-gráfica" class="section level3">
 <h3><span class="header-section-number">5.10.1</span> Varios gráficos na mesma janela gráfica</h3>
-<p>Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função <code>par()</code>.</p>
+<p>Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invés de um apenas. Para isto use a função <code>par()</code>.</p>
 <p><strong>Exemplo 1</strong></p>
 <div class="sourceCode" id="cb341"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb341-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow =</span> <span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">2</span>)) <span class="co">#2 linhas e 2 colunas</span></a>
 <a class="sourceLine" id="cb341-2" title="2"><span class="kw">plot</span>(solo1<span class="op">$</span>ptotal,solo1<span class="op">$</span>ds)</a>
@@ -1141,9 +1133,9 @@ O comando abaixo mostra os números que especificam algumas cores.</p>
 </div>
 <div id="salvando-gráficos" class="section level2">
 <h2><span class="header-section-number">5.11</span> Salvando gráficos</h2>
-<p>Você pode salvar o gráfico em vários formatos no menu
+<p>Você pode salvar o gráfico em vários formatos no menu.
 <em>Arquivo -&gt; Salvar como</em>.</p>
-<p>Você também pode salvar o gráfico via código usando uma das seguintes funções.</p>
+<p>Você também pode salvar o gráfico via código usando uma das seguintes funções:</p>
 <p><code>pdf (file = "meugráfico.pdf")</code> #ficheiro PDF</p>
 <p><code>win.metafile ("meu grafico.wmf")</code> #metarquivo do windows</p>
 <p><code>png ("meu grafico.png")</code> #arquivo png</p>

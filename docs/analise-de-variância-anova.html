@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-27" />
+<meta name="date" content="2020-04-28" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -132,13 +132,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Pré requisitos</a></li>
-<li class="chapter" data-level="2" data-path="intro.html"><a href="intro.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
-<li class="chapter" data-level="2.1" data-path="intro.html"><a href="intro.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
-<li class="chapter" data-level="2.2" data-path="intro.html"><a href="intro.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
-<li class="chapter" data-level="2.3" data-path="intro.html"><a href="intro.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
-<li class="chapter" data-level="2.4" data-path="intro.html"><a href="intro.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
-<li class="chapter" data-level="2.5" data-path="intro.html"><a href="intro.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
-<li class="chapter" data-level="2.6" data-path="intro.html"><a href="intro.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
+<li class="chapter" data-level="2" data-path="r-básico.html"><a href="r-básico.html"><i class="fa fa-check"></i><b>2</b> R Básico</a><ul>
+<li class="chapter" data-level="2.1" data-path="r-básico.html"><a href="r-básico.html#expressões"><i class="fa fa-check"></i><b>2.1</b> Expressões</a></li>
+<li class="chapter" data-level="2.2" data-path="r-básico.html"><a href="r-básico.html#valores-booleanos"><i class="fa fa-check"></i><b>2.2</b> Valores Booleanos</a></li>
+<li class="chapter" data-level="2.3" data-path="r-básico.html"><a href="r-básico.html#variáveis"><i class="fa fa-check"></i><b>2.3</b> Variáveis</a></li>
+<li class="chapter" data-level="2.4" data-path="r-básico.html"><a href="r-básico.html#funções"><i class="fa fa-check"></i><b>2.4</b> Funções</a></li>
+<li class="chapter" data-level="2.5" data-path="r-básico.html"><a href="r-básico.html#ajuda"><i class="fa fa-check"></i><b>2.5</b> Ajuda</a></li>
+<li class="chapter" data-level="2.6" data-path="r-básico.html"><a href="r-básico.html#referência"><i class="fa fa-check"></i><b>2.6</b> Referência</a></li>
 </ul></li>
 <li class="chapter" data-level="3" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html"><i class="fa fa-check"></i><b>3</b> Estruturas de Dados</a><ul>
 <li class="chapter" data-level="3.1" data-path="estruturas-de-dados.html"><a href="estruturas-de-dados.html#vetor"><i class="fa fa-check"></i><b>3.1</b> Vetor</a><ul>
@@ -1469,13 +1469,13 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(&gt;|t|)    
-## B - A == 0   -51.80      33.72  -1.536  0.56048    
-## C - A == 0   112.20      33.72   3.327  0.03934 *  
-## D - A == 0   -79.20      33.72  -2.349  0.19543    
-## E - A == 0   -91.60      33.72  -2.716  0.10970    
-## C - B == 0   164.00      33.72   4.863  0.00292 ** 
-## D - B == 0   -27.40      33.72  -0.813  0.92176    
-## E - B == 0   -39.80      33.72  -1.180  0.76214    
+## B - A == 0   -51.80      33.72  -1.536  0.56046    
+## C - A == 0   112.20      33.72   3.327  0.03941 *  
+## D - A == 0   -79.20      33.72  -2.349  0.19542    
+## E - A == 0   -91.60      33.72  -2.716  0.10963    
+## C - B == 0   164.00      33.72   4.863  0.00287 ** 
+## D - B == 0   -27.40      33.72  -0.813  0.92177    
+## E - B == 0   -39.80      33.72  -1.180  0.76210    
 ## D - C == 0  -191.40      33.72  -5.676  &lt; 0.001 ***
 ## E - C == 0  -203.80      33.72  -6.044  &lt; 0.001 ***
 ## E - D == 0   -12.40      33.72  -0.368  0.99555    
@@ -1816,21 +1816,21 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(&gt;|t|)   
-## 2 - 1 == 0  24.5000     8.1812   2.995  0.06749 . 
-## 3 - 1 == 0  36.3333     8.1812   4.441  0.00294 **
-## 4 - 1 == 0  29.5000     8.1812   3.606  0.01890 * 
-## 5 - 1 == 0  29.3333     8.1812   3.585  0.01973 * 
+## 2 - 1 == 0  24.5000     8.1812   2.995  0.06754 . 
+## 3 - 1 == 0  36.3333     8.1812   4.441  0.00303 **
+## 4 - 1 == 0  29.5000     8.1812   3.606  0.01882 * 
+## 5 - 1 == 0  29.3333     8.1812   3.585  0.01975 * 
 ## 6 - 1 == 0  34.6667     8.1812   4.237  0.00472 **
-## 3 - 2 == 0  11.8333     8.1812   1.446  0.69984   
+## 3 - 2 == 0  11.8333     8.1812   1.446  0.69975   
 ## 4 - 2 == 0   5.0000     8.1812   0.611  0.98894   
 ## 5 - 2 == 0   4.8333     8.1812   0.591  0.99051   
-## 6 - 2 == 0  10.1667     8.1812   1.243  0.81098   
-## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95717   
-## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95273   
+## 6 - 2 == 0  10.1667     8.1812   1.243  0.81099   
+## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95719   
+## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95272   
 ## 6 - 3 == 0  -1.6667     8.1812  -0.204  0.99994   
 ## 5 - 4 == 0  -0.1667     8.1812  -0.020  1.00000   
 ## 6 - 4 == 0   5.1667     8.1812   0.632  0.98718   
-## 6 - 5 == 0   5.3333     8.1812   0.652  0.98523   
+## 6 - 5 == 0   5.3333     8.1812   0.652  0.98524   
 ## ---
 ## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
 ## (Adjusted p values reported -- single-step method)</code></pre>
@@ -1847,18 +1847,18 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 ## 
 ## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
 ## 
-## Quantile = 2.898
+## Quantile = 2.8973
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##        Estimate lwr      upr     
-## 1 == 0 165.5000 148.7354 182.2646
-## 2 == 0 190.0000 173.2354 206.7646
-## 3 == 0 201.8333 185.0687 218.5980
-## 4 == 0 195.0000 178.2354 211.7646
-## 5 == 0 194.8333 178.0687 211.5980
-## 6 == 0 200.1667 183.4020 216.9313</code></pre>
+## 1 == 0 165.5000 148.7390 182.2610
+## 2 == 0 190.0000 173.2390 206.7610
+## 3 == 0 201.8333 185.0723 218.5943
+## 4 == 0 195.0000 178.2390 211.7610
+## 5 == 0 194.8333 178.0723 211.5943
+## 6 == 0 200.1667 183.4057 216.9277</code></pre>
 <p>Juntar com os nomes dos tratramentos com os intervalos</p>
 <div class="sourceCode" id="cb732"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb732-1" title="1">ci &lt;-<span class="st"> </span><span class="kw">cbind</span>(p0<span class="op">$</span>grid, ci<span class="op">$</span>confint) </a>
 <a class="sourceLine" id="cb732-2" title="2"></a>
@@ -1929,11 +1929,11 @@ help(ZimmermannTb16.10)</p>
 <h2><span class="header-section-number">8.4</span> Regressão Linear simples</h2>
 <p>Iremos utilizar o pacote tidyverse</p>
 <div class="sourceCode" id="cb735"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb735-1" title="1"><span class="kw">library</span>(tidyverse)</a></code></pre></div>
-<pre><code>## -- Attaching packages ------------</code></pre>
+<pre><code>## -- Attaching packages ------------------------------- tidyverse 1.3.0 --</code></pre>
 <pre><code>## v tibble  3.0.1     v purrr   0.3.3
 ## v tidyr   1.0.2     v stringr 1.4.0
 ## v readr   1.3.1     v forcats 0.5.0</code></pre>
-<pre><code>## -- Conflicts ---------------------
+<pre><code>## -- Conflicts ---------------------------------- tidyverse_conflicts() --
 ## x dplyr::arrange()      masks plyr::arrange()
 ## x purrr::compact()      masks plyr::compact()
 ## x dplyr::count()        masks plyr::count()

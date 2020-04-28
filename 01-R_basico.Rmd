@@ -1,30 +1,27 @@
-# R Básico {#intro}
 
-Este primeio capítulo foi baseado no curso on-line denominada "_Code School Try R_ e _Datacamp_". Foram realizadas modificações utilizando-se de outros materiais que se encontram referenciado no final desse capítulo.
+# R Básico 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+Este primeio capítulo foi baseado no curso on-line denominada _Code School Try R_ e _Datacamp_. Foram realizadas modificações utilizando-se de outros materiais que se encontram referenciado no final desse capítulo.
 
-Iremos abordar as expressões básicas do R. 
-Começaremos simples, com **números**, **strings** e valores **true/false**. Em seguida, mostraremos como armazenar esses valores em variáveis e como transmiti-los as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo
+Primeiramente iremos abordar as expressões básicas do R. 
+Começaremos com comandos simples, como por exemplo, os comandos **números**, **strings** e valores **true/false**. Em seguida mostraremos como armazenar esses valores em variáveis e como transmitir as funções. Como obter ajuda sobre as funções e no final vamos carregar um arquivo.
 
 ## Expressões
 
-Vamos tentar matemática simples. Digite o comando abaixo e aperte enter
+Vamos tentar algumas funções matemáticas simples. Digite o comando abaixo e aperte enter:
 
 ```{r matematica}
 2+8
 ```
 
-Note que é impresso o resultado, 10.
+Note que é impresso o resultado 10.
 
-Digite a frase "Engenharia Agrícola"
+Digite a frase "Engenharia Agrícola":
 ```{r}
 "Engenharia Agrícola"
 ```
 
-Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
+Agora tente multiplicar 6x5 (* é o operador de multiplicação):
 ```{r}
 6*5
 ```
@@ -32,12 +29,12 @@ Agora tente multiplicar 6 vezes 5 (* é o operador de multiplicação).
 ## Valores Booleanos
 
 Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
-Vamos tentar digitar uma expressões que nos dá um valor lógico:
+Vamos tentar digitar uma expressões que nos dê um valor lógico:
 ```{r}
 7<12
 ```
 
-E outro valor lógico (sinal duplo de igualdade)
+E outro valor lógico (sinal duplo de igualdade):
 ```{r}
 6+5==10
 ```
@@ -50,23 +47,23 @@ F==FALSE
 ## Variáveis
 
 Você pode armazenar valores em uma variável para usar mais tarde. 
-Digite **x <- 28** para armazenar um valor em **x**.
+Digite **x <- 28** para armazenar um valor em **x**:
 ```{r}
 x<-28
 ```
 
-Tende dividr **x** por **4**( **/** é o operador da divisão).
+Tende dividr **x** por **4**( **/** é o operador da divisão):
 ```{r}
 x/4
 ```
 
 Você pode retribuir qualquer valor a uma variável a qualquer momento. 
-Tente atribuir "Engenharia Agrícola"em x.
+Tente atribuir "Engenharia Agrícola"em x:
 ```{r}
 x <- "Engenharia Agrícola"
 ```
 
-Tente imprimir o valor atual de x.
+Tente imprimir o valor atual de x:
 ```{r}
 x
 ```
@@ -75,26 +72,26 @@ x
 
 Você pode chamar uma **função** digitando seu nome, seguido de um ou mais argumentos para essa função entre parênteses. 
 
-Vamos tentar usar a  função `sum()`, para adicionar alguns números. Entrar:
+Vamos tentar usar a  função `sum()` para adicionar alguns números. Entrar com o comando:
 
 ```{r}
 sum (2, 4, 6)
 ```
 
-Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes, você chamaria a função `rep` e forneceria seu argumento **times**:
+Alguns argumentos têm nomes. Por exemplo, para repetir um valor 3 vezes você chamaria a função `rep` e forneceria seu argumento **times**:
 
 ```{r}
 rep("Engenharia Agrícola", times=3)
 ```
 
 
-Tente chamar a função `sqrt`  para obter a raiz quadrada 16.
+Tente chamar a função `sqrt`  para obter a raiz quadrada de 16:
 ```{r}
 sqrt(16)
 ```
 
 ## Ajuda
-A função `help ()` traz ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
+A função `help ()` fornece ajuda para a função desejada. Tente exibir ajuda para a função `mean`:
 ```{r message=TRUE}
 help (mean)
 ```

@@ -1,37 +1,29 @@
 # Criando Gráficos com o R
   
-  Este capitulo foi baseado nos livros
-  
-   - [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294)
+Este capítulo foi baseado nos livros [**Conhecendo o R: Um visão mais que estatística**](https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294).
    
-   - AQUINO, J. A. **R para cientistas sociais**. - Ilhéus, BA: EDITUS, 2014. 157. 
-  
-   - ANJOS, A. **Análise gráfica com uso do R**. Apostila. Dep. de Estatistica da UFPR, 2016. 127p. 
-   
-   Sites
-   
-   - https://www.statmethods.net/index.html 
+AQUINO, J. A. **R para cientistas sociais**. - Ilhéus, BA: EDITUS, 2014. 157. 
 
-   - http://curso-r.github.io/index.html PET Estatística UFPR (2016). **labestData: Biblioteca de Dados para Aprendizado de Estatística**. R package version x.y-z.w.
-   - https://www.statmethods.net/index.html
+ANJOS, A. **Análise gráfica com uso do R**. Apostila. Dep. de Estatistica da UFPR, 2016. 127p. 
+   
+Sites:
+   
+https://www.statmethods.net/index.html 
+http://curso-r.github.io/index.html PET Estatística UFPR (2016). **labestData: Biblioteca de Dados para Aprendizado de Estatística**. R package version x.y-z.w.
+https://www.statmethods.net/index.html
   
-  Modificações foram realizadas utilizando outros materiais que se encontram referenciado no final do Capitulo. 
-
-  
-O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o *graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como
-*lattice*, *ggplot2*, *ggobi* e *rgl*.
+O R é uma poderosa ferramenta no que diz respeito à confeção de gráficos. Iremos abordar três categorias de comandos gráficos, com o uso do pacote báscico do R o "graphics". Alguns pacotes foram desenvolvidos especialmente para manipulação de gráficos, como *lattice*, *ggplot2*, *ggobi* e *rgl*.
 
 O R possui diferentes funções geradoras de gráficos, e essas são classificados como:
 
-   - *Funções gráficas de alto nível*: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: *plot, hist, image, contour, persp etc*.
+- *Funções gráficas de alto nível*: criam novos gráficos na janela, definindo eixos, título, etc. Exemplos: *plot, hist, image, contour, persp etc*.
 
-   - *Funções gráficas de baixo nível*: permitem adicionar novas informações em gráficos já criados, como novos dados, linhas etc. Exemplos: *points, lines, abline,* *polygon, legend etc*.
+- *Funções gráficas de baixo nível*: permitem adicionar novas informações em gráficos já criados, como novos dados, linhas etc. Exemplos: *points, lines, abline,* *polygon, legend etc*.
 
-   - *Funções gráficas iterativas*: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: *locator e identify*.
+- *Funções gráficas iterativas*: permitem retirar ou adicionar informações aos gráficos já existentes, usando por exemplo o cursor do mouse. Exemplos: *locator e identify*.
 
 ## Exemplos de gráficos com o R
 Você pode ver alguns exemplos de gráficos que podem ser criados no R com os seguintes comandos:
-
 ```{r}
 demo(image)
 
@@ -46,9 +38,9 @@ demo(graphics)
 ```
 
 ## Entrada de dados
-Nesse tópico utlizaremos o arquivo de dados [dadosfisio.csv](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1). 
+Nesse tópico utlizaremos o arquivo de dados: [dadosfisio.csv](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1). 
 
-Dados fisico hidrico de 3 solos com textutas diferentes. 
+Dados físico hídrico de 3 solos com textutas diferentes:
 
 Cod. | Solo    | Areia | Silte | Argila
 -----|---------|-------|-------|-------
@@ -56,23 +48,23 @@ Z1   |NITOSSOLO|  122  |  121  |  757
 Z2   |LATOSSOLO|  710  |  80   |  210
 Z3   |LATOSSOLO|  892  |  10   |  98 
 
-Ler dados via web.
+Ler dados via web:
 ```{r}
 solo <- read.table("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1", sep = ";", header = T, dec = ",")
 ```
 
-Verificar a estrutura de dados.
+Verificar a estrutura de dados:
 ```{r}
 str(solo)
 
 ```
 
-Resumo estatástico da coluna 5 a coluna 8 de todos os solos
+Resumo estatástico da coluna 5 a coluna 8 de todos os solos:
 ```{r}
 summary(solo[5:8])
 ```
 
-Neste exemplo vamos analisar cada solo separadamente usando o comando `subset()`
+Neste exemplo vamos analisar cada solo separadamente usando o comando `subset()`:
 ```{r}
 solo1 <- subset(solo, z==1)
 solo2 <- subset(solo, z==2)
@@ -81,25 +73,21 @@ solo3 <- subset(solo, z==3)
 ```
 
 
-
 ## Usando a função `plot()`
 
 A função `plot()` inicia um novo gráfico. Em sua forma mais simples a função
-recebe valores de coordenadas *ds* (densidade do solo) e *ptotal* (porosidade total do solo) do solo z1.
-
+recebe valores de coordenadas *ds* (densidade do solo) e *ptotal* (porosidade total do solo) do solo z1:
 ```{r}
 plot(solo1$ds,solo1$ptotal)
 ```
 
-
-Vamos no gráfico inserir linhas ligando os pontos. Use o argumento *type="l" na função `plot()` 
-
+Vamos inserir no gráfico linhas ligando os pontos. Use o argumento *type="l" na função `plot()`:
 ```{r}
 plot(solo1$ds,solo1$ptotal, type = "l")
 
 ```
 
-Verifique outras opcões para os gráfico
+Verifique outras opcões para os gráfico:
 
    - *type = "p"* especifica o tipo de plotagem
    - *"p"*: pontos,
@@ -126,9 +114,8 @@ par(op)
 
 ### Mudando o padrão dos pontos `pch=`
 
-Pode-se usar diferentes padrões para os pontos usando o argumento `pch=`.Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o simbolo desejado.
-Use a opção `pch =` para especificar simbolos a serem usados ao traçar pontos. Para os simbolos de 21 a 25, especifique a cor da borda `(col =)`.
-
+Pode-se usar diferentes padrões para os pontos usando o argumento `pch=`. Diferentes tipos de símbolos são associados a diferentes números. Pode-se ainda usar caracteres como o símbolo desejado.
+Use a opção `pch =` para especificar símbolos a serem usados ao traçar pontos. Para os símbolos de 21 a 25, especifique a cor da borda `(col =)`:
 ```{r}
 plot(solo1$ds,solo1$ptotal, pch=21, ylim = c(0,0.6), xlim = c(1,2))
 
@@ -138,14 +125,13 @@ plot(solo2$ds,solo2$ptotal,pch=2, col="blue")
 plot(solo3$ds,solo3$ptotal,pch="%")
 ```
 
-Neste exemplo acima note, que foi adicionado o argumento `ylim` e `xlim` eles limitam os valores minimos e maximos: 
+Neste exemplo acima note que foi adicionado o argumento `ylim` e `xlim` eles limitam os valores mínimos e máximos: 
 ```{r eval=FALSE, include=T}
 
 xlim=c(xmin, xmax) ylim=c(ymin, ymax))
 ```
 
-
-Veja um exemplo do padrão dos pontos.
+Veja um exemplo do padrão dos pontos:
 ```{r}
 plot (0:20,                         #coord. eixo X
       rep (0,21),                   #coord. eixo y
@@ -160,9 +146,7 @@ plot (0:20,                         #coord. eixo X
 
 ### Mudando as linhas (`lwd e lty`)
 
-Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento `lwd=`, enquanto os estilos das linhas podem ser modificados com o argumento `lty=`.
-
-
+Você pode alterar linhas usando as seguintes opções. Isso é particularmente útil para linhas de referência, eixos e linhas de ajuste. A largura das linhas pode ser mudada com o argumento `lwd=`, enquanto os estilos das linhas podem ser modificados com o argumento `lty=`:
 ```{r}
 plot(solo3$ds,solo3$ptotal, lwd=2) # linha grossa
 plot(solo2$ds,solo2$ptotal, lty=2) #linha interrompida
@@ -180,20 +164,16 @@ y <- 1:9
     lines(c(2, 8), c(3, 3), lty = 6, lwd = 2)
 ```
 
-
-
 ### Adicionando  linhas a um grafico de pontos
 
 A função utilizada para inserir linhas é `abline()`.
 Vamos usar a função `abline` para inserir uma linha que mostra a média dos dados do eixo Y.
 o h é de linha horizontal. Fará uma linha na horizontal que passa pela média de y.
-
 ```{r}
 plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal))) 
 ```
 
-
-Para passar uma linha que passa pela média de x
+Para passar uma linha que passa pela média de x:
 ```{r}
 plot(solo3$ds,solo3$ptotal)
 
@@ -203,28 +183,25 @@ plot(solo3$ds,solo3$ptotal)
 plot(solo3$ds,solo3$ptotal, abline(v=mean(solo3$ds))) ## o v é de vertical
 ```
 
-Também é possível inserir as duas linhas ao mesmo tempo.
+Também é possível inserir as duas linhas ao mesmo tempo:
 ```{r}
 plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col="red"))
 ```
 
-Com cores diferentes
+Com cores diferentes:
 ```{r}
 plot(solo3$ds,solo3$ptotal, abline(h=mean(solo3$ptotal), v=mean(solo3$ds),col=c(2,4)))
 ```
 
-
 ### Definindo o intervalo dos eixos
 
 Se você quiser preencher um mesmo gráfico com linhas e pontos que possuem diferentes amplitudes como nosso exemplo do solos, deve usar o argumento `type=n`. Com este argumento um gráfico em branco é criado.
-
 ```{r}
 plot(c(1.55,2),c(0,0.6),type='n')
 points(solo3$ds,solo3$ptotal, pch=2)
 points(solo2$ds,solo2$ptotal)
 
 ```
-
 
 ### Personalizando os gráficos
 
@@ -254,8 +231,7 @@ Veja o `demo(plotmath)` para saber mais sobre anotações em gráficos.
 
 ## Histogramas
 
-A função `hist()` produz um histograma dos dados informados em seu argumento enquanto a função `barplot()` produz um gráfico de barras.
-
+A função `hist()` produz um histograma dos dados informados em seu argumento enquanto a função `barplot()` produz um gráfico de barras:
 ```{r}
 hist(solo1$ds)
 rug(solo1$ds)
@@ -263,9 +239,7 @@ rug(solo1$ds)
 
 ### Personalizando gráficos
 Os histogramas criados no R seguem um certo padrão (conhecido como parâmetros
-default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter
-informações detalhadas desses parâmetros se usar os recursos de ajuda do R. 
-
+default) que podem ser alterados de acordo com a preferência do usuário. Você pode obter informações detalhadas desses parâmetros se usar os recursos de ajuda do R:
 ```{r}
 hist(solo1$ds, #histograma de ds
      main="Histograma Personalizado\ndensidade do solo",#título
@@ -280,8 +254,7 @@ hist(solo1$ds, #histograma de ds
 ```
 
 ## Gráficos de Barras
-  Assemelha-se ao histograma, Porém, nesse caso, os dados referem-se a categoria ou aos tratamentos
-
+Assemelha-se ao histograma, porém nesse caso os dados referem-se a categoria ou aos tratamentos:
 ```{r}
 barplot(solo$ptotal,names.arg=solo$z, horiz = T)
         
@@ -290,7 +263,6 @@ barplot(solo$ptotal,names.arg=solo$z, horiz = T)
 ## Boxplots
 
 Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em *delineamento inteiramente casualizado* com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
-
 ```{r}
 dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1")
 str(dados)
@@ -305,11 +277,9 @@ Número inteiro que identifica as repetições de cada tratamento.
 *pulgões*
 Número de pulgões coletados 36 horas após a pulverização dos tratamentos.
 
-
 Boxplots podem ser criados para variáveis individuais ou para variáveis por grupo. O formato é `boxplot` `( x , data =)` , em que `x` é uma fórmula e `data =` denota o quadro de dados que fornece os dados. 
 
-Um exemplo de uma fórmula é `y ~ group` onde um boxplot separado para a variável numérica é gerado para cada valor de group. 
-
+Um exemplo de uma fórmula é `y ~ group` onde um boxplot separado para a variável numérica é gerado para cada valor de group:
 ```{r}
 x11()
 boxplot(pulgoes~trat,              #formula do boxplot
@@ -321,8 +291,7 @@ boxplot(pulgoes~trat,              #formula do boxplot
                           
 ```
 
-Adicione `horizontal = TRUE` para inverter a orientação do eixo.
-
+Adicione `horizontal = TRUE` para inverter a orientação do eixo:
 ```{r}
 boxplot(pulgoes~trat,              #formula do boxplot
         data = dados,              #conjunto de dados
@@ -356,15 +325,13 @@ Identifica as repetições de cada combinação dos fatores recipiente e espéci
 *alt*
 Altura das mudas aos 80 dias de idade (cm).
 
-Baixar dados via web.
-
+Baixar dados via web:
 ```{r}
 fat <- read.table("https://www.dropbox.com/s/sahc5n80rlkcfx4/BanzattoQd5.2.4.txt?dl=1")
 str(fat)
 ```
 
-Gerar o gráfico boxpolt com o comando abaixo.
-
+Gerar o gráfico boxpolt com o comando abaixo:
 ```{r}
 boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F, 
         col=(c("gold","darkgreen","brown")),
@@ -375,19 +342,17 @@ boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F,
 
 ## Cores
 
-  Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando `col="red"` (escrevendo o nome da cor) ou `col=2` (usando números).
-O comando abaixo mostra os números que especificam algumas cores.
-
+Gráficos em preto e branco são bons na maioria dos casos, mas cores podem ser mudadas usando `col="red"` (escrevendo o nome da cor) ou `col=2` (usando números).
+O comando abaixo mostra os números que especificam algumas cores:
 ```{r}
 pie(rep(1,30),col=rainbow(30))
 ```
 
-Veja sua tabela de cores executando o script [paletedecores.R](https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1).
+Veja sua tabela de cores executando o script: [paletedecores.R](https://www.dropbox.com/s/e9a27z97buqjovz/paletadecores.R?dl=1).
 
 Podemos também criar cores personalizadas usando a função do `rgb()`, que recebe como argumentos as quantidades de vermelho *(red)*, verde *(green)* e azul *(blue)* e, opcionalmente, o grau de opacidade (alpha). Os valores devem ser números reais entre 0 e 1. 
 
 Exemplos:
-
 ```{r}
 goiaba <- rgb(0.94, 0.41, 0.40)
 goiaba.semitrans <- rgb(0.94, 0.41, 0.40, alpha = 0.5)
@@ -398,13 +363,11 @@ blue = c(0.71, 0.30), names = c("leite", "abacate"))
 
 ## Interagindo com a Janela gráfica
 
-Poderemos com o mouse marcar o ponte desejado usando a função `identify ()`
-
+Poderemos com o mouse marcar a ponte desejada usando a função `identify ()`:
 ```{r}
 plot(solo1$ds~solo1$ptotal)
 identify(solo1$ds,n=1)
 ```
-
 
 ## Texto e tamanho do símbolo
 
@@ -425,7 +388,6 @@ boxplot(fat$alt~fat$recipie*especie, data=fat, notch=F,
               
 ```
 
-
 ## Visualizar vários gráficos
 
 ```{r}
@@ -443,7 +405,7 @@ boxplot(pulgoes~trat,              #formula do boxplot
 
 ### Varios gráficos na mesma janela gráfica
 
-Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invês de um apenas. Para isto use a função `par()`.
+Você pode dar instruções para o programa mostrar diversos gráficos pequenos em uma mesma janela ao invés de um apenas. Para isto use a função `par()`.
 
 **Exemplo 1**
 
@@ -465,13 +427,12 @@ plot(solo$ds, col=solo$z)
 plot(density(solo$ds))
 ```
 
-
 ## Salvando gráficos
 
-Você pode salvar o gráfico em vários formatos no menu 
+Você pode salvar o gráfico em vários formatos no menu.
 *Arquivo -> Salvar como*.
 
-Você também pode salvar o gráfico via código usando uma das seguintes funções.
+Você também pode salvar o gráfico via código usando uma das seguintes funções:
 
 
 `pdf (file = "meugráfico.pdf")	`          #ficheiro PDF
