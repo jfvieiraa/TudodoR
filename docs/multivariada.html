@@ -323,22 +323,22 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h1><span class="header-section-number"> 9</span> Multivariada</h1>
 <p>Entrada dos dados</p>
 <p>Dados entre parênteses são os valores observados das respectivas variáveis, X1, X2, X3, X4 e X5.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">X1&lt;-<span class="kw">c</span>(<span class="fl">0.0475</span>,<span class="fl">0.04715</span>,<span class="fl">0.0471</span>,<span class="fl">0.0469</span>,<span class="fl">0.0469</span>,<span class="fl">0.04635</span>)</a>
-<a class="sourceLine" id="cb1-2" title="2">X2&lt;-<span class="kw">c</span>(<span class="fl">0.366</span>,<span class="fl">0.359</span>,<span class="fl">0.341</span>,<span class="fl">0.348</span>,<span class="fl">0.351</span>,<span class="fl">0.350</span>)</a>
-<a class="sourceLine" id="cb1-3" title="3">X3&lt;-<span class="kw">c</span>(<span class="fl">0.388</span>,<span class="fl">0.345</span>,<span class="fl">0.367</span>,<span class="fl">0.353</span>,<span class="fl">0.355</span>,<span class="fl">0.426</span>)</a>
-<a class="sourceLine" id="cb1-4" title="4">X4&lt;-<span class="kw">c</span>(<span class="fl">0.302</span>,<span class="fl">0.296</span>,<span class="fl">0.279</span>,<span class="fl">0.286</span>,<span class="fl">0.285</span>,<span class="fl">0.279</span>)</a>
-<a class="sourceLine" id="cb1-5" title="5">X5&lt;-<span class="kw">c</span>(<span class="fl">1.29</span>,<span class="fl">1.16</span>,<span class="fl">1.31</span>,<span class="fl">1.23</span>,<span class="fl">1.24</span>,<span class="fl">1.52</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">Y&lt;-<span class="kw">cbind</span>(X1,X2,X3,X4,X5)</a></code></pre></div>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
-<a class="sourceLine" id="cb3-2" title="2">S</a></code></pre></div>
+<div class="sourceCode" id="cb820"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb820-1" title="1">X1&lt;-<span class="kw">c</span>(<span class="fl">0.0475</span>,<span class="fl">0.04715</span>,<span class="fl">0.0471</span>,<span class="fl">0.0469</span>,<span class="fl">0.0469</span>,<span class="fl">0.04635</span>)</a>
+<a class="sourceLine" id="cb820-2" title="2">X2&lt;-<span class="kw">c</span>(<span class="fl">0.366</span>,<span class="fl">0.359</span>,<span class="fl">0.341</span>,<span class="fl">0.348</span>,<span class="fl">0.351</span>,<span class="fl">0.350</span>)</a>
+<a class="sourceLine" id="cb820-3" title="3">X3&lt;-<span class="kw">c</span>(<span class="fl">0.388</span>,<span class="fl">0.345</span>,<span class="fl">0.367</span>,<span class="fl">0.353</span>,<span class="fl">0.355</span>,<span class="fl">0.426</span>)</a>
+<a class="sourceLine" id="cb820-4" title="4">X4&lt;-<span class="kw">c</span>(<span class="fl">0.302</span>,<span class="fl">0.296</span>,<span class="fl">0.279</span>,<span class="fl">0.286</span>,<span class="fl">0.285</span>,<span class="fl">0.279</span>)</a>
+<a class="sourceLine" id="cb820-5" title="5">X5&lt;-<span class="kw">c</span>(<span class="fl">1.29</span>,<span class="fl">1.16</span>,<span class="fl">1.31</span>,<span class="fl">1.23</span>,<span class="fl">1.24</span>,<span class="fl">1.52</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb821"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb821-1" title="1">Y&lt;-<span class="kw">cbind</span>(X1,X2,X3,X4,X5)</a></code></pre></div>
+<div class="sourceCode" id="cb822"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb822-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb822-2" title="2">S</a></code></pre></div>
 <pre><code>##               X1        X2            X3            X4            X5
 ## X1  1.446667e-07  1.76e-06 -5.603333e-06  2.726667e-06 -3.116667e-05
 ## X2  1.760000e-06  7.71e-05  1.480000e-05  7.610000e-05 -2.610000e-04
 ## X3 -5.603333e-06  1.48e-05  9.150667e-04 -6.873333e-05  3.563333e-03
 ## X4  2.726667e-06  7.61e-05 -6.873333e-05  8.696667e-05 -6.036667e-04
 ## X5 -3.116667e-05 -2.61e-04  3.563333e-03 -6.036667e-04  1.525667e-02</code></pre>
-<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
-<a class="sourceLine" id="cb5-2" title="2">autoS</a></code></pre></div>
+<div class="sourceCode" id="cb824"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb824-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
+<a class="sourceLine" id="cb824-2" title="2">autoS</a></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 1.612000e-02 2.134340e-04 2.489500e-06 1.859592e-08 1.729972e-09
@@ -350,17 +350,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [3,]  0.228128328 -0.5960180 -0.35869625 -0.07671633 -0.67688376
 ## [4,] -0.037679522 -0.5458098 -0.44622410 -0.02872057  0.70762359
 ## [5,]  0.972771496  0.1092141  0.07971945  0.02033617  0.18713406</code></pre>
-<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
-<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb8-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
-<a class="sourceLine" id="cb8-2" title="2">S</a></code></pre></div>
+<div class="sourceCode" id="cb826"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb826-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
+<div class="sourceCode" id="cb827"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb827-1" title="1">S&lt;-<span class="kw">cov</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb827-2" title="2">S</a></code></pre></div>
 <pre><code>##               X1        X2            X3            X4            X5
 ## X1  1.446667e-07  1.76e-06 -5.603333e-06  2.726667e-06 -3.116667e-05
 ## X2  1.760000e-06  7.71e-05  1.480000e-05  7.610000e-05 -2.610000e-04
 ## X3 -5.603333e-06  1.48e-05  9.150667e-04 -6.873333e-05  3.563333e-03
 ## X4  2.726667e-06  7.61e-05 -6.873333e-05  8.696667e-05 -6.036667e-04
 ## X5 -3.116667e-05 -2.61e-04  3.563333e-03 -6.036667e-04  1.525667e-02</code></pre>
-<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
-<a class="sourceLine" id="cb10-2" title="2">autoS</a></code></pre></div>
+<div class="sourceCode" id="cb829"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb829-1" title="1">autoS&lt;-<span class="kw">eigen</span>(S); </a>
+<a class="sourceLine" id="cb829-2" title="2">autoS</a></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 1.612000e-02 2.134340e-04 2.489500e-06 1.859592e-08 1.729972e-09
@@ -372,26 +372,26 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [3,]  0.228128328 -0.5960180 -0.35869625 -0.07671633 -0.67688376
 ## [4,] -0.037679522 -0.5458098 -0.44622410 -0.02872057  0.70762359
 ## [5,]  0.972771496  0.1092141  0.07971945  0.02033617  0.18713406</code></pre>
-<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" title="1">S.cov&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
-<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" title="1"><span class="kw">summary</span>(S.cov)</a></code></pre></div>
+<div class="sourceCode" id="cb831"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb831-1" title="1">S.cov&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5))</a></code></pre></div>
+<div class="sourceCode" id="cb832"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb832-1" title="1"><span class="kw">summary</span>(S.cov)</a></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1     PC2      PC3       PC4       PC5
 ## Standard deviation     0.1270 0.01461 0.001578 0.0001364 4.159e-05
 ## Proportion of Variance 0.9868 0.01307 0.000150 0.0000000 0.000e+00
 ## Cumulative Proportion  0.9868 0.99985 1.000000 1.0000000 1.000e+00</code></pre>
-<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" title="1"><span class="kw">screeplot</span>(S.cov,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-10-1.png" width="672" /></p>
+<div class="sourceCode" id="cb834"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb834-1" title="1"><span class="kw">screeplot</span>(S.cov,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-447-1.png" width="672" /></p>
 <p>Resultados a partir da matriz de covariância</p>
-<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" title="1">R&lt;-<span class="kw">cor</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
-<a class="sourceLine" id="cb16-2" title="2">R</a></code></pre></div>
+<div class="sourceCode" id="cb835"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb835-1" title="1">R&lt;-<span class="kw">cor</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5)); </a>
+<a class="sourceLine" id="cb835-2" title="2">R</a></code></pre></div>
 <pre><code>##            X1          X2          X3         X4         X5
 ## X1  1.0000000  0.52698863 -0.48700773  0.7687257 -0.6634013
 ## X2  0.5269886  1.00000000  0.05571962  0.9293537 -0.2406487
 ## X3 -0.4870077  0.05571962  1.00000000 -0.2436490  0.9536747
 ## X4  0.7687257  0.92935375 -0.24364900  1.0000000 -0.5240720
 ## X5 -0.6634013 -0.24064868  0.95367468 -0.5240720  1.0000000</code></pre>
-<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" title="1">autoR&lt;-<span class="kw">eigen</span>(R);</a>
-<a class="sourceLine" id="cb18-2" title="2">autoR</a></code></pre></div>
+<div class="sourceCode" id="cb837"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb837-1" title="1">autoR&lt;-<span class="kw">eigen</span>(R);</a>
+<a class="sourceLine" id="cb837-2" title="2">autoR</a></code></pre></div>
 <pre><code>## eigen() decomposition
 ## $values
 ## [1] 3.163658e+00 1.525782e+00 3.025159e-01 8.042938e-03 1.732466e-06
@@ -403,10 +403,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [3,]  0.3684580 0.60263117  0.2311883 -0.16487762 -0.6484147684
 ## [4,] -0.4961633 0.37260806 -0.1269516 -0.74522471  0.2085872370
 ## [5,]  0.4771716 0.41319029  0.2515689  0.05090347  0.7319173132</code></pre>
-<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb20-1" title="1">SR&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5), <span class="dt">cor=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb839"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb839-1" title="1">SR&lt;-<span class="kw">prcomp</span>(<span class="kw">cbind</span>(X1,X2,X3,X4,X5), <span class="dt">cor=</span><span class="ot">TRUE</span>, <span class="dt">scale=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Warning: In prcomp.default(cbind(X1, X2, X3, X4, X5), cor = TRUE, scale = TRUE) :
 ##  extra argument &#39;cor&#39; will be disregarded</code></pre>
-<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb22-1" title="1">SR</a></code></pre></div>
+<div class="sourceCode" id="cb841"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb841-1" title="1">SR</a></code></pre></div>
 <pre><code>## Standard deviations (1, .., p=5):
 ## [1] 1.778667446 1.235225294 0.550014473 0.089682431 0.001316232
 ## 
@@ -417,14 +417,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## X3  0.3684580 0.60263117 -0.2311883 -0.16487762 -0.6484147684
 ## X4 -0.4961633 0.37260806  0.1269516 -0.74522471  0.2085872370
 ## X5  0.4771716 0.41319029 -0.2515689  0.05090347  0.7319173132</code></pre>
-<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb24-1" title="1"><span class="kw">summary</span>(SR)</a></code></pre></div>
+<div class="sourceCode" id="cb843"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb843-1" title="1"><span class="kw">summary</span>(SR)</a></code></pre></div>
 <pre><code>## Importance of components:
 ##                           PC1    PC2    PC3     PC4      PC5
 ## Standard deviation     1.7787 1.2352 0.5500 0.08968 0.001316
 ## Proportion of Variance 0.6327 0.3052 0.0605 0.00161 0.000000
 ## Cumulative Proportion  0.6327 0.9379 0.9984 1.00000 1.000000</code></pre>
-<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb26-1" title="1">scores&lt;-SR<span class="op">$</span>x;</a>
-<a class="sourceLine" id="cb26-2" title="2">scores</a></code></pre></div>
+<div class="sourceCode" id="cb845"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb845-1" title="1">scores&lt;-SR<span class="op">$</span>x;</a>
+<a class="sourceLine" id="cb845-2" title="2">scores</a></code></pre></div>
 <pre><code>##              PC1        PC2        PC3           PC4           PC5
 ## [1,] -1.82622087  1.8010525 -0.4542054  0.0003485361 -0.0007263451
 ## [2,] -1.77385089 -0.2196976  0.5143779 -0.0157753617  0.0019677049
@@ -433,11 +433,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [5,] -0.08640991 -0.7370654  0.3154692  0.1501343080 -0.0010828159
 ## [6,]  2.94184393  1.2551825  0.2925855 -0.0100606398  0.0004223128</code></pre>
 <p>Resultados a partir da matriz de correlação R</p>
-<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb28-1" title="1"><span class="kw">screeplot</span>(SR,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-16-1.png" width="672" /></p>
+<div class="sourceCode" id="cb847"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb847-1" title="1"><span class="kw">screeplot</span>(SR,<span class="dt">type=</span><span class="st">&quot;lines&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-453-1.png" width="672" /></p>
 <p>Dispersão gráfica</p>
-<div class="sourceCode" id="cb29"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb29-1" title="1"><span class="kw">biplot</span>(SR)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-17-1.png" width="672" /></p>
+<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb848-1" title="1"><span class="kw">biplot</span>(SR)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-454-1.png" width="672" /></p>
 
 </div>
             </section>
