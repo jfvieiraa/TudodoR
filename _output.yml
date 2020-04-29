@@ -5,7 +5,7 @@ bookdown::gitbook:
       before: null
         
       after: null
-    download: ["pdf", "epub","mobi"]
+    download: ["pdf"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
