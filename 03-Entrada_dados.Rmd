@@ -87,16 +87,17 @@ dados <- read.table("clipboard", header=TRUE, dec=",")
 ### Usando a função edit
 
 O comando `edit(data.frame())` abre uma planilha para digitação de dados que são armazanados como data-frames:
-```{r}
+```{r eval=FALSE}
 dados <- edit(data.frame())
 
 ```
 
-![data-frame](https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1)
+```{r}
+knitr::include_graphics("image/scan1.png")
+```
 
 Se você precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados, use o comando `fix`:
-```{r}
-
+```{r eval=FALSE}
 fix(dados)
 head(dados)
 ```
@@ -107,11 +108,13 @@ teste <- c(10,20,30,40,50)
 teste
 ```
 Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisa criar novamente um objeto, use o comando `edit()`:
-```{r}
+```{r eval=FALSE}
 teste2 <- edit(teste)
 ```
-![edit](https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1)
 
+```{r}
+knitr::include_graphics("image/edit2.png")
+```
 
 #### Exemplo 2
 
