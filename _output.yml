@@ -2,11 +2,10 @@ bookdown::gitbook:
   css: style.css
   config:
     toc:
-      before: |
-        <li><a href="./">Uso do sistema R para análise de dados</a></li>
-      after: |
-        <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
-    download: ["pdf", "epub"]
+      before: null
+        
+      after: null
+    download: ["pdf", "epub","mobi"]
 bookdown::pdf_book:
   includes:
     in_header: preamble.tex
@@ -14,3 +13,4 @@ bookdown::pdf_book:
   citation_package: natbib
   keep_tex: yes
 bookdown::epub_book: default
+

@@ -1,15 +1,13 @@
 # Gráficos com ggplot2
 
-Existem muitas maneiras de fazer Gráficos em R, cada um com suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na *Grammar of Graphics* (Gramática dos Gráficos) para descrever os gráficos de dados.
+Existem muitas maneiras de fazer gráficos com o R, cada um com as suas vantagens e desvantagens. O foco aqui está no pacote ggplot2, que é baseado na *Grammar of Graphics* (Gramática dos Gráficos) para descrever os gráficos de dados.
 
-Utilize o codigo abaixo para instalar o pacote ggplot2
-
+Utilize o cádigo abaixo para instalar o pacote ggplot2:
 ```{r eval=F, include=T}
 install.packages("ggplot2")
 ```
 
-Sempre carregue o pacote antes de utilizá-lo.
-
+Sempre carregue o pacote antes de utilizá-lo:
 ```{r}
 library(ggplot2)
 ```
@@ -17,19 +15,17 @@ library(ggplot2)
 Utilizaremos o banco de dados:
 [dadosfisio](https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1) 
 
-Baixar os dados
+Baixar os dados:
 ```{r}
 fisio <- read.csv2("https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=1")
 ```
 
-Veja as primeiras linhas. 
-
+Veja as primeiras linhas:
 ```{r}
 head(fisio)
 ```
 
-O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa  a densidade do solo  e ao eixo x a variavel  capacidade de campo.
-
+O código abaixo é um exemplo de um gráfico bem simples, construído a partir das duas principais camadas. O eixo y representa  a densidade do solo  e ao eixo x a variável  capacidade de campo:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc)) +
   geom_point()
@@ -37,17 +33,15 @@ ggplot(data = fisio, aes(x = ds, y = cc)) +
 
 Aqui, essas formas geomótricas são pontos, selecionados pela função `geom_point()`, gerando, assim, um gráfico de dispersão.
 
-A função `aes()` vem da palavra *Aesthetics* define a relação entre os dados e cada aspecto visual do gráfico, como qual variavel será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função `colour`.
+A função `aes()` vem da palavra *Aesthetics* define a relação entre os dados e cada aspecto visual do gráfico, como qual variável será representada no eixo x, qual será representada no eixo y, a cor e o tamanho dos componentes com a função `colour`.
 
-Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos.
-
+Outro aspecto que pode ser mapeado nesse gráfico é a cor dos pontos:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
   geom_point()
 ```
 
-Agora, a variável *z* (classe de solo) foi mapeada a cor dos pontos, sendo que pontos vermelhos correspondem ao Nitossolo (valor 1) e pontos azuis  e verdes os Latossolos. Observe que inserimos a variável *z* como um fator, pois temos interesse apenas nos valores "1",  "2" e "3". No entanto, tambem podemos mapear uma variável contínua a cor dos pontos:
-
+Agora, a variável *z* (classe de solo) foi mapeada a cor dos pontos, sendo que pontos vermelhos correspondem ao Nitossolo (valor 1) e pontos azuis  e verdes, os Latossolos. Observe que inserimos a variável *z* como um fator, pois temos interesse apenas nos valores "1",  "2" e "3". No entanto, também podemos mapear uma variável contínua, a cor dos pontos:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc, colour = ptotal)) +
   geom_point()
@@ -55,8 +49,7 @@ ggplot(data = fisio, aes(x = ds, y = cc, colour = ptotal)) +
 
 A porosidade do solo (ptotal), é representado pela tonalidade da cor azul.
 
-Também podemos mapear o tamanho dos pontos a uma variável de interesse.
-
+Também podemos mapear o tamanho dos pontos a uma variável de interesse:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc, colour = ptotal, size = ma)) +
   geom_point()
@@ -73,8 +66,7 @@ Outros `geoms` bastante utilizados:
   - geom_area: para áreas
   - geom_bar: para barras
 
-Veja a seguir como é fácil gerar diversos Gráficos diferentes utilizando a mesma estrutura do gráfico de dispersão acima:
-
+Veja a seguir como é fácil gerar diversos gráficos diferentes utilizando a mesma estrutura do gráfico de dispersão acima:
 ```{r}
 ggplot(data = fisio, aes(x = factor(z), y = ds)) +
   geom_boxplot()
@@ -103,29 +95,27 @@ gra + geom_density() +
 ```
 
 **Exemplo**
-Baixar dados via web.
+Baixar dados via web:
 ```{r}
 dados <- read.table("https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1")
 ```
 
-Criar gráficos.
+Criar gráficos:
 ```{r}
 bar <- ggplot(data = dados, aes(y = peso, x = promalin, fill = factor(promalin)))
 ```
 
-Nestes exemplos, a altura da barra representará o valor em uma coluna do quadro de dados. Isso é feito usando `stat="identity"` em vez do padrão `stat="bin"`.
-
+Nestes exemplos, a altura da barra representará o valor em uma coluna do quadro de dados. Isso é feito usando `stat="identity"` em vez do padrão `stat="bin"`:
 ```{r}
 bar +  geom_bar(stat="identity")
 ```
 
-Gráfico de barras agrupados
-
+Gráfico de barras agrupados:
 ```{r}
 bar +   geom_bar(stat="identity", position=position_dodge())
 ```
 
-Empilhado 
+Empilhado: 
 ```{r}
 bar +   geom_bar(stat="identity", colour ="black")
 ```
@@ -137,20 +127,19 @@ bar +   geom_bar(stat="identity", colour ="black")
 
 O aspecto `colour` do boxplot, muda a cor do contorno. Para mudar o preenchimento, basta usar o `fill`.
 
-Usando `colour`
+Usando `colour`:
 ```{r}
 ggplot(data = fisio, aes(x = factor(z), y = ds, colour = factor(z))) +
   geom_boxplot()
 ```
 
-Usando `fill`
+Usando `fill`:
 ```{r}
 ggplot(data = fisio, aes(x = factor(z), y = ds, fill = factor(z))) +
   geom_boxplot()
 ```
 
-Mude a cor dos objetos sem atribuir a uma variavel. Para isso, observe que os aspectos `colour` e `fill` são especificados fora do `aes()`.
-
+Mude a cor dos objetos sem atribuir a uma variável. Para isso, observe que os aspectos `colour` e `fill` são especificados fora do `aes()`:
 ```{r}
 ggplot(data = fisio, aes(x = factor(z), y = ds)) +
   geom_boxplot(colour = "darkblue", fill= "blue")
@@ -158,8 +147,7 @@ ggplot(data = fisio, aes(x = factor(z), y = ds)) +
 
 ### Eixos
 
-Para alterar os rotulos dos eixos acrescentamos as funções `xlab()` ou `ylab()`.
-
+Para alterar os rótulos dos eixos acrescentamos as funções `xlab()` ou `ylab()`:
 ```{r}
 box <- ggplot(data = fisio, aes(x = factor(z), y = ds, fill = factor(z))) +
   geom_boxplot()+
@@ -169,26 +157,26 @@ box <- ggplot(data = fisio, aes(x = factor(z), y = ds, fill = factor(z))) +
 ```
 
 
-Alterar os limites dos Gráficos usamos as funções `xlim()` e `ylim()`.
+Alterar os limites dos gráficos usamos as funções `xlim()` e `ylim()`:
 ```{r}
   box + ylim (c(1.0,2.0))
 ```
 
-Especifique marcas de escala diretamente
+Especifique marcas de escala diretamente:
 ```{r}
 box + coord_cartesian(ylim=c(1, 2)) + 
     scale_y_continuous(breaks=seq(0, 2, 0.20))  
 ```
 
 
-Troque os eixos x e y
+Troque os eixos x e y:
 ```{r}
 box +
   coord_flip()
 
 ```
 
-Definir rótulos de marca de escala
+Definir rótulos de marca de escala:
 ```{r}
 box2 <- box +
           scale_x_discrete(breaks=c("1", "2", "3"),
@@ -199,30 +187,27 @@ box2 <- box +
 ### Legenda
 
 
-Remover legenda para uma estética específica `(fill)`
-
+Remover a legenda para uma estética específica `(fill)`:
 ```{r}
 box2 + guides(fill=FALSE)
 ```
 
-Também pode ser feito ao especificar a `scale`
-
+Também pode ser feito ao especificar a `scale`:
 ```{r}
 box2 + scale_fill_discrete(guide=FALSE)
 ```
 
-Isso remove todas as legendas
+Isso remove todas as legendas:
 ```{r}
 box2 + theme(legend.position="none")
 ```
 
-Alterando a ordem dos itens na legenda
+Alterando a ordem dos itens na legenda:
 ```{r}
 box2 + scale_fill_discrete(breaks=c("2","3","1"))
 ```
 
-Modificando o texto de legenda de tétulos e rótulos
-
+Modificando o texto de legenda de tétulos e rótulos:
 ```{r}
 box3 <- box2 +
         scale_fill_discrete(name="Classes\nde solo",
@@ -232,8 +217,7 @@ box3 <- box2 +
  
 ```
 
-Modificando a aparência do título e dos rótulos da legenda
-
+Modificando a aparência do título e dos rótulos da legenda:
 ```{r}
 # Título
 box3 + theme(legend.title = element_text(colour="black", size=13, face="bold"))
@@ -242,31 +226,28 @@ box3 + theme(legend.title = element_text(colour="black", size=13, face="bold"))
 box3 + theme(legend.text = element_text(colour="black", size = 12, face = "bold"))
 ```
 
-Modificando a caixa de legenda
-
+Modificando a caixa de legenda:
 ```{r}
 box3 + theme(legend.background = element_rect())
 box3 + theme(legend.background = element_rect(fill="gray90"))
 ```
 
-Mudando a posição da legenda
-
+Mudando a posição da legenda:
 ```{r}
 box3 + theme(legend.position="top")
 ```
 
-Posicione a legenda no gráfico, em que x, y é 0,0 (canto inferior esquerdo) a 1,1 (canto superior direito)
-
+Posicione a legenda no gráfico, em que x, y é 0,0 (canto inferior esquerdo) a 1,1 (canto superior direito):
 ```{r}
 box3 + theme(legend.position=c(.5, .5))
 ```
 
-Defina o "ponto de ancoragem" da legenda (o canto inferior esquerdo é 0,0; o canto superior direito é 1,1)
+Defina o "ponto de ancoragem" da legenda (o canto inferior esquerdo é 0,0; o canto superior direito é 1,1):
 ```{r}
 box3 + theme(legend.justification=c(0,0), legend.position=c(0,0))
 ```
 
-Coloque o canto inferior direito da caixa de legenda no canto inferior direito do gráfico
+Coloque o canto inferior direito da caixa de legenda no canto inferior direito do gráfico:
 ```{r}
 box3 + theme(legend.justification=c(1,0), legend.position=c(1,0))
 ```
@@ -284,16 +265,14 @@ box3 + labs(title="Variabilidade da densidade do solo\n em diferentes solos")
 ### Facets
 
 Outra funcionalidade muito importante do **ggplot2** é o uso de `facets`.
-Você quer dividir seus dados por uma ou mais variáveis e plotar os subconjuntos de dados juntos.
-
+Você quer dividir seus dados por uma ou mais variáveis e plotar os subconjuntos de dados juntos:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
   geom_point() +
   facet_grid(z~.)
 ```
 
-Podemos colocar os graficos lado a lado também.
-
+Podemos colocar os gráficos lado a lado também:
 ```{r}
 ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
   geom_point() +
@@ -306,33 +285,32 @@ ggplot(data = fisio, aes(x = ds, y = cc, colour = as.factor(z))) +
 ### Regressão
 
 **Efeito do Gesso no Peso de grãos de feijão**
-Estudo sobre o efeito do gesso no peso de grãos de feijo (*Phaseolus vulgaris* L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 n?veis de gesso, de 0 a 300, igualmente espaados em 50 kg ha-1.
+Estudo sobre o efeito do gesso no peso de grãos de feijo (*Phaseolus vulgaris* L.) feito por Ragazzi (1979). O experimento foi instalado em delineamento inteiramente casualizado e foram estudados 7 níveis de gesso, de 0 a 300, igualmente espados em 50 kg ha-1.
 
-Baixar dados 
-
+Baixar dados:
 ```{r}
 dados <- read.table("https://www.dropbox.com/s/r6jz7mrktbgnbnx/BanzattoQd7.2.1.txt?dl=1")
 ```
 
-Verificar a estrutura dos dados 
+Verificar a estrutura dos dados:
 ```{r}
 str(dados)
 ```
 
-Analise de regressão 
+Análise de regressão:
 ```{r}
 model <- lm(  gesso ~ peso, dados)
 
 summary(model)
 ```
 
-Extrair a equação do modelo
+Extrair a equação do modelo:
 ```{r}
 eqn <- as.character(as.expression(substitute(italic(y) == a + b * italic(x) * "," ~~ italic(r)^2 ~ "=" ~ r2,list(a = format(coef(model)[1], digits=3),b = format(coef(model)[2], digits=3), r2 = format(summary(model)$r.squared, digits=3)))))
 ```
 
 
-Criando o gráfico
+Criando o gráfico:
 ```{r}
 ggplot(dados,aes(x=gesso,y=peso,color=peso))  + 
   geom_point(size=2.9,shape=19, colour="grey10") + 
@@ -351,41 +329,41 @@ ggplot(dados,aes(x=gesso,y=peso,color=peso))  +
 
 Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espaçadas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
 
-Baixar dados 
+Baixar dados:
 ```{r}
 dados <- read.table("https://www.dropbox.com/s/9woiye3ce9twp78/BanzattoQd4.5.2.txt?dl=1")
 ```
 
-Verificar Estrutura dos dados
+Verificar estrutura dos dados:
 ```{r}
 str(dados)
 ```
 
-Transformação categorica
+Transformação categorica:
 ```{r}
 dados$promalin = as.factor(dados$promalin)
 dados$bloco= as.factor(dados$bloco)
 ```
 
-Estatistísca descritiva
+Estatistísca descritiva:
 ```{r}
 summary(dados)
 ```
 
-Ativar o pacote ggplot
+Ativar o pacote ggplot:
 ```{r}
 library(ggplot2)
 ```
 
 
-Fazer o gráfico
+Fazer o gráfico:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
       geom_boxplot(size=0.55,shape=19, colour="black") + 
       theme(legend.position="top") 
 ```
 
-Analisando os blocos 
+Analisando os blocos: 
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
        geom_point() + 
@@ -393,7 +371,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
        facet_wrap(~bloco,ncol=4)
 ```
 
-Inserindo medias 
+Inserindo médias:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
   geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -402,7 +380,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
  
 ```
 
-Inserindo legenda nos eixos
+Inserindo legenda nos eixos:
 ```{r}
 ggplot(dados,aes(x=promalin,y=peso, fill=promalin)) + 
        geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -411,7 +389,7 @@ ggplot(dados,aes(x=promalin,y=peso, fill=promalin)) +
        ylab("Peso médio dos frutos (g)") 
 ```
 
-Inserindo legenda nos eixos
+Inserindo legenda nos eixos:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
       geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -422,8 +400,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
       theme(panel.grid.minor = element_line(colour = "red", linetype = "dotted")) 
 ```
 
-Inserindo `tema_bw` preto e branco 
-
+Inserindo `tema_bw` preto e branco:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
       geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -434,8 +411,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
       theme_bw() 
 ```
 
-Inserindo legenda no topo
-
+Inserindo legenda no topo:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
       geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -448,8 +424,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
 ```
 
 
-Mudando escala do eixo y
-
+Mudando escala do eixo y:
 ```{r}
 ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) + 
       geom_boxplot(size=0.55,shape=19, colour="black") + 
@@ -468,7 +443,7 @@ ggplot(dados,aes(x=promalin ,y=peso, fill=promalin)) +
 
 Dados climáticos de Rondonópolis - MT
 
-Baixar dados no banco de dados o arquivo [roo.xlsx](https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1)
+Baixar dados no banco de dados o arquivo: [roo.xlsx](https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1)
 ```{r}
 roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
 View(roo)
@@ -476,7 +451,7 @@ View(roo)
 str(roo)
 ```
 
-Boxplot para tempearatura minima 
+Boxplot para tempearatura mínima:
 ```{r}
 ggplot(data = roo, aes(x = factor(mm),y = (Tmin)))+
   geom_boxplot() +
@@ -484,8 +459,7 @@ ggplot(data = roo, aes(x = factor(mm),y = (Tmin)))+
             labels=c("Jan","Fev", "Mar", "Abr", "Mai", "Jun", "Jul", "Ago", "Set", "Out", "Nov", "Dez"))
 ```
 
-Grafico de distruição de temperatura minima total
-
+Gráfico de distribuição de temperatura mínima total:
 ```{r}
 ggplot(data = roo, aes(x = (Tmin)))+
   geom_density()
@@ -493,8 +467,7 @@ ggplot(data = roo, aes(x = (Tmin)))+
 
 
 
-Grafico de distribuição de temperatura minima para cada mês
-
+Gráfico de distribuição de temperatura mínima para cada mês:
 ```{r}
 ggplot(data = roo, aes(x = (Tmin), fill=factor(mm)))+
   geom_density() 
@@ -510,12 +483,3 @@ GROLEMUND, G. WICKHAM, H. R for Data Science  Site: http://r4ds.had.co.nz/
 SITE: https://www.statmethods.net/index.html
 
 CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p. Site: http://shop.oreilly.com/pesouct/0636920023135.do
-
-
-
-
-
-
-
-
-
