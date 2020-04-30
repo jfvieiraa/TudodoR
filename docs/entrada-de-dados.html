@@ -349,14 +349,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [35] &quot;ET_Penman.csv&quot;                   &quot;ET_PenmanMonteith.csv&quot;          
 ## [37] &quot;ET_PenPan.csv&quot;                   &quot;ET_PriestleyTaylor.csv&quot;         
 ## [39] &quot;ET_Romanenko.csv&quot;                &quot;ET_Turc.csv&quot;                    
-## [41] &quot;ETP.txt&quot;                         &quot;index.Rmd&quot;                      
-## [43] &quot;LICENSE&quot;                         &quot;packages.bib&quot;                   
-## [45] &quot;preamble.tex&quot;                    &quot;README.md&quot;                      
-## [47] &quot;search_index.json&quot;               &quot;sentinel2.tif&quot;                  
-## [49] &quot;style.css&quot;                       &quot;tab.xls&quot;                        
-## [51] &quot;TudodoR.log&quot;                     &quot;TudodoR.pdf&quot;                    
-## [53] &quot;TudodoR.Rmd&quot;                     &quot;TudodoR.Rproj&quot;                  
-## [55] &quot;TudodoR.tex&quot;                     &quot;TudodoR_files&quot;</code></pre>
+## [41] &quot;ETP.txt&quot;                         &quot;image&quot;                          
+## [43] &quot;index.Rmd&quot;                       &quot;LICENSE&quot;                        
+## [45] &quot;packages.bib&quot;                    &quot;preamble.tex&quot;                   
+## [47] &quot;README.md&quot;                       &quot;search_index.json&quot;              
+## [49] &quot;sentinel2.tif&quot;                   &quot;style.css&quot;                      
+## [51] &quot;tab.xls&quot;                         &quot;TudodoR.Rmd&quot;                    
+## [53] &quot;TudodoR.Rproj&quot;                   &quot;TudodoR_files&quot;</code></pre>
 </div>
 <div id="entrando-com-dados" class="section level2">
 <h2><span class="header-section-number">4.2</span> Entrando com dados</h2>
@@ -406,37 +405,30 @@ Após copiar os dados (crtl+C), digite no <strong>prompt</strong>/<strong>consol
 <h3><span class="header-section-number">4.2.5</span> Usando a função edit</h3>
 <p>O comando <code>edit(data.frame())</code> abre uma planilha para digitação de dados que são armazanados como data-frames:</p>
 <div class="sourceCode" id="cb250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb250-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">edit</span>(<span class="kw">data.frame</span>())</a></code></pre></div>
-<div class="figure">
-<img src="https://www.dropbox.com/s/cbsqhtze2715m8t/scan1.PNG?dl=1" alt="data-frame" />
-<p class="caption">data-frame</p>
-</div>
+<p><img src="image/scan1.PNG" width="298" /></p>
 <p>Se você precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados, use o comando <code>fix</code>:</p>
 <div class="sourceCode" id="cb251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb251-1" title="1"><span class="kw">fix</span>(dados)</a>
 <a class="sourceLine" id="cb251-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
-<pre><code>## data frame with 0 columns and 0 rows</code></pre>
 <div id="exemplo-1" class="section level4">
 <h4><span class="header-section-number">4.2.5.1</span> Exemplo 1</h4>
-<div class="sourceCode" id="cb253"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb253-1" title="1">teste &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</a>
-<a class="sourceLine" id="cb253-2" title="2">teste</a></code></pre></div>
+<div class="sourceCode" id="cb252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb252-1" title="1">teste &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="dv">10</span>,<span class="dv">20</span>,<span class="dv">30</span>,<span class="dv">40</span>,<span class="dv">50</span>)</a>
+<a class="sourceLine" id="cb252-2" title="2">teste</a></code></pre></div>
 <pre><code>## [1] 10 20 30 40 50</code></pre>
 <p>Porém houve um erro: o último elemento deveria ser 60 e não 50, você não precisa criar novamente um objeto, use o comando <code>edit()</code>:</p>
-<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">teste2 &lt;-<span class="st"> </span><span class="kw">edit</span>(teste)</a></code></pre></div>
-<div class="figure">
-<img src="https://www.dropbox.com/s/l6eh9s5f46wr71x/edit2.PNG?dl=1" alt="edit" />
-<p class="caption">edit</p>
-</div>
+<div class="sourceCode" id="cb254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb254-1" title="1">teste2 &lt;-<span class="st"> </span><span class="kw">edit</span>(teste)</a></code></pre></div>
+<p><img src="image/edit2.PNG" width="380" /></p>
 </div>
 <div id="exemplo-2" class="section level4">
 <h4><span class="header-section-number">4.2.5.2</span> Exemplo 2</h4>
 <p>Com uma planilha com três colunas de dados. Os valores numéricos da coluna poderiam ser importados para o R utilizando-se o mesmo processo descrito com o uso do comando <code>scan()</code>. Abra o arquivo: <a href="https://www.dropbox.com/s/6504oo4olw34dw9/EVI_Prec.xlsx?dl=1">EVI-prec.xlsx</a>.</p>
 <p>Uma matrix com os dados poderá ser obtida com o comando <code>cbind</code>:</p>
-<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span>(ano, chuva, evi)</a></code></pre></div>
+<div class="sourceCode" id="cb255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb255-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">cbind</span>(ano, chuva, evi)</a></code></pre></div>
 <p>O objeto dados é um <strong>data.frame</strong>:</p>
-<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1"><span class="kw">is.data.frame</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb256"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb256-1" title="1"><span class="kw">is.data.frame</span>(dados)</a></code></pre></div>
 <p>Transforme para um data.frame com o comando <strong>as.data.frame</strong>:</p>
-<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1">dados_m &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb257"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb257-1" title="1">dados_m &lt;-<span class="st"> </span><span class="kw">as.data.frame</span>(dados)</a></code></pre></div>
 <p>Poderia usar o comando data.frame direto:</p>
-<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1">dados=<span class="kw">data.frame</span> (ano, chuva, evi)</a></code></pre></div>
+<div class="sourceCode" id="cb258"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb258-1" title="1">dados=<span class="kw">data.frame</span> (ano, chuva, evi)</a></code></pre></div>
 </div>
 </div>
 <div id="lendo-dados-de-um-arquivo-texto" class="section level3">
@@ -446,39 +438,39 @@ Após copiar os dados (crtl+C), digite no <strong>prompt</strong>/<strong>consol
 <div id="exemplo-1-1" class="section level4">
 <h4><span class="header-section-number">4.2.6.1</span> Exemplo 1</h4>
 <p>Como primeiro exemplo considere importar para o R os dados do arquivo texto: <a href="https://www.dropbox.com/s/m7jivbbggei5y0x/exemplo1.txt?dl=1">exemplo1.txt</a>.</p>
-<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1">ex01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo1.txt&quot;</span>) </a>
-<a class="sourceLine" id="cb260-2" title="2"></a>
-<a class="sourceLine" id="cb260-3" title="3"><span class="co">#Use os comandos</span></a>
-<a class="sourceLine" id="cb260-4" title="4">  ex01</a>
-<a class="sourceLine" id="cb260-5" title="5">  <span class="kw">class</span>(ex01)</a>
-<a class="sourceLine" id="cb260-6" title="6">  <span class="kw">names</span>(ex01)</a>
-<a class="sourceLine" id="cb260-7" title="7">  <span class="kw">dim</span>(ex01)</a>
-<a class="sourceLine" id="cb260-8" title="8">  <span class="kw">str</span>(ex01)</a>
-<a class="sourceLine" id="cb260-9" title="9">  <span class="kw">head</span>(ex01)</a></code></pre></div>
+<div class="sourceCode" id="cb259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb259-1" title="1">ex01 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo1.txt&quot;</span>) </a>
+<a class="sourceLine" id="cb259-2" title="2"></a>
+<a class="sourceLine" id="cb259-3" title="3"><span class="co">#Use os comandos</span></a>
+<a class="sourceLine" id="cb259-4" title="4">  ex01</a>
+<a class="sourceLine" id="cb259-5" title="5">  <span class="kw">class</span>(ex01)</a>
+<a class="sourceLine" id="cb259-6" title="6">  <span class="kw">names</span>(ex01)</a>
+<a class="sourceLine" id="cb259-7" title="7">  <span class="kw">dim</span>(ex01)</a>
+<a class="sourceLine" id="cb259-8" title="8">  <span class="kw">str</span>(ex01)</a>
+<a class="sourceLine" id="cb259-9" title="9">  <span class="kw">head</span>(ex01)</a></code></pre></div>
 </div>
 <div id="exemplo-2-1" class="section level4">
 <h4><span class="header-section-number">4.2.6.2</span> Exemplo 2</h4>
 <p>Como primeiro exemplo considere importar para o R os dados do arquivo de texto: <a href="https://www.dropbox.com/s/bi4b0j2nnnetc1r/exemplo2.txt?dl=1">exemplo2.txt</a>.</p>
-<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo2.txt&quot;</span>) </a>
-<a class="sourceLine" id="cb261-2" title="2">ex02</a></code></pre></div>
+<div class="sourceCode" id="cb260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb260-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo2.txt&quot;</span>) </a>
+<a class="sourceLine" id="cb260-2" title="2">ex02</a></code></pre></div>
 <p>Note que este arquivo difere do anterior em um aspecto: os nomes das variáveis estão na primeira linha. Para que o R considere isto corretamente, temos que informá-lo com o argumento <em>head=T</em>. Portanto para importar este arquivo usamos:</p>
-<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo02.txt&quot;</span>, <span class="dt">head=</span>T) </a>
-<a class="sourceLine" id="cb262-2" title="2">ex02</a></code></pre></div>
+<div class="sourceCode" id="cb261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb261-1" title="1">ex02 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo02.txt&quot;</span>, <span class="dt">head=</span>T) </a>
+<a class="sourceLine" id="cb261-2" title="2">ex02</a></code></pre></div>
 </div>
 </div>
 <div id="dados-do-tipo-csv" class="section level3">
 <h3><span class="header-section-number">4.2.7</span> Dados do tipo CSV</h3>
 <p><a href="https://www.dropbox.com/s/mv13cmkysw2nizm/exemplo3.csv?dl=1">Exemplo3.csv</a>: Vamos utilizar um arquivo de tipo <strong>CSV</strong>:</p>
-<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo3.csv.&quot;</span>, <span class="dt">head=</span>T, <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>) </a>
-<a class="sourceLine" id="cb263-2" title="2">ex03</a></code></pre></div>
+<div class="sourceCode" id="cb262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb262-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;exemplo3.csv.&quot;</span>, <span class="dt">head=</span>T, <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>) </a>
+<a class="sourceLine" id="cb262-2" title="2">ex03</a></code></pre></div>
 <p>Note que este arquivo difere do primeiro em outros aspectos:
 <em>read.table.</em></p>
-<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(       <span class="co"># lê dados de um arquivo texto</span></a>
-<a class="sourceLine" id="cb264-2" title="2">  <span class="st">&quot;exemplo3.csv&quot;</span>,         <span class="co"># nome do arquivo ou o caminho c:/R.exemplo3.csv</span></a>
-<a class="sourceLine" id="cb264-3" title="3">  <span class="dt">head=</span>T,                 <span class="co"># primeira linha ? cabe?alho</span></a>
-<a class="sourceLine" id="cb264-4" title="4">  <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>,                <span class="co"># separador de coluna </span></a>
-<a class="sourceLine" id="cb264-5" title="5">  <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)                <span class="co"># virgula como separador</span></a>
-<a class="sourceLine" id="cb264-6" title="6">ex03                      <span class="co"># exibe o objeto</span></a></code></pre></div>
+<div class="sourceCode" id="cb263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb263-1" title="1">ex03 &lt;-<span class="st"> </span><span class="kw">read.table</span>(       <span class="co"># lê dados de um arquivo texto</span></a>
+<a class="sourceLine" id="cb263-2" title="2">  <span class="st">&quot;exemplo3.csv&quot;</span>,         <span class="co"># nome do arquivo ou o caminho c:/R.exemplo3.csv</span></a>
+<a class="sourceLine" id="cb263-3" title="3">  <span class="dt">head=</span>T,                 <span class="co"># primeira linha ? cabe?alho</span></a>
+<a class="sourceLine" id="cb263-4" title="4">  <span class="dt">sep=</span><span class="st">&quot;:&quot;</span>,                <span class="co"># separador de coluna </span></a>
+<a class="sourceLine" id="cb263-5" title="5">  <span class="dt">dec=</span><span class="st">&quot;,&quot;</span>)                <span class="co"># virgula como separador</span></a>
+<a class="sourceLine" id="cb263-6" title="6">ex03                      <span class="co"># exibe o objeto</span></a></code></pre></div>
 <p>1.<strong>sep</strong>: caractere utilizado para separação dos campos e valores. Normalmente é utilizado o ponto e virgula (;)</p>
 <p>1.<strong>dec</strong>: caractere utilizado para separar as casas decimais. Normalmente ponto (.) ou virgula (,).</p>
 <p>1.<strong>header</strong>: TRUE, assume que a primeira linha da tabela contêm rotulos das variáveis. ‘FALSE’, assume que os dados se iniciam na primeira linha.</p>
@@ -507,13 +499,13 @@ Após copiar os dados (crtl+C), digite no <strong>prompt</strong>/<strong>consol
 <div id="lendo-dados-de-uma-planilha-eletrônica" class="section level3">
 <h3><span class="header-section-number">4.2.10</span> Lendo dados de uma planilha eletrônica</h3>
 <p>Com o <strong>pacote xlsx</strong> é possivel ler os dados diretamente da planilha eletrônica do Excel.</p>
-<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;&quot;</span>)</a>
-<a class="sourceLine" id="cb265-2" title="2"><span class="kw">require</span>(<span class="st">&quot;xlsx&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb264-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;&quot;</span>)</a>
+<a class="sourceLine" id="cb264-2" title="2"><span class="kw">require</span>(<span class="st">&quot;xlsx&quot;</span>)</a></code></pre></div>
 <p>O comando <em>read.xlsx()</em>, do <strong>pacote xlsx</strong>, lê o conteúdo de uma planilha eletrônica para o R com a estrutura de dados de um <em>data.frame</em>:</p>
-<div class="sourceCode" id="cb266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb266-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(</a>
-<a class="sourceLine" id="cb266-2" title="2">                    <span class="dt">file=</span><span class="st">&quot;C:/R/EVI_Prec.xlsx&quot;</span>,     <span class="co">#comando que lê planilhas</span></a>
-<a class="sourceLine" id="cb266-3" title="3">                    <span class="dt">sheetName =</span> <span class="st">&quot;Conbea&quot;</span>,          <span class="co">#nome da planilha</span></a>
-<a class="sourceLine" id="cb266-4" title="4">                    <span class="dt">h=</span>T)                           <span class="co">#sem cabeçalho  </span></a></code></pre></div>
+<div class="sourceCode" id="cb265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb265-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">read.xlsx</span>(</a>
+<a class="sourceLine" id="cb265-2" title="2">                    <span class="dt">file=</span><span class="st">&quot;C:/R/EVI_Prec.xlsx&quot;</span>,     <span class="co">#comando que lê planilhas</span></a>
+<a class="sourceLine" id="cb265-3" title="3">                    <span class="dt">sheetName =</span> <span class="st">&quot;Conbea&quot;</span>,          <span class="co">#nome da planilha</span></a>
+<a class="sourceLine" id="cb265-4" title="4">                    <span class="dt">h=</span>T)                           <span class="co">#sem cabeçalho  </span></a></code></pre></div>
 </div>
 <div id="exercícios" class="section level3">
 <h3><span class="header-section-number">4.2.11</span> Exercícios</h3>

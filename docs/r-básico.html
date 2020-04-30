@@ -391,11 +391,11 @@ Tente atribuir “Engenharia Agrícola”em x:</p>
 ## min&gt; x &lt;- sort(rnorm(100));  cH &lt;- 1.35
 ## 
 ## min&gt; pmin(cH, quantile(x)) # no names
-## [1] -2.4009303 -0.7084727  0.2703136  0.6244856  1.3500000
+## [1] -1.89038111 -0.77556630 -0.06393381  0.46586368  1.35000000
 ## 
 ## min&gt; pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.4009303 -0.7084727  0.2703136  0.6244856  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -1.89038111 -0.77556630 -0.06393381  0.46586368  1.35000000 
 ## 
 ## min&gt; plot(x, pmin(cH, pmax(-cH, x)), type = &quot;b&quot;, main =  &quot;Huber&#39;s function&quot;)</code></pre>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-14-1.png" width="672" /></p>

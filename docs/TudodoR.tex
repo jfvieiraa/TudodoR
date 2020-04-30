@@ -316,10 +316,6 @@ A função \texttt{help\ ()} fornece ajuda para a função desejada. Tente exibi
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## starting httpd help server ... done
-\end{verbatim}
-
 A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos para a função \texttt{min}:
 
 \begin{Shaded}
@@ -341,11 +337,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.1022701 -0.8814625 -0.1372696  0.5362824  1.3500000
+## [1] -2.39187674 -0.67166855  0.07647141  0.79341846  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
-##         0%        25%        50%        75%       100% 
-## -2.1022701 -0.8814625 -0.1372696  0.5362824  1.3500000 
+##          0%         25%         50%         75%        100% 
+## -2.39187674 -0.67166855  0.07647141  0.79341846  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -2128,10 +2124,8 @@ Você pode exibir o conteúdo do diretório com o comando \texttt{dir()}:
 ## [45] "packages.bib"                    "preamble.tex"                   
 ## [47] "README.md"                       "search_index.json"              
 ## [49] "sentinel2.tif"                   "style.css"                      
-## [51] "tab.xls"                         "TudodoR.log"                    
-## [53] "TudodoR.pdf"                     "TudodoR.Rmd"                    
-## [55] "TudodoR.Rproj"                   "TudodoR.tex"                    
-## [57] "TudodoR_files"
+## [51] "tab.xls"                         "TudodoR.Rmd"                    
+## [53] "TudodoR.Rproj"                   "TudodoR_files"
 \end{verbatim}
 
 \hypertarget{entrando-com-dados}{%
@@ -2232,12 +2226,6 @@ O comando \texttt{edit(data.frame())} abre uma planilha para digitação de dado
 \end{Highlighting}
 \end{Shaded}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"image/scan1.png"}\NormalTok{)}
-\end{Highlighting}
-\end{Shaded}
-
 \includegraphics[width=8.26in]{image/scan1}
 
 Se você precisar abrir novamente planilha com os dados, para fazer modificações e/ou inserir mais dados, use o comando \texttt{fix}:
@@ -2268,12 +2256,6 @@ Porém houve um erro: o último elemento deveria ser 60 e não 50, você não pr
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{teste2 <-}\StringTok{ }\KeywordTok{edit}\NormalTok{(teste)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\NormalTok{knitr}\OperatorTok{::}\KeywordTok{include_graphics}\NormalTok{(}\StringTok{"image/edit2.png"}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
@@ -4647,12 +4629,12 @@ SITE: \url{https://www.statmethods.net/index.html}
 
 CHANG, W. R Graphics Cookbook: Practical Recipes for Visualizing Data, Publisher: O'Reilly Media, 2002,416 p.~Site: \url{http://shop.oreilly.com/pesouct/0636920023135.do}
 
-Este Capitulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}}
+Este capítulo foi baseado no livro \href{https://www.editoraufv.com.br/produto/conhecendo-o-r-uma-visao-mais-que-estatistica/1109294}{\textbf{Conhecendo o R: Um visão mais que estatística}}, e na página do \href{http://www.leg.ufpr.br/~paulojus/}{\textbf{Prof.~Paulo Justiniando Ribeiro}}
 
 \hypertarget{testes-estatuxedsticos}{%
 \chapter{Testes Estatísticos}\label{testes-estatuxedsticos}}
 
-O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de media, amplamente usados em várias áreas do conhecimento.
+O R inclui em sua gama de utilidades uma poderosa ferramenta da estatástica contemporânea: os testes estatísticos. Dentre esses, podemos destacar os testes de média, amplamente usados em várias áreas do conhecimento.
 
 \hypertarget{teste-t-de-student}{%
 \section{Teste t de Student}\label{teste-t-de-student}}
@@ -4660,7 +4642,7 @@ O R inclui em sua gama de utilidades, uma poderosa ferramenta da estatástica co
 O teste t é bastante usado em várias situações do cotidiano quando se deseja fazer comparações entre \emph{uma ou mais médias}, sejam elas dependentes ou não.
 Abaixo estão exemplos de vários modos de realizarmos o teste t.
 
-Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo.
+Dados referentes a temperatura média do ar em duas condições: dentro de uma casa de vegetação e no campo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4679,7 +4661,7 @@ Dados referentes a temperatura média do ar em duas condições: dentro de uma c
 ##  $ X      : logi  NA NA NA NA NA NA ...
 \end{verbatim}
 
-Apresentação dos dados em forma de gráfico
+Apresentação dos dados em forma de gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4722,7 +4704,7 @@ sintaxe:
 \emph{alternative:} string indicando a hipótese alternativa desejada.
 Valores possíveis: \emph{``two-sided'', ``less'' ou ``greater''}.
 
-\emph{mu:} valor indicando o verdadeiro valor da média populacional para o caso de uma amostra, ou a diferença entre as mêdias para o caso de duas amostras.
+\emph{mu:} valor indicando o verdadeiro valor da média populacional para o caso de uma amostra, ou a diferença entre as médias para o caso de duas amostras.
 
 \emph{paired:}
 - TRUE - realiza o teste t pareado.
@@ -4732,18 +4714,18 @@ Valores possíveis: \emph{``two-sided'', ``less'' ou ``greater''}.
 - TRUE - indica que a variância populacional é igual nas duas amostras.
 - FALSE - indica que a variância populacional de cada amostra é diferente.
 
-\emph{conf.level}: coeficiente de confiança do intervalo.
+\emph{conf.level}: coeficiênte de confiança do intervalo.
 
 \hypertarget{para-uma-muxe9dia}{%
 \subsection{Para uma média}\label{para-uma-muxe9dia}}
 
-Vamos testar se a temperatura horaria do solsticio de verão no campo tem média igual ou maior que \textbf{21 ºC} na cidade de Piracicaba-SP.
+Vamos testar se a temperatura horária do solsticio de verão no campo tem média igual ou maior que \textbf{21 ºC} na cidade de Piracicaba-SP.
 
 \emph{H0: mu \textgreater= 21}
 
 \emph{IC 95 para mu}
 
-1.0 Passo filtrar os dados pelo fator ``periodo'' com o nivel sol\_verao (solsticio de verão).
+1.0 Passo filtrar os dados pelo fator ``período'' com o nível sol\_verao (solsticio de verão):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4752,7 +4734,7 @@ Vamos testar se a temperatura horaria do solsticio de verão no campo tem média
 \end{Highlighting}
 \end{Shaded}
 
-2.0 Passo filtrar os dados pelo fator ``local'' com o nivel campo.
+2.0 Passo filtrar os dados pelo fator ``local'' com o nível campo:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4760,18 +4742,29 @@ Vamos testar se a temperatura horaria do solsticio de verão no campo tem média
 \end{Highlighting}
 \end{Shaded}
 
-3.0 Verificar dados graficamente
+3.0 Verificar dados graficamente:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{attach}\NormalTok{(pira_tem)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## The following objects are masked from pira_tem (pos = 44):
+## 
+##     hora, local, periodo, temp, X
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
 \KeywordTok{boxplot}\NormalTok{(temp)}
 \end{Highlighting}
 \end{Shaded}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-250-1.pdf}
 
-4.0 Usar o teste T
+4.0 Usar o teste T:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4803,7 +4796,7 @@ Como a hipótese alternativa foi a aceita isso implica que a temperatura do ar n
 \textbf{Exercicio 1}
 
 Vamos testar se X tem média estatiscamente igual a 35 ou maior
-H0: mu =\textgreater35
+H0: mu =\textgreater35:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4815,7 +4808,7 @@ H0: mu =\textgreater35
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-252-1.pdf}
 
-Teste t.
+Teste t:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4839,12 +4832,12 @@ Teste t.
 ##     37.62
 \end{verbatim}
 
-Com foi significativo admitimos que a amostra \emph{x} é oriunda de um população com média maior que o valor de 35, com nivel de 5\% de significância.
+Como foi significativo, admitimos que a amostra \emph{x} é oriunda de um população com média maior que o valor de 35, com nivel de 5\% de significância.
 
 \textbf{Exercicio 2}
 
-Um pesquisador afirmou que a temperatura média de solsticio de verão medido na casa de vegetação em Piracicaba-SP tem média \textbf{22,2 ºC}.
-Desconfiando desse resultado um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:
+Um pesquisador afirmou que a temperatura média de solstício de verão medido na casa de vegetação em Piracicaba-SP tem média \textbf{22,2 ºC}.
+Desconfiando desse resultado, um outro pesquisador com dados provinientes da mesma estação climatológicas em períodos diferentes encontrou os seguintes resultados:
 
 \emph{H0: mu = 22,2}
 
@@ -4891,12 +4884,12 @@ Essa afirmação é verdadeira?
 \hypertarget{para-duas-muxe9dias-independentes}{%
 \subsection{Para duas médias independentes}\label{para-duas-muxe9dias-independentes}}
 
-Para a realização do teste t pressupoe-se que as amostras possuem variâncias iguais
-alem de seguirem distribuição normal.
+Para a realização do teste t pressupõe-se que as amostras possuem variâncias iguais
+além de seguirem distribuição normal.
 
 Vamos a um exemplo:
 
-Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5\% de significância.
+Suponha dois conjuntos de dados de temperatura de média do ar de dois ambientes (casa de vegetação e campo). Verifique se as temperaturas dos dois ambientes são estatisticamente diferentes usando 5\% de significância.
 \emph{H0: mu da temp da casa de vegetação = mu da temp do campo}
 
 \begin{Shaded}
@@ -4930,13 +4923,13 @@ Suponha dois conjuntos de dados de temperatura de media do ar de dois ambientes(
 \end{verbatim}
 
 Uma vez que o \emph{p-value} foi maior que 0,05, podemos concluir que as médias de temperatura dos dois ambientes não são diferentes, estatisticamente, a 5\% de significância.
-Veja que o resultado desta analise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Alem disso, o resultado do teste ainda mostra as médias para cada grupo.
+Veja que o resultado desta análise mostra o valor de t (estatística do teste), os graus de liberdade (df) e o valor de p (significância). Além disso, o resultado do teste ainda mostra as médias para cada grupo.
 
 \hypertarget{para-duas-muxe9dias-dependentes}{%
 \subsection{Para duas médias dependentes}\label{para-duas-muxe9dias-dependentes}}
 
 Neste caso vamos usar o mesmo nível de significância do exemplo das amostras independentes.
-As hipóteses se mantêm. Agora basta adicionar o argumento \texttt{paired=T}, informando que as amostras são dependentes.
+As hipóteses se mantêm. Agora basta adicionar o argumento \texttt{paired=T}, informando que as amostras são dependentes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -4993,7 +4986,7 @@ Note que a estatística do teste-t pareado não é baseada na média dos tratame
 
 As variâncias não são homogeneas.
 
-Vamos resolver novamente o exercicio anterior, modificando o argumento \texttt{var.equal}
+Vamos resolver novamente o exercicio anterior, modificando o argumento \texttt{var.equal}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5023,7 +5016,7 @@ Vamos resolver novamente o exercicio anterior, modificando o argumento \texttt{v
 
 Por vezes temos necessidade de identificar com certa confiança se uma amostra ou conjunto de dados segue a distribuição normal. Isso e possível, no R, com o uso do comando \texttt{shapiro.test()}
 
-Verifique normalidade dos dados
+Verifique normalidade dos dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5054,7 +5047,7 @@ Verifique normalidade dos dados
 \end{verbatim}
 
 O comando \texttt{qqnorm()}nos fornece diretamente um gráfico da distribuição de percentagens
-acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal.
+acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráfico seguem um padrão aproximado de uma reta, este fato evidencia que a variável aleatória em questão tem a distribuição aproximadamente normal:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5075,7 +5068,7 @@ acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráf
 \hypertarget{teste-u-de-mann-whitney}{%
 \section{Teste U de Mann-Whitney}\label{teste-u-de-mann-whitney}}
 
-\emph{H0: mu da temp da casa de vegetação = mu da temp do campo}
+\emph{H0: mu da temp da casa de vegetação = mu da temp do campo}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5097,13 +5090,13 @@ acumuladas chamado de gráfico de probabilidade normal. Se os pontos deste gráf
 \section{Covariância e Correlação}\label{covariuxe2ncia-e-correlauxe7uxe3o}}
 
 A covariância e a correlação entre dois conjuntos de dados quaisquer podem ser obtidos pelos comandos \texttt{cov(x,y)} e \texttt{cor(x,y)}, respectivamente.
-São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covarincia) ou grau de associaçãp (correlação) entre duas variaveis aleatorias X e Y.
+São medidads utilizadas no estudo do comportamento conjunto de duas variáveis quantitativas distintas. Elas informam a variação conjunta (covariância) ou grau de associação (correlação) entre duas variáveis aleátorias X e Y.
 
-A correlação de \textbf{Pearson} é uma medida paramétrica de associação linear entre duas variaveis.
+A correlação de \textbf{Pearson} é uma medida paramétrica de associação linear entre duas variáveis.
 
-A correlação de ordem de \textbf{Sperman} é uma medidad não paramétrica de associação entre duas variáveis
+A correlação de ordem de \textbf{Sperman} é uma medida não paramétrica de associação entre duas variáveis
 
-A correlação de ordem de \textbf{Kendall} é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y
+A correlação de ordem de \textbf{Kendall} é outra medida não paramétrica da associação, baseada na concordância ou discordância dos pares x-y:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5111,7 +5104,7 @@ A correlação de ordem de \textbf{Kendall} é outra medida não paramétrica da
 \end{Highlighting}
 \end{Shaded}
 
-Plote os valores
+Plote os valores:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5121,7 +5114,7 @@ Plote os valores
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-265-1.pdf}
 
-Teste de correlação de Pearson
+Teste de correlação de Pearson:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5135,7 +5128,7 @@ Teste de correlação de Pearson
 ## [1] 0.9250728
 \end{verbatim}
 
-Teste de correlação de Pearson (the default)
+Teste de correlação de Pearson (the default):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5147,7 +5140,7 @@ Teste de correlação de Pearson (the default)
 ## [1] 0.9250728
 \end{verbatim}
 
-Teste de correlação de Pearson trocando o X e Y
+Teste de correlação de Pearson trocando o X e Y:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5159,7 +5152,7 @@ Teste de correlação de Pearson trocando o X e Y
 ## [1] 0.9250728
 \end{verbatim}
 
-Teste de correlação de Spearman
+Teste de correlação de Spearman:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5172,7 +5165,7 @@ Teste de correlação de Spearman
 ## [1] 0.9412321
 \end{verbatim}
 
-Teste de correlação de Kendall
+Teste de correlação de Kendall:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5185,7 +5178,7 @@ Teste de correlação de Kendall
 ## [1] 0.8113615
 \end{verbatim}
 
-Teste de correlação de Pearson
+Teste de correlação de Pearson:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5267,7 +5260,7 @@ Teste de correlação de Pearson
 \hypertarget{outros-testes}{%
 \section{Outros testes}\label{outros-testes}}
 
-Utilizaremos o banco de dados \href{https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0}{dadosfisio}
+Utilizaremos o banco de dados: \href{https://www.dropbox.com/s/zg7fyg1iewtji49/dadosfisio.csv?dl=0}{dadosfisio}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5280,6 +5273,13 @@ Utilizaremos o banco de dados \href{https://www.dropbox.com/s/zg7fyg1iewtji49/da
 ## The following objects are masked _by_ .GlobalEnv:
 ## 
 ##     a, b, x, y, z
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from fisio (pos = 44):
+## 
+##     a, b, cc, cota, ds, ma, ptotal, tibe, tibo, x, X120, X3, X60, X90,
+##     y, z
 \end{verbatim}
 
 \begin{Shaded}
@@ -5318,7 +5318,7 @@ Teste de Spearman
 \hypertarget{hydrogof}{%
 \subsection{hydroGOF}\label{hydrogof}}
 
-Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise.
+Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta análise:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5326,22 +5326,7 @@ Carregando a biblioteca hydroGOF, que contém dados e funções usadas nesta an�
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: zoo
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'zoo'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:base':
-## 
-##     as.Date, as.Date.numeric
-\end{verbatim}
-
-Cálculo das medidas numéricas de qualidade do ajuste para o ``melhor'' caso (inatingível)
+Cálculo das medidas numéricas de qualidade do ajuste para o ``melhor'' caso (inatingível):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5405,7 +5390,7 @@ Este delineamento apresenta as seguintes caracterítiscas:
 
 \begin{itemize}
 \item
-  Utiliza apenas os princópios da \emph{repetição} e da \emph{casualização}, deixando de lado o principio do \emph{controle local}, e, portanto, as repetições não são organizadas em blocos;
+  Utiliza apenas os princópios da \emph{repetição} e da \emph{casualização}, deixando de lado o princípio do \emph{controle local}, e, portanto, as repetições não são organizadas em blocos;
 \item
   Os tratamentos são designados às parcelas de forma inteiramente casual, com números iguais ou diferentes repetições por tratamento.
 \end{itemize}
@@ -5442,7 +5427,7 @@ Este delineamento é mais utilizado em experimentos de laboratório e nos ensaio
 Dados de um experimento visando controle de pulgão (\emph{Aphis gossypii Glover}) em cultura de pepino, instalado em delineamento inteiramente casualizado com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
 O primeiro passo é ler os dados.
 
-Importando dados
+Importando dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5450,7 +5435,7 @@ Importando dados
 \end{Highlighting}
 \end{Shaded}
 
-Conferir se temos fatores para fazer a análise de variância
+Conferir se temos fatores para fazer a análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5465,7 +5450,7 @@ Conferir se temos fatores para fazer a análise de variância
 ##  $ pulgoes: int  2370 1282 562 173 193 1687 1527 321 127 71 ...
 \end{verbatim}
 
-Lembramos que pulgoes deve ter conteudo numerico e trat deve ser fator
+Lembramos que pulgões deve ter conteúdo numérico e trat deve ser fator:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5475,7 +5460,7 @@ Lembramos que pulgoes deve ter conteudo numerico e trat deve ser fator
 \end{Shaded}
 
 Verificação gráfica**
-É importante notar que as barras simplesmente refletem a variância dos dados dentro da cada tratamento e não são adequadas para detectar diferenças entre tratamentos.
+É importante notar que as barras simplesmente refletem a variância dos dados dentro de cada tratamento e não são adequadas para detectar diferenças entre tratamentos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5488,7 +5473,7 @@ Verificação gráfica**
 \hypertarget{anuxe1lise-de-variuxe2ncia}{%
 \subsection{Análise de variância}\label{anuxe1lise-de-variuxe2ncia}}
 
-Fazendo a análise de variância
+Fazendo a análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5513,20 +5498,11 @@ Fazendo a análise de variância
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-Extraindo o coeficiente de variação
+Extraindo o coeficiênte de variação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(agricolae)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: agricolae
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{cv.model}\NormalTok{(m0)}
 \end{Highlighting}
 \end{Shaded}
@@ -5535,7 +5511,7 @@ Extraindo o coeficiente de variação
 ## [1] 30.73619
 \end{verbatim}
 
-Análise gráfica dos resíduos
+Análise gráfica dos resíduos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5546,9 +5522,9 @@ Análise gráfica dos resíduos
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-287-1.pdf}
 
-Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade. A variabilidade dos erros apresentam um forma de cone.
+Analisando a figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade. A variabilidade dos erros apresentam um forma de cone.
 
-Teste das pressuposições da análise de variância**
+Teste das pressuposições da análise de variância**:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5565,9 +5541,9 @@ Teste das pressuposições da análise de variância**
 ## Bartlett's K-squared = 29.586, df = 4, p-value = 5.942e-06
 \end{verbatim}
 
-Como observamos uma significancia estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+Como observamos uma significância estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesmas em todos os níveis do fator.
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5586,17 +5562,17 @@ Teste de Shapiro-Wilk para Normalidade
 \hypertarget{transformauxe7uxe3o-de-dados}{%
 \subsection{Transformação de dados}\label{transformauxe7uxe3o-de-dados}}
 
-Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+Tranformação de dados é uma das possíveis formas de contornar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
 
-Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catalogos de transformação:
+Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catálogos de transformação:
 
 \begin{itemize}
 \item
   Transformação de raiz quadrada: frequentemente utilizada para dados de contagens, que geralmente seguem a distribuição de Poison, na qual a média é igual a variância. Quando ocorrem zeros ou valores baixos (menores que 10 ou 15), as transformação recomendadas são raiz quadrada + 0,5 ou 1,0.
 \item
-  Transformação angular: recomendavel para dados expressos em porcentagens, que geralmente segue distribuição binomial.
+  Transformação angular: recomendável para dados expressos em porcentagens, que geralmente segue distribuição binomial.
 \item
-  Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos.
+  Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos:
 \end{itemize}
 
 \begin{Shaded}
@@ -5610,20 +5586,11 @@ Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Par
 
 Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
 
-A função \texttt{boxcox(}) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse
+A função \texttt{boxcox(}) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(MASS) }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: MASS
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
   \KeywordTok{boxcox}\NormalTok{(m0)}
 \end{Highlighting}
 \end{Shaded}
@@ -5671,7 +5638,7 @@ A função \texttt{boxcox(}) do pacote MASS calcula a verossimilhança perfilhad
 
 Os pressupostos foram atendindos
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5687,7 +5654,7 @@ Teste de Shapiro-Wilk para Normalidade
 ## W = 0.97288, p-value = 0.6207
 \end{verbatim}
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5703,7 +5670,7 @@ Teste de Bartllet para homocedasticidade
 ## Bartlett's K-squared = 2.7641, df = 4, p-value = 0.598
 \end{verbatim}
 
-Resumo do modelo ajustado - Contraste
+Resumo do modelo ajustado - Contraste :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5735,7 +5702,7 @@ Resumo do modelo ajustado - Contraste
 ## F-statistic: 118.8 on 4 and 25 DF,  p-value: 6.978e-16
 \end{verbatim}
 
-Resumo do modelo ajustado - Contraste em relação a testemunha
+Resumo do modelo ajustado - Contraste em relação a testemunha:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -5978,11 +5945,7 @@ No R, o teste de Tukey é apresentado através de intervalos de confiança. A in
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: laercio
-\end{verbatim}
-
-Teste de Duncan
+Teste de Duncan:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6033,7 +5996,7 @@ Teste de Duncan
 ## 
 \end{verbatim}
 
-Pacote para analise de experimentos
+Pacote para análise de experimentos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6041,76 +6004,17 @@ Pacote para analise de experimentos
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## 
-## Attaching package: 'ExpDes.pt'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:MASS':
-## 
-##     ginv
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:agricolae':
-## 
-##     lastC, order.group, tapply.stat
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:stats':
-## 
-##     ccf
-\end{verbatim}
-
 \textbf{Recursos adicionais para comparações múltiplas}
 
-Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção \texttt{dependencies=TRUE} para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes.
+Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção \texttt{dependencies=TRUE} para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{#install.packages("multcompView", dep = TRUE) }
 \KeywordTok{require}\NormalTok{(multcomp) }
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: multcomp
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: mvtnorm
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: survival
-\end{verbatim}
-
-\begin{verbatim}
-## Loading required package: TH.data
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'TH.data'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:MASS':
-## 
-##     geyser
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(multcompView)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Loading required package: multcompView
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6145,14 +6049,14 @@ O delineamento em blocos casualizados (DBC) tem três princípios basicos de exp
   controle local
 \end{itemize}
 
-É o deliamento mais utilizado de todos delineamento. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como \emph{Two Way ANOVA}.
+É o deliamento mais utilizado de todos os delineamentos. Ele é utilizado quando há heterogeneidade nas condições experimentais. Nesse caso divide-se o material experimental, ou amostra, em bloco homogêneos de forma a contemplar as diferenças entre grupos. A ANOVA associada a este modelo de experimento é também conhecida como \emph{Two Way ANOVA}.
 
 \hypertarget{anuxe1lise-de-experimento-dbc}{%
 \subsection{Análise de experimento DBC}\label{anuxe1lise-de-experimento-dbc}}
 
-Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espa?adas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
+Resultados de um experimento instalado na Fazenda Chapadão, no município de Angatuba - SP. O delineamento experimental foi o de blocos casualizados, sendo as parcelas constituídas de 4 plantas espaçadas de 6 x 7 metros, com 12 anos de idade na época da instalação do experimento.
 
-Importando dados
+Importando dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6160,7 +6064,7 @@ Importando dados
 \end{Highlighting}
 \end{Shaded}
 
-conferir se temos fatores para fazer a análise de variância
+conferir se temos fatores para fazer a análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6175,7 +6079,7 @@ conferir se temos fatores para fazer a análise de variância
 ##  $ peso    : num  142 140 141 151 154 ...
 \end{verbatim}
 
-Lembramos que o \emph{peso} deve ter conteudo numerico e o \emph{promalin} e \emph{bloco} deve ser fator.
+Lembramos que o \emph{peso} deve ter conteúdo numérico e o \emph{promalin} e \emph{bloco} deve ser fator:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6184,20 +6088,11 @@ Lembramos que o \emph{peso} deve ter conteudo numerico e o \emph{promalin} e \em
 \end{Highlighting}
 \end{Shaded}
 
-Verificação gráfica**
+Verificação gráfica**:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(lattice)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: lattice
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{xyplot}\NormalTok{(peso }\OperatorTok{~}\StringTok{ }\NormalTok{promalin, }
         \DataTypeTok{groups =}\NormalTok{ bloco, }
         \DataTypeTok{data=}\NormalTok{ dados)}
@@ -6208,7 +6103,7 @@ Verificação gráfica**
 
 O efeito do bloco é aditivo?
 
-Ligar as observações com o mesmo bloco com a função \texttt{type\ ="o"}
+Ligar as observações com o mesmo bloco com a função \texttt{type\ ="o"}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6221,26 +6116,17 @@ Ligar as observações com o mesmo bloco com a função \texttt{type\ ="o"}
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-321-1.pdf}
 
-Reordenar os tratamentos
+Reordenar os tratamentos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{require}\NormalTok{(plyr)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Loading required package: plyr
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \NormalTok{dados}\OperatorTok{$}\NormalTok{promalin <-}\StringTok{ }\KeywordTok{with}\NormalTok{(dados, }\KeywordTok{reorder}\NormalTok{(promalin, peso))}
 \NormalTok{dados <-}\StringTok{ }\KeywordTok{arrange}\NormalTok{(dados, promalin, bloco)}
 \end{Highlighting}
 \end{Shaded}
 
-Graficos reordenados da menor média a maior média por tratamento
+Gráficos reordenados de menor média a maior média por tratamento:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6256,7 +6142,7 @@ Graficos reordenados da menor média a maior média por tratamento
 \hypertarget{anuxe1lise-de-variuxe2ncia-1}{%
 \subsubsection{Análise de variância}\label{anuxe1lise-de-variuxe2ncia-1}}
 
-Fazendo a análise de variância
+Fazendo a análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6282,7 +6168,7 @@ Fazendo a análise de variância
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-Extraindo o coeficiente de variação
+Extraíndo o coeficiente de variação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6295,7 +6181,7 @@ Extraindo o coeficiente de variação
 ## [1] 3.774477
 \end{verbatim}
 
-Análise gráfica dos resíduos
+Análise gráfica dos resíduos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6306,12 +6192,12 @@ Análise gráfica dos resíduos
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-327-1.pdf}
 
-Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade.
+Analisando a figura acima sugere que o principal problema deste conjunto de dados pode ser a não normalidade.
 
 \hypertarget{teste-das-pressuposiuxe7uxf5es-da-anuxe1lise-de-variuxe2ncia}{%
 \paragraph{Teste das pressuposições da análise de variância}\label{teste-das-pressuposiuxe7uxf5es-da-anuxe1lise-de-variuxe2ncia}}
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6327,9 +6213,9 @@ Teste de Bartllet para homocedasticidade
 ## Bartlett's K-squared = 1.7485, df = 4, p-value = 0.7819
 \end{verbatim}
 
-Como observamos uma não significancia estatística neste resultado \emph{(p-value = 0.7819)}, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+Como observamos uma não significância estatística neste resultado \emph{(p-value = 0.7819)}, devemos aceitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6345,19 +6231,19 @@ Teste de Shapiro-Wilk para Normalidade
 ## W = 0.855, p-value = 0.006472
 \end{verbatim}
 
-Como observamos uma significancia estatística neste resultado \emph{(p-value = 0.006472)}, devemos rejeitar a hipótese nula de que os residuoes tedem a distruibuição normal.
+Como observamos uma significância estatística neste resultado \emph{(p-value = 0.006472)}, devemos rejeitar a hipótese nula de que os resíduos tedem a distruibuição normal.
 
 \hypertarget{transformauxe7uxe3o-de-dados-1}{%
 \subsubsection{Transformação de dados}\label{transformauxe7uxe3o-de-dados-1}}
 
-Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+Tranformação de dados é uma das possíveis formas de contornar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
 
 \hypertarget{transformauxe7uxe3o-de-dados-com-o-box-cox}{%
 \paragraph{Transformação de dados com o BOX-COX}\label{transformauxe7uxe3o-de-dados-com-o-box-cox}}
 
 Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
 
-A função \texttt{boxcox()} do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse.
+A função \texttt{boxcox()} do pacote MASS calcula a verossimilhança perfilhada do parâmetro lambda. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo, vamos fazer um novo gráfico com um zoom na região de interesse:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6376,7 +6262,7 @@ A função \texttt{boxcox()} do pacote MASS calcula a verossimilhança perfilhad
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-330-2.pdf}
 
-Localizando o ponto máximo.
+Localizando o ponto máximo:
 
 \hypertarget{anuxe1lise-de-variuxe2ncia---ajuste-com-a-variuxe1vel-transformada.-1}{%
 \paragraph{Análise de variância - Ajuste com a variável transformada.}\label{anuxe1lise-de-variuxe2ncia---ajuste-com-a-variuxe1vel-transformada.-1}}
@@ -6387,7 +6273,7 @@ Localizando o ponto máximo.
 \end{Highlighting}
 \end{Shaded}
 
-Anáise gráfica dos resíduos
+Anáise gráfica dos resíduos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6398,9 +6284,9 @@ Anáise gráfica dos resíduos
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-333-1.pdf}
 
-Os pressupostos foram atendindos ?
+Os pressupostos foram atendindos?
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6416,7 +6302,7 @@ Teste de Shapiro-Wilk para Normalidade
 ## W = 0.93909, p-value = 0.2305
 \end{verbatim}
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6458,7 +6344,7 @@ Teste de Bartllet para homocedasticidade
 \end{Highlighting}
 \end{Shaded}
 
-Conhecer o pacote ExpDes.pt
+Conhecer o pacote ExpDes.pt:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6479,7 +6365,7 @@ Conhecer o pacote ExpDes.pt
 ## [37] "snk"            "tapply.stat"    "tukey"
 \end{verbatim}
 
-Utilizando o exemplo anterior.
+Utilizando o exemplo anterior:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6526,7 +6412,7 @@ Utilizando o exemplo anterior.
 ## ------------------------------------------------------------------------
 \end{verbatim}
 
-Carregar pacotes
+Carregar pacotes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6535,37 +6421,7 @@ Carregar pacotes
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## 
-## Attaching package: 'dplyr'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:plyr':
-## 
-##     arrange, count, desc, failwith, id, mutate, rename, summarise,
-##     summarize
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:MASS':
-## 
-##     select
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:stats':
-## 
-##     filter, lag
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:base':
-## 
-##     intersect, setdiff, setequal, union
-\end{verbatim}
-
-Calculo do erro
+Cálculo do erro:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6574,7 +6430,7 @@ Calculo do erro
 \end{Highlighting}
 \end{Shaded}
 
-Gerando gráfico
+Gerando o gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6605,9 +6461,9 @@ Gerando gráfico
 \subsection{Teste não parametrico}\label{teste-nuxe3o-parametrico}}
 
 As funções para comparações multiplas não-paramétricas incluídas no pacote agricolae são: \textbf{kruskal}, \textbf{waerden.test}, \textbf{friedman}, \textbf{durbin.test} e \textbf{Conover (1999)}.
-Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério a diferença menos significativa de Fisher (LSD).
+Os testes não-paramétricos post hoc (kruskal, friedman, durbin e waerden) estão usando o critério da diferença menos significativa de Fisher (LSD).
 
-Carregar pacote
+Carregar pacote:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6615,7 +6471,7 @@ Carregar pacote
 \end{Highlighting}
 \end{Shaded}
 
-A função \texttt{kruskal} é usada para N amostras (N\textgreater{} 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos).
+A função \texttt{kruskal} é usada para N amostras (N\textgreater{} 2), populações ou dados provenientes de um experimento aleatório (populações = tratamentos):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6675,7 +6531,7 @@ A função \texttt{kruskal} é usada para N amostras (N\textgreater{} 2), popula
 ## 50.0        7.00      b
 \end{verbatim}
 
-Gráficos
+Gráficos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6690,7 +6546,7 @@ Gráficos
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-345-1.pdf}
 
 A função \texttt{friedman} é usada para análise de tratamentos do estudo randomizado
-de bloco completo, onde a resposta não pode ser tratada através da análise de variância.
+de bloco completo, onde a resposta não pode ser tratada através da análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6736,7 +6592,7 @@ de bloco completo, onde a resposta não pode ser tratada através da análise de
 ## 12.5+12.5             8      b
 \end{verbatim}
 
-Grafico
+Gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6753,13 +6609,13 @@ Grafico
 \hypertarget{exercicio-1}{%
 \subsection{Exercicio 1}\label{exercicio-1}}
 
-Obtenha: Analise exploratoria, Analise de variancia, teste de comparação multipla, e recomendações.
+Obtenha: Análise exploratória, Análise de variância, teste de comparação múltipla, e recomendações.
 
 Comparação de métodos de Semeadura do Mamoeiro
 
 Estudo realizado em Jaboticabal - SP por Ruiz (1977) que comparou métodos de semeadura no mamoeiro. O experimento foi instalado em delineamento de blocos casualizados, com 4 repetições, avaliando 3 métodos de semeadura. Foram avaliadas duas unidades experimentais por método em cada bloco.
 
-Importando dados
+Importando dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6767,7 +6623,7 @@ Importando dados
 \end{Highlighting}
 \end{Shaded}
 
-Conferir se temos fatores para fazer a análise de variância
+Conferir se temos fatores para fazer a análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6782,7 +6638,7 @@ Conferir se temos fatores para fazer a análise de variância
 ##  $ altura: num  136.1 105.3 98.8 86.8 108.8 ...
 \end{verbatim}
 
-Gráficos
+Gráficos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6813,7 +6669,7 @@ Gráficos
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-351-1.pdf}
 
-Análise de Variância
+Análise de Variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6859,7 +6715,7 @@ Análise de Variância
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-Checagem gráfica
+Checagem gráfica:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -6876,7 +6732,7 @@ Checagem gráfica
 \end{Highlighting}
 \end{Shaded}
 
-Teste das pressuposições de normalidade de homocedasticidade
+Teste das pressuposições de normalidade de homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7068,14 +6924,14 @@ Site: \url{http://www.leg.ufpr.br/~paulojus/}
 \hypertarget{quadrado-latino}{%
 \section{Quadrado Latino}\label{quadrado-latino}}
 
-Essa material foi baseado nas aulas do \href{https://www.youtube.com/user/walmes}{Prof.~Walmes Zeviani}.
+Esse material foi baseado nas aulas do \href{https://www.youtube.com/user/walmes}{Prof.~Walmes Zeviani}.
 
 \hypertarget{banco-de-dados}{%
 \subsection{Banco de dados}\label{banco-de-dados}}
 
 Iremos instalar o pacote com banco de dados.
 
-O \href{https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData\#descrio}{labestData} é um pacote para o software R de computação estatística que possui centenas de conjuntos de dados para o ensino e aprendizado de Estatística. O pacote é desenvolvido pelo PET Estatística UFPR e conta com a participação de professores e colaboradores. O nome
+O \href{https://gitlab.c3sl.ufpr.br/pet-estatistica/labestData\#descrio}{labestData} é um pacote para o software R de computação estatística que possui centenas de conjuntos de dados para o ensino e aprendizado de estatística. O pacote é desenvolvido pelo PET Estatística UFPR e conta com a participação de professores e colaboradores. O nome
 labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as aulas práticas do Curso de Estatística na UFPR.
 
 \begin{Shaded}
@@ -7084,13 +6940,7 @@ labest vem de LABoratório de ESTatística, que é o ambiente onde acontecem as 
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: usethis
-\end{verbatim}
-
-Instalação
-
-Do repositório de desenvolvimento no GitLab.
+Instalação do repositório de desenvolvimento no GitLab:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7099,7 +6949,7 @@ Do repositório de desenvolvimento no GitLab.
 \end{Highlighting}
 \end{Shaded}
 
-Do repositório de divulgação no GitHub.
+Do repositório de divulgação no GitHub:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7109,7 +6959,7 @@ Do repositório de divulgação no GitHub.
 \end{Highlighting}
 \end{Shaded}
 
-Instalação por Arquivos Compactados
+Instalação por Arquivos Compactados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7118,9 +6968,9 @@ Instalação por Arquivos Compactados
 \end{Highlighting}
 \end{Shaded}
 
-Lendo arquivos de dados
+Lendo arquivos de dados:
 
-Escolhendo os dados
+Escolhendo os dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7171,7 +7021,7 @@ Escolhendo os dados
 \end{Highlighting}
 \end{Shaded}
 
-Experimento de competição de variedades de cana-de-açúcar no qual foram usadas cinco variedades dispostas em um delineamento quadrado latino 5 times 5. Converte para nome de objeto mais simples.
+Experimento de competição de variedades de cana-de-açúcar no qual foram usadas cinco variedades dispostas em um delineamento quadrado latino 5 times 5. Converte para nome de objeto mais simples:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7201,7 +7051,7 @@ Verificar estrutura dos dados
 ##  $ prod  : int  432 724 489 494 515 518 478 384 500 660 ...
 \end{verbatim}
 
-Vendo o quadrado no plano.
+Vendo o quadrado no plano:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7209,28 +7059,7 @@ Vendo o quadrado no plano.
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: reshape
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'reshape'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     rename
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:plyr':
-## 
-##     rename, round_any
-\end{verbatim}
-
-Pacote gráfico
+Pacote gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7238,22 +7067,7 @@ Pacote gráfico
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: latticeExtra
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'latticeExtra'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:ggplot2':
-## 
-##     layer
-\end{verbatim}
-
-Gerar gráfico
+Gerar gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7264,7 +7078,7 @@ Gerar gráfico
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-374-1.pdf}
 
-ANOVA
+ANOVA:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7272,7 +7086,7 @@ ANOVA
 \end{Highlighting}
 \end{Shaded}
 
-pressuposto seja atendidos?
+Pressuposto seja atendidos?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7283,7 +7097,7 @@ pressuposto seja atendidos?
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-376-1.pdf}
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7299,7 +7113,7 @@ Teste de Bartllet para homocedasticidade
 ## Bartlett's K-squared = 5.6629, df = 4, p-value = 0.2258
 \end{verbatim}
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7315,7 +7129,7 @@ Teste de Shapiro-Wilk para Normalidade
 ## W = 0.97701, p-value = 0.8202
 \end{verbatim}
 
-Quadro de análise de variância.
+Quadro de análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7374,7 +7188,7 @@ Quadro de análise de variância.
 ## F-statistic: 6.555 on 12 and 12 DF,  p-value: 0.001366
 \end{verbatim}
 
-Teste de média de comparações múltiplas
+Teste de média de comparações múltiplas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7384,7 +7198,7 @@ Teste de média de comparações múltiplas
 \end{Highlighting}
 \end{Shaded}
 
-Verificar estrutura
+Verificar estrutura:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7449,25 +7263,7 @@ Verificar estrutura
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Loading required package: wzRfun
-\end{verbatim}
-
-\begin{verbatim}
-## ----------------------------------------------------------------------
-##   wzRfun: Walmes Zeviani's collection of functions
-## 
-##   wzRfun (0.91, built on 2019-07-11) was loaded.
-##   Consult online documentation at:
-##     http://leg.ufpr.br/~walmes/pacotes/wzRfun
-##   For collaboration, support or bug report, visit:
-##     https://github.com/walmes/wzRfun/issues
-##   For general information: packageDescription("wzRfun")
-##   To access the package documentation: help(package = "wzRfun")
-## ----------------------------------------------------------------------
-\end{verbatim}
-
-Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step.
+Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor: single-step
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7488,12 +7284,12 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(>|t|)    
 ## B - A == 0   -51.80      33.72  -1.536  0.56048    
-## C - A == 0   112.20      33.72   3.327  0.03948 *  
-## D - A == 0   -79.20      33.72  -2.349  0.19552    
-## E - A == 0   -91.60      33.72  -2.716  0.10961    
-## C - B == 0   164.00      33.72   4.863  0.00289 ** 
-## D - B == 0   -27.40      33.72  -0.813  0.92177    
-## E - B == 0   -39.80      33.72  -1.180  0.76211    
+## C - A == 0   112.20      33.72   3.327  0.03926 *  
+## D - A == 0   -79.20      33.72  -2.349  0.19543    
+## E - A == 0   -91.60      33.72  -2.716  0.10966    
+## C - B == 0   164.00      33.72   4.863  0.00294 ** 
+## D - B == 0   -27.40      33.72  -0.813  0.92178    
+## E - B == 0   -39.80      33.72  -1.180  0.76214    
 ## D - C == 0  -191.40      33.72  -5.676  < 0.001 ***
 ## E - C == 0  -203.80      33.72  -6.044  < 0.001 ***
 ## E - D == 0   -12.40      33.72  -0.368  0.99555    
@@ -7502,7 +7298,7 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## (Adjusted p values reported -- single-step method)
 \end{verbatim}
 
-Resumo compacto com letras.
+Resumo compacto com letras:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7521,7 +7317,7 @@ Resumo compacto com letras.
 \end{Highlighting}
 \end{Shaded}
 
-Medias com intervalo de confiança
+Médias com intervalo de confiança:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7628,7 +7424,7 @@ Medias com intervalo de confiança
 ##  - attr(*, "type")= chr "adjusted"
 \end{verbatim}
 
-Juntar com os nomes dos tratramentos com os intervalos
+Juntar com os nomes dos tratramentos com os intervalos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7706,7 +7502,7 @@ Colocar as letras. onde estão as letras?
 \end{Highlighting}
 \end{Shaded}
 
-Representação gráfica dos resultados
+Representação gráfica dos resultados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7794,7 +7590,7 @@ Representação gráfica dos resultados
 ##  $ perf  : num  155 198 187 204 209 216 191 199 213 225 ...
 \end{verbatim}
 
-Atribuir um nome menor ao conjunto de dados
+Atribuir um nome menor ao conjunto de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7802,7 +7598,7 @@ Atribuir um nome menor ao conjunto de dados
 \end{Highlighting}
 \end{Shaded}
 
-Gráfico do layout
+Gráfico do layout:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7824,7 +7620,7 @@ Gráfico do layout
 \end{Highlighting}
 \end{Shaded}
 
-Gráfico do layout
+Gráfico do layout:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7838,7 +7634,7 @@ Gráfico do layout
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-393-1.pdf}
 
-ANOVA
+ANOVA:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7857,7 +7653,7 @@ Foram atendidos?
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-395-1.pdf}
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7873,7 +7669,7 @@ Teste de Bartllet para homocedasticidade
 ## Bartlett's K-squared = 6.5685, df = 5, p-value = 0.2548
 \end{verbatim}
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7889,7 +7685,7 @@ Teste de Shapiro-Wilk para Normalidade
 ## W = 0.98701, p-value = 0.9408
 \end{verbatim}
 
-Quadro de análise de variância
+Quadro de análise de variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7951,7 +7747,7 @@ Quadro de análise de variância
 ## F-statistic:  3.25 on 15 and 20 DF,  p-value: 0.007591
 \end{verbatim}
 
-Comparações múltiplas.
+Comparações múltiplas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -7983,7 +7779,7 @@ Comparações múltiplas.
 ##  - attr(*, "class")= chr "linest_class"
 \end{verbatim}
 
-Criando a tabela com as estimativas
+Criando a tabela com as estimativas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8014,16 +7810,16 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(>|t|)   
 ## 2 - 1 == 0  24.5000     8.1812   2.995  0.06752 . 
-## 3 - 1 == 0  36.3333     8.1812   4.441  0.00298 **
-## 4 - 1 == 0  29.5000     8.1812   3.606  0.01881 * 
-## 5 - 1 == 0  29.3333     8.1812   3.585  0.01963 * 
-## 6 - 1 == 0  34.6667     8.1812   4.237  0.00474 **
-## 3 - 2 == 0  11.8333     8.1812   1.446  0.69977   
-## 4 - 2 == 0   5.0000     8.1812   0.611  0.98893   
+## 3 - 1 == 0  36.3333     8.1812   4.441  0.00306 **
+## 4 - 1 == 0  29.5000     8.1812   3.606  0.01891 * 
+## 5 - 1 == 0  29.3333     8.1812   3.585  0.01973 * 
+## 6 - 1 == 0  34.6667     8.1812   4.237  0.00472 **
+## 3 - 2 == 0  11.8333     8.1812   1.446  0.69981   
+## 4 - 2 == 0   5.0000     8.1812   0.611  0.98894   
 ## 5 - 2 == 0   4.8333     8.1812   0.591  0.99051   
-## 6 - 2 == 0  10.1667     8.1812   1.243  0.81102   
-## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95717   
-## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95271   
+## 6 - 2 == 0  10.1667     8.1812   1.243  0.81097   
+## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95718   
+## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95272   
 ## 6 - 3 == 0  -1.6667     8.1812  -0.204  0.99994   
 ## 5 - 4 == 0  -0.1667     8.1812  -0.020  1.00000   
 ## 6 - 4 == 0   5.1667     8.1812   0.632  0.98718   
@@ -8033,7 +7829,7 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## (Adjusted p values reported -- single-step method)
 \end{verbatim}
 
-Resumo compacto com letras.
+Resumo compacto com letras:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8052,7 +7848,7 @@ Resumo compacto com letras.
 \end{Highlighting}
 \end{Shaded}
 
-Medias com intervalo de confiança
+Médias com intervalo de confiança:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8067,21 +7863,21 @@ Medias com intervalo de confiança
 ## 
 ## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
 ## 
-## Quantile = 2.8983
+## Quantile = 2.8979
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##        Estimate lwr      upr     
-## 1 == 0 165.5000 148.7337 182.2663
-## 2 == 0 190.0000 173.2337 206.7663
-## 3 == 0 201.8333 185.0671 218.5996
-## 4 == 0 195.0000 178.2337 211.7663
-## 5 == 0 194.8333 178.0671 211.5996
-## 6 == 0 200.1667 183.4004 216.9329
+## 1 == 0 165.5000 148.7355 182.2645
+## 2 == 0 190.0000 173.2355 206.7645
+## 3 == 0 201.8333 185.0688 218.5978
+## 4 == 0 195.0000 178.2355 211.7645
+## 5 == 0 194.8333 178.0688 211.5978
+## 6 == 0 200.1667 183.4022 216.9312
 \end{verbatim}
 
-Juntar com os nomes dos tratramentos com os intervalos
+Juntar com os nomes dos tratramentos com os intervalos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8123,7 +7919,7 @@ Juntar com os nomes dos tratramentos com os intervalos
 ##  - attr(*, "class")= chr "cld"
 \end{verbatim}
 
-Representação gráfica dos resultados.
+Representação gráfica dos resultados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8169,7 +7965,7 @@ help(ZimmermannTb16.10)
 \hypertarget{regressuxe3o-linear-simples}{%
 \section{Regressão Linear simples}\label{regressuxe3o-linear-simples}}
 
-Iremos utilizar o pacote tidyverse
+Iremos utilizar o pacote tidyverse:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8177,40 +7973,12 @@ Iremos utilizar o pacote tidyverse
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## -- Attaching packages ----------------------------------- tidyverse 1.3.0 --
-\end{verbatim}
-
-\begin{verbatim}
-## v tibble  3.0.1     v purrr   0.3.4
-## v tidyr   1.0.2     v stringr 1.4.0
-## v readr   1.3.1     v forcats 0.5.0
-\end{verbatim}
-
-\begin{verbatim}
-## -- Conflicts -------------------------------------- tidyverse_conflicts() --
-## x dplyr::arrange()      masks plyr::arrange()
-## x purrr::compact()      masks plyr::compact()
-## x dplyr::count()        masks plyr::count()
-## x tidyr::expand()       masks reshape::expand()
-## x dplyr::failwith()     masks plyr::failwith()
-## x dplyr::filter()       masks stats::filter()
-## x dplyr::id()           masks plyr::id()
-## x dplyr::lag()          masks stats::lag()
-## x latticeExtra::layer() masks ggplot2::layer()
-## x dplyr::mutate()       masks plyr::mutate()
-## x reshape::rename()     masks dplyr::rename(), plyr::rename()
-## x dplyr::select()       masks MASS::select()
-## x dplyr::summarise()    masks plyr::summarise()
-## x dplyr::summarize()    masks plyr::summarize()
-\end{verbatim}
-
-Regressão linear é uma equação para se estimar a condicional (valor esperado) de
+Regressão linear é uma equação para estimar a condicional (valor esperado) de
 uma variável y, dados os valores de algumas outras variáveis x.
 
 y= a+bx
 
-Vamos utilizar o exemplo do banco de dados do R
+Vamos utilizar o exemplo do banco de dados do R:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8296,7 +8064,7 @@ Zerando o intercepto
 ## Bartlett's K-squared = 2.7663, df = 4, p-value = 0.5977
 \end{verbatim}
 
-Resultado da Regressãolinear
+Resultado da Regressãolinear:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8329,7 +8097,7 @@ Rejeição da hipótese nula (variáveis não são relacionadas)
 \emph{valor p \textless0.005}
 R-square explica o quanto o modelo explica da variação
 
-Gráfico
+Gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8345,7 +8113,7 @@ Gráfico
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-415-1.pdf}
 
-Gerar graficos com o pacote ggpmisc
+Gerar gráficos com o pacote ggpmisc:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8353,7 +8121,7 @@ Gerar graficos com o pacote ggpmisc
 \end{Highlighting}
 \end{Shaded}
 
-Gráfico
+Gráfico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8368,7 +8136,7 @@ Gráfico
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-417-1.pdf}
 
-Outras funções interessantes
+Outras funções interessantes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8452,7 +8220,7 @@ Outras funções interessantes
 ## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 \end{verbatim}
 
-Qualquer modelo de Regressão polinomial pode ser obtido com um comando
+Qualquer modelo de regressão polinomial pode ser obtido com um comando
 simples: o \texttt{lm()} que vem do inglês ``linear models''.
 
 Veja o exemplo abaixo:
@@ -8473,7 +8241,7 @@ Veja o exemplo abaixo:
 \end{Highlighting}
 \end{Shaded}
 
-Observe a necessidade do argumento \texttt{I()} para interações como x\^{}2.
+Observe a necessidade do argumento \texttt{I()} para interações como x\^{}2:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8493,7 +8261,7 @@ Observe a necessidade do argumento \texttt{I()} para interações como x\^{}2.
 ##    15.51667      2.95720     -0.02716
 \end{verbatim}
 
-Para ``desenhar'' a curva ajustada\ldots{}
+Para ``desenhar'' a curva ajustada:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8501,7 +8269,7 @@ Para ``desenhar'' a curva ajustada\ldots{}
 \end{Highlighting}
 \end{Shaded}
 
-Várias outras análises podem ser feitas como anteriormente na Regressão linear. Veja uma delas:
+Várias outras análises podem ser feitas como anteriormente na regressão linear. Veja uma delas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8538,7 +8306,7 @@ Várias outras análises podem ser feitas como anteriormente na Regressão linea
 \hypertarget{regressuxe3o-linear-multipla}{%
 \section{Regressão Linear Multipla}\label{regressuxe3o-linear-multipla}}
 
-Os modelos múltiplos são aqueles em que duas ou mais variáveis independentes influenciam na variação da variavel dependente. Eles podem ser de grau 1,2 ou maior. O exemplo a seguir aborda uma Regressão polinomial multipla de 2º grau, com duas variáveis independentes.
+Os modelos múltiplos são aqueles em que duas ou mais variáveis independentes influenciam na variação da variável dependente. Eles podem ser de grau 1,2 ou maior. O exemplo a seguir aborda uma regressão polinomial multipla de 2º grau, com duas variáveis independentes.
 
 y= a+ bx + b1x1 + b2x2 + b3x3\ldots{}
 
@@ -8549,27 +8317,6 @@ Exemplo:
 \KeywordTok{library}\NormalTok{(car)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Loading required package: carData
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'car'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:purrr':
-## 
-##     some
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:dplyr':
-## 
-##     recode
-\end{verbatim}
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8588,7 +8335,7 @@ Exemplo:
 ## 6          5.4         3.9          1.7         0.4  setosa
 \end{verbatim}
 
-VIF - variation inflation factor / fator de inflação da vari?ncia
+VIF - variation inflation factor / fator de inflação da variância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8718,7 +8465,7 @@ VIF - variation inflation factor / fator de inflação da vari?ncia
 ## F-statistic: 262.5 on 3 and 146 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-Outras funções interessantes
+Outras funções interessantes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9347,32 +9094,6 @@ Carregar o pacote
 \KeywordTok{library}\NormalTok{(hydroTSM)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Loading required package: xts
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'xts'
-\end{verbatim}
-
-\begin{verbatim}
-## The following objects are masked from 'package:dplyr':
-## 
-##     first, last
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'hydroTSM'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:tidyr':
-## 
-##     extract
-\end{verbatim}
 
 Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013
 
@@ -10400,8 +10121,8 @@ Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani
 \end{Shaded}
 
 \begin{verbatim}
-## null device 
-##           1
+## windows 
+##       3
 \end{verbatim}
 
 comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica.
@@ -10448,10 +10169,6 @@ Baixar Pacote Evapotranspiration
 \KeywordTok{require}\NormalTok{(Evapotranspiration)}
 \end{Highlighting}
 \end{Shaded}
-
-\begin{verbatim}
-## Loading required package: Evapotranspiration
-\end{verbatim}
 
 baixar dados
 
@@ -13600,15 +13317,7 @@ Apresentação gráfica
 \KeywordTok{library}\NormalTok{(devtools)}
 
 \KeywordTok{require}\NormalTok{(ggfortify) }\CommentTok{#will plot the ts objects as ggplot2}
-\end{Highlighting}
-\end{Shaded}
 
-\begin{verbatim}
-## Loading required package: ggfortify
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{autoplot}\NormalTok{(meuts) }\CommentTok{# time series on facets}
 \end{Highlighting}
 \end{Shaded}
@@ -13656,7 +13365,7 @@ Qual o dia e horario ?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2020-04-29 01:56:28 -05"
+## [1] "2020-04-29 17:31:07 -05"
 \end{verbatim}
 
 Atribuir data em um Objeto
@@ -13919,15 +13628,6 @@ Podemos plotar a composição da série de dados
 \end{Highlighting}
 \end{Shaded}
 
-\begin{verbatim}
-## Warning: attributes are not identical across measure variables;
-## they will be dropped
-\end{verbatim}
-
-\begin{verbatim}
-## Warning: Removed 24 row(s) containing missing values (geom_path).
-\end{verbatim}
-
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-609-1.pdf}
 
 Organizar os dados com o ano e a temperatura do ar maxima
@@ -13935,45 +13635,6 @@ Organizar os dados com o ano e a temperatura do ar maxima
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(forecast)}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-## Registered S3 method overwritten by 'quantmod':
-##   method            from
-##   as.zoo.data.frame zoo
-\end{verbatim}
-
-\begin{verbatim}
-## Registered S3 methods overwritten by 'forecast':
-##   method                 from     
-##   autoplot.Arima         ggfortify
-##   autoplot.acf           ggfortify
-##   autoplot.ar            ggfortify
-##   autoplot.bats          ggfortify
-##   autoplot.decomposed.ts ggfortify
-##   autoplot.ets           ggfortify
-##   autoplot.forecast      ggfortify
-##   autoplot.stl           ggfortify
-##   autoplot.ts            ggfortify
-##   fitted.ar              ggfortify
-##   fortify.ts             ggfortify
-##   residuals.ar           ggfortify
-\end{verbatim}
-
-\begin{verbatim}
-## 
-## Attaching package: 'forecast'
-\end{verbatim}
-
-\begin{verbatim}
-## The following object is masked from 'package:hydroTSM':
-## 
-##     ma
-\end{verbatim}
-
-\begin{Shaded}
-\begin{Highlighting}[]
 \KeywordTok{library}\NormalTok{(dplyr)}
 \end{Highlighting}
 \end{Shaded}

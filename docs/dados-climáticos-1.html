@@ -319,9 +319,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.1</span> Precipitação pluvial</h2>
 <p>Tutorial do HydroTSM - <a href="http://goo.gl/9u1PO" class="uri">http://goo.gl/9u1PO</a></p>
 <p>Instalação</p>
-<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb849-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;hydroTSM&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb848"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb848-1" title="1"><span class="kw">install.packages</span>(<span class="st">&quot;hydroTSM&quot;</span>)</a></code></pre></div>
 <p>Carregar o pacote</p>
-<div class="sourceCode" id="cb850"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb850-1" title="1"><span class="kw">library</span>(hydroTSM)</a></code></pre></div>
+<div class="sourceCode" id="cb849"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb849-1" title="1"><span class="kw">library</span>(hydroTSM)</a></code></pre></div>
 <pre><code>## Loading required package: xts</code></pre>
 <pre><code>## 
 ## Attaching package: &#39;xts&#39;</code></pre>
@@ -334,11 +334,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 
 ##     extract</code></pre>
 <p>Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013</p>
-<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb856-1" title="1">roo&lt;-<span class="kw">read.zoo</span>(<span class="st">&quot;https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>, <span class="dt">head=</span>T)</a></code></pre></div>
+<div class="sourceCode" id="cb855"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb855-1" title="1">roo&lt;-<span class="kw">read.zoo</span>(<span class="st">&quot;https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">dec=</span><span class="st">&quot;.&quot;</span>, <span class="dt">head=</span>T)</a></code></pre></div>
 <p>Selecionar somente 5 anos da serie</p>
-<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb857-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;2009-01-01&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb856"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb856-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;2009-01-01&quot;</span>))</a></code></pre></div>
 <p>Valores de Precipitação mensal</p>
-<div class="sourceCode" id="cb858"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb858-1" title="1">( m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb857"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb857-1" title="1">( m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>## 2009-01-01 2009-02-01 2009-03-01 2009-04-01 2009-05-01 2009-06-01 2009-07-01 
 ##     200.17     340.88     312.69     161.13      32.76      66.03      19.83 
 ## 2009-08-01 2009-09-01 2009-10-01 2009-11-01 2009-12-01 2010-01-01 2010-02-01 
@@ -358,13 +358,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2013-09-01 2013-10-01 2013-11-01 2013-12-01 
 ##      61.70      82.57     151.95     222.90</code></pre>
 <p>Datas dos valores diários de “x”</p>
-<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb860-1" title="1">dates &lt;-<span class="st"> </span><span class="kw">time</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb859"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb859-1" title="1">dates &lt;-<span class="st"> </span><span class="kw">time</span>(x)</a></code></pre></div>
 <p>Quantidade de anos em ‘x’ (necessário para cálculos)</p>
-<div class="sourceCode" id="cb861"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb861-1" title="1">( nyears &lt;-<span class="st"> </span><span class="kw">yip</span>(<span class="dt">from=</span><span class="kw">start</span>(x), <span class="dt">to=</span><span class="kw">end</span>(x), <span class="dt">out.type=</span><span class="st">&quot;nmbr&quot;</span> ) )</a></code></pre></div>
+<div class="sourceCode" id="cb860"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb860-1" title="1">( nyears &lt;-<span class="st"> </span><span class="kw">yip</span>(<span class="dt">from=</span><span class="kw">start</span>(x), <span class="dt">to=</span><span class="kw">end</span>(x), <span class="dt">out.type=</span><span class="st">&quot;nmbr&quot;</span> ) )</a></code></pre></div>
 <pre><code>## [1] 5</code></pre>
 <p>Análise exploratórios do dados</p>
 <p>Resumo estatástico</p>
-<div class="sourceCode" id="cb863"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb863-1" title="1"><span class="kw">smry</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb862"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb862-1" title="1"><span class="kw">smry</span>(x)</a></code></pre></div>
 <pre><code>##               Index         x
 ## Min.     2009-01-01    0.0000
 ## 1st Qu.  2010-04-02    0.0000
@@ -380,15 +380,15 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## NA&#39;s           &lt;NA&gt;    0.0000
 ## n              &lt;NA&gt; 1826.0000</code></pre>
 <p>Usando a função <code>hydroplot</code>, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo “x”. Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 01 de janeiro de 2009 são plotados.</p>
-<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb865-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">var.type=</span><span class="st">&quot;Precipitation&quot;</span>, <span class="dt">main=</span><span class="st">&quot;em Rondonopolis&quot;</span>,</a>
-<a class="sourceLine" id="cb865-2" title="2">          <span class="dt">pfreq =</span> <span class="st">&quot;dma&quot;</span>, <span class="dt">from=</span><span class="st">&quot;2009-01-01&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-463-1.png" width="672" /></p>
+<div class="sourceCode" id="cb864"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb864-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">var.type=</span><span class="st">&quot;Precipitation&quot;</span>, <span class="dt">main=</span><span class="st">&quot;em Rondonopolis&quot;</span>,</a>
+<a class="sourceLine" id="cb864-2" title="2">          <span class="dt">pfreq =</span> <span class="st">&quot;dma&quot;</span>, <span class="dt">from=</span><span class="st">&quot;2009-01-01&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-465-1.png" width="672" /></p>
 <p>Quantidade de dias com informação (não NA) por ano</p>
-<div class="sourceCode" id="cb866"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb866-1" title="1"><span class="kw">dwi</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb865"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb865-1" title="1"><span class="kw">dwi</span>(x)</a></code></pre></div>
 <pre><code>## 2009 2010 2011 2012 2013 
 ##  365  365  365  366  365</code></pre>
 <p>Quantidade de dias com informação (não NA) por mês por ano</p>
-<div class="sourceCode" id="cb868"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb868-1" title="1"><span class="kw">dwi</span>(x, <span class="dt">out.unit=</span><span class="st">&quot;mpy&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb867"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb867-1" title="1"><span class="kw">dwi</span>(x, <span class="dt">out.unit=</span><span class="st">&quot;mpy&quot;</span>)</a></code></pre></div>
 <pre><code>##      Jan Feb Mar Apr May Jun Jul Aug Sep Oct Nov Dec
 ## 2009  31  28  31  30  31  30  31  31  30  31  30  31
 ## 2010  31  28  31  30  31  30  31  31  30  31  30  31
@@ -396,27 +396,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2012  31  29  31  30  31  30  31  31  30  31  30  31
 ## 2013  31  28  31  30  31  30  31  31  30  31  30  31</code></pre>
 <p>Plotar os valores mensais de Precipitação para cada ano, para identificar meses secos / umidos.</p>
-<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb870-1" title="1"><span class="co"># Daily zoo to monthly zoo</span></a>
-<a class="sourceLine" id="cb870-2" title="2">m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb870-3" title="3"></a>
-<a class="sourceLine" id="cb870-4" title="4"><span class="co"># Creating a matrix with monthly values per year in each column</span></a>
-<a class="sourceLine" id="cb870-5" title="5">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(m, <span class="dt">ncol=</span><span class="dv">12</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</a>
-<a class="sourceLine" id="cb870-6" title="6"><span class="kw">colnames</span>(M) &lt;-<span class="st"> </span>month.abb</a>
-<a class="sourceLine" id="cb870-7" title="7"><span class="kw">rownames</span>(M) &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%Y&quot;</span>))</a></code></pre></div>
-<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb871-1" title="1"><span class="co"># Plotting the monthly precipitation values</span></a>
-<a class="sourceLine" id="cb871-2" title="2"><span class="kw">require</span>(lattice)</a>
-<a class="sourceLine" id="cb871-3" title="3"><span class="co">## Loading required package: lattice</span></a>
-<a class="sourceLine" id="cb871-4" title="4"><span class="kw">print</span>(<span class="kw">matrixplot</span>(M, <span class="dt">ColorRamp=</span><span class="st">&quot;Precipitation&quot;</span>,</a>
-<a class="sourceLine" id="cb871-5" title="5"><span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonópolis-MT (mm/mês)&quot;</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-467-1.png" width="672" /></p>
+<div class="sourceCode" id="cb869"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb869-1" title="1"><span class="co"># Daily zoo to monthly zoo</span></a>
+<a class="sourceLine" id="cb869-2" title="2">m &lt;-<span class="st"> </span><span class="kw">daily2monthly</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb869-3" title="3"></a>
+<a class="sourceLine" id="cb869-4" title="4"><span class="co"># Creating a matrix with monthly values per year in each column</span></a>
+<a class="sourceLine" id="cb869-5" title="5">M &lt;-<span class="st"> </span><span class="kw">matrix</span>(m, <span class="dt">ncol=</span><span class="dv">12</span>, <span class="dt">byrow=</span><span class="ot">TRUE</span>)</a>
+<a class="sourceLine" id="cb869-6" title="6"><span class="kw">colnames</span>(M) &lt;-<span class="st"> </span>month.abb</a>
+<a class="sourceLine" id="cb869-7" title="7"><span class="kw">rownames</span>(M) &lt;-<span class="st"> </span><span class="kw">unique</span>(<span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%Y&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb870"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb870-1" title="1"><span class="co"># Plotting the monthly precipitation values</span></a>
+<a class="sourceLine" id="cb870-2" title="2"><span class="kw">require</span>(lattice)</a>
+<a class="sourceLine" id="cb870-3" title="3"><span class="co">## Loading required package: lattice</span></a>
+<a class="sourceLine" id="cb870-4" title="4"><span class="kw">print</span>(<span class="kw">matrixplot</span>(M, <span class="dt">ColorRamp=</span><span class="st">&quot;Precipitation&quot;</span>,</a>
+<a class="sourceLine" id="cb870-5" title="5"><span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonópolis-MT (mm/mês)&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-469-1.png" width="672" /></p>
 <div id="análise-anual-dos-dados" class="section level3">
 <h3><span class="header-section-number">10.1.1</span> Análise anual dos dados</h3>
 <p>Valores anuais de Precipitação</p>
-<div class="sourceCode" id="cb872"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb872-1" title="1"><span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb871"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb871-1" title="1"><span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## 2009-01-01 2010-01-01 2011-01-01 2012-01-01 2013-01-01 
 ##    2073.00    1628.54    2223.60    2009.02    1718.36</code></pre>
 <p>Precipitação Média anual</p>
-<div class="sourceCode" id="cb874"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb874-1" title="1"><span class="kw">mean</span>( <span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) )</a></code></pre></div>
+<div class="sourceCode" id="cb873"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb873-1" title="1"><span class="kw">mean</span>( <span class="kw">daily2annual</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) )</a></code></pre></div>
 <pre><code>## [1] 1930.504</code></pre>
 <p>Outra forma (mais útil para ‘streamflows’, onde FUN = <em>mean</em>): A função anual aplica FUN duas vezes sobre x:</p>
 <ul>
@@ -427,82 +427,82 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>em segundo lugar, acima de todos os valores anuais de x obtidos anteriormente, a fim de obter um único valor anual.</li>
 </ol></li>
 </ul>
-<div class="sourceCode" id="cb876"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb876-1" title="1"><span class="kw">annualfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
+<div class="sourceCode" id="cb875"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb875-1" title="1"><span class="kw">annualfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
 <pre><code>##    value 
 ## 1930.504</code></pre>
 </div>
 <div id="análise-mensal-dos-dados---boxplot" class="section level3">
 <h3><span class="header-section-number">10.1.2</span> Análise mensal dos dados - BOXPLOT</h3>
 <p>Mediana dos valores mensais na estação de Rondonópolis-MT.</p>
-<div class="sourceCode" id="cb878"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb878-1" title="1"><span class="kw">monthlyfunction</span>(m, <span class="dt">FUN=</span>median, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb877"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb877-1" title="1"><span class="kw">monthlyfunction</span>(m, <span class="dt">FUN=</span>median, <span class="dt">na.rm=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>##    Jan    Feb    Mar    Apr    May    Jun    Jul    Aug    Sep    Oct    Nov 
 ## 349.01 340.88 287.80 146.77  32.76  37.29   0.49   0.00  61.70 127.09 181.52 
 ##    Dec 
 ## 222.90</code></pre>
 <p>Vetor com as abreviaturas de três letras para os nomes dos meses</p>
-<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb880-1" title="1">cmonth &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%b&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb879"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb879-1" title="1">cmonth &lt;-<span class="st"> </span><span class="kw">format</span>(<span class="kw">time</span>(m), <span class="st">&quot;%b&quot;</span>)</a></code></pre></div>
 <p>Criando fatores mensais ordenados</p>
-<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb881-1" title="1">months &lt;-<span class="st"> </span><span class="kw">factor</span>(cmonth, <span class="dt">levels=</span><span class="kw">unique</span>(cmonth), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb880"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb880-1" title="1">months &lt;-<span class="st"> </span><span class="kw">factor</span>(cmonth, <span class="dt">levels=</span><span class="kw">unique</span>(cmonth), <span class="dt">ordered=</span><span class="ot">TRUE</span>)</a></code></pre></div>
 <p>Boxplot dos valores mensais</p>
-<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb882-1" title="1"><span class="kw">boxplot</span>( <span class="kw">coredata</span>(m) <span class="op">~</span><span class="st"> </span>months, </a>
-<a class="sourceLine" id="cb882-2" title="2">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, </a>
-<a class="sourceLine" id="cb882-3" title="3">         <span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonpolis,MT&quot;</span>,</a>
-<a class="sourceLine" id="cb882-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Precipitação (mm)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Mensal&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-474-1.png" width="672" /></p>
+<div class="sourceCode" id="cb881"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb881-1" title="1"><span class="kw">boxplot</span>( <span class="kw">coredata</span>(m) <span class="op">~</span><span class="st"> </span>months, </a>
+<a class="sourceLine" id="cb881-2" title="2">         <span class="dt">col=</span><span class="st">&quot;lightblue&quot;</span>, </a>
+<a class="sourceLine" id="cb881-3" title="3">         <span class="dt">main=</span><span class="st">&quot;Precipitação mensal de Rondonpolis,MT&quot;</span>,</a>
+<a class="sourceLine" id="cb881-4" title="4">        <span class="dt">ylab=</span><span class="st">&quot;Precipitação (mm)&quot;</span>, <span class="dt">xlab=</span><span class="st">&quot;Mensal&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-476-1.png" width="672" /></p>
 </div>
 <div id="análise-sazonal" class="section level3">
 <h3><span class="header-section-number">10.1.3</span> Análise sazonal</h3>
 <p>Valores sazonais médios de Precipitação</p>
-<div class="sourceCode" id="cb883"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb883-1" title="1"><span class="kw">seasonalfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
+<div class="sourceCode" id="cb882"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb882-1" title="1"><span class="kw">seasonalfunction</span>(x, <span class="dt">FUN=</span>sum, <span class="dt">na.rm=</span><span class="ot">TRUE</span>) <span class="op">/</span><span class="st"> </span>nyears</a></code></pre></div>
 <pre><code>##     DJF     MAM     JJA     SON 
 ## 946.764 519.010  74.016 390.714</code></pre>
 <p>Extraindo os valores sazonais para cada ano</p>
 <p>Dezembro, Janeiro e Fevereiro</p>
-<div class="sourceCode" id="cb885"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb885-1" title="1">( DJF &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(x, <span class="dt">season=</span><span class="st">&quot;DJF&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb884"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb884-1" title="1">( DJF &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(x, <span class="dt">season=</span><span class="st">&quot;DJF&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##    2009    2010    2011    2012    2013 
 ##  541.05 1049.04 1044.83 1042.54  833.46</code></pre>
 <p>Março, Abril e Maio</p>
-<div class="sourceCode" id="cb887"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb887-1" title="1">( MAM &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;MAM&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb886"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb886-1" title="1">( MAM &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;MAM&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 506.58 391.67 694.74 533.91 468.15</code></pre>
 <p>Junho, Julho e Agosto</p>
-<div class="sourceCode" id="cb889"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb889-1" title="1">( JJA &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;JJA&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb888"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb888-1" title="1">( JJA &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;JJA&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 163.85   0.71  13.23 135.89  56.40</code></pre>
 <p>Setembro, Outubro e Novembro</p>
-<div class="sourceCode" id="cb891"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb891-1" title="1">( SON &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;SON&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
+<div class="sourceCode" id="cb890"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb890-1" title="1">( SON &lt;-<span class="st"> </span><span class="kw">dm2seasonal</span>(m, <span class="dt">season=</span><span class="st">&quot;SON&quot;</span>, <span class="dt">FUN=</span>sum) )</a></code></pre></div>
 <pre><code>##   2009   2010   2011   2012   2013 
 ## 516.71 325.38 328.48 486.78 296.22</code></pre>
 <p>Plotar a evolução temporal dos valores da Precipitação sazonal</p>
-<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb893-1" title="1"><span class="kw">X11</span>()</a>
-<a class="sourceLine" id="cb893-2" title="2"><span class="kw">hydroplot</span>(x, <span class="dt">pfreq=</span><span class="st">&quot;seasonal&quot;</span>, <span class="dt">FUN=</span>sum, <span class="dt">stype=</span><span class="st">&quot;default&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb892"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb892-1" title="1"><span class="kw">X11</span>()</a>
+<a class="sourceLine" id="cb892-2" title="2"><span class="kw">hydroplot</span>(x, <span class="dt">pfreq=</span><span class="st">&quot;seasonal&quot;</span>, <span class="dt">FUN=</span>sum, <span class="dt">stype=</span><span class="st">&quot;default&quot;</span>)</a></code></pre></div>
 </div>
 <div id="alguns-índices-extremos" class="section level3">
 <h3><span class="header-section-number">10.1.4</span> Alguns índices extremos</h3>
 <p>Etapas comuns para a análise desta serie:</p>
 <p>Carregando dados diários de Precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013.</p>
-<div class="sourceCode" id="cb894"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb894-1" title="1"><span class="kw">data</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb893"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb893-1" title="1"><span class="kw">data</span>(roo)</a></code></pre></div>
 <pre><code>## Warning in data(roo): data set &#39;roo&#39; not found</code></pre>
 <p>Selecionar a data inicial</p>
-<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb896-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;1980-01-01&quot;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb895"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb895-1" title="1">x &lt;-<span class="st"> </span><span class="kw">window</span>(roo, <span class="dt">start=</span><span class="kw">as.Date</span>(<span class="st">&quot;1980-01-01&quot;</span>))</a></code></pre></div>
 <p>Plotar a série temporal selecionada</p>
-<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb897-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">ptype=</span><span class="st">&quot;ts&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-483-1.png" width="672" /></p>
+<div class="sourceCode" id="cb896"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb896-1" title="1"><span class="kw">hydroplot</span>(x, <span class="dt">ptype=</span><span class="st">&quot;ts&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-485-1.png" width="672" /></p>
 <p>Contagem e plotagem do número de dias no período em que a Precipitação foi maior que 80 mm.</p>
-<div class="sourceCode" id="cb898"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb898-1" title="1">( R10mm &lt;-<span class="st"> </span><span class="kw">length</span>( x[x<span class="op">&gt;</span><span class="dv">80</span>] ) )</a></code></pre></div>
+<div class="sourceCode" id="cb897"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb897-1" title="1">( R10mm &lt;-<span class="st"> </span><span class="kw">length</span>( x[x<span class="op">&gt;</span><span class="dv">80</span>] ) )</a></code></pre></div>
 <pre><code>## [1] 4</code></pre>
 </div>
 <div id="precipitaçao-total-chuva" class="section level3">
 <h3><span class="header-section-number">10.1.5</span> Precipitaçao total chuva</h3>
 <p>Calculando a Precipitação total (acumulada) de 5 dias</p>
-<div class="sourceCode" id="cb900"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb900-1" title="1">x<span class="fl">.5</span>max &lt;-<span class="st"> </span><span class="kw">rollapply</span>(<span class="dt">data=</span>x, <span class="dt">width=</span><span class="dv">5</span>, <span class="dt">FUN=</span>sum, <span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">partial=</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb900-2" title="2"><span class="dt">align=</span><span class="st">&quot;center&quot;</span>)</a>
-<a class="sourceLine" id="cb900-3" title="3"></a>
-<a class="sourceLine" id="cb900-4" title="4"><span class="kw">hydroplot</span>(x<span class="fl">.5</span>max, <span class="dt">ptype=</span><span class="st">&quot;ts+boxplot&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb899"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb899-1" title="1">x<span class="fl">.5</span>max &lt;-<span class="st"> </span><span class="kw">rollapply</span>(<span class="dt">data=</span>x, <span class="dt">width=</span><span class="dv">5</span>, <span class="dt">FUN=</span>sum, <span class="dt">fill=</span><span class="ot">NA</span>, <span class="dt">partial=</span> <span class="ot">TRUE</span>,</a>
+<a class="sourceLine" id="cb899-2" title="2"><span class="dt">align=</span><span class="st">&quot;center&quot;</span>)</a>
+<a class="sourceLine" id="cb899-3" title="3"></a>
+<a class="sourceLine" id="cb899-4" title="4"><span class="kw">hydroplot</span>(x<span class="fl">.5</span>max, <span class="dt">ptype=</span><span class="st">&quot;ts+boxplot&quot;</span>, <span class="dt">pfreq=</span><span class="st">&quot;o&quot;</span>, <span class="dt">var.unit=</span><span class="st">&quot;mm&quot;</span>)</a></code></pre></div>
 <pre><code>## [Note: pfreq=&#39;o&#39; =&gt; ptype has been changed to &#39;ts&#39;]</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-485-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-487-1.png" width="672" /></p>
 <p>Valor anual máximo de Precipitação total em 5 dias</p>
-<div class="sourceCode" id="cb902"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb902-1" title="1">(x<span class="fl">.5</span>max.annual &lt;-<span class="st"> </span><span class="kw">daily2annual</span>(x<span class="fl">.5</span>max, <span class="dt">FUN=</span>max, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb901"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb901-1" title="1">(x<span class="fl">.5</span>max.annual &lt;-<span class="st"> </span><span class="kw">daily2annual</span>(x<span class="fl">.5</span>max, <span class="dt">FUN=</span>max, <span class="dt">na.rm=</span><span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## 1980-01-01 1981-01-01 1982-01-01 1983-01-01 1984-01-01 1985-01-01 1986-01-01 
 ##     160.54      90.51      85.49     132.81     120.78     141.33      99.98 
 ## 1987-01-01 1988-01-01 1989-01-01 1990-01-01 1991-01-01 1992-01-01 1993-01-01 
@@ -523,12 +523,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h2><span class="header-section-number">10.2</span> Evapotranspiração</h2>
 <p>A evapotranspiração é a forma pela qual a água da superfície terrestre passa para a atmosfera no estado de vapor, tendo papel importante no Ciclo Hidrológico. Esse processo envolve a evaporação da água de superfícies de água livre (rios, lagos, represas, oceano, etc), dos solos e da vegetação úmida (que foi interceptada durante uma chuva) e a transpiração dos vegetais</p>
 <p>Apagar objetos antigos</p>
-<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb904-1" title="1"> <span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb903"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb903-1" title="1"> <span class="kw">rm</span>(<span class="dt">list =</span> <span class="kw">ls</span>())</a></code></pre></div>
 <p>Baixar dados</p>
 <p>[a.txt] (<a href="https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=0" class="uri">https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=0</a>)</p>
-<div class="sourceCode" id="cb905"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb905-1" title="1"> a =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">head=</span>T)</a>
-<a class="sourceLine" id="cb905-2" title="2">  </a>
-<a class="sourceLine" id="cb905-3" title="3"><span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb904"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb904-1" title="1"> a =<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1&quot;</span>, <span class="dt">sep=</span><span class="st">&quot;;&quot;</span>, <span class="dt">head=</span>T)</a>
+<a class="sourceLine" id="cb904-2" title="2">  </a>
+<a class="sourceLine" id="cb904-3" title="3"><span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50
@@ -537,11 +537,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 1980-01-05  9.66 25.1 21.6 90.97 1.070000 90.97
 ## 6 1980-01-06 16.10 31.2 20.8 80.67 1.380000 80.67</code></pre>
 <p>Transformar em Data e Dia Juliano</p>
-<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb907-1" title="1">a<span class="op">$</span>Data =<span class="st"> </span><span class="kw">as.Date</span>(a<span class="op">$</span>Data)</a></code></pre></div>
+<div class="sourceCode" id="cb906"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb906-1" title="1">a<span class="op">$</span>Data =<span class="st"> </span><span class="kw">as.Date</span>(a<span class="op">$</span>Data)</a></code></pre></div>
 <p>Dia Juliano: calendário de dias corridos, trata-se de uma sequência de números inteiros uma para cada dia.</p>
-<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb908-1" title="1"> a<span class="op">$</span>DiaJuliano =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(a<span class="op">$</span>Data, <span class="dt">trim =</span> T, <span class="st">&#39;%j&#39;</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb907"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb907-1" title="1"> a<span class="op">$</span>DiaJuliano =<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(a<span class="op">$</span>Data, <span class="dt">trim =</span> T, <span class="st">&#39;%j&#39;</span>))</a></code></pre></div>
 <p>Verificar</p>
-<div class="sourceCode" id="cb909"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb909-1" title="1"><span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb908"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb908-1" title="1"><span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2
@@ -551,30 +551,30 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 1980-01-06 16.10 31.2 20.8 80.67 1.380000 80.67          6</code></pre>
 <p><strong>Constantes utilizadas no calculo da ET.</strong></p>
 <p>Altura acima do nível do mar (m)</p>
-<div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb911-1" title="1">altitude =<span class="st"> </span><span class="fl">259.38</span> </a></code></pre></div>
+<div class="sourceCode" id="cb910"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb910-1" title="1">altitude =<span class="st"> </span><span class="fl">259.38</span> </a></code></pre></div>
 <p>Pressão atmosférica local, calculada com base na altitude (kPa)</p>
-<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb912-1" title="1">Patm =<span class="st"> </span><span class="fl">101.3</span><span class="op">*</span>((<span class="dv">293</span><span class="fl">-0.0065</span><span class="op">*</span>altitude)<span class="op">/</span><span class="dv">293</span>)<span class="op">**</span><span class="fl">5.26</span> </a></code></pre></div>
+<div class="sourceCode" id="cb911"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb911-1" title="1">Patm =<span class="st"> </span><span class="fl">101.3</span><span class="op">*</span>((<span class="dv">293</span><span class="fl">-0.0065</span><span class="op">*</span>altitude)<span class="op">/</span><span class="dv">293</span>)<span class="op">**</span><span class="fl">5.26</span> </a></code></pre></div>
 <p>Coeficiente psicrométrico (kPa/ºC)</p>
-<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb913-1" title="1">gama =<span class="st"> </span><span class="fl">0.665</span><span class="op">*</span>(<span class="dv">10</span><span class="op">**-</span><span class="dv">3</span>)<span class="op">*</span>Patm </a></code></pre></div>
+<div class="sourceCode" id="cb912"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb912-1" title="1">gama =<span class="st"> </span><span class="fl">0.665</span><span class="op">*</span>(<span class="dv">10</span><span class="op">**-</span><span class="dv">3</span>)<span class="op">*</span>Patm </a></code></pre></div>
 <p>Latitude</p>
-<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb914-1" title="1">lat =<span class="st"> </span><span class="fl">-7.53</span>  </a></code></pre></div>
+<div class="sourceCode" id="cb913"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb913-1" title="1">lat =<span class="st"> </span><span class="fl">-7.53</span>  </a></code></pre></div>
 <p>Transformar em radianos</p>
-<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb915-1" title="1">corr =<span class="st"> </span>pi<span class="op">/</span><span class="dv">180</span> </a></code></pre></div>
+<div class="sourceCode" id="cb914"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb914-1" title="1">corr =<span class="st"> </span>pi<span class="op">/</span><span class="dv">180</span> </a></code></pre></div>
 <p>Declinação solar (rad)</p>
-<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb916-1" title="1"> decl =<span class="st"> </span><span class="fl">23.45</span><span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>((a<span class="op">$</span>DiaJuliano<span class="dv">-80</span>)<span class="op">*</span><span class="dv">360</span><span class="op">/</span><span class="dv">365</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb915"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb915-1" title="1"> decl =<span class="st"> </span><span class="fl">23.45</span><span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>((a<span class="op">$</span>DiaJuliano<span class="dv">-80</span>)<span class="op">*</span><span class="dv">360</span><span class="op">/</span><span class="dv">365</span>)) </a></code></pre></div>
 <p>Ângulo horário do nascer ao por do sol em (rad)</p>
-<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb917-1" title="1">hn =<span class="st"> </span><span class="dv">1</span><span class="op">/</span>corr<span class="op">*</span><span class="kw">acos</span>(<span class="op">-</span><span class="kw">tan</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">tan</span>(corr<span class="op">*</span>decl)) </a></code></pre></div>
+<div class="sourceCode" id="cb916"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb916-1" title="1">hn =<span class="st"> </span><span class="dv">1</span><span class="op">/</span>corr<span class="op">*</span><span class="kw">acos</span>(<span class="op">-</span><span class="kw">tan</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">tan</span>(corr<span class="op">*</span>decl)) </a></code></pre></div>
 <p>Número máximo de horas de luz solar em um dia (h)</p>
-<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb918-1" title="1">a<span class="op">$</span>N =<span class="st"> </span><span class="dv">2</span><span class="op">*</span>hn<span class="op">/</span><span class="dv">15</span></a></code></pre></div>
+<div class="sourceCode" id="cb917"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb917-1" title="1">a<span class="op">$</span>N =<span class="st"> </span><span class="dv">2</span><span class="op">*</span>hn<span class="op">/</span><span class="dv">15</span></a></code></pre></div>
 <p>Distância relativa da terra ao sol</p>
-<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb919-1" title="1">s =<span class="st"> </span>(<span class="dv">1</span><span class="fl">+0.033</span><span class="op">*</span><span class="kw">cos</span>(a<span class="op">$</span>DiaJuliano<span class="op">*</span><span class="dv">360</span><span class="op">/</span><span class="dv">365</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb918"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb918-1" title="1">s =<span class="st"> </span>(<span class="dv">1</span><span class="fl">+0.033</span><span class="op">*</span><span class="kw">cos</span>(a<span class="op">$</span>DiaJuliano<span class="op">*</span><span class="dv">360</span><span class="op">/</span><span class="dv">365</span>)) </a></code></pre></div>
 <p>Angulo de horário(Angulo da radiação do sol)</p>
-<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1">t =<span class="st"> </span>corr<span class="op">*</span>hn<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>decl) </a>
-<a class="sourceLine" id="cb920-2" title="2">u =<span class="st"> </span><span class="kw">cos</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">cos</span>(corr<span class="op">*</span>decl)<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>hn)</a></code></pre></div>
+<div class="sourceCode" id="cb919"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb919-1" title="1">t =<span class="st"> </span>corr<span class="op">*</span>hn<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>decl) </a>
+<a class="sourceLine" id="cb919-2" title="2">u =<span class="st"> </span><span class="kw">cos</span>(corr<span class="op">*</span>lat)<span class="op">*</span><span class="kw">cos</span>(corr<span class="op">*</span>decl)<span class="op">*</span><span class="kw">sin</span>(corr<span class="op">*</span>hn)</a></code></pre></div>
 <p>Radiação Solar Extraterrestre diária (mm/dia)</p>
-<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb921-1" title="1"> a<span class="op">$</span>Qo =<span class="st"> </span><span class="fl">37.6</span><span class="op">*</span>s<span class="op">*</span>(t<span class="op">+</span>u) </a></code></pre></div>
+<div class="sourceCode" id="cb920"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb920-1" title="1"> a<span class="op">$</span>Qo =<span class="st"> </span><span class="fl">37.6</span><span class="op">*</span>s<span class="op">*</span>(t<span class="op">+</span>u) </a></code></pre></div>
 <p>Verificar dados</p>
-<div class="sourceCode" id="cb922"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb922-1" title="1"><span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb921"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb921-1" title="1"><span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -583,12 +583,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 1980-01-05  9.66 25.1 21.6 90.97 1.070000 90.97          5 12.41929 37.71584
 ## 6 1980-01-06 16.10 31.2 20.8 80.67 1.380000 80.67          6 12.41691 38.61551</code></pre>
 <p>coeficientes para climas médios</p>
-<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb924-1" title="1">x =<span class="st"> </span><span class="fl">0.25</span></a></code></pre></div>
+<div class="sourceCode" id="cb923"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb923-1" title="1">x =<span class="st"> </span><span class="fl">0.25</span></a></code></pre></div>
 <p>coeficientes para climas médios</p>
-<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb925-1" title="1"> b =<span class="st"> </span><span class="fl">0.50</span></a></code></pre></div>
+<div class="sourceCode" id="cb924"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb924-1" title="1"> b =<span class="st"> </span><span class="fl">0.50</span></a></code></pre></div>
 <p>Insolação (h)</p>
-<div class="sourceCode" id="cb926"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb926-1" title="1"> n.est =<span class="st"> </span>(a<span class="op">$</span>Rs<span class="op">/</span>a<span class="op">$</span>Qo<span class="op">-</span>x)<span class="op">*</span>a<span class="op">$</span>N<span class="op">/</span>b;  </a>
-<a class="sourceLine" id="cb926-2" title="2"> n.est</a></code></pre></div>
+<div class="sourceCode" id="cb925"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb925-1" title="1"> n.est =<span class="st"> </span>(a<span class="op">$</span>Rs<span class="op">/</span>a<span class="op">$</span>Qo<span class="op">-</span>x)<span class="op">*</span>a<span class="op">$</span>N<span class="op">/</span>b;  </a>
+<a class="sourceLine" id="cb925-2" title="2"> n.est</a></code></pre></div>
 <pre><code>##   [1]  5.86766463  0.28139699  3.18975978  3.20299747  0.15215691  4.14553255
 ##   [7]  5.60035036  5.06395663  7.18184567  2.09257628  0.53824724  0.64483607
 ##  [13]  0.09397131  2.98306242  0.32106628  5.31197003  1.55169394  6.69674498
@@ -651,8 +651,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## [355]  0.22948294  2.43078136  4.69146007  3.46890950  3.56860367  4.31694335
 ## [361]  3.03367449  0.30778199  3.51145603  2.18611115  5.57723917  0.51138680</code></pre>
 <p>Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma</p>
-<div class="sourceCode" id="cb928"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb928-1" title="1">a<span class="op">$</span>n&lt;-<span class="st"> </span><span class="kw">ifelse</span>((n.est)<span class="op">&lt;</span><span class="dv">0</span>,<span class="dv">1</span>, n.est);</a>
-<a class="sourceLine" id="cb928-2" title="2"><span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb927"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb927-1" title="1">a<span class="op">$</span>n&lt;-<span class="st"> </span><span class="kw">ifelse</span>((n.est)<span class="op">&lt;</span><span class="dv">0</span>,<span class="dv">1</span>, n.est);</a>
+<a class="sourceLine" id="cb927-2" title="2"><span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -668,8 +668,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 0.1521569
 ## 6 4.1455326</code></pre>
 <p>Nebulosidade ou fração de luz (h)</p>
-<div class="sourceCode" id="cb930"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb930-1" title="1">  a<span class="op">$</span>n.N =<span class="st"> </span>a<span class="op">$</span>n<span class="op">/</span>a<span class="op">$</span>N;   </a>
-<a class="sourceLine" id="cb930-2" title="2">  <span class="kw">head</span>(a) </a></code></pre></div>
+<div class="sourceCode" id="cb929"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb929-1" title="1">  a<span class="op">$</span>n.N =<span class="st"> </span>a<span class="op">$</span>n<span class="op">/</span>a<span class="op">$</span>N;   </a>
+<a class="sourceLine" id="cb929-2" title="2">  <span class="kw">head</span>(a) </a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -685,10 +685,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 0.1521569 0.01225166
 ## 6 4.1455326 0.33386175</code></pre>
 <p>Albedo, para solo gramado=0,23</p>
-<div class="sourceCode" id="cb932"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb932-1" title="1"> r =<span class="st"> </span><span class="fl">0.23</span> </a></code></pre></div>
+<div class="sourceCode" id="cb931"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb931-1" title="1"> r =<span class="st"> </span><span class="fl">0.23</span> </a></code></pre></div>
 <p>Temperatura média do ar a 2 metros acima da superfície do solo (ºC)</p>
-<div class="sourceCode" id="cb933"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb933-1" title="1"> a<span class="op">$</span>Tmed =<span class="st"> </span>(a<span class="op">$</span>Tmax<span class="op">+</span>a<span class="op">$</span>Tmin)<span class="op">/</span><span class="dv">2</span></a>
-<a class="sourceLine" id="cb933-2" title="2"> <span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb932"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb932-1" title="1"> a<span class="op">$</span>Tmed =<span class="st"> </span>(a<span class="op">$</span>Tmax<span class="op">+</span>a<span class="op">$</span>Tmin)<span class="op">/</span><span class="dv">2</span></a>
+<a class="sourceLine" id="cb932-2" title="2"> <span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -704,27 +704,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 0.1521569 0.01225166 23.35
 ## 6 4.1455326 0.33386175 26.00</code></pre>
 <p>Pressão de saturação de vapor máxima (kPa)</p>
-<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb935-1" title="1">a<span class="op">$</span>esMax =<span class="st"> </span><span class="fl">0.6100</span><span class="op">*</span><span class="kw">exp</span>((<span class="fl">17.3</span><span class="op">*</span>a<span class="op">$</span>Tmax)<span class="op">/</span>(<span class="fl">237.3</span><span class="op">+</span>a<span class="op">$</span>Tmax))</a></code></pre></div>
+<div class="sourceCode" id="cb934"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb934-1" title="1">a<span class="op">$</span>esMax =<span class="st"> </span><span class="fl">0.6100</span><span class="op">*</span><span class="kw">exp</span>((<span class="fl">17.3</span><span class="op">*</span>a<span class="op">$</span>Tmax)<span class="op">/</span>(<span class="fl">237.3</span><span class="op">+</span>a<span class="op">$</span>Tmax))</a></code></pre></div>
 <p>Pressão de saturação de vapor mínima (kPa)</p>
-<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb936-1" title="1">a<span class="op">$</span>esMin =<span class="st"> </span><span class="fl">0.6100</span><span class="op">*</span><span class="kw">exp</span>((<span class="fl">17.3</span><span class="op">*</span>a<span class="op">$</span>Tmin)<span class="op">/</span>(<span class="fl">237.3</span><span class="op">+</span>a<span class="op">$</span>Tmin))</a></code></pre></div>
+<div class="sourceCode" id="cb935"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb935-1" title="1">a<span class="op">$</span>esMin =<span class="st"> </span><span class="fl">0.6100</span><span class="op">*</span><span class="kw">exp</span>((<span class="fl">17.3</span><span class="op">*</span>a<span class="op">$</span>Tmin)<span class="op">/</span>(<span class="fl">237.3</span><span class="op">+</span>a<span class="op">$</span>Tmin))</a></code></pre></div>
 <p>Pressão de saturação de vapor média (kPa)</p>
-<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb937-1" title="1">a<span class="op">$</span>esMed =<span class="st"> </span>(a<span class="op">$</span>esMax<span class="op">+</span>a<span class="op">$</span>esMin)<span class="op">/</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb936"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb936-1" title="1">a<span class="op">$</span>esMed =<span class="st"> </span>(a<span class="op">$</span>esMax<span class="op">+</span>a<span class="op">$</span>esMin)<span class="op">/</span><span class="dv">2</span></a></code></pre></div>
 <p>Pressão atual de vapor (kPa)</p>
-<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb938-1" title="1">a<span class="op">$</span>ea =<span class="st"> </span>(a<span class="op">$</span>esMed<span class="op">*</span>a<span class="op">$</span>RHmax)<span class="op">/</span><span class="dv">100</span></a></code></pre></div>
+<div class="sourceCode" id="cb937"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb937-1" title="1">a<span class="op">$</span>ea =<span class="st"> </span>(a<span class="op">$</span>esMed<span class="op">*</span>a<span class="op">$</span>RHmax)<span class="op">/</span><span class="dv">100</span></a></code></pre></div>
 <p>Déficit de vapor de pressão de saturação</p>
-<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb939-1" title="1">a<span class="op">$</span>DPV =<span class="st"> </span>a<span class="op">$</span>esMed<span class="op">-</span>a<span class="op">$</span>ea</a></code></pre></div>
+<div class="sourceCode" id="cb938"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb938-1" title="1">a<span class="op">$</span>DPV =<span class="st"> </span>a<span class="op">$</span>esMed<span class="op">-</span>a<span class="op">$</span>ea</a></code></pre></div>
 <p>É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC)</p>
-<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb940-1" title="1">a<span class="op">$</span>Delta =<span class="st"> </span>(<span class="dv">4098</span><span class="op">*</span>a<span class="op">$</span>esMed)<span class="op">/</span>(a<span class="op">$</span>Tmed<span class="fl">+237.3</span>)<span class="op">**</span><span class="dv">2</span></a></code></pre></div>
+<div class="sourceCode" id="cb939"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb939-1" title="1">a<span class="op">$</span>Delta =<span class="st"> </span>(<span class="dv">4098</span><span class="op">*</span>a<span class="op">$</span>esMed)<span class="op">/</span>(a<span class="op">$</span>Tmed<span class="fl">+237.3</span>)<span class="op">**</span><span class="dv">2</span></a></code></pre></div>
 <p>Balanço de ondas curtas</p>
-<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb941-1" title="1">a<span class="op">$</span>BOC =<span class="st"> </span>a<span class="op">$</span>Rs<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>r)</a></code></pre></div>
+<div class="sourceCode" id="cb940"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb940-1" title="1">a<span class="op">$</span>BOC =<span class="st"> </span>a<span class="op">$</span>Rs<span class="op">*</span>(<span class="dv">1</span><span class="op">-</span>r)</a></code></pre></div>
 <p>Balanço de ondas longas</p>
-<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb942-1" title="1"> a<span class="op">$</span>BOL =<span class="st"> </span><span class="op">-</span>(<span class="fl">0.903</span><span class="op">*</span>(<span class="dv">10</span><span class="op">**-</span><span class="dv">9</span>)<span class="op">*</span>((a<span class="op">$</span>Tmed<span class="op">+</span><span class="dv">273</span>)<span class="op">**</span><span class="dv">4</span>)<span class="op">*</span>(<span class="fl">0.34-0.14</span><span class="op">*</span>(<span class="kw">sqrt</span>(a<span class="op">$</span>ea)))<span class="op">*</span>(<span class="fl">0.1</span><span class="op">+</span>(<span class="fl">0.9</span><span class="op">*</span>a<span class="op">$</span>n.N))) </a></code></pre></div>
+<div class="sourceCode" id="cb941"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb941-1" title="1"> a<span class="op">$</span>BOL =<span class="st"> </span><span class="op">-</span>(<span class="fl">0.903</span><span class="op">*</span>(<span class="dv">10</span><span class="op">**-</span><span class="dv">9</span>)<span class="op">*</span>((a<span class="op">$</span>Tmed<span class="op">+</span><span class="dv">273</span>)<span class="op">**</span><span class="dv">4</span>)<span class="op">*</span>(<span class="fl">0.34-0.14</span><span class="op">*</span>(<span class="kw">sqrt</span>(a<span class="op">$</span>ea)))<span class="op">*</span>(<span class="fl">0.1</span><span class="op">+</span>(<span class="fl">0.9</span><span class="op">*</span>a<span class="op">$</span>n.N))) </a></code></pre></div>
 <p>Saldo de radiação é superfície da cultura</p>
-<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb943-1" title="1"> a<span class="op">$</span>Rn =<span class="st"> </span>(a<span class="op">$</span>BOC<span class="op">+</span>a<span class="op">$</span>BOL)</a></code></pre></div>
+<div class="sourceCode" id="cb942"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb942-1" title="1"> a<span class="op">$</span>Rn =<span class="st"> </span>(a<span class="op">$</span>BOC<span class="op">+</span>a<span class="op">$</span>BOL)</a></code></pre></div>
 <p><strong>Estimativa de ETo pelo método de Penman-Monteith-FAO</strong></p>
-<div class="sourceCode" id="cb944"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb944-1" title="1">a<span class="op">$</span>ETP.Penman =<span class="st"> </span>((<span class="fl">0.408</span><span class="op">*</span>a<span class="op">$</span>Delta<span class="op">*</span>a<span class="op">$</span>Rn)<span class="op">+</span>(gama<span class="op">*</span>(<span class="dv">900</span><span class="op">/</span>(a<span class="op">$</span>Tmed<span class="op">+</span><span class="dv">273</span>))<span class="op">*</span>a<span class="op">$</span>u2<span class="op">*</span>a<span class="op">$</span>DPV))<span class="op">/</span>(a<span class="op">$</span>Delta<span class="op">+</span>(gama<span class="op">*</span>(<span class="dv">1</span><span class="fl">+0.34</span><span class="op">*</span>a<span class="op">$</span>u2)))</a>
-<a class="sourceLine" id="cb944-2" title="2"></a>
-<a class="sourceLine" id="cb944-3" title="3"><span class="kw">head</span>(a)</a></code></pre></div>
+<div class="sourceCode" id="cb943"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb943-1" title="1">a<span class="op">$</span>ETP.Penman =<span class="st"> </span>((<span class="fl">0.408</span><span class="op">*</span>a<span class="op">$</span>Delta<span class="op">*</span>a<span class="op">$</span>Rn)<span class="op">+</span>(gama<span class="op">*</span>(<span class="dv">900</span><span class="op">/</span>(a<span class="op">$</span>Tmed<span class="op">+</span><span class="dv">273</span>))<span class="op">*</span>a<span class="op">$</span>u2<span class="op">*</span>a<span class="op">$</span>DPV))<span class="op">/</span>(a<span class="op">$</span>Delta<span class="op">+</span>(gama<span class="op">*</span>(<span class="dv">1</span><span class="fl">+0.34</span><span class="op">*</span>a<span class="op">$</span>u2)))</a>
+<a class="sourceLine" id="cb943-2" title="2"></a>
+<a class="sourceLine" id="cb943-3" title="3"><span class="kw">head</span>(a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -749,9 +749,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Este método, além de procurar representar, de maneira consistente, o fenômeno biofísico da evapotranspiração, é alimentado por quase todos os elementos meteorológicos observados em estações meteorológicas de superfície.</p>
 <p><strong>Método de Priestley-Taylor</strong></p>
 <p>O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados.</p>
-<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb946-1" title="1">a<span class="op">$</span>W =<span class="st"> </span><span class="kw">ifelse</span>(a<span class="op">$</span>Tmed<span class="op">&lt;</span><span class="dv">16</span>,(<span class="fl">0.407+0.0145</span><span class="op">*</span>a<span class="op">$</span>Tmed),(<span class="fl">0.483+0.01</span><span class="op">*</span>a<span class="op">$</span>Tmed))</a></code></pre></div>
-<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb947-1" title="1">a<span class="op">$</span>ETP.Priestley =<span class="st"> </span>(<span class="fl">1.26</span><span class="op">*</span>a<span class="op">$</span>W<span class="op">*</span>a<span class="op">$</span>Rn)<span class="op">/</span><span class="fl">2.45</span></a></code></pre></div>
-<div class="sourceCode" id="cb948"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb948-1" title="1"><span class="kw">head</span> (a)</a></code></pre></div>
+<div class="sourceCode" id="cb945"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb945-1" title="1">a<span class="op">$</span>W =<span class="st"> </span><span class="kw">ifelse</span>(a<span class="op">$</span>Tmed<span class="op">&lt;</span><span class="dv">16</span>,(<span class="fl">0.407+0.0145</span><span class="op">*</span>a<span class="op">$</span>Tmed),(<span class="fl">0.483+0.01</span><span class="op">*</span>a<span class="op">$</span>Tmed))</a></code></pre></div>
+<div class="sourceCode" id="cb946"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb946-1" title="1">a<span class="op">$</span>ETP.Priestley =<span class="st"> </span>(<span class="fl">1.26</span><span class="op">*</span>a<span class="op">$</span>W<span class="op">*</span>a<span class="op">$</span>Rn)<span class="op">/</span><span class="fl">2.45</span></a></code></pre></div>
+<div class="sourceCode" id="cb947"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb947-1" title="1"><span class="kw">head</span> (a)</a></code></pre></div>
 <pre><code>##         Data    Rs Tmax Tmin RHmax       u2 RHmin DiaJuliano        N       Qo
 ## 1 1980-01-01 18.51 31.1 21.8 82.00 2.000000 82.00          1 12.42742 38.08036
 ## 2 1980-01-02  9.65 26.5 21.8 91.50 1.000000 91.50          2 12.42559 36.92744
@@ -774,64 +774,64 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 0.1741690  7.4382 -0.08745750  7.350742   2.194204 0.7165      2.708644
 ## 6 0.2072805 12.3970 -0.30213854 12.094861   3.979211 0.7430      4.621619</code></pre>
 <p>Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor</p>
-<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb950-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ETP.Priestley, </a>
-<a class="sourceLine" id="cb950-2" title="2">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb950-3" title="3">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb950-4" title="4">       <span class="kw">abline</span>(<span class="kw">lm</span>(a<span class="op">$</span>ETP.Priestley<span class="op">~</span>a<span class="op">$</span>ETP.Penman),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>))</a>
-<a class="sourceLine" id="cb950-5" title="5">  <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-524-1.png" width="672" /></p>
+<div class="sourceCode" id="cb949"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb949-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ETP.Priestley, </a>
+<a class="sourceLine" id="cb949-2" title="2">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb949-3" title="3">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb949-4" title="4">       <span class="kw">abline</span>(<span class="kw">lm</span>(a<span class="op">$</span>ETP.Priestley<span class="op">~</span>a<span class="op">$</span>ETP.Penman),<span class="dt">col=</span><span class="st">&quot;red&quot;</span>))</a>
+<a class="sourceLine" id="cb949-5" title="5">  <span class="kw">lines</span>(<span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="kw">c</span>(<span class="dv">0</span>, <span class="dv">8</span>), <span class="dt">col =</span> <span class="st">&quot;black&quot;</span>)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-526-1.png" width="672" /></p>
 <p>Salvar os dados</p>
-<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb951-1" title="1"><span class="kw">write.table</span>(a, <span class="st">&quot;ETP.txt&quot;</span>) </a></code></pre></div>
+<div class="sourceCode" id="cb950"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb950-1" title="1"><span class="kw">write.table</span>(a, <span class="st">&quot;ETP.txt&quot;</span>) </a></code></pre></div>
 <p><strong>Método Hargreaves-Samani (1985)</strong></p>
-<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb952-1" title="1">  a<span class="op">$</span>ET_HS =<span class="st"> </span>(<span class="fl">0.408</span><span class="op">*</span>(<span class="fl">0.0023</span><span class="op">*</span>a<span class="op">$</span>Qo<span class="op">*</span>((a<span class="op">$</span>Tmax<span class="op">-</span>a<span class="op">$</span>Tmin)<span class="op">**</span><span class="fl">0.5</span>)<span class="op">*</span>a<span class="op">$</span>Qo))</a></code></pre></div>
-<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb953-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_HS)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-527-1.png" width="672" /></p>
-<p><strong>Método Carmago</strong></p>
-<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb954-1" title="1">  a<span class="op">$</span>ET_Ca =<span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>(a<span class="op">$</span>Qo<span class="op">/</span><span class="fl">2.45</span>)<span class="op">*</span>((<span class="fl">1.08</span><span class="op">*</span>a<span class="op">$</span>Tmax<span class="op">-</span>(<span class="fl">0.36</span><span class="op">*</span>a<span class="op">$</span>Tmin)))<span class="op">*</span><span class="dv">1</span></a></code></pre></div>
-<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb955-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_Ca)</a></code></pre></div>
+<div class="sourceCode" id="cb951"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb951-1" title="1">  a<span class="op">$</span>ET_HS =<span class="st"> </span>(<span class="fl">0.408</span><span class="op">*</span>(<span class="fl">0.0023</span><span class="op">*</span>a<span class="op">$</span>Qo<span class="op">*</span>((a<span class="op">$</span>Tmax<span class="op">-</span>a<span class="op">$</span>Tmin)<span class="op">**</span><span class="fl">0.5</span>)<span class="op">*</span>a<span class="op">$</span>Qo))</a></code></pre></div>
+<div class="sourceCode" id="cb952"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb952-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_HS)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-529-1.png" width="672" /></p>
+<p><strong>Método Carmago</strong></p>
+<div class="sourceCode" id="cb953"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb953-1" title="1">  a<span class="op">$</span>ET_Ca =<span class="st"> </span><span class="fl">0.01</span><span class="op">*</span>(a<span class="op">$</span>Qo<span class="op">/</span><span class="fl">2.45</span>)<span class="op">*</span>((<span class="fl">1.08</span><span class="op">*</span>a<span class="op">$</span>Tmax<span class="op">-</span>(<span class="fl">0.36</span><span class="op">*</span>a<span class="op">$</span>Tmin)))<span class="op">*</span><span class="dv">1</span></a></code></pre></div>
+<div class="sourceCode" id="cb954"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb954-1" title="1"><span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_Ca)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-531-1.png" width="672" /></p>
 <p>Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor</p>
-<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb956-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
-<a class="sourceLine" id="cb956-2" title="2">{<span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_Ca,</a>
-<a class="sourceLine" id="cb956-3" title="3">      <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb956-4" title="4">      <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb956-5" title="5">  <span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_HS,</a>
-<a class="sourceLine" id="cb956-6" title="6">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb956-7" title="7">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))</a>
-<a class="sourceLine" id="cb956-8" title="8">  <span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ETP.Priestley,</a>
-<a class="sourceLine" id="cb956-9" title="9">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
-<a class="sourceLine" id="cb956-10" title="10">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))}</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-530-1.png" width="672" /></p>
-<div class="sourceCode" id="cb957"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb957-1" title="1"><span class="kw">dev.off</span>() <span class="co">#Encerra todos os dispositivos gráficos abertos</span></a></code></pre></div>
+<div class="sourceCode" id="cb955"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb955-1" title="1"><span class="kw">par</span>(<span class="dt">mfrow=</span><span class="kw">c</span>(<span class="dv">1</span>,<span class="dv">3</span>))</a>
+<a class="sourceLine" id="cb955-2" title="2">{<span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_Ca,</a>
+<a class="sourceLine" id="cb955-3" title="3">      <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb955-4" title="4">      <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb955-5" title="5">  <span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ET_HS,</a>
+<a class="sourceLine" id="cb955-6" title="6">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb955-7" title="7">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))</a>
+<a class="sourceLine" id="cb955-8" title="8">  <span class="kw">plot</span>(a<span class="op">$</span>ETP.Penman,a<span class="op">$</span>ETP.Priestley,</a>
+<a class="sourceLine" id="cb955-9" title="9">       <span class="dt">xlim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>),</a>
+<a class="sourceLine" id="cb955-10" title="10">       <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">2</span>,<span class="dv">8</span>))}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-532-1.png" width="672" /></p>
+<div class="sourceCode" id="cb956"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb956-1" title="1"><span class="kw">dev.off</span>() <span class="co">#Encerra todos os dispositivos gráficos abertos</span></a></code></pre></div>
 <pre><code>## null device 
 ##           1</code></pre>
 <p>comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica.</p>
-<div class="sourceCode" id="cb959"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb959-1" title="1">hydroGOF<span class="op">::</span><span class="kw">br2</span>(<span class="dt">sim=</span>a<span class="op">$</span>ETP.Penman, <span class="dt">obs=</span>a<span class="op">$</span>ETP.Priestley)</a></code></pre></div>
+<div class="sourceCode" id="cb958"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb958-1" title="1">hydroGOF<span class="op">::</span><span class="kw">br2</span>(<span class="dt">sim=</span>a<span class="op">$</span>ETP.Penman, <span class="dt">obs=</span>a<span class="op">$</span>ETP.Priestley)</a></code></pre></div>
 <pre><code>## [1] 0.8372423</code></pre>
 <p>Comparação gráfica entre dois vetores</p>
-<div class="sourceCode" id="cb961"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb961-1" title="1">hydroGOF<span class="op">::</span><span class="kw">ggof</span>(<span class="dt">sim=</span>a<span class="op">$</span>ETP.Penman, <span class="dt">obs=</span>a<span class="op">$</span>ETP.Priestley)</a></code></pre></div>
+<div class="sourceCode" id="cb960"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb960-1" title="1">hydroGOF<span class="op">::</span><span class="kw">ggof</span>(<span class="dt">sim=</span>a<span class="op">$</span>ETP.Penman, <span class="dt">obs=</span>a<span class="op">$</span>ETP.Priestley)</a></code></pre></div>
 <pre><code>## [ Note: You did not provide dates, so only a numeric index will be used in the time axis ]</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-532-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-534-1.png" width="672" /></p>
 <div id="pacote-evapotranspiration" class="section level3">
 <h3><span class="header-section-number">10.2.1</span> Pacote Evapotranspiration</h3>
 <p>Apagar objetos antigos</p>
-<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb963-1" title="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb962"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb962-1" title="1"><span class="kw">rm</span>(<span class="dt">list=</span><span class="kw">ls</span>())</a></code></pre></div>
 <p>Baixar Pacote Evapotranspiration</p>
-<div class="sourceCode" id="cb964"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb964-1" title="1"><span class="kw">require</span>(Evapotranspiration)</a></code></pre></div>
+<div class="sourceCode" id="cb963"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb963-1" title="1"><span class="kw">require</span>(Evapotranspiration)</a></code></pre></div>
 <pre><code>## Loading required package: Evapotranspiration</code></pre>
 <p>baixar dados</p>
-<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb966-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1&quot;</span>,<span class="dt">header =</span> T,<span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb965"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb965-1" title="1">df &lt;-<span class="st"> </span><span class="kw">read.table</span>(<span class="st">&quot;https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1&quot;</span>,<span class="dt">header =</span> T,<span class="dt">sep =</span> <span class="st">&quot;;&quot;</span>)</a></code></pre></div>
 <p>Transformar em Data</p>
-<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb967-1" title="1">df<span class="op">$</span>Data &lt;-<span class="st"> </span><span class="kw">as.Date</span>(df<span class="op">$</span>Data)</a>
-<a class="sourceLine" id="cb967-2" title="2">climate &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">as.list</span>(df)[<span class="dv">2</span><span class="op">:</span><span class="dv">7</span>], zoo, df<span class="op">$</span>Data) </a>
-<a class="sourceLine" id="cb967-3" title="3">J       &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(df<span class="op">$</span>Data, <span class="st">&quot;%j&quot;</span>))</a>
-<a class="sourceLine" id="cb967-4" title="4">data    &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">Date.daily=</span>df<span class="op">$</span>Data, <span class="dt">J=</span>J), climate)</a></code></pre></div>
+<div class="sourceCode" id="cb966"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb966-1" title="1">df<span class="op">$</span>Data &lt;-<span class="st"> </span><span class="kw">as.Date</span>(df<span class="op">$</span>Data)</a>
+<a class="sourceLine" id="cb966-2" title="2">climate &lt;-<span class="st"> </span><span class="kw">lapply</span>(<span class="kw">as.list</span>(df)[<span class="dv">2</span><span class="op">:</span><span class="dv">7</span>], zoo, df<span class="op">$</span>Data) </a>
+<a class="sourceLine" id="cb966-3" title="3">J       &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(<span class="kw">format</span>(df<span class="op">$</span>Data, <span class="st">&quot;%j&quot;</span>))</a>
+<a class="sourceLine" id="cb966-4" title="4">data    &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="kw">list</span>(<span class="dt">Date.daily=</span>df<span class="op">$</span>Data, <span class="dt">J=</span>J), climate)</a></code></pre></div>
 <p>Atribuindo nomes</p>
-<div class="sourceCode" id="cb968"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb968-1" title="1"><span class="kw">names</span>(data)</a></code></pre></div>
+<div class="sourceCode" id="cb967"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb967-1" title="1"><span class="kw">names</span>(data)</a></code></pre></div>
 <pre><code>## [1] &quot;Date.daily&quot; &quot;J&quot;          &quot;Rs&quot;         &quot;Tmax&quot;       &quot;Tmin&quot;      
 ## [6] &quot;RHmax&quot;      &quot;u2&quot;         &quot;RHmin&quot;</code></pre>
 <p>Ver a estrutura do objeto com todas as variáveis da tabela de dados</p>
-<div class="sourceCode" id="cb970"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb970-1" title="1"><span class="kw">str</span>(data)</a></code></pre></div>
+<div class="sourceCode" id="cb969"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb969-1" title="1"><span class="kw">str</span>(data)</a></code></pre></div>
 <pre><code>## List of 8
 ##  $ Date.daily: Date[1:366], format: &quot;1980-01-01&quot; &quot;1980-01-02&quot; ...
 ##  $ J         : num [1:366] 1 2 3 4 5 6 7 8 9 10 ...
@@ -854,31 +854,31 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##   Data: num [1:366] 82 91.5 86 82.8 91 ...
 ##   Index:  Date[1:366], format: &quot;1980-01-01&quot; &quot;1980-01-02&quot; ...</code></pre>
 <p>Converter latitude para radianos</p>
-<div class="sourceCode" id="cb972"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb972-1" title="1">pi<span class="op">/</span><span class="dv">180</span><span class="op">*-</span><span class="fl">23.45</span> <span class="co"># [1] -0.4092797</span></a></code></pre></div>
+<div class="sourceCode" id="cb971"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb971-1" title="1">pi<span class="op">/</span><span class="dv">180</span><span class="op">*-</span><span class="fl">23.45</span> <span class="co"># [1] -0.4092797</span></a></code></pre></div>
 <pre><code>## [1] -0.4092797</code></pre>
 <p>Editar adequadamente as constantes a serem utilizadas. As constantes a serem utilizadas variam com o modelo escolhido, Ex:ET.PenmanMonteith e ET.PristleyTaylor.</p>
 <p><strong>Constantes dos modelos</strong></p>
 <p>Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração.</p>
-<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb974-1" title="1">myConst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">lambda =</span> <span class="fl">2.45</span>, <span class="dt">sigma =</span> <span class="fl">4.903e-09</span>, <span class="dt">Gsc =</span> <span class="fl">0.082</span>, </a>
-<a class="sourceLine" id="cb974-2" title="2">                <span class="dt">lat =</span> <span class="fl">-23.45</span>, <span class="dt">lat_rad =</span> <span class="fl">-0.40928</span>, <span class="dt">as =</span> <span class="fl">0.25</span>, </a>
-<a class="sourceLine" id="cb974-3" title="3">                <span class="dt">bs =</span> <span class="fl">0.55</span>, <span class="dt">Elev =</span> <span class="dv">480</span>, <span class="dt">z =</span> <span class="dv">2</span>, <span class="dt">Roua =</span> <span class="fl">1.2</span>, </a>
-<a class="sourceLine" id="cb974-4" title="4">                <span class="dt">Ca =</span> <span class="fl">0.001013</span>, <span class="dt">G =</span> <span class="dv">0</span>, </a>
-<a class="sourceLine" id="cb974-5" title="5">                <span class="dt">alphaA =</span> <span class="fl">0.14</span>, <span class="dt">alphaPT =</span> <span class="fl">1.26</span>, </a>
-<a class="sourceLine" id="cb974-6" title="6">                <span class="dt">ap =</span> <span class="fl">2.4</span>, <span class="dt">fz =</span> <span class="dv">28</span>, <span class="dt">b0 =</span> <span class="dv">1</span>, </a>
-<a class="sourceLine" id="cb974-7" title="7">                <span class="dt">a_0 =</span> <span class="fl">11.9</span>, <span class="dt">b_0 =</span> <span class="fl">-0.15</span>, </a>
-<a class="sourceLine" id="cb974-8" title="8">                <span class="dt">c_0 =</span> <span class="fl">-0.25</span>, <span class="dt">d_0 =</span> <span class="fl">-0.0107</span>, </a>
-<a class="sourceLine" id="cb974-9" title="9">                <span class="dt">e0 =</span> <span class="fl">0.81917</span>,  </a>
-<a class="sourceLine" id="cb974-10" title="10">                <span class="dt">e1 =</span> <span class="fl">-0.0040922</span>, <span class="dt">e2 =</span> <span class="fl">1.0705</span>, <span class="dt">e3 =</span> <span class="fl">0.065649</span>, </a>
-<a class="sourceLine" id="cb974-11" title="11">                <span class="dt">e4 =</span> <span class="fl">-0.0059684</span>, </a>
-<a class="sourceLine" id="cb974-12" title="12">                <span class="dt">e5 =</span> <span class="fl">-0.0005967</span>, <span class="dt">gammaps =</span> <span class="fl">0.66</span>, </a>
-<a class="sourceLine" id="cb974-13" title="13">                <span class="dt">epsilonMo =</span> <span class="fl">0.92</span>, <span class="dt">PA =</span> <span class="fl">285.8</span>, </a>
-<a class="sourceLine" id="cb974-14" title="14">                <span class="dt">alphaMo =</span> <span class="fl">17.27</span>, <span class="dt">betaMo =</span> <span class="fl">237.3</span>, </a>
-<a class="sourceLine" id="cb974-15" title="15">                <span class="dt">sigmaMo =</span> <span class="fl">5.67e-08</span>, <span class="dt">lambdaMo =</span> <span class="fl">28.5</span>, </a>
-<a class="sourceLine" id="cb974-16" title="16">                <span class="dt">b1 =</span> <span class="dv">14</span>, <span class="dt">b2 =</span> <span class="fl">1.2</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb973"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb973-1" title="1">myConst &lt;-<span class="st"> </span><span class="kw">list</span>(<span class="dt">lambda =</span> <span class="fl">2.45</span>, <span class="dt">sigma =</span> <span class="fl">4.903e-09</span>, <span class="dt">Gsc =</span> <span class="fl">0.082</span>, </a>
+<a class="sourceLine" id="cb973-2" title="2">                <span class="dt">lat =</span> <span class="fl">-23.45</span>, <span class="dt">lat_rad =</span> <span class="fl">-0.40928</span>, <span class="dt">as =</span> <span class="fl">0.25</span>, </a>
+<a class="sourceLine" id="cb973-3" title="3">                <span class="dt">bs =</span> <span class="fl">0.55</span>, <span class="dt">Elev =</span> <span class="dv">480</span>, <span class="dt">z =</span> <span class="dv">2</span>, <span class="dt">Roua =</span> <span class="fl">1.2</span>, </a>
+<a class="sourceLine" id="cb973-4" title="4">                <span class="dt">Ca =</span> <span class="fl">0.001013</span>, <span class="dt">G =</span> <span class="dv">0</span>, </a>
+<a class="sourceLine" id="cb973-5" title="5">                <span class="dt">alphaA =</span> <span class="fl">0.14</span>, <span class="dt">alphaPT =</span> <span class="fl">1.26</span>, </a>
+<a class="sourceLine" id="cb973-6" title="6">                <span class="dt">ap =</span> <span class="fl">2.4</span>, <span class="dt">fz =</span> <span class="dv">28</span>, <span class="dt">b0 =</span> <span class="dv">1</span>, </a>
+<a class="sourceLine" id="cb973-7" title="7">                <span class="dt">a_0 =</span> <span class="fl">11.9</span>, <span class="dt">b_0 =</span> <span class="fl">-0.15</span>, </a>
+<a class="sourceLine" id="cb973-8" title="8">                <span class="dt">c_0 =</span> <span class="fl">-0.25</span>, <span class="dt">d_0 =</span> <span class="fl">-0.0107</span>, </a>
+<a class="sourceLine" id="cb973-9" title="9">                <span class="dt">e0 =</span> <span class="fl">0.81917</span>,  </a>
+<a class="sourceLine" id="cb973-10" title="10">                <span class="dt">e1 =</span> <span class="fl">-0.0040922</span>, <span class="dt">e2 =</span> <span class="fl">1.0705</span>, <span class="dt">e3 =</span> <span class="fl">0.065649</span>, </a>
+<a class="sourceLine" id="cb973-11" title="11">                <span class="dt">e4 =</span> <span class="fl">-0.0059684</span>, </a>
+<a class="sourceLine" id="cb973-12" title="12">                <span class="dt">e5 =</span> <span class="fl">-0.0005967</span>, <span class="dt">gammaps =</span> <span class="fl">0.66</span>, </a>
+<a class="sourceLine" id="cb973-13" title="13">                <span class="dt">epsilonMo =</span> <span class="fl">0.92</span>, <span class="dt">PA =</span> <span class="fl">285.8</span>, </a>
+<a class="sourceLine" id="cb973-14" title="14">                <span class="dt">alphaMo =</span> <span class="fl">17.27</span>, <span class="dt">betaMo =</span> <span class="fl">237.3</span>, </a>
+<a class="sourceLine" id="cb973-15" title="15">                <span class="dt">sigmaMo =</span> <span class="fl">5.67e-08</span>, <span class="dt">lambdaMo =</span> <span class="fl">28.5</span>, </a>
+<a class="sourceLine" id="cb973-16" title="16">                <span class="dt">b1 =</span> <span class="dv">14</span>, <span class="dt">b2 =</span> <span class="fl">1.2</span>)</a></code></pre></div>
 <p><strong>Métodos de estimativa de ETO</strong></p>
 <p>O método Penman-Monteith (FAO) é considerado, internacionalmente, o mais apropriado para a estimativa da ETo.</p>
 <p>Penman-Monteith</p>
-<div class="sourceCode" id="cb975"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb975-1" title="1">res1 &lt;-<span class="st"> </span><span class="kw">ET.PenmanMonteith</span>(data,  myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">wind=</span><span class="st">&quot;yes&quot;</span>, <span class="dt">crop =</span> <span class="st">&quot;short&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb974"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb974-1" title="1">res1 &lt;-<span class="st"> </span><span class="kw">ET.PenmanMonteith</span>(data,  myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">wind=</span><span class="st">&quot;yes&quot;</span>, <span class="dt">crop =</span> <span class="st">&quot;short&quot;</span>)</a></code></pre></div>
 <pre><code>## Penman-Monteith FAO56 Reference Crop ET</code></pre>
 <pre><code>## Evaporative surface: FAO-56 hypothetical short grass, albedo = 0.23 ; surface resistance = 70 sm^-1; crop height = 0.12  m; roughness height = 0.02 m</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -899,7 +899,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>crop: short, indica que o método para grama curta hipotética FAO-56 será aplicado</li>
 </ul>
 <p>Priestley Taylor</p>
-<div class="sourceCode" id="cb988"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb988-1" title="1">res2 &lt;-<span class="st"> </span><span class="kw">ET.PriestleyTaylor</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">23</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb987"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb987-1" title="1">res2 &lt;-<span class="st"> </span><span class="kw">ET.PriestleyTaylor</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span>.<span class="dv">23</span>)</a></code></pre></div>
 <pre><code>## Priestley-Taylor Potential ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -911,7 +911,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 4.15</code></pre>
 <pre><code>## Max: 7</code></pre>
 <pre><code>## Min: 2.19</code></pre>
-<div class="sourceCode" id="cb1000"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1000-1" title="1">res3 &lt;-<span class="st"> </span><span class="kw">ET.Romanenko</span>(data, <span class="dt">myConst=</span> <span class="ot">NULL</span>, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb999"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb999-1" title="1">res3 &lt;-<span class="st"> </span><span class="kw">ET.Romanenko</span>(data, <span class="dt">myConst=</span> <span class="ot">NULL</span>, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
 <pre><code>## Romanenko Actual ET</code></pre>
 <pre><code>## Timestep: daily</code></pre>
 <pre><code>## Units: mm</code></pre>
@@ -921,7 +921,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 5.57</code></pre>
 <pre><code>## Max: 12.31</code></pre>
 <pre><code>## Min: 0.8</code></pre>
-<div class="sourceCode" id="cb1010"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1010-1" title="1">res4 &lt;-<span class="st"> </span><span class="kw">ET.HargreavesSamani</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1009"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1009-1" title="1">res4 &lt;-<span class="st"> </span><span class="kw">ET.HargreavesSamani</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
 <pre><code>## Hargreaves-Samani Reference Crop ET</code></pre>
 <pre><code>## Evaporative surface: reference crop</code></pre>
 <pre><code>## Timestep: daily</code></pre>
@@ -932,7 +932,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 4.45</code></pre>
 <pre><code>## Max: 7.44</code></pre>
 <pre><code>## Min: 2.74</code></pre>
-<div class="sourceCode" id="cb1021"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1021-1" title="1">res5 &lt;-<span class="st"> </span><span class="kw">ET.Abtew</span>(data, myConst,<span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1020"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1020-1" title="1">res5 &lt;-<span class="st"> </span><span class="kw">ET.Abtew</span>(data, myConst,<span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
 <pre><code>## Abtew Actual ET</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
 <pre><code>## Timestep: daily</code></pre>
@@ -943,7 +943,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 3.81</code></pre>
 <pre><code>## Max: 5.76</code></pre>
 <pre><code>## Min: 1.79</code></pre>
-<div class="sourceCode" id="cb1032"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1032-1" title="1">res6 &lt;-<span class="st"> </span><span class="kw">ET.BrutsaertStrickler</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1031"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1031-1" title="1">res6 &lt;-<span class="st"> </span><span class="kw">ET.BrutsaertStrickler</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
 <pre><code>## Brutsaert-Strickler Actual Areal ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -955,8 +955,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 3.99</code></pre>
 <pre><code>## Max: 7.88</code></pre>
 <pre><code>## Min: 1.1</code></pre>
-<div class="sourceCode" id="cb1044"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1044-1" title="1">res7 &lt;-<span class="st"> </span><span class="kw">ET.ChapmanAustralian</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">PenPan=</span> T, </a>
-<a class="sourceLine" id="cb1044-2" title="2">                             <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1043"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1043-1" title="1">res7 &lt;-<span class="st"> </span><span class="kw">ET.ChapmanAustralian</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">PenPan=</span> T, </a>
+<a class="sourceLine" id="cb1043-2" title="2">                             <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
 <pre><code>## Chapman Potential ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23</code></pre>
 <pre><code>## Solar radiation data have been used for calculating evapotranspiration</code></pre>
@@ -969,8 +969,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 2.64</code></pre>
 <pre><code>## Max: 4.69</code></pre>
 <pre><code>## Min: 1.17</code></pre>
-<div class="sourceCode" id="cb1057"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1057-1" title="1">res8 &lt;-<span class="st"> </span><span class="kw">ET.GrangerGray</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
-<a class="sourceLine" id="cb1057-2" title="2">                       <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">windfunction_ver=</span><span class="dv">1948</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1056"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1056-1" title="1">res8 &lt;-<span class="st"> </span><span class="kw">ET.GrangerGray</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
+<a class="sourceLine" id="cb1056-2" title="2">                       <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">windfunction_ver=</span><span class="dv">1948</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>)</a></code></pre></div>
 <pre><code>## Granger-Gray Actual Areal ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -983,7 +983,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 2.86</code></pre>
 <pre><code>## Max: 5.39</code></pre>
 <pre><code>## Min: 1.45</code></pre>
-<div class="sourceCode" id="cb1070"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1070-1" title="1">res9 &lt;-<span class="st"> </span><span class="kw">ET.JensenHaise</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1069"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1069-1" title="1">res9 &lt;-<span class="st"> </span><span class="kw">ET.JensenHaise</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
 <pre><code>## Jensen-Haise Potential ET</code></pre>
 <pre><code>## Solar radiation data have been used for calculating evapotranspiration</code></pre>
 <pre><code>## Timestep: daily</code></pre>
@@ -994,7 +994,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 5.48</code></pre>
 <pre><code>## Max: 9.01</code></pre>
 <pre><code>## Min: 2.42</code></pre>
-<div class="sourceCode" id="cb1081"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1081-1" title="1">res10 &lt;-<span class="st"> </span><span class="kw">ET.Makkink</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1080"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1080-1" title="1">res10 &lt;-<span class="st"> </span><span class="kw">ET.Makkink</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>)</a></code></pre></div>
 <pre><code>## Makkink Reference crop ET</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
 <pre><code>## Timestep: daily</code></pre>
@@ -1005,8 +1005,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 3.3</code></pre>
 <pre><code>## Max: 5.19</code></pre>
 <pre><code>## Min: 1.45</code></pre>
-<div class="sourceCode" id="cb1092"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1092-1" title="1">res11 &lt;-<span class="st"> </span><span class="kw">ET.MattShuttleworth</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>,</a>
-<a class="sourceLine" id="cb1092-2" title="2">                             <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>, <span class="dt">r_s=</span><span class="dv">70</span>, <span class="dt">CH=</span><span class="fl">0.12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1091"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1091-1" title="1">res11 &lt;-<span class="st"> </span><span class="kw">ET.MattShuttleworth</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>,</a>
+<a class="sourceLine" id="cb1091-2" title="2">                             <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>, <span class="dt">r_s=</span><span class="dv">70</span>, <span class="dt">CH=</span><span class="fl">0.12</span>)</a></code></pre></div>
 <pre><code>## Matt-Shuttleworth Reference Crop ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23 ; surface resistance = 70 sm^-1; crop height = 0.12 m</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -1018,7 +1018,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 3.07</code></pre>
 <pre><code>## Max: 5.18</code></pre>
 <pre><code>## Min: 1.62</code></pre>
-<div class="sourceCode" id="cb1104"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1104-1" title="1">res12 &lt;-<span class="st"> </span><span class="kw">ET.McGuinnessBordne</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1103"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1103-1" title="1">res12 &lt;-<span class="st"> </span><span class="kw">ET.McGuinnessBordne</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>)</a></code></pre></div>
 <pre><code>## McGuinness-Bordne Potential ET</code></pre>
 <pre><code>## Timestep: daily</code></pre>
 <pre><code>## Units: mm</code></pre>
@@ -1028,9 +1028,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 6.37</code></pre>
 <pre><code>## Max: 8.69</code></pre>
 <pre><code>## Min: 3.99</code></pre>
-<div class="sourceCode" id="cb1114"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1114-1" title="1">res13 &lt;-<span class="st"> </span><span class="kw">ET.PenPan</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
-<a class="sourceLine" id="cb1114-2" title="2">                   <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>,</a>
-<a class="sourceLine" id="cb1114-3" title="3">                   <span class="dt">est=</span><span class="st">&quot;potential ET&quot;</span>, <span class="dt">pan_coeff=</span><span class="fl">0.71</span>, <span class="dt">overest=</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1113"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1113-1" title="1">res13 &lt;-<span class="st"> </span><span class="kw">ET.PenPan</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
+<a class="sourceLine" id="cb1113-2" title="2">                   <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">alpha=</span><span class="fl">0.23</span>,</a>
+<a class="sourceLine" id="cb1113-3" title="3">                   <span class="dt">est=</span><span class="st">&quot;potential ET&quot;</span>, <span class="dt">pan_coeff=</span><span class="fl">0.71</span>, <span class="dt">overest=</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## PenPan potential ET</code></pre>
 <pre><code>## Evaporative surface: user-defined, albedo = 0.23</code></pre>
 <pre><code>## Pan coeffcient: 0.71</code></pre>
@@ -1043,9 +1043,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 6.18</code></pre>
 <pre><code>## Max: 10.97</code></pre>
 <pre><code>## Min: 2.73</code></pre>
-<div class="sourceCode" id="cb1127"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1127-1" title="1">res14 &lt;-<span class="st"> </span><span class="kw">ET.Penman</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
-<a class="sourceLine" id="cb1127-2" title="2">                   <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">wind=</span><span class="st">&quot;yes&quot;</span>, </a>
-<a class="sourceLine" id="cb1127-3" title="3">                   <span class="dt">windfunction_ver =</span> <span class="st">&quot;1948&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.08</span>, <span class="dt">z0 =</span> <span class="fl">0.001</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1126"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1126-1" title="1">res14 &lt;-<span class="st"> </span><span class="kw">ET.Penman</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, </a>
+<a class="sourceLine" id="cb1126-2" title="2">                   <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">wind=</span><span class="st">&quot;yes&quot;</span>, </a>
+<a class="sourceLine" id="cb1126-3" title="3">                   <span class="dt">windfunction_ver =</span> <span class="st">&quot;1948&quot;</span>, <span class="dt">alpha =</span> <span class="fl">0.08</span>, <span class="dt">z0 =</span> <span class="fl">0.001</span>)</a></code></pre></div>
 <pre><code>## Penman Open-water Evaporation</code></pre>
 <pre><code>## Evaporative surface: water, albedo = 0.08 ; roughness height = 0.001 m</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -1057,7 +1057,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Mean: 5.27</code></pre>
 <pre><code>## Max: 8.69</code></pre>
 <pre><code>## Min: 2.58</code></pre>
-<div class="sourceCode" id="cb1139"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1139-1" title="1">res16 &lt;-<span class="st"> </span><span class="kw">ET.Turc</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">humid=</span> <span class="ot">FALSE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1138"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1138-1" title="1">res16 &lt;-<span class="st"> </span><span class="kw">ET.Turc</span>(data, myConst, <span class="dt">ts=</span><span class="st">&quot;daily&quot;</span>, <span class="dt">solar=</span><span class="st">&quot;data&quot;</span>, <span class="dt">humid=</span> <span class="ot">FALSE</span>)</a></code></pre></div>
 <pre><code>## Turc Reference Crop ET</code></pre>
 <pre><code>## Evaporative surface: reference crop</code></pre>
 <pre><code>## Solar radiation data have been used directly for calculating evapotranspiration</code></pre>
@@ -1071,12 +1071,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <pre><code>## Max: 6</code></pre>
 <pre><code>## Min: 2.05</code></pre>
 <p><strong>Tabela de Resultados</strong></p>
-<div class="sourceCode" id="cb1152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1152-1" title="1">res &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">PM=</span>res1<span class="op">$</span>ET.Daily, </a>
-<a class="sourceLine" id="cb1152-2" title="2">             <span class="dt">PT=</span>res2<span class="op">$</span>ET.Daily, <span class="dt">RM=</span>res3<span class="op">$</span>ET.Daily, <span class="dt">HS=</span>res4<span class="op">$</span>ET.Daily,</a>
-<a class="sourceLine" id="cb1152-3" title="3">             <span class="dt">AB=</span>res5<span class="op">$</span>ET.Daily, <span class="dt">BS=</span>res6<span class="op">$</span>ET.Daily, <span class="dt">CA=</span>res7<span class="op">$</span>ET.Daily, <span class="dt">GG=</span>res8<span class="op">$</span>ET.Daily,</a>
-<a class="sourceLine" id="cb1152-4" title="4">             <span class="dt">JH=</span>res9<span class="op">$</span>ET.Daily, <span class="dt">MK=</span>res10<span class="op">$</span>ET.Daily, <span class="dt">MS=</span>res11<span class="op">$</span>ET.Daily, <span class="dt">MG=</span>res12<span class="op">$</span>ET.Daily,</a>
-<a class="sourceLine" id="cb1152-5" title="5">             <span class="dt">PP=</span>res13<span class="op">$</span>ET.Daily, <span class="dt">PN=</span>res14<span class="op">$</span>ET.Daily, <span class="dt">Tu=</span>res16<span class="op">$</span>ET.Daily)</a></code></pre></div>
-<div class="sourceCode" id="cb1153"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1153-1" title="1"><span class="kw">head</span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb1151"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1151-1" title="1">res &lt;-<span class="st"> </span><span class="kw">cbind</span>(<span class="dt">PM=</span>res1<span class="op">$</span>ET.Daily, </a>
+<a class="sourceLine" id="cb1151-2" title="2">             <span class="dt">PT=</span>res2<span class="op">$</span>ET.Daily, <span class="dt">RM=</span>res3<span class="op">$</span>ET.Daily, <span class="dt">HS=</span>res4<span class="op">$</span>ET.Daily,</a>
+<a class="sourceLine" id="cb1151-3" title="3">             <span class="dt">AB=</span>res5<span class="op">$</span>ET.Daily, <span class="dt">BS=</span>res6<span class="op">$</span>ET.Daily, <span class="dt">CA=</span>res7<span class="op">$</span>ET.Daily, <span class="dt">GG=</span>res8<span class="op">$</span>ET.Daily,</a>
+<a class="sourceLine" id="cb1151-4" title="4">             <span class="dt">JH=</span>res9<span class="op">$</span>ET.Daily, <span class="dt">MK=</span>res10<span class="op">$</span>ET.Daily, <span class="dt">MS=</span>res11<span class="op">$</span>ET.Daily, <span class="dt">MG=</span>res12<span class="op">$</span>ET.Daily,</a>
+<a class="sourceLine" id="cb1151-5" title="5">             <span class="dt">PP=</span>res13<span class="op">$</span>ET.Daily, <span class="dt">PN=</span>res14<span class="op">$</span>ET.Daily, <span class="dt">Tu=</span>res16<span class="op">$</span>ET.Daily)</a></code></pre></div>
+<div class="sourceCode" id="cb1152"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1152-1" title="1"><span class="kw">head</span>(res)</a></code></pre></div>
 <pre><code>##                  PM       PT       RM       HS       AB       BS       CA
 ## 1980-01-01 4.156318 4.929036 3.430645 5.082573 3.928653 5.277834 2.730982
 ## 1980-01-02 2.188232 2.745827 1.478422 5.141016 2.048163 3.129764 1.306937
@@ -1099,12 +1099,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1980-01-05 2.221660
 ## 1980-01-06 3.581712</code></pre>
 <p>Salvar Tabela com Evapotranspiração a partir de todos os métodos</p>
-<div class="sourceCode" id="cb1155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1155-1" title="1"><span class="kw">write.table</span>(res,<span class="st">&quot;ETo5.csv&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;.&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1154"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1154-1" title="1"><span class="kw">write.table</span>(res,<span class="st">&quot;ETo5.csv&quot;</span>,<span class="dt">sep=</span><span class="st">&quot;;&quot;</span>,<span class="dt">dec=</span><span class="st">&quot;.&quot;</span>)</a></code></pre></div>
 <p>Plotar a evapotranspiração estimada com variáveis climáticas</p>
-<div class="sourceCode" id="cb1156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1156-1" title="1"><span class="kw">ETForcings</span>(data, res1, <span class="dt">forcing =</span> <span class="st">&quot;RHmin&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1155"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1155-1" title="1"><span class="kw">ETForcings</span>(data, res1, <span class="dt">forcing =</span> <span class="st">&quot;RHmin&quot;</span>)</a></code></pre></div>
 <p>lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância</p>
-<div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1157-1" title="1">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(res<span class="op">$</span>PM<span class="op">~</span>res<span class="op">$</span>PT<span class="dv">-1</span>)</a></code></pre></div>
-<div class="sourceCode" id="cb1158"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1158-1" title="1"><span class="kw">summary</span>(fit)</a></code></pre></div>
+<div class="sourceCode" id="cb1156"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1156-1" title="1">fit &lt;-<span class="st"> </span><span class="kw">lm</span>(res<span class="op">$</span>PM<span class="op">~</span>res<span class="op">$</span>PT<span class="dv">-1</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1157"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1157-1" title="1"><span class="kw">summary</span>(fit)</a></code></pre></div>
 <pre><code>## 
 ## Call:
 ## lm(formula = res$PM ~ res$PT - 1)
@@ -1123,14 +1123,14 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## Multiple R-squared:  0.9809, Adjusted R-squared:  0.9809 
 ## F-statistic: 1.878e+04 on 1 and 365 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p>Apresenta Similaridade entre os métodos, análise significativa.</p>
-<div class="sourceCode" id="cb1160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1160-1" title="1"><span class="kw">plot</span>(res<span class="op">$</span>PM<span class="op">~</span>res<span class="op">$</span>PT); </a>
-<a class="sourceLine" id="cb1160-2" title="2"><span class="kw">abline</span>(fit, <span class="dt">col=</span><span class="dv">2</span>); </a>
-<a class="sourceLine" id="cb1160-3" title="3"><span class="kw">abline</span>(<span class="dt">a=</span><span class="dv">0</span>, <span class="dt">b=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">3</span>, <span class="dt">lty=</span><span class="dv">2</span>) </a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-562-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1159"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1159-1" title="1"><span class="kw">plot</span>(res<span class="op">$</span>PM<span class="op">~</span>res<span class="op">$</span>PT); </a>
+<a class="sourceLine" id="cb1159-2" title="2"><span class="kw">abline</span>(fit, <span class="dt">col=</span><span class="dv">2</span>); </a>
+<a class="sourceLine" id="cb1159-3" title="3"><span class="kw">abline</span>(<span class="dt">a=</span><span class="dv">0</span>, <span class="dt">b=</span><span class="dv">1</span>, <span class="dt">col=</span><span class="dv">3</span>, <span class="dt">lty=</span><span class="dv">2</span>) </a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-564-1.png" width="672" /></p>
 <p>Comparar a evapotranspiração estimada entre vários conjuntos de resultados</p>
-<div class="sourceCode" id="cb1161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1161-1" title="1"><span class="kw">ETComparison</span>(res1, res2, <span class="dt">type =</span> <span class="st">&quot;Monthly&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">800</span>),</a>
-<a class="sourceLine" id="cb1161-2" title="2">             <span class="dt">labs=</span><span class="kw">c</span>(<span class="st">&quot;Penman&quot;</span>,<span class="st">&quot;PenmanMonteith&quot;</span>))</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-563-1.png" width="672" /><img src="TudodoR_files/figure-html/unnamed-chunk-563-2.png" width="672" /><img src="TudodoR_files/figure-html/unnamed-chunk-563-3.png" width="672" /></p>
+<div class="sourceCode" id="cb1160"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1160-1" title="1"><span class="kw">ETComparison</span>(res1, res2, <span class="dt">type =</span> <span class="st">&quot;Monthly&quot;</span>, <span class="dt">ylim=</span><span class="kw">c</span>(<span class="dv">0</span>,<span class="dv">800</span>),</a>
+<a class="sourceLine" id="cb1160-2" title="2">             <span class="dt">labs=</span><span class="kw">c</span>(<span class="st">&quot;Penman&quot;</span>,<span class="st">&quot;PenmanMonteith&quot;</span>))</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-565-1.png" width="672" /><img src="TudodoR_files/figure-html/unnamed-chunk-565-2.png" width="672" /><img src="TudodoR_files/figure-html/unnamed-chunk-565-3.png" width="672" /></p>
 </div>
 <div id="referência-7" class="section level3">
 <h3><span class="header-section-number">10.2.2</span> Referência</h3>
@@ -1144,9 +1144,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="dados-temporais-no-r" class="section level2">
 <h2><span class="header-section-number">10.3</span> Dados temporais no R</h2>
 <p>Vamos baixar os dados climáticos de Rondonópolis-MT</p>
-<div class="sourceCode" id="cb1162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1162-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1161"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1161-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a></code></pre></div>
 <p>Podemos verificar o cabeçario do conjunto de dados</p>
-<div class="sourceCode" id="cb1163"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1163-1" title="1"><span class="kw">head</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1162"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1162-1" title="1"><span class="kw">head</span>(roo)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA
 ## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA    NA     NA
@@ -1155,10 +1155,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5  4  2 1998  0.0 35.6 22.1 NA 26.650 23.90 80.00  0.275
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325</code></pre>
 <p>Baixando os pacotes necessários</p>
-<div class="sourceCode" id="cb1165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1165-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb1164"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1164-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
 <p>Selecionando algumas colunas pelo nome com a função <code>select</code></p>
-<div class="sourceCode" id="cb1166"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1166-1" title="1">selecionar &lt;-<span class="st"> </span><span class="kw">select</span>(roo,ano,Tmax)</a>
-<a class="sourceLine" id="cb1166-2" title="2"><span class="kw">head</span>(selecionar)</a></code></pre></div>
+<div class="sourceCode" id="cb1165"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1165-1" title="1">selecionar &lt;-<span class="st"> </span><span class="kw">select</span>(roo,ano,Tmax)</a>
+<a class="sourceLine" id="cb1165-2" title="2"><span class="kw">head</span>(selecionar)</a></code></pre></div>
 <pre><code>##    ano Tmax
 ## 1 1998 30.0
 ## 2 1998 35.6
@@ -1167,8 +1167,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 1998 35.6
 ## 6 1998 36.4</code></pre>
 <p>Retirar colunas com a função <code>select</code></p>
-<div class="sourceCode" id="cb1168"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1168-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">select</span> (roo,<span class="op">-</span>UR)</a>
-<a class="sourceLine" id="cb1168-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb1167"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1167-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">select</span> (roo,<span class="op">-</span>UR)</a>
+<a class="sourceLine" id="cb1167-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu Vvento
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA     NA
 ## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA     NA
@@ -1178,7 +1178,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00  0.325</code></pre>
 <p>Filtrar os dados com a função <code>filter</code></p>
 <p>Apresentar somente os dias com temperatura minima do ar menor que 20ºC</p>
-<div class="sourceCode" id="cb1170"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1170-1" title="1"><span class="kw">filter</span>(roo, Tmin <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1169"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1169-1" title="1"><span class="kw">filter</span>(roo, Tmin <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>)</a></code></pre></div>
 <pre><code>##      dd mm  ano  Prec Tmax Tmin   n    Tbs    Tbu     UR  Vvento
 ## 1     1  5 1998   0.0 31.2 16.0  NA     NA     NA     NA      NA
 ## 2     2  5 1998   0.0 32.4 16.8  NA 24.300 20.550  71.25 0.20000
@@ -2853,8 +2853,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 1671  2 11 2010   0.4 32.6 19.9  NA     NA     NA     NA      NA
 ## 1672  3 11 2010   0.0   NA 17.3  NA     NA     NA     NA      NA</code></pre>
 <p>Apresentar somente os dias com temperatura menor que 20ºC e Umidade relativa do ar menor que 30%</p>
-<div class="sourceCode" id="cb1172"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1172-1" title="1">dados_criticos &lt;-<span class="st"> </span><span class="kw">filter</span>(roo,Tmin <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>, UR <span class="op">&lt;</span><span class="dv">30</span> )</a>
-<a class="sourceLine" id="cb1172-2" title="2"><span class="kw">head</span>(dados_criticos)</a></code></pre></div>
+<div class="sourceCode" id="cb1171"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1171-1" title="1">dados_criticos &lt;-<span class="st"> </span><span class="kw">filter</span>(roo,Tmin <span class="op">&lt;</span><span class="st"> </span><span class="dv">20</span>, UR <span class="op">&lt;</span><span class="dv">30</span> )</a>
+<a class="sourceLine" id="cb1171-2" title="2"><span class="kw">head</span>(dados_criticos)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1 31  7 1998    0 36.8 13.8 NA 31.125 18.05 28.75   0.05
 ## 2  5  9 2004    0 38.7 16.9 NA 29.600 17.95 29.00   0.45
@@ -2862,8 +2862,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4 15  8 2005    0   NA 14.4  0 27.950 17.00 29.75   0.15
 ## 5  7  9 2005    0   NA 18.9  0 29.100 21.60 29.75   0.20</code></pre>
 <p>Quando precisamos adicionar uma coluna usamos a função <code>mutate</code></p>
-<div class="sourceCode" id="cb1174"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1174-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">mutate</span>(roo, <span class="dt">Tmd =</span> ((Tmax <span class="op">+</span><span class="st"> </span>Tmin )<span class="op">/</span><span class="dv">2</span>))</a>
-<a class="sourceLine" id="cb1174-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb1173"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1173-1" title="1">dados &lt;-<span class="st"> </span><span class="kw">mutate</span>(roo, <span class="dt">Tmd =</span> ((Tmax <span class="op">+</span><span class="st"> </span>Tmin )<span class="op">/</span><span class="dv">2</span>))</a>
+<a class="sourceLine" id="cb1173-2" title="2"><span class="kw">head</span>(dados)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento   Tmd
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA 25.85
 ## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA    NA     NA 28.70
@@ -2873,11 +2873,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325 29.45</code></pre>
 <p>Resumir e agrupar os dados usando a função <code>summarise</code></p>
 <p>Qual o valor minimo de umidade relativa ?</p>
-<div class="sourceCode" id="cb1176"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1176-1" title="1"><span class="kw">summarise</span>(roo, <span class="kw">min</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) </a></code></pre></div>
+<div class="sourceCode" id="cb1175"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1175-1" title="1"><span class="kw">summarise</span>(roo, <span class="kw">min</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)) </a></code></pre></div>
 <pre><code>##   min(UR, na.rm = TRUE)
 ## 1                 27.25</code></pre>
 <p>Qual o valor médio de velocidade do vento por mês?</p>
-<div class="sourceCode" id="cb1178"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1178-1" title="1"><span class="kw">summarise</span>(<span class="kw">group_by</span>(roo, mm), <span class="kw">mean</span>(Vvento, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1177"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1177-1" title="1"><span class="kw">summarise</span>(<span class="kw">group_by</span>(roo, mm), <span class="kw">mean</span>(Vvento, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##       mm `mean(Vvento, na.rm = TRUE)`
 ##    &lt;int&gt;                        &lt;dbl&gt;
@@ -2896,7 +2896,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>Vamos aprender a usar o operador <strong>pipe</strong></p>
 <p>A ideia do operador ‘%&gt;%’ (pipe) é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.</p>
 <p>Iremos filtar o valores do banco de dados <em>roo</em> com as variaveis UR e mês com apresentação do cabeçalho (‘head()’)</p>
-<div class="sourceCode" id="cb1180"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1180-1" title="1"><span class="kw">head</span>(<span class="kw">select</span>(roo, UR, mm))</a></code></pre></div>
+<div class="sourceCode" id="cb1179"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1179-1" title="1"><span class="kw">head</span>(<span class="kw">select</span>(roo, UR, mm))</a></code></pre></div>
 <pre><code>##      UR mm
 ## 1    NA  1
 ## 2    NA  2
@@ -2905,7 +2905,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 80.00  2
 ## 6 78.50  2</code></pre>
 <p>Usando o piper</p>
-<div class="sourceCode" id="cb1182"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1182-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(UR, mm) <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<div class="sourceCode" id="cb1181"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1181-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">select</span>(UR, mm) <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
 <pre><code>##      UR mm
 ## 1    NA  1
 ## 2    NA  2
@@ -2914,17 +2914,17 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 5 80.00  2
 ## 6 78.50  2</code></pre>
 <p>Exploração de dados: gerar um resumo estatístico com o comando pipe</p>
-<div class="sourceCode" id="cb1184"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1184-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1184-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>), </a>
-<a class="sourceLine" id="cb1184-3" title="3">            <span class="dt">min =</span> <span class="kw">min</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb1184-4" title="4">            <span class="dt">max =</span> <span class="kw">max</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),</a>
-<a class="sourceLine" id="cb1184-5" title="5">            <span class="dt">total =</span> <span class="kw">n</span>())</a></code></pre></div>
+<div class="sourceCode" id="cb1183"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1183-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1183-2" title="2"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">avg =</span> <span class="kw">mean</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>), </a>
+<a class="sourceLine" id="cb1183-3" title="3">            <span class="dt">min =</span> <span class="kw">min</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb1183-4" title="4">            <span class="dt">max =</span> <span class="kw">max</span>(UR,<span class="dt">na.rm=</span><span class="ot">TRUE</span>),</a>
+<a class="sourceLine" id="cb1183-5" title="5">            <span class="dt">total =</span> <span class="kw">n</span>())</a></code></pre></div>
 <pre><code>##        avg   min max total
 ## 1 74.41532 27.25 100  4337</code></pre>
 <p>Exploração de dados gerar um resumo estatístico com o comando pipe agrupado por mês</p>
-<div class="sourceCode" id="cb1186"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1186-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1186-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(mm) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1186-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1185"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1185-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1185-2" title="2"><span class="st">  </span><span class="kw">group_by</span>(mm) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1185-3" title="3"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 12 x 2
 ##       mm `mean(UR, na.rm = TRUE)`
 ##    &lt;int&gt;                    &lt;dbl&gt;
@@ -2941,10 +2941,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 11    11                     77.4
 ## 12    12                     84.4</code></pre>
 <p>Caso necessitamos retirar o mês de outubro</p>
-<div class="sourceCode" id="cb1188"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1188-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1188-2" title="2"><span class="st">  </span><span class="kw">filter</span>(mm <span class="op">!=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1188-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(mm) <span class="op">%&gt;%</span><span class="st"> </span></a>
-<a class="sourceLine" id="cb1188-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
+<div class="sourceCode" id="cb1187"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1187-1" title="1">roo <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1187-2" title="2"><span class="st">  </span><span class="kw">filter</span>(mm <span class="op">!=</span><span class="st"> </span><span class="dv">10</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1187-3" title="3"><span class="st">  </span><span class="kw">group_by</span>(mm) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1187-4" title="4"><span class="st">  </span><span class="kw">summarise</span>(<span class="kw">mean</span>(UR, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>))</a></code></pre></div>
 <pre><code>## # A tibble: 11 x 2
 ##       mm `mean(UR, na.rm = TRUE)`
 ##    &lt;int&gt;                    &lt;dbl&gt;
@@ -2960,9 +2960,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 10    11                     77.4
 ## 11    12                     84.4</code></pre>
 <p>Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condição de apresentar somente valores de Tmax maiores que 40. Apresentação com a função head</p>
-<div class="sourceCode" id="cb1190"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1190-1" title="1">roo <span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1190-2" title="2"><span class="st">  </span><span class="kw">select</span>(mm, UR, Tmax)<span class="op">%&gt;%</span></a>
-<a class="sourceLine" id="cb1190-3" title="3"><span class="st">  </span><span class="kw">filter</span>(Tmax <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>)  <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
+<div class="sourceCode" id="cb1189"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1189-1" title="1">roo <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1189-2" title="2"><span class="st">  </span><span class="kw">select</span>(mm, UR, Tmax)<span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1189-3" title="3"><span class="st">  </span><span class="kw">filter</span>(Tmax <span class="op">&gt;</span><span class="st"> </span><span class="dv">40</span>)  <span class="op">%&gt;%</span><span class="st"> </span>head</a></code></pre></div>
 <pre><code>##   mm   UR Tmax
 ## 1  9 61.0 40.4
 ## 2 10 56.5 40.1
@@ -2972,8 +2972,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 10   NA 40.5</code></pre>
 <p>Explorar os dados e visualizar com pacote dply e ggplot2</p>
 <p>Vamos utilizar um novo banco de dados</p>
-<div class="sourceCode" id="cb1192"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1192-1" title="1">trmm &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="dt">file =</span><span class="st">&quot;https://www.dropbox.com/s/hf80ptt7lm6kbdb/roo_trmm.csv?dl=1&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span> )</a>
-<a class="sourceLine" id="cb1192-2" title="2"><span class="kw">head</span>(trmm)</a></code></pre></div>
+<div class="sourceCode" id="cb1191"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1191-1" title="1">trmm &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="dt">file =</span><span class="st">&quot;https://www.dropbox.com/s/hf80ptt7lm6kbdb/roo_trmm.csv?dl=1&quot;</span>, <span class="dt">sep =</span> <span class="st">&quot;,&quot;</span> )</a>
+<a class="sourceLine" id="cb1191-2" title="2"><span class="kw">head</span>(trmm)</a></code></pre></div>
 <pre><code>##         TIME MONTH_01 MONTH_02 MONTH_03 MONTH_04  MONTH_05   MONTH_06 MONTH_07
 ## 2003   317.6  161.086  412.182  147.819   67.488 0.0207795    1.81712  4.11907
 ## 2004 312.005  208.448  87.4705  133.678  42.0127   15.5672    103.441      0.0
@@ -2989,12 +2989,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 2007  5.64493  124.682  176.562  199.727       NA
 ## 2008   45.046  84.4426  224.299  248.747       NA</code></pre>
 <p>Com o pacote tidyr podemos reorganizar a tabela</p>
-<div class="sourceCode" id="cb1194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1194-1" title="1"><span class="kw">library</span>(tidyr)</a></code></pre></div>
+<div class="sourceCode" id="cb1193"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1193-1" title="1"><span class="kw">library</span>(tidyr)</a></code></pre></div>
 <p>Com a função <code>gather</code> iremos unir todos valores de chuva mensal em uma coluna separado pelo meses</p>
-<div class="sourceCode" id="cb1195"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1195-1" title="1">dados =<span class="st"> </span><span class="kw">gather</span>(trmm, TIME, ppt, MONTH_<span class="dv">01</span><span class="op">:</span>MONTH_<span class="dv">12</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1194"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1194-1" title="1">dados =<span class="st"> </span><span class="kw">gather</span>(trmm, TIME, ppt, MONTH_<span class="dv">01</span><span class="op">:</span>MONTH_<span class="dv">12</span>, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)</a></code></pre></div>
 <pre><code>## Warning: attributes are not identical across measure variables;
 ## they will be dropped</code></pre>
-<div class="sourceCode" id="cb1197"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1197-1" title="1"><span class="kw">head</span>(dados)</a></code></pre></div>
+<div class="sourceCode" id="cb1196"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1196-1" title="1"><span class="kw">head</span>(dados)</a></code></pre></div>
 <pre><code>##       TIME     ppt
 ## 1 MONTH_01 161.086
 ## 2 MONTH_01 208.448
@@ -3004,8 +3004,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 6 MONTH_01 200.676</code></pre>
 <p>Visualizar dados temporais no R</p>
 <p>Vamos baixar os dados climáticos de Rondonpolis-MT</p>
-<div class="sourceCode" id="cb1199"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1199-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
-<a class="sourceLine" id="cb1199-2" title="2"><span class="kw">head</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1198"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1198-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb1198-2" title="2"><span class="kw">head</span>(roo)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA
 ## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA    NA     NA
@@ -3013,7 +3013,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  3  2 1998  0.6 35.4 21.5 NA 24.975 23.00 86.50  0.125
 ## 5  4  2 1998  0.0 35.6 22.1 NA 26.650 23.90 80.00  0.275
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325</code></pre>
-<div class="sourceCode" id="cb1201"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1201-1" title="1"><span class="kw">tail</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1200"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1200-1" title="1"><span class="kw">tail</span>(roo)</a></code></pre></div>
 <pre><code>##      dd mm  ano Prec Tmax Tmin  n Tbs Tbu UR Vvento
 ## 4332 29 10 2010  0.0 36.8 18.9 NA  NA  NA NA     NA
 ## 4333 30 10 2010  0.0 36.4 24.8 NA  NA  NA NA     NA
@@ -3023,8 +3023,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4337  3 11 2010  0.0   NA 17.3 NA  NA  NA NA     NA</code></pre>
 <p>Os dados de Roo inicia de janeiro de 1998 a novembro de 2010.</p>
 <p>Vamos retirar as colunas das datas</p>
-<div class="sourceCode" id="cb1203"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1203-1" title="1">roo2=roo[,<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>]</a>
-<a class="sourceLine" id="cb1203-2" title="2"><span class="kw">head</span>(roo2)</a></code></pre></div>
+<div class="sourceCode" id="cb1202"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1202-1" title="1">roo2=roo[,<span class="dv">4</span><span class="op">:</span><span class="dv">11</span>]</a>
+<a class="sourceLine" id="cb1202-2" title="2"><span class="kw">head</span>(roo2)</a></code></pre></div>
 <pre><code>##   Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1   NA 30.0 21.7 NA     NA    NA    NA     NA
 ## 2  8.2 35.6 21.8 NA     NA    NA    NA     NA
@@ -3032,60 +3032,60 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  0.6 35.4 21.5 NA 24.975 23.00 86.50  0.125
 ## 5  0.0 35.6 22.1 NA 26.650 23.90 80.00  0.275
 ## 6  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325</code></pre>
-<div class="sourceCode" id="cb1205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1205-1" title="1">roo2=<span class="kw">na.omit</span>(roo2)</a></code></pre></div>
+<div class="sourceCode" id="cb1204"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1204-1" title="1">roo2=<span class="kw">na.omit</span>(roo2)</a></code></pre></div>
 <p>Converter os dados em um objeto de serie temporal (ts)</p>
-<div class="sourceCode" id="cb1206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1206-1" title="1">meuts =<span class="st"> </span><span class="kw">ts</span>(roo2, <span class="dt">start=</span><span class="kw">c</span>(<span class="dv">1998</span>, <span class="dv">1</span>), <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">2010</span>, <span class="dv">11</span>), <span class="dt">frequency=</span><span class="dv">12</span>) </a>
-<a class="sourceLine" id="cb1206-2" title="2"><span class="kw">plot</span>(meuts)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-585-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1205"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1205-1" title="1">meuts =<span class="st"> </span><span class="kw">ts</span>(roo2, <span class="dt">start=</span><span class="kw">c</span>(<span class="dv">1998</span>, <span class="dv">1</span>), <span class="dt">end=</span><span class="kw">c</span>(<span class="dv">2010</span>, <span class="dv">11</span>), <span class="dt">frequency=</span><span class="dv">12</span>) </a>
+<a class="sourceLine" id="cb1205-2" title="2"><span class="kw">plot</span>(meuts)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-587-1.png" width="672" /></p>
 <p>Verificar os dados</p>
-<div class="sourceCode" id="cb1207"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1207-1" title="1"><span class="kw">start</span>(meuts)</a></code></pre></div>
+<div class="sourceCode" id="cb1206"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1206-1" title="1"><span class="kw">start</span>(meuts)</a></code></pre></div>
 <pre><code>## [1] 1998    1</code></pre>
-<div class="sourceCode" id="cb1209"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1209-1" title="1"><span class="kw">end</span>(meuts)</a></code></pre></div>
+<div class="sourceCode" id="cb1208"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1208-1" title="1"><span class="kw">end</span>(meuts)</a></code></pre></div>
 <pre><code>## [1] 2010   11</code></pre>
-<div class="sourceCode" id="cb1211"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1211-1" title="1"><span class="kw">frequency</span>(meuts)</a></code></pre></div>
+<div class="sourceCode" id="cb1210"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1210-1" title="1"><span class="kw">frequency</span>(meuts)</a></code></pre></div>
 <pre><code>## [1] 12</code></pre>
 <p>Apresentação gráfica</p>
-<div class="sourceCode" id="cb1213"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1213-1" title="1"><span class="kw">library</span>(devtools)</a>
-<a class="sourceLine" id="cb1213-2" title="2"></a>
-<a class="sourceLine" id="cb1213-3" title="3"><span class="kw">require</span>(ggfortify) <span class="co">#will plot the ts objects as ggplot2</span></a></code></pre></div>
+<div class="sourceCode" id="cb1212"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1212-1" title="1"><span class="kw">library</span>(devtools)</a>
+<a class="sourceLine" id="cb1212-2" title="2"></a>
+<a class="sourceLine" id="cb1212-3" title="3"><span class="kw">require</span>(ggfortify) <span class="co">#will plot the ts objects as ggplot2</span></a></code></pre></div>
 <pre><code>## Loading required package: ggfortify</code></pre>
-<div class="sourceCode" id="cb1215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1215-1" title="1"><span class="kw">autoplot</span>(meuts) <span class="co"># time series on facets</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-587-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1216-1" title="1"><span class="kw">autoplot</span>(meuts, <span class="dt">facets =</span> F) <span class="co">#time series of stocks on one plot</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-587-2.png" width="672" /></p>
+<div class="sourceCode" id="cb1214"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1214-1" title="1"><span class="kw">autoplot</span>(meuts) <span class="co"># time series on facets</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-589-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1215"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1215-1" title="1"><span class="kw">autoplot</span>(meuts, <span class="dt">facets =</span> F) <span class="co">#time series of stocks on one plot</span></a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-589-2.png" width="672" /></p>
 </div>
 <div id="datas-no-r" class="section level2">
 <h2><span class="header-section-number">10.4</span> Datas no R</h2>
 <p>O Pacote <code>Lubridate</code> fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda.</p>
-<div class="sourceCode" id="cb1217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1217-1" title="1"><span class="co">#install.packages(&quot;lubridate&quot;)</span></a>
-<a class="sourceLine" id="cb1217-2" title="2"><span class="kw">library</span>(lubridate)</a></code></pre></div>
+<div class="sourceCode" id="cb1216"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1216-1" title="1"><span class="co">#install.packages(&quot;lubridate&quot;)</span></a>
+<a class="sourceLine" id="cb1216-2" title="2"><span class="kw">library</span>(lubridate)</a></code></pre></div>
 <p>Qual o dia de hoje?</p>
-<div class="sourceCode" id="cb1218"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1218-1" title="1"><span class="kw">today</span>()</a></code></pre></div>
+<div class="sourceCode" id="cb1217"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1217-1" title="1"><span class="kw">today</span>()</a></code></pre></div>
 <pre><code>## [1] &quot;2020-04-29&quot;</code></pre>
 <p>Qual o dia e horario ?</p>
-<div class="sourceCode" id="cb1220"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1220-1" title="1"><span class="kw">now</span>()</a></code></pre></div>
-<pre><code>## [1] &quot;2020-04-29 01:43:09 -05&quot;</code></pre>
+<div class="sourceCode" id="cb1219"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1219-1" title="1"><span class="kw">now</span>()</a></code></pre></div>
+<pre><code>## [1] &quot;2020-04-29 17:29:03 -05&quot;</code></pre>
 <p>Atribuir data em um Objeto</p>
-<div class="sourceCode" id="cb1222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1222-1" title="1">x=<span class="st">&quot;1983-10-28&quot;</span></a></code></pre></div>
+<div class="sourceCode" id="cb1221"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1221-1" title="1">x=<span class="st">&quot;1983-10-28&quot;</span></a></code></pre></div>
 <p>YYYY-MM-DD: corresponde ao ano, mês e dia.</p>
 <p>Qual a estrutura desse objeto ?</p>
-<div class="sourceCode" id="cb1223"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1223-1" title="1"><span class="kw">str</span>(x)</a></code></pre></div>
+<div class="sourceCode" id="cb1222"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1222-1" title="1"><span class="kw">str</span>(x)</a></code></pre></div>
 <pre><code>##  chr &quot;1983-10-28&quot;</code></pre>
 <p>O objeto <em>x</em> é um caracter, precisamos transformar para data com a função <code>as.Date()</code></p>
-<div class="sourceCode" id="cb1225"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1225-1" title="1">dia1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(x)</a>
-<a class="sourceLine" id="cb1225-2" title="2"><span class="kw">str</span>(dia1)</a></code></pre></div>
+<div class="sourceCode" id="cb1224"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1224-1" title="1">dia1 &lt;-<span class="st"> </span><span class="kw">as.Date</span>(x)</a>
+<a class="sourceLine" id="cb1224-2" title="2"><span class="kw">str</span>(dia1)</a></code></pre></div>
 <pre><code>##  Date[1:1], format: &quot;1983-10-28&quot;</code></pre>
 <p>convertendo datas não padronizadas para padrão</p>
-<div class="sourceCode" id="cb1227"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1227-1" title="1">dia2 =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;12/27/2015&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</a>
-<a class="sourceLine" id="cb1227-2" title="2"><span class="kw">str</span>(dia2)</a></code></pre></div>
+<div class="sourceCode" id="cb1226"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1226-1" title="1">dia2 =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;12/27/2015&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%m/%d/%Y&quot;</span>)</a>
+<a class="sourceLine" id="cb1226-2" title="2"><span class="kw">str</span>(dia2)</a></code></pre></div>
 <pre><code>##  Date[1:1], format: &quot;2015-12-27&quot;</code></pre>
-<div class="sourceCode" id="cb1229"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1229-1" title="1">dia3 =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;Novembro 22, 1998&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%B %d, %Y&quot;</span>)</a>
-<a class="sourceLine" id="cb1229-2" title="2"><span class="kw">str</span>(dia3)</a></code></pre></div>
+<div class="sourceCode" id="cb1228"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1228-1" title="1">dia3 =<span class="st"> </span><span class="kw">as.Date</span>(<span class="st">&quot;Novembro 22, 1998&quot;</span>, <span class="dt">format =</span> <span class="st">&quot;%B %d, %Y&quot;</span>)</a>
+<a class="sourceLine" id="cb1228-2" title="2"><span class="kw">str</span>(dia3)</a></code></pre></div>
 <pre><code>##  Date[1:1], format: &quot;1998-11-22&quot;</code></pre>
 <p>Calculos com as datas</p>
-<div class="sourceCode" id="cb1231"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1231-1" title="1">dia2<span class="op">-</span>dia3</a></code></pre></div>
+<div class="sourceCode" id="cb1230"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1230-1" title="1">dia2<span class="op">-</span>dia3</a></code></pre></div>
 <pre><code>## Time difference of 6244 days</code></pre>
-<div class="sourceCode" id="cb1233"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1233-1" title="1">dia2<span class="op">&gt;</span>dia3</a></code></pre></div>
+<div class="sourceCode" id="cb1232"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1232-1" title="1">dia2<span class="op">&gt;</span>dia3</a></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
 
 </div>
@@ -3095,13 +3095,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>É um teste não paramétrico, o que significa que funciona para todas as distribuições (ou seja, seus dados não precisam atender à suposição de normalidade ), mas seus dados não devem ter correlação serial . Se seus dados seguem uma distribuição normal , você pode executar uma regressão linear simples.</p>
 <p>Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote Kendall ou trend.</p>
 <p>Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote <code>Kendall</code> ou <code>trend</code>.</p>
-<div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1235-1" title="1"><span class="kw">library</span>(Kendall)</a>
-<a class="sourceLine" id="cb1235-2" title="2"><span class="kw">require</span>(trend)</a></code></pre></div>
+<div class="sourceCode" id="cb1234"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1234-1" title="1"><span class="kw">library</span>(Kendall)</a>
+<a class="sourceLine" id="cb1234-2" title="2"><span class="kw">require</span>(trend)</a></code></pre></div>
 <p>O pacote Kendall tem uma função chamada<code>MannKendall ()</code> que implementa o teste não paramétrico para detecção de tendência monotônica, conhecido como teste de Mann-Kendall. (Uma tendência monótona pode ser uma tendência ascendente ou uma tendência descendente).</p>
 <p>No pacote trend a função é chamada de <code>mk.test ()</code>Para ilustrar as funções dos pacotes em R, usaremos os conjuntos de dados climáticos de Rondonópolis-MT (roo.csv).</p>
-<div class="sourceCode" id="cb1236"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1236-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
-<a class="sourceLine" id="cb1236-2" title="2"></a>
-<a class="sourceLine" id="cb1236-3" title="3"><span class="kw">head</span> (roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1235"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1235-1" title="1">roo &lt;-<span class="st"> </span><span class="kw">read.csv2</span> (<span class="st">&quot;https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1&quot;</span>)</a>
+<a class="sourceLine" id="cb1235-2" title="2"></a>
+<a class="sourceLine" id="cb1235-3" title="3"><span class="kw">head</span> (roo)</a></code></pre></div>
 <pre><code>##   dd mm  ano Prec Tmax Tmin  n    Tbs   Tbu    UR Vvento
 ## 1  1  1 1998   NA 30.0 21.7 NA     NA    NA    NA     NA
 ## 2  1  2 1998  8.2 35.6 21.8 NA     NA    NA    NA     NA
@@ -3109,7 +3109,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4  3  2 1998  0.6 35.4 21.5 NA 24.975 23.00 86.50  0.125
 ## 5  4  2 1998  0.0 35.6 22.1 NA 26.650 23.90 80.00  0.275
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325</code></pre>
-<div class="sourceCode" id="cb1238"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1238-1" title="1"><span class="kw">tail</span>(roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1237"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1237-1" title="1"><span class="kw">tail</span>(roo)</a></code></pre></div>
 <pre><code>##      dd mm  ano Prec Tmax Tmin  n Tbs Tbu UR Vvento
 ## 4332 29 10 2010  0.0 36.8 18.9 NA  NA  NA NA     NA
 ## 4333 30 10 2010  0.0 36.4 24.8 NA  NA  NA NA     NA
@@ -3117,7 +3117,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ## 4335  1 11 2010 21.6 30.7 21.5 NA  NA  NA NA     NA
 ## 4336  2 11 2010  0.4 32.6 19.9 NA  NA  NA NA     NA
 ## 4337  3 11 2010  0.0   NA 17.3 NA  NA  NA NA     NA</code></pre>
-<div class="sourceCode" id="cb1240"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1240-1" title="1"><span class="kw">str</span> (roo)</a></code></pre></div>
+<div class="sourceCode" id="cb1239"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1239-1" title="1"><span class="kw">str</span> (roo)</a></code></pre></div>
 <pre><code>## &#39;data.frame&#39;:    4337 obs. of  11 variables:
 ##  $ dd    : int  1 1 2 3 4 5 6 7 8 9 ...
 ##  $ mm    : int  1 2 2 2 2 2 2 2 2 2 ...
@@ -3132,21 +3132,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 ##  $ Vvento: num  NA NA 0.125 0.125 0.275 0.325 0.2 0.175 0.15 0.25 ...</code></pre>
 <p>A saída produzida por <code>str ()</code> indica que R não visualiza esse conjunto de dados como um objeto de série temporal. Precisamos transforma para uma serie temporal.
 Vamos converter os dados para uma serie temporal fixando apenas a temperatura do ar máxima. A função <code>ts</code> significa série temporal.</p>
-<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1242-1" title="1">roots=<span class="kw">ts</span>(roo<span class="op">$</span>Tmax,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1241"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1241-1" title="1">roots=<span class="kw">ts</span>(roo<span class="op">$</span>Tmax,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
 <p>Antes de implementar o teste Mann-Kendall de tendência para a série temporal da Temperatura do ar máxima, devemos visualizar esta série usando o comando R abaixo:</p>
-<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1243-1" title="1"><span class="kw">plot</span>(roots)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-601-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1242"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1242-1" title="1"><span class="kw">plot</span>(roots)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-603-1.png" width="672" /></p>
 <p>O gráfico de séries temporais produzido por R revela a presença de uma tendência ascendente nos níveis de temperatura do ar máxima diaria para Rondonópolis ao longo do período de interesse. Para ver melhor essa tendência, vamos ajustar uma curva não paramétrica aos dados usando a função <code>lowess()</code> em R:</p>
-<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1244-1" title="1">{<span class="kw">plot</span>(roots)</a>
-<a class="sourceLine" id="cb1244-2" title="2"><span class="kw">lines</span>(<span class="kw">lowess</span>(<span class="kw">time</span>(roots),roots),<span class="dt">lwd=</span><span class="dv">3</span>, <span class="dt">col=</span><span class="dv">2</span>)}</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-602-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1243"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1243-1" title="1">{<span class="kw">plot</span>(roots)</a>
+<a class="sourceLine" id="cb1243-2" title="2"><span class="kw">lines</span>(<span class="kw">lowess</span>(<span class="kw">time</span>(roots),roots),<span class="dt">lwd=</span><span class="dv">3</span>, <span class="dt">col=</span><span class="dv">2</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-604-1.png" width="672" /></p>
 <p>Iremos aplicar o teste de Mann-Kendall “como está” (ou seja, sem quaisquer correções para autocorrelação) usando o comando R:</p>
-<div class="sourceCode" id="cb1245"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1245-1" title="1">res &lt;-<span class="st"> </span><span class="kw">MannKendall</span>(roots)</a>
-<a class="sourceLine" id="cb1245-2" title="2"><span class="kw">summary</span>(res)</a></code></pre></div>
+<div class="sourceCode" id="cb1244"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1244-1" title="1">res &lt;-<span class="st"> </span><span class="kw">MannKendall</span>(roots)</a>
+<a class="sourceLine" id="cb1244-2" title="2"><span class="kw">summary</span>(res)</a></code></pre></div>
 <pre><code>## Score =  3821 , Var(Score) = 417409.7
 ## denominator =  11838.61
 ## tau = 0.323, 2-sided pvalue =&lt; 2.22e-16</code></pre>
-<div class="sourceCode" id="cb1247"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1247-1" title="1"><span class="kw">mk.test</span>(roots)</a></code></pre></div>
+<div class="sourceCode" id="cb1246"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1246-1" title="1"><span class="kw">mk.test</span>(roots)</a></code></pre></div>
 <pre><code>## 
 ##  Mann-Kendall trend test
 ## 
@@ -3160,7 +3160,7 @@ Vamos converter os dados para uma serie temporal fixando apenas a temperatura do
 “Ho: sem tendência” versus “Ha: tendência monotônica (para cima ou para baixo)”:
 Para o nosso exemplo, o valor de p associado ao teste de Mann-Kendall é estatisticamente significativo, sugerindo a presença de uma tendência ascendente estatisticamente significativa na série temporal de temperatura máxima diaria.
 Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e intercepta de acordo com o método de Sen.</p>
-<div class="sourceCode" id="cb1249"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1249-1" title="1"><span class="kw">sens.slope</span>(roots)</a></code></pre></div>
+<div class="sourceCode" id="cb1248"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1248-1" title="1"><span class="kw">sens.slope</span>(roots)</a></code></pre></div>
 <pre><code>## 
 ##  Sen&#39;s slope
 ## 
@@ -3173,14 +3173,14 @@ Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e inte
 ## Sen&#39;s slope 
 ##  0.03870968</code></pre>
 <p>Podemos plotar a composição da série de dados</p>
-<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1251-1" title="1"><span class="kw">library</span>(ggfortify)</a></code></pre></div>
-<div class="sourceCode" id="cb1252"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1252-1" title="1"><span class="kw">autoplot</span>(<span class="kw">decompose</span>(roots))</a></code></pre></div>
+<div class="sourceCode" id="cb1250"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1250-1" title="1"><span class="kw">library</span>(ggfortify)</a></code></pre></div>
+<div class="sourceCode" id="cb1251"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1251-1" title="1"><span class="kw">autoplot</span>(<span class="kw">decompose</span>(roots))</a></code></pre></div>
 <pre><code>## Warning: attributes are not identical across measure variables;
 ## they will be dropped</code></pre>
 <pre><code>## Warning: Removed 24 row(s) containing missing values (geom_path).</code></pre>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-607-1.png" width="672" /></p>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-609-1.png" width="672" /></p>
 <p>Organizar os dados com o ano e a temperatura do ar maxima</p>
-<div class="sourceCode" id="cb1255"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1255-1" title="1"><span class="kw">library</span>(forecast)</a></code></pre></div>
+<div class="sourceCode" id="cb1254"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1254-1" title="1"><span class="kw">library</span>(forecast)</a></code></pre></div>
 <pre><code>## Registered S3 method overwritten by &#39;quantmod&#39;:
 ##   method            from
 ##   as.zoo.data.frame zoo</code></pre>
@@ -3203,9 +3203,9 @@ Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e inte
 <pre><code>## The following object is masked from &#39;package:hydroTSM&#39;:
 ## 
 ##     ma</code></pre>
-<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1260-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
-<div class="sourceCode" id="cb1261"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1261-1" title="1">s=<span class="kw">select</span>(roo, ano, Tmax)</a>
-<a class="sourceLine" id="cb1261-2" title="2"><span class="kw">head</span>(s)</a></code></pre></div>
+<div class="sourceCode" id="cb1259"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1259-1" title="1"><span class="kw">library</span>(dplyr)</a></code></pre></div>
+<div class="sourceCode" id="cb1260"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1260-1" title="1">s=<span class="kw">select</span>(roo, ano, Tmax)</a>
+<a class="sourceLine" id="cb1260-2" title="2"><span class="kw">head</span>(s)</a></code></pre></div>
 <pre><code>##    ano Tmax
 ## 1 1998 30.0
 ## 2 1998 35.6
@@ -3214,29 +3214,29 @@ Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e inte
 ## 5 1998 35.6
 ## 6 1998 36.4</code></pre>
 <p>Converte os dados em série temporal</p>
-<div class="sourceCode" id="cb1263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1263-1" title="1">roots=<span class="kw">ts</span>(s,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1262"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1262-1" title="1">roots=<span class="kw">ts</span>(s,<span class="kw">c</span>(<span class="dv">1998</span>,<span class="dv">1</span>),<span class="kw">c</span>(<span class="dv">2010</span>,<span class="dv">11</span>),<span class="dv">12</span>)</a></code></pre></div>
 <p>Flutação da Temperatura Máxima</p>
-<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1264-1" title="1"><span class="kw">plot.ts</span>(roots[,<span class="dv">2</span>], <span class="dt">main =</span> <span class="st">&quot;Flutação da Temperatura Máxima&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Ano&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-611-1.png" width="672" /></p>
-<p>Variação mensal da Temperatura Maxíma</p>
-<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1265-1" title="1"><span class="kw">seasonplot</span>(roots[,<span class="dv">2</span>], <span class="dt">year.labels =</span> <span class="ot">TRUE</span>, <span class="dt">year.labels.left=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">40</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da Temperatura Maxíma&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mês&quot;, ylab = &quot;</span>Tmax<span class="st">&quot;)</span></a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-612-1.png" width="672" /></p>
-<p>Variação mensal da temperatura máxima de Rondonópolis – boxplot</p>
-<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1266-1" title="1"><span class="kw">boxplot</span>(roots[,<span class="dv">2</span>] <span class="op">~</span><span class="st"> </span><span class="kw">cycle</span>(roots[,<span class="dv">2</span>]), <span class="dt">xlab =</span> <span class="st">&quot;Mensal&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da temperatura máxima de Rondonópolis&quot;)</span></a></code></pre></div>
+<div class="sourceCode" id="cb1263"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1263-1" title="1"><span class="kw">plot.ts</span>(roots[,<span class="dv">2</span>], <span class="dt">main =</span> <span class="st">&quot;Flutação da Temperatura Máxima&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Ano&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>)</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-613-1.png" width="672" /></p>
-<p>Movendo suavização média para ver a tendência</p>
-<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1267-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1 Year Moving Average Smoothing&quot;</span>)</a>
-<a class="sourceLine" id="cb1267-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">12</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p>Variação mensal da Temperatura Maxíma</p>
+<div class="sourceCode" id="cb1264"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1264-1" title="1"><span class="kw">seasonplot</span>(roots[,<span class="dv">2</span>], <span class="dt">year.labels =</span> <span class="ot">TRUE</span>, <span class="dt">year.labels.left=</span><span class="ot">TRUE</span>, <span class="dt">col=</span><span class="dv">1</span><span class="op">:</span><span class="dv">40</span>, <span class="dt">pch=</span><span class="dv">19</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da Temperatura Maxíma&quot;</span>, <span class="dt">xlab =</span> <span class="st">&quot;Mês&quot;, ylab = &quot;</span>Tmax<span class="st">&quot;)</span></a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-614-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1268-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;3 Year Moving Average Smoothing&quot;</span>)</a>
-<a class="sourceLine" id="cb1268-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">36</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p>Variação mensal da temperatura máxima de Rondonópolis – boxplot</p>
+<div class="sourceCode" id="cb1265"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1265-1" title="1"><span class="kw">boxplot</span>(roots[,<span class="dv">2</span>] <span class="op">~</span><span class="st"> </span><span class="kw">cycle</span>(roots[,<span class="dv">2</span>]), <span class="dt">xlab =</span> <span class="st">&quot;Mensal&quot;</span>, <span class="dt">ylab =</span> <span class="st">&quot;Tmax&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;Variação mensal da temperatura máxima de Rondonópolis&quot;)</span></a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-615-1.png" width="672" /></p>
-<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1269-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;10 Year Moving Average Smoothing&quot;</span>)</a>
-<a class="sourceLine" id="cb1269-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">120</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p>Movendo suavização média para ver a tendência</p>
+<div class="sourceCode" id="cb1266"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1266-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;1 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb1266-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">12</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
 <p><img src="TudodoR_files/figure-html/unnamed-chunk-616-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1267"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1267-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;3 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb1267-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">36</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-617-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1268"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1268-1" title="1">{<span class="kw">plot</span>(roots[,<span class="dv">2</span>], <span class="dt">col=</span><span class="st">&quot;gray&quot;</span>, <span class="dt">main =</span> <span class="st">&quot;10 Year Moving Average Smoothing&quot;</span>)</a>
+<a class="sourceLine" id="cb1268-2" title="2"><span class="kw">lines</span>(<span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">120</span>), <span class="dt">col =</span> <span class="st">&quot;red&quot;</span>, <span class="dt">lwd=</span><span class="dv">3</span>)}</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-618-1.png" width="672" /></p>
 <p>Previsão de dados</p>
-<div class="sourceCode" id="cb1270"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1270-1" title="1">mediamovel =<span class="st"> </span><span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">2</span>)</a>
-<a class="sourceLine" id="cb1270-2" title="2"><span class="kw">print</span>(mediamovel)</a></code></pre></div>
+<div class="sourceCode" id="cb1269"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1269-1" title="1">mediamovel =<span class="st"> </span><span class="kw">ma</span>(roots[,<span class="dv">2</span>], <span class="dt">order =</span> <span class="dv">2</span>)</a>
+<a class="sourceLine" id="cb1269-2" title="2"><span class="kw">print</span>(mediamovel)</a></code></pre></div>
 <pre><code>##        Jan   Feb   Mar   Apr   May   Jun   Jul   Aug   Sep   Oct   Nov   Dec
 ## 1998    NA 33.25 33.65 34.55 35.75 36.30 36.70 36.75 36.30 34.85 32.85 31.70
 ## 1999 31.75 32.45 32.95 32.55 32.45 33.50 33.35 30.50 29.55 31.60 31.15 29.75
@@ -3251,17 +3251,17 @@ Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e inte
 ## 2008 34.45 35.85 37.65 38.45 38.50 38.20 37.00 35.60 35.30 35.75 35.00 33.15
 ## 2009 34.20 37.85 39.70 39.95 40.10 39.95 39.65 39.50 37.05 29.40 23.10 25.90
 ## 2010 33.05 37.35 38.35 37.90 36.90 33.85 29.55 28.15 30.65 34.75    NA</code></pre>
-<div class="sourceCode" id="cb1272"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1272-1" title="1">previsao =<span class="st"> </span><span class="kw">forecast</span>(mediamovel, <span class="dt">h=</span><span class="dv">12</span>)</a></code></pre></div>
+<div class="sourceCode" id="cb1271"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1271-1" title="1">previsao =<span class="st"> </span><span class="kw">forecast</span>(mediamovel, <span class="dt">h=</span><span class="dv">12</span>)</a></code></pre></div>
 <pre><code>## Warning in ets(object, lambda = lambda, biasadj = biasadj,
 ## allow.multiplicative.trend = allow.multiplicative.trend, : Missing values
 ## encountered. Using longest contiguous portion of time series</code></pre>
-<div class="sourceCode" id="cb1274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1274-1" title="1"><span class="kw">plot</span>(previsao)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-617-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1273"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1273-1" title="1"><span class="kw">plot</span>(previsao)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-619-1.png" width="672" /></p>
 <p>Previsão ARRIMA</p>
-<div class="sourceCode" id="cb1275"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1275-1" title="1">arima =<span class="st"> </span><span class="kw">auto.arima</span>(roots[,<span class="dv">2</span>])</a>
-<a class="sourceLine" id="cb1275-2" title="2">previsao =<span class="st"> </span><span class="kw">forecast</span>(arima, <span class="dt">h=</span><span class="dv">12</span>)</a>
-<a class="sourceLine" id="cb1275-3" title="3"><span class="kw">plot</span>(previsao)</a></code></pre></div>
-<p><img src="TudodoR_files/figure-html/unnamed-chunk-618-1.png" width="672" /></p>
+<div class="sourceCode" id="cb1274"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1274-1" title="1">arima =<span class="st"> </span><span class="kw">auto.arima</span>(roots[,<span class="dv">2</span>])</a>
+<a class="sourceLine" id="cb1274-2" title="2">previsao =<span class="st"> </span><span class="kw">forecast</span>(arima, <span class="dt">h=</span><span class="dv">12</span>)</a>
+<a class="sourceLine" id="cb1274-3" title="3"><span class="kw">plot</span>(previsao)</a></code></pre></div>
+<p><img src="TudodoR_files/figure-html/unnamed-chunk-620-1.png" width="672" /></p>
 <div id="referência-8" class="section level3">
 <h3><span class="header-section-number">10.5.1</span> Referência</h3>
 <p><a href="http://www.ghement.ca/Mann-Kendall%20Trend%20Test%20in%20R.doc" class="uri">http://www.ghement.ca/Mann-Kendall%20Trend%20Test%20in%20R.doc</a></p>
