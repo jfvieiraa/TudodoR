@@ -92,7 +92,7 @@ dados <- edit(data.frame())
 
 ```
 
-```{r}
+```{r echo=FALSE}
 knitr::include_graphics("image/scan1.png")
 ```
 
@@ -112,7 +112,7 @@ Porém houve um erro: o último elemento deveria ser 60 e não 50, você não pr
 teste2 <- edit(teste)
 ```
 
-```{r}
+```{r echo=FALSE}
 knitr::include_graphics("image/edit2.png")
 ```
 

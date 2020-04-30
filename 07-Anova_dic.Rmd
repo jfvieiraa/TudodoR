@@ -24,7 +24,7 @@ O delineamento inteiramente casualizado é o  mais simples de todos os delineame
 
 Este delineamento apresenta as seguintes caracterítiscas:
 
-   - Utiliza apenas os princópios da *repetição* e da *casualização*, deixando de lado o principio do *controle local*, e, portanto, as repetições não são organizadas em blocos;
+   - Utiliza apenas os princópios da *repetição* e da *casualização*, deixando de lado o princípio do *controle local*, e, portanto, as repetições não são organizadas em blocos;
   
    - Os tratamentos são designados às parcelas de forma inteiramente  casual, com números iguais ou diferentes repetições por tratamento.
   
@@ -47,25 +47,25 @@ Este delineamento é mais utilizado em experimentos de laboratório e nos ensaio
 Dados de um experimento visando controle de pulgão (*Aphis gossypii Glover*) em cultura de pepino, instalado em delineamento inteiramente casualizado com 6 repetições. A resposta observada foi o número de pulgões após a aplicação de produtos indicados para seu controle.
 O primeiro passo é ler os dados.
 
-Importando dados
+Importando dados:
 ```{r}
 dados <- read.table("https://www.dropbox.com/s/jjyo8dhyy0qt3ft/BanzattoQd3.2.1.txt?dl=1") 
 ```
 
 
-Conferir se temos fatores para fazer a análise de variância
+Conferir se temos fatores para fazer a análise de variância:
 ```{r}
 str(dados)
 ```
 
-Lembramos que pulgoes deve ter conteudo numerico e trat deve ser fator
+Lembramos que pulgões deve ter conteúdo numérico e trat deve ser fator:
 ```{r}
 dados$trat<-as.factor(dados$trat)
 dados$pulgoes<-as.numeric(dados$pulgoes)
 ```
 
 Verificação gráfica**
-É importante notar que as barras simplesmente refletem a variância dos dados dentro da cada tratamento e não são adequadas para detectar diferenças entre tratamentos.
+É importante notar que as barras simplesmente refletem a variância dos dados dentro de cada tratamento e não são adequadas para detectar diferenças entre tratamentos:
 ```{r}
 plot(dados$trat, dados$pulgoes)
 ```
@@ -73,7 +73,7 @@ plot(dados$trat, dados$pulgoes)
 
 ### Análise de variância
 
-Fazendo a análise de variância
+Fazendo a análise de variância:
 ```{r}
 m0 <- lm (dados$pulgoes ~ dados$trat)
 ```
@@ -82,46 +82,44 @@ m0 <- lm (dados$pulgoes ~ dados$trat)
 anova(m0)
 ```
 
-Extraindo o coeficiente de variação
+Extraindo o coeficiênte de variação:
 ```{r}
-
 require(agricolae)
 cv.model(m0)
 ```
 
-Análise gráfica dos resíduos
+Análise gráfica dos resíduos:
 ```{r}
 par(mfrow = c(2,2))
 plot(m0)
 ```
 
-Analisando a Figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade.  A variabilidade dos erros apresentam um forma de cone.
+Analisando a figura acima sugere que o principal problema deste conjunto de dados pode ser a heterosdasticidade.  A variabilidade dos erros apresentam um forma de cone.
 
-Teste das pressuposições da análise de variância**
+Teste das pressuposições da análise de variância**:
 ```{r}
 # Teste de Bartllet para homocedasticidade
 bartlett.test(m0$res, dados$trat)
 ```
 
-Como observamos uma significancia estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesma em todos os níveis do fator.
+Como observamos uma significância estatística neste resultado, devemos rejeitar a hipótese nula de que as variâncias sejam as mesmas em todos os níveis do fator.
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 ```{r}
 shapiro.test(m0$res)
 ```
 
 ### Transformação de dados
 
-Tranformação de dados é uma das possíveis formas de contarnar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
+Tranformação de dados é uma das possíveis formas de contornar o problema de dados que não obedecem os pressupostos da análise de variância. Vamos ver como isto poder ser feito com o programa R.
 
-Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catalogos de transformação:
+Nos resultados acima vemos que a homogeneidade de variâncias foi rejeitada. Para tentar contornar o problema podemos utilizar catálogos de transformação:
 
    - Transformação de raiz quadrada: frequentemente utilizada para dados de contagens, que geralmente seguem a distribuição de Poison, na qual a média é igual a variância. Quando ocorrem zeros ou valores baixos (menores que 10 ou 15), as transformação recomendadas são raiz quadrada + 0,5 ou 1,0.
 
-   - Transformação angular: recomendavel para dados expressos em porcentagens, que geralmente segue distribuição binomial.
+   - Transformação angular: recomendável para dados expressos em porcentagens, que geralmente segue distribuição binomial.
 
-   - Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos.
-
+   - Transformação logarítima: utilizada quando é constatada certa proporcionalidade entre as médias e os desvios padrões dos diversos tratamentos:
 ```{r}
 m1 <- lm (log(dados$pulgoes) ~ dados$trat)
 ```
@@ -130,8 +128,7 @@ m1 <- lm (log(dados$pulgoes) ~ dados$trat)
 
 Para tentar contornar o problema vamos usar a transformação Box-Cox, que consiste em transformar os dados de acordo com uma expressão.
 
-A função `boxcox(`) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse
-
+A função `boxcox(`) do pacote MASS calcula a verossimilhança perfilhada do parâmetro. Devemos escolher o valor que maximiza esta função. Nos comandos a seguir começamos carregando o pacote MASS e depois obtemos o gráfico da verossimilhança perfilhada. Como estamos interessados no máximo fazermos um novo gráfico com um zoom na região de interesse:
 ```{r}
 require(MASS) 
   boxcox(m0)
@@ -161,25 +158,24 @@ plot(m1)
 
 Os pressupostos foram atendindos 
 
-Teste de Shapiro-Wilk para Normalidade
+Teste de Shapiro-Wilk para Normalidade:
 ```{r}
 
 shapiro.test(m1$res)
 ```
 
-Teste de Bartllet para homocedasticidade
+Teste de Bartllet para homocedasticidade:
 ```{r}
 
 bartlett.test(m1$res, dados$trat)
 ```
 
-Resumo do modelo ajustado - Contraste 
+Resumo do modelo ajustado - Contraste :
 ```{r}
 summary(m1)
 ```
 
-Resumo do modelo ajustado - Contraste em relação a testemunha
-
+Resumo do modelo ajustado - Contraste em relação a testemunha:
 ```{r}
 dados$trat <- relevel(dados$trat, "Testemunha")
 ```
@@ -196,8 +192,6 @@ summary(m1)
 ### Aplicando teste de Tukey para comparar médias
 
 No R, o teste de Tukey é apresentado através de intervalos de confiança. A interpretação é: se o intervalo de confiança para a diferença entre duas médias não incluir o valor zero, significa que se rejeita a hipótese nula, caso contrário, não se rejeita. O resultado pode ser visto através de uma tabela e/ou graficamente:
-
-
 ```{r}
 m1 <- aov (dados$pulgoes^0.2 ~ dados$trat, data = dados)
 ```
@@ -260,8 +254,7 @@ write.table(tu$groups,
 require(laercio)
 ```
 
-Teste de Duncan
-
+Teste de Duncan:
 ```{r}
 LDuncan (m1, "dados$trat")
 ```
@@ -271,8 +264,7 @@ LTukey (m1, "dados$trat")
 ```
 
 
-Pacote para analise de experimentos 
-
+Pacote para análise de experimentos:
 ```{r}
 library(ExpDes.pt)
 ```
@@ -280,8 +272,7 @@ library(ExpDes.pt)
 
 **Recursos adicionais para comparações múltiplas**
 
-Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção `dependencies=TRUE` para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes.
-
+Outros procedimentos serão implementados em pacotes contribuídos do R. Entre estes encontra-se os pacotes multcomp e multcompView que implementam diversos outros procedimentos e gráficos para visualizações dos resultados. Vale notar que estes pacotes devem ser instalados com a opção `dependencies=TRUE` para garantir plena funcionalidade pois suas funções dependem de diversos outros pacotes:
 ```{r}
 #install.packages("multcompView", dep = TRUE) 
 require(multcomp) 
