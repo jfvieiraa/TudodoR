@@ -1,11 +1,10 @@
-
 ## Imagens de satélites
 
 Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.
 
 
 Carregar pacotes necessários para trabalhar com os dados raster.
-Caso não tenha algum dos pacotes, realize a sua instalação.
+Caso não tenha algum dos pacotes, realize a sua instalação:
 ```{r eval=F, message=FALSE, include=T}
 library(raster)
 library(knitr)
@@ -19,7 +18,6 @@ library(LSRS)
 
 Baixar o arquivo . [sentinel2.tif](https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1).
 
-
 ```{r eval=F}
 imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 ```
@@ -28,7 +26,7 @@ imagesentinel=raster('D:/livro/TudodoRa/sentinel2.tif')
 imagesentinel=raster('sentinel2.tif')
 ```
 
-Visualizar os dados
+Visualizar os dados:
 ```{r eval=F}
 imagesentinel
 ```
@@ -81,8 +79,7 @@ plot(st)
 
 Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.
 
-Criar a VI (vegetation index) por meio de função
-
+Criar a VI (vegetation index) por meio de função:
 ```{r eval=F}
 VI <- function(img, k, i) {
   bk <- img[[k]]
@@ -93,7 +90,6 @@ VI <- function(img, k, i) {
 ```
 
 *NDVI:*
-
 ```{r eval=F}
 ndvi <- VI(st, 8, 4)
 plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
@@ -101,7 +97,6 @@ plot(ndvi, col = rev(terrain.colors(10)), main = "Sentinel2-NDVI")
 
 
 **Outras fórmula de aplicar o NDVI**
-
 ```{r eval=F}
 vi2 <- function(x, y) {
   (x - y) / (x + y)
@@ -112,7 +107,6 @@ plot(ndvi2, col=rev(terrain.colors(10)), main="Sentinel2-NDVI")
 
 
 **Visualizar o NDVI em histograma**
-
 ```{r eval=F}
 hist(ndvi,
      main = "Distribuição dos valores de NDVI",
@@ -125,8 +119,7 @@ hist(ndvi,
 axis(side=1, at = seq(-0.5,1, 0.05), labels = seq(-0.5,1, 0.05))
 ```
 
-Visualizar apenas a vegetação  com NDVI acima de 0.4:
-
+Visualizar apenas a vegetação com NDVI acima de 0.4:
 ```{r eval=F}
 veg <- reclassify(ndvi, cbind(-Inf, 0.4, NA))
 plot(veg, main='Vegetação')
@@ -134,7 +127,6 @@ plot(veg, main='Vegetação')
 
 
 Reclassificar o NDVI e difini-lo por classes numéricas:
-
 ```{r eval=F}
 vegc <- reclassify(ndvi, c(-Inf,0.25,1, 0.25,0.3,2, 0.3,0.4,3, 0.4,0.5,4, 0.5,Inf, 5))
 plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
@@ -145,44 +137,38 @@ plot(vegc,col = rev(terrain.colors(4)), main = 'NDVI reclassificado')
 **Criar uma classificação não supervisionada a partir do NDVI:**
 
 Converter o raster (NDVI) a um vetor/matriz:
-
 ```{r eval=F}
 nr <-getValues(ndvi)
 str(nr)
 ```
 
 É importante definir o gerador de pontos, porque o *"kmeans"* inicia os centros em locais aleatórios: 
-
 ```{r eval=F}
 set.seed(99)
 ```
 
-Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método `Lloyd`
+Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método `Lloyd`:
 ```{r eval=F}
 kmncluster <- kmeans(na.omit(nr), centers = 10, iter.max = 500,
                      nstart = 5, algorithm = "Lloyd")
 ```
 
 Ver o vetor/matriz:
-
 ```{r eval=F}
 str(kmncluster)
 ```
 
 Crie uma cópia do NDVI para não perder os dados:
-
 ```{r eval=F}
 knr <- ndvi
 ```
 
 Agora substitua os valores das células de varredura pelo `kmncluster$cluster`:
-
 ```{r eval=F}
 knr[] <- kmncluster$cluster
 ```
 
 Realize o plot do NDVI e do kmeans:
-
 ```{r eval=F}
 par(mfrow = c(1, 2))
 plot(ndvi, col = rev(terrain.colors(10)), main = "NDVI")
@@ -191,7 +177,6 @@ plot(knr, main = "Kmeans", col = viridis_pal(option = "D")(10))
 
 
 Se quiser traçar a classificação kmeans ao lado da renderização  do RGB para verificar a qualidade da classificação e identificação das classes:
-
 ```{r eval=F}
 par(mfrow = c(1, 2))
 plotRGB(RGB, axes = FALSE, stretch = "lin", main = "RGB")
@@ -199,7 +184,6 @@ plot(knr, main = "Kmeans", yaxt = 'n', col = viridis_pal(option = "D")(10))
 ```
 
 Aplicar outros índices de vegetação com o `pacote LSRS`:
-
 ```{r eval=F}
 NDVI=NDVI(b8,b4)
 SAVI=SAVI(b8,b4)
@@ -222,20 +206,18 @@ plot(NBR,lwd=4,main="NBR",xlab="easting", ylab="northing")
 
 ## Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação
 
-Primeiro carregar os pacotes necessários
+Primeiro carregar os pacotes necessários:
 ```{r eval=F }
 library(raster)
 library(plot3D)
 ```
 
 Carregar o dado raster do pacote Raster (Volcano) para ser usado como exemplo:
-
 ```{r eval=F}
 filled.contour(volcano, color.palette = terrain.colors)
 ```
 
 Criar as curvas de nível:
-
 ```{r eval=F}
 cont <- contourLines(volcano)
 fun <- function(x) x$level
@@ -244,7 +226,6 @@ COLS <- terrain.colors(length(LEVS))
 ```
 
 Plotar somente as curvas de nível:
-
 ```{r eval=F}
 contour(volcano)
 ```
@@ -259,7 +240,6 @@ Volcano <- volcano [x, y]
 
 
 Exemplo 1:
-
 ```{r eval=F}
 ribbon3D(z = Volcano, contour = TRUE, zlim= c(-100, 200),image = TRUE)
 
@@ -274,20 +254,17 @@ persp3D(z = Volcano, contour = TRUE, zlim= c(-200, 200), image = FALSE)
 
 
 Exemplo 3:
-
 ```{r eval=F}
 persp3D(z = Volcano, x = x, y = y, scale = FALSE,contour = list(nlevels = 20, col = "red"),zlim = c(-200, 200), expand = 0.2,image = list(col = grey (seq(0, 1, length.out = 100))))
 ```
 
 Exemplo 4:
-
 ```{r eval=F}
 persp3D(z = Volcano, contour = list(side = c("zmin", "z", "350")), zlim = c(-100, 400), phi = 20, image = list(side = 350))
 ```
 
 
 Exemplo 5:
-
 ```{r eval=F}
 persp3D(z = volcano, shade = 0.3, col = gg.col(100))
 ```
@@ -332,7 +309,6 @@ plot(las)
 Na próxima etapa, será usado um algoritmo que requer um modelo de altura da copa a partir da nuvem de pontos.
 
 Calcular um modelo de altura das copas:
-
 ```{r eval=F}
 algo = pitfree(thresholds = c(0,10,20,30,40,50), subcircle = 0.2)
 chm  = grid_canopy(las, 0.5, algo)
@@ -343,7 +319,7 @@ Plotar o CHM:
 plot(chm, col = height.colors(50))
 ```
 
-A segmentação pode ser alcançada com `lastrees`. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
+A segmentação pode ser alcançada com `lastrees`. Aqui foi escolhido o algorítmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
 
 Realizar a segmentação das árvores:
 ```{r eval=F}
@@ -351,7 +327,7 @@ algo = watershed(chm, th = 4)
 las  = lastrees(las, algo)
 ```
 
-remove points that are not assigned to a tree
+Remova os pontos que não estão atribuídos a uma árvore:
 ```{r eval=F}
 trees = lasfilter(las, !is.na(treeID))
 ```
@@ -369,7 +345,6 @@ spplot(hulls, "zmax")
 ```
 
 No exemplo anterior, mesmo se a segmentação for feita usando um modelo de altura do dossel, a classificação foi feita na nuvem de pontos. Isso ocorre porque `lidR` é uma biblioteca orientada à nuvem de pontos. Mas pode-se querer que o raster trabalhe com rasters. Nesse caso, a função divisor de águas pode ser usada de forma independente:
-
 ```{r eval=F}
 crowns = watershed(chm, th = 4)()
 plot(crowns, col = pastel.colors(100))
@@ -394,7 +369,7 @@ Carregar pacotes:
 library(raster)
 ```
 
-Carregar dados e plotar :
+Carregar dados e plotar:
 ```{r eval=F}
 MDE=raster("https://www.dropbox.com/s/b2rzimq500rmj5o/MDE.tif?dl=1")
 plot(MDE)

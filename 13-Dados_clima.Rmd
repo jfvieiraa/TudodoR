@@ -4,74 +4,65 @@
 
 Tutorial do HydroTSM - http://goo.gl/9u1PO
 
-Instalação
-
+Instalação:
 ```{r eval=FALSE, include=T}
 install.packages("hydroTSM")
 ```
 
-Carregar o pacote
-
+Carregar o pacote:
 ```{r}
 library(hydroTSM)
 ```
 
-Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013
-
+Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 1 de janeiro de 1980 a 31 de dezembro de 2013:
 ```{r}
 roo<-read.zoo("https://www.dropbox.com/s/j1v3euj51dztv3r/1980-2013_pp.csv?dl=1",sep=";", dec=".", head=T)
 ```
 
-Selecionar somente 5 anos da serie
-
+Selecionar somente 5 anos da série:
 ```{r}
 x <- window(roo, start=as.Date("2009-01-01"))
 ```
 
-Valores de Precipitação mensal
+Valores de Precipitação mensal:
 ```{r}
 ( m <- daily2monthly(x, FUN=sum) )
 ```
 
-Datas dos valores diários de "x"
-
+Datas dos valores diários de "x":
 ```{r}
 dates <- time(x)
 ```
 
-Quantidade de anos em 'x' (necessário para cálculos)
+Quantidade de anos em 'x' (necessário para cálculos):
 ```{r}
 ( nyears <- yip(from=start(x), to=end(x), out.type="nmbr" ) )
 ```
 
-Análise exploratórios do dados
+Análise exploratório do dados
 
-Resumo estatástico
-
+Resumo estatástico:
 ```{r}
 smry(x)
 ```
 
-Usando a função  `hydroplot`, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo "x". Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 01 de janeiro de 2009 são plotados.
-
+Usando a função  `hydroplot`, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo "x". Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 1 de janeiro de 2009 são plotados:
 ```{r}
 hydroplot(x, var.type="Precipitation", main="em Rondonopolis",
           pfreq = "dma", from="2009-01-01")
 ```
 
-Quantidade de dias com informação (não NA) por ano
-
+Quantidade de dias com informação (não NA) por ano:
 ```{r}
 dwi(x)
 ```
 
-Quantidade de dias com informação (não NA) por mês por ano
+Quantidade de dias com informação (não NA) por mês por ano:
 ```{r}
 dwi(x, out.unit="mpy")
 ```
 
-Plotar os valores mensais de Precipitação para cada ano, para identificar meses secos / umidos.
-
+Plotar os valores mensais de precipitação para cada ano, para identificar meses secos/umidos:
 ```{r}
 # Daily zoo to monthly zoo
 m <- daily2monthly(x, FUN=sum, na.rm=TRUE)
@@ -93,12 +84,12 @@ main="Precipitação mensal de Rondonópolis-MT (mm/mês)"))
 
 ### Análise anual dos dados
 
-Valores anuais de Precipitação
+Valores anuais de precipitação:
 ```{r}
 daily2annual(x, FUN=sum, na.rm=TRUE)
 ```
 
-Precipitação Média anual
+Precipitação média anual:
 ```{r}
 mean( daily2annual(x, FUN=sum, na.rm=TRUE) )
 ```
@@ -114,23 +105,22 @@ annualfunction(x, FUN=sum, na.rm=TRUE) / nyears
 
 ### Análise mensal dos dados - BOXPLOT
 
-Mediana dos valores mensais na estação de Rondonópolis-MT. 
-
+Mediana dos valores mensais na estação de Rondonópolis-MT:
 ```{r}
 monthlyfunction(m, FUN=median, na.rm=TRUE)
 ```
 
-Vetor com as abreviaturas de três letras para os nomes dos meses
+Vetor com as abreviaturas de três letras para os nomes dos meses:
 ```{r}
 cmonth <- format(time(m), "%b")
 ```
 
-Criando fatores mensais ordenados
+Criando fatores mensais ordenados:
 ```{r}
 months <- factor(cmonth, levels=unique(cmonth), ordered=TRUE)
 ```
 
-Boxplot dos valores mensais
+Boxplot dos valores mensais:
 ```{r}
 boxplot( coredata(m) ~ months, 
          col="lightblue", 
@@ -141,36 +131,34 @@ boxplot( coredata(m) ~ months,
 
 ### Análise sazonal
 
-Valores sazonais médios de Precipitação
-
+Valores sazonais médios de precipitação:
 ```{r}
 seasonalfunction(x, FUN=sum, na.rm=TRUE) / nyears
 ```
 
 Extraindo os valores sazonais para cada ano
 
-Dezembro, Janeiro e Fevereiro
+Dezembro, Janeiro e Fevereiro:
 ```{r}
 ( DJF <- dm2seasonal(x, season="DJF", FUN=sum) )
 ```
 
-Março, Abril e Maio
+Março, Abril e Maio:
 ```{r}
 ( MAM <- dm2seasonal(m, season="MAM", FUN=sum) )
 ```
 
-Junho, Julho e Agosto
+Junho, Julho e Agosto:
 ```{r}
 ( JJA <- dm2seasonal(m, season="JJA", FUN=sum) )
 ```
 
-Setembro, Outubro e Novembro
+Setembro, Outubro e Novembro:
 ```{r}
 ( SON <- dm2seasonal(m, season="SON", FUN=sum) )
 ```
 
-Plotar a evolução temporal dos valores da Precipitação sazonal
-
+Plotar a evolução temporal dos valores da precipitação sazonal:
 ```{r eval=FALSE, include=T}
 X11()
 hydroplot(x, pfreq="seasonal", FUN=sum, stype="default")
@@ -178,35 +166,32 @@ hydroplot(x, pfreq="seasonal", FUN=sum, stype="default")
 
 ### Alguns índices extremos
 
-Etapas comuns para a análise desta serie:
+Etapas comuns para a análise desta série:
 
-Carregando dados diários de Precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013.
-
+Carregando dados diários de precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013:
 ```{r}
 data(roo)
 ```
 
-Selecionar a data inicial
+Selecionar a data inicial:
 ```{r}
 x <- window(roo, start=as.Date("1980-01-01"))
 ```
 
-Plotar a série temporal selecionada
+Plotar a série temporal selecionada:
 ```{r}
 hydroplot(x, ptype="ts", pfreq="o", var.unit="mm")
 ```
 
 
-Contagem e plotagem do número de dias no período em que a Precipitação foi maior que 80 mm.
-
+Contagem e plotagem do número de dias no período em que a precipitação foi maior que 80 mm:
 ```{r}
 ( R10mm <- length( x[x>80] ) )
 ```
 
 ### Precipitaçao total chuva
 
-Calculando a Precipitação total (acumulada) de 5 dias
-
+Calculando a Precipitação total (acumulada) de 5 dias:
 ```{r}
 x.5max <- rollapply(data=x, width=5, FUN=sum, fill=NA, partial= TRUE,
 align="center")
@@ -215,13 +200,12 @@ hydroplot(x.5max, ptype="ts+boxplot", pfreq="o", var.unit="mm")
 
 ```
 
-Valor anual máximo de Precipitação total em 5 dias
-
+Valor anual máximo de precipitação total em 5 dias:
 ```{r}
 (x.5max.annual <- daily2annual(x.5max, FUN=max, na.rm=TRUE))
 ```
 
-   - *Nota 1:* para este cálculo, é utilizada uma janela móvel centrada no dia atual. Se o usuário quiser Precipitação total de 5 dias acumulada nos 4 dias anteriores ao dia atual + a Precipitação no corrente dia, o usuário tem que modificar a janela móvel.
+   - *Nota 1:* para este cálculo, é utilizada uma janela móvel centrada no dia atual. Se o usuário quiser precipitação total de 5 dias acumulada nos 4 dias anteriores ao dia atual + a precipitação no corrente dia, o usuário tem que modificar a janela móvel.
 
    - *Nota 2:* Para os dois primeiros e os últimos dois valores, a largura da janela é adaptada para ignorar valores a série temporal
 
@@ -230,8 +214,7 @@ Valor anual máximo de Precipitação total em 5 dias
 
 A evapotranspiração é a forma pela qual a água da superfície terrestre passa para a atmosfera no estado de vapor, tendo papel importante no Ciclo Hidrológico. Esse processo envolve a evaporação da água de superfícies de água livre (rios, lagos, represas, oceano, etc), dos solos e da vegetação úmida (que foi interceptada durante uma chuva) e a transpiração dos vegetais
 
-Apagar objetos antigos
-
+Apagar objetos antigos:
 ```{r}
  rm(list = ls())
 ```
@@ -239,14 +222,13 @@ Apagar objetos antigos
 Baixar dados
 
 [a.txt] (https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=0)
-
 ```{r}
  a = read.table("https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1", sep=";", head=T)
   
 head(a)
 ```
 
-Transformar em Data e Dia Juliano
+Transformar em Data e Dia Juliano:
 ```{r}
 a$Data = as.Date(a$Data)
 ```
@@ -265,158 +247,151 @@ head(a)
   
 **Constantes utilizadas no calculo da ET.**
 
-Altura acima do nível do mar (m)
-
+Altura acima do nível do mar (m):
 ```{r}
 altitude = 259.38 
 ```
 
-Pressão atmosférica local, calculada com base na altitude (kPa)
+Pressão atmosférica local, calculada com base na altitude (kPa):
 ```{r}
 Patm = 101.3*((293-0.0065*altitude)/293)**5.26 
 ```
 
-Coeficiente psicrométrico (kPa/ºC)
-
+Coeficiente psicrométrico (kPa/ºC):
 ```{r}
 gama = 0.665*(10**-3)*Patm 
 ```
 
-Latitude
+Latitude:
 ```{r}
 lat = -7.53  
 ```
 
-Transformar em radianos 
+Transformar em radianos:
 ```{r}
 corr = pi/180 
 ```
 
-Declinação solar (rad)
+Declinação solar (rad):
 ```{r}
  decl = 23.45*sin(corr*((a$DiaJuliano-80)*360/365)) 
 ```
 
  
-Ângulo horário do nascer ao por do sol em (rad)
+Ângulo horário do nascer ao por do Sol em (rad):
 ```{r}
 hn = 1/corr*acos(-tan(corr*lat)*tan(corr*decl)) 
 ```
 
-Número máximo de horas de luz solar em um dia (h)
-
+Número máximo de horas de luz solar em um dia (h):
 ```{r}
 a$N = 2*hn/15
 ```
 
-Distância relativa da terra ao sol 
+Distância relativa da Terra ao Sol:
 ```{r}
 s = (1+0.033*cos(a$DiaJuliano*360/365)) 
 ```
 
-Angulo de horário(Angulo da radiação do sol)
+Ângulo de horário (ângulo da radiação do Sol)
 ```{r}
 t = corr*hn*sin(corr*lat)*sin(corr*decl) 
 u = cos(corr*lat)*cos(corr*decl)*sin(corr*hn)
 ```
 
-Radiação Solar Extraterrestre diária (mm/dia)
+Radiação Solar Extraterrestre diária (mm/dia):
 ```{r}
  a$Qo = 37.6*s*(t+u) 
 ```
 
-Verificar dados
-
+Verificar dados:
 ```{r}
 head(a)
 ```
 
-coeficientes para climas médios
+coeficientes para climas médios:
 ```{r}
 x = 0.25
 ```
 
-coeficientes para climas médios
+coeficientes para climas médios:
 ```{r}
  b = 0.50
 ```
   
-Insolação (h)  
-
+Insolação (h):
 ```{r}
  n.est = (a$Rs/a$Qo-x)*a$N/b;  
  n.est
 ```
 
-Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma  
+Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma:  
 ```{r}
 a$n<- ifelse((n.est)<0,1, n.est);
 head(a)
 
 ```
  
-Nebulosidade ou fração de luz (h)    
-
+Nebulosidade ou fração de luz (h):
 ```{r}
   a$n.N = a$n/a$N;   
   head(a) 
   
 ```
 
-Albedo, para solo gramado=0,23
+Albedo, para solo gramado=0,23:
 ```{r}
  r = 0.23 
 ```
 
-Temperatura média do ar a 2 metros acima da superfície do solo (ºC)
+Temperatura média do ar a 2 metros acima da superfície do solo (ºC):
 ```{r}
  a$Tmed = (a$Tmax+a$Tmin)/2
  head(a)
 ```
 
-Pressão de saturação de vapor máxima (kPa)
-
+Pressão de saturação de vapor máxima (kPa):
 ```{r}
 a$esMax = 0.6100*exp((17.3*a$Tmax)/(237.3+a$Tmax))
 ```
 
-Pressão de saturação de vapor mínima (kPa)
+Pressão de saturação de vapor mínima (kPa):
 ```{r}
 a$esMin = 0.6100*exp((17.3*a$Tmin)/(237.3+a$Tmin))
                      
 ```
 
-Pressão de saturação de vapor média (kPa)
+Pressão de saturação de vapor média (kPa):
 ```{r}
 a$esMed = (a$esMax+a$esMin)/2
 ```
  
-Pressão atual de vapor (kPa) 
+Pressão atual de vapor (kPa) :
 ```{r}
 a$ea = (a$esMed*a$RHmax)/100
 ```
 
-Déficit de vapor de pressão de saturação
+Déficit de vapor de pressão de saturação:
 ```{r}
 a$DPV = a$esMed-a$ea
 ```
 
-É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC)
+É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC):
 ```{r}
 a$Delta = (4098*a$esMed)/(a$Tmed+237.3)**2
 ```
  
-Balanço de ondas curtas 
+Balanço de ondas curtas:
 ```{r}
 a$BOC = a$Rs*(1-r)
 ```
 
-Balanço de ondas longas    
+Balanço de ondas longas:    
 ```{r}
  a$BOL = -(0.903*(10**-9)*((a$Tmed+273)**4)*(0.34-0.14*(sqrt(a$ea)))*(0.1+(0.9*a$n.N))) 
 ```
 
-Saldo de radiação é superfície da cultura 
+Saldo de radiação é superfície da cultura: 
 ```{r}
  a$Rn = (a$BOC+a$BOL)
 ```
@@ -434,8 +409,7 @@ Este método, além de procurar representar, de maneira consistente, o fenômeno
   
 **Método de Priestley-Taylor**
   
-  O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados.
-  
+O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados:
 ```{r}
 a$W = ifelse(a$Tmed<16,(0.407+0.0145*a$Tmed),(0.483+0.01*a$Tmed))
 ```
@@ -450,8 +424,7 @@ a$ETP.Priestley = (1.26*a$W*a$Rn)/2.45
 head (a)
 ```
 
-Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor
-
+Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor:
 ```{r}
 plot(a$ETP.Penman,a$ETP.Priestley, 
        xlim=c(1,8),
@@ -460,7 +433,7 @@ plot(a$ETP.Penman,a$ETP.Priestley,
   lines(c(0, 8), c(0, 8), col = "black")
 ```
 
-  Salvar os dados
+Salvar os dados:
 ```{r}
 write.table(a, "ETP.txt") 
 ```
@@ -488,8 +461,7 @@ plot(a$ETP.Penman,a$ET_Ca)
 ```
 
 
-Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor
-
+Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor:
 ```{r}
 par(mfrow=c(1,3))
 {plot(a$ETP.Penman,a$ET_Ca,
@@ -505,15 +477,13 @@ dev.off() #Encerra todos os dispositivos gráficos abertos
 ```
 
 
-
-comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica.
-
+Comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica:
 ```{r}
 hydroGOF::br2(sim=a$ETP.Penman, obs=a$ETP.Priestley)
 
 ```
 
-Comparação gráfica entre dois vetores
+Comparação gráfica entre dois vetores:
 ```{r}
 hydroGOF::ggof(sim=a$ETP.Penman, obs=a$ETP.Priestley)
 
@@ -521,23 +491,23 @@ hydroGOF::ggof(sim=a$ETP.Penman, obs=a$ETP.Priestley)
 
 ### Pacote Evapotranspiration
 
-Apagar objetos antigos
+Apagar objetos antigos:
 ```{r}
 rm(list=ls())
 ```
 
-Baixar Pacote Evapotranspiration
+Baixar Pacote Evapotranspiration:
 ```{r}
 require(Evapotranspiration)
 
 ```
 
-baixar dados
+Baixar dados:
 ```{r}
 df <- read.table("https://www.dropbox.com/s/qixbu9tqnnfsuyt/a.txt?dl=1",header = T,sep = ";")
 ```
 
-Transformar em Data
+Transformar em Data:
 ```{r}
 df$Data <- as.Date(df$Data)
 climate <- lapply(as.list(df)[2:7], zoo, df$Data) 
@@ -545,19 +515,18 @@ J       <- as.numeric(format(df$Data, "%j"))
 data    <- c(list(Date.daily=df$Data, J=J), climate)
 ```
 
-Atribuindo nomes
+Atribuindo nomes:
 ```{r}
 names(data)
 
 ```
 
-Ver a estrutura do objeto com todas as variáveis da tabela de dados
-
+Ver a estrutura do objeto com todas as variáveis da tabela de dados:
 ```{r}
 str(data)
 ```
 
-Converter latitude para radianos
+Converter latitude para radianos:
 ```{r}
 pi/180*-23.45 # [1] -0.4092797
 ```
@@ -566,8 +535,7 @@ Editar adequadamente as constantes a serem utilizadas. As constantes a serem uti
 
 **Constantes dos modelos**
 
-Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração.
-
+Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração:
 ```{r}
 myConst <- list(lambda = 2.45, sigma = 4.903e-09, Gsc = 0.082, 
                 lat = -23.45, lat_rad = -0.40928, as = 0.25, 
@@ -603,7 +571,7 @@ Constantes: Altitude, lambda-calor latente da vaporização, latitude em radiano
    - wind: yes, indica que o cálculo utilizará dados reais da velocidade do vento
    - crop: short, indica que o método para grama curta hipotética FAO-56 será aplicado
 
-Priestley Taylor
+Priestley Taylor:
 ```{r}
 res2 <- ET.PriestleyTaylor(data, myConst, ts="daily", solar="data", alpha=.23)
 ```
@@ -686,19 +654,19 @@ res <- cbind(PM=res1$ET.Daily,
 head(res)
 ```
 
-Salvar Tabela com Evapotranspiração a partir de todos os métodos
+Salvar Tabela com Evapotranspiração a partir de todos os métodos:
 ```{r eval=F}
 write.table(res,"ETo5.csv",sep=";",dec=".")
 
 ```
 
-Plotar a evapotranspiração estimada com variáveis climáticas
+Plotar a evapotranspiração estimada com variáveis climáticas:
 ```{r eval=F}
 ETForcings(data, res1, forcing = "RHmin")
 ```
 
 
-lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância 
+lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância:
 ```{r}
 fit <- lm(res$PM~res$PT-1)
 ```
@@ -708,7 +676,7 @@ summary(fit)
 
 ```
 
-Apresenta Similaridade entre os métodos, análise significativa.
+Apresenta similaridade entre os métodos, análise significativa:
 ```{r}
 plot(res$PM~res$PT); 
 abline(fit, col=2); 
@@ -717,8 +685,7 @@ abline(a=0, b=1, col=3, lty=2)
 ```
 
 
-Comparar a evapotranspiração estimada entre vários conjuntos de resultados
-
+Comparar a evapotranspiração estimada entre vários conjuntos de resultados:
 ```{r}
 ETComparison(res1, res2, type = "Monthly", ylim=c(0,800),
              labs=c("Penman","PenmanMonteith"))

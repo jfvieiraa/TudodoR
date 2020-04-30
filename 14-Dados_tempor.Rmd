@@ -1,54 +1,52 @@
 ## Dados temporais no R
 
+```{r}
+![](https://www.youtube.com/watch?v=1kmnJenbk0Y)
+```
 
-Vamos baixar os dados climáticos de Rondonópolis-MT
+
+Vamos baixar os dados climáticos de Rondonópolis-MT:
 ```{r}
 roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
 ```
 
-Podemos verificar o cabeçario do conjunto de dados
+Podemos verificar o cabeçario do conjunto de dados:
 ```{r}
 head(roo)
 ```
 
-Baixando os pacotes necessários
+Baixando os pacotes necessários:
 ```{r message=FALSE}
 library(dplyr)
 ```
 
 
-Selecionando algumas colunas pelo nome com a função `select`
-
+Selecionando algumas colunas pelo nome com a função `select`:
 ```{r}
 selecionar <- select(roo,ano,Tmax)
 head(selecionar)
 ```
 
 
-Retirar colunas com a função `select`
-
+Retirar colunas com a função `select`:
 ```{r}
 dados <- select (roo,-UR)
 head(dados)
 ```
 
 Filtrar os dados com a função `filter`
-
-Apresentar somente os dias com temperatura minima do ar menor que 20ºC
-
+Apresentar somente os dias com temperatura mínima do ar menor que 20ºC:
 ```{r}
 filter(roo, Tmin < 20)
 ```
 
-Apresentar somente os dias com temperatura menor que 20ºC e Umidade relativa do ar menor que 30%
-
+Apresentar somente os dias com temperatura menor que 20ºC e umidade relativa do ar menor que 30%:
 ```{r}
 dados_criticos <- filter(roo,Tmin < 20, UR <30 )
 head(dados_criticos)
 ```
 
-Quando precisamos adicionar uma coluna usamos a função `mutate`
-
+Quando precisamos adicionar uma coluna usamos a função `mutate`:
 ```{r}
 dados <- mutate(roo, Tmd = ((Tmax + Tmin )/2))
 head(dados)
@@ -56,13 +54,12 @@ head(dados)
 
 Resumir e agrupar os dados usando a função `summarise`
 
-Qual o valor minimo de umidade relativa ?
+Qual o valor mínimo de umidade relativa?
 ```{r}
 summarise(roo, min(UR, na.rm = TRUE)) 
 ```
 
 Qual o valor médio de velocidade do vento  por mês?
-
 ```{r}
 summarise(group_by(roo, mm), mean(Vvento, na.rm = TRUE))
 ```
@@ -70,20 +67,19 @@ summarise(group_by(roo, mm), mean(Vvento, na.rm = TRUE))
 
 Vamos aprender a usar o operador **pipe**
 
-A ideia do operador '%>%' (pipe) é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.
+A idéia do operador '%>%' (pipe) é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.
 
-Iremos filtar o valores do banco de dados *roo* com as variaveis UR e mês com apresentação do cabeçalho ('head()') 
+Iremos filtrar os valores do banco de dados *roo* com as variáveis UR e mês com apresentação do cabeçalho ('head()'):
 ```{r}
 head(select(roo, UR, mm))
 ```
 
-Usando o piper
+Usando o piper:
 ```{r}
 roo %>% select(UR, mm) %>% head
 ```
 
-Exploração de dados:  gerar um resumo estatístico com o comando pipe
-
+Exploração de dados:  gerar um resumo estatístico com o comando pipe:
 ```{r}
 roo %>% 
   summarise(avg = mean(UR,na.rm=TRUE), 
@@ -92,16 +88,14 @@ roo %>%
             total = n())
 ```
 
-Exploração de dados  gerar um resumo estatístico com o comando pipe agrupado por mês
-
+Exploração de dados  gerar um resumo estatístico com o comando pipe agrupado por mês:
 ```{r}
 roo %>% 
   group_by(mm) %>% 
   summarise(mean(UR, na.rm = TRUE))
 ```
 
-Caso necessitamos retirar o mês de outubro
-
+Caso necessitamos retirar o mês de outubro:
 ```{r}
 roo %>% 
   filter(mm != 10) %>% 
@@ -109,8 +103,7 @@ roo %>%
   summarise(mean(UR, na.rm = TRUE))
 ```
 
-Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condição de apresentar somente valores de Tmax maiores que 40. Apresentação com a função head
-
+Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condição de apresentar somente os valores de Tmax maiores que 40. Apresentação com a função head:
 ```{r}
 roo %>%
   select(mm, UR, Tmax)%>%
@@ -120,20 +113,18 @@ roo %>%
 
 Explorar os dados e visualizar com pacote dply e ggplot2
 
-Vamos utilizar um novo banco de dados
-
+Vamos utilizar um novo banco de dados:
 ```{r}
 trmm <- read.csv2(file ="https://www.dropbox.com/s/hf80ptt7lm6kbdb/roo_trmm.csv?dl=1", sep = "," )
 head(trmm)
 ```
 
-Com o pacote tidyr podemos reorganizar a tabela
+Com o pacote tidyr podemos reorganizar a tabela:
 ```{r message=FALSE}
 library(tidyr)
 ```
 
-Com a função `gather` iremos unir todos valores  de chuva mensal em uma coluna separado pelo meses
-
+Com a função `gather` iremos unir todos valores de chuva mensal em uma coluna separado pelo meses:
 ```{r}
 dados = gather(trmm, TIME, ppt, MONTH_01:MONTH_12, na.rm = TRUE)
 head(dados)
@@ -141,7 +132,7 @@ head(dados)
 
 Visualizar dados temporais no R
 
-Vamos baixar os dados climáticos de Rondonpolis-MT
+Vamos baixar os dados climáticos de Rondonpolis-MT:
 ```{r}
 roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
 head(roo)
@@ -151,28 +142,27 @@ tail(roo)
 
 Os dados de Roo inicia de janeiro de 1998 a novembro de 2010.
 
-Vamos retirar as colunas das datas
+Vamos retirar as colunas das datas:
 ```{r}
 roo2=roo[,4:11]
 head(roo2)
 roo2=na.omit(roo2)
 ```
 
-Converter os dados em um objeto de serie temporal (ts)
-
+Converter os dados em um objeto de série temporal (ts):
 ```{r}
 meuts = ts(roo2, start=c(1998, 1), end=c(2010, 11), frequency=12) 
 plot(meuts)
 ```
 
-Verificar os dados
+Verificar os dados:
 ```{r}
 start(meuts)
 end(meuts)
 frequency(meuts)
 ```
 
-Apresentação gráfica
+Apresentação gráfica:
 ```{r}
 library(devtools)
 
@@ -186,48 +176,42 @@ autoplot(meuts, facets = F) #time series of stocks on one plot
 
 ## Datas no R
 
-O Pacote `Lubridate` fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda.
-
+O Pacote `Lubridate` fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda:
 ```{r message=FALSE}
 #install.packages("lubridate")
 library(lubridate)
 ```
 
 Qual o dia de hoje?
-
 ```{r}
 today()
 ```
 
-Qual o dia e horario ?
-
+Qual o dia e horário?
 ```{r}
 now()
 ```
 
-Atribuir  data em um Objeto
+Atribuir data em um objeto:
 ```{r}
 x="1983-10-28"
 ```
 
 YYYY-MM-DD: corresponde ao ano, mês e dia.
 
-Qual a estrutura desse objeto ? 
-
+Qual a estrutura desse objeto?
 ```{r}
 str(x)
 ```
 
-O objeto *x* é um caracter, precisamos transformar para data com a função `as.Date()`
-
+O objeto *x* é um caracter, precisamos transformar para data com a função `as.Date()`:
 ```{r}
 dia1 <- as.Date(x)
 str(dia1)
 ```
 
 
-convertendo datas não padronizadas para padrão
-
+Convertendo datas não padronizadas para padrão:
 ```{r}
 dia2 = as.Date("12/27/2015", format = "%m/%d/%Y")
 str(dia2)
@@ -239,8 +223,7 @@ dia3 = as.Date("Novembro 22, 1998", format = "%B %d, %Y")
 str(dia3)
 ```
 
-Calculos com as datas
-
+Cálculos com as datas:
 ```{r}
 dia2-dia3
 ```
@@ -248,5 +231,3 @@ dia2-dia3
 ```{r}
 dia2>dia3
 ```
-
-

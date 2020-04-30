@@ -2,7 +2,7 @@
 
 ## Imagens de RPAs
 
- Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
+Este capítulo oferece uma introdução ao processamento e classificação de imagens de RPAs no ambiente R, usando algoritmos de aprendizado capazes de realizer diversos processamentos. Ele também fornece um tutorial de referência conciso e prático, que oferece aos leitores uma nosso geral do que é possível realizar no Sistema R com o processamento e classificação de imagens de RPAs.
 
 É necessário instalar alguns pacotes necessários para aplicar esta tarefa:
 ```{r eval=F, include=T}
@@ -15,7 +15,6 @@ install.packages("rgdal", dependency=TRUE)
 ```
 
 Carregar os pacote que foram baixados: 
-
 ```{r eval=F}
 library(FIELDimageR)
 library(raster)
@@ -24,7 +23,6 @@ library(raster)
 
 
 Baixar a imagem ortomosaicada:
-
 ```{r eval=F}
 EX1<-stack("https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1")
 ```
@@ -36,7 +34,7 @@ plotRGB(EX1, r = 1, g = 2, b = 3)
 ```
 
 
-Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB
+Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB:
 ```{r eval=F}
 
 EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE")
@@ -44,11 +42,8 @@ EX1.RemSoil<- fieldMask(mosaic = EX1, Red = 1, Green = 2, Blue = 3, index = "HUE
 
 
 Aplicado os índices de vegetação.
-Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green` 
-
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo `myIndex` com a fórmula `Red-Blue/Green`:
 ```{r eval=F}
 EX1.Indices<- indices(mosaic = EX1.RemSoil$newMosaic, Red = 1, Green = 2, Blue = 3, 
                       index = c("NGRDI","BGI"), myIndex = c("(Red-Blue)/Green"))
 ```
-
-
