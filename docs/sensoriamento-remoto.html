@@ -24,7 +24,7 @@
 <meta name="author" content="" />
 
 
-<meta name="date" content="2020-04-29" />
+<meta name="date" content="2020-04-30" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -332,10 +332,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div class="sourceCode" id="cb1277"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1277-1" title="1">EX1&lt;-<span class="kw">stack</span>(<span class="st">&quot;https://www.dropbox.com/s/qxg6fn9ljy35ssm/EX1_RGB.tif?dl=1&quot;</span>)</a></code></pre></div>
 <p>Plotar a imagem nas bandas RGB:</p>
 <div class="sourceCode" id="cb1278"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1278-1" title="1"><span class="kw">plotRGB</span>(EX1, <span class="dt">r =</span> <span class="dv">1</span>, <span class="dt">g =</span> <span class="dv">2</span>, <span class="dt">b =</span> <span class="dv">3</span>)</a></code></pre></div>
-<p>Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB</p>
+<p>Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB:</p>
 <div class="sourceCode" id="cb1279"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1279-1" title="1">EX1.RemSoil&lt;-<span class="st"> </span><span class="kw">fieldMask</span>(<span class="dt">mosaic =</span> EX1, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, <span class="dt">index =</span> <span class="st">&quot;HUE&quot;</span>)</a></code></pre></div>
 <p>Aplicado os índices de vegetação.
-Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo <code>myIndex</code> com a fórmula <code>Red-Blue/Green</code></p>
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo <code>myIndex</code> com a fórmula <code>Red-Blue/Green</code>:</p>
 <div class="sourceCode" id="cb1280"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1280-1" title="1">EX1.Indices&lt;-<span class="st"> </span><span class="kw">indices</span>(<span class="dt">mosaic =</span> EX1.RemSoil<span class="op">$</span>newMosaic, <span class="dt">Red =</span> <span class="dv">1</span>, <span class="dt">Green =</span> <span class="dv">2</span>, <span class="dt">Blue =</span> <span class="dv">3</span>, </a>
 <a class="sourceLine" id="cb1280-2" title="2">                      <span class="dt">index =</span> <span class="kw">c</span>(<span class="st">&quot;NGRDI&quot;</span>,<span class="st">&quot;BGI&quot;</span>), <span class="dt">myIndex =</span> <span class="kw">c</span>(<span class="st">&quot;(Red-Blue)/Green&quot;</span>))</a></code></pre></div>
 
@@ -344,7 +344,7 @@ Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas dis
 <h2><span class="header-section-number">11.2</span> Imagens de satélites</h2>
 <p>Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.</p>
 <p>Carregar pacotes necessários para trabalhar com os dados raster.
-Caso não tenha algum dos pacotes, realize a sua instalação.</p>
+Caso não tenha algum dos pacotes, realize a sua instalação:</p>
 <div class="sourceCode" id="cb1281"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1281-1" title="1"><span class="kw">library</span>(raster)</a>
 <a class="sourceLine" id="cb1281-2" title="2"><span class="kw">library</span>(knitr)</a>
 <a class="sourceLine" id="cb1281-3" title="3"><span class="kw">library</span>(sp)</a>
@@ -356,7 +356,7 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 <p>Baixar o arquivo . <a href="https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif?dl=1">sentinel2.tif</a>.</p>
 <div class="sourceCode" id="cb1282"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1282-1" title="1">imagesentinel=<span class="kw">raster</span>(<span class="st">&#39;D:/livro/TudodoRa/sentinel2.tif&#39;</span>)</a></code></pre></div>
 <div class="sourceCode" id="cb1283"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1283-1" title="1">imagesentinel=<span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a></code></pre></div>
-<p>Visualizar os dados</p>
+<p>Visualizar os dados:</p>
 <div class="sourceCode" id="cb1284"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1284-1" title="1">imagesentinel</a></code></pre></div>
 <p>É necessário criar camadas individuais para cada uma das bandas espectrais:</p>
 <div class="sourceCode" id="cb1285"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1285-1" title="1">b1 &lt;-<span class="st"> </span><span class="kw">raster</span>(<span class="st">&#39;sentinel2.tif&#39;</span>, <span class="dt">band=</span><span class="dv">1</span>)</a>
@@ -385,7 +385,7 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 <a class="sourceLine" id="cb1289-2" title="2">st &lt;-<span class="st"> </span><span class="kw">brick</span>(<span class="st">&#39;sentinel2.tif&#39;</span>)</a>
 <a class="sourceLine" id="cb1289-3" title="3"><span class="kw">plot</span>(st)</a></code></pre></div>
 <p>Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.</p>
-<p>Criar a VI (vegetation index) por meio de função</p>
+<p>Criar a VI (vegetation index) por meio de função:</p>
 <div class="sourceCode" id="cb1290"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1290-1" title="1">VI &lt;-<span class="st"> </span><span class="cf">function</span>(img, k, i) {</a>
 <a class="sourceLine" id="cb1290-2" title="2">  bk &lt;-<span class="st"> </span>img[[k]]</a>
 <a class="sourceLine" id="cb1290-3" title="3">  bi &lt;-<span class="st"> </span>img[[i]]</a>
@@ -423,7 +423,7 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 <a class="sourceLine" id="cb1296-2" title="2"><span class="kw">str</span>(nr)</a></code></pre></div>
 <p>É importante definir o gerador de pontos, porque o <em>“kmeans”</em> inicia os centros em locais aleatórios:</p>
 <div class="sourceCode" id="cb1297"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1297-1" title="1"><span class="kw">set.seed</span>(<span class="dv">99</span>)</a></code></pre></div>
-<p>Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método <code>Lloyd</code></p>
+<p>Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método <code>Lloyd</code>:</p>
 <div class="sourceCode" id="cb1298"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1298-1" title="1">kmncluster &lt;-<span class="st"> </span><span class="kw">kmeans</span>(<span class="kw">na.omit</span>(nr), <span class="dt">centers =</span> <span class="dv">10</span>, <span class="dt">iter.max =</span> <span class="dv">500</span>,</a>
 <a class="sourceLine" id="cb1298-2" title="2">                     <span class="dt">nstart =</span> <span class="dv">5</span>, <span class="dt">algorithm =</span> <span class="st">&quot;Lloyd&quot;</span>)</a></code></pre></div>
 <p>Ver o vetor/matriz:</p>
@@ -457,7 +457,7 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 </div>
 <div id="curvas-de-nível-e-modelo-3d-a-partir-do-modelo-digital-de-elevação" class="section level2">
 <h2><span class="header-section-number">11.3</span> Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação</h2>
-<p>Primeiro carregar os pacotes necessários</p>
+<p>Primeiro carregar os pacotes necessários:</p>
 <div class="sourceCode" id="cb1306"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1306-1" title="1"><span class="kw">library</span>(raster)</a>
 <a class="sourceLine" id="cb1306-2" title="2"><span class="kw">library</span>(plot3D)</a></code></pre></div>
 <p>Carregar o dado raster do pacote Raster (Volcano) para ser usado como exemplo:</p>
@@ -509,11 +509,11 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 <a class="sourceLine" id="cb1320-2" title="2">chm  =<span class="st"> </span><span class="kw">grid_canopy</span>(las, <span class="fl">0.5</span>, algo)</a></code></pre></div>
 <p>Plotar o CHM:</p>
 <div class="sourceCode" id="cb1321"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1321-1" title="1"><span class="kw">plot</span>(chm, <span class="dt">col =</span> <span class="kw">height.colors</span>(<span class="dv">50</span>))</a></code></pre></div>
-<p>A segmentação pode ser alcançada com <code>lastrees</code>. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.</p>
+<p>A segmentação pode ser alcançada com <code>lastrees</code>. Aqui foi escolhido o algorítmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.</p>
 <p>Realizar a segmentação das árvores:</p>
 <div class="sourceCode" id="cb1322"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1322-1" title="1">algo =<span class="st"> </span><span class="kw">watershed</span>(chm, <span class="dt">th =</span> <span class="dv">4</span>)</a>
 <a class="sourceLine" id="cb1322-2" title="2">las  =<span class="st"> </span><span class="kw">lastrees</span>(las, algo)</a></code></pre></div>
-<p>remove points that are not assigned to a tree</p>
+<p>Remova os pontos que não estão atribuídos a uma árvore:</p>
 <div class="sourceCode" id="cb1323"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1323-1" title="1">trees =<span class="st"> </span><span class="kw">lasfilter</span>(las, <span class="op">!</span><span class="kw">is.na</span>(treeID))</a></code></pre></div>
 <p>Plotar a segmentação:</p>
 <div class="sourceCode" id="cb1324"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1324-1" title="1"><span class="kw">plot</span>(trees, <span class="dt">color =</span> <span class="st">&quot;treeID&quot;</span>, <span class="dt">colorPalette =</span> <span class="kw">pastel.colors</span>(<span class="dv">100</span>))</a></code></pre></div>
@@ -533,7 +533,7 @@ Caso não tenha algum dos pacotes, realize a sua instalação.</p>
 <h2><span class="header-section-number">11.5</span> Modelo Digital de Elevação MDE</h2>
 <p>Carregar pacotes:</p>
 <div class="sourceCode" id="cb1329"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1329-1" title="1"><span class="kw">library</span>(raster)</a></code></pre></div>
-<p>Carregar dados e plotar :</p>
+<p>Carregar dados e plotar:</p>
 <div class="sourceCode" id="cb1330"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1330-1" title="1">MDE=<span class="kw">raster</span>(<span class="st">&quot;https://www.dropbox.com/s/b2rzimq500rmj5o/MDE.tif?dl=1&quot;</span>)</a>
 <a class="sourceLine" id="cb1330-2" title="2"><span class="kw">plot</span>(MDE)</a></code></pre></div>
 <p>Usar a função <code>terrain()</code> para calcular/extrair algumas informações topográficas:</p>

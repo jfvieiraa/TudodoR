@@ -112,7 +112,7 @@
 
 \title{Uso do sistema R para análise de dados}
 \author{}
-\date{\vspace{-2.5em}2020-04-29}
+\date{\vspace{-2.5em}2020-04-30}
 
 \begin{document}
 \maketitle
@@ -337,11 +337,11 @@ A função \texttt{example\ ()} traz exemplos de usos. Tente exibir exemplos par
 ## min> x <- sort(rnorm(100));  cH <- 1.35
 ## 
 ## min> pmin(cH, quantile(x)) # no names
-## [1] -2.39187674 -0.67166855  0.07647141  0.79341846  1.35000000
+## [1] -3.18401540 -0.64030340 -0.02592459  0.63021359  1.35000000
 ## 
 ## min> pmin(quantile(x), cH) # has names
 ##          0%         25%         50%         75%        100% 
-## -2.39187674 -0.67166855  0.07647141  0.79341846  1.35000000 
+## -3.18401540 -0.64030340 -0.02592459  0.63021359  1.35000000 
 ## 
 ## min> plot(x, pmin(cH, pmax(-cH, x)), type = "b", main =  "Huber's function")
 \end{verbatim}
@@ -7284,12 +7284,12 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(>|t|)    
 ## B - A == 0   -51.80      33.72  -1.536  0.56048    
-## C - A == 0   112.20      33.72   3.327  0.03926 *  
-## D - A == 0   -79.20      33.72  -2.349  0.19543    
-## E - A == 0   -91.60      33.72  -2.716  0.10966    
-## C - B == 0   164.00      33.72   4.863  0.00294 ** 
-## D - B == 0   -27.40      33.72  -0.813  0.92178    
-## E - B == 0   -39.80      33.72  -1.180  0.76214    
+## C - A == 0   112.20      33.72   3.327  0.03939 *  
+## D - A == 0   -79.20      33.72  -2.349  0.19554    
+## E - A == 0   -91.60      33.72  -2.716  0.10943    
+## C - B == 0   164.00      33.72   4.863  0.00292 ** 
+## D - B == 0   -27.40      33.72  -0.813  0.92177    
+## E - B == 0   -39.80      33.72  -1.180  0.76213    
 ## D - C == 0  -191.40      33.72  -5.676  < 0.001 ***
 ## E - C == 0  -203.80      33.72  -6.044  < 0.001 ***
 ## E - D == 0   -12.40      33.72  -0.368  0.99555    
@@ -7809,17 +7809,17 @@ Comparações múltiplas, contrastes de Tukey. Método de correção de p-valor:
 ## 
 ## Linear Hypotheses:
 ##            Estimate Std. Error t value Pr(>|t|)   
-## 2 - 1 == 0  24.5000     8.1812   2.995  0.06752 . 
-## 3 - 1 == 0  36.3333     8.1812   4.441  0.00306 **
-## 4 - 1 == 0  29.5000     8.1812   3.606  0.01891 * 
-## 5 - 1 == 0  29.3333     8.1812   3.585  0.01973 * 
-## 6 - 1 == 0  34.6667     8.1812   4.237  0.00472 **
-## 3 - 2 == 0  11.8333     8.1812   1.446  0.69981   
-## 4 - 2 == 0   5.0000     8.1812   0.611  0.98894   
+## 2 - 1 == 0  24.5000     8.1812   2.995  0.06745 . 
+## 3 - 1 == 0  36.3333     8.1812   4.441  0.00291 **
+## 4 - 1 == 0  29.5000     8.1812   3.606  0.01886 * 
+## 5 - 1 == 0  29.3333     8.1812   3.585  0.01970 * 
+## 6 - 1 == 0  34.6667     8.1812   4.237  0.00461 **
+## 3 - 2 == 0  11.8333     8.1812   1.446  0.69983   
+## 4 - 2 == 0   5.0000     8.1812   0.611  0.98893   
 ## 5 - 2 == 0   4.8333     8.1812   0.591  0.99051   
-## 6 - 2 == 0  10.1667     8.1812   1.243  0.81097   
-## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95718   
-## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95272   
+## 6 - 2 == 0  10.1667     8.1812   1.243  0.81102   
+## 4 - 3 == 0  -6.8333     8.1812  -0.835  0.95717   
+## 5 - 3 == 0  -7.0000     8.1812  -0.856  0.95273   
 ## 6 - 3 == 0  -1.6667     8.1812  -0.204  0.99994   
 ## 5 - 4 == 0  -0.1667     8.1812  -0.020  1.00000   
 ## 6 - 4 == 0   5.1667     8.1812   0.632  0.98718   
@@ -7863,18 +7863,18 @@ Médias com intervalo de confiança:
 ## 
 ## Fit: lm(formula = perf ~ linha + coluna + trat, data = dados)
 ## 
-## Quantile = 2.8979
+## Quantile = 2.8978
 ## 95% family-wise confidence level
 ##  
 ## 
 ## Linear Hypotheses:
 ##        Estimate lwr      upr     
-## 1 == 0 165.5000 148.7355 182.2645
-## 2 == 0 190.0000 173.2355 206.7645
-## 3 == 0 201.8333 185.0688 218.5978
-## 4 == 0 195.0000 178.2355 211.7645
-## 5 == 0 194.8333 178.0688 211.5978
-## 6 == 0 200.1667 183.4022 216.9312
+## 1 == 0 165.5000 148.7366 182.2634
+## 2 == 0 190.0000 173.2366 206.7634
+## 3 == 0 201.8333 185.0699 218.5968
+## 4 == 0 195.0000 178.2366 211.7634
+## 5 == 0 194.8333 178.0699 211.5968
+## 6 == 0 200.1667 183.4032 216.9301
 \end{verbatim}
 
 Juntar com os nomes dos tratramentos com os intervalos:
@@ -8642,7 +8642,7 @@ ZEVIANI, W. M. Estatástica Básica e Experimentação no R. 45p.
 \hypertarget{regressuxe3o-nuxe3o-linear}{%
 \section{Regressão não linear}\label{regressuxe3o-nuxe3o-linear}}
 
-Para o ajuste de regressões não-lineares com o R aconselhamos o uso da função \texttt{nls()} (modelo,dados,valores iniciais estimados dos parâmetros)
+Para o ajuste de regressões não-lineares com o R, aconselhamos o uso da função \texttt{nls()} (modelo, dados e valores iniciais estimados dos parâmetros)
 
 Exemplo:
 
@@ -8686,7 +8686,7 @@ Num projeto de construção de uma barragem é de grande interesse equacionar a 
 ## Achieved convergence tolerance: 2.694e-07
 \end{verbatim}
 
-Desenhando a curva ajustada
+Desenhando a curva ajustada:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8741,7 +8741,7 @@ Fonte: \url{http://www.leg.ufpr.br/~paulojus/embrapa/}
 ##          Max.   :26300.0   Max.   :0.3071
 \end{verbatim}
 
-Isolar a amostra 30
+Isolar a amostra 30:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8767,7 +8767,7 @@ Isolar a amostra 30
 ## 28 41 12100 0.0636
 \end{verbatim}
 
-Figura com no eixo horizontal com logarítmo (base 10), dados de umidade versus pressão aplicada na amostra.
+Figura com o eixo horizontal com logarítmo (base 10), dados de umidade versus pressão aplicada na amostra:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8777,7 +8777,7 @@ Figura com no eixo horizontal com logarítmo (base 10), dados de umidade versus 
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-437-1.pdf}
 
-Figura dos dados de umidade versus pressão aplicada na amostra
+Figura dos dados de umidade versus pressão aplicada na amostra:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -8791,7 +8791,7 @@ Figura dos dados de umidade versus pressão aplicada na amostra
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-438-1.pdf}
 
-Definidos os valores iniciais prossegue-se com o ajuste do modelo conforme os comandos a seguir
+Definidos os valores iniciais prossegue-se com o ajuste do modelo conforme os comandos a seguir:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9079,7 +9079,7 @@ Dispersão gráfica
 
 Tutorial do HydroTSM - \url{http://goo.gl/9u1PO}
 
-Instalação
+Instalação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9087,7 +9087,7 @@ Instalação
 \end{Highlighting}
 \end{Shaded}
 
-Carregar o pacote
+Carregar o pacote:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9095,7 +9095,7 @@ Carregar o pacote
 \end{Highlighting}
 \end{Shaded}
 
-Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 01 de janeiro de 1980 a 31 de dezembro de 2013
+Carregando dados diários de Precipitação da estação de Rondonópolis-MT, com dados de 1 de janeiro de 1980 a 31 de dezembro de 2013:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9103,7 +9103,7 @@ Carregando dados diários de Precipitação da estação de Rondonópolis-MT, co
 \end{Highlighting}
 \end{Shaded}
 
-Selecionar somente 5 anos da serie
+Selecionar somente 5 anos da série:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9111,7 +9111,7 @@ Selecionar somente 5 anos da serie
 \end{Highlighting}
 \end{Shaded}
 
-Valores de Precipitação mensal
+Valores de Precipitação mensal:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9140,7 +9140,7 @@ Valores de Precipitação mensal
 ##      61.70      82.57     151.95     222.90
 \end{verbatim}
 
-Datas dos valores diários de ``x''
+Datas dos valores diários de ``x'':
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9148,7 +9148,7 @@ Datas dos valores diários de ``x''
 \end{Highlighting}
 \end{Shaded}
 
-Quantidade de anos em `x' (necessário para cálculos)
+Quantidade de anos em `x' (necessário para cálculos):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9160,9 +9160,9 @@ Quantidade de anos em `x' (necessário para cálculos)
 ## [1] 5
 \end{verbatim}
 
-Análise exploratórios do dados
+Análise exploratório do dados
 
-Resumo estatástico
+Resumo estatástico:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9187,7 +9187,7 @@ Resumo estatástico
 ## n              <NA> 1826.0000
 \end{verbatim}
 
-Usando a função \texttt{hydroplot}, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo ``x''. Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 01 de janeiro de 2009 são plotados.
+Usando a função \texttt{hydroplot}, que (por padrão) representa 9 gráficos diferentes: gráficos de 3 ts, 3 gráficos de caixa e 3 histogramas com um resumo ``x''. Para este exemplo, somente plotagens diárias e mensais são produzidas e apenas os dados iniciados em 1 de janeiro de 2009 são plotados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9198,7 +9198,7 @@ Usando a função \texttt{hydroplot}, que (por padrão) representa 9 gráficos d
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-465-1.pdf}
 
-Quantidade de dias com informação (não NA) por ano
+Quantidade de dias com informação (não NA) por ano:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9211,7 +9211,7 @@ Quantidade de dias com informação (não NA) por ano
 ##  365  365  365  366  365
 \end{verbatim}
 
-Quantidade de dias com informação (não NA) por mês por ano
+Quantidade de dias com informação (não NA) por mês por ano:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9228,7 +9228,7 @@ Quantidade de dias com informação (não NA) por mês por ano
 ## 2013  31  28  31  30  31  30  31  31  30  31  30  31
 \end{verbatim}
 
-Plotar os valores mensais de Precipitação para cada ano, para identificar meses secos / umidos.
+Plotar os valores mensais de precipitação para cada ano, para identificar meses secos/umidos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9257,7 +9257,7 @@ Plotar os valores mensais de Precipitação para cada ano, para identificar mese
 \hypertarget{anuxe1lise-anual-dos-dados}{%
 \subsection{Análise anual dos dados}\label{anuxe1lise-anual-dos-dados}}
 
-Valores anuais de Precipitação
+Valores anuais de precipitação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9270,7 +9270,7 @@ Valores anuais de Precipitação
 ##    2073.00    1628.54    2223.60    2009.02    1718.36
 \end{verbatim}
 
-Precipitação Média anual
+Precipitação média anual:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9316,7 +9316,7 @@ Outra forma (mais útil para `streamflows', onde FUN = \emph{mean}): A função 
 \hypertarget{anuxe1lise-mensal-dos-dados---boxplot}{%
 \subsection{Análise mensal dos dados - BOXPLOT}\label{anuxe1lise-mensal-dos-dados---boxplot}}
 
-Mediana dos valores mensais na estação de Rondonópolis-MT.
+Mediana dos valores mensais na estação de Rondonópolis-MT:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9331,7 +9331,7 @@ Mediana dos valores mensais na estação de Rondonópolis-MT.
 ## 222.90
 \end{verbatim}
 
-Vetor com as abreviaturas de três letras para os nomes dos meses
+Vetor com as abreviaturas de três letras para os nomes dos meses:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9339,7 +9339,7 @@ Vetor com as abreviaturas de três letras para os nomes dos meses
 \end{Highlighting}
 \end{Shaded}
 
-Criando fatores mensais ordenados
+Criando fatores mensais ordenados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9347,7 +9347,7 @@ Criando fatores mensais ordenados
 \end{Highlighting}
 \end{Shaded}
 
-Boxplot dos valores mensais
+Boxplot dos valores mensais:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9363,7 +9363,7 @@ Boxplot dos valores mensais
 \hypertarget{anuxe1lise-sazonal}{%
 \subsection{Análise sazonal}\label{anuxe1lise-sazonal}}
 
-Valores sazonais médios de Precipitação
+Valores sazonais médios de precipitação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9378,7 +9378,7 @@ Valores sazonais médios de Precipitação
 
 Extraindo os valores sazonais para cada ano
 
-Dezembro, Janeiro e Fevereiro
+Dezembro, Janeiro e Fevereiro:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9391,7 +9391,7 @@ Dezembro, Janeiro e Fevereiro
 ##  541.05 1049.04 1044.83 1042.54  833.46
 \end{verbatim}
 
-Março, Abril e Maio
+Março, Abril e Maio:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9404,7 +9404,7 @@ Março, Abril e Maio
 ## 506.58 391.67 694.74 533.91 468.15
 \end{verbatim}
 
-Junho, Julho e Agosto
+Junho, Julho e Agosto:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9417,7 +9417,7 @@ Junho, Julho e Agosto
 ## 163.85   0.71  13.23 135.89  56.40
 \end{verbatim}
 
-Setembro, Outubro e Novembro
+Setembro, Outubro e Novembro:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9430,7 +9430,7 @@ Setembro, Outubro e Novembro
 ## 516.71 325.38 328.48 486.78 296.22
 \end{verbatim}
 
-Plotar a evolução temporal dos valores da Precipitação sazonal
+Plotar a evolução temporal dos valores da precipitação sazonal:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9442,9 +9442,9 @@ Plotar a evolução temporal dos valores da Precipitação sazonal
 \hypertarget{alguns-uxedndices-extremos}{%
 \subsection{Alguns índices extremos}\label{alguns-uxedndices-extremos}}
 
-Etapas comuns para a análise desta serie:
+Etapas comuns para a análise desta série:
 
-Carregando dados diários de Precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013.
+Carregando dados diários de precipitação da estação Rondonópolis-MT, com dados de 01/Jan/1980 a 31/Dez/2013:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9456,7 +9456,7 @@ Carregando dados diários de Precipitação da estação Rondonópolis-MT, com d
 ## Warning in data(roo): data set 'roo' not found
 \end{verbatim}
 
-Selecionar a data inicial
+Selecionar a data inicial:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9464,7 +9464,7 @@ Selecionar a data inicial
 \end{Highlighting}
 \end{Shaded}
 
-Plotar a série temporal selecionada
+Plotar a série temporal selecionada:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9474,7 +9474,7 @@ Plotar a série temporal selecionada
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-485-1.pdf}
 
-Contagem e plotagem do número de dias no período em que a Precipitação foi maior que 80 mm.
+Contagem e plotagem do número de dias no período em que a precipitação foi maior que 80 mm:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9489,7 +9489,7 @@ Contagem e plotagem do número de dias no período em que a Precipitação foi m
 \hypertarget{precipitauxe7ao-total-chuva}{%
 \subsection{Precipitaçao total chuva}\label{precipitauxe7ao-total-chuva}}
 
-Calculando a Precipitação total (acumulada) de 5 dias
+Calculando a Precipitação total (acumulada) de 5 dias:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9506,7 +9506,7 @@ Calculando a Precipitação total (acumulada) de 5 dias
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-487-1.pdf}
 
-Valor anual máximo de Precipitação total em 5 dias
+Valor anual máximo de precipitação total em 5 dias:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9529,7 +9529,7 @@ Valor anual máximo de Precipitação total em 5 dias
 
 \begin{itemize}
 \item
-  \emph{Nota 1:} para este cálculo, é utilizada uma janela móvel centrada no dia atual. Se o usuário quiser Precipitação total de 5 dias acumulada nos 4 dias anteriores ao dia atual + a Precipitação no corrente dia, o usuário tem que modificar a janela móvel.
+  \emph{Nota 1:} para este cálculo, é utilizada uma janela móvel centrada no dia atual. Se o usuário quiser precipitação total de 5 dias acumulada nos 4 dias anteriores ao dia atual + a precipitação no corrente dia, o usuário tem que modificar a janela móvel.
 \item
   \emph{Nota 2:} Para os dois primeiros e os últimos dois valores, a largura da janela é adaptada para ignorar valores a série temporal
 \end{itemize}
@@ -9539,7 +9539,7 @@ Valor anual máximo de Precipitação total em 5 dias
 
 A evapotranspiração é a forma pela qual a água da superfície terrestre passa para a atmosfera no estado de vapor, tendo papel importante no Ciclo Hidrológico. Esse processo envolve a evaporação da água de superfícies de água livre (rios, lagos, represas, oceano, etc), dos solos e da vegetação úmida (que foi interceptada durante uma chuva) e a transpiração dos vegetais
 
-Apagar objetos antigos
+Apagar objetos antigos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9569,7 +9569,7 @@ Baixar dados
 ## 6 1980-01-06 16.10 31.2 20.8 80.67 1.380000 80.67
 \end{verbatim}
 
-Transformar em Data e Dia Juliano
+Transformar em Data e Dia Juliano:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9605,7 +9605,7 @@ Verificar
 
 \textbf{Constantes utilizadas no calculo da ET.}
 
-Altura acima do nível do mar (m)
+Altura acima do nível do mar (m):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9613,7 +9613,7 @@ Altura acima do nível do mar (m)
 \end{Highlighting}
 \end{Shaded}
 
-Pressão atmosférica local, calculada com base na altitude (kPa)
+Pressão atmosférica local, calculada com base na altitude (kPa):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9621,7 +9621,7 @@ Pressão atmosférica local, calculada com base na altitude (kPa)
 \end{Highlighting}
 \end{Shaded}
 
-Coeficiente psicrométrico (kPa/ºC)
+Coeficiente psicrométrico (kPa/ºC):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9629,7 +9629,7 @@ Coeficiente psicrométrico (kPa/ºC)
 \end{Highlighting}
 \end{Shaded}
 
-Latitude
+Latitude:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9637,7 +9637,7 @@ Latitude
 \end{Highlighting}
 \end{Shaded}
 
-Transformar em radianos
+Transformar em radianos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9645,7 +9645,7 @@ Transformar em radianos
 \end{Highlighting}
 \end{Shaded}
 
-Declinação solar (rad)
+Declinação solar (rad):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9653,7 +9653,7 @@ Declinação solar (rad)
 \end{Highlighting}
 \end{Shaded}
 
-Ângulo horário do nascer ao por do sol em (rad)
+Ângulo horário do nascer ao por do Sol em (rad):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9661,7 +9661,7 @@ Declinação solar (rad)
 \end{Highlighting}
 \end{Shaded}
 
-Número máximo de horas de luz solar em um dia (h)
+Número máximo de horas de luz solar em um dia (h):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9669,7 +9669,7 @@ Número máximo de horas de luz solar em um dia (h)
 \end{Highlighting}
 \end{Shaded}
 
-Distância relativa da terra ao sol
+Distância relativa da Terra ao Sol:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9677,7 +9677,7 @@ Distância relativa da terra ao sol
 \end{Highlighting}
 \end{Shaded}
 
-Angulo de horário(Angulo da radiação do sol)
+Ângulo de horário (ângulo da radiação do Sol)
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9686,7 +9686,7 @@ Angulo de horário(Angulo da radiação do sol)
 \end{Highlighting}
 \end{Shaded}
 
-Radiação Solar Extraterrestre diária (mm/dia)
+Radiação Solar Extraterrestre diária (mm/dia):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9694,7 +9694,7 @@ Radiação Solar Extraterrestre diária (mm/dia)
 \end{Highlighting}
 \end{Shaded}
 
-Verificar dados
+Verificar dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9712,7 +9712,7 @@ Verificar dados
 ## 6 1980-01-06 16.10 31.2 20.8 80.67 1.380000 80.67          6 12.41691 38.61551
 \end{verbatim}
 
-coeficientes para climas médios
+coeficientes para climas médios:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9720,7 +9720,7 @@ coeficientes para climas médios
 \end{Highlighting}
 \end{Shaded}
 
-coeficientes para climas médios
+coeficientes para climas médios:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9728,7 +9728,7 @@ coeficientes para climas médios
 \end{Highlighting}
 \end{Shaded}
 
-Insolação (h)
+Insolação (h):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9801,7 +9801,7 @@ Insolação (h)
 ## [361]  3.03367449  0.30778199  3.51145603  2.18611115  5.57723917  0.51138680
 \end{verbatim}
 
-Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma
+Importante quando se trabalha com datas e fatores, retorna um valor com a mesma forma:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9827,7 +9827,7 @@ Importante quando se trabalha com datas e fatores, retorna um valor com a mesma 
 ## 6 4.1455326
 \end{verbatim}
 
-Nebulosidade ou fração de luz (h)
+Nebulosidade ou fração de luz (h):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9853,7 +9853,7 @@ Nebulosidade ou fração de luz (h)
 ## 6 4.1455326 0.33386175
 \end{verbatim}
 
-Albedo, para solo gramado=0,23
+Albedo, para solo gramado=0,23:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9861,7 +9861,7 @@ Albedo, para solo gramado=0,23
 \end{Highlighting}
 \end{Shaded}
 
-Temperatura média do ar a 2 metros acima da superfície do solo (ºC)
+Temperatura média do ar a 2 metros acima da superfície do solo (ºC):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9887,7 +9887,7 @@ Temperatura média do ar a 2 metros acima da superfície do solo (ºC)
 ## 6 4.1455326 0.33386175 26.00
 \end{verbatim}
 
-Pressão de saturação de vapor máxima (kPa)
+Pressão de saturação de vapor máxima (kPa):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9895,7 +9895,7 @@ Pressão de saturação de vapor máxima (kPa)
 \end{Highlighting}
 \end{Shaded}
 
-Pressão de saturação de vapor mínima (kPa)
+Pressão de saturação de vapor mínima (kPa):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9903,7 +9903,7 @@ Pressão de saturação de vapor mínima (kPa)
 \end{Highlighting}
 \end{Shaded}
 
-Pressão de saturação de vapor média (kPa)
+Pressão de saturação de vapor média (kPa):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9911,7 +9911,7 @@ Pressão de saturação de vapor média (kPa)
 \end{Highlighting}
 \end{Shaded}
 
-Pressão atual de vapor (kPa)
+Pressão atual de vapor (kPa) :
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9919,7 +9919,7 @@ Pressão atual de vapor (kPa)
 \end{Highlighting}
 \end{Shaded}
 
-Déficit de vapor de pressão de saturação
+Déficit de vapor de pressão de saturação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9927,7 +9927,7 @@ Déficit de vapor de pressão de saturação
 \end{Highlighting}
 \end{Shaded}
 
-É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC)
+É a declividade da curva de pressão de vapor em relação a temperatura (kPa/ºC):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9935,7 +9935,7 @@ Déficit de vapor de pressão de saturação
 \end{Highlighting}
 \end{Shaded}
 
-Balanço de ondas curtas
+Balanço de ondas curtas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9943,7 +9943,7 @@ Balanço de ondas curtas
 \end{Highlighting}
 \end{Shaded}
 
-Balanço de ondas longas
+Balanço de ondas longas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9951,7 +9951,7 @@ Balanço de ondas longas
 \end{Highlighting}
 \end{Shaded}
 
-Saldo de radiação é superfície da cultura
+Saldo de radiação é superfície da cultura:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -9997,7 +9997,7 @@ Este método, além de procurar representar, de maneira consistente, o fenômeno
 
 \textbf{Método de Priestley-Taylor}
 
-O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados.
+O método de Priestley-Taylor é uma simplificação das equações de Penman e de Penman-Monteith. Apresenta a vantagem de se exigir menos dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10041,7 +10041,7 @@ O método de Priestley-Taylor é uma simplificação das equações de Penman e 
 ## 6 0.2072805 12.3970 -0.30213854 12.094861   3.979211 0.7430      4.621619
 \end{verbatim}
 
-Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor
+Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Taylor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10055,7 +10055,7 @@ Gráficos correlacionando método de Penman-Monteith e Método de Priestley-Tayl
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-526-1.pdf}
 
-Salvar os dados
+Salvar os dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10095,7 +10095,7 @@ Salvar os dados
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-531-1.pdf}
 
-Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor
+Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani e Priestley-Taylor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10125,7 +10125,7 @@ Gráficos correlacionando Penman-Monteith com método Camargo, Hargreaves-Samani
 ##       3
 \end{verbatim}
 
-comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica.
+Comparação numérica e gráfica de séries temporais simuladas e observadas, focadas principalmente na modelagem hidrológica:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10137,7 +10137,7 @@ comparação numérica e gráfica de séries temporais simuladas e observadas, f
 ## [1] 0.8372423
 \end{verbatim}
 
-Comparação gráfica entre dois vetores
+Comparação gráfica entre dois vetores:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10154,7 +10154,7 @@ Comparação gráfica entre dois vetores
 \hypertarget{pacote-evapotranspiration}{%
 \subsection{Pacote Evapotranspiration}\label{pacote-evapotranspiration}}
 
-Apagar objetos antigos
+Apagar objetos antigos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10162,7 +10162,7 @@ Apagar objetos antigos
 \end{Highlighting}
 \end{Shaded}
 
-Baixar Pacote Evapotranspiration
+Baixar Pacote Evapotranspiration:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10170,7 +10170,7 @@ Baixar Pacote Evapotranspiration
 \end{Highlighting}
 \end{Shaded}
 
-baixar dados
+Baixar dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10178,7 +10178,7 @@ baixar dados
 \end{Highlighting}
 \end{Shaded}
 
-Transformar em Data
+Transformar em Data:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10189,7 +10189,7 @@ Transformar em Data
 \end{Highlighting}
 \end{Shaded}
 
-Atribuindo nomes
+Atribuindo nomes:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10202,7 +10202,7 @@ Atribuindo nomes
 ## [6] "RHmax"      "u2"         "RHmin"
 \end{verbatim}
 
-Ver a estrutura do objeto com todas as variáveis da tabela de dados
+Ver a estrutura do objeto com todas as variáveis da tabela de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10234,7 +10234,7 @@ Ver a estrutura do objeto com todas as variáveis da tabela de dados
 ##   Index:  Date[1:366], format: "1980-01-01" "1980-01-02" ...
 \end{verbatim}
 
-Converter latitude para radianos
+Converter latitude para radianos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10250,7 +10250,7 @@ Editar adequadamente as constantes a serem utilizadas. As constantes a serem uti
 
 \textbf{Constantes dos modelos}
 
-Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração.
+Este conjunto de dados contém os dados climáticos brutos, incluindo as variáveis necessárias para o cálculo da evapotranspiração:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -10347,7 +10347,7 @@ Constantes: Altitude, lambda-calor latente da vaporização, latitude em radiano
   crop: short, indica que o método para grama curta hipotética FAO-56 será aplicado
 \end{itemize}
 
-Priestley Taylor
+Priestley Taylor:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11082,7 +11082,7 @@ Priestley Taylor
 ## 1980-01-06 3.581712
 \end{verbatim}
 
-Salvar Tabela com Evapotranspiração a partir de todos os métodos
+Salvar Tabela com Evapotranspiração a partir de todos os métodos:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11090,7 +11090,7 @@ Salvar Tabela com Evapotranspiração a partir de todos os métodos
 \end{Highlighting}
 \end{Shaded}
 
-Plotar a evapotranspiração estimada com variáveis climáticas
+Plotar a evapotranspiração estimada com variáveis climáticas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11098,7 +11098,7 @@ Plotar a evapotranspiração estimada com variáveis climáticas
 \end{Highlighting}
 \end{Shaded}
 
-lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância
+lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regressão e análise de covariância:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11132,7 +11132,7 @@ lm é usado para ajustar modelos lineares.Ele pode ser usado para realizar regre
 ## F-statistic: 1.878e+04 on 1 and 365 DF,  p-value: < 2.2e-16
 \end{verbatim}
 
-Apresenta Similaridade entre os métodos, análise significativa.
+Apresenta similaridade entre os métodos, análise significativa:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11144,7 +11144,7 @@ Apresenta Similaridade entre os métodos, análise significativa.
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-564-1.pdf}
 
-Comparar a evapotranspiração estimada entre vários conjuntos de resultados
+Comparar a evapotranspiração estimada entre vários conjuntos de resultados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11169,7 +11169,7 @@ Comparar a evapotranspiração estimada entre vários conjuntos de resultados
 \hypertarget{dados-temporais-no-r}{%
 \section{Dados temporais no R}\label{dados-temporais-no-r}}
 
-Vamos baixar os dados climáticos de Rondonópolis-MT
+Vamos baixar os dados climáticos de Rondonópolis-MT:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11177,7 +11177,7 @@ Vamos baixar os dados climáticos de Rondonópolis-MT
 \end{Highlighting}
 \end{Shaded}
 
-Podemos verificar o cabeçario do conjunto de dados
+Podemos verificar o cabeçario do conjunto de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11195,7 +11195,7 @@ Podemos verificar o cabeçario do conjunto de dados
 ## 6  5  2 1998  0.0 36.4 22.5 NA 26.950 24.00 78.50  0.325
 \end{verbatim}
 
-Baixando os pacotes necessários
+Baixando os pacotes necessários:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11203,7 +11203,7 @@ Baixando os pacotes necessários
 \end{Highlighting}
 \end{Shaded}
 
-Selecionando algumas colunas pelo nome com a função \texttt{select}
+Selecionando algumas colunas pelo nome com a função \texttt{select}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11222,7 +11222,7 @@ Selecionando algumas colunas pelo nome com a função \texttt{select}
 ## 6 1998 36.4
 \end{verbatim}
 
-Retirar colunas com a função \texttt{select}
+Retirar colunas com a função \texttt{select}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -11242,8 +11242,7 @@ Retirar colunas com a função \texttt{select}
 \end{verbatim}
 
 Filtrar os dados com a função \texttt{filter}
-
-Apresentar somente os dias com temperatura minima do ar menor que 20ºC
+Apresentar somente os dias com temperatura mínima do ar menor que 20ºC:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -12927,7 +12926,7 @@ Apresentar somente os dias com temperatura minima do ar menor que 20ºC
 ## 1672  3 11 2010   0.0   NA 17.3  NA     NA     NA     NA      NA
 \end{verbatim}
 
-Apresentar somente os dias com temperatura menor que 20ºC e Umidade relativa do ar menor que 30\%
+Apresentar somente os dias com temperatura menor que 20ºC e umidade relativa do ar menor que 30\%:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -12945,7 +12944,7 @@ Apresentar somente os dias com temperatura menor que 20ºC e Umidade relativa do
 ## 5  7  9 2005    0   NA 18.9  0 29.100 21.60 29.75   0.20
 \end{verbatim}
 
-Quando precisamos adicionar uma coluna usamos a função \texttt{mutate}
+Quando precisamos adicionar uma coluna usamos a função \texttt{mutate}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -12966,7 +12965,7 @@ Quando precisamos adicionar uma coluna usamos a função \texttt{mutate}
 
 Resumir e agrupar os dados usando a função \texttt{summarise}
 
-Qual o valor minimo de umidade relativa ?
+Qual o valor mínimo de umidade relativa?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13007,9 +13006,9 @@ Qual o valor médio de velocidade do vento por mês?
 
 Vamos aprender a usar o operador \textbf{pipe}
 
-A ideia do operador `\%\textgreater\%' (pipe) é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.
+A idéia do operador `\%\textgreater\%' (pipe) é bem simples: usar o valor resultante da expressão do lado esquerdo como primeiro argumento da função do lado direito.
 
-Iremos filtar o valores do banco de dados \emph{roo} com as variaveis UR e mês com apresentação do cabeçalho (`head()')
+Iremos filtrar os valores do banco de dados \emph{roo} com as variáveis UR e mês com apresentação do cabeçalho (`head()'):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13027,7 +13026,7 @@ Iremos filtar o valores do banco de dados \emph{roo} com as variaveis UR e mês 
 ## 6 78.50  2
 \end{verbatim}
 
-Usando o piper
+Usando o piper:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13045,7 +13044,7 @@ Usando o piper
 ## 6 78.50  2
 \end{verbatim}
 
-Exploração de dados: gerar um resumo estatístico com o comando pipe
+Exploração de dados: gerar um resumo estatístico com o comando pipe:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13062,7 +13061,7 @@ Exploração de dados: gerar um resumo estatístico com o comando pipe
 ## 1 74.41532 27.25 100  4337
 \end{verbatim}
 
-Exploração de dados gerar um resumo estatístico com o comando pipe agrupado por mês
+Exploração de dados gerar um resumo estatístico com o comando pipe agrupado por mês:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13090,7 +13089,7 @@ Exploração de dados gerar um resumo estatístico com o comando pipe agrupado p
 ## 12    12                     84.4
 \end{verbatim}
 
-Caso necessitamos retirar o mês de outubro
+Caso necessitamos retirar o mês de outubro:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13118,7 +13117,7 @@ Caso necessitamos retirar o mês de outubro
 ## 11    12                     84.4
 \end{verbatim}
 
-Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condição de apresentar somente valores de Tmax maiores que 40. Apresentação com a função head
+Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condição de apresentar somente os valores de Tmax maiores que 40. Apresentação com a função head:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13140,7 +13139,7 @@ Com os dados roo vamos filtrar os valores mensais da UR e Tmax, com uma condiç�
 
 Explorar os dados e visualizar com pacote dply e ggplot2
 
-Vamos utilizar um novo banco de dados
+Vamos utilizar um novo banco de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13166,7 +13165,7 @@ Vamos utilizar um novo banco de dados
 ## 2008   45.046  84.4426  224.299  248.747       NA
 \end{verbatim}
 
-Com o pacote tidyr podemos reorganizar a tabela
+Com o pacote tidyr podemos reorganizar a tabela:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13174,7 +13173,7 @@ Com o pacote tidyr podemos reorganizar a tabela
 \end{Highlighting}
 \end{Shaded}
 
-Com a função \texttt{gather} iremos unir todos valores de chuva mensal em uma coluna separado pelo meses
+Com a função \texttt{gather} iremos unir todos valores de chuva mensal em uma coluna separado pelo meses:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13205,7 +13204,7 @@ Com a função \texttt{gather} iremos unir todos valores de chuva mensal em uma 
 
 Visualizar dados temporais no R
 
-Vamos baixar os dados climáticos de Rondonpolis-MT
+Vamos baixar os dados climáticos de Rondonpolis-MT:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13242,7 +13241,7 @@ Vamos baixar os dados climáticos de Rondonpolis-MT
 
 Os dados de Roo inicia de janeiro de 1998 a novembro de 2010.
 
-Vamos retirar as colunas das datas
+Vamos retirar as colunas das datas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13267,7 +13266,7 @@ Vamos retirar as colunas das datas
 \end{Highlighting}
 \end{Shaded}
 
-Converter os dados em um objeto de serie temporal (ts)
+Converter os dados em um objeto de série temporal (ts):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13278,7 +13277,7 @@ Converter os dados em um objeto de serie temporal (ts)
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-587-1.pdf}
 
-Verificar os dados
+Verificar os dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13310,7 +13309,7 @@ Verificar os dados
 ## [1] 12
 \end{verbatim}
 
-Apresentação gráfica
+Apresentação gráfica:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13335,7 +13334,7 @@ Apresentação gráfica
 \hypertarget{datas-no-r}{%
 \section{Datas no R}\label{datas-no-r}}
 
-O Pacote \texttt{Lubridate} fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda.
+O Pacote \texttt{Lubridate} fornece ferramentas que facilitam a análise e manipulação de datas. Essas ferramentas são agrupadas abaixo por um propósito comum. Mais informações sobre cada função podem ser encontradas em sua documentação de ajuda:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13353,10 +13352,10 @@ Qual o dia de hoje?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2020-04-29"
+## [1] "2020-04-30"
 \end{verbatim}
 
-Qual o dia e horario ?
+Qual o dia e horário?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13365,10 +13364,10 @@ Qual o dia e horario ?
 \end{Shaded}
 
 \begin{verbatim}
-## [1] "2020-04-29 17:31:07 -05"
+## [1] "2020-04-30 18:21:09 -05"
 \end{verbatim}
 
-Atribuir data em um Objeto
+Atribuir data em um objeto:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13378,7 +13377,7 @@ Atribuir data em um Objeto
 
 YYYY-MM-DD: corresponde ao ano, mês e dia.
 
-Qual a estrutura desse objeto ?
+Qual a estrutura desse objeto?
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13390,7 +13389,7 @@ Qual a estrutura desse objeto ?
 ##  chr "1983-10-28"
 \end{verbatim}
 
-O objeto \emph{x} é um caracter, precisamos transformar para data com a função \texttt{as.Date()}
+O objeto \emph{x} é um caracter, precisamos transformar para data com a função \texttt{as.Date()}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13403,7 +13402,7 @@ O objeto \emph{x} é um caracter, precisamos transformar para data com a funçã
 ##  Date[1:1], format: "1983-10-28"
 \end{verbatim}
 
-convertendo datas não padronizadas para padrão
+Convertendo datas não padronizadas para padrão:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13427,7 +13426,7 @@ convertendo datas não padronizadas para padrão
 ##  Date[1:1], format: "1998-11-22"
 \end{verbatim}
 
-Calculos com as datas
+Cálculos com as datas:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13454,11 +13453,11 @@ Calculos com as datas
 
 O teste de tendência Mann Kendall é usado para analisar dados coletados ao longo do tempo para aumentar ou diminuir consistentemente tendências (``tendências monotônicas'') em valores de Y.
 
-É um teste não paramétrico, o que significa que funciona para todas as distribuições (ou seja, seus dados não precisam atender à suposição de normalidade ), mas seus dados não devem ter correlação serial . Se seus dados seguem uma distribuição normal , você pode executar uma regressão linear simples.
+É um teste não paramétrico, o que significa que funciona para todas as distribuições (ou seja, seus dados não precisam atender à suposição de normalidade), mas seus dados não devem ter correlação serial. Se seus dados seguem uma distribuição normal, você pode executar uma regressão linear simples.
 
 Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote Kendall ou trend.
 
-Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote \texttt{Kendall} ou \texttt{trend}.
+Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote \texttt{Kendall} ou \texttt{trend}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13469,7 +13468,7 @@ Para realizar o teste de tendência Mann-Kendall em R, você pode usar o pacote 
 
 O pacote Kendall tem uma função chamada\texttt{MannKendall\ ()} que implementa o teste não paramétrico para detecção de tendência monotônica, conhecido como teste de Mann-Kendall. (Uma tendência monótona pode ser uma tendência ascendente ou uma tendência descendente).
 
-No pacote trend a função é chamada de \texttt{mk.test\ ()}Para ilustrar as funções dos pacotes em R, usaremos os conjuntos de dados climáticos de Rondonópolis-MT (roo.csv).
+No pacote trend a função é chamada de \texttt{mk.test\ ()}Para ilustrar as funções dos pacotes em R, usaremos os conjuntos de dados climáticos de Rondonópolis-MT (roo.csv):
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13526,8 +13525,8 @@ No pacote trend a função é chamada de \texttt{mk.test\ ()}Para ilustrar as fu
 ##  $ Vvento: num  NA NA 0.125 0.125 0.275 0.325 0.2 0.175 0.15 0.25 ...
 \end{verbatim}
 
-A saída produzida por \texttt{str\ ()} indica que R não visualiza esse conjunto de dados como um objeto de série temporal. Precisamos transforma para uma serie temporal.
-Vamos converter os dados para uma serie temporal fixando apenas a temperatura do ar máxima. A função \texttt{ts} significa série temporal.
+A saída produzida por \texttt{str\ ()} indica que o R não visualiza esse conjunto de dados como um objeto de série temporal. Precisamos transformar para uma série temporal.
+Vamos converter os dados para uma série temporal fixando apenas a temperatura do ar máxima. A função \texttt{ts} significa série temporal:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13545,7 +13544,7 @@ Antes de implementar o teste Mann-Kendall de tendência para a série temporal d
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-603-1.pdf}
 
-O gráfico de séries temporais produzido por R revela a presença de uma tendência ascendente nos níveis de temperatura do ar máxima diaria para Rondonópolis ao longo do período de interesse. Para ver melhor essa tendência, vamos ajustar uma curva não paramétrica aos dados usando a função \texttt{lowess()} em R:
+O gráfico de séries temporais produzido por R revela a presença de uma tendência ascendente nos níveis de temperatura do ar máxima diária para Rondonópolis ao longo do período de interesse. Para ver melhor essa tendência, vamos ajustar uma curva não paramétrica aos dados usando a função \texttt{lowess()} em R:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13591,8 +13590,8 @@ Iremos aplicar o teste de Mann-Kendall ``como está'' (ou seja, sem quaisquer co
 
 A saída deste teste produzido por R é concisa e relata apenas o valor de tau (ie, estatística tau de Kandall) e o valor p para testar as hipóteses
 ``Ho: sem tendência'' versus ``Ha: tendência monotônica (para cima ou para baixo)'':
-Para o nosso exemplo, o valor de p associado ao teste de Mann-Kendall é estatisticamente significativo, sugerindo a presença de uma tendência ascendente estatisticamente significativa na série temporal de temperatura máxima diaria.
-Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e intercepta de acordo com o método de Sen.
+Para o nosso exemplo, o valor de p associado ao teste de Mann-Kendall é estatisticamente significativo, sugerindo a presença de uma tendência ascendente estatisticamente significativa na série temporal de temperatura máxima diária.
+Vamos calcular a inclinação da reta (isto é, taxa de variação linear) que intercepta de acordo com o método de Sen:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13614,7 +13613,7 @@ Vamos calcula a inclinação da reta (isto é, taxa de variação linear) e inte
 ##  0.03870968
 \end{verbatim}
 
-Podemos plotar a composição da série de dados
+Podemos plotar a composição da série de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13630,7 +13629,7 @@ Podemos plotar a composição da série de dados
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-609-1.pdf}
 
-Organizar os dados com o ano e a temperatura do ar maxima
+Organizar os dados com o ano e a temperatura do ar máxima:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13656,7 +13655,7 @@ Organizar os dados com o ano e a temperatura do ar maxima
 ## 6 1998 36.4
 \end{verbatim}
 
-Converte os dados em série temporal
+Converter os dados em série temporal:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13664,7 +13663,7 @@ Converte os dados em série temporal
 \end{Highlighting}
 \end{Shaded}
 
-Flutação da Temperatura Máxima
+Flutação da Temperatura Máxima:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13674,7 +13673,7 @@ Flutação da Temperatura Máxima
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-613-1.pdf}
 
-Variação mensal da Temperatura Maxíma
+Variação mensal da Temperatura Maxíma:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13684,7 +13683,7 @@ Variação mensal da Temperatura Maxíma
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-614-1.pdf}
 
-Variação mensal da temperatura máxima de Rondonópolis -- boxplot
+Variação mensal da temperatura máxima de Rondonópolis -- boxplot:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13694,7 +13693,7 @@ Variação mensal da temperatura máxima de Rondonópolis -- boxplot
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-615-1.pdf}
 
-Movendo suavização média para ver a tendência
+Movendo suavização média para ver a tendência:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13723,7 +13722,7 @@ Movendo suavização média para ver a tendência
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-618-1.pdf}
 
-Previsão de dados
+Previsão de dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13769,7 +13768,7 @@ Previsão de dados
 
 \includegraphics{TudodoR_files/figure-latex/unnamed-chunk-619-1.pdf}
 
-Previsão ARRIMA
+Previsão ARRIMA:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13834,7 +13833,7 @@ Plotar a imagem nas bandas RGB:
 \end{Highlighting}
 \end{Shaded}
 
-Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB
+Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de vegetação RGB:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13843,7 +13842,7 @@ Remover o solo e trabalhar apenas com a vegetação para aplicar os índices de 
 \end{Shaded}
 
 Aplicado os índices de vegetação.
-Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo \texttt{myIndex} com a fórmula \texttt{Red-Blue/Green}
+Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas disponíveis. Criaremos como exemplo \texttt{myIndex} com a fórmula \texttt{Red-Blue/Green}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13858,7 +13857,7 @@ Aplicaremos o índice NGRDI, BGI e podemos criar um índice usando as bandas dis
 Esse procedimento será realizado com imagens de satélite (Sentinel 2), porêm pode ser aplicado com imagens de RPA, desde que sejam multiespectrais.
 
 Carregar pacotes necessários para trabalhar com os dados raster.
-Caso não tenha algum dos pacotes, realize a sua instalação.
+Caso não tenha algum dos pacotes, realize a sua instalação:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13887,7 +13886,7 @@ Baixar o arquivo . \href{https://www.dropbox.com/s/s08rizfs6wls9ml/sentinel2.tif
 \end{Highlighting}
 \end{Shaded}
 
-Visualizar os dados
+Visualizar os dados:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -13953,7 +13952,7 @@ Juntar todas as bandas num só arquivo:
 
 Aplicar o índice de vegetação NDVI, para o Sentinel 2 com: NIR = 8, red = 4.
 
-Criar a VI (vegetation index) por meio de função
+Criar a VI (vegetation index) por meio de função:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14040,7 +14039,7 @@ Converter o raster (NDVI) a um vetor/matriz:
 \end{Highlighting}
 \end{Shaded}
 
-Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método \texttt{Lloyd}
+Criar 10 clusters, permitir 500 iterações, comece com 5 conjuntos aleatórios usando o método \texttt{Lloyd}:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14121,7 +14120,7 @@ Aplicar outros índices de vegetação com o \texttt{pacote\ LSRS}:
 \hypertarget{curvas-de-nuxedvel-e-modelo-3d-a-partir-do-modelo-digital-de-elevauxe7uxe3o}{%
 \section{Curvas de nível e modelo 3D a partir do Modelo Digital de Elevação}\label{curvas-de-nuxedvel-e-modelo-3d-a-partir-do-modelo-digital-de-elevauxe7uxe3o}}
 
-Primeiro carregar os pacotes necessários
+Primeiro carregar os pacotes necessários:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14274,7 +14273,7 @@ Plotar o CHM:
 \end{Highlighting}
 \end{Shaded}
 
-A segmentação pode ser alcançada com \texttt{lastrees}. Aqui foi escolhido o algoritmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
+A segmentação pode ser alcançada com \texttt{lastrees}. Aqui foi escolhido o algorítmo de bacia com um limiar de 4 metros. A nuvem de pontos foi atualizada e cada ponto agora tem um número que se refere a uma árvore individual (treeID). Pontos que não são árvores recebem o valor de ID NA.
 
 Realizar a segmentação das árvores:
 
@@ -14285,7 +14284,7 @@ Realizar a segmentação das árvores:
 \end{Highlighting}
 \end{Shaded}
 
-remove points that are not assigned to a tree
+Remova os pontos que não estão atribuídos a uma árvore:
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -14347,7 +14346,7 @@ Carregar pacotes:
 \end{Highlighting}
 \end{Shaded}
 
-Carregar dados e plotar :
+Carregar dados e plotar:
 
 \begin{Shaded}
 \begin{Highlighting}[]
