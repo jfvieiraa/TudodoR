@@ -1,6 +1,6 @@
 --- 
 title: "Uso do sistema R para análise de dados"
-author: " "
+author: "Jefferson Vieira José, Dhonatan Diego Pessi, Timóteo Herculino da Silva Barros e André Pereira Freire Ferraz"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book
@@ -38,7 +38,7 @@ output:
 ---
 # R Básico {#intro}
 
-Este primeio cap�tulo foi baseado no curso on-line denominada "_Code School Try R_ e _Datacamp_". Foram realizadas modifica��es utilizando-se de outros materiais que se encontram referenciado no final desse cap�tulo.
+Este primeio cap?tulo foi baseado no curso on-line denominada "_Code School Try R_ e _Datacamp_". Foram realizadas modifica??es utilizando-se de outros materiais que se encontram referenciado no final desse cap?tulo.
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -49,7 +49,7 @@ Começaremos com comandos simples, como por exemplo, os comandos **números**, *
 
 ## Expressões
 
-Vamos tentar algumas fun��es matemáticas simples. Digite o comando abaixo e aperte enter:
+Vamos tentar algumas fun??es matemáticas simples. Digite o comando abaixo e aperte enter:
 
 ```{r matematica}
 2+8
@@ -70,7 +70,7 @@ Agora tente multiplicar 6x5 (* é o operador de multiplicação):
 ## Valores Booleanos
 
 Algumas expressões retornam um "valor lógico": TRUE ou FALSE e/ou  "booleanos".
-Vamos tentar digitar uma expressões que nos d� um valor lógico:
+Vamos tentar digitar uma expressões que nos d? um valor lógico:
 ```{r}
 7<12
 ```

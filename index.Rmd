@@ -1,6 +1,6 @@
 --- 
 title: "Uso do sistema R para análise de dados"
-author: " "
+author: "Jefferson Vieira José, Dhonatan Diego Pessi, Timóteo Herculino da Silva Barros e André Pereira Freire Ferraz"
 date: "`r Sys.Date()`"
 site: bookdown::bookdown_site
 documentclass: book

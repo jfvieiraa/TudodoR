@@ -1,10 +1,5 @@
 ## Dados temporais no R
 
-```{r}
-![](https://www.youtube.com/watch?v=1kmnJenbk0Y)
-```
-
-
 Vamos baixar os dados climáticos de Rondonópolis-MT:
 ```{r}
 roo <- read.csv2("https://www.dropbox.com/s/1ajoi1c8pla3yk6/roo.csv?dl=1")
